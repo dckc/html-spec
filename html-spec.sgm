@@ -7,7 +7,7 @@
 
 <!entity stat "Internet Draft">
 <!entity date "September 22, 1995">
-<!entity filename CDATA "&#60;draft-ietf-html-spec-*.txt&#62;">
+<!entity filename CDATA "&#60;draft-ietf-html-spec-06.txt&#62;">
 
 <!entity intro system "intro.sgm">
 

@@ -5,7 +5,7 @@ lists, HTML documents can express hyperlinks. An HTML user agent
 allows the user to navigate these hyperlinks.
 
 <p> A hyperlink is a relationship between two anchors, called the head
-and the tail of the hyperlink[DEXTER]. Each anchor uniquely identified
+and the tail of the hyperlink[DEXTER]. Anchors are identified
 by an anchor address: an absolute Uniform Resource Identifier (URI),
 optionally followed by a '#' and a sequence of characters called a
 fragment identifier. For example:

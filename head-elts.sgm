@@ -22,12 +22,6 @@ interpreting relative URLs when the document is read out of context
 (see <hdref refid=hyperlink>). The value of the <attr/HREF/ attribute
 must be an absolute URI.
 
-<note>HTML user agents should use the address in the
-<tag/BASE/ element in preference to other URLs
-to refer to the document, for example,
-in hotlists, bookmarks, and document address displays.
-</note>
-
 <h3>Keyword Index: ISINDEX
 
 <p>The <tag/ISINDEX/ element indicates that the user agent should
