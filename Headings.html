@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Heading elements in HTML</TITLE>
+<NEXTID N="z36">
+</HEAD>
+<BODY>
+<H1><A
+NAME="15">Headings</A></H1>Six levels  of heading are supported.
+(Note that a hypertext node within
+a hypertext work tends to need less
+levels of  heading than a work whose
+only structure is given by the nesting
+of headings.)<P>
+A heading element implies all the
+font changes, paragraph breaks before
+and after, and white space (for example)
+necessary to render the heading.
+Further character emphasis or paragraph
+marks are not required in HTML.<P>
+H1 is the highest level of heading,
+and is recommended for the start
+of a hypertext node.   It is suggested
+that the the text of  the first heading
+be suitable for a reader who is already
+browsing in related information,
+in contrast to the <A
+NAME="6" HREF="Elements/TITLE.html">title</A> tag which
+should identify the node in a wider
+context.<P>
+The heading elements are
+<PRE>		&lt;H1>, &lt;H2>, &lt;H3>, &lt;H4>, &lt;H5>, &lt;H6>
+
+</PRE>It is not normal practice to jump
+from one header to a header level
+more than one below, for example
+for follow an H1 with an H3.  Although
+this is legal, it is discouraged,
+as it may produce strange results
+for example when generating other
+representations from the HTML.
+<H2>Example:</H2>
+<PRE>		&lt;H1>This is a heading&lt;/H1>
+		Here is some text
+		&lt;H2>Second level heading&lt;/H2>
+		Here is some more text.
+
+</PRE>
+<H2>Parser Note:</H2>Parsers should not require any specific
+order to heading elements, even if
+the heading level increases by more
+than one between successive headings.
+<H2>Typical Rendering</H2>
+<DL>
+<DT>H1
+<DD> Bold very large font, centered.
+One or two lines clear space between
+this and anything following.  If
+printed on paper, start new page.
+<DT>H2
+<DD> Bold, large font,, flush left
+against left margin, no indent. One
+or two clear lines above and below.
+<DT>H3
+<DD> Italic, large font, slightly indented
+from the left margin. One or two
+clear lines above and below.
+<DT>H4
+<DD> Bold, normal font, indented more
+than H3. One clear line above and
+below.
+<DT>H5
+<DD> Italic, normal font, indented
+as H4.  One clear line above.
+<DT>H6
+<DD> Bold, indented same as normal
+text, more than H5. One clear line
+above.
+</DL>
+These typical values are just an
+indication, and it is up to the designer
+of the presentation software to define
+the styles.  The reader may have
+options to customize these.  When
+writing documents, you should assume
+that whatever is done it is designed
+to have the same sort of effect as
+the styles above.<P>
+The rendering software is responsible
+for generating suitable vertical
+white space between elements, so
+it is NOT normal or required to follow
+a heading element with a paragraph
+mark.</A></BODY>
+</HTML>
