@@ -331,6 +331,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY amp "&#38;"     -- ampersand -->
 <!ENTITY gt "&#62;"      -- greater than -->
 <!ENTITY lt "&#60;"      -- less than -->
+<!ENTITY quot "&#34;"      -- less than -->
 <!ENTITY nbsp "<? nonbreaking-space>">
 <!-- @# should add entites for processing instructions
 	for line break, centering, etc. -->
