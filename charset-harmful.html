@@ -50,13 +50,13 @@ href="http://www.acl.lanl.gov/HTML_WG/archives.html">http://www.acl.lanl.gov/HTM
 representation of text. ASCII is perhaps the most widely deployed
 representation of text, and in the interest of interoperability,
 information systems on the Internet traditionally rely on it
-exclusively .
+exclusively.
 
-<p> The Multipurpose Mail Extensions (MIME) introduce Internet Media
-Types, including text representations besides ASCII. The Hypertext
-Markup Language (HTML) used in the World-Wide Web is a proposed
-Internet Media Type. But HTML is also an application of Standard
-Generalized Markup Language (SGML).
+<p> The Multipurpose Internet Mail Extensions (MIME) introduces
+Internet Media Types, including text representations besides
+ASCII. The Hypertext Markup Language (HTML) used in the World-Wide Web
+is a proposed Internet Media Type. But HTML is also an application of
+Standard Generalized Markup Language (SGML).
 
 <p> In the MIME and SGML specifications, the discussion of characters
 representation is notoriously complex, and apparently subtly
@@ -174,7 +174,7 @@ corollaries to the first two:
 Internet is to represent it as a sequence of octets (bytes). In the
 case of a "single byte" coded character set, that is, an invertible
 function <i>s</i> whose domain is {0, 1, 2, ..., <i>N</i>} for
-<i>N</i> < 256, there is an obvious straightforward representation,
+<i>N</i> &lt; 256, there is an obvious straightforward representation,
 wherein each octet is mapped to a character via <i>s</i>:
 
 <pre>
@@ -196,7 +196,7 @@ byte" coded character set <i>d</i> and the following representation:
         d
 </pre>
 
-<p> But in practice, the general case is more comples. One popular
+<p> But in practice, the general case is more complex. One popular
 optimization for the common case of code positions below 128 is to
 reserve bit 7 of the first octet that represents a character as a flag
 bit, and omit the zero byte if it is clear. Escape sequences are
@@ -215,7 +215,7 @@ characters is often something we want to name and refer to. So we define:
 
 <dt>character encoding
 
-<dd>a function whose range is the set of sequences of octets, and
+<dd>a function whose domain is the set of sequences of octets, and
 whose range is the set of sequences of characters over some character
 repertoire.
 
@@ -304,8 +304,10 @@ and
 <p> The resulting entity, DE' can then be endoded using US-ASCII
 
 
+<pre>
 	decode        (OS') = DE' = reduce(DE, ISO10646, ISO-646-IRV)
               US-ASCII
+</pre>
 
 <p> Hence, we can represent the document D as a message entity whose
 content type is "text/plain; charset=US-ASCII" and whose body is OS'.
