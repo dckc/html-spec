@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 <HTML>
 
 <HEAD>
@@ -25,25 +25,13 @@ the anchor is sensitive text: the start of a link.
 If the reader selects this text, (s)he should be presented with
 another document whose network address is defined by the value
 of the HREF attribute . The format of the network address is
-specified <A
-HREF="../../Addressing/Addressing.html"
+specified <A HREF="../References.html"
 NAME="z10">elsewhere</A> . This allows for the form HREF="#identifier"
 to refer to another anchor in the same document.
 If the anchor is in another document, the attribute is a <A
-HREF="../../Addressing/Relative.html" NAME="z14">relative name</A>
+HREF="http://info.cern.ch/hypertext/WWW/Addressing/Relative.html" NAME="z14">relative name</A>
 , relative to the documents address (or specified <A
 HREF="#11" NAME="z12">base address</A> if any).
-<DL>
-
-<DT><STRONG>@@NOTE:</STRONG>
-
-<DD><EM>This refers to the URI specification,
-which does not cover relative addresses.
-There is no specification of how to distinguish relative addresses
-from absolute addresses. </EM>
-
-</DL>
-
 
 <DT>NAME
 
@@ -54,19 +42,8 @@ but must be unique within the HTML document.
 Another document can then make a reference explicitly to this
 anchor by putting the identifier after the address,
 separated by a <A
-HREF="../../Addressing/BNF.html#21" NAME="z19">hash sign</A>
+HREF="http://info.cern.ch/hypertext/WWW/Addressing/BNF.html#21" NAME="z19">hash sign</A>
 .
-<DL>
-
-<DT><STRONG>@@NOTE:</STRONG>
-
-<DD><EM>This feature is representable in SGML as an ID attribute,
-if we restrict the identifiers to be <A
-HREF="../Text.html#name">SGML names</A>.
-</EM>
-
-</DL>
-
 
 <DT><A NAME="z21">REL</A>
 
@@ -74,10 +51,11 @@ HREF="../Text.html#name">SGML names</A>.
 described by the hypertext link. The value is a comma-separated
 list of relationship values. Values and their semantics will
 be registered by the HTML <A
-HREF="../RegistrationAuthority.html" NAME="z41">registration
+HREF="../RegistrationAuthority.html@@" NAME="z41">registration
 authority</A> . The default relationship if none other is given
 is void. REL should not be present unless HREF is present.
-See <A HREF="../Relationships.html" NAME="z37">Relationship values</A>
+See <A REL="SUBDOCUMENT"
+HREF="../Relationships.html@@" NAME="z37">Relationship values</A>
 , <A HREF="#z39" NAME="z40">REV</A> .
 
 <DT><A NAME="z39">REV</A>
@@ -91,22 +69,22 @@ An anchor may have both REL and REV attributes.
 <DT><A NAME="z30">URN</A>
 
 <DD>OPTIONAL. If present, this specifies a uniform resource number
-for the document. See <A HREF="../URN.html"
-NAME="z29">note</A> .
+for the document. See <A REL="SUBDOCUMENT"
+HREF="../URN.html" NAME="z29">note</A> .
 
 <DT><A NAME="z32">TITLE</A>
 
 <DD>OPTIONAL. This is informational only.
 If present the value of this field should equal the value of
 the TITLE of the document whose address is given by the HREF
-attribute. See<A HREF="LinkTitle.html"
-NAME="z31"> note</A> .
+attribute. See <A REL="SUBDOCUMENT"
+HREF="LinkTitle.html" NAME="z31">note</A> .
 
 <DT>METHODS
 
 <DD>OPTIONAL. The value of this field is a string which if present
 must be a comma separated list of HTTP METHODS supported by the
-object for public use. See <A
+object for public use. See <A REL="SUBDOCUMENT"
 HREF="LinkMethods.html" NAME="z33">note</A> .
 </DL>
 
@@ -116,17 +94,14 @@ See also: <A HREF="LINK.html" NAME="z28">LINK</A> .
 
 <H2>Example of use:</H2>
 
-<PRE>	See <A HREF="../HTML.dtd.html#z24"
-NAME="z34">&#60;A</A> HREF="http://info.cern.ch/"&#62;CERN&#60;/A&#62;'s information for
+<PRE>	See &#60;A HREF="http://info.cern.ch/"&#62;CERN&#60;/A&#62;'s information for
 	more details.
 
-	A <A
-HREF="../HTML.dtd.html#z24" NAME="z35">&#60;A</A> NAME=serious&#62;serious&#60;/A&#62; crime is one which is associated
+	A &#60;A NAME=serious&#62;serious&#60;/A&#62; crime is one which is associated
 	with imprisonment. 
 			...
 	The Organization may refuse employment to anyone convicted
-	of a <A
-HREF="../HTML.dtd.html#z24" NAME="z36">&#60;a</A> href="#serious"&#62;serious&#60;/A&#62; crime.
+	of a &#60;a href="#serious"&#62;serious&#60;/A&#62; crime.
 
 
 </PRE>

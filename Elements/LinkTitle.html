@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
+
+<HEAD>
+<TITLE>Note: On TITLE attributes of links</TITLE> <NEXTID
+N="z2"></HEAD>
+
+<BODY>
+
+<H1>Note: TITLE attribute of links</H1>
+
+<P>The link may carry a <A NAME="z1"
+HREF="A.html#z32">TITLE</A> attribute which should if present
+give the title of the document whose address is given by the
+HREF attribute.
+
+<P>This is useful for at least two reasons
+
+<UL>
+
+<LI>The browser software may chose to display the title of the
+document as a preliminary to retrieving it,
+for example as a margin note or on a small box while the mouse
+is over the anchor, or during document fetch.
+
+<LI>Some documents -- mainly those which are not marked up text,
+such as graphics, plain text and also Gopher menus,
+do not come with a title themselves, and so putting a title in
+the link is the only way to give them a title.
+This is how Gopher works. Obviously it leads to duplication of
+data, and so it is dangerous to assume that the title attribute
+of the link is a valid and unique title for the destination document.
+</UL>
+</BODY>
