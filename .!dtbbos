@@ -1,0 +1,193 @@
+96
+.
+5 5 4
+..
+247 5 1
+CVS
+5 35 5
+Elements
+247 35 20
+IETF
+5 65 25
+notes
+247 65 21
+specs
+5 95 52
+tex-experiment
+247 95 17
+abstract.ms
+5 125 86
+abstract.sgm
+247 125 39
+acknowledgements.sgm
+5 155 40
+Authors.html
+247 155 8
+blocks.sgm
+5 185 90
+catalog
+247 185 46
+CATALOG-might-need
+5 215 16
+catalog.snafu
+247 215 53
+catalog~
+5 245 27
+ChangeLog
+247 245 7
+charset-harmful.html
+5 275 37
+charset-harmful.ps
+247 275 59
+charset-harmful.txt
+5 305 58
+danvers-agenda
+247 305 34
+danvers-agenda.html
+5 335 31
+doc-charset.sgm
+247 335 92
+draft-status.sgm
+5 365 35
+elements.sgm
+247 365 47
+entity-sets.sgm
+5 395 41
+forms.sgm
+247 395 11
+get-examples.pl
+5 425 96
+glossary.sgm
+247 425 43
+head-elts.sgm
+5 455 44
+head.ms
+247 455 30
+headings.sgm
+5 485 51
+html-0.dtd
+247 485 12
+html-0s.dtd
+5 515 13
+html-1.dtd
+247 515 14
+html-1s.dtd
+5 545 85
+html-direction.html
+247 545 82
+html-essay.html
+5 575 2
+html-mime.sgm
+247 575 80
+html-pubtext-19950922.tar.gz
+5 605 95
+html-pubtext.html
+247 605 93
+html-s.dtd
+5 635 3
+html-sgml.sgm
+247 635 76
+html-spec-19950922.tar.gz
+5 665 94
+html-spec-19950922.tar.gz.asc
+247 665 60
+html-spec.html
+5 695 56
+html-spec.ps
+247 695 87
+html-spec.ps.gz
+5 725 89
+html-spec.ps.gz.64
+247 725 55
+html-spec.sgm
+5 755 91
+html-spec.style
+247 755 48
+html-spec.texi
+5 785 49
+html-spec.txt
+247 785 54
+html-spec_1.html
+5 815 62
+html-spec_10.html
+247 815 71
+html-spec_11.html
+5 845 72
+html-spec_12.html
+247 845 73
+html-spec_13.html
+5 875 78
+html-spec_14.html
+247 875 74
+html-spec_15.html
+5 905 75
+html-spec_2.html
+247 905 63
+html-spec_3.html
+5 935 64
+html-spec_4.html
+247 935 65
+html-spec_5.html
+5 965 66
+html-spec_6.html
+247 965 67
+html-spec_7.html
+5 995 68
+html-spec_8.html
+247 995 69
+html-spec_9.html
+5 1025 70
+html-spec_foot.html
+247 1025 61
+html-spec_toc.html
+5 1055 36
+html.decl
+247 1055 88
+html.dtd
+5 1085 79
+HTML.txt
+247 1085 38
+hyperlink.sgm
+5 1115 15
+index.html
+247 1115 32
+intro.sgm
+5 1145 81
+iso-latin-1.sgm
+247 1145 29
+ISOlat1.sgml
+5 1175 9
+L0index.html
+247 1175 19
+L0Pindex.html
+5 1205 6
+L1index.html
+247 1205 23
+L1Pindex.html
+5 1235 22
+L2index.html
+247 1235 26
+L2Pindex.html
+5 1265 24
+lists.sgm
+247 1265 42
+Makefile
+5 1295 84
+Makefile.nsgmls
+247 1295 57
+pg.c
+5 1325 33
+phrase.sgm
+247 1325 18
+proposed.sgm
+5 1355 45
+pubtext.sgm
+247 1355 50
+references.sgm
+5 1385 28
+snafu.decl
+247 1385 10
+TAGS
+5 1415 83
+texinfo.tex
+247 1415 77
