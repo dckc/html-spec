@@ -71,6 +71,7 @@ FEATURES
 <!ENTITY html.decl SYSTEM 'html.decl' NDATA plain>
 <!ENTITY html.dtd SYSTEM 'html.dtd' NDATA plain>
 <!ENTITY HTML SYSTEM 'HTML.html' SUBDOC>
+<!ENTITY IETF-Draft-Disclaimer SYSTEM 'IETF-Draft-Disclaimer.html' SUBDOC>
 <!ENTITY StatusMeanings SYSTEM 'StatusMeanings.html' SUBDOC>
 <!ENTITY AndMIME SYSTEM 'AndMIME.html' SUBDOC>
 <!ENTITY Intro SYSTEM 'Intro.html' SUBDOC>
@@ -79,18 +80,27 @@ FEATURES
 <!ENTITY HEAD SYSTEM 'Elements/HEAD.html' SUBDOC>
 <!ENTITY BODY SYSTEM 'Elements/BODY.html' SUBDOC>
 <!ENTITY A SYSTEM 'Elements/A.html' SUBDOC>
+<!ENTITY URN SYSTEM 'URN.html' SUBDOC>
+<!ENTITY LinkTitle SYSTEM 'Elements/LinkTitle.html' SUBDOC>
+<!ENTITY LinkMethods SYSTEM 'Elements/LinkMethods.html' SUBDOC>
 <!ENTITY ADDRESS SYSTEM 'Elements/ADDRESS.html' SUBDOC>
 <!ENTITY BASE SYSTEM 'Elements/BASE.html' SUBDOC>
+<!ENTITY BR SYSTEM 'Elements/BR.html' SUBDOC>
 <!ENTITY BLOCKQUOTE SYSTEM 'Elements/BLOCKQUOTE.html' SUBDOC>
+<!ENTITY Forms SYSTEM 'Forms.html' SUBDOC>
+<!ENTITY FORM SYSTEM 'Elements/FORM.html' SUBDOC>
+<!ENTITY INPUT SYSTEM 'Elements/INPUT.html' SUBDOC>
+<!ENTITY TEXTAREA SYSTEM 'Elements/TEXTAREA.html' SUBDOC>
+<!ENTITY SELECT SYSTEM 'Elements/SELECT.html' SUBDOC>
+<!ENTITY OPTION SYSTEM 'Elements/OPTION.html' SUBDOC>
 <!ENTITY Headings SYSTEM 'Headings.html' SUBDOC>
+<!ENTITY HR SYSTEM 'Elements/HR.html' SUBDOC>
 <!ENTITY IMG SYSTEM 'Elements/IMG.html' SUBDOC>
 <!ENTITY ISINDEX SYSTEM 'Elements/ISINDEX.html' SUBDOC>
 <!ENTITY LINK SYSTEM 'Elements/LINK.html' SUBDOC>
 <!ENTITY Lists SYSTEM 'Lists.html' SUBDOC>
 <!ENTITY NEXTID SYSTEM 'Elements/NEXTID.html' SUBDOC>
 <!ENTITY P SYSTEM 'Elements/P.html' SUBDOC>
-<!ENTITY BR SYSTEM 'Elements/BR.html' SUBDOC>
-<!ENTITY HR SYSTEM 'Elements/HR.html' SUBDOC>
 <!ENTITY PRE SYSTEM 'Elements/PRE.html' SUBDOC>
 <!ENTITY TITLE SYSTEM 'Elements/TITLE.html' SUBDOC>
 <!ENTITY Highlighting SYSTEM 'Highlighting.html' SUBDOC>
@@ -98,11 +108,15 @@ FEATURES
 <!ENTITY LiteralHistory SYSTEM 'LiteralHistory.html' SUBDOC>
 <!ENTITY Entities SYSTEM 'Entities.html' SUBDOC>
 <!ENTITY ISOlat1 SYSTEM 'ISOlat1.html' SUBDOC>
+<!ENTITY DeclHeading SYSTEM 'DeclHeading.html' SUBDOC>
+<!ENTITY DTDHeading SYSTEM 'DTDHeading.html' SUBDOC>
+<!ENTITY Security SYSTEM 'Security.html' SUBDOC>
 <!ENTITY Acknowledgements SYSTEM 'Acknowledgements.html' SUBDOC>
 <!ENTITY References SYSTEM 'References.html' SUBDOC>
 <!ENTITY Authors SYSTEM 'Authors.html' SUBDOC>
 ]>
 &HTML;
+&IETF-Draft-Disclaimer;
 &StatusMeanings;
 &AndMIME;
 &Intro;
@@ -111,18 +125,27 @@ FEATURES
 &HEAD;
 &BODY;
 &A;
+&URN;
+&LinkTitle;
+&LinkMethods;
 &ADDRESS;
 &BASE;
+&BR;
 &BLOCKQUOTE;
+&Forms;
+&FORM;
+&INPUT;
+&TEXTAREA;
+&SELECT;
+&OPTION;
 &Headings;
+&HR;
 &IMG;
 &ISINDEX;
 &LINK;
 &Lists;
 &NEXTID;
 &P;
-&BR;
-&HR;
 &PRE;
 &TITLE;
 &Highlighting;
@@ -130,6 +153,9 @@ FEATURES
 &LiteralHistory;
 &Entities;
 &ISOlat1;
+&DeclHeading;
+&DTDHeading;
+&Security;
 &Acknowledgements;
 &References;
 &Authors;
