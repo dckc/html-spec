@@ -1,5 +1,5 @@
 <!-- $Id$ -->
-<h1 id=datachrs>Character Content
+<h1 id=datachrs>Character, Words, and Paragraphs
 
 An HTML user agent should present the body of an HTML document as
 a collection of typeset paragraphs and preformatted text. Except

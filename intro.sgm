@@ -37,9 +37,17 @@ A document is a conforming HTML document only if:
 <ul>
 <li>It is a conforming SGML document, and it conforms to the HTML DTD
 (see <hdref refid=dtd>).
+<note>There are a number of syntactic idioms that are not supported or
+are supported inconsistently in some historical user agent
+implementations. These idioms are called out in notes like this
+throughout this specification.
+
+HTML documents should not contain these idioms, at least until such
+time as support for them is widely deployed.
+</note>
 
 <li>It conforms to the application conventions in this
-specification. For example, the value of the <code/HREF/ attribute of
+specification. For example, the value of the <attr/HREF/ attribute of
 the <tag/A/ element must conform to the URI syntax.
 
 <li>Its document character set includes ANSI/ISO 8859-1 and agrees with
@@ -57,15 +65,6 @@ references agree with ISO10646 regardless of how the document is encoded.
 
 </ul>
 
-
-<note>There are a number of syntactic idioms that are not supported or
-are supported inconsistently in some historical user agent
-implementations. These idioms are called out in notes like this
-throughout this specification.
-
-HTML documents should not contain these idioms, at least until such
-time as support for them is widely deployed.
-</note>
 
 The HTML DTD defines a standard HTML document type and several
 variations, based on feature test entities:
@@ -100,6 +99,11 @@ An HTML user agent conforms to this specification if:
 <ul>
 <li>It parses the characters of an HTML document into data characters
 and markup according to [SGML].
+<note>
+In the interest of robustness and extensibility, there are a number
+of widely deployed conventions for handling non-conforming documents.
+See <hdref refid=conv1> for details.
+</note>
 
 <li>It supports the <code/ISO-8859-1/ character encoding scheme and
 processes each character in the ISO Latin Alphabet No. 1 as specified
@@ -125,10 +129,3 @@ information services.
 
 </ul>
 
-<note>
-In the interest of robustness and extensibility, there are a number
-of widely deployed conventions for handling non-conforming documents.
-See <hdref refid=conv1> for details.
-</note>
-
-<![%level[@@]]>

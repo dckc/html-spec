@@ -1,23 +1,18 @@
 <!-- $Id$ -->
-<h1>Block Structuring Elements
+<h2>Block Structuring Elements
 
-<p>The following elements may be included in the body of an HTML document:
+<p>Each of the following elements defines a block structure; that is,
+they indicate a paragraph break before and after.
 
-<h2>Paragraph
+<h3>Paragraph: <tag/P/
 
-<![CDATA[
-<P> ... </P>	Level 0
-]]>
-
-<p>The Paragraph element indicates a paragraph. The exact indentation,
-leading space, etc. of a paragraph is not defined and may be a
+<p>The <tag/P/ element indicates a paragraph. The exact indentation,
+leading space, etc. of a paragraph is not specified and may be a
 function of other tags, style sheets, etc.
 
 <p>Typically, paragraphs are surrounded by a vertical space of one
-line or half a line. This is typically not the case within the Address
-element and is never the case within the Preformatted Text
-element. With some HTML interpreters, the first line in a paragraph is
-indented.
+line or half a line. The first line in a paragraph is indented in some
+cases.
 
 <p>Example of use:
 
@@ -30,78 +25,64 @@ convention facilitates document maintenance.</P>
 <P>This is the text of a third paragraph.</P>
 ]]></listing>
 
-<h2>Preformatted Text
+<h3 id=pre>Preformatted Text: <tag/PRE/
 
-<![CDATA[
-<PRE> ... </PRE>	Level 0
-]]>
+<p>The <tag/PRE/ element represents a character cell block of textand
+so is suitable for text that has been formatted on screen.
 
-<p>The Preformatted Text element presents blocks of text in
-fixed-width font, and so is suitable for text that has been formatted
-on screen.
-
-<p>The &lt;PRE> tag may be used with the optional WIDTH attribute. The
+<p>The <tag/PRE/ tag may be used with the optional WIDTH attribute. The
 WIDTH attribute specifies the maximum number of characters for a line
-and allows the HTML interpreter to select a suitable font and
-indentation. If the WIDTH attribute is not present, a width of 80
-characters is assumed. Where the WIDTH attribute is supported, widths
-of 40, 80 and 132 characters should be presented optimally, with other
-widths being rounded up.
+and allows the HTML user agent to select a suitable font and
+indentation.
 
 <p>Within preformatted text:
 
 <ul>
 <li>Line breaks within the text are rendered as a move to the
 beginning of the next line.
+<NOTE>References to the "beginning of a new line" do not imply that
+the renderer is forbidden from using a constant left indent for
+rendering preformatted text. The left indent may be constrained by the
+width required.
+</note>
 
-<li>Anchor elements and character highlighting elements may be used.
+<li>Anchor elements and phrase markup may be used.
+<NOTE>Within a Preformatted Text element, the constraint that the
+rendering must be on a fixed horizontal character pitch may limit or
+prevent the ability of the HTML user agent to faithfully render
+phrase markup.
+</note>
 
 <li>Elements that define paragraph formatting (headings, address,
 etc.) must not be used.
-
-<li>The horizontal tab character (encoded in <code/US-ASCII/ and <code/ISO-8859-1/
-as decimal 9) must be interpreted as the smallest positive nonzero
-number of spaces which will leave the number of characters so far on
-the line as a multiple of 8. Its use is not recommended however.
-</ul>
-
 <NOTE>Som historical documents contain <tag/P/ tags in <tag/PRE/
 elements.  User agents are engcouraged to treat this a a line break. A
 <tag/P/ tag followed by a newline character should produce only one
 line break, not a line break plus a blank line.
 </note>
 
-<NOTE>References to the "beginning of a new line" do not imply that
-the renderer is forbidden from using a constant left indent for
-rendering preformatted text. The left indent may be constrained by the
-width required.  </note>
+<li>The horizontal tab character (encoded in <code/US-ASCII/ and
+<code/ISO-8859-1/ as decimal 9) must be interpreted as the smallest
+positive nonzero number of spaces which will leave the number of
+characters so far on the line as a multiple of 8.
+</ul>
 
 <p>Example of use:
 
 <listing><![CDATA[
-<PRE WIDTH="80">
+<PRE>
 This is an example line.
 </PRE>
 ]]></listing>
 
-<NOTE>Within a Preformatted Text element, the constraint that the
-rendering must be on a fixed horizontal character pitch may limit or
-prevent the ability of the HTML interpreter to faithfully render
-character formatting elements.
-</note>
+<h3>Address: <tag/ADDRESS/
 
-<h2>Address
+<p>The <tag/ADDRESS/ element specifies such information as address,
+signature and authorship, often at the beginning or end of the body of
+a document.
 
-<![CDATA[
-<ADDRESS> ... </ADDRESS>	Level 0
-]]>
-
-<p>The Address element specifies such information as address,
-signature and authorship, often at the top or bottom of a document.
-
-<p>Typically, an Address is rendered in an italic typeface and may be
-indented. The Address element implies a paragraph break before and
-after.
+<p>Typically, the <tag/ADDRESS/ element is rendered in an italic
+typeface and may be indented.
 
 <p>Example of use:
 
@@ -114,18 +95,14 @@ Tel (123) 456 7890
 </ADDRESS>
 ]]></listing>
 
-<h2>Blockquote
+<h3>Block Quote: <tag/BLOCKQUOTE/
 
-<![CDATA[
-<BLOCKQUOTE> ... </BLOCKQUOTE>	Level 0
-]]>
-
-<p>The Blockquote element is used to contain text quoted from another
+<p>The <tag/BLOCKQUOTE/ element contains text quoted from another
 source.
 
 <p>A typical rendering might be a slight extra left and right indent,
-and/or italic font. The Blockquote element causes a paragraph break,
-and typically provides space above and below the quote.
+and/or italic font. The <tag/BLOCKQUOTE/ typically provides space
+above and below the quote.
 
 <p>Single-font rendition may reflect the quotation style of Internet
 mail by putting a vertical line of graphic characters, such as the
@@ -141,4 +118,3 @@ my sins remembered.
 </BLOCKQUOTE>
 but I am not sure.
 ]]></listing>
-

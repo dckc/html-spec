@@ -1,6 +1,14 @@
 <h1>Glossary
 
 <tl>
+<tli>absolute URI: a URI in absolute form, as per [URL]
+
+<tli>anchor: a hyperlink navigation option; typically, a highlighted
+phrase marked as an <tag/A/ element.
+
+<tli>base URI: URI used as the base of an HTML document for the
+purpose of resolving hyperlink destinations.
+
 <tli>character: An atom of information, for example a letter or a
 digit.  Graphic characters have associated glyphs, where as control
 characters have associated processing semantics.
@@ -49,8 +57,18 @@ element. [SGML]
 example, a sequence of octets associated with an Internet Media
 Type.[SGML]
 
+<tli>fragment identifier: the portion of an <attr/HREF/ attribute
+value following the <code/#/ character which modifies the prenentation
+of the destination of a hyperlink.
+
+<tli>form data set: a sequence of name/value pairs; the names are
+given by an HTML document and the values are given by a user.
+
 <tli>HTML document: An SGML document conforming to this document type
 definition.
+
+<tli>hyperlink: a relationship between to resources, called the source
+and the destination.
 
 <tli>markup: Syntactically delimited characters added to the data of a
 document to represent its structure. There are four different kinds of
@@ -60,15 +78,15 @@ and processing instructions.[SGML]
 <tli>may: A document or user interface is conforming whether this
 statement applies or not.
 
+<tli>media type: an Internet Media Type, as per [IMEDIA].
+
 <tli>message entity: a head and body. The head is a collection of
 name/value fields, and the body is a sequence of octets. The head
 defines the content type and content transfer encoding of the body. [MIME]
 
-<![%level[
 <tli>minimally conforming HTML user agent: A user agent that conforms
-to this specification in its treatment of the Internet Media Type
-"text/html; level=0; version=2.0"
-]]>
+to this specification except for form processing. It may only process
+level 1 HTML documents.
 
 <tli>must: Documents or user agents in conflict with this statement
 are not conforming.
@@ -109,9 +127,8 @@ intended.
 
 <tli>URI: A Universal Resource Identifier is a formatted string that
 serves as an identifier for a resource, typcally on the Internet. URIs
-are used in HTML to identify the destination of hypertext links, the
-source of in-line images, and the object of form actions. URIs in
-common use include Uniform Resource Locators (URLs)[URL]
+are used in HTML to identify the destination of hyperlinks. URIs in
+common practice include Uniform Resource Locators (URLs)[URL]
 and Relative URLs[RELURL].
 
 <tli>user agent: A component of a distributed system that presents
@@ -124,4 +141,3 @@ Switzerland. Users may create, edit or browse hypertext
 documents. <code>http://www.w3.org/</>
 
 </tl>
-

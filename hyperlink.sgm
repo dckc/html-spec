@@ -1,123 +1,130 @@
-<h1>Hyperlink Elements
+<h1 id=hyperlink>Hyperlinks
 
-<h2>Anchor
+<p> In addition to general purpose elements such as paragraphs and
+lists, HTML documents can express hyperlinks. A hyperlink is a
+relationship between two resources, called the source and the
+destination of the hyperlink. Each resource has a Uniform Resource
+Identifier (URI).
 
-<![CDATA[
-<A> ... </A>	Level 0
+<p> An HTML user agent allows navigating a collection of these
+resources. In the following interactions, the URI of the source
+document is called the base URI.
+
+<h2>Accessing Resources
+
+<p> Each of the following markup constructs is the source of a
+hyperlink; these hyperlinks are references to resources to be
+processed in conjunction with the source documents:
+
+<ul>
+<li> <tag/IMG/ elements
+<li> <tag/INPUT/ elements with the <attr/SRC/ attribute present
+<li> <tag/LINK/ element
+</ul>
+
+<p> To access the destination of a hyperlink, the base URI of the
+source document is combined with the value of the <attr/HREF/ or
+<attr/SRC/ attribute of the hyperlink element according to
+[RELURL]. The user agent disregards any fragment identifer, and uses
+the resulting URI to access the destination resource. For example, if
+a document identified as <code>http://host/x/y.html</> contains:
+
+<listing><![CDATA[
+<img src="../icons/abc.gif">
 ]]>
+</listing>
 
-<p>An anchor is a marked section of text that is the start and/or
-destination of a hypertext link.  Anchor elements are defined by the
-<code>&lt;A></> tag. The <code>&lt;A></> tag accepts several
-attributes; at least one of the NAME and HREF attributes is required.
+<p> then the user agent must use the URI
+<code>http://host/icons/abc.gif</> to access the resource linked from
+the <tag/IMG/ element.
 
-<p>Attributes of the <code>&lt;A></> tag:
+<h2 id=traverse>Traversing Hyperlinks
 
-<h3>HREF
+<p> An <tag/A/ element with the <attr/HREF/ attribute present is an
+anchor; that is, the source of a hyperlink that is an option to
+navigate to another resource.  The <tag/LINK/ element may also
+be an anchor.
 
-<p>If the HREF attribute is present, the text between the opening and
-closing anchor tags becomes hypertext. If this hypertext is selected
-by readers, they are moved to another document, or to a different
-location in the current document, whose network address is defined by
-the value of the HREF attribute.
+<p> In addition to the base URI, the state of an HTML user agent
+includes a list of the anchors in the document. The user can traverse
+a hyperlink by choosing an anchor. The user agent then accesses the
+destination document as above and presents it.
 
-<p>Example:
+<h3>Fragment Identifiers
+
+<p>If the value of the <tag/HREF/ attribute of an anchor element
+contains a <code/#/ character, then the characters after the <code/#/
+are a fragment identifier, not a part of the destination URI. As a
+degenerate case, <code/HREF="#fragment"/ refers to an anchor in the
+same document: the source and destination URIs are the same.
+
+<p>After accessing the destination resource, the navigation state (the
+scrollbar, for example) may be modified by a fragment identifer in the
+hyperlink source markup. The meaning of fragment identifiers depends
+on the media type of the destination resource. For <code>text/html</>
+resources, it instructs the user agent to locate the <tag/A/ element
+with a <attr/NAME/ attribute whose value is the same as the fragment
+identifier. The matching is case sensitive.
+
+<p> For example, if a user
+agent was processing the above document and the user indicated the
+following anchor:
+
+<listing>
+<![CDATA[
+<p> See: <a href="app1.html#bannanas">appendix 1</a> for more detail
+on bannanas.</a>
+]]>
+</listing>
+
+<p> then the user agent URI must access the resource
+<code>http://host/x/app1.html</>. Assuming the resource is represented
+using the <code>text/html</> media type, the user agent must locate
+the anchor named <code>bannanas</> and begin navigation there.
+
+<p> The base URI for navigating the destination document may be
+different from the URI used to access it. For example, it may be
+replaced by by a <tag/BASE/ tag in the destination document or by an
+HTTP redirection transaction.
+
+<h2 id=query>Queries and Indexes
+
+<p> The <tag/ISINDEX/ element represents a set of hyperlinks. The user
+can choose from the set by providing keywords to the user agent. The
+user agent computes the destination URI by appending <code/?/ and the
+keywords to the base URI. The keywords are escaped according to [URL]
+and joined by <code/+/. For example, if a document contains:
 
 <listing><![CDATA[
-See <A HREF="http://www.hal.com/">HaL</A>'s 
-information for more details.
+<BASE HREF="http://host/index">
+<ISINDEX>
 ]]></listing>
 
-<p>In this example, selecting "HaL" takes the reader to a document at
-http://www.hal.com.  The format of the network address is specified in
-the URI specification for print readers.
+<p> and the user provides the keywords <code/apple/ and <code/berry/,
+then the user agent must access the resource
+<code>http://host/index?apple+berry</>.
 
-<p>With the HREF attribute, the form HREF="#identifier" can refer to
-another anchor in the same document.
+<p> <tag/FORM/ elements with <code/METHOD=GET/ also represent sets of
+hyperlinks. See <hdref refid=queryf> for details.
 
-<p>Example:
+<h2 id=imagemap>Image Maps
+
+<p> The <attr/ISMAP/ attribute in combination with the <tag/A/ and
+<tag/IMG/ elements, represents a set of hyperlinks. The user can
+choose from the set by choosing a pixel of the image. The user agent
+computes the destination URI by appending <code/?/ and the coordinates
+of the pixel to the URI given in the <tag/A/ element. For example, if
+a document contains:
 
 <listing><![CDATA[
-The <A HREF="#glossary">glossary</A> defines 
-terms used in this document.
+<head><title>ImageMap Example</title>
+<BASE HREF="http://host/index"></head>
+<body>
+<p> Choose any of these icons:<br>
+<a href="/cgi-bin/imagemap"><img ismap src="icons.gif"></a>
 ]]></listing>
 
-<p>In this example, selecting "glossary" takes the reader to another
-anchor (i.e., &lt;A&nbsp;NAME="glossary">Glossary&lt;/A>) in the same
-document. The NAME attribute is described below. If the anchor is in
-another document, the HREF attribute may be relative to the document's
-address or the specified base address (see <hdref refid=base>).
-
-<h3>NAME
-
-<p>If present, the NAME attribute allows the anchor to be the target
-of a link. The value of the NAME attribute is an identifier for the
-anchor. Identifiers are arbitrary strings but must be unique within
-the HTML document.
-
-<p>Example of use:
-
-<listing><![CDATA[
-<A NAME="coffee">Coffee</A> is an example of ...
-... An example of this is <A HREF="#coffee">coffee</A>.
-]]></listing>
-
-<p>Another document can then make a reference explicitly to this
-anchor by putting the identifier after the address, separated by a
-hash sign:
-
-<listing><![CDATA[
-<A HREF="drinks.html#coffee">
-]]></listing>
-
-<h3>TITLE
-
-<p>The TITLE attribute is informational only. If present, the TITLE
-attribute should provide the title of the document whose address is
-given by the HREF attribute.  The TITLE attribute is useful for at
-least two reasons. The HTML interpreter may display the title of the
-document prior to retrieving it, for example, as a margin note or on a
-small box while the mouse is over the anchor, or while the document is
-being loaded. Another reason is that documents that are not marked up
-text, such as graphics, plain text and Gopher menus, do not have
-titles. The TITLE attribute can be used to provide a title to such
-documents. When using the TITLE attribute, the title should be valid
-and unique for the destination document.
-
-<h3>REL
-
-<p>The REL attribute gives the relationship(s) described by the
-hypertext link from the anchor to the target. The value is a
-whitespace-separated list of relationship names. Relationship names
-and their semantics will be registered by the W3 Consortium. The
-default relationship is void. The REL attribute is only used when the
-HREF attribute is present.
-
-<h3>REV
-
-<p>The REV attribute is the same as the REL attribute, but the
-semantics of the link type are in the reverse direction. A link from A
-to B with REL="X" expresses the same relationship as a link from B to
-A with REV="X". An anchor may have both REL and REV attributes.
-
-<h3>URN
-
-<p>If present, the URN attribute specifies a uniform resource name
-(URN) for a target document. The format of URNs is under discussion
-(1995) by various working groups of the Internet Engineering Task
-Force.
-
-<h3>METHODS
-
-<p>The METHODS attributes of anchors and links provide information
-about the functions that the user may perform on an object. These are
-more accurately given by the HTTP protocol when it is used, but it
-may, for similar reasons as for the TITLE attribute, be useful to
-include the information in advance in the link. For example, the HTML
-interpreter may chose a different rendering as a function of the
-methods allowed; for example, something that is searchable may get a
-different icon.
-
-<p>The value of the METHODS attribute is a whitespace-separated list
-of HTTP methods supported by the object for public use.
+<p> and the user chooses the upper-leftmost pixel, then chosen
+hyperlink is the one with the URI
+<code>http://host/cgi-bin/image?0,0</>.
 

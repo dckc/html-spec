@@ -159,7 +159,6 @@ reference as follows:
          <       &lt;        &#60;        Less than
          >       &gt;        &#62;        Greater than
 ]]></listing>
-
 <note>There are SGML mechanisms, CDATA and RCDATA, to allow most <code><</>,
 <code>></>, and <code>&</> characters to be entered without the use of entity
 references. Because these features tend to be used and implemented
@@ -223,18 +222,6 @@ The value of the attribute may be either:
 <ul>
 <li>A string literal, delimited by single quotes or double quotes and
 not containing any occurrences of the delimiting character.
-
-<li>A name token (a sequence of letters, digits, periods, or hyphens).
-</ul>
-
-In this example, <tag/img/ is the element name, <code/src/ is the
-attribute name, and <code>http://host/dir/file.gif</code> is the
-attribute value:
-
-<listing><![CDATA[
-<img src="http://host/dir/file.gif">
-]]></listing>
-
 <note>Some historical implementations consider any occurrence
 of the <code>></> character to signal the end of a tag. For
 compatibility with such implementations, when <code>></> appears in an
@@ -243,8 +230,21 @@ character reference. For example,
 <code>&lt;IMG SRC="eq1.jpg" alt="a&gt;b"></> should be written
 <code>&lt;IMG SRC="eq1.jpg" alt="a&amp;#62;b"></> or
 <code>&lt;IMG SRC="eq1.jpg" alt="a&amp;gt;b"></>.
-
 </note>
+
+<li>A name token (a sequence of letters, digits, periods, or hyphens).
+<note>Some historical implementations allow any character 
+except space or <code>></> in a name token.
+</note>
+</ul>
+
+In this example, <tag/img/ is the element name, <attr/src/ is the
+attribute name, and <code>http://host/dir/file.gif</code> is the
+attribute value:
+
+<listing><![CDATA[
+<img src='http://host/dir/file.gif'>
+]]></listing>
 
 A useful technique for computing an attribute value literal for a
 given string is to replace each quote and space character by an
@@ -267,11 +267,6 @@ For example:
 <IMG SRC="image.jpg" alt="First &quot;real&quot; example">
 ]]></listing>
 
-<note>Some historical implementations allow any character 
-except space or <code>></> in a name token. Attribute values must 
-be quoted only if they don't satisfy the syntax for a name 
-token.
-</note>
 
 Note that the SGML declaration in section 13.3 limits the length of
 an attribute value to 1024 characters.
@@ -288,7 +283,6 @@ can be written using a minimized syntax:
 <listing><![CDATA[
 <UL COMPACT>
 ]]></listing>
-
 <note>Some historical implementations only understand the 
 minimized syntax.
 </note>
@@ -302,6 +296,9 @@ includes all text up to and including the next occurrence of
 <code/--/.  In a comment declaration, white space is allowed after
 each comment, but not before the first comment.  The entire comment
 declaration is ignored.
+<note>Some historical HTML implementations incorrectly consider 
+any <code>></> character to be the termination of a comment.
+</note>
 
 For example:
 
@@ -315,10 +312,6 @@ For example:
 <BODY>
 <p> <!- not a comment, just regular old data characters ->
 ]]></listing>
-
-<note>Some historical HTML implementations incorrectly consider 
-any <code>></> character to be the termination of a comment.
-</note>
 
 <h3>Example HTML Document
 

@@ -1,12 +1,87 @@
 <h2>List Elements
 
-<p>HTML supports several types of lists, all of which may be nested.
+<p>HTML includes a number of list elements. They may be used in
+combination; for example, a <tag/OL/ may be nested in an <tag/LI/
+element of a <tag/UL/.
 
-<h3>Definition List
+<h3>Unordered List: <tag/UL/, <tag/LI/
 
-<![CDATA[
-<DL> ... </DL>	Level 0
-]]>
+<p>The <tag/UL/ represents a list of items with no inherent ordering
+-- typically a bulleted list.
+
+<p>The content of a <tag/UL/ element is a sequence of <tag/LI/
+elements. For example:
+
+<listing><![CDATA[
+<UL>
+<LI>First list item
+<LI>Second list item
+ <p>second paragraph of second item
+<LI>Third list item
+</UL>
+]]></listing>
+
+<h3>Ordered List: <tag/OL/
+
+<p>The <tag/UL/ element represents an ordered list of items, sorted by
+sequence or order of importance.
+
+<p>The content of a <tag/OL/ element is a sequence of <tag/LI/
+elements. For example:
+
+<listing><![CDATA[
+<OL>
+<LI>Click the Web button to open the Open the URI window.
+<LI>Enter the URI number in the text field of the Open URI 
+window. The Web document you specified is displayed.
+  <ol>
+   <li>substep 1
+   <li>substep 2
+  </ol>
+<LI>Click highlighted text to move from one link to another.
+</OL>
+]]></listing>
+
+<p>The <attr/COMPACT/ attribute suggests that a compact rendering be
+used.
+
+<h3>Directory List: <tag/DIR/
+
+<p>The <tag/DIR/ element is similar to the <tag/UL/ element.  It
+represents a list of short items, typically up to 20 characters
+each. Items in a directory list may be arranged in columns, typically
+24 characters wide.
+
+<p>The content of a <tag/OL/ element is a sequence of <tag/LI/
+elements. Nested block elements are not allowed in the content of
+<tag/DIR/ elements. For example:
+
+<listing><![CDATA[
+<DIR>
+<LI>A-H<LI>I-M
+<LI>M-R<LI>S-Z
+</DIR>
+]]></listing>
+
+<h3>Menu List: <tag/MENU/
+
+<p>The <tag/MENU/ element is a list of items with typically one line
+per item. The menu list style is typically more compact than the style
+of an unordered list.
+
+<p>The content of a <tag/MENU/ element is a sequence of <tag/LI/
+elements. Nested block elements are not allowed in the content of
+<tag/MENU/ elements. For example:
+
+<listing><![CDATA[
+<MENU>
+<LI>First item in the list.
+<LI>Second item in the list.
+<LI>Third item in the list.
+</MENU>
+]]></listing>
+
+<h3>Definition List: <tag/DL/, <tag/DT/, <tag/DD/
 
 <p>A definition list is a list of terms and corresponding
 definitions. Definition lists are typically formatted with the term
@@ -27,23 +102,14 @@ display area), it may be extended across the page with the DD section
 moved to the next line, or it may be wrapped onto successive lines of
 the left hand column.
 
-<p>Single occurrences of a <tag/DT/ tag without a subsequent <tag/DD/ tag are
-allowed, and have the same significance as if the <tag/DD/ tag had been
-present with no text.
+<p>The optional <attr/COMPACT/ attribute suggests that a compact
+rendering be used, because the list items are small and/or the entire
+list is large.
 
-<p>The opening list tag must be <tag/DL/ and must be immediately followed
-by the first term (<tag/DT/).
-
-<p>The definition list type can take the COMPACT attribute, which
-suggests that a compact rendering be used, because the list items are
-small and/or the entire list is large.
-
-<p>Unless you provide the COMPACT attribute, the HTML interpreter may
-leave white space between successive DT, DD pairs. The COMPACT
-attribute may also reduce the width of the left-hand (DT) column.
-
-<p>If using the COMPACT attribute, the opening list tag must be <tag/DL
-COMPACT/, which must be immediately followed by the first <tag/DT/ tag:
+<p>Unless the <attr/COMPACT/ attribute is present, an HTML user agent
+may leave white space between successive DT, DD pairs. The
+<attr/COMPACT/ attribute may also reduce the width of the left-hand
+(DT) column.
 
 <listing><![CDATA[
 <DL COMPACT>
@@ -52,90 +118,6 @@ COMPACT/, which must be immediately followed by the first <tag/DT/ tag:
 </DL>
 ]]></listing>
 
-<h3>Directory List
 
-<![CDATA[
-<DIR> ... </DIR>	Level 0
-]]>
 
-<p>A Directory List element is used to present a list of items
-containing up to 20 characters each. Items in a directory list may be
-arranged in columns, typically 24 characters wide. If the HTML
-interpreter can optimize the column width as function of the widths of
-individual elements, so much the better.
-
-<p>A directory list must begin with the <tag/DIR/ tag which is immediately
-followed by a <tag/LI/ (list item) tag:
-
-<listing><![CDATA[
-<DIR>
-<LI>A-H<LI>I-M
-<LI>M-R<LI>S-Z
-</DIR>
-]]></listing>
-
-<h3>Menu List
-
-<![CDATA[
-<MENU> ... </MENU>	Level 0
-]]>
-
-<p>A menu list is a list of items with typically one line per
-item. The menu list style is more compact than the style of an
-unordered list.
-
-<p>A menu list must begin with a <tag/MENU/ tag which is immediately
-followed by a <tag/LI/ (list item) tag:
-
-<listing><![CDATA[
-<MENU>
-<LI>First item in the list.
-<LI>Second item in the list.
-<LI>Third item in the list.
-</MENU>
-]]></listing>
-
-<h3>Ordered List
-
-<![CDATA[
-<OL> ... </OL>	Level 0
-]]>
-
-<p>The Ordered List element is used to present a numbered list of
-items, sorted by sequence or order of importance.
-
-<p>An ordered list must begin with the <tag/OL/ tag which is immediately
-followed by a <tag/LI/ (list item) tag:
-
-<listing><![CDATA[
-<OL>
-<LI>Click the Web button to open the Open the URI window.
-<LI>Enter the URI number in the text field of the Open URI 
-window. The Web document you specified is displayed.
-<LI>Click highlighted text to move from one link to another.
-</OL>
-]]></listing>
-
-<p>The Ordered List element can take the COMPACT attribute, which
-suggests that a compact rendering be used.
-
-<h3>Unordered List
-
-<![CDATA[
-<UL> ... </UL>	Level 0
-]]>
-
-<p>The Unordered List element is used to present a list of items which
-is typically separated by white space and/or marked by bullets.
-
-<p>An unordered list must begin with the <tag/UL/ tag which is immediately
-followed by a <tag/LI/ (list item) tag:
-
-<listing><![CDATA[
-<UL>
-<LI>First list item
-<LI>Second list item
-<LI>Third list item
-</UL>
-]]></listing>
 

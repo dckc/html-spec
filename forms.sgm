@@ -1,40 +1,269 @@
-<h1>Form-based Input Elements
+<h1 id=forms>Forms
 
-<p>Forms are created by placing input fields within paragraphs,
-preformatted/literal text, and lists. This gives considerable
-flexibility in designing the layout of forms.
+<p>A form is a template for a form data set -- sequence of name/value
+pair fields -- with an associated method and action URI. The names are
+specified on the <attr/NAME/ attributes of form input elements, and
+the values are given by the user. The resulting form data set is used
+to access an information service as a function of the action and
+method.
 
-<p>The following elements are used to create forms:
+<p>Forms elements can be mixed in with document structuring
+elements. For example, a <tag/PRE/ element may contain a <tag/FORM/
+element, or a <tag/FORM/ element may contain lists which contain
+<tag/INPUT/ elements. This gives considerable flexibility in
+designing the layout of forms.
+
+<p> Form processing is a level 2 feature.
+
+<h2>Form Elements
+
+<h3>Form: <tag/FORM/
+
+<p>The <tag/FORM/ element contains a sequence of input elements, along
+with document structuring elements. The attributes are:
 
 <tl>
-<tli>FORM:
+<tli>ACTION: specifies the action URI for the form. The <attr/ACTION/
+attribute defaults to the base URI of the document (see <hdref
+refid=hyperlink>).
 
-A form within a document.
+<tli>METHOD: selects a method of accessing the action URI.
 
-<tli>INPUT:
+<tli>ENCTYPE: specifies the media type used to encode the name/value
+pairs for transport, in case the protocol does not itself impose a
+format.
 
-One input field.
-
-<tli>OPTION:
-
-One option within a Select element.
-
-<tli>SELECT:
-
-A selection from a finite set of options.
-
-<tli>TEXTAREA:
-
-A multi-line input field.
 </tl>
 
-<p>Each variable field is defined by an Input, Textarea, or Option
-element and must have an NAME attribute to identify its value in the
-data returned when the form is submitted.
+<h3 id=input>Input Field: <tag/INPUT/
 
-<p>Example of use (a questionnaire form):
+<p>The <tag/INPUT/ element represents a field for user input. Attributes are:
+
+<tl>
+<tli>ALIGN: vertical alignment of the image. For use only with
+<code/TYPE=IMAGE/. The possible values are as for the <attr/ALIGN/
+attribute of the <tag/IMG/ element (see <hdref refid=img>).
+
+<tli>CHECKED: indicates that the initial state of a checkbox or radio
+button is selected.
+
+<tli>MAXLENGTH: constrains the number of characters that can be
+entered into a text input field. If the value of <attr/MAXLENGTH/ is
+greater the the value of the <attr/SIZE/ attribute, the field should
+scroll appropriately. The default number of characters is unlimited.
+
+<tli>NAME: symbolic name for the form field corresponding to this
+element or group of elements.
+
+<tli>SIZE: specifies the amount of display space allocated to this
+input field according to its type.
+
+<tli>SRC: A URI specifying an image resource. For use only with
+<code/TYPE=IMAGE/.
+
+<tli>TYPE: indicates type of the field. Defaults to
+<code/TEXT/. Values are:
+
+<tli>CHECKBOX: an independent boolean value.
+
+<tli>HIDDEN: a hidden field. The user does not interact with this
+field; instead, the <attr/VALUE/ attribute can be used to specify a
+value.
+
+<tli>IMAGE: specifies an image resource to display, and allows input
+of two form data: the x and y coordinate of a pixel chosen from the
+image. The names of the data are the name of this element with
+<code/.x/ and <code/.y/ appended. <code/TYPE=IMAGE/ implies
+<code/TYPE=SUBMIT/ processing; that is, when a pixel is chosen, the
+form as a whole is submitted.
+
+<tli>PASSWORD: Similar to the TEXT attribute, except that the value is
+obscured as it is entered.
+
+<tli>RADIO: a 1-of-many choice. All <tag/INPUT/ elements with
+<code/TYPE=RADIO/ and the same <attr/NAME/ combine into one form
+field. The value of the form field is the <attr/VALUE/ of the element
+chosen by the user. The initial state may be indicated with the
+<attr/CHECKED/ attribute. The <attr/VALUE/ attribute is required for
+radio inputs.
+
+<tli>RESET: an input option, typically a button, that instructs the
+user agent to reset the form's fields to their initial states. Any
+<attr/VALUE/ attribute indicates a label for the input (button).
+
+<tli>SUBMIT: an input option, typically a button, that instructs the
+user agent to submit the form. Any <attr/VALUE/ attribute indicates a
+label for the input (button). If the <attr/NAME/ attribute is present,
+this element contributes a form field whose value is given by the
+<attr/VALUE/ attribute. If the <attr/NAME/ attribute is not present,
+this element does not contribute a form field.
+
+<tli>TEXT: a single line text entry fields. The <attr/SIZE/ and
+<attr/MAXLENGTH/ attributes may be used to constrain the input or
+layout of the field. Use the <tag/TEXTAREA/ element for mulit-line
+text fields.
+
+<tli>VALUE: The initial value of the field.
+</tl>
+
+<h3>Selection: <tag/SELECT/
+
+<p>The <tag/SELECT/ element constrains the form field to an enumerated
+list of values. The values are given in <tag/OPTION/ elements.
+Attributes are:
+
+<tl>
+<tli>MULTIPLE: indicates that more than one option may be included in
+the value.
+
+<tli>NAME: specifies the name of the form field.
+
+<tli>SIZE: specifies the number of visible items. Select fields of
+size one are typically pop-down menus, whereas select fields with size
+greater than one are typically lists.
+
+</tl>
+
+<p> For example:
 
 <listing><![CDATA[
+<SELECT NAME="flavor">
+<OPTION>Vanilla
+<OPTION>Strawberry
+<OPTION>Rum and Raisin
+<OPTION>Peach and Orange
+</SELECT>
+]]></listing>
+
+<p>The initial state has the first option selected, unless a
+<attr/SELECTED/ attribute is present on any of the <tag/OPTION/
+elements.
+
+<h4>Option: <tag/OPTION/
+
+<p>The Option element can only occur within a Select element. It
+represents one choice, and has the following attributes:
+
+<tl>
+<tli>SELECTED: Indicates that this option is initially selected.
+
+<tli>VALUE: indicates the value to be returned if this
+option is chosen. The field value defaults to the content of the
+<tag/OPTION/ element.
+</tl>
+
+<p>The content of the <tag/OPTION/ element is presented to the user to
+represent the option. It is used as a returned value if the VALUE
+attribute is not present.
+
+<h3>Text Area: <tag/TEXTAREA/
+
+<p>The <tag/TEXTAREA/ element represents a multi-line text field. For
+example:
+
+<listing><![CDATA[
+<TEXTAREA NAME="address" ROWS=64 COLS=6>
+HaL Computer Systems
+1315 Dell Avenue
+Campbell, California 95008
+</TEXTAREA>
+]]></listing>
+
+<p>The content of the <tag/TEXTAREA/ element is the field's initial
+value.
+
+<p>Typically, the ROWS and COLS attributes determine the visible
+dimension of the field in characters. The field is rendered in a
+fixed-width font. HTML user agents should allow text to extend beyond
+these limits by scrolling as needed.
+
+<h2>Form Submission
+
+<p> An HTML user agent begins processing a form by presenting the
+document with the fields in their initial state. The user is allowed
+to modify the fields, constrained by the field type etc. When the user
+indicates that the form should be submitted (using a submit button or
+image input), the form data set is processed according to its method,
+action URI and enctype.
+
+<p>When there is only one single-line text input field in a form, the
+user agent should accept Enter in that field as a request to submit
+the form.
+
+<h3>The <code>application/x-www-form-urlencoded</> Media Type
+
+<p>The default encoding for all forms is
+<code>application/x-www-form-urlencoded</>. A form data set is
+represented in this media type as follows:
+
+<ol>
+<li>The form field names and values are escaped: space characterss are
+replaced by <code/+/, and then reserved characters are escaped as per
+[URL]; that is, non-alphanumeric characters are replaced by
+<code/%HH/, a percent sign and two hexadecimal digits representing the
+ASCII code of the character. Line breaks, as in multi-line textfield
+values, are represented as CR LF pairs, i.e. <code/%0D0A/.
+
+<li>The fields are listed in the order they appear in the document
+with the name separated from the value by <code/=/ and the pairs
+separated from each other by <code/&/. Fields with null values may be
+omitted. In particular, unselected radio buttons and checkboxes should
+not appear in the encoded data, but hidden fields with <attr/VALUE/
+attributes present should.
+<note>The URI from a query form submission can be used in a normal
+anchor style hyperlink. Unfortunately, the use of the <code/&/
+character to separate form fields interacts with its use in SGML
+attribute values as an entity reference delimiter. For example, the
+URI <code><![CDATA[http://host/?x=1&y=2]]></> must be written
+<code><![CDATA[<a href="http://host/?x=1&#38;y=2"]]></code> or
+<code><![CDATA[<a href="http://host/?x=1&#amp;y=2">]]></>.
+
+<p>HTTP server implementors, and in particular, CGI implementors are
+encouraged to support the use of <code/;/ in place of <code/&/ to save
+users the trouble of escaping <code/&/ characters this way.
+</note>
+</ol>
+
+<h3 id=queryf>Query Forms: <code/METHOD=GET/
+
+<p>If the processing of a form is idempotent (i.e. it has no lasting
+observable effect on the state of the world), then the form method
+should be <code/GET/. Many database searches have no visible
+side-effects and make ideal applications of query forms.
+
+<p>To process a form whose action URL is an HTTP URL and whose method
+is <code/GET/, the user agent starts with the action URI and appends a
+<code/?/ and the form data set, in
+<code>application/x-www-form-urlencoded</> format as above.  The user
+agent then traverses the link to this URI just as if it were an anchor
+(see <hdref refid=traverse>).
+<note>
+The URL encoding may result in vary long URIs, which cause some
+historical HTTP server implementations to exhibit defective behavior.
+As a result, some HTML forms are written using <code/METHOD=POST/ even
+though the form submission has no side-effects.
+</note>
+
+<h3>Forms with Side-Effects: <code/METHOD=POST/
+
+<p>If the service associated with the processing of a form has side
+effects (for example, modification of a database or subscription to a
+service), the method should be <code/POST/.
+
+<p>To process a form whose action URL is an HTTP URL and whose method
+is <code/POST/, the user agent conducts an HTTP POST transaction using
+the action URI, and a message body of type
+<code>application/x-www-form-urlencoded</> format as above. The user
+agent should display the response from the HTTP POST interaction just
+as it would display the response from an HTTP GET above.
+
+
+<h3>Example Form Submission: Questionnaire Form
+
+<p>Consider the following document:
+
+<listing><![CDATA[
+<title>Sample of HTML Form Submission</title>
 <H1>Sample Questionnaire</H1>
 <P>Please fill out this questionnaire:
 <FORM METHOD="POST" ACTION="http://www.w3.org/sample">
@@ -54,269 +283,36 @@ Nickname: <INPUT NAME="nickname" SIZE="42">
 </FORM>
 ]]></listing>
 
-<p>In the example above, the <tag/P/ and <tag/UL/ tags have been used to lay
-out the text and input fields. The HTML interpreter is responsible for
-handling which field will currently get keyboard input.
-
-<p>Many platforms have existing conventions for forms, for example,
-using Tab and Shift keys to move the keyboard focus forwards and
-backwards between fields, and using the Enter key to submit the
-form. In the example, the SUBMIT and RESET buttons are specified
-explicitly with special purpose fields. The SUBMIT button is used to
-e-mail the form or send its contents to the server as specified by the
-ACTION attribute, while RESET resets the fields to their initial
-values. When the form consists of a single text field, it may be
-appropriate to leave such buttons out and rely on the Enter key.
-
-<p>The Input element is used for a large variety of types of input fields.
-
-<p>To let users enter more than one line of text, use the Textarea element.
-
-<p>The radio button and checkbox types of input field can be used to
-specify multiple choice forms in which every alternative is visible as
-part of the form. An alternative is to use the Select element which is
-typically rendered in a more compact fashion as a pull down combo
-list.
-
-<h2>Form
-
-<![CDATA[
-<FORM> ... </FORM>	Level 2
-]]>
-
-<p>The Form element is used to delimit a data input form. There can be
-several forms in a single document, but the Form element can't be
-nested.
-
-<p>The ACTION attribute is a URI specifying the location to which the
-contents of the form is submitted to elicit a response. If the ACTION
-attribute is missing, the URI of the document itself is assumed. The
-way data is submitted varies with the access protocol of the URI, and
-with the values of the METHOD and ENCTYPE attributes.
-
-<p>In general:
-
-<ul>
-<li>the METHOD attribute selects variations in the protocol.
-
-<li>the ENCTYPE attribute specifies the format of the submitted data
-in case the protocol does not impose a format itself.
-</ul>
-
-<p>When the ACTION attribute is set to an HTTP URL, the METHOD
-attribute must be set to an HTTP method&nbsp;[HTTP]. The
-default method is GET, although for many applications the POST method
-is preferred. With the POST method, the ENCTYPE attribute is a media
-type specifying the format of the posted data; the default is
-"application/x-www-form-urlencoded".
-
-<p>The submitted contents of the form logically consist of name/value
-pairs. The names are usually equal to the NAME attributes of the
-various interactive elements in the form.
-
-<NOTE>The names are not guaranteed to be unique keys, nor are the
-names of form elements required to be distinct. The values encode the
-user's input to the corresponding interactive elements. Fields with
-null values may be omitted from the returned list of name/value pairs,
-whereas those with non-null values should be included (even if the
-value was not altered by the user). In particular, unselected radio
-buttons and checkboxes should be excluded from the contents list.
-</note>
-
-<h2 id=input>Input
-
-<![CDATA[
-<INPUT>	Level 2
-]]>
-
-<p>The Input element represents a field whose contents may be edited
-by the user.
-
-<p>Attributes of the Input element:
+<p>The inital state of the form data set is:
 
 <tl>
-<tli>ALIGN:
-Vertical alignment of the image. For use only with TYPE=IMAGE. The
-possible values are exactly the same as for the ALIGN attribute of the
-image element.
-
-<tli>CHECKED:
-Indicates that a checkbox or radio button is selected. Unselected
-checkboxes and radio buttons do not return name/value pairs when the
-form is submitted.
-
-<tli>MAXLENGTH: Indicates the maximum number of characters that can be
-entered into a text field. This can be greater than specified by the
-SIZE attribute, in which case the field will scroll appropriately. The
-default number of characters is unlimited.
-
-<tli>NAME: Symbolic name used when transferring the form's
-contents. The NAME attribute is required for most input types and is
-normally used to provide a unique identifier for a field, or for a
-logically related group of fields.
-
-<tli>SIZE: Specifies the size or precision of the field according to
-its type. For example, to specify a field with a visible width of 24
-characters:
-
-<listing><![CDATA[
-INPUT TYPE=text SIZE="24"
-]]></listing>
-
-<tli>SRC: A URI specifying an image. For use only with
-TYPE=IMAGE.
-
-<tli>TYPE: Defines the type of data the field accepts. Defaults to
-free text. Several types of fields can be defined with the type
-attribute:
-
-<tli>CHECKBOX: Used for simple Boolean attributes, or for attributes
-that can take multiple values at the same time. The latter is
-represented by a number of checkbox fields each of which has the same
-name. Each selected checkbox generates a separate name/value pair in
-the submitted data, even if this results in duplicate names. The
-default value for checkboxes is "on".
-
-<tli>HIDDEN: No field is presented to the user, but the content of the
-field is sent with the submitted form. This value may be used to
-transmit state information about client/server interaction.
-
-<tli>IMAGE: An image field upon which you can click with a pointing
-device, causing the form to be immediately submitted. The coordinates
-of the selected point are measured in pixel units from the upper-left
-corner of the image, and are returned (along with the other contents
-of the form) in two name/value pairs. The x-coordinate is submitted
-under the name of the field with ".x" appended, and the y-coordinate
-is submitted under the name of the field with ".y" appended. Any VALUE
-attribute is ignored. The image itself is specified by the SRC
-attribute, exactly as for the Image element.
-
-<NOTE>In a future version of the HTML specification, the IMAGE
-functionality may be folded into an enhanced SUBMIT field.
-</note>
-
-<tli>PASSWORD:
-
-The same as the TEXT attribute, except that text is not displayed as
-it is entered.
-
-<tli>RADIO:
-
-Used for attributes that accept a single value from a set of
-alternatives. Each radio button field in the group should be given the
-same name. Only the selected radio button in the group generates a
-name/value pair in the submitted data. Radio buttons require an
-explicit VALUE attribute.
-
-<tli>RESET:
-
-A button that when pressed resets the form's fields to their specified
-initial values. The label to be displayed on the button may be
-specified just as for the SUBMIT button.
-
-<tli>SUBMIT: A button that when pressed submits the form. You can use
-the VALUE attribute to provide a non-editable label to be displayed on
-the button.  The default label is application-specific.  If a SUBMIT
-button is pressed in order to submit the form, and that button has a
-NAME attribute specified, then that button contributes a name/value
-pair to the submitted data. Otherwise, a SUBMIT button makes no
-contribution to the submitted data.
-
-<tli>TEXT: Used for a single line text entry fields. Use in
-conjunction with the SIZE and MAXLENGTH attributes. Use the Textarea
-element for text fields which can accept multiple lines.
-
-<tli>VALUE: The initial displayed value of the field, if it displays a
-textual or numerical value; or the value to be returned when the field
-is selected, if it displays a Boolean value. This attribute is
-required for radio buttons.
+<tli>name: ""
+<tli>gender: "male"
+<tli>family: ""
+<tli>other: ""
+<tli>nickname: ""
 </tl>
 
-<h2>Option
+<p>Note that the radio input has an initial value, while the checkbox
+has none.
 
-<![CDATA[
-<OPTION>	Level 2
-]]>
-
-<p>The Option element can only occur within a Select element. It
-represents one choice, and can take these attributes:
+<p>The user might edit the fields and request that the form be
+submitted. At that point, suppose the values are:
 
 <tl>
-<tli>SELECTED: Indicates that this option is initially selected.
-
-<tli>VALUE: When present indicates the value to be returned if this
-option is chosen. The returned value defaults to the contents of the
-Option element.
+<tli>name: "John Doe"
+<tli>gender: "male"
+<tli>family: "5"
+<tli>city: "kent,miami"
+<tli>other: "abc\ndef"
+<tli>nickname: "J&#38;D"
 </tl>
 
-<p>The contents of the Option element is presented to the user to
-represent the option. It is used as a returned value if the VALUE
-attribute is not present.
-
-<h2>Select
-
-<![CDATA[
-<SELECT NAME=... > ... </SELECT>	Level 2
-]]>
-
-<p>The Select element allows the user to chose one of a set of
-alternatives described by textual labels. Every alternative is
-represented by the Option element. Attributes are:
-
-<tl>
-<tli>MULTIPLE: The MULTIPLE attribute is needed when users are allowed
-to make several selections, e.g.  <tag/SELECT MULTIPLE/.
-
-<tli>NAME: Specifies the name that will submitted as a name/value
-pair.
-
-<tli>SIZE: Specifies the number of visible items. If this is greater
-than one, then the resulting form control will be a list.
-</tl>
-
-<p> The Select element is typically rendered as a pull down or pop-up
-list. For example:
+<p>The user agent then conducts an HTTP POST transaction using the URI
+<code>http://www.w3.org/sample</>. The message body would be (ignore
+the linebreak):
 
 <listing><![CDATA[
-<SELECT NAME="flavor">
-<OPTION>Vanilla
-<OPTION>Strawberry
-<OPTION>Rum and Raisin
-<OPTION>Peach and Orange
-</SELECT>
+name=John+Doe&gender=male&family=5&city=kent%2Cmiami&
+other=abc%0D0Adef&nickname=J%26D
 ]]></listing>
-
-<p>If no option is initially marked as selected, then the first item listed is selected.
-
-<h2>Text Area
-
-<![CDATA[
-<TEXTAREA> ... </TEXTAREA>	Level 2
-]]>
-
-<p>The Textarea element lets users enter more than one line of text. For example:
-
-<listing><![CDATA[
-<TEXTAREA NAME="address" ROWS=64 COLS=6>
-HaL Computer Systems
-1315 Dell Avenue
-Campbell, California 95008
-</TEXTAREA>
-]]></listing>
-
-<p>The text up to the end tag (&lt;/TEXTAREA>) is used to initialize
-the field's value. This end tag is always required even if the field
-is initially blank. When submitting a form, lines in a TEXTAREA should
-be terminated using CRLF.
-
-<p>In a typical rendering, the ROWS and COLS attributes determine the
-visible dimension of the field in characters. The field is rendered in
-a fixed-width font. HTML interpreters should allow text to extend
-beyond these limits by scrolling as needed.
-
-<NOTE>In the initial design for forms, multi-line text fields were
-supported by the Input element with TYPE=TEXT. Unfortunately, this
-causes problems for fields with long text values. SGML's default
-(Reference Quantity Set) limits the length of attribute literals to
-only 240 characters. The HTML 2.0 SGML declaration increases the limit
-to 1024 characters.  </note>

@@ -6,7 +6,6 @@ specification, each document should start with the following prologue:
 <listing><![CDATA[
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 ]]></listing>
-
 <NOTE>If the body of a <code>text/html</> message entity does not begin
 with a document type declaration, an HTML user agent should infer the
 above document type declaration.
@@ -16,10 +15,11 @@ HTML user agents are required to support the above document
 type declaration and the following document type declarations:
 
 <listing><![CDATA[
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Level 2//EN">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Level 1//EN">
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Strict//EN">
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML Strict//EN">
 ]]></listing>
-<![%level[@@]]>
 
 They are not required to support other document types, but
 they may.  In particular, they may support other formal public
@@ -27,26 +27,17 @@ identifiers, or other document types altogether. They may support
 an internal declaration subset with supplemental entity,
 element, and other markup declarations, or they may not.
 
-<h2>HTML Document Element
+<h2>Document Element: <tag/HTML/
 
-<![CDATA[
-<HTML> ... </HTML>	Level 0
-]]>
+The HTML document element consists of a head and a body, much
+like a memo or a mail message. The head contains the
+title and other optional elements. The body is a text flow
+consisting of paragraphs, lists, and other elements.
 
-The HTML document element is organized as a head and a body, much
-like a memo or a mail message. Within the head, you can specify the
-title and other information about the document. Within the body,
-you can structure text into paragraphs and lists, as well as
-highlight phrases and create links, using HTML elements.
-
-<h2>Head
-
-<![CDATA[
-<HEAD> ... </HEAD>	Level 0
-]]>
+<h2>Head: <tag/HEAD/
 
 <p>The head of an HTML document is an unordered collection of
-information about the document. The Title element is required.
+information about the document. For example:
 
 <listing><![CDATA[
 <HEAD>
@@ -54,27 +45,32 @@ information about the document. The Title element is required.
 </HEAD>
 ]]></listing>
 
-<h2>Body
+&head-elts;
 
-<![CDATA[
-<BODY> ... </BODY>	Level 0
-]]>
+<h2>Body: <tag/BODY/
 
 <p>The <tag/BODY/ element contains the text flow of the document,
 including headings, paragraphs, lists, etc.
 
-&head-elts;
+For example:
 
-&doc-charset;
-
-&phrase;
-
-&hyperlink;
-
-&blocks;
+<listing><![CDATA[
+<BODY>
+<h1>Important Stuff</h1>
+<p>Explanation about important stuff...
+</BODY>
+]]></listing>
 
 &headings;
 
+&blocks;
+
 &lists;
+
+&phrase;
+
+&doc-charset;
+
+&hyperlink;
 
 &forms;

@@ -35,15 +35,12 @@
 <!entity status SYSTEM "draft-status.sgm">
 
 <!entity stat "Internet Draft">
-<!entity date "May 25, 1995">
+<!entity date "May 31, 1995">
 <!entity filename CDATA "&#60;draft-ietf-html-spec-03.txt&#62;">
 
 <!entity % plain "CDATA"
 	-- stuff that only goes in the plain text version --
 	>
-<!entity % level "IGNORE"
-        -- junk that talks about levels @@ --
-        >
 
 <!entity intro system "intro.sgm">
 

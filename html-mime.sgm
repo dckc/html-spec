@@ -3,13 +3,12 @@
 
 An HTML user agent allows users to interact with resources which have
 HTML representations. At a minimum, it must allow users to examine and
-navigate the content of HTML <![%level[ Level 0 ]]> documents.  HTML
-user agents should be able to preserve all formatting distinctions
-represented in an HTML document, and be able to simultaneously present
-resources referred to by IMG elements (they may ignore some
-formatting distinctions or IMG resources at the request of the
-user). Conforming HTML user agents <![%level[ that is Level 2 HTML
-user agents, must ]]> should support form entry and submission.
+navigate the content of HTML level 1 documents.  HTML user agents
+should be able to preserve all formatting distinctions represented in
+an HTML document, and be able to simultaneously present resources
+referred to by IMG elements (they may ignore some formatting
+distinctions or IMG resources at the request of the user). Conforming
+HTML user agents should support form entry and submission.
 
 <h2>text/html media type
 
@@ -24,7 +23,7 @@ following is to be registered with [IANA].
 
 <tli>Required parameters: none
 
-<tli>Optional parameters: <![%level[level, ]]>version, charset
+<tli>Optional parameters: level, charset
 
 <tli>Encoding considerations: any encoding is allowed
 
@@ -35,17 +34,11 @@ following is to be registered with [IANA].
 <p>The optional parameters are defined as follows:
 
 <tl>
-<![%level[
 <tli>Level: The level parameter specifies the feature set used in the
 document. The level is an integer number, implying that any features
-of same or lower level may be present in the document.  Levels 0, 1
-and 2 are defined by this specification. Level 2 is the default.
-
-]]> <tli>Version: To help avoid future compatibility problems, the
-version parameter may be used to give the version number of the
-specification to which the document conforms. The version number
-appears at the front of this document and within the public identifier
-of the HTML DTD. This specification defines version 2.0. There is no
+of same or lower level may be present in the document.  Level 1 is all
+features defined in this specification except those that require the
+<tag/FORM/ element. Level 2 includes form processing.  Level 2 is the
 default.
 
 <tli>Charset: The charset parameter (as defined in section 7.1.1 of

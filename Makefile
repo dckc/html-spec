@@ -2,7 +2,7 @@
 # $Id$
 #
 
-RELEASE = 19950506
+RELEASE = 19950531
 PACKAGE = html-spec-$(RELEASE)
 
 # Things outside this distribution
@@ -56,10 +56,8 @@ HYPERTEXT = html-spec_toc.html \
 	html-spec_9.html \
 	html-spec_10.html \
 	html-spec_11.html \
-	html-spec_12.html \
-	html-spec_12.html \
-	html-spec_14.html \
-	html-spec_15.html
+	html-spec_12.html
+
 
 
 DIST = $(ORIGINALS)  \
@@ -81,14 +79,17 @@ hardcopy: $(SPEC).txt $(SPEC).ps
 $(SPEC).txt: $(SPEC).ms
 	$(NROFF) -Tascii $(MACROS) $(SPEC).ms >$@
 
-$(SPEC).ps: $(SPEC).ms
-	$(TROFF) $(MACROS) -Tps $(SPEC).ms >$@
+$(SPEC).ps: $(SPEC).dvi
+	dvips $(SPEC).dvi
+
+$(SPEC).dvi: $(SPEC).texi
+	texi2dvi $(SPEC).texi
 
 $(SPEC).ms: $(SPEC).texi
 	$(TEXI2ROFF) -ms $(SPEC).texi >$@
 
 $(SPEC).texi: $(SRCS)
-	$(GF) -f texinfo html.decl html-spec.sgm >$@
+	$(GF) -f texinfo snafu.decl html-spec.sgm >$@
 
 
 dist: $(PACKAGE).tar.gz

@@ -1,16 +1,164 @@
-<h1>Data Elements
+<h2>Phrase Markup
 
-<h2>Line Break
+<p>Phrases may be marked up according to idiomatic usage,
+typographic appearance, or for use as hyperlink anchors.
 
-<![CDATA[
-<BR>	Level 0
-]]>
+<p>User agents must render highlighted phrases distinctly from plain
+text. Additionally, <tag/EM/ content must be rendered as distinct from
+<tag/STRONG/ content, and <tag/B/ content must rendered as distinct
+from <tag/I/ content.
 
-<p>The Line Break element specifies that a new line must be started at
-the given point. A new line indents the same as that of line-wrapped
-text.
+<p>Phrase elements may be nested within the content of other phrase
+elements; however, HTML user agents may render nested phrase
+elements indistinctly from non-nested elements:
 
-<p>Example of use:
+<listing><![CDATA[
+plain <B>bold <I>italic</I></B> may the rendered 
+the same as plain <B>bold </B><I>italic</I>
+]]></listing>
+
+<h3>Idiomatic Elements
+
+<h4>Citation: <tag/CITE/
+
+<p>The <tag/CITE/ element is used to indicate the title of a book or
+other citation. It is typically typeset as italics.  For example:
+
+<listing><![CDATA[
+He just couldn't get enough of <cite>The Grapes of Wrath</cite>.
+]]></listing>
+
+<h4>Code: <tag/CODE/
+
+<p>The <tag/CODE/ element indicates an example of code, typically
+rendered in a monospaced font. Contrast with the <tag/PRE/ block
+structuring element in <hdref refid=pre>. For example:
+
+<listing><![CDATA[
+The expression <code>x += 1</code> is short for <code>x = x + 1</code>.
+]]></listing>
+
+<h4>Emphasis: <tag/EM/
+
+<p>The <tag/EM/ element indicates an emphasized phrase, typically
+rendered as italics. For example:
+
+<listing><![CDATA[
+A singular subject <em>always</em> takes a singular verb.
+]]></listing>
+
+<h4>Keyboard: <tag/KBD/
+
+<p>The Keyboard element indicates text typed by a user, typically
+rendered in a monospaced font. This is commonly used in instruction
+manuals. For example:
+
+<listing><![CDATA[
+Enter <kbd>FIND IT</kbd> to search the database.
+]]></listing>
+
+<h4>Sample: <tag/SAMP/
+
+<p>The <tag/SAMP/ element indicates a sequence of literal characters,
+typically rendered in a monospaced font. For example:
+
+<listing><![CDATA[
+The only word containing the letters <samp>mt</samp> is dreamt.
+]]></listing>
+
+<h4>Strong Empasis: <tag/STRONG/
+
+<p>The <tag/STRONG/ element indicates strong emphasis,
+typically rendered in bold. For example:
+
+<listing><![CDATA[
+<strong>STOP</strong>, or I'll say "<strong>STOP</strong>" again!.
+]]></listing>
+
+<h4>Variable: <tag/VAR/
+
+<p>The <tag/VAR/ element indicates a placeholder, typically rendered
+as italic. For example:
+
+<listing><![CDATA[
+Take a guess: Roses are <var>blank</var>.
+]]></listing>
+
+<h3>Typographic Elements
+
+<p>Typographic elements are used to specify the format of marked text.
+
+<p>Typical renderings for idomatic elements vary between user
+agents. If a specific rendering is necessary -- for example, when
+referring to a specific text attribute as in "The italic parts are
+mandatory" -- a typographic element can be used to ensure that the
+intended typography is used where possible.
+
+<h4>Bold: <tag/B/
+
+<p>The <tag/B/ element indicated bold text. Where bold typography is
+unavailable, an alternative representation may be used.
+
+<h4>Italic: <tag/I/
+
+<p>The <tag/I/ element indicated italic text. Where italic typography
+is unavailable, an alternative representation may be used.
+
+<h4>Typewriter: <tag/TT/
+
+<p>The <tag/TT/ element indicates typewriter text. Where a typewriter
+font is unavailable, an alternative representation may be used.
+
+<h3>Anchor: <tag/A/
+
+<p>The <tag/A/ element indicates the source and/or destination of a
+hyperlink (see <hdref refid=hyperlink>). At least one of the
+<attr/NAME/ and <attr/HREF/ attributes should be given. Attributes of
+the <tag/A/ element:
+
+<tl>
+<tli>HREF: gives the destination of a hyperlink.
+
+<tli>NAME: gives the name of the anchor, and makes it available as
+a navigation destination.
+
+<tli>TITLE: suggests a title for the destination resource -- advisory only. 
+The <attr/TITLE/ attribute may be used:
+
+<ul>
+<li> for display prior to accessing the destination resource, for
+example, as a margin note or on a small box while the mouse is over
+the anchor, or while the document is being loaded;
+
+<li> for resources that do not specify a title such as graphics, plain
+text and Gopher menus, for use as a window title.
+</ul>
+
+<tli>REL: The <attr/REL/ attribute gives the relationship(s) described
+by the hyperlink. The value is a whitespace separated list of
+relationship names.
+
+<tli>REV: same as the REL attribute, but the semantics of the
+relationship are in the reverse direction. A link from A to B with
+REL="X" expresses the same relationship as a link from B to A with
+REV="X". An anchor may have both REL and REV attributes.
+
+<tli>URN: specifies a preferred, more persistent identifier for the
+destination. The format of URNs is under discussion (1995) by various
+working groups of the Internet Engineering Task Force.
+
+<tli>METHODS: specifies methods to be used in accessing the
+destination, as a whitespace-separated list of names. For similar
+reasons as for the TITLE attribute, it may be useful to include the
+information in advance in the link. For example, the HTML user agent
+may chose a different rendering as a function of the methods allowed;
+for example, something that is searchable may get a different icon.
+</tl>
+
+<h2>Line Break: <tag/BR/
+
+<p>The <tag/BR/ element specifies a line break between words (see
+<hdref refid=datachrs>). For example:
 
 <listing><![CDATA[
 <P> Pease porridge hot<BR>
@@ -19,16 +167,11 @@ Pease porridge in the pot<BR>
 Nine days old.
 ]]></listing>
 
-<h2>Horizontal Rule
+<h2>Horizontal Rule: <tag/HR/
 
-<![CDATA[
-<HR>	Level 0
-]]>
-
-<p>A Horizontal Rule element is a divider between sections of text
-such as a full width horizontal rule or equivalent graphic.
-
-<p>Example of use:
+<p>The <tag/HR/ element is a divider between sections of text;
+typcially a full width horizontal rule or equivalent graphic. For
+example:
 
 <listing><![CDATA[
 <HR>
@@ -36,200 +179,62 @@ such as a full width horizontal rule or equivalent graphic.
 </BODY>
 ]]></listing>
 
-<h2>Image
+<h2 id=img>Image: <tag/IMG/
 
-<![CDATA[
-<IMG>	Level 0
-]]>
+<p>The <tag/IMG/ element refers to an image or icon.
 
-<p>The Image element is used to incorporate in-line graphics
-(typically icons or small graphics) into an HTML document. This
-element cannot be used for embedding other HTML text.
+<p>HTML user agents that cannot process images ignore the <tag/IMG/
+element unless it the <attr/ALT/ attribute is present.
 
-<p>HTML interpreters that cannot render in-line images ignore the
-Image element unless it contains the ALT attribute. Note that some
-HTML interpreters can render linked graphics but not in-line
-graphics. If a graphic is essential, you may want to create a link to
-it rather than to put it in-line. If the graphic is not essential,
-then the Image element is appropriate.
+<note>Some HTML user agents can process graphics linked via anchors ,
+but not <tag/IMG/ graphics. If a graphic is essential, it should be
+referenced from an <tag/A/ element rather than in <tag/IMG/ element.If
+the graphic is not essential, then the <tag/IMG/ element is
+appropriate.
+</note>
 
-<p>The Image element, which is empty (no closing tag), has these attributes:
+<p>Attributes of the <tag/IMG/ element:
 
 <tl>
-<tli>ALIGN: The ALIGN attribute accepts the values TOP or MIDDLE or
-BOTTOM, which specifies if the following line of text is aligned with
-the top, middle, or bottom of the graphic.
+<tli>ALIGN: alignment of the image with respect to the text baseline.
+<ul>
+<li><code/TOP/ specifies that the top of the image aligns with the
+tallest item on the line contianing the image.
 
-<tli>ALT:
+<li><code/MIDDLE/ specifies that the center of the image aligns with
+the baseline of the line containing the image.
 
-Optional text as an alternative to the graphic for rendering in
-non-graphical environments.  Alternate text should be provided
-whenever the graphic is not rendered. Alternate text is mandatory for
-Level 0 documents. Example of use:
+<li><code/BOTTOM/ specifies that the bottom of the image aligns with
+the baseline of the line containing the image.
+</ul>
+
+<tli>ALT: Optional alternative text, for use in non-graphical
+environments.
+
+<tli>ISMAP: indicates an image map (see <hdref refid=imagemap>).
+
+<tli>SRC: specifies the URI of the image resource.
+<note>In practice, the media types of image resources are limited to a
+few raster graphic formats: typically <code>image/gif</code>,
+<code>image/jpeg</code>. In particular, <code>text/html</code>
+resources are not intended to be used as image resources.
+</note>
+</tl>
+
+<p>Examples of use:
 
 <listing><![CDATA[
 <IMG SRC="triangle.xbm" ALT="Warning:"> Be sure 
 to read these instructions.
 ]]></listing>
 
-<tli>ISMAP:
-
-The ISMAP (is map) attribute identifies an image as an image
-map. Image maps are graphics in which certain regions are mapped to
-URIs. By clicking on different regions, different resources can be
-accessed from the same graphic. Example of use:
-
-<listing><![CDATA[
-<A HREF="http://machine/htbin/imagemap/sample">
-<IMG SRC="sample.xbm" ISMAP>
-</A>
-]]></listing>
-
-<tli>SRC:
-
-The value of the SRC attribute is the URI of the document to be
-embedded; only images can be embedded, not HTML text. Its syntax is
-the same as that of the HREF attribute of the <code>&lt;A></> tag. SRC is
-mandatory. Image elements are allowed within anchors.
-</tl>
-
-<p>Example of use:
-
 <listing><![CDATA[
 <IMG SRC="triangle.xbm">Be sure to read these 
 instructions.
 ]]></listing>
 
-<h1>Character Format Elements
-
-<p>Character format elements are used to specify either the logical
-meaning or the physical appearance of marked text without causing a
-paragraph break. Like most other elements, character format elements
-include both opening and closing tags. Only the characters between the
-tags are affected:
-
 <listing><![CDATA[
-This is <EM>emphasized</EM> text.
+<a href="http://machine/htbin/imagemap/sample">
+<IMG SRC="sample.xbm" ISMAP>
+</a>
 ]]></listing>
-
-<p>Character format tags may be ignored by minimal HTML applications.
-
-<p>Character format tags are interpreted from left to right as they
-appear in the flow of text.  Level&nbsp;1 interpreters must render
-highlighted text distinctly from plain text. Additionally, EM content
-must be rendered as distinct from STRONG content, and B content must
-rendered as distinct from I content.
-
-<p>Character format elements may be nested within the content of other
-character format elements; however, HTML interpreters are not required
-to render nested character format elements distinctly from non-nested
-elements:
-
-<listing><![CDATA[
-plain <B>bold <I>italic</I></B> may the rendered 
-the same as plain <B>bold </B><I>italic</I>
-]]></listing>
-
-<h2>Semantic Format Elements
-
-<p>Note that typical renderings for semantic format elements vary
-between applications. If a specific rendering is necessary - for
-example, when referring to a specific text attribute as in "The italic
-parts are mandatory" - a physical formating element can be used to
-ensure that the intended rendered is used where possible.
-
-<p>Note that different sematic elements may be rendered in the same way.
-
-<h3>Citation
-
-<![CDATA[
-<CITE>...</CITE>	Level 1
-]]>
-
-<p>The Citation element specifies a citation, typically rendered as italics.
-
-<h3>Code
-
-<![CDATA[
-<CODE> ... </CODE>	Level 1
-]]>
-
-<p>The Code element indicates an example of code, typically rendered
-in a monospaced font.  This should not be confused with the
-Preformatted Text element.
-
-<h3>Emphasis
-
-<![CDATA[
-<EM> ... </EM>	Level 1
-]]>
-
-<p>The Emphasis element indicates typographic emphasis, typically
-rendered as italics.
-
-<h3>Keyboard
-
-<![CDATA[
-<KBD> ... </KBD>	Level 1
-]]>
-
-<p>The Keyboard element indicates text typed by a user, typically
-rendered in a monospaced font. This is commonly used in instruction
-manuals.
-
-<h3>Sample
-
-<![CDATA[
-<SAMP> ... </SAMP>	Level 1
-]]>
-
-<p>The Sample element indicates a sequence of literal characters, typically rendered in a 
-monospaced font.
-
-<h3>Strong
-
-<![CDATA[
-<STRONG> ... </STRONG>	Level 1
-]]>
-
-<p>The Strong element indicates strong typographic emphasis, typically rendered in bold.
-
-<h3>Variable
-
-<![CDATA[
-<VAR> ... </VAR>	Level 1
-]]>
-
-<p>The Variable element indicates a variable name, typically rendered as italic.
-
-<h2>Physical Format Elements
-
-<p>Physical format elements are used to specify the format of marked text.
-
-<h3>Bold
-
-<![CDATA[
-<B> ... </B>	Level 1
-]]>
-
-<p>The Bold element specifies that the text should be rendered in boldface, where available. 
-Otherwise, an alternative mapping is allowed.
-
-<h3>Italic
-
-<![CDATA[
-<I> ... </I>	Level 1
-]]>
-
-<p>The Italic element specifies that the text should be rendered in an italic font, where 
-available. Otherwise, an alternative mapping is allowed.
-
-<h3>Teletype
-
-<![CDATA[
-<TT> ... </TT>	Level 1
-]]>
-
-<p>The Teletype element specifies that the text should be rendered in a fixed-width typewriter 
-font.
-
