@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Strict Level 2//EN"><HTML>
+<HEAD>
+<!-- This HTML file has been created by texi2html 1.36
+     from html-spec.texi on 18 October 1995 -->
+
+<TITLE>Hypertext Markup Language - 2.0  - Footnotes</TITLE>
+</HEAD>
+<BODY>
+<H1>Hypertext Markup Language - 2.0 </H1>
+<H3><A NAME="FOOT1" HREF="html-spec_1.html#FOOT1" REL=FOOTNOTE-INV>(1)</A></H3>
+<P>There are a number of syntactic idioms that are not supported or
+are supported inconsistently in some historical <A HREF="html-spec_2.html#GLOSS36" REL=GLOSSARY>user agent</A>
+implementations.  These idioms are identified in notes like this
+throughout this specification.
+<H3><A NAME="FOOT2" HREF="html-spec_1.html#FOOT2" REL=FOOTNOTE-INV>(2)</A></H3>
+<P>The <A HREF="html-spec_2.html#GLOSS11" REL=GLOSSARY>document character set</A> is somewhat independent of the
+<A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> encoding scheme used to represent a document.  For example,
+the <SAMP>`ISO-2022-JP'</SAMP> <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> encoding scheme can be used for HTML
+documents, since its repertoire is a subset of the <A HREF="html-spec_11.html#BIB12" REL=BIBLIOGRAPHY>[ISO-10646]</A>
+repertoire.  The critical distinction is that numeric <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A>
+references agree with <A HREF="html-spec_11.html#BIB12" REL=BIBLIOGRAPHY>[ISO-10646]</A> regardless of how the document is encoded.
+<H3><A NAME="FOOT3" HREF="html-spec_1.html#FOOT3" REL=FOOTNOTE-INV>(3)</A></H3>
+<P>In the interest of robustness and extensibility, there are a number
+of widely deployed conventions for handling non-conforming documents.
+See section <A HREF="html-spec_4.html#SEC4.2.1" REL=XREF>Undeclared Markup Error Handling</A> for details.
+<H3><A NAME="FOOT4" HREF="html-spec_1.html#FOOT4" REL=FOOTNOTE-INV>(4)</A></H3>
+<P>To support non-western writing systems, HTML user agents are
+encouraged to support <SAMP>`ISO-10646-UCS-2'</SAMP> or similar <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A>
+encoding schemes and as much of the <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> repertoire of
+<A HREF="html-spec_11.html#BIB12" REL=BIBLIOGRAPHY>[ISO-10646]</A> as is practical.
+<H3><A NAME="FOOT5" HREF="html-spec_3.html#FOOT5" REL=FOOTNOTE-INV>(5)</A></H3>
+<P>There are SGML mechanisms, CDATA and RCDATA declared content, that
+allow most <SAMP>`&#60;'</SAMP>, <SAMP>`&#62;'</SAMP>, and <SAMP>`&#38;'</SAMP> characters to be
+entered without the use of <A HREF="html-spec_2.html#GLOSS15" REL=GLOSSARY>entity</A> references.  Because these mechanisms
+tend to be used and implemented inconsistently, and because they
+conflict with techniques for reducing HTML to 7 bit ASCII for
+transport, they are deprecated in this version of HTML.  See section <A HREF="html-spec_5.html#SEC5.5.2.1" REL=XREF>Example and Listing:  XMP, LISTING</A>.
+<H3><A NAME="FOOT6" HREF="html-spec_3.html#FOOT6" REL=FOOTNOTE-INV>(6)</A></H3>
+<P>The SGML declaration for HTML specifies SHORTTAG YES, which
+means that there are other valid syntaxes for tags, such as NET tags,
+<SAMP>`&#60;EM/.../'</SAMP>;  empty start tags, <SAMP>`&#60;&#62;'</SAMP>;  and empty
+end-tags, <SAMP>`&#60;/&#62;'</SAMP>.  Until support for these idioms is widely
+deployed, their use is strongly discouraged.
+<H3><A NAME="FOOT7" HREF="html-spec_3.html#FOOT7" REL=FOOTNOTE-INV>(7)</A></H3>
+<P>Some historical implementations consider any occurrence
+of the <SAMP>`&#62;'</SAMP> <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> to signal the end of a <A HREF="html-spec_2.html#GLOSS32" REL=GLOSSARY>tag</A>.  For
+compatibility with such implementations, when <SAMP>`&#62;'</SAMP> appears in an
+attribute value, it <A HREF="html-spec_2.html#GLOSS29" REL=GLOSSARY>should</A> be represented with a numeric
+<A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> reference.  For example,
+<SAMP>`&#60;IMG SRC="eq1.jpg" alt="a&#62;b"&#62;'</SAMP> <A HREF="html-spec_2.html#GLOSS29" REL=GLOSSARY>should</A> be written
+<SAMP>`&#60;IMG SRC="eq1.jpg" alt="a&#38;#62;b"&#62;'</SAMP> or
+<SAMP>`&#60;IMG SRC="eq1.jpg" alt="a&#38;gt;b"&#62;'</SAMP>.
+<H3><A NAME="FOOT8" HREF="html-spec_3.html#FOOT8" REL=FOOTNOTE-INV>(8)</A></H3>
+<P>Some historical implementations allow any <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> 
+except space or <SAMP>`&#62;'</SAMP> in a name token.
+<H3><A NAME="FOOT9" HREF="html-spec_3.html#FOOT9" REL=FOOTNOTE-INV>(9)</A></H3>
+<P>Some historical implementations only understand the 
+minimized syntax.
+<H3><A NAME="FOOT10" HREF="html-spec_3.html#FOOT10" REL=FOOTNOTE-INV>(10)</A></H3>
+<P>Some historical HTML implementations incorrectly consider 
+any <SAMP>`&#62;'</SAMP> <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> to be the termination of a comment.
+<H3><A NAME="FOOT11" HREF="html-spec_3.html#FOOT11" REL=FOOTNOTE-INV>(11)</A></H3>
+<P>If the body of a <SAMP>`text/html'</SAMP> <A HREF="html-spec_2.html#GLOSS23" REL=GLOSSARY>message entity</A> does not
+begin with a document type declaration, an HTML <A HREF="html-spec_2.html#GLOSS36" REL=GLOSSARY>user agent</A> <A HREF="html-spec_2.html#GLOSS29" REL=GLOSSARY>should</A>
+infer the above document type declaration.
+<H3><A NAME="FOOT12" HREF="html-spec_5.html#FOOT12" REL=FOOTNOTE-INV>(12)</A></H3>
+<P>The length of a title is not limited;  however, long titles <A HREF="html-spec_2.html#GLOSS21" REL=GLOSSARY>may</A>
+be truncated in some applications.  To minimize this possibility,
+titles <A HREF="html-spec_2.html#GLOSS29" REL=GLOSSARY>should</A> be fewer than 64 characters.
+<H3><A NAME="FOOT13" HREF="html-spec_5.html#FOOT13" REL=FOOTNOTE-INV>(13)</A></H3>
+<P>The <EM>META</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A> <A HREF="html-spec_2.html#GLOSS29" REL=GLOSSARY>should</A> not be used where a specific
+<A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A>, such as <EM>TITLE</EM>, would be more appropriate.  Rather
+than a <EM>META</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A> with a <A HREF="html-spec_2.html#GLOSS35" REL=GLOSSARY>URI</A> as the value of the <EM>CONTENT</EM>
+attribute, use a <EM>LINK</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A>.
+<H3><A NAME="FOOT14" HREF="html-spec_5.html#FOOT14" REL=FOOTNOTE-INV>(14)</A></H3>
+<P>The method by which the server extracts document meta-information is
+unspecified and not mandatory.  The <EM>META</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A>
+only provides an extensible mechanism for identifying and embedding
+document meta-information -- how it <A HREF="html-spec_2.html#GLOSS21" REL=GLOSSARY>may</A> be used is up to the individual
+server implementation and the HTML <A HREF="html-spec_2.html#GLOSS36" REL=GLOSSARY>user agent</A>.
+<H3><A NAME="FOOT15" HREF="html-spec_5.html#FOOT15" REL=FOOTNOTE-INV>(15)</A></H3>
+<P>References to the "beginning of a new line" do not imply that
+the renderer is forbidden from using a constant left indent for
+rendering preformatted text.  The left indent <A HREF="html-spec_2.html#GLOSS21" REL=GLOSSARY>may</A> be constrained by the
+width required.
+<H3><A NAME="FOOT16" HREF="html-spec_5.html#FOOT16" REL=FOOTNOTE-INV>(16)</A></H3>
+<P>Constraints on the processing of <EM>PRE</EM> content <A HREF="html-spec_2.html#GLOSS21" REL=GLOSSARY>may</A> limit or
+prevent the ability of the HTML <A HREF="html-spec_2.html#GLOSS36" REL=GLOSSARY>user agent</A> to faithfully render
+phrase <A HREF="html-spec_2.html#GLOSS20" REL=GLOSSARY>markup</A>.
+<H3><A NAME="FOOT17" HREF="html-spec_5.html#FOOT17" REL=FOOTNOTE-INV>(17)</A></H3>
+<P>Some historical documents contain <EM>P</EM> tags in <EM>PRE</EM>
+elements.  User agents are encouraged to treat this as a line break.  A
+<EM>P</EM> <A HREF="html-spec_2.html#GLOSS32" REL=GLOSSARY>tag</A> followed by a newline <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> <A HREF="html-spec_2.html#GLOSS29" REL=GLOSSARY>should</A> produce only one
+line break, not a line break plus a blank line.
+<H3><A NAME="FOOT18" HREF="html-spec_5.html#FOOT18" REL=FOOTNOTE-INV>(18)</A></H3>
+<P>In a previous draft of the HTML specification, the syntax
+of <EM>XMP</EM> and <EM>LISTING</EM> elements allowed closing tags to
+be treated as data characters, as long as the <A HREF="html-spec_2.html#GLOSS32" REL=GLOSSARY>tag</A> name was not
+<EM>XMP</EM> or <EM>LISTING</EM>, respectively.
+<H3><A NAME="FOOT19" HREF="html-spec_5.html#FOOT19" REL=FOOTNOTE-INV>(19)</A></H3>
+<P>In a previous draft, HTML included a <EM>PLAINTEXT</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A> that
+is similar to the <EM>LISTING</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A>, except that there is
+no closing <A HREF="html-spec_2.html#GLOSS32" REL=GLOSSARY>tag</A>:  all characters after the <EM>PLAINTEXT</EM> <A HREF="html-spec_2.html#GLOSS30" REL=GLOSSARY>start-tag</A>
+are data.
+<H3><A NAME="FOOT20" HREF="html-spec_5.html#FOOT20" REL=FOOTNOTE-INV>(20)</A></H3>
+<P>User agents <A HREF="html-spec_2.html#GLOSS21" REL=GLOSSARY>may</A> support the <EM>DFN</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A>, not
+included in this specification, as it has been deployed to some extent.
+It is used to indicate the defining instance of a term, and it is
+typically rendered in italic or bold italic.
+<H3><A NAME="FOOT21" HREF="html-spec_5.html#FOOT21" REL=FOOTNOTE-INV>(21)</A></H3>
+<P>User agents <A HREF="html-spec_2.html#GLOSS21" REL=GLOSSARY>may</A> support some typographic elements not included in
+this specification, as they have been deployed to some extent.  The
+<EM>STRIKE</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A> indicates horizontal line through the characters,
+and the <EM>U</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A> indicates an underline.
+<H3><A NAME="FOOT22" HREF="html-spec_5.html#FOOT22" REL=FOOTNOTE-INV>(22)</A></H3>
+<P>Some HTML user agents can process graphics linked via anchors,
+but not <EM>IMG</EM> graphics.  If a graphic is essential, it <A HREF="html-spec_2.html#GLOSS29" REL=GLOSSARY>should</A> be
+referenced from an <EM>A</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A> rather than an <EM>IMG</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A>.  If
+the graphic is not essential, then the <EM>IMG</EM> <A HREF="html-spec_2.html#GLOSS13" REL=GLOSSARY>element</A> is
+appropriate.
+<H3><A NAME="FOOT23" HREF="html-spec_5.html#FOOT23" REL=FOOTNOTE-INV>(23)</A></H3>
+<P>In practice, the media types of image resources are limited to a
+few raster graphic formats:  typically <SAMP>`image/gif'</SAMP>,
+<SAMP>`image/jpeg'</SAMP>.  In particular, <SAMP>`text/html'</SAMP>
+resources are not intended to be used as image resources.
+<H3><A NAME="FOOT24" HREF="html-spec_6.html#FOOT24" REL=FOOTNOTE-INV>(24)</A></H3>
+<P>Use of the non-breaking space and soft hyphen indicator characters is 
+discouraged because support for them is not widely deployed.
+<H3><A NAME="FOOT25" HREF="html-spec_6.html#FOOT25" REL=FOOTNOTE-INV>(25)</A></H3>
+<P>To support non-western writing systems, a larger <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> repertoire
+will be specified in a future version of HTML.  The document <A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A>
+set will be <A HREF="html-spec_11.html#BIB12" REL=BIBLIOGRAPHY>[ISO-10646]</A>, or some subset that agrees with <A HREF="html-spec_11.html#BIB12" REL=BIBLIOGRAPHY>[ISO-10646]</A>;
+in particular, all numeric character references <A HREF="html-spec_2.html#GLOSS25" REL=GLOSSARY>must</A> use code
+positions assigned by <A HREF="html-spec_11.html#BIB12" REL=BIBLIOGRAPHY>[ISO-10646]</A>.
+<H3><A NAME="FOOT26" HREF="html-spec_8.html#FOOT26" REL=FOOTNOTE-INV>(26)</A></H3>
+<P>The <A HREF="html-spec_2.html#GLOSS35" REL=GLOSSARY>URI</A> from a query form submission can be used in a normal
+<A HREF="html-spec_2.html#GLOSS2" REL=GLOSSARY>anchor</A> style <A HREF="html-spec_2.html#GLOSS19" REL=GLOSSARY>hyperlink</A>.  Unfortunately, the use of the <SAMP>`&#38;'</SAMP>
+<A HREF="html-spec_2.html#GLOSS4" REL=GLOSSARY>character</A> to separate form fields interacts with its use in SGML
+attribute values as an <A HREF="html-spec_2.html#GLOSS15" REL=GLOSSARY>entity</A> reference delimiter.  For example, the
+<A HREF="html-spec_2.html#GLOSS35" REL=GLOSSARY>URI</A> <SAMP>`http://host/?x=1&#38;y=2'</SAMP> <A HREF="html-spec_2.html#GLOSS25" REL=GLOSSARY>must</A> be written
+<SAMP>`&#60;a href="http://host/?x=1&#38;#38;y=2"'</SAMP> or
+<SAMP>`&#60;a href="http://host/?x=1&#38;amp;y=2"&#62;'</SAMP>.
+
+HTTP server implementors, and in particular, CGI implementors are
+encouraged to support the use of <SAMP>`;'</SAMP> in place of <SAMP>`&#38;'</SAMP> to save
+users the trouble of escaping <SAMP>`&#38;'</SAMP> characters this way.
+<H3><A NAME="FOOT27" HREF="html-spec_8.html#FOOT27" REL=FOOTNOTE-INV>(27)</A></H3>
+<P>The URL encoding <A HREF="html-spec_2.html#GLOSS21" REL=GLOSSARY>may</A> result in very long URIs, which cause some
+historical HTTP server implementations to exhibit defective behavior.
+As a result, some HTML forms are written using <SAMP>`METHOD=POST'</SAMP> even
+though the form submission has no side-effects.
+</BODY>
+</HTML>
