@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<HTML>
+<HEAD>
+<TITLE>"Character Set" Considered Harmful</TITLE>
+<META NAME="author" CONTENT="Connolly">
+<META NAME="status" CONTENT="Internet Draft">
+<META NAME="title" CONTENT="Character Terminology">
+<META NAME="date" CONTENT="April, 1995">
+<base href="http://www.w3.org/hypertext/WWW/MarkUp/html-spec/charset-harmful.html">
+</HEAD>
+
+<body>
+<PRE>
+HTML Working Group                                           <a href="http://www.w3.org/hypertext/WWW/People/Connolly">D. Connolly</a>
+INTERNET-DRAFT                                               <A HREF="../../Consortium/Prospectus/Overview.html">MIT/W3C</a>
+$Id$
+Expires October, 1995
+
+</pre>
+<h1><em>Character Set</em> Considered Harmful</h1>
+<h2>Status of this Document</h2>
+
+<p>This document is an Internet-Draft. Internet-Drafts are working 
+   documents of the Internet Engineering Task Force (IETF), its areas, 
+   and its working groups. Note that other groups may also distribute 
+   working documents as Internet-Drafts.
+
+<p>Internet-Drafts are draft documents valid for a maximum of six 
+   months and may be updated, replaced, or obsoleted by other 
+   documents at any time. It is inappropriate to use Internet-Drafts 
+   as reference material or to cite them other than as "work in 
+   progress."
+
+<p>To learn the current status of any Internet-Draft, please check the 
+   "1id-abstracts.txt" listing contained in the Internet-Drafts Shadow 
+   Directories on ftp.is.co.za (Africa), nic.nordu.net (Europe), 
+   munnari.oz.au (Pacific Rim), ds.internic.net (US East Coast), or 
+   ftp.isi.edu (US West Coast).
+
+<p>Distribution of this document is unlimited. Please send comments to 
+   the HTML working group (HTML-WG) of the Internet Engineering Task 
+   Force (IETF) at <tt>&lt;html-wg@oclc.org&gt;</tt>;. Discussions of
+the group are
+   archived at <tt><a
+href="http://www.acl.lanl.gov/HTML_WG/archives.html">http://www.acl.lanl.gov/HTML_WG/archives.html</a></tt>.
+
+<h2>Abstract</h2>
+
+<p> The term "character set" is often used to describe a ditigal
+representation of text. ASCII is perhaps the most widely deployed
+representation of text, and in the interest of interoperability,
+information systems on the Internet traditionally rely on it
+exclusively .
+
+<p> The Multipurpose Mail Extensions (MIME) introduce Internet Media
+Types, including text representations besides ASCII. The Hypertext
+Markup Language (HTML) used in the World-Wide Web is a proposed
+Internet Media Type. But HTML is also an application of Standard
+Generalized Markup Language (SGML).
+
+<p> In the MIME and SGML specifications, the discussion of characters
+representation is notoriously complex, and apparently subtly
+inconsistent or incompatible. This article presents a collection of
+terms intended to reconcile the two specifications, and serve as a
+basis for rigorous discussion of characters and their digital
+representations.
+
+
+<h2>Introduction</h2>
+
+<p> The term "character set" is often used to describe a ditigal
+representation of text. The specifications of such a representation
+typically involves identifying a sufficiently expressive collection of
+characters, and giving each of them a number.
+
+<p> In conventional mathematical terminology then, a "character set"
+is not just a set of characters, but a <em>function</em> whose domain
+is a set of integers, and whose range is a set of characters.
+
+<h2>Coded Character Sets</h2>
+
+<p> Calling such a function a character set, rather than something
+such as <em>character table</em> or even <em>character sequence</em>
+(as the domain of the function is often of the form {0, 1, 2, ..., N})
+is unfortunate, but it is water under the bridge, and a lot of it by
+now.
+
+<p> Rather than attempting to divert all that water at this point, we
+give a formal definition to the term <em>coded character set</em> from
+[ISO10646] and other standards, along with the primitive notion of
+character:
+
+<dl>
+
+<dt> character
+
+<dd> An atom of information; for example, a letter or a digit.
+
+<dt> coded character set
+
+<dd> A function whose domain is a subset of the integers, and whose
+range is a set of characters.
+
+</dl>
+
+<p> It might seem more intuitive to map from characters to integers,
+rather than the way it is defined here. But in practice there are
+some coded character sets that assign two different numbers to the
+same character<a href="lee">[Lee]</a>, and so the inverse is not a
+function in the general case.
+
+<p> There are two other standard terms [ISO10646] that we define as
+corollaries to the first two:
+
+<dl>
+
+<dt> code position
+
+<dd> An integer that maps to a character via some coded character set.
+
+<dt> character repertoire
+
+<dd> A set of characters; that is, the range of a coded character set.
+
+</dl>
+
+<h2>Character Encodings</h2>
+
+<p> The only practical means for exchanging information on the
+Internet is to represent it as a sequence of octets (bytes). In the
+case of a "single byte" coded character set, that is, an invertible
+function <i>s</i> whose domain is {0, 1, 2, ..., <i>N</i>} for
+<i>N</i> < 256, there is an obvious straightforward representation,
+wherein each octet is mapped to a character via <i>s</i>:
+
+<pre>
+	encode (e) = e
+              s
+
+                                -1
+	encode (char . rest) = s  (char) . repr(rest)
+              s
+</pre>
+
+<p> But in the general case, the code position of a character may be
+greater than 255. The natural extension of the above is the "double
+byte" coded character set <i>d</i> and the following representation:
+
+<pre>
+                           -1                    -1
+  encode (char . rest) = (d  (char) div 256) . (d  (char) mod 256) . repr(rest)
+        d
+</pre>
+
+<p> But in practice, the general case is more comples. One popular
+optimization for the common case of code positions below 128 is to
+reserve bit 7 of the first octet that represents a character as a flag
+bit, and omit the zero byte if it is clear. Escape sequences are
+another populare optimization. The representation of a sequence of
+characters is not generally as simple as representing each character
+as some octets and concatenating them.
+
+<p> In fact, the mapping from a sequence of octets to a sequence of
+characters is often something we want to name and refer to. So we define:
+
+<dl>
+
+<dt>character encoding
+
+<dd>a function whose range is the set of sequences of octets, and
+whose range is the set of sequences of characters over some character
+repertoire.
+
+<p> Note that for some encodings, a single sequence of characters may
+have more than one representation, i.e. it inverse of the function is
+not necessarily unique. But for every sequence of characters over the
+repertoire, some representation as a sequence of octets is guaranteed
+to exist.
+
+</dl>
+
+<h2> MIME Charset vs. SGML Document Character Set</h2>
+
+<p> In this terminology, the <tt>charset</tt> parameter on text/*
+Internet Media Types refers to a character encoding, not a coded
+character set. A message entity of type <tt>text/*</tt> represents a
+sequence of characters determined by this character encoding and the
+octets of the body.
+
+<p> For example, the <tt>US-ASCII</tt> character encoding
+can be defined in terms of the ASCII coded character set:
+
+<pre>
+ decode        (octet . rest) = ASCII(octet) . decode        (rest)
+       US-ASCII                                      US-ASCII
+</pre>
+
+
+<h2> Postscript Encoding Vectors </h2>
+
+<h2> X Windows Font Encodings </h2>
+
+<h2> SGML Document Character Set </h2>
+
+<h2>Acknowledgements</h2>
+
+<p> The idea for the title of this article actually came from John
+Kleinsin. The notion of character encoding was inspired by the MIME
+specification by Ned Freed. James Clark, Ed Levinson, and several
+other members of the MIMESGML working group collaborated in
+discussions leading up to this draft. Liam Quin (sp?) from SoftQuad
+and Gavin Nicol from EBT have provided guidance on these issues in
+the past. Erik Naggum has provided invaluable aid in understanding the
+SGML standard.
+
+<h2>References</h2>
+
+<dl>
+
+<dt><a name="MIME">[MIME]</a>
+
+<dd>N. Borenstein and N. Freed. "MIME (Multipurpose Internet Mail
+Extensions) Part One: Mechanisms for Specifying and Describing the
+Format of Internet Message Bodies." RFC 1521, Bellcore, Innosoft,
+September 1993.
+
+<dt><a name="ASCII">[ASCII]</a>
+
+<dd> US-ASCII. Coded Character Set - 7-Bit American Standard Code for
+Information Interchange. Standard ANSI X3.4-1986, ANSI, 1986.
+
+<dt><a name="ISO8859">[ISO-8859]</a>
+
+<dd> ISO 8859. International Standard -- Information Processing --
+        8-bit Single-Byte Coded Graphic Character Sets -- Part 1: Latin 
+        Alphabet No. 1, ISO 8859-1:1987. Part 2: Latin alphabet No. 2, 
+        ISO 8859-2, 1987. Part 3: Latin alphabet No. 3, ISO 8859-3, 
+        1988. Part 4: Latin alphabet No. 4, ISO 8859-4, 1988. Part 5: 
+        Latin/Cyrillic alphabet, ISO 8859-5, 1988. Part 6: Latin/Arabic 
+        alphabet, ISO 8859-6, 1987. Part 7: Latin/Greek alphabet, ISO 
+        8859-7, 1987. Part 8: Latin/Hebrew alphabet, ISO 8859-8, 1988. 
+        Part 9: Latin alphabet No. 5, ISO 8859-9, 1990.
+
+<dt><a name="SGML">[SGML]</a>
+
+<dd> ISO 8879. Information Processing -- Text and Office Systems -- 
+     Standard Generalized Markup Language (SGML), 1986.
+
+<dt><a name="Nicol">[Nicol]</a>
+
+<dd> <a href="http://www.ebt.com:8080/docs/multilingual-www.html">The
+Multilingual World Wide Web</a>, Gavin T. Nicol, Electronic Book
+Technologies, Japan <tt>gtn@ebt.com</tt>
+
+<dt> @@ DSSSL draft spec
+
+<dt> @@ O'Reilly's internationalization book
+
+<dt> @@ ISO 10646
+
+<dt> <a name="lee">[Lee]</a>
+
+<dd> Private communication with Liam Quin, from SoftQuad.
+
+</dl>
+
+</body>
+</html>
