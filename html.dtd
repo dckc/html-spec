@@ -11,11 +11,11 @@
 -->
 
 <!ENTITY HTML.Version
-	"-//W3O//DTD WWW HTML 2.0//EN"
+	"+//ISBN 82-7640-037::WWW//DTD HTML//EN//2.0"
 
         -- Typical usage:
 
-            <!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
+            <!DOCTYPE HTML PUBLIC "+//ISBN 82-7640-037::WWW//DTD HTML//EN">
 	    <html>
 	    ...
 	    </html>
@@ -34,10 +34,9 @@
 
 <!-- Include level 1 DTD + block extensions -->
 
-<!ENTITY % block-2 "| FORM | ISINDEX"
-	--@# ISINDEX in BODY? -->
+<!ENTITY % block-2 "| FORM | ISINDEX">
 
-<!ENTITY % html-1 PUBLIC "-//W3O//DTD WWW HTML 2.0 Level 1//EN">
+<!ENTITY % html-1 PUBLIC "+//ISBN 82-7640-037::WWW//DTD HTML Level 1//EN//2.0">
 %html-1;
 
 
@@ -46,8 +45,8 @@
 <!ELEMENT FORM - - %body.content -(FORM) +(INPUT|SELECT|TEXTAREA)>
 <!ATTLIST FORM
 	ACTION %URI #REQUIRED
-	METHOD (%HTTP-Method) #IMPLIED -- @# MAILTO? --
-	ENCTYPE %Content-Type; #IMPLIED
+	METHOD (%HTTP-Method) GET
+	ENCTYPE %Content-Type; "application/x-www-form-urlencoded"
 	>
 
 <!ENTITY % InputType "(TEXT | PASSWORD | CHECKBOX |
@@ -55,14 +54,15 @@
 			IMAGE | HIDDEN )">
 <!ELEMENT INPUT - O EMPTY>
 <!ATTLIST INPUT
-	TYPE %InputType #IMPLIED -- @# defaults to TEXT?? --
+	TYPE %InputType TEXT
 	NAME CDATA #IMPLIED -- required for all but submit and reset --
 	VALUE CDATA #IMPLIED
 	SRC %URI #IMPLIED -- for image inputs -- 
 	CHECKED (CHECKED) #IMPLIED
-	SIZE CDATA #IMPLIED -- @# should be NUMBERS: delimit with space, not comma --
+	SIZE CDATA #IMPLIED -- like NUMBERS,
+				 but delimited with comma, not space --
 	MAXLENGTH NUMBER #IMPLIED
-	ALIGN (top|middle|bottom|left|center|right) #IMPLIED --@#supported?--
+	ALIGN (top|middle|bottom) #IMPLIED
 	>
 
 <!ELEMENT SELECT - - (OPTION+)>
@@ -81,7 +81,7 @@
 <!ELEMENT TEXTAREA - - (#PCDATA)>
 <!ATTLIST TEXTAREA
 	NAME CDATA #REQUIRED
-	ROWS NUMBER #REQUIRED -- @#implied? --
+	ROWS NUMBER #REQUIRED
 	COLS NUMBER #REQUIRED
 	>
 
