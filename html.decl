@@ -16,8 +16,8 @@ CHARSET
                   127 1   UNUSED
      BASESET   "ISO Registration Number 100//CHARSET
                 ECMA-94 Right Part of Latin Alphabet Nr. 1//ESC 2/13 4/1"
-     DESCSET   128 32 UNUSED
-               160 96 32
+         DESCSET  128  32   UNUSED
+                  160  96    32
 
 CAPACITY        SGMLREF
                 TOTALCAP        150000
@@ -31,11 +31,11 @@ SYNTAX
                    International Reference Version (IRV)//ESC 2/5 4/0"
          DESCSET  0 128 0
          FUNCTION
-              --  SPACE       32
+                  SPACE       32
                   TAB SEPCHAR  9
                   LF  SEPCHAR 10
                   FF  SEPCHAR 12
-                  CR  SEPCHAR 13 --
+                  CR  SEPCHAR 13
 
 	-- The above is an accurate description of the usage of FUNCTION --
 	-- characters in HTML implementations; that is, there is no      --
@@ -44,15 +44,10 @@ SYNTAX
 	-- But because few SGML implementations support this concrete    --
 	-- sytax, we include the one below.                              --
 
-	-- Note that in order to get correct behaviour w.r.t. newline    --
-	-- processing, you will have to play some tricks in construcing  --
-	-- the document entity for parsing in order to keep the parser   --
-	-- from ignoring newlines in surpirsing ways                     --
-
-		  RE          13
+	--	  RE          13
                   RS          10
                   SPACE       32
-                  TAB SEPCHAR  9
+                  TAB SEPCHAR  9 --
 	
 
          NAMING   LCNMSTRT ""
@@ -86,7 +81,7 @@ FEATURES
     CONCUR   NO
     SUBDOC   NO
     FORMAL   YES
-  APPINFO    NONE
+  APPINFO    "SDA"  -- conforming SGML Document Access application --
 >
 <!-- 
 	$Id$

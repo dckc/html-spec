@@ -18,6 +18,32 @@ $Id$
     The public text includes the DTD, an SGML declaration, and a version
     of the ISO Added Latin 1 entity set.
 
+<h2> Changes in the November 30 Revision </h2>
+
+<ul>
+
+<li> Integrated ICADD SDA attributes and APPINFO (Thanks to Jeff Suttor)
+
+<li> Updated catalog etc. with new FPIs (formal public identifiers).<br>
+     Old format: <code>"-//IETF//DTD HTML//EN//2.0"</code><br>
+     New format: <code>"-//IETF//DTD 2.0 HTML//EN"</code><br>
+
+<li> Changed FUNCTION character syntax: uncommented the real one, commented
+     out the hack version.
+
+<li> Added FPI's and public text for "Strict" versions of the DTD
+     (e.g. <code>"-//IETF//DTD HTML Strict Level 1//EN"</code> maps to
+     <tt>html-1s.dtd</tt>)
+
+<li> Changed FPI used to reference ISO latin 1 entities.
+
+<li> Changed a bunch of + occurence indicators to * for clarity
+
+<li> Changed some parameter entities to comply with SGML tokenization
+     rules.
+
+</ul>
+
 <h2> Changes in the November 15 Revision </h2>
 
 <ul>
@@ -48,9 +74,12 @@ inessential.
 <DD>The text of the SGML
 DTD for HTML
 <ul>
-<li><A HREF="html.dtd">The full DTD</A>
-<li><A HREF="html-0.dtd">Level 0 features</A>
-<li><A HREF="html-1.dtd">Level 1 features</A>
+<li> <A HREF="html.dtd">The full DTD</A>, and 
+     <A HREF="html-s.dtd">Strict</A> version
+<li> <A HREF="html-0.dtd">Level 0 features</A>, and 
+     <A HREF="html-0s.dtd">Strict</A> version
+<li> <A HREF="html-1.dtd">Level 1 features</A>, and 
+     <A HREF="html-1s.dtd">Strict</A> version
 </ul>
 <DT><A
 NAME="z20" HREF="html.decl">The HTML SMGL Declaration</A>
@@ -60,8 +89,8 @@ for HTML
 <dt><a href="ISOlat1.sgml">ISO Added Latin 1</a>
 <dd>The HTML version of the ISOlat1 entity set
 <dt><a href="catalog">catalog</a>
-<dd>SGML Open style Entity Catalog: gives mappings from formal
-public identifiers to file names.
+<dd> Sample SGML Open style Entity Catalog: gives mappings from formal
+public identifiers to typical file names.
 </dl>
 
 <h2> Element References </h2>

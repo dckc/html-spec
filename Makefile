@@ -164,25 +164,28 @@ validate: $(HYPERTEXT) $(BIGDOC)
 	touch $@
 
 L0index.html: $(HYPERTEXT) html-0.dtd $(DTDTOOL)
-	$(ENV) $(PERL) $(DTDTOOL) -hypertext HTML $(HYPERTEXT) <html-0.dtd >$@
+	$(ENV) $(PERL) $(DTDTOOL) -nodiscussion -hypertext \
+			HTML $(HYPERTEXT) <html-0.dtd >$@
 
-L0Pindex.html: $(HYPERTEXT) html-0P.dtd $(DTDTOOL)
-	$(ENV) $(PERL) $(DTDTOOL) -hypertext \
-		HTML $(HYPERTEXT) <html-0P.dtd >$@
+L0Pindex.html: $(HYPERTEXT) html-0s.dtd $(DTDTOOL)
+	$(ENV) $(PERL) $(DTDTOOL) -nodiscussion -hypertext \
+		HTML $(HYPERTEXT) <html-0s.dtd >$@
 
 L1index.html: $(HYPERTEXT) html-1.dtd $(DTDTOOL)
-	$(ENV) $(PERL) $(DTDTOOL) -hypertext HTML $(HYPERTEXT) <html-1.dtd >$@
+	$(ENV) $(PERL) $(DTDTOOL) -nodiscussion -hypertext \
+		HTML $(HYPERTEXT) <html-1.dtd >$@
 
 L1Pindex.html: $(HYPERTEXT) html-1.dtd $(DTDTOOL)
-	$(ENV) $(PERL) $(DTDTOOL) -hypertext \
-		HTML $(HYPERTEXT) <html-1P.dtd >$@
+	$(ENV) $(PERL) $(DTDTOOL) -nodiscussion -hypertext \
+		HTML $(HYPERTEXT) <html-1s.dtd >$@
 
 L2index.html: $(HYPERTEXT) html.dtd $(DTDTOOL)
-	$(ENV) $(PERL) $(DTDTOOL) -hypertext HTML $(HYPERTEXT) <html.dtd >$@
+	$(ENV) $(PERL) $(DTDTOOL) -nodiscussion -hypertext \
+		HTML $(HYPERTEXT) <html.dtd >$@
 
-L2Pindex.html: $(HYPERTEXT) html-P.dtd $(DTDTOOL)
-	$(ENV) $(PERL) $(DTDTOOL) -hypertext \
-		HTML $(HYPERTEXT) <html-P.dtd >$@
+L2Pindex.html: $(HYPERTEXT) html-s.dtd $(DTDTOOL)
+	$(ENV) $(PERL) $(DTDTOOL) -nodiscussion -hypertext \
+		HTML $(HYPERTEXT) <html-s.dtd >$@
 
 
 canonicalize: $(HYPERTEXT)
@@ -196,7 +199,8 @@ mif: HTML-1.mif
 
 MIF_STYLESHEET = mif/template.mif
 PYWWW = ../pywww
-HTML2MIF = PYTHONPATH=$(PYWWW) $(PYTHON) $(PYWWW)/MIFNodeSet.py
+HTML2MIF = PYTHONPATH=$(PYWWW) $(PYTHON) $(PYWWW)/MIFReport.py
+HTML2MIFN = PYTHONPATH=$(PYWWW) $(PYTHON) $(PYWWW)/MIFNodeSet.py
 
 HTML-1.mif: $(HYPERTEXT)
 	$(HTML2MIF) $(HYPERTEXT) >$@
@@ -204,6 +208,12 @@ HTML-1.mif: $(HYPERTEXT)
 #@@ need to redo this!
 HTML-2.mif: $(ELTINDEX)
 	$(HTML2MIF) -section $(ELTINDEX) >$@
+
+HTML-Ref.N.doc: $(ELTINDEX)
+	$(HTML2MIFN) -section L2Pindex.html >$@
+
+HTML-0Ref.N.doc: $(ELTINDEX)
+	$(HTML2MIFN) -section L0Pindex.html >$@
 
 
 ChangeLog:
