@@ -1,0 +1,16 @@
+<!entity catalog "<figbody file=catalog.e>">
+<!entity html-decl system "html.decl" NDATA ASCII>
+<!entity html-dtd "<figbody file=html-dtd.e>">
+<!entity html-dtd-1 system "html-1.dtd" NDATA ASCII>
+<!entity html-dtd-s system "html-s.dtd" NDATA ASCII>
+<!entity html-dtd-1s system "html-1s.dtd" NDATA ASCII>
+<!entity isolat1-dtd system "ISOlat1.sgml" NDATA ASCII>
+
+<!entity catalog.e system "catalog" NDATA ASCII>
+<!entity html-decl system "html.decl" NDATA ASCII>
+<!entity html-dtd system "html.dtd" NDATA ASCII>
+<!entity html-dtd-1 system "html-1.dtd" NDATA ASCII>
+<!entity html-dtd-s system "html-s.dtd" NDATA ASCII>
+<!entity html-dtd-1s system "html-1s.dtd" NDATA ASCII>
+<!entity isolat1-dtd system "ISOlat1.sgml" NDATA ASCII>
+
