@@ -1,0 +1,18 @@
+<h2>Levels of Conformance
+
+<emph>@@ this needs a LOT of work!</emph>
+
+Version 2.0 of HTML introduces a distinction between levels of
+conformance:
+
+<tl>
+<tli>Level 0: Indicates the minimum conformance level. When writing
+Level 0 documents, authors can be confident that the rendering at
+different sites will reflect their intent.
+
+<tli>Level 1: Includes Level 0 features plus features such as
+highlighting and images.
+
+<tli>Level 2: Includes all Level 0 and Level 1 features, plus forms.
+
+</tl>

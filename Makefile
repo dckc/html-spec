@@ -3,8 +3,15 @@
 #
 
 # Things outside this distribution
-ENV= SGML_PATH='./%N.%C:%N.dtd:%N.sgml'
 SGMLS = sgmls
+NROFF = nroff
+TROFF = troff
+# I use the gnu stuff...
+MACROS = -mgm
+#MACROS = -ms
+TEXI2ROFF = texi2roff
+GF = gf
+
 PERL=perl
 PYTHON = python
 
@@ -16,8 +23,32 @@ DTDTOOL=www_dtd.pl
 #
 # "No user-serviceable parts inside"
 #
+INTERNET_DRAFT=draft-ietf-html-spec-03
+
+SRCS = html.decl html.dtd ISOlat1.sgml catalog \
+	snafu.decl html-spec.sgm \
+	conformance.sgm intro.sgm terms.sgm html-sgml.sgm html-mime.sgm \
+	elements.sgm head-elts.sgm doc-charset.sgm phrase.sgm hyperlink.sgm \
+	blocks.sgm headings.sgm lists.sgm forms.sgm pubtext.sgm
+
+submit: $(INTERNET_DRAFT).txt $(INTERNET_DRAFT).ps
+
+$(INTERNET_DRAFT).txt: $(INTERNET_DRAFT).mm
+	$(NROFF) -Tascii $(MACROS) $(INTERNET_DRAFT).mm >$@
+
+$(INTERNET_DRAFT).ps: $(INTERNET_DRAFT).mm
+	$(TROFF) $(MACROS) -Tps $(INTERNET_DRAFT).mm >$@
+
+$(INTERNET_DRAFT).mm: $(INTERNET_DRAFT).texi
+	$(TEXI2ROFF) -mm $(INTERNET_DRAFT).texi >$@
+
+$(INTERNET_DRAFT).texi: $(SRCS)
+	$(GF) -f texinfo snafu.decl html-spec.sgm >$@
+
+
 RELEASE = 19940613
 PACKAGE = html-spec-$(RELEASE)
+ENV= SGML_PATH='./%N.%C:%N.dtd:%N.sgml'
 
 ORIGINALS = Makefile $(HYPERTEXT) $(DTD) $(DTDAUX) $(DECL) $(BIGPRE)
 DIST = README.html $(ORIGINALS) $(PLAINTEXT) $(INDEXES) $(BIGDOC)

@@ -1,0 +1,84 @@
+<h1>HTML as an Internet Media Type
+
+<h2>text/html media type
+
+<p>This specification defines the Internet  Media Type\x11[7] (formerly referred to as the MIME 
+Content Type\x11[4]) called  "text/html". The following is to be registered with IANA\x11[8].
+
+Media Type name:		text
+
+Media subtype name:		html
+
+Required parameters:		none
+
+Optional parameters:		level, version, charset
+
+Encoding considerations:		any encoding is allowed
+
+Security considerations:		[Section 14]
+
+
+
+<p>The optional parameters are defined as follows:
+
+tag/Level
+
+/The level parameter specifies the feature set used in the document. The level is an integer 
+number, implying that any features of same or lower level may be present in the document. 
+Levels 0, 1 and 2 are defined by this specification. Level 2 is the default.
+
+tag/Version
+
+/To help avoid future compatibility problems, the version parameter may be used to give 
+the version number of the specification to which the document conforms. The version 
+number appears at the front of this document and within the public identifier of the HTML 
+DTD. This specification defines version 2.0.
+
+tag/Charset
+
+/The charset parameter (as defined in section 7.1.1 of RFC 1521\x11[4]) may be given to 
+specify the encoding used to represent the HTML document as a sequence of octets.
+
+<h2>Character Set Issues
+
+<p>An HTML interpreter must accept a stream of characters as input, and assign them to 
+character classes used for markup recognition purposes. HTML 2.0 markup requires only the 
+characters found in the US-ASCII character set\x11[10]. All US-ASCII characters with no markup 
+role, and all non-US-ASCII characters, should be treated as data. Such categorization should 
+take place after decoding the data stream (i.e., not at the characer set encoding level, but rather 
+at the character set level).
+
+<p>Normally, text/* media types specify a default value of US-ASCII for the charset 
+parameter. However, for text/html, if the byte stream contains data that is not in the 7-bit US-
+ASCII set, the interpreter should assume a default charset of ISO-8859-1. Even if an HTML 
+document is limited to a US-ASCII encoding, the mechanisms of character entity references 
+(Section 6.3) can be used to encode the characters from ISO-8859-1.
+
+<p>Other values for the charset parameter may be defined by the transport mechanism (e.g., 
+MIME and HTTP), but are not defined by this specification. Since the SGML declaration for 
+HTML (supplied in Section 12.3) is only applicable to ISO-8859-1 and its subsets, a charset 
+parameter that specifies a different character set must also imply a different SGML declaration. 
+Therefore, user agents may use the charset parameter value to select a different declaration, 
+even though the mechanism for doing so is not defined by this specification. The intent, 
+however, is that such a declaration be as identical as possible to that of Section 12.3, the only 
+differences being those required to support the announced charset.
+
+<p>When the above conflicts with the SGML standard, the SGML standard may be ignored. 
+Note, however, that not all HTML applications are capable of ignoring the SGML standard.
+
+<h2>Undefined Tag and Attribute Names
+
+<p>An accepted networking principle is to be conservative in what one produces, and liberal 
+in what one accepts. HTML user agents should be liberal except when validating code; user 
+agents are encouraged to provide an option for validation of what they render, such that users 
+may be notified of an invalid construct when such notification is desirable. HTML generators 
+should generate strictly conforming HTML. 
+
+<p>HTML user agents reading "text/html" documents and discovering tag or attribute names 
+which they do not understand should behave as though the offending tags or attribute names do 
+not exist. Any unknown start tag (including its entire attribute specification list) or end tag 
+should be ignored; any content between matching unknown start and end tags should be treated 
+as normal (i.e., as if those tags did not occur in the character stream). The entire attribute 
+specification of an unknown attribute (i.e., the unknown attribute and its value, if any) should 
+be ignored.
+

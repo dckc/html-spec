@@ -1,0 +1,59 @@
+<h2>Headings
+
+<![CDATA[
+<H1> ... </H1> through <H6> ... </H6>	Level 0
+]]>
+
+<p>HTML defines six levels of heading. A Heading element implies all
+the font changes, paragraph breaks before and after, and white space
+necessary to render the heading.
+
+<p>The highest level of headings is H1, followed by H2 ... H6.
+
+<p>Example of use:
+
+<listing><![CDATA[
+<H1>This is a heading</H1>
+Here is some text
+<H2>Second level heading</H2>
+Here is some more text.
+]]></listing>
+
+<p>The rendering of headings is determined by the HTML interpreter,
+but typical renderings are:
+
+<tl>
+<tli>&lt;H1> ... &lt;/H1>:
+
+Bold, very-large font, centered. One or two blank lines above and
+below.
+
+<tli>&lt;H2> ... &lt;/H2>:
+
+Bold, large font, flush-left. One or two blank lines above and below.
+
+<tli>&lt;H3> ... &lt;/H3>:
+
+Italic, large font, slightly indented from the left margin. One or two
+blank lines above and below.
+
+<tli>&lt;H4> ... &lt;/H4>:
+
+Bold, normal font, indented more than H3. One blank line above and
+below.
+
+<tli>&lt;H5> ... &lt;/H5>:
+
+Italic, normal font, indented as H4. One blank line above.
+
+<tli>&lt;H6> ... &lt;/H6>:
+
+Bold, indented same as normal text, more than H5. One blank line
+above.
+</tl>
+
+<p>Although heading levels can be skipped (for example, from H1 to
+H3), this practice is discouraged as skipping heading levels may
+produce unpredictable results when generating other representations
+from HTML.
+

@@ -1,0 +1,40 @@
+<h1>HTML Document Type Definitions
+
+<h2>Deprecated and Recommended Sections
+
+<p>Optional "deprecated" and "recommended" sections are used in the HTML DTD. 
+Conformance with this specification is defined with these sections disabled. In the liberal spirit 
+of Section 3.3, user agents reading HTML documents should accept syntax corresponding to 
+the specification with "deprecated" turned on. On the other hand, applications generating 
+HTML should, in the conservative spirit, generate documents that conform to the specification 
+with the "recommended" sections turned on.
+
+<h2>Sample SGML Open Entity Catalog for HTML
+
+<p>The SGML standard describes an "entity manager" as the portion or component of an 
+SGML system that maps SGML entities into the actual storage model (e.g., the file system).  
+The standard itself does not define a particular mapping methodology or notation.
+
+<p>To assist the interoperability among various SGML tools and systems, the SGML Open 
+consortium has passed a technical resolution that defines a format for an application-
+independent entity catalog that maps external identifiers and/or entity names to file names.
+
+<p>Each entry in the catalog associates a storage object identifier (such as a file name) with 
+information about the external entity that appears in the SGML document.  In addition to 
+entries that associate public identifiers, a catalog entry can associate an entity name with a 
+storage object indentifier.  For example, the following are possible catalog entries:
+
+&catalog;
+
+<h2>SGML Declaration for HTML
+
+<p>This is the SGML Declaration for HyperText Markup Language (HTML) as used by the 
+World Wide Web (WWW) application:
+
+&html-decl;
+
+<h2>HTML Level 0 DTD
+
+<p>This is the Document Type Definition for the HyperText Markup Language as used by  minimally conforming World Wide Web applications (HTML Level 0 DTD). Note that it is  defined in terms of the Level 2 DTD.   
+
+&html-dtd;

@@ -1,0 +1,129 @@
+<h2>Terminology
+
+<p>The HTML specification uses these words with precise meanings:
+
+<tl>
+<tli>attribute:
+
+A syntactical component of an HTML element which is often used to
+specify a characteristic quality of an element, other than type or
+content.
+
+<tli>document type definition (DTD):
+
+A DTD is a collection of declarations (entity, element, attribute,
+link, map, etc.) in SGML syntax that defines the components and
+structures available for a class (type) of documents.
+
+<tli>element:
+
+A component of the hierarchical structure defined by the document type
+definition; it is identified in a document instance by descriptive
+markup, usually a start-tag and an end-tag.
+
+<tli>HTML document:
+
+A collection of information represented as a sequence of
+characters. An HTML document consists of data characters and
+markup. In particular, the markup describes a structure conforming to
+the HTML document type definition.
+
+<tli>HTTP:
+
+The Hypertext Transfer Protocol\x11[3] is the primary
+application-level protocol for the transfer of documents via the
+World-Wide Web.
+
+<tli>interpreter:
+
+A tool or algorithm used to parse and/or render an HTML document.
+
+<tli>(document) instance:
+
+The document itself including the actual content with the actual
+markup. Can be a single document or part of a document instance set
+that follows the DTD.
+
+<tli>markup:
+
+Text added to the data of a document to convey information about
+it. There are four different kinds of markup: descriptive markup
+(tags), references, markup declarations, and processing instructions.
+
+<tli>MIME:
+
+The Multipurpose Internet Mail Extensions\x11[4] provide the ability
+to transfer non-textual data, such as graphics, audio and fax, via
+Internet mail.
+
+<tli>representation:
+
+The encoding of information for interchange. For example, HTML is a
+representation of hypertext.
+
+<tli>rendering:
+
+Formatting and presenting information.
+
+<tli>SGML:
+
+Standard Generalized Markup Language\x11[12] (see also\x11[9]
+and[6]) is a programming language for describing the allowed
+markup constructs and syntax for textual document types.
+
+<tli>tag:
+
+Descriptive markup. There are two kinds of tags; start-tags and
+end-tags. All HTML tags start with the less than character ("<") and
+end with a greater than (">").
+
+<tli>URI:
+
+A Universal Resource Identifier\x11[1] is a formatted string that
+serves as an identifier for a resource on the Internet. URIs are used
+by HTML to identify the destination of hypertext links, the source of
+in-line images, and the object of form actions. URIs in common use
+include Uniform Resource Locators (URLs)\x11[2] and Relative
+URLs\x11[5].
+
+<tli>WWW:
+
+The World-Wide Web is a hypertext-based, distributed information
+system created by researchers at CERN in Switzerland. Users may
+create, edit or browse hypertext
+documents. <code>http://www.w3.org/</>
+
+</tl>
+
+<h2>Imperatives
+
+<p>@@
+
+<tl>
+<tli>may:
+
+The implementation is not obliged to follow this in any way.
+
+<tli>must:
+
+If this is not followed, the implementation does not conform to this
+specification.
+
+<tli>shall:
+
+If this is not followed, the implementation does not conform to this
+specification.
+
+<tli>should:
+
+If this is not followed, though the implementation officially conforms
+to the specification, undesirable results may occur in practice.
+
+<tli>typical:
+
+Typical rendering is described for many elements. This is not a
+mandatory part of the specification but is given as guidance for
+designers and to help explain the uses for which the elements were
+intended.
+
+</tl>

@@ -1,0 +1,104 @@
+<h1> Obsolete Features
+
+<p>This section describes elements that are no longer part of HTML. Client implementors 
+should implement these obsolete elements for compatibility with previous versions of the 
+HTML specification.
+
+<h2> Comment Element
+
+<p>The Comment element is used to delimit unneeded text and comments. The Comment 
+element has been introduced in some HTML applications but should be replaced by the SGML 
+comment feature in new HTML interpreters (see Section 2.2.5).
+
+<h2>  Highlighted Phrase Element
+
+<![CDATA[
+<HP>
+]]>
+
+<p>The Highlighted Phrase element should be ignored if not implemented. This element has 
+been replaced by more meaningful elements (see Section 8).
+
+<p>Example of use:
+
+<listing><![CDATA[
+<HP1>first highlighted phrase</HP1>non-
+highlighted text<HP2>second highlighted phrase</HP2> etc.
+]]></listing>
+
+<h2> Plain Text Element
+
+<![CDATA[
+<PLAINTEXT>
+]]>
+
+<p>The Plain Text element is used to terminates the HTML entity and to
+indicate that what follows is not SGML which does not require
+parsing. Instead, an old HTTP convention specified that what followed
+was an ASCII (MIME "text/plain") body. Its presence is an
+optimization. There is no closing tag.
+
+<p>Example of use:
+
+<listing><![CDATA[
+<PLAINTEXT>
+0001 This is line one of a long listing
+0002 file from <ANY@HOST.INC.COM> which is sent
+]]></listing>
+
+<h2> Example and Listing Elements
+
+<![CDATA[
+<XMP> ... </XMP> and <LISTING> ... </LISTING>
+]]>
+
+<p>The Example and Listing elements have been replaced by the
+Preformatted Text element (Section 10.2).
+
+<p>These styles allow text of fixed-width characters to be embedded
+absolutely as is into the document. The syntax is:
+
+<listing><![CDATA[
+<LISTING> ... </LISTING>
+]]>
+</listing>
+
+<p>or
+
+<listing><![CDATA[
+<XMP> ... </XMP>
+]]>
+</listing>
+
+<p>The text between these tags is typically rendered in a monospaced
+font so that any formatting done by character spacing on successive
+lines will be maintained.
+
+<p>Between the opening and closing tags:
+
+<ul>
+<li>The text may contain any ISO Latin-1 printable characters,
+expect for the end tag opener. The Example and Listing elements have
+historically used specifications which do not conform to
+SGML. Specifically, the text may contain ISO Latin printable
+characters, including the tag opener, as long it they does not contain
+the closing tag in full.
+
+<li>SGML does not support this form. HTML interpreters may vary on
+how they interpret other tags within Example and Listing elements.
+
+<li>Line boundaries within the text are rendered as a move to the
+beginning of the next line, except for one immediately following a
+start tag or immediately preceding an end tag.
+
+<li>The horizontal tab character must be interpreted as the smallest
+positive nonzero number of spaces which will leave the number of
+characters so far on the line as a multiple of 8. Its use is not
+recommended.
+</ul>
+
+<p>The Listing element is rendered so that at least 132 characters fit
+on a line. The Example element is rendered to that at least 80
+characters fit on a line but is otherwise identical to the Listing
+element.
+

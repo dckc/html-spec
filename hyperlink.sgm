@@ -1,0 +1,123 @@
+<h1>Hypertext Elements
+
+<h2>Anchor
+
+<![CDATA[
+<A> ... </A>	Level 0
+]]>
+
+<p>An anchor is a marked section of text that is the start and/or
+destination of a hypertext link.  Anchor elements are defined by the
+<code>&lt;A></> tag. The <code>&lt;A></> tag accepts several
+attributes; at least one of the NAME and HREF attributes is required.
+
+<p>Attributes of the <code>&lt;A></> tag:
+
+<h3>HREF
+
+<p>If the HREF attribute is present, the text between the opening and
+closing anchor tags becomes hypertext. If this hypertext is selected
+by readers, they are moved to another document, or to a different
+location in the current document, whose network address is defined by
+the value of the HREF attribute.
+
+<p>Example:
+
+<listing><![CDATA[
+See <A HREF="http://www.hal.com/">HaL</A>'s 
+information for more details.
+]]></listing>
+
+<p>In this example, selecting "HaL" takes the reader to a document at
+http://www.hal.com.  The format of the network address is specified in
+the URI specification for print readers.
+
+<p>With the HREF attribute, the form HREF="#identifier" can refer to
+another anchor in the same document.
+
+<p>Example:
+
+<listing><![CDATA[
+The <A HREF="#glossary">glossary</A> defines 
+terms used in this document.
+]]></listing>
+
+<p>In this example, selecting "glossary" takes the reader to another
+anchor (i.e., &lt;A&nbsp;NAME="glossary">Glossary&lt;/A>) in the same
+document. The NAME attribute is described below. If the anchor is in
+another document, the HREF attribute may be relative to the document's
+address or the specified base address (see <hdref refid=base>).
+
+<h3>NAME
+
+<p>If present, the NAME attribute allows the anchor to be the target
+of a link. The value of the NAME attribute is an identifier for the
+anchor. Identifiers are arbitrary strings but must be unique within
+the HTML document.
+
+<p>Example of use:
+
+<listing><![CDATA[
+<A NAME="coffee">Coffee</A> is an example of ...
+... An example of this is <A HREF="#coffee">coffee</A>.
+]]></listing>
+
+<p>Another document can then make a reference explicitly to this
+anchor by putting the identifier after the address, separated by a
+hash sign:
+
+<listing><![CDATA[
+<A HREF="drinks.html#coffee">
+]]></listing>
+
+<h3>TITLE
+
+<p>The TITLE attribute is informational only. If present, the TITLE
+attribute should provide the title of the document whose address is
+given by the HREF attribute.  The TITLE attribute is useful for at
+least two reasons. The HTML interpreter may display the title of the
+document prior to retrieving it, for example, as a margin note or on a
+small box while the mouse is over the anchor, or while the document is
+being loaded. Another reason is that documents that are not marked up
+text, such as graphics, plain text and Gopher menus, do not have
+titles. The TITLE attribute can be used to provide a title to such
+documents. When using the TITLE attribute, the title should be valid
+and unique for the destination document.
+
+<h3>REL
+
+<p>The REL attribute gives the relationship(s) described by the
+hypertext link from the anchor to the target. The value is a
+whitespace-separated list of relationship names. Relationship names
+and their semantics will be registered by the W3 Consortium. The
+default relationship is void. The REL attribute is only used when the
+HREF attribute is present.
+
+<h3>REV
+
+<p>The REV attribute is the same as the REL attribute, but the
+semantics of the link type are in the reverse direction. A link from A
+to B with REL="X" expresses the same relationship as a link from B to
+A with REV="X". An anchor may have both REL and REV attributes.
+
+<h3>URN
+
+<p>If present, the URN attribute specifies a uniform resource name
+(URN) for a target document. The format of URNs is under discussion
+(1995) by various working groups of the Internet Engineering Task
+Force.
+
+<h3>METHODS
+
+<p>The METHODS attributes of anchors and links provide information
+about the functions that the user may perform on an object. These are
+more accurately given by the HTTP protocol when it is used, but it
+may, for similar reasons as for the TITLE attribute, be useful to
+include the information in advance in the link. For example, the HTML
+interpreter may chose a different rendering as a function of the
+methods allowed; for example, something that is searchable may get a
+different icon.
+
+<p>The value of the METHODS attribute is a whitespace-separated list
+of HTTP methods supported by the object for public use.
+

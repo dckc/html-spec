@@ -1,0 +1,235 @@
+<h1>Data Elements
+
+<h2>Line Break
+
+<![CDATA[
+<BR>	Level 0
+]]>
+
+<p>The Line Break element specifies that a new line must be started at
+the given point. A new line indents the same as that of line-wrapped
+text.
+
+<p>Example of use:
+
+<listing><![CDATA[
+<P> Pease porridge hot<BR>
+Pease porridge cold<BR>
+Pease porridge in the pot<BR>
+Nine days old.
+]]></listing>
+
+<h2>Horizontal Rule
+
+<![CDATA[
+<HR>	Level 0
+]]>
+
+<p>A Horizontal Rule element is a divider between sections of text
+such as a full width horizontal rule or equivalent graphic.
+
+<p>Example of use:
+
+<listing><![CDATA[
+<HR>
+<ADDRESS>February 8, 1995, CERN</ADDRESS>
+</BODY>
+]]></listing>
+
+<h2>Image
+
+<![CDATA[
+<IMG>	Level 0
+]]>
+
+<p>The Image element is used to incorporate in-line graphics
+(typically icons or small graphics) into an HTML document. This
+element cannot be used for embedding other HTML text.
+
+<p>HTML interpreters that cannot render in-line images ignore the
+Image element unless it contains the ALT attribute. Note that some
+HTML interpreters can render linked graphics but not in-line
+graphics. If a graphic is essential, you may want to create a link to
+it rather than to put it in-line. If the graphic is not essential,
+then the Image element is appropriate.
+
+<p>The Image element, which is empty (no closing tag), has these attributes:
+
+<tl>
+<tli>ALIGN: The ALIGN attribute accepts the values TOP or MIDDLE or
+BOTTOM, which specifies if the following line of text is aligned with
+the top, middle, or bottom of the graphic.
+
+<tli>ALT:
+
+Optional text as an alternative to the graphic for rendering in
+non-graphical environments.  Alternate text should be provided
+whenever the graphic is not rendered. Alternate text is mandatory for
+Level 0 documents. Example of use:
+
+<listing><![CDATA[
+<IMG SRC="triangle.xbm" ALT="Warning:"> Be sure 
+to read these instructions.
+]]></listing>
+
+<tli>ISMAP:
+
+The ISMAP (is map) attribute identifies an image as an image
+map. Image maps are graphics in which certain regions are mapped to
+URLs. By clicking on different regions, different resources can be
+accessed from the same graphic. Example of use:
+
+<listing><![CDATA[
+<A HREF="http://machine/htbin/imagemap/sample">
+<IMG SRC="sample.xbm" ISMAP>
+</A>
+]]></listing>
+
+<tli>SRC:
+
+The value of the SRC attribute is the URL of the document to be
+embedded; only images can be embedded, not HTML text. Its syntax is
+the same as that of the HREF attribute of the <code>&lt;A></> tag. SRC is
+mandatory. Image elements are allowed within anchors.
+</tl>
+
+<p>Example of use:
+
+<listing><![CDATA[
+<IMG SRC="triangle.xbm">Be sure to read these 
+instructions.
+]]></listing>
+
+<h1>Character Format Elements
+
+<p>Character format elements are used to specify either the logical
+meaning or the physical appearance of marked text without causing a
+paragraph break. Like most other elements, character format elements
+include both opening and closing tags. Only the characters between the
+tags are affected:
+
+<listing><![CDATA[
+This is <EM>emphasized</EM> text.
+]]></listing>
+
+<p>Character format tags may be ignored by minimal HTML applications.
+
+<p>Character format tags are interpreted from left to right as they
+appear in the flow of text.  Level&nbsp;1 interpreters must render
+highlighted text distinctly from plain text. Additionally, EM content
+must be rendered as distinct from STRONG content, and B content must
+rendered as distinct from I content.
+
+<p>Character format elements may be nested within the content of other
+character format elements; however, HTML interpreters are not required
+to render nested character format elements distinctly from non-nested
+elements:
+
+<listing><![CDATA[
+plain <B>bold <I>italic</I></B> may the rendered 
+the same as plain <B>bold </B><I>italic</I>
+]]></listing>
+
+<h2>Semantic Format Elements
+
+<p>Note that typical renderings for semantic format elements vary
+between applications. If a specific rendering is necessary - for
+example, when referring to a specific text attribute as in "The italic
+parts are mandatory" - a physical formating element can be used to
+ensure that the intended rendered is used where possible.
+
+<p>Note that different sematic elements may be rendered in the same way.
+
+<h3>Citation
+
+<![CDATA[
+<CITE>...</CITE>	Level 1
+]]>
+
+<p>The Citation element specifies a citation, typically rendered as italics.
+
+<h3>Code
+
+<![CDATA[
+<CODE> ... </CODE>	Level 1
+]]>
+
+<p>The Code element indicates an example of code, typically rendered
+in a monospaced font.  This should not be confused with the
+Preformatted Text element.
+
+<h3>Emphasis
+
+<![CDATA[
+<EM> ... </EM>	Level 1
+]]>
+
+<p>The Emphasis element indicates typographic emphasis, typically
+rendered as italics.
+
+<h3>Keyboard
+
+<![CDATA[
+<KBD> ... </KBD>	Level 1
+]]>
+
+<p>The Keyboard element indicates text typed by a user, typically
+rendered in a monospaced font. This is commonly used in instruction
+manuals.
+
+<h3>Sample
+
+<![CDATA[
+<SAMP> ... </SAMP>	Level 1
+]]>
+
+<p>The Sample element indicates a sequence of literal characters, typically rendered in a 
+monospaced font.
+
+<h3>Strong
+
+<![CDATA[
+<STRONG> ... </STRONG>	Level 1
+]]>
+
+<p>The Strong element indicates strong typographic emphasis, typically rendered in bold.
+
+<h3>Variable
+
+<![CDATA[
+<VAR> ... </VAR>	Level 1
+]]>
+
+<p>The Variable element indicates a variable name, typically rendered as italic.
+
+<h2>Physical Format Elements
+
+<p>Physical format elements are used to specify the format of marked text.
+
+<h3>Bold
+
+<![CDATA[
+<B> ... </B>	Level 1
+]]>
+
+<p>The Bold element specifies that the text should be rendered in boldface, where available. 
+Otherwise, an alternative mapping is allowed.
+
+<h3>Italic
+
+<![CDATA[
+<I> ... </I>	Level 1
+]]>
+
+<p>The Italic element specifies that the text should be rendered in an italic font, where 
+available. Otherwise, an alternative mapping is allowed.
+
+<h3>Teletype
+
+<![CDATA[
+<TT> ... </TT>	Level 1
+]]>
+
+<p>The Teletype element specifies that the text should be rendered in a fixed-width typewriter 
+font.
+

@@ -1,0 +1,79 @@
+><h1>Document Structure Elements
+
+<p>To identify information as an HTML document conforming to this
+specification, each document should start with the prologue:
+
+<listing><![CDATA[
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+]]></listing>
+
+<NOTE>If the body of a text/html body part does not begin with a
+document type declaration, an HTML user agent should infer the above
+document type declaration.
+</note>
+
+<p>HTML documents should also contain an &lt;HTML> tag at the beginning
+(immediately after the prologue) and an &lt;/HTML> tag at the end of the
+file. Within those tags, an HTML document is organized as a head and a
+body, much like a memo or a mail message. Within the head, you can
+specify the title and other information about the document. Within the
+body, you can structure text into paragraphs and lists, as well as
+highlight phrases and create links, using HTML elements.
+
+<NOTE>Technically, the start and end tags for HTML, Head, and Body
+elements are omissible; however, this is not recommended since the
+head/body structure allows an implementation to determine certain
+properties of a document, such as the title, without parsing the
+entire document.
+</note>
+
+<h2>HTML Identifier
+
+<![CDATA[
+<HTML> ... </HTML>	Level 0
+]]>
+
+<p>The HTML identifier defines the document as containing HTML
+elements. It contains only the Head and Body elements.
+
+<h2>Head
+
+<![CDATA[
+<HEAD> ... </HEAD>	Level 0
+]]>
+
+<p>The head of an HTML document is an unordered collection of
+information about the document. It requires the Title element between
+&lt;HEAD> and &lt;/HEAD> tags:
+
+<listing><![CDATA[
+<HEAD>
+<TITLE>Introduction to HTML</TITLE>
+</HEAD>
+]]></listing>
+
+<h2>Body
+
+<![CDATA[
+<BODY> ... </BODY>	Level 0
+]]>
+
+<p>The Body element identifies the body component of an HTML
+document. Specifically, the body of a document may contain links,
+text, and formatting information within &lt;BODY> and &lt;/BODY> tags.
+
+&head-elts;
+
+&doc-charset;
+
+&phrase;
+
+&hyperlink;
+
+&blocks;
+
+&headings;
+
+&lists;
+
+&forms;

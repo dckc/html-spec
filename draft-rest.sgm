@@ -1,0 +1,1427 @@
+<h1>HTML as an Application of SGML
+
+<p>HTML is an application of ISO Standard 8879:1986 - Standard
+Generalized Markup Language (SGML)<liref id=SGML>. SGML is a system for
+defining structured document types and markup languages to represent
+instances of those document types. The SGML declaration for HTML and
+the HTML document type definitions (DTDs) are provided in Section 12.
+
+<sect1>SGML Documents
+
+<p>Every SGML document has three parts:
+
+tag/SGML declaration
+
+/Binds SGML processing quantities and syntax token names to specific values. For 
+example, the SGML declaration in the HTML DTD specifies that the string that opens an 
+end tag is "</" and the maximum length of a name is 72 characters.
+
+tag/Prologue
+
+/Includes one or more document type declarations, which specify the element types, 
+element relationships and attributes.
+
+tag/Instance
+
+/Contains the data and markup of the document.
+
+<p>The term "HTML" refers to both the document type and the markup language for 
+representing instances of that document type.
+
+<sect1>SGML Syntax
+
+<p>An HTML document instance is a text file in which some of the characters are markup. 
+Markup (tags) define the structure of the document.
+
+<sect2>Elements
+
+<p>Tags define the start and end of headings, paragraphs, lists, character highlighting and 
+links. Most HTML elements are identified in a document as a start tag, which gives the element 
+name and attributes, followed by the content, followed by the end tag. Start tags are delimited 
+by "<" and ">"; end tags are delimited by "</" and ">". An example is:
+
+<tscreen><verb><H1>This is a Heading</H1>
+
+<p>Some elements only have a start tag without an end tag. For example, to create a line break, 
+you use the <BR> tag. Additionally, the end tags of some other elements, such as Paragraph 
+(<P>), List Item (<LI>), Definition Term (<DT>), and Definition Description (<DD>) 
+elements, may be omitted.
+
+<p>The content of an element is a sequence of characters and nested elements. Some elements, 
+such as anchors, cannot be nested. Anchors and character highlighting may be put inside other 
+constructs.
+
+<NOTE>The SGML declaration for HTML specifies SHORTTAG YES, which means 
+that there are other valid syntaxes for tags, such as NET tags, "<EM/.../"; empty start 
+tags, "<>"; and empty end tags, "</>". Until support for these idioms is widely 
+deployed, their use is strongly discouraged.
+
+<sect2>Names
+
+<p>A name consists of a letter followed by up to 71 letters, digits, periods, or hyphens. Element 
+names are not case sensitive, but entity names are. For example, <BLOCKQUOTE>, 
+<BlockQuote>, and <blockquote> are equivalent, whereas &amp; is different from &AMP;.
+
+<p>In a start tag, the element name must immediately follow the tag open delimiter "<".
+
+<sect2>Attributes
+
+<p>In a start tag, white space and attributes are allowed between the element name and the 
+closing delimiter. An attribute typically consists of an attribute name, an equal sign, and a value 
+(although some attributes may be just a value). White space is allowed around the equal sign.
+
+<p>The value of the attribute may be either:
+
+<item>A string literal, delimited by single quotes or double quotes and not containing any 
+occurrences of the delimiting character.
+
+<item>A name token (a sequence of letters, digits, periods, or hyphens)
+
+<p>In this example, A is the element name, HREF is the attribute name, and 
+http://host/dir/file.html is the attribute value:
+
+<tscreen><verb><A HREF="http://host/dir/file.html">
+
+<NOTE>Some non-SGML implementations consider any occurrence of the ">" 
+character to signal the end of a tag. For compatibility with such implementations, 
+when ">" appears in an attribute value, it should be represented with a character 
+entity reference, such as in: <IMG SRC="eq1.jpg" alt="a &#62; b">
+
+<p>To put quotes inside of quotes, the character entity &quot; may be used, as in:
+
+<tscreen><verb><IMG SRC="image.jpg" alt="First &quot;real&quot; 
+example">
+
+<p>The length of an attribute value is limited to 1024 characters after replacing any character 
+entity references.
+
+<NOTE>Some non-SGML implementations allow any character except space or ">" 
+in a name token. Attributes values must be quoted only if they don't satisfy the syntax 
+for a name token.
+
+<p>Attributes with a declared value of NAME, such as ISMAP and COMPACT, may be 
+written using a minimized syntax. The markup:
+
+<tscreen><verb><UL COMPACT="compact">
+
+<p>can be written using a minimized syntax:
+
+<tscreen><verb><UL COMPACT>
+
+<NOTE>Some non-SGML implementations only understand the minimized syntax.
+
+<sect2>Entity References
+
+<p>SGML uses entity references, indicated by an ampersand (&) and immediately followed 
+by a name and terminated by a semicolon (;), to represent a named substitution of data (the 
+entity). HTML 2.0 only uses entity references to represent peculiar and special characters. The 
+reference can be used in place of a character when the character itself would be misinterpreted 
+as markup. The entity sets defined for use by HTML 2.0 documents are listed in Section 13.
+
+<p>The HTML DTD includes a character entity for each of the SGML markup characters, such 
+that one may reference them by name if it is inconvenient to enter them directly:
+
+GLYPH	NAMED	OCTET	CHARACTER NAME
+
+\x11\x11&	&amp;	&#38;	Ampersand	
+
+\x11\x11"	&quot;	&#34;	Quotation mark	
+
+\x11\x11<	&lt;	&#60;	Less than
+
+\x11\x11>	&gt;	&#62;	Greater than
+
+
+
+<p>To ensure that a sequence of data characters is not interpreted as markup, all occurrences 
+of "<", ">", and "&" must be replaced by their character entity references.
+
+<NOTE>There are SGML features, CDATA and RCDATA, to allow most "<", ">", 
+and "&" characters to be entered without the use of entity references. Because these 
+features tend to be used and implemented inconsistently, and because they require 
+8-bit characters to represent non-ASCII characters, they are not used in this version 
+of the HTML DTD.
+
+<sect2>Comments
+
+<p>To include comments in an HTML document that will be ignored by the interpreter, 
+surround them with "<!--" and "-->". After the comment delimiter, all text up to the next 
+occurrence of "-->" is ignored. Hence comments cannot be nested. White space is allowed 
+between the closing "--" and ">", but not between the opening "<!" and "--".
+
+<p>For example:
+
+<tscreen><verb><HEAD>
+<TITLE>HTML Guide: Recommended Usage</TITLE>
+<!-- $Id$ -->
+</HEAD>
+
+<NOTE>Some historical HTML interpreters incorrectly consider any ">" character 
+to be the termination of a comment.
+
+<sect1>Example HTML Document
+
+<tscreen><verb><!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<!-- Here's a good place to put a comment. -->
+<HEAD>
+<TITLE>Structural Example</TITLE>
+</HEAD><BODY>
+<H1>First Header</H1>
+<P>This is a paragraph in the example HTML file. Keep in mind 
+that the title does not appear in the document text, but that 
+the header (defined by H1) does.</P>
+<OL>
+<LI>First item in an ordered list.
+<LI>Second item in an ordered list.
+\x11\x11<UL COMPACT>
+\x11\x11<LI> Note that lists can be nested;
+\x11\x11<LI> Whitespace may be used to assist in reading the 
+\x11\x11\x11\x11\x11\x11\x11HTML source.
+\x11\x11</UL>
+<LI>Third item in an ordered list.
+</OL>
+
+<P>This is an additional paragraph. Technically, end tags are 
+not required for paragraphs, although they are allowed. You can 
+include character highlighting in a paragraph. <EM>This sentence 
+of the paragraph is emphasized.</EM> Note that the &lt;/P&gt; 
+end tag has been omitted.
+<P>
+<IMG SRC ="triangle.xbm" alt="Warning:">
+Be sure to read these <b>bold instructions</b>.
+</BODY></HTML>
+
+<sect>HTML as an Internet Media Type
+
+<sect1>text/html media type
+
+<p>This specification defines the Internet  Media Type\x11[7] (formerly referred to as the MIME 
+Content Type\x11[4]) called  "text/html". The following is to be registered with IANA\x11[8].
+
+Media Type name:		text
+
+Media subtype name:		html
+
+Required parameters:		none
+
+Optional parameters:		level, version, charset
+
+Encoding considerations:		any encoding is allowed
+
+Security considerations:		[Section 14]
+
+
+
+<p>The optional parameters are defined as follows:
+
+tag/Level
+
+/The level parameter specifies the feature set used in the document. The level is an integer 
+number, implying that any features of same or lower level may be present in the document. 
+Levels 0, 1 and 2 are defined by this specification. Level 2 is the default.
+
+tag/Version
+
+/To help avoid future compatibility problems, the version parameter may be used to give 
+the version number of the specification to which the document conforms. The version 
+number appears at the front of this document and within the public identifier of the HTML 
+DTD. This specification defines version 2.0.
+
+tag/Charset
+
+/The charset parameter (as defined in section 7.1.1 of RFC 1521\x11[4]) may be given to 
+specify the encoding used to represent the HTML document as a sequence of octets.
+
+<sect1>Character Set Issues
+
+<p>An HTML interpreter must accept a stream of characters as input, and assign them to 
+character classes used for markup recognition purposes. HTML 2.0 markup requires only the 
+characters found in the US-ASCII character set\x11[10]. All US-ASCII characters with no markup 
+role, and all non-US-ASCII characters, should be treated as data. Such categorization should 
+take place after decoding the data stream (i.e., not at the characer set encoding level, but rather 
+at the character set level).
+
+<p>Normally, text/* media types specify a default value of US-ASCII for the charset 
+parameter. However, for text/html, if the byte stream contains data that is not in the 7-bit US-
+ASCII set, the interpreter should assume a default charset of ISO-8859-1. Even if an HTML 
+document is limited to a US-ASCII encoding, the mechanisms of character entity references 
+(Section 6.3) can be used to encode the characters from ISO-8859-1.
+
+<p>Other values for the charset parameter may be defined by the transport mechanism (e.g., 
+MIME and HTTP), but are not defined by this specification. Since the SGML declaration for 
+HTML (supplied in Section 12.3) is only applicable to ISO-8859-1 and its subsets, a charset 
+parameter that specifies a different character set must also imply a different SGML declaration. 
+Therefore, user agents may use the charset parameter value to select a different declaration, 
+even though the mechanism for doing so is not defined by this specification. The intent, 
+however, is that such a declaration be as identical as possible to that of Section 12.3, the only 
+differences being those required to support the announced charset.
+
+<p>When the above conflicts with the SGML standard, the SGML standard may be ignored. 
+Note, however, that not all HTML applications are capable of ignoring the SGML standard.
+
+<sect1>Undefined Tag and Attribute Names
+
+<p>An accepted networking principle is to be conservative in what one produces, and liberal 
+in what one accepts. HTML user agents should be liberal except when validating code; user 
+agents are encouraged to provide an option for validation of what they render, such that users 
+may be notified of an invalid construct when such notification is desirable. HTML generators 
+should generate strictly conforming HTML. 
+
+<p>HTML user agents reading "text/html" documents and discovering tag or attribute names 
+which they do not understand should behave as though the offending tags or attribute names do 
+not exist. Any unknown start tag (including its entire attribute specification list) or end tag 
+should be ignored; any content between matching unknown start and end tags should be treated 
+as normal (i.e., as if those tags did not occur in the character stream). The entire attribute 
+specification of an unknown attribute (i.e., the unknown attribute and its value, if any) should 
+be ignored.
+
+<sect>Document Structure Elements
+
+<p>To identify information as an HTML document conforming to this specification, each 
+document should start with the prologue:
+
+<tscreen><verb><!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+<NOTE>If the body of a text/html body part does not begin with a document type 
+declaration, an HTML user agent should infer the above document type declaration.
+
+<p>HTML documents should also contain an <HTML> tag at the beginning (immediately 
+after the prologue) and an </HTML> tag at the end of the file. Within those tags, an HTML 
+document is organized as a head and a body, much like a memo or a mail message. Within the 
+head, you can specify the title and other information about the document. Within the body, you 
+can structure text into paragraphs and lists, as well as highlight phrases and create links, using 
+HTML elements.
+
+<NOTE>Technically, the start and end tags for HTML, Head, and Body elements are 
+omissible; however, this is not recommended since the head/body structure allows an 
+implementation to determine certain properties of a document, such as the title, 
+without parsing the entire document.
+
+<sect1>HTML Identifier
+
+<HTML> ... </HTML>	Level 0
+
+<p>The HTML identifier defines the document as containing HTML elements. It contains only 
+the Head and Body elements.
+
+<sect1>Head
+
+<HEAD> ... </HEAD>	Level 0
+
+<p>The head of an HTML document is an unordered collection of information about the 
+document. It requires the Title element between <HEAD> and </HEAD> tags:
+
+<tscreen><verb><HEAD>
+<TITLE>Introduction to HTML</TITLE>
+</HEAD>
+
+<sect1>Body
+
+<BODY> ... </BODY>	Level 0
+
+<p>The Body element identifies the body component of an HTML document. Specifically, the 
+body of a document may contain links, text, and formatting information within <BODY> and 
+</BODY> tags.
+
+<sect>Document Metainformation Elements
+
+<sect1>Title
+
+<TITLE> ... </TITLE>	Level 0
+
+<p>Every HTML document must contain a Title element. The title should identify the contents 
+of the document in a global context, and may be used in history lists and as a label for the 
+window displaying the document. Unlike headings, titles are not rendered in the text of a 
+document itself.
+
+<p>The Title element must occur within the head of the document, and must not contain 
+anchors, paragraph tags, or highlighting. Only one title is allowed in a document.
+
+<NOTE>The length of a title is not limited; however, long titles may be truncated in 
+some applications. To minimize this possibility, titles should be fewer than 64 
+characters. Also keep in mind that a short title, such as Introduction, may be 
+meaningless out of context. An example of a meaningful title might be "Introduction 
+to HTML Elements."
+
+<sect1>Base
+
+<BASE>	Level 0
+
+<p>The Base element allows the URL\x11[2] of the document itself to be recorded in situations in 
+which the document may be read out of context. URLs within the document may be in a 
+"partial" form relative to this base address\x11[5].
+
+<p>The Base element has one attribute, HREF, which identifies the absolute base URL.
+
+<sect1>Isindex
+
+<ISINDEX>	Level 0
+
+<p>The Isindex element tells the interpreter that the document is an index. This means that the 
+reader may request a keyword search on the resource by adding a question mark to the end of 
+the document address, followed by a list of keywords separated by plus signs.
+
+<p>The Isindex element is usually generated by the network server from which the document 
+was obtained via a URI. The server must have a search engine that supports this feature for the 
+resource. If the document URI is unknown to the interpreter, <isindex> must be ignored.
+
+<sect1>Link
+
+<LINK>	Level 0
+
+<p>The Link element indicates a relationship between the document and some other object. A 
+document may have any number of Link elements.
+
+<p>The Link element is empty (does not have a closing tag), but takes the same attributes as 
+the Anchor element.
+
+<p>Typical uses are to indicate authorship, related indexes and glossaries, older or more recent 
+versions, etc. Links can indicate a static tree structure in which the document was authored by 
+pointing to a "parent" and "next" and "previous" document, for example.
+
+<p>Servers may also allow links to be added by those who do not have the right to alter the 
+body of a document.
+
+<sect1>Meta
+
+<META>	Level 0
+
+<p>The META element is used within the HEAD element to embed document 
+metainformation not defined by other HTML elements. META elements can be extracted by 
+servers and/or clients for use in identifying, indexing, and cataloging specialized document 
+metainformation.
+
+<p>Although it is generally preferable to use named elements which have well-defined 
+semantics for each type of metainformation (e.g. TITLE), the META element is provided for 
+situations where strict SGML parsing is necessary and the local DTD is not extensible. HTML 
+interpreters may use the META element's content if they recognize and understand the 
+semantics identified by the NAME or HTTP-EQUIV attributes, and may treat the content as 
+metainformation (and not render it) even when they do not recognize the name.
+
+<p>In addition, HTTP servers may wish to read the content of the document HEAD to generate 
+header fields corresponding to any elements defining a value for the attribute HTTP-EQUIV. 
+Note, however, that the method by which the server extracts document metainformation is not 
+part of this specification, nor can it be assumed by authors that any given server will be capable 
+of extracting it. The META element only provides an extensible mechanism for identifying and 
+embedding document metainformation - how it may be used is up to the individual server 
+implementation and the HTML interpreter.
+
+<p>Attributes of the META element:
+
+tag/HTTP-EQUIV
+
+/This attribute binds the element to an HTTP header field. It means that if you know the 
+semantics of the HTTP header field named by this attribute, then you can process the 
+contents based on a well-defined syntactic mapping, whether or not your DTD tells you 
+anything about it. HTTP header field names are not case sensitive. If not present, the 
+attribute NAME should be used to identify this metainformation and the content should not 
+be used within an HTTP response header.
+
+tag/NAME
+
+/Metainformation name. If the NAME attribute is not present, the name can be assumed to 
+be equal to the value of HTTP-EQUIV.
+
+tag/CONTENT
+
+/The metainformation content to be associated with the given name. If multiple META 
+elements are provided with the same name, their combined contents-concatenated as a 
+comma-separated list-is the value associated with that name.
+
+<p>Examples
+
+<p>If the document contains:
+
+<tscreen><verb><META HTTP-EQUIV="Expires"
+\x11\x11\x11\x11\x11\x11CONTENT="Tue, 04 Dec 1993 21:29:02 GMT">
+<meta http-equiv="Keywords" CONTENT="Fred, Barney">
+<META HTTP-EQUIV="Reply-to"
+\x11\x11\x11\x11\x11\x11content="fielding@ics.uci.edu (Roy Fielding)">
+
+<p>then the server (if so configured) may include the following headers:
+
+<tscreen><verb>Expires: Tue, 04 Dec 1993 21:29:02 GMT
+Keywords: Fred, Barney
+Reply-to: fielding@ics.uci.edu (Roy Fielding)
+
+<p>as part of the HTTP response to a GET or HEAD request for that document.
+
+<p>When the HTTP-EQUIV attribute is not present, the server should not generate an HTTP 
+response header for the metainformation; e.g.,
+
+<tscreen><verb><META NAME="IndexType" CONTENT="Service">
+
+<p>would never generate an HTTP response header, but would still allow HTML interpreters 
+to identify and make use of that metainformation.
+
+<p>The Meta element should never be used to define information that should be associated 
+with an existing HTML element. An example of an inappropriate use of the Meta element is:
+
+<tscreen><verb><META NAME="Title" CONTENT="The Etymology of 
+Dunsel">
+
+<p>Do not name an HTTP-EQUIV equal to a response header that should normally only be 
+generated by the HTTP server. Example names that are inappropriate include "Server", "Date", 
+and "Last-modified" - the exact list of inappropriate names is dependent on the particular 
+server implementation. We recommend that servers ignore any META elements which specify 
+HTTP-equivalents which are equal (case-insensitively) to their own reserved response headers.
+
+<sect1>Nextid
+
+<NEXTID>	Level 0
+
+<p>The Nextid element is a parameter read and generated by text editing software to create 
+unique identifiers. This tag takes a single attribute which is the next document-wide alpha-
+numeric identifier to be allocated of the form z123:
+
+<tscreen><verb><NEXTID N=Z27>
+
+<p>When modifying a document, existing anchor identifiers should not be reused, as these 
+identifiers may be referenced by other documents. Human writers of HTML usually use 
+mnemonic alphabetical identifiers.
+
+<p>HTML interpreters may ignore the Nextid element. Support for the Nextid element does 
+not impact HTML interpreters in any way.
+
+<sect>Data Characters
+
+<p>The characters between HTML tags represent text. An HTML document (including tags 
+and text) is encoded using the coded character set specified by the "charset" parameter of the 
+"text/html" media type.  For levels defined in this specification, the "charset" parameter is 
+restricted to US-ASCII\x11[10] or ISO-8859-1\x11[11]. ISO-8859-1 encodes a set of characters 
+known as Latin Alphabet No. 1, or simply Latin-1.  Latin-1 includes characters from most 
+Western European languages, as well as a number of control characters.  Latin-1 also includes 
+a non-breaking space, a soft hyphen indicator, 93 graphical characters, 8 unassigned characters, 
+and 25 control characters.
+
+<p>Use the non-breaking space and soft hyphen indicator characters is discouraged because 
+they are not recognized and interpreted by all HTML interpreters.
+
+<p>Because certain characters will be interpreted as markup, they must be represented by 
+entity references. HTML provides character entity references to facilitate the entry and 
+interpretation of characters by name or by numerical position (octet).
+
+<sect1>Special Characters
+
+<p>Certain data characters have special meaning in HTML documents. There are two printing 
+characters which may be interpreted by an HTML application to have an effect of the format 
+of the text:
+
+<p>Space
+
+<item>Interpreted as a word space (place where a line can be broken) in all contexts 
+except the Preformatted Text element.
+
+<item>Interpreted as a nonbreaking space within the Preformatted Text element.
+
+<p>Hyphen
+
+<item>Iterpreted as a hyphen glyph in all contexts
+
+<item>Interpreted as a potential word space by hyphenation engine
+
+<sect1>Control Characters
+
+<p>Control characters are non-printable characters that are typically used for communication 
+and device control, as format effectors, and as information separators. There are 58 character 
+positions occupied by control characters.
+
+<p>In SGML applications, the use of control characters is limited in order to maximize the 
+chance of successful interchange over heterogenous networks and operating systems. In 
+HTML, only three control characters are used: Horizontal Tab (HT, encoded as 9 decimal in 
+US-ASCII and ISO-8859-1), Carriage Return, and Line Feed.
+
+<p>Horizontal Tab is interpreted as a word space in all contexts except preformatted text. 
+Within preformatted text, the tab should be interpreted to shift the horizontal column position 
+to the next position which is a multiple of 8 on the same line; that is, col := (col+8) mod 8.
+
+<p>Carriage Return and Line Feed are conventionally used to represent end of line. For 
+Internet Media Types defined as "text/*", the sequence CR LF is used to represent an end of 
+line. In practice, text/html documents are frequently represented and transmitted using an end 
+of line convention that depends on the conventions of the source of the document; frequently, 
+that representation consists of CR only, LF only, or CR LF combination. In HTML, end of line 
+in any of its variations is interpreted as a word space in all contexts except preformatted text. 
+Within preformatted text, HTML interpreters should expect to treat any of the three common 
+representations of end-of-line as starting a new line.
+
+<sect1>Character Entities
+
+<p>Two reasons for using a character entity reference:
+
+<item>the keyboard does not provide a key for the character, such as on U.S. keyboards 
+which do not provide European characters
+
+<item>the character may be interpreted as SGML coding, such as the ampersand (&), 
+double quotes ("), the lesser (<) and greater (>) characters
+
+<p>A character entity is represented in an HTML document as an SGML entity whose name 
+is defined in the HTML DTD. 
+
+<sect2>Character Name References
+
+<p>Most of the Latin alphabet No. 1 set of printing characters may be represented within the 
+text of an HTML document by a character entity. See Section 13.1 for a list of the characters, 
+names, input syntax, and descriptions for numeric and special graphic characters. See Section 
+13.2 for the SGML entity definitions of "Added Latin 1 for HTML".
+
+<tscreen><verb>Kurt G&ouml;del was a famous logician and 
+mathematician.
+
+<sect2>Character Octet References
+
+<p>It is possible to explicitly reference the printing characters of the ISO-8859-1 character 
+encoding using a character octet reference. See Section 13.3 for a list of the characters, their 
+names and input syntax.
+
+<p>Character octet references are represented in an HTML document as SGML entities whose 
+name is number sign (#) followed by a numeral from 32-126 and 161-255. The HTML DTD 
+includes a numeric character for each of the printing characters of the ISO-8859-1 encoding, 
+so that one may reference them by number if it is inconvenient to enter them directly.
+
+<p>The character octet references are not dependent on the character set encoding of the 
+document. For example, "&#215;" always represents the ISO-8859-1 multiply sign, even when 
+the document's declared character set is other than ISO-8859-1.
+
+<sect>Data Elements
+
+<sect1>Line Break
+
+<BR>	Level 0
+
+<p>The Line Break element specifies that a new line must be started at the given point. A new 
+line indents the same as that of line-wrapped text.
+
+<p>Example of use:
+
+<tscreen><verb><P> Pease porridge hot<BR>
+Pease porridge cold<BR>
+Pease porridge in the pot<BR>
+Nine days old.
+
+<sect1>Horizontal Rule
+
+<HR>	Level 0
+
+<p>A Horizontal Rule element is a divider between sections of text such as a full width 
+horizontal rule or equivalent graphic.
+
+<p>Example of use:
+
+<tscreen><verb><HR>
+<ADDRESS>February 8, 1995, CERN</ADDRESS>
+</BODY>
+
+<sect1>Image
+
+<IMG>	Level 0
+
+<p>The Image element is used to incorporate in-line graphics (typically icons or small 
+graphics) into an HTML document. This element cannot be used for embedding other HTML 
+text.
+
+<p>HTML interpreters that cannot render in-line images ignore the Image element unless it 
+contains the ALT attribute. Note that some HTML interpreters can render linked graphics but 
+not in-line graphics. If a graphic is essential, you may want to create a link to it rather than to 
+put it in-line. If the graphic is not essential, then the Image element is appropriate.
+
+<p>The Image element, which is empty (no closing tag), has these attributes:
+
+tag/ALIGN
+
+/The ALIGN attribute accepts the values TOP or MIDDLE or BOTTOM, which specifies 
+if the following line of text is aligned with the top, middle, or bottom of the graphic.
+
+tag/ALT
+
+/Optional text as an alternative to the graphic for rendering in non-graphical environments. 
+Alternate text should be provided whenever the graphic is not rendered. Alternate text is 
+mandatory for Level 0 documents. Example of use:
+
+<tscreen><verb><IMG SRC="triangle.xbm" ALT="Warning:"> Be sure 
+to read these instructions.
+
+tag/ISMAP
+
+/The ISMAP (is map) attribute identifies an image as an image map. Image maps are 
+graphics in which certain regions are mapped to URLs. By clicking on different regions, 
+different resources can be accessed from the same graphic. Example of use:
+
+<tscreen><verb><A HREF="http://machine/htbin/imagemap/sample">
+<IMG SRC="sample.xbm" ISMAP>
+</A>
+
+tag/SRC
+
+/The value of the SRC attribute is the URL of the document to be embedded; only images 
+can be embedded, not HTML text. Its syntax is the same as that of the HREF attribute of 
+the <A> tag. SRC is mandatory. Image elements are allowed within anchors.
+
+<p>Example of use:
+
+<tscreen><verb><IMG SRC="triangle.xbm">Be sure to read these 
+instructions.
+
+<sect>Character Format Elements
+
+<p>Character format elements are used to specify either the logical meaning or the physical 
+appearance of marked text without causing a paragraph break. Like most other elements, 
+character format elements include both opening and closing tags. Only the characters between 
+the tags are affected:
+
+<tscreen><verb>This is <EM>emphasized</EM> text.
+
+<p>Character format tags may be ignored by minimal HTML applications.
+
+<p>Character format tags are interpreted from left to right as they appear in the flow of text. 
+Level\x111 interpreters must render highlighted text distinctly from plain text. Additionally, EM 
+content must be rendered as distinct from STRONG content, and B content must rendered as 
+distinct from I content.
+
+<p>Character format elements may be nested within the content of other character format 
+elements; however, HTML interpreters are not required to render nested character format 
+elements distinctly from non-nested elements:
+
+<tscreen><verb>plain <B>bold <I>italic</I></B> may the rendered 
+the same as plain <B>bold </B><I>italic</I>
+
+<sect1>Semantic Format Elements
+
+<p>Note that typical renderings for semantic format elements vary between applications. If a 
+specific rendering is necessary - for example, when referring to a specific text attribute as in 
+"The italic parts are mandatory" - a physical formating element can be used to ensure that the 
+intended rendered is used where possible.
+
+<p>Note that different sematic elements may be rendered in the same way.
+
+<sect2>Citation
+
+<CITE>...</CITE>	Level 1
+
+<p>The Citation element specifies a citation, typically rendered as italics.
+
+<sect2>Code
+
+<CODE> ... </CODE>	Level 1
+
+<p>The Code element indicates an example of code, typically rendered in a monospaced font. 
+This should not be confused with the Preformatted Text element.
+
+<sect2>Emphasis
+
+<EM> ... </EM>	Level 1
+
+<p>The Emphasis element indicates typographic emphasis, typically rendered as italics.
+
+<sect2>Keyboard
+
+<KBD> ... </KBD>	Level 1
+
+<p>The Keyboard element indicates text typed by a user, typically rendered in a monospaced 
+font. This is commonly used in instruction manuals.
+
+<sect2>Sample
+
+<SAMP> ... </SAMP>	Level 1
+
+<p>The Sample element indicates a sequence of literal characters, typically rendered in a 
+monospaced font.
+
+<sect2>Strong
+
+<STRONG> ... </STRONG>	Level 1
+
+<p>The Strong element indicates strong typographic emphasis, typically rendered in bold.
+
+<sect2>Variable
+
+<VAR> ... </VAR>	Level 1
+
+<p>The Variable element indicates a variable name, typically rendered as italic.
+
+<sect1>Physical Format Elements
+
+<p>Physical format elements are used to specify the format of marked text.
+
+<sect2>Bold
+
+<B> ... </B>	Level 1
+
+<p>The Bold element specifies that the text should be rendered in boldface, where available. 
+Otherwise, an alternative mapping is allowed.
+
+<sect2>Italic
+
+<I> ... </I>	Level 1
+
+<p>The Italic element specifies that the text should be rendered in an italic font, where 
+available. Otherwise, an alternative mapping is allowed.
+
+<sect2>Teletype
+
+<TT> ... </TT>	Level 1
+
+<p>The Teletype element specifies that the text should be rendered in a fixed-width typewriter 
+font.
+
+<sect>Hypertext Elements
+
+<sect1>Anchor
+
+<A> ... </A>	Level 0
+
+<p>An anchor is a marked section of text that is the start and/or destination of a hypertext link. 
+Anchor elements are defined by the <A> tag. The <A> tag accepts several attributes; at least 
+one of the NAME and HREF attributes is required.
+
+<p>Attributes of the <A> tag:
+
+<sect2>HREF
+
+<p>If the HREF attribute is present, the text between the opening and closing anchor tags 
+becomes hypertext. If this hypertext is selected by readers, they are moved to another 
+document, or to a different location in the current document, whose network address is defined 
+by the value of the HREF attribute.
+
+<p>Example:
+
+<tscreen><verb>See <A HREF="http://www.hal.com/">HaL</A>'s 
+information for more details.
+
+<p>In this example, selecting "HaL" takes the reader to a document at http://www.hal.com. 
+The format of the network address is specified in the URI specification for print readers.
+
+<p>With the HREF attribute, the form HREF="#identifier" can refer to another anchor in the 
+same document.
+
+<p>Example:
+
+<tscreen><verb>The <A HREF="#glossary">glossary</A> defines 
+terms used in this document.
+
+<p>In this example, selecting "glossary" takes the reader to another anchor (i.e., 
+<A\x11NAME="glossary">Glossary</A>) in the same document. The NAME attribute is 
+described below. If the anchor is in another document, the HREF attribute may be relative to 
+the document's address or the specified base address (see Section 5.2).
+
+<sect2>NAME
+
+<p>If present, the NAME attribute allows the anchor to be the target of a link. The value of the 
+NAME attribute is an identifier for the anchor. Identifiers are arbitrary strings but must be 
+unique within the HTML document.
+
+<p>Example of use:
+
+<tscreen><verb><A NAME="coffee">Coffee</A> is an example of ...
+... An example of this is <A HREF="#coffee">coffee</A>.
+
+<p>Another document can then make a reference explicitly to this anchor by putting the 
+identifier after the address, separated by a hash sign:
+
+<tscreen><verb><A HREF="drinks.html#coffee">
+
+<sect2>TITLE
+
+<p>The TITLE attribute is informational only. If present, the TITLE attribute should provide 
+the title of the document whose address is given by the HREF attribute.  The TITLE attribute 
+is useful for at least two reasons. The HTML interpreter may display the title of the document 
+prior to retrieving it, for example, as a margin note or on a small box while the mouse is over 
+the anchor, or while the document is being loaded. Another reason is that documents that are 
+not marked up text, such as graphics, plain text and Gopher menus, do not have titles. The 
+TITLE attribute can be used to provide a title to such documents. When using the TITLE 
+attribute, the title should be valid and unique for the destination document.
+
+<sect2>REL
+
+<p>The REL attribute gives the relationship(s) described by the hypertext link from the anchor 
+to the target. The value is a whitespace-separated list of relationship names. Relationship 
+names and their semantics will be registered by the W3 Consortium. The default relationship 
+is void. The REL attribute is only used when the HREF attribute is present.
+
+<sect2>REV
+
+<p>The REV attribute is the same as the REL attribute, but the semantics of the link type are 
+in the reverse direction. A link from A to B with REL="X" expresses the same relationship as 
+a link from B to A with REV="X". An anchor may have both REL and REV attributes.
+
+<sect2>URN
+
+<p>If present, the URN attribute specifies a uniform resource name (URN) for a target 
+document. The format of URNs is under discussion (1995) by various working groups of the 
+Internet Engineering Task Force.
+
+<sect2>METHODS
+
+<p>The METHODS attributes of anchors and links provide information about the functions 
+that the user may perform on an object. These are more accurately given by the HTTP protocol 
+when it is used, but it may, for similar reasons as for the TITLE attribute, be useful to include 
+the information in advance in the link. For example, the HTML interpreter may chose a 
+different rendering as a function of the methods allowed; for example, something that is 
+searchable may get a different icon.
+
+<p>The value of the METHODS attribute is a whitespace-separated list of HTTP methods 
+supported by the object for public use.
+
+<sect>Block Structuring Elements
+
+<p>The following elements may be included in the body of an HTML document:
+
+<sect1>Paragraph
+
+<P> ... </P>	Level 0
+
+<p>The Paragraph element indicates a paragraph. The exact indentation, leading space, etc. of 
+a paragraph is not defined and may be a function of other tags, style sheets, etc.
+
+<p>Typically, paragraphs are surrounded by a vertical space of one line or half a line. This is 
+typically not the case within the Address element and is never the case within the Preformatted 
+Text element. With some HTML interpreters, the first line in a paragraph is indented.
+
+<p>Example of use:
+
+<tscreen><verb><H1>This Heading Precedes the Paragraph</H1>
+<P>This is the text of the first paragraph.
+<P>This is the text of the second paragraph. Although you do not 
+need to start paragraphs on new lines, maintaining this 
+convention facilitates document maintenance.</P>
+<P>This is the text of a third paragraph.</P>
+
+<sect1>Preformatted Text
+
+<PRE> ... </PRE>	Level 0
+
+<p>The Preformatted Text element presents blocks of text in fixed-width font, and so is 
+suitable for text that has been formatted on screen.
+
+<p>The <PRE> tag may be used with the optional WIDTH attribute. The WIDTH attribute 
+specifies the maximum number of characters for a line and allows the HTML interpreter to 
+select a suitable font and indentation. If the WIDTH attribute is not present, a width of 80 
+characters is assumed. Where the WIDTH attribute is supported, widths of 40, 80 and 132 
+characters should be presented optimally, with other widths being rounded up.
+
+<p>Within preformatted text:
+
+<item>Line breaks within the text are rendered as a move to the beginning of the next line.
+
+<item>The <P> tag should not be used. If found, it should be rendered as a move to the 
+beginning of the next line.
+
+<item>Anchor elements and character highlighting elements may be used.
+
+<item>Elements that define paragraph formatting (headings, address, etc.) must not be 
+used.
+
+<item>The horizontal tab character (encoded in US-ASCII and ISO-8859-1 as decimal 9) 
+must be interpreted as the smallest positive nonzero number of spaces which will leave 
+the number of characters so far on the line as a multiple of 8. Its use is not recommended 
+however.
+
+<NOTE>References to the "beginning of a new line" do not imply that the renderer 
+is forbidden from using a constant left indent for rendering preformatted text. The left 
+indent may be constrained by the width required.
+
+<p>Example of use:
+
+<tscreen><verb><PRE WIDTH="80">
+This is an example line.
+</PRE>
+
+<NOTE>Within a Preformatted Text element, the constraint that the rendering must 
+be on a fixed horizontal character pitch may limit or prevent the ability of the HTML 
+interpreter to faithfully render character formatting elements.
+
+<sect1>Address
+
+<ADDRESS> ... </ADDRESS>	Level 0
+
+<p>The Address element specifies such information as address, signature and authorship, often 
+at the top or bottom of a document.
+
+<p>Typically, an Address is rendered in an italic typeface and may be indented. The Address 
+element implies a paragraph break before and after.
+
+<p>Example of use:
+
+<tscreen><verb><ADDRESS>
+Newsletter editor<BR>
+J.R. Brown<BR>
+JimquickPost News, Jumquick, CT 01234<BR>
+Tel (123) 456 7890
+</ADDRESS>
+
+<sect1>Blockquote
+
+<BLOCKQUOTE> ... </BLOCKQUOTE>	Level 0
+
+<p>The Blockquote element is used to contain text quoted from another source.
+
+<p>A typical rendering might be a slight extra left and right indent, and/or italic font. The 
+Blockquote element causes a paragraph break, and typically provides space above and below 
+the quote.
+
+<p>Single-font rendition may reflect the quotation style of Internet mail by putting a vertical 
+line of graphic characters, such as the greater than symbol (>), in the left margin.
+
+<p>Example of use:
+
+<tscreen><verb>I think the poem ends
+<BLOCKQUOTE>
+<P>Soft you now, the fair Ophelia. Nymph, in thy orisons, be all 
+my sins remembered.
+</BLOCKQUOTE>
+but I am not sure.
+
+<sect1>Headings
+
+<H1> ... </H1> through <H6> ... </H6>	Level 0
+
+<p>HTML defines six levels of heading. A Heading element implies all the font changes, 
+paragraph breaks before and after, and white space necessary to render the heading.
+
+<p>The highest level of headings is H1, followed by H2 ... H6.
+
+<p>Example of use:
+
+<tscreen><verb><H1>This is a heading</H1>
+Here is some text
+<H2>Second level heading</H2>
+Here is some more text.
+
+<p>The rendering of headings is determined by the HTML interpreter, but typical renderings 
+are:
+
+tag/<H1> ... </H1>
+
+/Bold, very-large font, centered. One or two blank lines above and below.
+
+tag/<H2> ... </H2>
+
+/Bold, large font, flush-left. One or two blank lines above and below.
+
+tag/<H3> ... </H3>
+
+/Italic, large font, slightly indented from the left margin. One or two blank lines above and 
+below.
+
+tag/<H4> ... </H4>
+
+/Bold, normal font, indented more than H3. One blank line above and below.
+
+tag/<H5> ... </H5>
+
+/Italic, normal font, indented as H4. One blank line above.
+
+tag/<H6> ... </H6>
+
+/Bold, indented same as normal text, more than H5. One blank line above.
+
+<p>Although heading levels can be skipped (for example, from H1 to H3), this practice is 
+discouraged as skipping heading levels may produce unpredictable results when generating 
+other representations from HTML.
+
+<sect1>List Elements
+
+<p>HTML supports several types of lists, all of which may be nested.
+
+<sect2>Definition List
+
+<DL> ... </DL>	Level 0
+
+<p>A definition list is a list of terms and corresponding definitions. Definition lists are typically 
+formatted with the term flush-left and the definition, formatted paragraph style, indented after 
+the term.
+
+<p>Example of use:
+
+<tscreen><verb><DL>
+<DT>Term<DD>This is the definition of the first term.
+<DT>Term<DD>This is the definition of the second term.
+</DL>
+
+<p>If the DT term does not fit in the DT column (one third of the display area), it may be 
+extended across the page with the DD section moved to the next line, or it may be wrapped onto 
+successive lines of the left hand column.
+
+<p>Single occurrences of a <DT> tag without a subsequent <DD> tag are allowed, and have 
+the same significance as if the <DD> tag had been present with no text.
+
+<p>The opening list tag must be <DL> and must be immediately followed by the first term 
+(<DT>).
+
+<p>The definition list type can take the COMPACT attribute, which suggests that a compact 
+rendering be used, because the list items are small and/or the entire list is large.
+
+<p>Unless you provide the COMPACT attribute, the HTML interpreter may leave white space 
+between successive DT, DD pairs. The COMPACT attribute may also reduce the width of the 
+left-hand (DT) column.
+
+<p>If using the COMPACT attribute, the opening list tag must be <DL COMPACT>, which 
+must be immediately followed by the first <DT> tag:
+
+<tscreen><verb><DL COMPACT>
+<DT>Term<DD>This is the first definition in compact format.
+<DT>Term<DD>This is the second definition in compact format.
+</DL>
+
+<sect2>Directory List
+
+<DIR> ... </DIR>	Level 0
+
+<p>A Directory List element is used to present a list of items containing up to 20 characters 
+each. Items in a directory list may be arranged in columns, typically 24 characters wide. If the 
+HTML interpreter can optimize the column width as function of the widths of individual 
+elements, so much the better.
+
+<p>A directory list must begin with the <DIR> tag which is immediately followed by a <LI> 
+(list item) tag:
+
+<tscreen><verb><DIR>
+<LI>A-H<LI>I-M
+<LI>M-R<LI>S-Z
+</DIR>
+
+<sect2>Menu List
+
+<MENU> ... </MENU>	Level 0
+
+<p>A menu list is a list of items with typically one line per item. The menu list style is more 
+compact than the style of an unordered list.
+
+<p>A menu list must begin with a <MENU> tag which is immediately followed by a <LI> (list 
+item) tag:
+
+<tscreen><verb><MENU>
+<LI>First item in the list.
+<LI>Second item in the list.
+<LI>Third item in the list.
+</MENU>
+
+<sect2>Ordered List
+
+<OL> ... </OL>	Level 0
+
+<p>The Ordered List element is used to present a numbered list of items, sorted by sequence 
+or order of importance.
+
+<p>An ordered list must begin with the <OL> tag which is immediately followed by a <LI> 
+(list item) tag:
+
+<tscreen><verb><OL>
+<LI>Click the Web button to open the Open the URL window.
+<LI>Enter the URL number in the text field of the Open URL 
+window. The Web document you specified is displayed.
+<LI>Click highlighted text to move from one link to another.
+</OL>
+
+<p>The Ordered List element can take the COMPACT attribute, which suggests that a compact 
+rendering be used.
+
+<sect2>Unordered List
+
+<UL> ... </UL>	Level 0
+
+<p>The Unordered List element is used to present a list of items which is typically separated 
+by white space and/or marked by bullets.
+
+<p>An unordered list must begin with the <UL> tag which is immediately followed by a <LI> 
+(list item) tag:
+
+<tscreen><verb><UL>
+<LI>First list item
+<LI>Second list item
+<LI>Third list item
+</UL>
+
+<sect>Form-based Input Elements
+
+<p>Forms are created by placing input fields within paragraphs, preformatted/literal text, and 
+lists. This gives considerable flexibility in designing the layout of forms.
+
+<p>The following elements are used to create forms:
+
+tag/FORM
+
+/A form within a document.
+
+tag/INPUT
+
+/One input field.
+
+tag/OPTION
+
+/One option within a Select element.
+
+tag/SELECT
+
+/A selection from a finite set of options.
+
+tag/TEXTAREA
+
+/A multi-line input field.
+
+<p>Each variable field is defined by an Input, Textarea, or Option element and must have an 
+NAME attribute to identify its value in the data returned when the form is submitted.
+
+<p>Example of use (a questionnaire form):
+
+<tscreen><verb><H1>Sample Questionnaire</H1>
+<P>Please fill out this questionnaire:
+<FORM METHOD="POST" ACTION="http://www.w3.org/sample">
+<P>Your name: <INPUT NAME="name" size="48">
+<P>Male <INPUT NAME="gender" TYPE=RADIO VALUE="male">
+<P>Female <INPUT NAME="gender" TYPE=RADIO VALUE="female">
+<P>Number in family: <INPUT NAME="family" TYPE=text>
+<P>Cities in which you maintain a residence:
+<UL>
+<LI>Kent <INPUT NAME="city" TYPE=checkbox VALUE="kent">
+<LI>Miami <INPUT NAME="city" TYPE=checkbox VALUE="miami">
+<LI>Other <TEXTAREA NAME="other" cols=48 rows=4></textarea>
+</UL>
+Nickname: <INPUT NAME="nickname" SIZE="42">
+<P>Thank you for responding to this questionnaire.
+<P><INPUT TYPE=SUBMIT> <INPUT TYPE=RESET>
+</FORM>
+
+<p>In the example above, the <P> and <UL> tags have been used to lay out the text and input 
+fields. The HTML interpreter is responsible for handling which field will currently get 
+keyboard input.
+
+<p>Many platforms have existing conventions for forms, for example, using Tab and Shift 
+keys to move the keyboard focus forwards and backwards between fields, and using the Enter 
+key to submit the form. In the example, the SUBMIT and RESET buttons are specified 
+explicitly with special purpose fields. The SUBMIT button is used to e-mail the form or send 
+its contents to the server as specified by the ACTION attribute, while RESET resets the fields 
+to their initial values. When the form consists of a single text field, it may be appropriate to 
+leave such buttons out and rely on the Enter key.
+
+<p>The Input element is used for a large variety of types of input fields.
+
+<p>To let users enter more than one line of text, use the Textarea element.
+
+<p>The radio button and checkbox types of input field can be used to specify multiple choice 
+forms in which every alternative is visible as part of the form. An alternative is to use the Select 
+element which is typically rendered in a more compact fashion as a pull down combo list.
+
+<sect1>Form
+
+<FORM> ... </FORM>	Level 2
+
+<p>The Form element is used to delimit a data input form. There can be several forms in a 
+single document, but the Form element can't be nested.
+
+<p>The ACTION attribute is a URL specifying the location to which the contents of the form 
+is submitted to elicit a response. If the ACTION attribute is missing, the URL of the document 
+itself is assumed. The way data is submitted varies with the access protocol of the URL, and 
+with the values of the METHOD and ENCTYPE attributes.
+
+<p>In general:
+
+<item>the METHOD attribute selects variations in the protocol.
+
+<item>the ENCTYPE attribute specifies the format of the submitted data in case the 
+protocol does not impose a format itself.
+
+<p>The Level 2 specification defines and requires support for the HTTP access protocol only.
+
+<p>When the ACTION attribute is set to an HTTP URL, the METHOD attribute must be set 
+to an HTTP method\x11[3]. The default method is GET, although for many applications the POST 
+method is preferred. With the POST method, the ENCTYPE attribute is a media type 
+specifying the format of the posted data; the default is "application/x-www-form-urlencoded".
+
+<p>The submitted contents of the form logically consist of name/value pairs. The names are 
+usually equal to the NAME attributes of the various interactive elements in the form.
+
+<NOTE>The names are not guaranteed to be unique keys, nor are the names of form 
+elements required to be distinct. The values encode the user's input to the 
+corresponding interactive elements. Fields with null values may be omitted from the 
+returned list of name/value pairs, whereas those with non-null values should be 
+included (even if the value was not altered by the user). In particular, unselected radio 
+buttons and checkboxes should be excluded from the contents list.
+
+<sect1>Input
+
+<INPUT>	Level 2
+
+<p>The Input element represents a field whose contents may be edited by the user.
+
+<p>Attributes of the Input element:
+
+tag/ALIGN
+
+/Vertical alignment of the image. For use only with TYPE=IMAGE. The possible values 
+are exactly the same as for the ALIGN attribute of the image element.
+
+tag/CHECKED
+
+/Indicates that a checkbox or radio button is selected. Unselected checkboxes and radio 
+buttons do not return name/value pairs when the form is submitted.
+
+tag/MAXLENGTH
+
+/Indicates the maximum number of characters that can be entered into a text field. This can 
+be greater than specified by the SIZE attribute, in which case the field will scroll 
+appropriately. The default number of characters is unlimited.
+
+tag/NAME
+
+/Symbolic name used when transferring the form's contents. The NAME attribute is 
+required for most input types and is normally used to provide a unique identifier for a field, 
+or for a logically related group of fields.
+
+tag/SIZE
+
+/Specifies the size or precision of the field according to its type. For example, to specify a 
+field with a visible width of 24 characters:
+
+<tscreen><verb>INPUT TYPE=text SIZE="24"
+
+tag/SRC
+
+/A URL or URN specifying an image. For use only with TYPE=IMAGE.
+
+tag/TYPE
+
+/Defines the type of data the field accepts. Defaults to free text. Several types of fields can 
+be defined with the type attribute:
+
+tag/CHECKBOX
+
+/Used for simple Boolean attributes, or for attributes that can take multiple values at the 
+same time. The latter is represented by a number of checkbox fields each of which has 
+the same name. Each selected checkbox generates a separate name/value pair in the 
+submitted data, even if this results in duplicate names. The default value for checkboxes 
+is "on".
+
+tag/HIDDEN
+
+/No field is presented to the user, but the content of the field is sent with the submitted 
+form. This value may be used to transmit state information about client/server 
+interaction.
+
+tag/IMAGE
+
+/An image field upon which you can click with a pointing device, causing the form to 
+be immediately submitted. The coordinates of the selected point are measured in pixel 
+units from the upper-left corner of the image, and are returned (along with the other 
+contents of the form) in two name/value pairs. The x-coordinate is submitted under the 
+name of the field with ".x" appended, and the y-coordinate is submitted under the name 
+of the field with ".y" appended. Any VALUE attribute is ignored. The image itself is 
+specified by the SRC attribute, exactly as for the Image element.
+
+<NOTE>In a future version of the HTML specification, the IMAGE functionality may 
+be folded into an enhanced SUBMIT field.
+
+tag/PASSWORD
+
+/The same as the TEXT attribute, except that text is not displayed as it is entered.
+
+tag/RADIO
+
+/Used for attributes that accept a single value from a set of alternatives. Each radio 
+button field in the group should be given the same name. Only the selected radio button 
+in the group generates a name/value pair in the submitted data. Radio buttons require 
+an explicit VALUE attribute.
+
+tag/RESET
+
+/A button that when pressed resets the form's fields to their specified initial values. The 
+label to be displayed on the button may be specified just as for the SUBMIT button.
+
+tag/SUBMIT
+
+/A button that when pressed submits the form. You can use the VALUE attribute to 
+provide a non-editable label to be displayed on the button.  The default label is 
+application-specific.  If a SUBMIT button is pressed in order to submit the form, and 
+that button has a NAME attribute specified, then that button contributes a name/value 
+pair to the submitted data. Otherwise, a SUBMIT button makes no contribution to the 
+submitted data.
+
+tag/TEXT
+
+/Used for a single line text entry fields. Use in conjunction with the SIZE and 
+MAXLENGTH attributes. Use the Textarea element for text fields which can accept 
+multiple lines.
+
+tag/VALUE
+
+/The initial displayed value of the field, if it displays a textual or numerical value; or the 
+value to be returned when the field is selected, if it displays a Boolean value. This attribute 
+is required for radio buttons.
+
+<sect1>Option
+
+<OPTION>	Level 2
+
+<p>The Option element can only occur within a Select element. It represents one choice, and 
+can take these attributes:
+
+tag/SELECTED
+
+/Indicates that this option is initially selected.
+
+tag/VALUE
+
+/When present indicates the value to be returned if this option is chosen. The returned value 
+defaults to the contents of the Option element.
+
+<p>The contents of the Option element is presented to the user to represent the option. It is used 
+as a returned value if the VALUE attribute is not present.
+
+<sect1>Select
+
+<SELECT NAME=... > ... </SELECT>	Level 2
+
+<p>The Select element allows the user to chose one of a set of alternatives described by textual 
+labels. Every alternative is represented by the Option element. Attributes are:
+
+tag/MULTIPLE
+
+/The MULTIPLE attribute is needed when users are allowed to make several selections, e.g. 
+<SELECT MULTIPLE>.
+
+tag/NAME
+
+/Specifies the name that will submitted as a name/value pair.
+
+tag/SIZE
+
+/Specifies the number of visible items. If this is greater than one, then the resulting form 
+control will be a list.
+
+<p>The Select element is typically rendered as a pull down or pop-up list. For example:
+
+<tscreen><verb><SELECT NAME="flavor">
+<OPTION>Vanilla
+<OPTION>Strawberry
+<OPTION>Rum and Raisin
+<OPTION>Peach and Orange
+</SELECT>
+
+<p>If no option is initially marked as selected, then the first item listed is selected.
+
+<sect1>Text Area
+
+<TEXTAREA> ... </TEXTAREA>	Level 2
+
+<p>The Textarea element lets users enter more than one line of text. For example:
+
+<tscreen><verb><TEXTAREA NAME="address" ROWS=64 COLS=6>
+HaL Computer Systems
+1315 Dell Avenue
+Campbell, California 95008
+</TEXTAREA>
+
+<p>The text up to the end tag (</TEXTAREA>) is used to initialize the field's value. This end 
+tag is always required even if the field is initially blank. When submitting a form, lines in a 
+TEXTAREA should be terminated using CRLF.
+
+<p>In a typical rendering, the ROWS and COLS attributes determine the visible dimension of 
+the field in characters. The field is rendered in a fixed-width font. HTML interpreters should 
+allow text to extend beyond these limits by scrolling as needed.
+
+<NOTE>In the initial design for forms, multi-line text fields were supported by the 
+Input element with TYPE=TEXT. Unfortunately, this causes problems for fields with 
+long text values. SGML's default (Reference Quantity Set) limits the length of 
+attribute literals to only 240 characters. The HTML 2.0 SGML declaration increases 
+the limit to 1024 characters.
+

@@ -1,0 +1,140 @@
+<h1>Block Structuring Elements
+
+<p>The following elements may be included in the body of an HTML document:
+
+<h2>Paragraph
+
+<![CDATA[
+<P> ... </P>	Level 0
+]]>
+
+<p>The Paragraph element indicates a paragraph. The exact indentation,
+leading space, etc. of a paragraph is not defined and may be a
+function of other tags, style sheets, etc.
+
+<p>Typically, paragraphs are surrounded by a vertical space of one
+line or half a line. This is typically not the case within the Address
+element and is never the case within the Preformatted Text
+element. With some HTML interpreters, the first line in a paragraph is
+indented.
+
+<p>Example of use:
+
+<listing><![CDATA[
+<H1>This Heading Precedes the Paragraph</H1>
+<P>This is the text of the first paragraph.
+<P>This is the text of the second paragraph. Although you do not 
+need to start paragraphs on new lines, maintaining this 
+convention facilitates document maintenance.</P>
+<P>This is the text of a third paragraph.</P>
+]]></listing>
+
+<h2>Preformatted Text
+
+<![CDATA[
+<PRE> ... </PRE>	Level 0
+]]>
+
+<p>The Preformatted Text element presents blocks of text in
+fixed-width font, and so is suitable for text that has been formatted
+on screen.
+
+<p>The &lt;PRE> tag may be used with the optional WIDTH attribute. The
+WIDTH attribute specifies the maximum number of characters for a line
+and allows the HTML interpreter to select a suitable font and
+indentation. If the WIDTH attribute is not present, a width of 80
+characters is assumed. Where the WIDTH attribute is supported, widths
+of 40, 80 and 132 characters should be presented optimally, with other
+widths being rounded up.
+
+<p>Within preformatted text:
+
+<ul>
+<li>Line breaks within the text are rendered as a move to the
+beginning of the next line.
+
+<li>The &lt;P> tag should not be used@@. If found, it should be rendered
+as a move to the beginning of the next line.
+
+<li>Anchor elements and character highlighting elements may be used.
+
+<li>Elements that define paragraph formatting (headings, address,
+etc.) must not be used.
+
+<li>The horizontal tab character (encoded in US-ASCII and ISO-8859-1
+as decimal 9) must be interpreted as the smallest positive nonzero
+number of spaces which will leave the number of characters so far on
+the line as a multiple of 8. Its use is not recommended however.
+</ul>
+
+<NOTE>References to the "beginning of a new line" do not imply that
+the renderer is forbidden from using a constant left indent for
+rendering preformatted text. The left indent may be constrained by the
+width required.  </note>
+
+<p>Example of use:
+
+<listing><![CDATA[
+<PRE WIDTH="80">
+This is an example line.
+</PRE>
+]]></listing>
+
+<NOTE>Within a Preformatted Text element, the constraint that the
+rendering must be on a fixed horizontal character pitch may limit or
+prevent the ability of the HTML interpreter to faithfully render
+character formatting elements.
+</note>
+
+<h2>Address
+
+<![CDATA[
+<ADDRESS> ... </ADDRESS>	Level 0
+]]>
+
+<p>The Address element specifies such information as address,
+signature and authorship, often at the top or bottom of a document.
+
+<p>Typically, an Address is rendered in an italic typeface and may be
+indented. The Address element implies a paragraph break before and
+after.
+
+<p>Example of use:
+
+<listing><![CDATA[
+<ADDRESS>
+Newsletter editor<BR>
+J.R. Brown<BR>
+JimquickPost News, Jumquick, CT 01234<BR>
+Tel (123) 456 7890
+</ADDRESS>
+]]></listing>
+
+<h2>Blockquote
+
+<![CDATA[
+<BLOCKQUOTE> ... </BLOCKQUOTE>	Level 0
+]]>
+
+<p>The Blockquote element is used to contain text quoted from another
+source.
+
+<p>A typical rendering might be a slight extra left and right indent,
+and/or italic font. The Blockquote element causes a paragraph break,
+and typically provides space above and below the quote.
+
+<p>Single-font rendition may reflect the quotation style of Internet
+mail by putting a vertical line of graphic characters, such as the
+greater than symbol (>), in the left margin.
+
+<p>Example of use:
+
+<listing><![CDATA[
+I think the poem ends
+<BLOCKQUOTE>
+<P>Soft you now, the fair Ophelia. Nymph, in thy orisons, be all 
+my sins remembered.
+</BLOCKQUOTE>
+but I am not sure.
+]]></listing>
+

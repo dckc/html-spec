@@ -1,0 +1,60 @@
+<h1>  Proposed Features
+
+<p>This section describes proposed HTML elements and entities that are
+not currently supported under HTML Levels 0, 1, or 2, but may be
+supported in the future.
+
+<h2>  Additional Character Entities
+
+<p>To indicate special characters, HTML uses entity or numeric
+representations. Additional character presentations are proposed:
+
+<listing><![CDATA[
+CHARACTER			REPRESENTATION
+
+Non-breaking space			&nbsp;
+
+Soft-hyphen			&shy;
+
+Registered			&reg;
+
+Copyright			&copy;
+]]></listing>
+
+<h2>  Defining Instance Element
+
+<![CDATA[
+<DFN> ... </DFN>
+]]>
+
+<p>The Defining Instance element indicates the defining instance of a
+term. The typical rendering is bold or bold italic. This element is
+not widely supported.
+
+<h2>  Strike Element
+
+<![CDATA[
+<STRIKE> ... </STRIKE>
+]]>
+
+<p>The Strike element is proposed to indicate strikethrough, a font
+style in which a horizontal line appears through characters. This
+element is not widely supported.
+
+<h2>  Underline Element
+
+<![CDATA[
+<U> ... </U>
+]]>
+
+<p>The Underline element is proposed to indicate that the text should
+be rendered as underlined. This proposed tag is not supported by all
+HTML interpreters.
+
+<p>Example of use:
+
+<listing><![CDATA[
+The text <U>shown here</U> is rendered in the 
+document as underlined.
+]]>
+</listing>

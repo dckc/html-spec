@@ -1,0 +1,172 @@
+<h1 id=entity-sets>Character Entity Sets
+
+<p>The following entity names are used in HTML, always prefixed by
+ampersand (&) and followed by a semicolon as shown. They represent
+particular graphic characters which have special meanings in places in
+the markup, or may not be part of the character set available to the
+writer.
+
+<h2>Numeric and Special Graphic Entity Set
+
+<p>The following table lists each of the supported characters
+specified in the Numeric and Special Graphic entity set, along with
+its name, syntax for use, and description. This list is derived from
+ISO Standard 8879:1986//ENTITIES Numeric and Special Graphic//EN.
+However, HTML does not provide support for the entire entity set -
+only the entities listed below are supported.
+
+<listing><![CDATA[
+GLYPH	NAME	SYNTAX	DESCRIPTION
+
+<	lt	&lt;	Less than sign
+
+>	gt	&gt;	Greater than sign
+
+&	amp	&amp;	Ampersand
+
+"	quot	&quot;	Double quote sign
+]]></listing>
+
+<h2>ISO Latin 1 Character Entity Set
+
+<p>The following table lists each of the characters specified in the
+Added Latin 1 entity set, along with its name, syntax for use, and
+description. This list is derived from ISO Standard
+8879:1986//ENTITIES Added Latin 1//EN. HTML supports the entire entity
+set.
+
+
+<listing><![CDATA[
+NAME	SYNTAX	DESCRIPTION
+
+Aacute	&Aacute;	Capital A, acute accent
+
+Agrave	&Agrave;	Capital A, grave accent
+
+Acirc	&Acirc;	Capital A, circumflex accent
+
+Atilde	&Atilde;	Capital A, tilde
+
+Aring	&Aring;	Capital A, ring
+
+Auml	&Auml;	Capital A, dieresis or umlaut mark
+
+AElig	&AElig;	Capital AE dipthong (ligature)
+
+Ccedil	&Ccedil;	Capital C, cedilla
+
+Eacute	&Eacute;	Capital E, acute accent
+
+Egrave	&Egrave;	Capital E, grave accent
+
+Ecirc	&Ecirc;	Capital E, circumflex accent
+
+Euml	&Euml;	Capital E, dieresis or umlaut mark
+
+Iacute	&Iacute;	Capital I, acute accent
+
+Igrave	&Igrave;	Capital I, grave accent
+
+Icirc	&Icirc;	Capital I, circumflex accent
+
+Iuml	&Iuml;	Capital I, dieresis or umlaut mark
+
+ETH	&ETH;	Capital Eth, Icelandic
+
+Ntilde	&Ntilde;	Capital N, tilde
+
+Oacute	&Oacute;	Capital O, acute accent
+
+Ograve	&Ograve;	Capital O, grave accent
+
+Ocirc	&Ocirc;	Capital O, circumflex accent
+
+Otilde	&Otilde;	Capital O, tilde
+
+Ouml	&Ouml;	Capital O, dieresis or umlaut mark
+
+Oslash	&Oslash;	Capital O, slash
+
+Uacute	&Uacute;	Capital U, acute accent
+
+Ugrave	&Ugrave;	Capital U, grave accent
+
+Ucirc	&Ucirc;	Capital U, circumflex accent
+
+Uuml	&Uuml;	Capital U, dieresis or umlaut mark
+
+Yacute	&Yacute;	Capital Y, acute accent
+
+
+
+THORN	&THORN;	Capital THORN, Icelandic
+
+szlig	&szlig;	Small sharp s, German (sz ligature)
+
+
+
+aacute	&aacute;	Small a, acute accent
+
+agrave	&agrave;	Small a, grave accent
+
+acirc	&acirc;	Small a, circumflex accent
+
+atilde	&atilde;	Small a, tilde
+
+aring	&aring;	Small a, ring
+
+auml	&auml;	Small a, dieresis or umlaut mark
+
+aelig	&aelig;	Small ae dipthong (ligature)
+
+ccedil	&ccedil;	Small c, cedilla
+
+eacute	&eacute;	Small e, acute accent
+
+egrave	&egrave;	Small e, grave accent
+
+ecirc	&ecirc;	Small e, circumflex accent
+
+euml	&euml;	Small e, dieresis or umlaut mark
+
+iacute	&iacute;	Small i, acute accent
+
+igrave	&igrave;	Small i, grave accent
+
+icirc	&icirc;	Small i, circumflex accent
+
+iuml	&iuml;	Small i, dieresis or umlaut mark
+
+eth	&eth;	Small eth, Icelandic
+
+ntilde	&ntilde;	Small n, tilde
+
+oacute	&oacute;	Small o, acute accent
+
+ograve	&ograve;	Small o, grave accent
+
+ocirc	&ocirc;	Small o, circumflex accent
+
+otilde	&otilde;	Small o, tilde
+
+ouml	&ouml;	Small o, dieresis or umlaut mark
+
+oslash	&oslash;	Small o, slash
+
+uacute	&uacute;	Small u, acute accent
+
+ugrave	&ugrave;	Small u, grave accent
+
+ucirc	&ucirc;	Small u, circumflex accent
+
+uuml	&uuml;	Small u, dieresis or umlaut mark
+
+yacute	&yacute;	Small y, acute accent
+
+thorn	&thorn;	Small thorn, Icelandic
+
+yuml	&yuml;	Small y, dieresis or umlaut mark
+]]></listing>
+
+
+
