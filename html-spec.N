@@ -1,0 +1,881 @@
+<NODESET><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>h6hVSWBDNpF84aK</LOCATOR><TITLECONTENT><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0BhVSWBGNpF84aK</LINKTARGET><LINKCONTENT>Hypertext Markup Language
+(HTML)</LINKCONTENT></LINK></TITLECONTENT></TITLE><ABBREVTITLE>HTML</ABBREVTITLE><BLOCKQUOTE><WORDASWORD>An SGML Application Conforming to
+International Standard ISO 8879 -- Standard
+Generalized Markup Language
+</WORDASWORD>  </BLOCKQUOTE><HEAD1><TITLE><LOCATOR>1tr2TWBQnpF84aK</LOCATOR><TITLECONTENT>About of this Document</TITLECONTENT></TITLE><PARA>This document describes the current practice and current
+proposals for future standardisation of HTML, as a basis for
+review and enhancement.  </PARA><PARA>The document is a draft form of a standard for interchange of
+information on the network which is proposed to be registered as
+a MIME (RFC1521) content type.  </PARA><PARA>Please send comments to connolly@hal.com or the discussion list
+www-html@info.cern.ch.  </PARA><HEAD2><TITLE><LOCATOR>Ctr2TWBQnpF84aK</LOCATOR><TITLECONTENT>Version</TITLECONTENT></TITLE><PARA>This is version 2.0 of this document, (released $Date: 1994/06/13
+22:50:44 $) It introduces forms for user input of information, and
+adds a distinction between levels of conformance. Level 0 is the
+minimum conformance level. Level 1 includes phrase-level
+markup and images. Level 2 includes forms. Features of higher
+levels which are under discussion, (such as tables, figures, and
+mathematical formulae) where mentioned are described as
+"proposed".  </PARA><PARA>The latest version of this document is currently available in
+hypertext on the World-Wide Web as  </PARA><LITERALLAYOUT>&lnfeed;http://www.hal.com/%7Econnolly/html-spec&lnfeed;</LITERALLAYOUT></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>Rtr2TWBQnpF84aK</LOCATOR><TITLECONTENT>Abstract</TITLECONTENT></TITLE><PARA><LOCATOR>jNhVSWBJNpF84aK</LOCATOR>HyperText Markup Language (HTML) can be used to represent  </PARA><ITEMIZEDLIST><BULLET><PARA>Hypertext news, mail, online documentation, and
+collaborative hypermedia;  </PARA></BULLET><BULLET><PARA>Menus of options;  </PARA></BULLET><BULLET><PARA>Database query results;  </PARA></BULLET><BULLET><PARA>Simple structured documents with inlined graphics.  </PARA></BULLET><BULLET><PARA>Hypertext views of existing bodies of information
+</PARA></BULLET></ITEMIZEDLIST><PARA>The World Wide Web (W3) initiative links related information
+throughout the globe. HTML provides one simple format for
+providing linked information, and all W3 compatible programs
+are required to be capable of handling HTML. W3 uses an
+Internet protocol (Hypertext Transfer Protocol, HTTP), which
+allows transfer representations to be negotiated between client
+and server, the result being returned in an extended MIME
+message. HTML is therefore just one, but an important one, of
+the representations used with W3.  </PARA><PARA>HTML is proposed as a MIME content type.  </PARA><PARA>HTML refers to the
+<LOCATOR>XYhVSWBMNpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>5chVSWBPNpF84aK</LINKTARGET><LINKCONTENT>URI</LINKCONTENT></LINK> specification RFCxxxx.  </PARA><PARA>Implementations of HTML parsers and generators can be found
+in the various
+<LOCATOR>hghVSWBSNpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>QkhVSWBVNpF84aK</LINKTARGET><LINKCONTENT>W3</LINKCONTENT></LINK> servers and browsers, in the public domain W3
+code, and may also be built using various public domain SGML
+parsers such as [SGMLS] . HTML documents are SGML
+documents with fairly generic semantics appropriate for
+representing information from a wide range of applications.
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>0ur2TWBQnpF84aK</LOCATOR><TITLECONTENT>Vocabulary</TITLECONTENT></TITLE><PARA>This
+<LOCATOR>ryhVSWBYNpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>w0iVSWBbNpF84aK</LINKTARGET><LINKCONTENT>specification</LINKCONTENT></LINK> uses the words below with the precise meaning
+given.  </PARA><VARIABLELIST><TERMDEFINITION><TERM>Representation  </TERM><DEFINITION><PARA>The encoding of information for interchange. For
+example, HTML is a representation of hypertext.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>Rendering  </TERM><DEFINITION><PARA>The form of presentation to information to the human
+reader.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD1><TITLE><LOCATOR>Cur2TWBQnpF84aK</LOCATOR><TITLECONTENT>Imperatives</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>may  </TERM><DEFINITION><PARA>The implementation is not obliged to follow this in any
+way.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>must  </TERM><DEFINITION><PARA>If this is not followed, the implementation does not
+conform to this specification.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>shall  </TERM><DEFINITION><PARA>as "must"  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>should  </TERM><DEFINITION><PARA>If this is not followed, though the implementation
+officially conforms to the standard, undesirable results
+may occur in practice.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>typical  </TERM><DEFINITION><PARA>Typical rendering is described for many elements. This is
+not a mandatory part of the standard but is given as
+guidance for designers and to help explain the uses for
+which the elements were intended.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD1><HEAD1><TITLE><LOCATOR>ipkVSWBfNpF84aK</LOCATOR><TITLECONTENT>Notes</TITLECONTENT></TITLE><PARA>Sections marked "Note:" are not mandatory parts of the
+specification but for guidance only.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>Zur2TWBQnpF84aK</LOCATOR><TITLECONTENT>Status of features</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>1vkVSWBiNpF84aK</LOCATOR>Mandatory  </TERM><DEFINITION><PARA>These features must be implemented in the rendering.
+Features are mandatory unless otherwise mentioned.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>L-kVSWBlNpF84aK</LOCATOR>Optional  </TERM><DEFINITION><PARA>Standard HTML features which may safely be ignored by
+minimally conforming impelementations. It is legal to
+ignore these, treat the contents as though the tags were
+not there. (e.g. EM, and processing instructions) .
+Authors should be aware that these features may be
+ignored by some applications.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>Proposed  </TERM><DEFINITION><PARA>The specification of these features is not final. They
+should not be regarded as part ofthe standard, but
+indicate possible directions for future versions.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>I7lVSWBoNpF84aK</LOCATOR>Obsolete  </TERM><DEFINITION><PARA>Not standard HTML. Parsers should implement these
+features as far as possible in order to preserve
+back-compatibility with previous versions of this
+specification.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>yur2TWBQnpF84aK</LOCATOR><TITLECONTENT>HTML and MIME</TITLECONTENT></TITLE><PARA>The definition of the HTML content subtype is  </PARA><VARIABLELIST><TERMDEFINITION><TERM>MIME Type name  </TERM><DEFINITION><PARA>text  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>MIME subtype name:  </TERM><DEFINITION><PARA>html  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>Required parameters:  </TERM><DEFINITION><PARA>none  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>Optional parameters:  </TERM><DEFINITION><PARA>level, version, charset
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD1><TITLE><LOCATOR>7vr2TWBQnpF84aK</LOCATOR><TITLECONTENT>Level</TITLECONTENT></TITLE><PARA>The level parameter specifies the feature set which is used in the
+document. The level is an integer number, implying that any
+features of same or lower level may be present in the document.
+Levels are defined by this specification.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>Dvr2TWBQnpF84aK</LOCATOR><TITLECONTENT>Version</TITLECONTENT></TITLE><PARA>In order to help avoid future compatibility problems, the version
+parameter may be used to give the version number of this
+specification to which the document conforms. The version
+number appears at the front of this document and within public
+identifier for the SGML DTD.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>Uvr2TWBQnpF84aK</LOCATOR><TITLECONTENT>Character sets</TITLECONTENT></TITLE><PARA>The base character set (the SGML BASESET) for HTML is ISO
+8859/1, also known as
+<WORDASWORD>Latin alphabet No. 1</WORDASWORD> or simply
+<WORDASWORD>Latin-1</WORDASWORD>
+This is the set referred to by any numeric
+<LOCATOR>YUlVSWBrNpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>9ZlVSWBuNpF84aK</LINKTARGET><LINKCONTENT>character references</LINKCONTENT></LINK>.
+The actual character set used in the representation of an HTML
+document may be ISO 8859/1, or its 7-bit subset which is ISO 646
+(ASCII). There is no obligation for an HTML document to contain
+any characters above decimal 127. It is possible that a transport
+medium such as electronic mail imposes constraints on the
+number of bits in a representation of a document, though the
+HTTP access protocol used by W3 always allows 8 bit transfer.  </PARA><PARA>When an HTML document is encoded using 7-bit characters,
+then the mechanisms of
+<LOCATOR>LelVSWBxNpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>9ZlVSWBuNpF84aK</LINKTARGET><LINKCONTENT>character references</LINKCONTENT></LINK> and
+<LOCATOR>silVSWB.NpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>qmlVSWB1OpF84aK</LINKTARGET><LINKCONTENT>entity
+references</LINKCONTENT></LINK> may be used to encode characters in the upper half of
+the ISO 8859/1 Latin-1 set. In this way, documents may be
+prepared which are suitable for mailing through 7-bit limited
+systems.  </PARA><HEAD2><TITLE><LOCATOR>vvr2TWBQnpF84aK</LOCATOR><TITLECONTENT>Character set option (proposed)</TITLECONTENT></TITLE><PARA>The SGML declaration specifies ISO 8859/1 Latin alphabet No. 1
+as the base character set. The charset parameter is reserved for
+future use. Its intended significance is to override the base
+character set of the SGML declaration. Support of character sets
+other than ISO 8859/1 Latin alphabet No. 1 is not a requirement
+for conformance with this specification.
+</PARA></HEAD2></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>4wr2TWBQnpF84aK</LOCATOR><TITLECONTENT>HTML and SGML</TITLECONTENT></TITLE><PARA>This section describes the relationship between HTML and
+SGML, and guides the newcomer through interpretation of the
+<LOCATOR>J0mVSWB4OpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>24mVSWB7OpF84aK</LINKTARGET><LINKCONTENT>DTD</LINKCONTENT></LINK>. (This is not a full tutorial on SGML, and in the event of any
+apparent conflict, the SGML standard is definitive.)  </PARA><PARA>The HyperText Markup Language is an application conforming
+to International Standard ISO 8879 -- Standard Generalized
+Markup Language [
+<LOCATOR>o8mVSWBAOpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>OCmVSWBDOpF84aK</LINKTARGET><LINKCONTENT>SGML</LINKCONTENT></LINK> ]. SGML is a system for defining
+structured document types, and markup languages to represent
+instances of those document types.  </PARA><PARA>Every SGML document has three parts:  </PARA><ITEMIZEDLIST><BULLET><PARA>An SGML declaration, which binds SGML processing
+quantities and syntax token names to specific values. For
+example, the SGML declaration in the HTML DTD
+specifies that the string that opens an end tag is
+<COMPUTEROUTPUT>&lt;/</COMPUTEROUTPUT> and
+the maximum length of a name is 72 characters.  </PARA></BULLET><BULLET><PARA>A prologue including one or more document type
+declarations, which specifiy the element types, element
+relationships and attributes, and references that can be
+represented by markup. The HTML DTD specifies, for
+example, that the HEAD element contains at most one
+TITLE element.  </PARA></BULLET><BULLET><PARA>An instance, which contains the data and markup of the
+document.
+</PARA></BULLET></ITEMIZEDLIST><PARA>We use the term HTML to mean both the document type and the
+markup language for representing instances of that document
+type.  </PARA><PARA>The SGML declaration for HTML is given in the appendix
+&grave;&grave;SGML Delcaration for HTML.&quot;&quot; It is implicit among WWW
+implementations.  </PARA><PARA>The prologue for an HTML document should look like:  </PARA><LITERALLAYOUT>&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!DOCTYPE&nbsp;HTML&nbsp;PUBLIC&nbsp;"-//W3O//DTD&nbsp;W3&nbsp;HTML&nbsp;2.0//EN"&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><HEAD1><TITLE><LOCATOR>jwr2TWBQnpF84aK</LOCATOR><TITLECONTENT>NOTE: Missing
+<COMPUTEROUTPUT>&lt;!DOCTYPE</COMPUTEROUTPUT> declaration</TITLECONTENT></TITLE><PARA><WORDASWORD>Many extant HTML documents do not contain a prologue.
+Implementations are encouraged to infer the above prologue if the
+document does not begin with
+</WORDASWORD><COMPUTEROUTPUT>&lt;!</COMPUTEROUTPUT>.
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>rwr2TWBQnpF84aK</LOCATOR><TITLECONTENT>Structured Text</TITLECONTENT></TITLE><PARA>An HTML instance is like a text file, except that some of the
+characters are interpreted as markup. The markup gives
+structure to the document.  </PARA><PARA>The instance represents a hierarchy of elements. Each element
+has a
+<LOCATOR>PcmVSWBGOpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0gmVSWBJOpF84aK</LINKTARGET><LINKCONTENT>name</LINKCONTENT></LINK> , some
+<LOCATOR>GkmVSWBMOpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>GomVSWBPOpF84aK</LINKTARGET><LINKCONTENT>attributes</LINKCONTENT></LINK> , and some content. Most elements
+are represented in the document as a start tag, which gives the
+name and attributes, followed by the content, followed by the end
+tag. For example:  </PARA><LITERALLAYOUT>&lnfeed;&tab;&lt;!DOCTYPE&nbsp;HTML&nbsp;PUBLIC&nbsp;"-//W3O//DTD&nbsp;W3&nbsp;HTML&nbsp;2.0//EN"&gt;&lnfeed;&tab;&lt;HTML&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;HEAD&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&lt;TITLE&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;sample&nbsp;HTML&nbsp;document&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/TITLE&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;/HEAD&gt;&lnfeed;&lnfeed;&tab;&nbsp;&nbsp;&lt;BODY&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&lt;H1&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;Example&nbsp;of&nbsp;Structure&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;br&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;HTML&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/H1&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&lt;P&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here&quot;s&nbsp;a&nbsp;typical&nbsp;paragraph.&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&lt;UL&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;LI&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Item&nbsp;one&nbsp;has&nbsp;an&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;A&nbsp;NAME="anchor"&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;anchor&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/A&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;LI&gt;&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Here&quot;s&nbsp;item&nbsp;two.&lnfeed;&tab;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/UL&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;/BODY&gt;&lnfeed;&tab;&lt;/HTML&gt;&lnfeed;</LITERALLAYOUT><PARA>Some elements (e.g.
+<COMPUTEROUTPUT>BR</COMPUTEROUTPUT>) are empty. They have no content. They
+show up as just a start tag.  </PARA><PARA>For the rest of the elements, the content is a sequence of data
+characters and nested elements. Some things such as forms and
+anchors cannot be nested, in which case this is mentioned in the
+text. Anchors and character highlighting may be put inside other
+constructs.  </PARA><HEAD1><TITLE><LOCATOR>U8nVSWBSOpF84aK</LOCATOR><TITLECONTENT>Tags</TITLECONTENT></TITLE><PARA>Most elements start and end with tags. Empty elements have no
+end tag. Start tags are delimited by &lt; and &gt;, and end tags are
+delimited by &lt;/ and &gt;. For example:  </PARA><LITERALLAYOUT>&lnfeed;&tab;&lt;h1&gt;&nbsp;...&nbsp;&lt;/H1&gt;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;uppercase&nbsp;=&nbsp;lowercase&nbsp;&nbsp;--&gt;&lnfeed;&tab;&lt;h1&nbsp;&gt;&nbsp;...&nbsp;&lt;/h1&nbsp;&gt;&nbsp;&lt;!--&nbsp;spaces&nbsp;OK&nbsp;before&nbsp;&gt;&nbsp;--&gt;&lnfeed;</LITERALLAYOUT><PARA>The following are
+<WORDASWORD>not</WORDASWORD> valid tags:  </PARA><LITERALLAYOUT>&lnfeed;&tab;&lt;&nbsp;h1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;this&nbsp;is&nbsp;not&nbsp;a&nbsp;tag&nbsp;at&nbsp;all&nbsp;--&gt;&lnfeed;&tab;&lt;H1/&gt;&nbsp;&lt;H=1&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--&nbsp;these&nbsp;are&nbsp;markup&nbsp;errors&nbsp;--&gt;&lnfeed;</LITERALLAYOUT><HEAD2><TITLE><LOCATOR>R3s2TWBQnpF84aK</LOCATOR><TITLECONTENT>NOTE: SHORTTAG</TITLECONTENT></TITLE><PARA><WORDASWORD>The SGML declaration for HTML specifies SHORTTAG YES ,
+which means that there are some other valid syntaxes for tags, e.g.
+NET tags: &lt;em/.../ , empty start tags: &lt;&gt; , empty end tags: &lt;/&gt; .
+Until such time as support for these idioms is widely deployed,
+their use is strongly discouraged.</WORDASWORD>  </PARA><PARA>The start and end tags for the HTML, HEAD, and BODY
+elements are omissable. The end tags of some other elements
+(e.g. P, LI, DT, DD) can be ommitted (see the DTD for details).
+This does not change the document structure -- the following
+documents are equivalent:  </PARA><LITERALLAYOUT>&lnfeed;&tab;&lt;!DOCTYPE&nbsp;HTML&nbsp;PUBLIC&nbsp;"-//W3O//DTD&nbsp;W3&nbsp;HTML&nbsp;2.0//EN"&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;TITLE&gt;Structural&nbsp;Example&lt;/TITLE&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;H1&gt;Structural&nbsp;Example&lt;/H1&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;P&gt;A&nbsp;paragraph...&lnfeed;&lnfeed;&tab;&lt;!DOCTYPE&nbsp;HTML&nbsp;PUBLIC&nbsp;"-//W3O//DTD&nbsp;W3&nbsp;HTML&nbsp;2.0//EN"&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;HTML&gt;&lt;HEAD&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;TITLE&gt;Structural&nbsp;Example&lt;/TITLE&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;/HEAD&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;BODY&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;H1&gt;Structural&nbsp;Example&lt;/H1&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;P&gt;A&nbsp;paragraph...&lt;/P&gt;&lnfeed;&tab;&nbsp;&nbsp;&lt;/BODY&gt;&lnfeed;</LITERALLAYOUT></HEAD2><HEAD2><TITLE><LOCATOR>0gmVSWBJOpF84aK</LOCATOR><TITLECONTENT>Names</TITLECONTENT></TITLE><PARA>The element name immediately follows the tag open delimiter.
+Names consist of a letter followed by up to 72 letters, digits,
+periods, or hyphens. Names are not case sensitive. For example:  </PARA><LITERALLAYOUT>&lnfeed;&tab;A&nbsp;H1&nbsp;h1&nbsp;another.name&nbsp;name-with-hyphens&lnfeed;</LITERALLAYOUT></HEAD2><HEAD2><TITLE><LOCATOR>GomVSWBPOpF84aK</LOCATOR><TITLECONTENT>Attributes</TITLECONTENT></TITLE><PARA>In a start tag, whitespace and attributes are allowed between the
+element name and the closing delimiter. An attribute consists of
+a name, an equal sign, and a value. Whitespace is allowed
+around the equal sign.  </PARA><PARA>The value is either:  </PARA><ITEMIZEDLIST><BULLET><PARA>A string literal, delimited by single quotes or double
+quotes, or  </PARA></BULLET><BULLET><PARA>A name token; that is, a sequence of letters, digits,
+periods, or hyphens.
+</PARA></BULLET></ITEMIZEDLIST><PARA>For example:  </PARA><LITERALLAYOUT>&lnfeed;&tab;&lt;A&nbsp;HREF="http://host/dir/file.html"&gt;&lnfeed;&tab;&lt;A&nbsp;HREF=foo.html&nbsp;&gt;&lnfeed;&tab;&lt;IMG&nbsp;SRC="mrbill.gif"&nbsp;ALT="Mr.&nbsp;Bill&nbsp;says,&nbsp;&amp;&num;34;Oh&nbsp;Noooo&amp;&num;34;"&gt;&lnfeed;</LITERALLAYOUT><PARA>The length of an attribute value (after replacing entity and
+numeric character referencees) is limited to 1024 characters.  </PARA></HEAD2><HEAD2><TITLE><LOCATOR>I4s2TWBQnpF84aK</LOCATOR><TITLECONTENT>NOTE: Unquoted Attribute Value Literals</TITLECONTENT></TITLE><PARA><WORDASWORD>Some implementations allowed any character except space or &quot;&gt;&quot;
+in a name token, for example &lt;A HREF=foo/bar.html&gt; . As a
+result, there are many documents that contain attribute values
+that should be quoted but are not. While parser implementators
+are encouraged to support this idiom, its use in future documents
+is stictly prohibited.</WORDASWORD>  </PARA></HEAD2><HEAD2><TITLE><LOCATOR>R4s2TWBQnpF84aK</LOCATOR><TITLECONTENT>NOTE:
+<COMPUTEROUTPUT>&gt;</COMPUTEROUTPUT> in Attribute Value Literals</TITLECONTENT></TITLE><PARA><WORDASWORD>Some implementations also consider any occurence of the &gt;
+character to signal the end of a tag. For compatibility with such
+implementations, it may be necessary to represent &gt; with an entity
+or numeric character reference; for example: &lt;IMG SRC="eq1.ps"
+ALT="a &amp;&num;62; b"&gt;</WORDASWORD>  </PARA><PARA>Attributes with a declared value of
+<COMPUTEROUTPUT>NAME</COMPUTEROUTPUT> (e.g.
+<COMPUTEROUTPUT>ISMAP</COMPUTEROUTPUT>,
+<COMPUTEROUTPUT>COMPACT</COMPUTEROUTPUT>)
+may be written using a minimized syntax. The markup:  </PARA><LITERALLAYOUT>&lnfeed;&tab;&lt;UL&nbsp;COMPACT="COMPACT"&gt;&lnfeed;</LITERALLAYOUT><PARA>can be written as  </PARA><LITERALLAYOUT>&lnfeed;&tab;&lt;UL&nbsp;COMPACT&gt;&lnfeed;</LITERALLAYOUT></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>h4s2TWBQnpF84aK</LOCATOR><TITLECONTENT>Undefined tag and attribute names</TITLECONTENT></TITLE><PARA>It is a principle to be conservative in that which one produces,
+and liberal in that which one accepts. HTML parsers should be
+liberal except when verifying code. HTML generators should
+generate strictly conforming HTML.  </PARA><PARA>The behaviour of WWW applications reading HTML documents
+and discovering tag or attribute names which they do not
+understand should be to behave as though, in the case of a tag,
+the whole tag had not been there but its content had, or in the
+case of an attribute, that the attribute had not been present.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>SynVSWBVOpF84aK</LOCATOR><TITLECONTENT>Character Data  </TITLECONTENT></TITLE><PARA>The characters between the tags represent text in the
+ISO-Latin-1 character set, which is a superset of ASCII. Because
+certain characters will be interpreted as markup, they should be
+"escaped"; that is, represented by markup -- entity or numeric
+character references. For example:  </PARA><LITERALLAYOUT>&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;a&amp;&num;60;b,&nbsp;we&nbsp;can&nbsp;show&nbsp;that...&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Brought&nbsp;to&nbsp;you&nbsp;by&nbsp;AT&amp;amp;T&lnfeed;</LITERALLAYOUT><PARA>The HTML DTD includes entities for each of the non-ASCII
+characters so that one may reference them by name if it is
+inconvenient to enter them directly:  </PARA><LITERALLAYOUT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kurt&nbsp;G&amp;ouml;del&nbsp;was&nbsp;a&nbsp;famous&nbsp;logician&nbsp;and&nbsp;mathematician.&lnfeed;&lnfeed;</LITERALLAYOUT><HEAD2><TITLE><LOCATOR>y6s2TWBQnpF84aK</LOCATOR><TITLECONTENT>NOTE: Markup Characters</TITLECONTENT></TITLE><PARA><WORDASWORD>To ensure that a string of characters has no markup, it is
+sufficient to represent all occurrences of
+</WORDASWORD><COMPUTEROUTPUT>&lt;</COMPUTEROUTPUT>,
+<COMPUTEROUTPUT>&gt;</COMPUTEROUTPUT>, and
+<COMPUTEROUTPUT>&amp;</COMPUTEROUTPUT> by character
+or entity references.  </PARA></HEAD2><HEAD2><TITLE><LOCATOR>47s2TWBQnpF84aK</LOCATOR><TITLECONTENT>NOTE: CDATA, RCDATA</TITLECONTENT></TITLE><PARA><WORDASWORD>There are SGML features ( CDATA , RCDATA ) to allow most &lt; ,
+&gt; , and &amp; characters to be entered without the use of entity or
+character references. Because these features tend to be used and
+implemented inconsistently, and because they require 8-bit
+characters to represent non-ASCII characters, they are not
+employed in this version of the HTML DTD.</WORDASWORD>  </PARA><PARA><WORDASWORD>An earlier HTML specification included an XMP element whose
+syntax is not expressible in SGML. Inside the XMP , no markup
+was recognized except the &lt;/XMP&gt; end tag. While
+implementations are encouraged to support this idiom, its use is
+obsolete.</WORDASWORD>  </PARA></HEAD2><HEAD2><TITLE><LOCATOR>I7s2TWBQnpF84aK</LOCATOR><TITLECONTENT>Comments</TITLECONTENT></TITLE><PARA>To include comments in an HTML document that will be ignored
+by the parser, surround them with &lt;!-- and --&gt;. After the
+comment delimiter, all text up to the next occurrence of -- is
+ignored. Hence comments cannot be nested. Whitespace is
+allowed between the closing -- and &gt;. (But not between the
+opening &lt;! and --.)  </PARA><PARA>For example:  </PARA><LITERALLAYOUT>&lt;HEAD&gt;&lnfeed;&lt;TITLE&gt;HTML&nbsp;Guide:&nbsp;Recommended&nbsp;Usage&lt;/TITLE&gt;&lnfeed;&lt;!--&nbsp;Id:&nbsp;Text.html,v&nbsp;1.6&nbsp;1994/04/25&nbsp;17:33:48&nbsp;connolly&nbsp;Exp&nbsp;--&gt;&lnfeed;&lt;/HEAD&gt;&lnfeed;</LITERALLAYOUT></HEAD2><HEAD2><TITLE><LOCATOR>n7s2TWBQnpF84aK</LOCATOR><TITLECONTENT>Note: Tags in Comments</TITLECONTENT></TITLE><PARA><WORDASWORD>Some historical implementations incorrectly consider a &gt; sign to
+terminate a comment.</WORDASWORD>
+</PARA></HEAD2></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>9XoVSWBYOpF84aK</LOCATOR><TITLECONTENT><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>w0iVSWBbNpF84aK</LINKTARGET><LINKCONTENT>HTML Elements</LINKCONTENT></LINK></TITLECONTENT></TITLE><PARA>This is a discussion of the elements in the HTML language, and
+how they interact to represent documents.  </PARA><HEAD1><TITLE><LOCATOR>x7s2TWBQnpF84aK</LOCATOR><TITLECONTENT>The HTML Document Element</TITLECONTENT></TITLE><PARA>An HTML document is organized as a HEAD and a BODY, much
+like memo or a mail message:  </PARA><LITERALLAYOUT>&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HTML&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_head&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|_body&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>The HEAD element is a small unordered collection of
+information about the document, whereas the BODY is an
+ordered sequence of information elements of arbitrary length.
+This organization allows an implementation to determine
+certain properties of a document -- the title, for example --
+without parsing the entire document.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>GhoVSWBbOpF84aK</LOCATOR><TITLECONTENT><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>wkoVSWBeOpF84aK</LINKTARGET><LINKCONTENT>Information in the HEAD Element</LINKCONTENT></LINK></TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>VpoVSWBhOpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>ItoVSWBkOpF84aK</LINKTARGET><LINKCONTENT>TITLE</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>The title of the document  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>EyoVSWBnOpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>I0pVSWBqOpF84aK</LINKTARGET><LINKCONTENT>ISINDEX</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>Sent by a server in a searchable document  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>E5pVSWBtOpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>09pVSWBwOpF84aK</LINKTARGET><LINKCONTENT>NEXTID</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>A parameter used by editors to generate unique
+identifiers  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>vDpVSWBzOpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0IpVSWB0PpF84aK</LINKTARGET><LINKCONTENT>LINK</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>Relationship between this document and another. See
+also the
+<LOCATOR>QMpVSWB3PpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>7QpVSWB6PpF84aK</LINKTARGET><LINKCONTENT>Anchor element</LINKCONTENT></LINK> ,
+<LOCATOR>xTpVSWB9PpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0IpVSWB0PpF84aK</LINKTARGET><LINKCONTENT>Relationships</LINKCONTENT></LINK>. A document
+may have many LINK elements.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>eZpVSWBCPpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>PdpVSWBFPpF84aK</LINKTARGET><LINKCONTENT>BASE</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>A record of the URL of the document when saved.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD2><TITLE><LOCATOR>s8s2TWBQnpF84aK</LOCATOR><TITLECONTENT>Proposed head elements</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>EXPIRES  </TERM><DEFINITION><PARA>The date after which the document should be considered
+invalid. Semantics as in the HTTP specification.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>OkpVSWBIPpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>RopVSWBLPpF84aK</LINKTARGET><LINKCONTENT>META</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>A generic mechanism for embedding document
+metainformation not specified by existing HTML
+elements.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>atpVSWBOPpF84aK</LOCATOR><TITLECONTENT><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>cxpVSWBRPpF84aK</LINKTARGET><LINKCONTENT>Body Elements (level 1)</LINKCONTENT></LINK></TITLECONTENT></TITLE><PARA>The order of the contents of the BODY element should be
+preserved when it is rendered on the output device.  </PARA><HEAD2><TITLE><LOCATOR>89s2TWBQnpF84aK</LOCATOR><TITLECONTENT>Hypertext Anchors</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>W3qVSWBUPpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>7QpVSWB6PpF84aK</LINKTARGET><LINKCONTENT>Anchors</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>Sections of text which form the beginning and/or end of
+hypertext links are called "anchors" and defined by the A
+tag.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2><HEAD2><TITLE><LOCATOR>H9s2TWBQnpF84aK</LOCATOR><TITLECONTENT>Block Elements</TITLECONTENT></TITLE><PARA>These elements typically stack vertically in the rendered flow of
+text. Whitespace between them is ignored.  </PARA><VARIABLELIST><TERMDEFINITION><TERM>Headings  </TERM><DEFINITION><PARA>Several levels of
+<LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>TBqVSWBXPpF84aK</LINKTARGET><LINKCONTENT>headings</LINKCONTENT></LINK> are supported.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>bGqVSWBaPpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>CKqVSWBdPpF84aK</LINKTARGET><LINKCONTENT>Paragraph</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>The P element represents a paragraph.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>CPqVSWBgPpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>qSqVSWBjPpF84aK</LINKTARGET><LINKCONTENT>Horizontal Rule</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>A horizontal dividing line.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>SYqVSWBmPpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>1cqVSWBpPpF84aK</LINKTARGET><LINKCONTENT>Address style</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>Used to represent authorship or status of a document  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>ahqVSWBsPpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>SlqVSWBvPpF84aK</LINKTARGET><LINKCONTENT>Blockquote style</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>A block of text quoted from another source.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>uqqVSWByPpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>QuqVSWB-PpF84aK</LINKTARGET><LINKCONTENT>Lists</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>Bulleted lists, glossaries, etc.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>WzqVSWB2QpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>Z1rVSWB5QpF84aK</LINKTARGET><LINKCONTENT>Preformatted text</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>Sections in fixed-width font for preformatted text.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2><HEAD2><TITLE><LOCATOR>eAs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Inline Elements</TITLECONTENT></TITLE><PARA>These elements fall left to right in the rendered flow of text.
+Whitespace between them separates words, except in the PRE
+element, where it has its literal ASCII meaning.  </PARA><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>u7rVSWB8QpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>dBrVSWBBQpF84aK</LINKTARGET><LINKCONTENT>Highlighting</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>Emphasis, typographic distinctions, etc.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>uGrVSWBEQpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>jKrVSWBHQpF84aK</LINKTARGET><LINKCONTENT>Line Breaks</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>Indicates a line break in a flow of text.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>nPrVSWBKQpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>NTrVSWBNQpF84aK</LINKTARGET><LINKCONTENT>IMG</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>The IMG tag allows inline graphics.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>7Bs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Body elements (level 2)</TITLECONTENT></TITLE><HEAD2><TITLE><LOCATOR>9Bs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Elements for forms</TITLECONTENT></TITLE><PARA>The FORM element and various other elements allowed only
+within it describe forms which allow user input.  </PARA><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>harVSWBQQpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>DerVSWBTQpF84aK</LINKTARGET><LINKCONTENT>FORM elements</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>FORM, INPUT, SELECT, OPTION, TEXTAREA, etc.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>WjrVSWBWQpF84aK</LOCATOR><TITLECONTENT><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>QnrVSWBZQpF84aK</LINKTARGET><LINKCONTENT>Obsolete elements</LINKCONTENT></LINK></TITLECONTENT></TITLE><PARA>The other elements are obsolete but should be recognised by
+parsers for back-compatibility.
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>PBs2TWBQnpF84aK</LOCATOR><TITLECONTENT>HEAD</TITLECONTENT></TITLE><PARA>The HEAD element contains all information about the document
+in general. It does not contain any text which is part of the
+document: this is in the
+<LOCATOR>S0sVSWBcQpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>cxpVSWBRPpF84aK</LINKTARGET><LINKCONTENT>BODY</LINKCONTENT></LINK>. Within the head element, only
+<LOCATOR>85sVSWBfQpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>GhoVSWBbOpF84aK</LINKTARGET><LINKCONTENT>certain elements</LINKCONTENT></LINK> are allowed.  </PARA><BLOCKQUOTE></BLOCKQUOTE></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>kJsVSWBiQpF84aK</LOCATOR><TITLECONTENT>TITLE</TITLECONTENT></TITLE><PARA>The title of a document is specified by the TITLE element. The
+TITLE element must occur in the
+<LOCATOR>5OsVSWBlQpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>wkoVSWBeOpF84aK</LINKTARGET><LINKCONTENT>HEAD</LINKCONTENT></LINK> of the document.  </PARA><PARA>There may only be one title in any document. It should identify
+the content of the document in a fairly wide context.  </PARA><PARA>It may not contain anchors, paragraph marks, or highlighting.
+The title may be used to identify the node in a history list, to label
+the window displaying the node, etc. It is not normally displayed
+in the text of a document itself. Contrast titles with
+<LOCATOR>CUsVSWBoQpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>5YsVSWBrQpF84aK</LINKTARGET><LINKCONTENT>headings</LINKCONTENT></LINK> .
+The title should ideally be less than 64 characters in length. That
+is, many applications will display document titles in window
+titles, menus, etc where there is only limited room. Whilst there
+is no limit on the length of a title (as it may be automatically
+generated from other data), information providers are warned
+that it may be truncated if long.  </PARA><HEAD1><TITLE><LOCATOR>zBs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Examples of use</TITLECONTENT></TITLE><PARA>Appropriate titles might be  </PARA><LITERALLAYOUT>&tab;&tab;&lt;TITLE&gt;Rivest&nbsp;and&nbsp;Neuman.&nbsp;1989(b)&lt;/TITLE&gt;&lnfeed;</LITERALLAYOUT><PARA>or  </PARA><LITERALLAYOUT>&tab;&tab;&lt;TITLE&gt;A&nbsp;Recipe&nbsp;for&nbsp;Maple&nbsp;Syrup&nbsp;Flap-Jack&lt;/TITLE&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>or  </PARA><LITERALLAYOUT>&tab;&tab;&lt;TITLE&gt;Introduction&nbsp;--&nbsp;AFS&nbsp;user&quot;s&nbsp;Guide&lt;/TITLE&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>Examples of inappropriate titles are those which are only
+meaningful within context,  </PARA><LITERALLAYOUT>&tab;&tab;&lt;TITLE&gt;Introduction&lt;/TITLE&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>or too long,  </PARA><LITERALLAYOUT>&tab;&lt;TITLE&gt;Remarks&nbsp;on&nbsp;the&nbsp;Quantum-Gravity&nbsp;effects&nbsp;of&nbsp;"Bean&lnfeed;&tab;Pole"&nbsp;diversification&nbsp;in&nbsp;Mononucleosis&nbsp;patients&nbsp;in&nbsp;Developing&lnfeed;&tab;Countries&nbsp;under&nbsp;Economic&nbsp;Conditions&nbsp;Prevalent&nbsp;during&lnfeed;&tab;the&nbsp;Second&nbsp;half&nbsp;of&nbsp;the&nbsp;Twentieth&nbsp;Century,&nbsp;and&nbsp;Related&nbsp;Papers:&lnfeed;&tab;a&nbsp;Summary&lt;/TITLE&gt;&lnfeed;&lnfeed;&lnfeed;&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>e.sVSWBuQpF84aK</LOCATOR><TITLECONTENT>ISINDEX</TITLECONTENT></TITLE><PARA>This element informs the reader that the document is an index
+document. As well as reading it, the reader may use a keyword
+search.  </PARA><PARA>The node may be queried with a keyword search by suffixing the
+node address with a question mark, followed by a list of keywords
+separated by plus signs. See the
+<LOCATOR>h4tVSWBxQpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>U8tVSWB.QpF84aK</LINKTARGET><LINKCONTENT>network address format</LINKCONTENT></LINK> .  </PARA><PARA>Note that this tag is normally generated automatically by a
+server. If it is added by hand to an HTML document, then the
+client will assume that the server can handle a search on the
+document. Obviously the server must have this capability for it
+to work: simply adding &lt;ISINDEX&gt; in the document is not
+enough to make searches happen if the server does not have a
+search engine!  </PARA><PARA>Status: standard.  </PARA><HEAD1><TITLE><LOCATOR>eCs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example of use:</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&tab;&lt;ISINDEX&gt;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>hCs2TWBQnpF84aK</LOCATOR><TITLECONTENT>LINK</TITLECONTENT></TITLE><PARA>The LINK element occurs within the HEAD element of an
+<LOCATOR>nPtVSWB1RpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>PTtVSWB4RpF84aK</LINKTARGET><LINKCONTENT>HTML</LINKCONTENT></LINK>
+document. It is used to indicate a relationship between the
+document and some other object. A document may have any
+number of LINK elements.  </PARA><PARA>The LINK element is empty, but takes the same attributes as the
+<LOCATOR>cYtVSWB7RpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>7QpVSWB6PpF84aK</LINKTARGET><LINKCONTENT>anchor element</LINKCONTENT></LINK> .  </PARA><PARA>Typical uses are to indicate authorship, related indexes and
+glossaries, older or more recent versions, etc. Links can indicate
+a static tree structure in which the document was authored by
+pointing to a "parent" and "next" and "previous" document, for
+example.  </PARA><PARA>Servers may also allow links to be added by those who do not
+have the right to alter the body of a document.
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>0Ds2TWBQnpF84aK</LOCATOR><TITLECONTENT>BASE</TITLECONTENT></TITLE><PARA>This element allows the URL of the document itself to be
+recorded in situations in which the document may be read out of
+context. URLs within the document may be in a "partial" form
+relative to this base address.  </PARA><PARA>Where the base address is not specified, the reader will use the
+URL it used to access the document to resolve any relative URLs.  </PARA><PARA>The one attribute is:  </PARA><VARIABLELIST><TERMDEFINITION><TERM>HREF  </TERM><DEFINITION><PARA>the URL
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>R-tVSWBARpF84aK</LOCATOR><TITLECONTENT>Next ID</TITLECONTENT></TITLE><PARA>This tag takes a single attribute which is the number of the next
+document-wide numeric identifier to be allocated of the form
+z123.  </PARA><PARA>When modifying a document, old anchor ids should not be
+reused, as there may be references stored elsewhere which point
+to them. This is read and generated by hypertext editors. Human
+writers of HTML usually use mnemonic alphabetical identifiers.
+Browser software may ignore this tag.  </PARA><HEAD1><TITLE><LOCATOR>iDs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example of use:</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&tab;&lt;NEXTID&nbsp;N=z27&gt;&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>pDs2TWBQnpF84aK</LOCATOR><TITLECONTENT>META (proposed)</TITLECONTENT></TITLE><PARA>The META element can be used within the
+<LOCATOR>8HuVSWBDRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>wkoVSWBeOpF84aK</LINKTARGET><LINKCONTENT>HEAD</LINKCONTENT></LINK> element to
+embed document metainformation not defined by other HTML
+elements. Such information can be extracted by servers/clients
+for use in identifying, indexing, and cataloging specialized
+document metainformation.  </PARA><PARA>Although it is generally preferable to use named elements which
+have well-defined semantics for each type of metainformation
+(e.g.
+<LOCATOR>gMuVSWBGRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>ItoVSWBkOpF84aK</LINKTARGET><LINKCONTENT>TITLE</LINKCONTENT></LINK>), this element is provided for situations where strict
+SGML parsing is necessary and the local DTD is not extensible.  </PARA><PARA>In addition, HTTP servers can read the content of the document
+HEAD to generate response headers corresponding to any
+elements defining a value for the attribute HTTP-EQUIV. This
+provides document authors a mechanism (not necessarily the
+preferred one) for identifying information which should be
+included in the response headers for an HTTP request.  </PARA><PARA>The attributes of the META element are:  </PARA><VARIABLELIST><TERMDEFINITION><TERM>HTTP-EQUIV  </TERM><DEFINITION><PARA>This attribute binds the element to an HTTP response
+header. It means that if you know the semantics of the
+HTTP response header named by this attribute, then you
+can process the contents based on a well-defined
+syntactic mapping, whether or not your DTD tells you
+anything about it. HTTP header names are not case
+sensitive. If not present, the attribute NAME should be
+used to identify this metainformation and it should not
+be used within an HTTP response header.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>NAME  </TERM><DEFINITION><PARA>Metainformation name. If not present, the name can be
+assumed equal to the value of HTTP-EQUIV.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>CONTENT  </TERM><DEFINITION><PARA>The metainformation content to be associated with the
+given name and/or HTTP response header.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD1><TITLE><LOCATOR>VEs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Examples of use</TITLECONTENT></TITLE><PARA>If the document contains:  </PARA><LITERALLAYOUT>&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&lt;expires&nbsp;http-equiv="Expires"&gt;Tue,&nbsp;04&nbsp;Dec&nbsp;1993&nbsp;21:29:02&nbsp;GMT&lt;/expires&gt;&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv="Keywords"&nbsp;content="Fred,&nbsp;Barney,&nbsp;Wilma"&gt;&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;http-equiv="Reply-to"&nbsp;content="fielding@ics.uci.edu&nbsp;(Roy&nbsp;Fielding)"&gt;&lnfeed;</LITERALLAYOUT><LITERALLAYOUT>&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;Expires:&nbsp;Tue,&nbsp;04&nbsp;Dec&nbsp;1993&nbsp;21:29:02&nbsp;GMT&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;Keywords:&nbsp;Fred,&nbsp;Barney,&nbsp;Wilma&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;Reply-to:&nbsp;fielding@ics.uci.edu&nbsp;(Roy&nbsp;Fielding)&lnfeed;</LITERALLAYOUT><PARA>When the HTTP-EQUIV attribute is not present, the server
+should not generate an HTTP response header for this
+metainformation; e.g.,  </PARA><LITERALLAYOUT>&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;name="IndexType"&nbsp;content="Service"&gt;&lnfeed;</LITERALLAYOUT></HEAD1><HEAD1><TITLE><LOCATOR>qEs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Examples of misuse</TITLECONTENT></TITLE><PARA>One example of an inappropriate usage for the META element is
+to use it to define information that should be associated with an
+already existing HTML element, e.g.  </PARA><LITERALLAYOUT>&lnfeed;&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta&nbsp;name="Title"&nbsp;content="The&nbsp;Etymology&nbsp;of&nbsp;Dunsel"&gt;&lnfeed;</LITERALLAYOUT><PARA>A second example of inappropriate usage is to name an
+HTTP-EQUIV equal to a response header that should normally
+only be generated by the HTTP server. Example names that are
+inappropriate include "Server", "Date", and "Last-modified" --
+the exact list of inappropriate names is dependent on the
+particular server implementation. It is recommended that
+servers ignore any META elements which specify
+http-equivalents which are equal (case-insensitively) to their
+own reserved response headers.  </PARA><BLOCKQUOTE>From: "Roy T. Fielding"
+&lt;fielding@simplon.ICS.UCI.EDU&gt;&lnfeed; Date: Sun, 12 Jun 1994 02:21:26 -0700&lnfeed; Message-Id:
+&lt;9406120221.aa08921@paris.ics.uci.edu&gt;&lnfeed;</BLOCKQUOTE></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>9Fs2TWBQnpF84aK</LOCATOR><TITLECONTENT>BODY</TITLECONTENT></TITLE><PARA>The BODY element contains all the information which is part of
+the document, as opposed information about the document which
+is in the
+<LOCATOR>eyuVSWBJRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>wkoVSWBeOpF84aK</LINKTARGET><LINKCONTENT>HEAD</LINKCONTENT></LINK> .  </PARA><PARA>The elements within the BODY element are in the order in which
+they should be presented to the reader.  </PARA><PARA>See the
+<LOCATOR>a2vVSWBMRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>atpVSWBOPpF84aK</LINKTARGET><LINKCONTENT>list of things which are allowed within a BODY element</LINKCONTENT></LINK> .
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>NGvVSWBPRpF84aK</LOCATOR><TITLECONTENT>Anchors</TITLECONTENT></TITLE><PARA>An anchor is a piece of text which marks the beginning and/or the
+end of a hypertext link.  </PARA><PARA>The text between the opening tag and the closing tag is either the
+start or destination (or both) of a link. Attributes of the anchor
+tag are as follows.  </PARA><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>4MvVSWBSRpF84aK</LOCATOR>HREF  </TERM><DEFINITION><PARA>OPTIONAL. If the HREF attribute is present, the anchor
+is sensitive text: the start of a link. If the reader selects
+this text, (s)he should be presented with another
+document whose network address is defined by the value
+of the HREF attribute . The format of the network
+address is specified
+<LOCATOR>IRvVSWBVRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>OWvVSWBYRpF84aK</LINKTARGET><LINKCONTENT>elsewhere</LINKCONTENT></LINK> . This allows for the form
+HREF="&num;identifier" to refer to another anchor in the
+same document. If the anchor is in another document,
+the attribute is a
+<LOCATOR>FcvVSWBbRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>ThvVSWBeRpF84aK</LINKTARGET><LINKCONTENT>relative name</LINKCONTENT></LINK> , relative to the
+documents address (or specified
+<LOCATOR>GmvVSWBhRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>drvVSWBkRpF84aK</LINKTARGET><LINKCONTENT>base address</LINKCONTENT></LINK> if any).  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>NAME  </TERM><DEFINITION><PARA>OPTIONAL. If present, the attribute NAME allows the
+anchor to be the destination of a link. The value of the
+attribute is an identifier for the anchor. Identifiers are
+arbitrary strings but must be unique within the HTML
+document. Another document can then make a reference
+explicitly to this anchor by putting the identifier after the
+address, separated by a
+<LOCATOR>0zvVSWBnRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>s0wVSWBqRpF84aK</LINKTARGET><LINKCONTENT>hash sign</LINKCONTENT></LINK> .  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>P5wVSWBtRpF84aK</LOCATOR>REL  </TERM><DEFINITION><PARA>OPTIONAL. An attribute REL may give the relationship
+(s) described by the hypertext link. The value is a
+comma-separated list of relationship values. Values and
+their semantics will be registered by the HTML
+registration authority . The default relationship if none
+other is given is void. REL should not be present unless
+HREF is present.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>xBwVSWBwRpF84aK</LOCATOR>REV  </TERM><DEFINITION><PARA>OPTIONAL. The same as
+<LOCATOR>mGwVSWBzRpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>SKwVSWB0SpF84aK</LINKTARGET><LINKCONTENT>REL</LINKCONTENT></LINK> , but the semantics of the
+link type are in the reverse direction. A link from A to B
+with REL="X" expresses the same relationship as a link
+from B to A with REV="X". An anchor may have both
+REL and REV attributes.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>OQwVSWB3SpF84aK</LOCATOR>URN  </TERM><DEFINITION><PARA>OPTIONAL. If present, this specifies a uniform resource
+number for the document. See
+<LOCATOR>yUwVSWB6SpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>9ZwVSWB9SpF84aK</LINKTARGET><LINKCONTENT>note</LINKCONTENT></LINK> .  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>UdwVSWBCSpF84aK</LOCATOR>TITLE  </TERM><DEFINITION><PARA>OPTIONAL. This is informational only. If present the
+value of this field should equal the value of the TITLE of
+the document whose address is given by the HREF
+attribute. See
+<LOCATOR>LiwVSWBFSpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>ImwVSWBISpF84aK</LINKTARGET><LINKCONTENT>note</LINKCONTENT></LINK> .  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>METHODS  </TERM><DEFINITION><PARA>OPTIONAL. The value of this field is a string which if
+present must be a comma separated list of HTTP
+METHODS supported by the object for public use. See
+<LOCATOR>erwVSWBLSpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>EvwVSWBOSpF84aK</LINKTARGET><LINKCONTENT>note</LINKCONTENT></LINK> .
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>All attributes are optional, although one of NAME and HREF is
+necessary for the anchor to be useful. See also:
+<LOCATOR>F.wVSWBRSpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0IpVSWB0PpF84aK</LINKTARGET><LINKCONTENT>LINK</LINKCONTENT></LINK> .  </PARA><HEAD1><TITLE><LOCATOR>BHs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example of use:</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;See&nbsp;&lt;A&nbsp;HREF="http://info.cern.ch/"&gt;CERN&lt;/A&gt;&quot;s&nbsp;information&nbsp;for&lnfeed;&tab;more&nbsp;details.&lnfeed;&lnfeed;&tab;A&nbsp;&lt;A&nbsp;NAME=serious&gt;serious&lt;/A&gt;&nbsp;crime&nbsp;is&nbsp;one&nbsp;which&nbsp;is&nbsp;associated&lnfeed;&tab;with&nbsp;imprisonment.&nbsp;&lnfeed;&tab;&tab;&tab;...&lnfeed;&tab;The&nbsp;Organization&nbsp;may&nbsp;refuse&nbsp;employment&nbsp;to&nbsp;anyone&nbsp;convicted&lnfeed;&tab;of&nbsp;a&nbsp;&lt;a&nbsp;href="&num;serious"&gt;serious&lt;/A&gt;&nbsp;crime.&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>3KxVSWBUSpF84aK</LOCATOR><TITLECONTENT><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>ipkVSWBfNpF84aK</LINKTARGET><LINKCONTENT>Note</LINKCONTENT></LINK>: Universal Resource Numbers</TITLECONTENT></TITLE><ABBREVTITLE>NOTE: URNs</ABBREVTITLE><PARA><LOCATOR>lOxVSWBXSpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>OQwVSWB3SpF84aK</LINKTARGET><LINKCONTENT>URNs</LINKCONTENT></LINK> are provided to allow a document to be recognized if
+duplicate copies are found. This should save a client
+implementation from picking up a copy of something it already
+has.  </PARA><PARA>The format of URNs is under discussion (1993) by various
+working groups of the Internet Engineering Task Force.
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>cHs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Note: TITLE attribute of links</TITLECONTENT></TITLE><PARA>The link may carry a
+<LOCATOR>HgxVSWBaSpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>UdwVSWBCSpF84aK</LINKTARGET><LINKCONTENT>TITLE</LINKCONTENT></LINK> attribute which should if present
+give the title of the document whose address is given by the
+HREF attribute.  </PARA><PARA>This is useful for at least two reasons  </PARA><ITEMIZEDLIST><BULLET><PARA>The browser software may chose to display the title of the
+document as a preliminary to retrieving it, for example
+as a margin note or on a small box while the mouse is
+over the anchor, or during document fetch.  </PARA></BULLET><BULLET><PARA>Some documents -- mainly those which are not marked
+up text, such as graphics, plain text and also Gopher
+menus, do not come with a title themselves, and so
+putting a title in the link is the only way to give them a
+title. This is how Gopher works. Obviously it leads to
+duplication of data, and so it is dangerous to assume that
+the title attribute of the link is a valid and unique title
+for the destination document.
+</PARA></BULLET></ITEMIZEDLIST></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>yHs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Note: METHODS attribute of Links</TITLECONTENT></TITLE><ABBREVTITLE>NOTE: METHODS</ABBREVTITLE><PARA>The METHODS attributes of anchors and links are used to
+provide information about the functions which the user may
+perform on an object. These are more accurately given by the
+HTTP protocol when it is used, but it may, for similar reasons as
+for the TITLE attribute, be useful to include the information in
+advance in the link.  </PARA><PARA>For example, The browser may chose a different rendering as a
+function of the methods allowed (for example something which is
+searchable may get a different icon)
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>M9yVSWBdSpF84aK</LOCATOR><TITLECONTENT>Headings</TITLECONTENT></TITLE><PARA><LOCATOR>sDyVSWBgSpF84aK</LOCATOR><LOCATOR>BIyVSWBjSpF84aK</LOCATOR><LOCATOR>AMyVSWBmSpF84aK</LOCATOR><LOCATOR>3QyVSWBpSpF84aK</LOCATOR><LOCATOR>0UyVSWBsSpF84aK</LOCATOR><LOCATOR>GYyVSWBvSpF84aK</LOCATOR>Six levels of heading are supported. (Note that a hypertext node
+within a hypertext work tends to need fewer levels of heading
+than a work whose only structure is given by the nesting of
+headings.)  </PARA><PARA>A heading element implies all the font changes, paragraph
+breaks before and after, and white space (for example) necessary
+to render the heading. Further character emphasis or paragraph
+marks are not required in HTML.  </PARA><PARA>H1 is the highest level of heading, and is recommended for the
+start of a hypertext node. It is suggested that the the text of the
+first heading be suitable for a reader who is already browsing in
+related information, in contrast to the
+<LOCATOR>FeyVSWBySpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>ItoVSWBkOpF84aK</LINKTARGET><LINKCONTENT>title</LINKCONTENT></LINK> tag which should
+identify the node in a wider context.  </PARA><PARA>The heading elements are  </PARA><LITERALLAYOUT>&tab;&tab;&lt;H1&gt;,&nbsp;&lt;H2&gt;,&nbsp;&lt;H3&gt;,&nbsp;&lt;H4&gt;,&nbsp;&lt;H5&gt;,&nbsp;&lt;H6&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>It is not normal practice to jump from one header to a header
+level more than one below, for example for follow an H1 with an
+H3. Although this is legal, it is discouraged, as it may produce
+strange results for example when generating other
+representations from the HTML.  </PARA><HEAD1><TITLE><LOCATOR>dIs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example:</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&tab;&lt;H1&gt;This&nbsp;is&nbsp;a&nbsp;heading&lt;/H1&gt;&lnfeed;&tab;&tab;Here&nbsp;is&nbsp;some&nbsp;text&lnfeed;&tab;&tab;&lt;H2&gt;Second&nbsp;level&nbsp;heading&lt;/H2&gt;&lnfeed;&tab;&tab;Here&nbsp;is&nbsp;some&nbsp;more&nbsp;text.&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1><HEAD1><TITLE><LOCATOR>kIs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Parser Note:</TITLECONTENT></TITLE><PARA>Parsers should not require any specific order to heading
+elements, even if the heading level increases by more than one
+between successive headings.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>vIs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical Rendering</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>H1  </TERM><DEFINITION><PARA>Bold very large font, centered. One or two lines clear
+space between this and anything following. If printed on
+paper, start new page.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>H2  </TERM><DEFINITION><PARA>Bold, large font, flush left against left margin, no indent.
+One or two clear lines above and below.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>H3  </TERM><DEFINITION><PARA>Italic, large font, slightly indented from the left margin.
+One or two clear lines above and below.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>H4  </TERM><DEFINITION><PARA>Bold, normal font, indented more than H3. One clear line
+above and below.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>H5  </TERM><DEFINITION><PARA>Italic, normal font, indented as H4. One clear line above.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>H6  </TERM><DEFINITION><PARA>Bold, indented same as normal text, more than H5. One
+clear line above.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>These typical values are just an indication, and it is up to the
+designer of the presentation software to define the styles. The
+reader may have options to customize these. When writing
+documents, you should assume that whatever is done it is
+designed to have the same sort of effect as the styles above.  </PARA><PARA>The rendering software is responsible for generating suitable
+vertical white space between elements, so it is NOT normal or
+required to follow a heading element with a paragraph mark.
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>TJs2TWBQnpF84aK</LOCATOR><TITLECONTENT>P: Paragraph</TITLECONTENT></TITLE><PARA>The empty P element represents a paragraph. The exact
+rendering of this (indentation, leading, etc) is not defined here,
+and may be a function of other tags, style sheets etc.  </PARA><PARA>You do NOT need to use &lt;P&gt; to put white space around heading,
+list, address or blockquote elements. It is the responsibility of the
+rendering software to generate that white space. An empty
+paragraph has undefined effect and should be avoided.  </PARA><HEAD1><TITLE><LOCATOR>cJs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical rendering</TITLECONTENT></TITLE><PARA>Typically, paragraphs are surrounded by a small vertical space
+(of a line or half a line). This is not the case (typically) within
+ADDRESS or (ever) within PRE elements. With some
+implementations, normal paragraphs may have a small extra
+left indent on the first line.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>jJs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Examples of use</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&lt;h1&gt;What&nbsp;to&nbsp;do&lt;/h1&gt;&lnfeed;&tab;&lt;p&gt;This&nbsp;is&nbsp;a&nbsp;one&nbsp;paragraph.&lt;P&gt;This&nbsp;is&nbsp;a&nbsp;second.&lnfeed;&tab;&lt;P&gt;&lnfeed;&tab;This&nbsp;is&nbsp;a&nbsp;third.&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1><HEAD1><TITLE><LOCATOR>qJs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Bad example</TITLECONTENT></TITLE><LITERALLAYOUT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;&lt;P&gt;What&nbsp;not&nbsp;to&nbsp;do&lt;/h1&gt;&lnfeed;&tab;&lt;address&gt;&lt;p&gt;I&nbsp;found&nbsp;that&nbsp;on&nbsp;my&nbsp;XYZ&nbsp;browser&nbsp;it&nbsp;looked&nbsp;prettier&nbsp;to&lnfeed;&tab;me&nbsp;if&nbsp;I&nbsp;put&nbsp;some&nbsp;paragraph&nbsp;tags&lt;/address&gt;&lnfeed;&tab;&lt;p&gt;&lnfeed;&tab;&lt;ul&gt;&lt;p&gt;&lt;li&gt;Around&nbsp;lists,&nbsp;and&lnfeed;&tab;&lt;li&gt;Inside&nbsp;headings.&lnfeed;&tab;&lt;/ul&gt;&lnfeed;&tab;&lt;p&gt;&lnfeed;&tab;&lt;h2&gt;None&nbsp;of&nbsp;the&nbsp;paragraph&nbsp;tags&nbsp;in&nbsp;this&nbsp;example&nbsp;should&lnfeed;&tab;be&nbsp;there.&lt;/h2&gt;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1><HEAD1><TITLE><LOCATOR>2Ks2TWBQnpF84aK</LOCATOR><TITLECONTENT>See also</TITLECONTENT></TITLE><PARA>Line Break
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>5Ks2TWBQnpF84aK</LOCATOR><TITLECONTENT>Line Break</TITLECONTENT></TITLE><PARA>The line break element marks that a new line must be started at
+the given point.  </PARA><HEAD1><TITLE><LOCATOR>8Ks2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical rendering</TITLECONTENT></TITLE><PARA>A new line with indent the same as that of line-wrapped text.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>BKs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Examples</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&tab;&lt;ADDRESS&gt;Tim&nbsp;Berners-Lee&lt;BR&gt;&lnfeed;&tab;&tab;World&nbsp;Wide&nbsp;Web&nbsp;project&lt;BR&gt;&lnfeed;&tab;&tab;CERN&lt;BR&gt;1211&nbsp;Geneva&nbsp;23&lt;BR&gt;Switzerland&lnfeed;&tab;&tab;&lt;/ADDRESS&gt;&lnfeed;&lnfeed;&tab;&tab;I&nbsp;think&nbsp;that&nbsp;I&nbsp;shall&nbsp;never&nbsp;see&lt;BR&gt;&lnfeed;&tab;&tab;A&nbsp;hoarding&nbsp;lovely&nbsp;as&nbsp;a&nbsp;tree&lt;BR&gt;&lnfeed;&tab;&tab;In&nbsp;fact,&nbsp;unless&nbsp;the&nbsp;hoardings&nbsp;fall&lt;BR&gt;&lnfeed;&tab;&tab;I&quot;ll&nbsp;never&nbsp;see&nbsp;a&nbsp;tree&nbsp;at&nbsp;all.&lt;P&gt;&lnfeed;&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1><HEAD1><TITLE><LOCATOR>PKs2TWBQnpF84aK</LOCATOR><TITLECONTENT>See also:</TITLECONTENT></TITLE><PARA><LOCATOR>LlzVSWB-SpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>CKqVSWBdPpF84aK</LINKTARGET><LINKCONTENT>the P (paragraph) element</LINKCONTENT></LINK>
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>UKs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Highlighting</TITLECONTENT></TITLE><PARA>This is a
+<LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>L-kVSWBlNpF84aK</LINKTARGET><LINKCONTENT>level 1</LINKCONTENT></LINK> feature. Highlighting tags may be ignored by
+minimal implementations.  </PARA><PARA>These elements allow sections of text to be formatted in a
+particular way, to provide emphasis, etc. The tags do NOT cause
+a paragraph break, and may be used on sections of text within
+paragraphs.  </PARA><PARA>All these tags have required end tags, as in  </PARA><LITERALLAYOUT>&tab;&tab;This&nbsp;is&nbsp;&lt;EM&gt;emphasized&lt;/EM&gt;&nbsp;text.&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>Level 1 implementations must render highlighted text (i.e. the
+content of any of the elements below) distinctly from plain text
+(i.e. text that is not contained in one of these elements).  </PARA><PARA><COMPUTEROUTPUT>EM</COMPUTEROUTPUT> content must be rendered as distinct from
+<COMPUTEROUTPUT>STRONG</COMPUTEROUTPUT> content,
+and
+<COMPUTEROUTPUT>B</COMPUTEROUTPUT> content must rendered as distinct from
+<COMPUTEROUTPUT>I</COMPUTEROUTPUT> content.  </PARA><PARA>Highlighting elements are allowed within the content of other
+highlighting elements, but implementations are not required to
+render these nested highlighting elements distinctly from
+non-nested elements. For example, implementations may render
+the following two cases identically:  </PARA><LITERALLAYOUT>&lnfeed;&tab;plain&nbsp;&lt;B&gt;bold&nbsp;&lt;I&gt;italic&lt;/I&gt;&lt;/B&gt;&lnfeed;&tab;plain&nbsp;&lt;B&gt;bold&nbsp;&lt;/B&gt;&lt;I&gt;italic&lt;/I&gt;&lnfeed;</LITERALLAYOUT><PARA>These element names are derived from TeXInfo macro names:  </PARA><HEAD1><TITLE><LOCATOR>zKs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Character Formatting Elements</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>aB.VSWB2TpF84aK</LOCATOR>TT  </TERM><DEFINITION><PARA>Fixed-width typewriter font.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>9H.VSWB5TpF84aK</LOCATOR>B  </TERM><DEFINITION><PARA>Boldface.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>9M.VSWB8TpF84aK</LOCATOR>I  </TERM><DEFINITION><PARA>Italics.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD2><TITLE><LOCATOR>7Ls2TWBQnpF84aK</LOCATOR><TITLECONTENT>Proposed Character Formatting Elements</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>pR.VSWBBTpF84aK</LOCATOR>U  </TERM><DEFINITION><PARA>Underline.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>KX.VSWBETpF84aK</LOCATOR>S  </TERM><DEFINITION><PARA>Strikethrough, typically a line through the characters.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>NLs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Special Phrase Elements</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>qc.VSWBHTpF84aK</LOCATOR>EM  </TERM><DEFINITION><PARA>Emphasis, typically italic.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>vh.VSWBKTpF84aK</LOCATOR>STRONG  </TERM><DEFINITION><PARA>Stronger emphasis, typically bold.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>hn.VSWBNTpF84aK</LOCATOR>CODE  </TERM><DEFINITION><PARA>Example of code. typically monospaced font. (Do not
+confuse with
+<LOCATOR>As.VSWBQTpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>Z1rVSWB5QpF84aK</LINKTARGET><LINKCONTENT>PRE</LINKCONTENT></LINK> )  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>Nx.VSWBTTpF84aK</LOCATOR>SAMP  </TERM><DEFINITION><PARA>A sequence of literal characters.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>z0-VSWBWTpF84aK</LOCATOR>KBD  </TERM><DEFINITION><PARA>in an instruction manual, Text typed by a user.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>t5-VSWBZTpF84aK</LOCATOR>VAR  </TERM><DEFINITION><PARA>A variable name.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>6B-VSWBcTpF84aK</LOCATOR>CITE  </TERM><DEFINITION><PARA>A citation. Typically italic.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD2><TITLE><LOCATOR>vLs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Proposed Special Phrase Elements</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>6H-VSWBfTpF84aK</LOCATOR>DFN  </TERM><DEFINITION><PARA>The defining instance of a term. Typically bold or bold
+italic.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>1M-VSWBiTpF84aK</LOCATOR>STRIKE  </TERM><DEFINITION><PARA>"strike out" text, as in a legal document.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>4Ms2TWBQnpF84aK</LOCATOR><TITLECONTENT>Examples of use</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;This&nbsp;text&nbsp;contains&nbsp;an&nbsp;&lt;em&gt;emphasized&lt;/em&gt;&nbsp;word.&lnfeed;&tab;&lt;strong&gt;Don&quot;t&nbsp;assume&lt;/strong&gt;&nbsp;that&nbsp;it&nbsp;will&nbsp;be&nbsp;italic!&lnfeed;&tab;It&nbsp;was&nbsp;made&nbsp;using&nbsp;the&nbsp;&lt;CODE&gt;EM&lt;/CODE&gt;&nbsp;element.&nbsp;A&nbsp;citation&nbsp;is&lnfeed;&tab;typically&nbsp;italic&nbsp;and&nbsp;has&nbsp;no&nbsp;formal&nbsp;necessary&nbsp;structure:&lnfeed;&tab;&lt;cite&gt;Moby&nbsp;Dick&lt;/cite&gt;&nbsp;is&nbsp;a&nbsp;book&nbsp;title.&lnfeed;</LITERALLAYOUT><HEAD2><TITLE><LOCATOR>GMs2TWBQnpF84aK</LOCATOR><TITLECONTENT>NOTE: Highlighting Distinctions</TITLECONTENT></TITLE><PARA><WORDASWORD>Implementations may render each of the highlighting elements
+distinctly, but they are not required to. While
+</WORDASWORD><COMPUTEROUTPUT>CITE</COMPUTEROUTPUT> must be
+rendered as distinct from plain text, it may be rendered the same
+as
+<COMPUTEROUTPUT>EM</COMPUTEROUTPUT> or the same as
+<COMPUTEROUTPUT>STRONG</COMPUTEROUTPUT> (but not both, since
+<COMPUTEROUTPUT>EM</COMPUTEROUTPUT> and
+<COMPUTEROUTPUT>STRONG</COMPUTEROUTPUT>
+must be distinct).  </PARA></HEAD2><HEAD2><TITLE><LOCATOR>RMs2TWBQnpF84aK</LOCATOR><TITLECONTENT>NOTE:
+<COMPUTEROUTPUT>EM</COMPUTEROUTPUT> and
+<COMPUTEROUTPUT>STRONG</COMPUTEROUTPUT> vs.
+<COMPUTEROUTPUT>I</COMPUTEROUTPUT> and
+<COMPUTEROUTPUT>B</COMPUTEROUTPUT></TITLECONTENT></TITLE><PARA><WORDASWORD>While
+</WORDASWORD><COMPUTEROUTPUT>EM</COMPUTEROUTPUT> and
+<COMPUTEROUTPUT>I</COMPUTEROUTPUT> often give the same effect, authors are
+encouraged to use
+<COMPUTEROUTPUT>EM</COMPUTEROUTPUT> except in the case that it is necessary to
+refer to the formatting in the text. (E.g. "The italic parts are
+mandatory".)  </PARA><PARA><WORDASWORD>This results in greater consistency between documents from
+various sources if, for example, a reader prefers to use color in
+stead of italics for emphasis.</WORDASWORD>
+</PARA></HEAD2></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>fMs2TWBQnpF84aK</LOCATOR><TITLECONTENT>IMG: Embedded Images</TITLECONTENT></TITLE><PARA>Status:
+<LOCATOR>ks-VSWBlTpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>L-kVSWBlNpF84aK</LINKTARGET><LINKCONTENT>Extra</LINKCONTENT></LINK>  </PARA><PARA>The IMG element allows another document to be inserted inline.
+The document is normally an icon or small graphic, etc. This
+element is NOT intended for embedding other HTML text.  </PARA><PARA>Browsers which are not able to display inline images ignore IMG
+elements. Authors should note that some browsers will be able to
+display (or print) linked graphics but not inline graphics. If the
+graphic is essential, it may be wiser to make a link to it rather
+than to put it inline. If the graphic is essentially decorative, then
+IMG is appropriate.  </PARA><PARA>The IMG element is empty: it has no closing tag. It has two
+attributes:  </PARA><VARIABLELIST><TERMDEFINITION><TERM>SRC  </TERM><DEFINITION><PARA>The value of this attribute is the URL of the document to
+be embedded. Its syntax is the same as that of the
+<LOCATOR>B--VSWBoTpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>O30WSWBrTpF84aK</LINKTARGET><LINKCONTENT>HREF
+attribute</LINKCONTENT></LINK> of the A tag. SRC is mandatory.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>ALIGN  </TERM><DEFINITION><PARA>Take values TOP or MIDDLE or BOTTOM, defining
+whether the tops or middles of bottoms of the graphics
+and text should be aligned vertically.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>ALT  </TERM><DEFINITION><PARA>Optional alternative text as an alternative to the
+graphics for display in text-only environments.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>Note that IMG elements are allowed within anchors.  </PARA><HEAD1><TITLE><LOCATOR>ANs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;Warning:&nbsp;&lt;<LOCATOR>8C0WSWBuTpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>BG0WSWBxTpF84aK</LINKTARGET><LINKCONTENT>&nbsp;IMG</LINKCONTENT></LINK>&nbsp;<LOCATOR>5K0WSWB.TpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>eN0WSWB1UpF84aK</LINKTARGET><LINKCONTENT>SRC</LINKCONTENT></LINK>&nbsp;="triangle.gif"&nbsp;ALT="Warning:"&gt;&nbsp;This&nbsp;must&nbsp;be&nbsp;done&nbsp;by&nbsp;a&lnfeed;&tab;qualified&nbsp;technician.&lnfeed;&lnfeed;&tab;&lt;<LOCATOR>LT0WSWB4UpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>KX0WSWB7UpF84aK</LINKTARGET><LINKCONTENT>&nbsp;A</LINKCONTENT></LINK>&nbsp;HREF="Go.html"&gt;&lt;<LOCATOR>cb0WSWBAUpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>BG0WSWBxTpF84aK</LINKTARGET><LINKCONTENT>&nbsp;IMG</LINKCONTENT></LINK>&nbsp;<LOCATOR>qf0WSWBDUpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>eN0WSWB1UpF84aK</LINKTARGET><LINKCONTENT>SRC</LINKCONTENT></LINK>&nbsp;="Button.ps"&nbsp;ALT="GO"&gt;&lt;/A&gt;&lnfeed;&lnfeed;&lnfeed;&lnfeed;&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>WNs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Horizontal Rule</TITLECONTENT></TITLE><HEAD1><TITLE><LOCATOR>YNs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical Rendering</TITLECONTENT></TITLE><PARA>Some sort of divider between sections of text such as a full width
+horizontal rule or equivalent graphic.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>cNs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example</TITLECONTENT></TITLE><PARA>The horizontal rule is typically used for separating heading
+information (when more than just a heading) from content, etc.  </PARA><LITERALLAYOUT>&tab;&tab;&lt;H1&gt;The&nbsp;Albatross&lt;/H1&gt;&lnfeed;&tab;&tab;&lt;Address&gt;The&nbsp;Bumstead&nbsp;Monthly,&nbsp;1948&lt;/Address&gt;&lnfeed;&tab;&tab;The&nbsp;following&nbsp;information&nbsp;is&nbsp;culled&nbsp;from&lnfeed;&tab;&tab;this&nbsp;and&nbsp;suvccessive&nbsp;issues&nbsp;of&nbsp;the&nbsp;magazine.&lnfeed;&tab;&tab;Thanks&nbsp;are&nbsp;due&nbsp;to&nbsp;the&nbsp;editor-in-chief,&lnfeed;&tab;&tab;A.R.&nbsp;Bunstead,&nbsp;for&nbsp;her&nbsp;help&nbsp;and&nbsp;advice.&lnfeed;&tab;&tab;&lt;H2&gt;Copyright&nbsp;IQR&nbsp;Inc.&lt;/h2&gt;&lnfeed;&tab;&tab;This&nbsp;recording&nbsp;may&nbsp;not&nbsp;be&nbsp;sold,&nbsp;resold,&lnfeed;&tab;&tab;hired&nbsp;out,&nbsp;used,&nbsp;or&nbsp;talked&nbsp;about&nbsp;in&nbsp;too&nbsp;great&lnfeed;&tab;&tab;a&nbsp;depth&nbsp;without&nbsp;the&nbsp;publisher&quot;s&nbsp;written&nbsp;or&lnfeed;&tab;&tab;videotaped&nbsp;consent.&lnfeed;&tab;&tab;<LOCATOR>051WSWBGUpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>h81WSWBJUpF84aK</LINKTARGET><LINKCONTENT>&lt;HR&gt;&lnfeed;</LINKCONTENT></LINK>&tab;&tab;The&nbsp;Albatross,&nbsp;most&nbsp;fabled&nbsp;and&nbsp;infamous&nbsp;of&nbsp;..&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>HN1WSWBMUpF84aK</LOCATOR><TITLECONTENT>Address</TITLECONTENT></TITLE><PARA>This element is for address information, signatures, authorship,
+etc, often at the top or bottom of a document.  </PARA><HEAD1><TITLE><LOCATOR>COs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical rendering</TITLECONTENT></TITLE><PARA>Typically, an address element is italic and/or right justified or
+indented. The address element implies a paragraph break.
+Paragraph marks within the address element do not cause extra
+white space to be inserted.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>KOs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Examples of use:</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&tab;&lt;ADDRESS&gt;&lt;A&nbsp;HREF="Author.html"&gt;A.N.Other&lt;/A&gt;&lt;/ADDRESS&gt;&lnfeed;&lnfeed;&lnfeed;&tab;&tab;&lt;ADDRESS&gt;&lnfeed;&tab;&tab;Newsletter&nbsp;editor&lt;p&gt;&lnfeed;&tab;&tab;J.R.&nbsp;Brown&lt;p&gt;&lnfeed;&tab;&tab;JimquickPost&nbsp;News,&nbsp;Jumquick,&nbsp;CT&nbsp;01234&lt;p&gt;&lnfeed;&tab;&tab;Tel&nbsp;(123)&nbsp;456&nbsp;7890&lnfeed;&tab;&tab;&lt;/ADDRESS&gt;&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>WOs2TWBQnpF84aK</LOCATOR><TITLECONTENT>BLOCKQUOTE</TITLECONTENT></TITLE><PARA>The BLOCKQUOTE element allows text quoted from another
+source to be rendered specially.  </PARA><HEAD1><TITLE><LOCATOR>aOs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical rendering</TITLECONTENT></TITLE><PARA>A typical rendering might be a slight extra left and right indent,
+and/or italic font. BLOCKQUOTE causes a paragraph break,
+and typically a line or so of white space will be allowed between
+it and any text before or after it.  </PARA><PARA>Single-font rendition may for example put a vertical line of "&gt;"
+characters down the left margin to indicate quotation in the
+Internet mail style.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>jOs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example</TITLECONTENT></TITLE><LITERALLAYOUT>I&nbsp;think&nbsp;it&nbsp;ends&lnfeed;&lt;BLOCKQUOTE&gt;Soft&nbsp;you&nbsp;now,&nbsp;the&nbsp;fair&nbsp;Ophelia.&nbsp;Nymph,&nbsp;in&nbsp;thy&nbsp;orisons,&nbsp;&lnfeed;be&nbsp;all&nbsp;my&nbsp;sins&nbsp;remembered.&lnfeed;&lt;/BLOCKQUOTE&gt;&lnfeed;but&nbsp;I&nbsp;am&nbsp;not&nbsp;sure.&lnfeed;</LITERALLAYOUT></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>rOs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Forms of list in HTML</TITLECONTENT></TITLE><PARA>These lists may be nested  </PARA><HEAD1><TITLE><LOCATOR>Q-1WSWBPUpF84aK</LOCATOR><TITLECONTENT>Glossaries</TITLECONTENT></TITLE><PARA>A glossary (or definition list) is a list of paragraphs each of which
+has a short title alongside it. Apart from glossaries, this element
+is useful for presenting a set of named elements to the reader.
+The elements within a glossary follow are introduced by these
+elements:  </PARA><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>A52WSWBSUpF84aK</LOCATOR>DT  </TERM><DEFINITION><PARA>The "term", typically placed in a wide left indent.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>2A2WSWBVUpF84aK</LOCATOR>DD  </TERM><DEFINITION><PARA>The "definition", which may wrap onto many lines
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>These elements must appear in pairs. Single occurrences of DT
+without a following DD are allowed, and have the same
+significance as if the DD had been present with no text. The one
+attribute which DL can take is  </PARA><VARIABLELIST><TERMDEFINITION><TERM>COMPACT  </TERM><DEFINITION><PARA>suggests that a compact rendering be used, because the
+enclosed elements are individually small, or the whole
+glossary is rather large, or both.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD2><TITLE><LOCATOR>EPs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical rendering</TITLECONTENT></TITLE><PARA>The definition list DT, DD pairs are arranged vertically. For each
+pair, the DT element is on the left, in a column of about a third of
+the display area, and the DD element is in the right hand two
+thirds of the display area. The DT term is normally small enough
+to fit on one line within the left-hand column. If it is longer, it will
+either extend across the page, in which case the DD section is
+moved down to separate them, or it is wrapped onto successive
+lines of the left hand column.  </PARA><PARA>This is sometimes implemented with the use of a large negative
+first line indent.  </PARA><PARA>White space is typically left between successive DT,DD pairs
+unless the COMPACT attribute is given. The COMPACT
+attribute is appropriate for lists which are long and/or have
+DT,DD pairs which each take only a line or two. It is of course
+possible for the rendering software to discover these cases itself
+and make its own decisions, and this is to be encouraged.  </PARA><PARA>The COMPACT attribute may also reduce the width of the
+left-hand (DT) column.  </PARA></HEAD2><HEAD2><TITLE><LOCATOR>0N2WSWBYUpF84aK</LOCATOR><TITLECONTENT>Examples of use</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&lt;DL&gt;&lnfeed;&tab;&lt;DT&gt;Term&nbsp;the&nbsp;first&lt;DD&gt;definition&nbsp;paragraph&nbsp;is&nbsp;reasonably&lnfeed;&tab;long&nbsp;but&nbsp;is&nbsp;still&nbsp;displayed&nbsp;clearly&lnfeed;&tab;&lt;DT&gt;Term2&nbsp;follows&lt;DD&gt;Definition&nbsp;of&nbsp;term2&lnfeed;&tab;&lt;/DL&gt;&lnfeed;&lnfeed;&tab;&lt;DL&nbsp;COMPACT&gt;&lnfeed;&tab;&lt;DT&gt;Term&lt;DD&gt;definition&nbsp;paragraph&lnfeed;&tab;&lt;DT&gt;Term2&lt;DD&gt;Definition&nbsp;of&nbsp;term2&lnfeed;&tab;&lt;/DL&gt;&lnfeed;&lnfeed;&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>mPs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Lists</TITLECONTENT></TITLE><PARA><LOCATOR>7Z2WSWBbUpF84aK</LOCATOR>A list is a sequence of paragraphs, each of which may be preceded
+by a special mark or sequence number. The syntax is:    </PARA><LITERALLAYOUT>&lnfeed;&tab;&tab;&lt;UL&gt;&lnfeed;&tab;&tab;&lt;LI&gt;&nbsp;list&nbsp;element&lnfeed;&tab;&tab;&lt;LI&gt;&nbsp;another&nbsp;list&nbsp;element&nbsp;...&lnfeed;&tab;&tab;&lt;/UL&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>The opening list tag may be any of
+<LOCATOR>ng2WSWBeUpF84aK</LOCATOR>UL,
+<LOCATOR>hk2WSWBhUpF84aK</LOCATOR>OL,
+<LOCATOR>yo2WSWBkUpF84aK</LOCATOR>MENU or
+<LOCATOR>rs2WSWBnUpF84aK</LOCATOR>DIR. It
+must be immediately followed by the first list element.  </PARA><HEAD2><TITLE><LOCATOR>zPs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical rendering</TITLECONTENT></TITLE><PARA>The representation of the list is not defined here, but a bulleted
+list for unordered lists, and a sequence of numbered paragraphs
+for an ordered list would be quite appropriate. Other possibilities
+for interactive display include embedded scrollable browse
+panels.  </PARA><PARA>List elements with typical rendering are:  </PARA><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>hz2WSWBqUpF84aK</LOCATOR>UL  </TERM><DEFINITION><PARA>A list of multi-line paragraphs, typically separated by
+some white space and/or marked by bullets, etc.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>C33WSWBtUpF84aK</LOCATOR>OL  </TERM><DEFINITION><PARA>As UL, but the paragraphs are typically numbered in
+some way to indicate the order as significant.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>Q83WSWBwUpF84aK</LOCATOR>MENU  </TERM><DEFINITION><PARA>A list of smaller paragraphs. Typically one line per item,
+with a style more compact than UL.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>0E3WSWBzUpF84aK</LOCATOR>DIR  </TERM><DEFINITION><PARA>A list of short elements, typically less than 20 characters.
+These may be arranged in columns across the page,
+typically 24 character in width. If the rendering software
+is able to optimize the column width as function of the
+widths of individual elements, so much the better.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2><HEAD2><TITLE><LOCATOR>WQs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example of use</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&tab;<LOCATOR>fM3WSWB0VpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>8R3WSWB3VpF84aK</LINKTARGET><LINKCONTENT>&lt;OL&gt;&lnfeed;</LINKCONTENT></LINK>&tab;&tab;<LOCATOR>KV3WSWB6VpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>bi3WSWB9VpF84aK</LINKTARGET><LINKCONTENT>&lt;LI&gt;</LINKCONTENT></LINK>&nbsp;When&nbsp;you&nbsp;get&nbsp;to&nbsp;the&nbsp;station,&nbsp;leave&lnfeed;&tab;&tab;by&nbsp;the&nbsp;southern&nbsp;exit,&nbsp;on&nbsp;platform&nbsp;one.&lnfeed;&tab;&tab;&lt;LI&gt;Turn&nbsp;left&nbsp;to&nbsp;face&nbsp;toward&nbsp;the&nbsp;mountain&lnfeed;&tab;&tab;&lt;LI&gt;Walk&nbsp;for&nbsp;a&nbsp;mile&nbsp;or&nbsp;so&nbsp;until&nbsp;you&nbsp;reach&nbsp;the&lnfeed;&tab;&tab;"Asquith&nbsp;Arms"&nbsp;then&nbsp;&lnfeed;&tab;&tab;&lt;LI&gt;Wait&nbsp;and&nbsp;see...&lnfeed;&tab;&tab;&lt;/OL&gt;&lnfeed;&lnfeed;&tab;&tab;&lt;<LOCATOR>Os3WSWBCVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0w3WSWBFVpF84aK</LINKTARGET><LINKCONTENT>&nbsp;MENU</LINKCONTENT></LINK>&nbsp;&gt;&lnfeed;&tab;&tab;&lt;LI&gt;The&nbsp;oranges&nbsp;should&nbsp;be&nbsp;pressed&nbsp;fresh&lnfeed;&tab;&tab;&lt;LI&gt;The&nbsp;nuts&nbsp;may&nbsp;come&nbsp;from&nbsp;a&nbsp;packet&lnfeed;&tab;&tab;&lt;LI&gt;The&nbsp;gin&nbsp;must&nbsp;be&nbsp;good&nbsp;quality&lnfeed;&tab;&tab;&lt;/MENU&gt;&lnfeed;&lnfeed;&tab;&tab;&lt;<LOCATOR>y14WSWBIVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>x54WSWBLVpF84aK</LINKTARGET><LINKCONTENT>&nbsp;DIR</LINKCONTENT></LINK>&nbsp;&gt;&lnfeed;&tab;&tab;&lt;LI&gt;A-H&lt;LI&gt;I-M&lnfeed;&tab;&tab;&lt;LI&gt;M-R&lt;LI&gt;S-Z&lnfeed;&tab;&tab;&lt;/DIR&gt;&lnfeed;&lnfeed;&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD2></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>4M4WSWBOVpF84aK</LOCATOR><TITLECONTENT>PRE:
+Preformatted text</TITLECONTENT></TITLE><PARA>Preformatted elements in
+<LOCATOR>HQ4WSWBRVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>PTtVSWB4RpF84aK</LINKTARGET><LINKCONTENT>HTML</LINKCONTENT></LINK> are displayed with text in a
+fixed width font, and so are suitable for text which has been
+formatted for a teletype by some existing formatting system.  </PARA><LITERALLAYOUT>&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>The optional attribute is:  </PARA><VARIABLELIST><TERMDEFINITION><TERM>WIDTH  </TERM><DEFINITION><PARA>This attribute gives the maximum number of characters
+which will occur on a line. It allows the presentation
+system to select a suitable font and indentation. Where
+the WIDTH attribute is not recognized, it is
+recommended that a width of 80 be assumed. Where
+WIDTH is supported, it is recommended that at least
+widths of 40, 80 and 132 characters be presented
+optimally, with other widths being rounded up.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>Within a PRE element,  </PARA><ITEMIZEDLIST><BULLET><PARA>Line boundaries within the text are rendered as a move
+to the beginning of the next line, except for one
+immediately following or immediately preceding a tag.  </PARA></BULLET><BULLET><PARA>The &lt;p&gt; tag should not be used. If found, it should be
+rendered as a move to the beginning of the next line.  </PARA></BULLET><BULLET><PARA>Anchor elements and character highlighting elements
+may be used.  </PARA></BULLET><BULLET><PARA>Elements which define paragraph formatting (Headings,
+Address, etc) must not be used.  </PARA></BULLET><BULLET><PARA>The ASCII Horizontal Tab (HT) character must be
+interpreted as the smallest positive nonzero number of
+spaces which will leave the number of characters so far
+on the line as a multiple of 8. Its use is not recommended
+however.
+</PARA></BULLET></ITEMIZEDLIST><HEAD1><TITLE><LOCATOR>eRs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example of use</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&tab;&tab;<LOCATOR>ee4WSWBUVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>Bi4WSWBXVpF84aK</LINKTARGET><LINKCONTENT>&lt;PRE</LINKCONTENT></LINK>&nbsp;WIDTH="80"&gt;&lnfeed;&tab;&tab;&tab;This&nbsp;is&nbsp;an&nbsp;example&nbsp;line&lnfeed;&tab;&tab;&tab;&lt;/PRE&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><HEAD2><TITLE><LOCATOR>mRs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Note: Highlighting</TITLECONTENT></TITLE><PARA>Within a preformatted element, the constraint that the
+rendering must be on a fixed horizontal character pitch may limit
+or prevent the ability of the renderer to render highlighting
+elements specially.  </PARA></HEAD2><HEAD2><TITLE><LOCATOR>rRs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Note: Margins</TITLECONTENT></TITLE><PARA>The above references to the "beginning of a new line" must not be
+taken as implying that the renderer is forbidden from using a
+(constant) left indent for rendering preformatted text. The left
+indent may of course be constrained by the width required.
+</PARA></HEAD2></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>yRs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Fill-out Forms and Input fields</TITLECONTENT></TITLE><ABBREVTITLE>Forms</ABBREVTITLE><PARA>Forms are composed by placing input fields within paragraphs,
+preformatted/literal text, lists and tables. This gives
+considerable scope in designing the layout of forms.  </PARA><HEAD1><TITLE><LOCATOR>3Ss2TWBQnpF84aK</LOCATOR><TITLECONTENT>Elements</TITLECONTENT></TITLE><PARA>The form features use the following elements which are all
+known as HTML level 2 elements.  </PARA><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>I05WSWBaVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>E45WSWBdVpF84aK</LINKTARGET><LINKCONTENT>FORM</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>a form within a document.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>L95WSWBgVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0D5WSWBjVpF84aK</LINKTARGET><LINKCONTENT>INPUT</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>one input field.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>bI5WSWBmVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>BM5WSWBpVpF84aK</LINKTARGET><LINKCONTENT>TEXTAREA</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>a multline input field.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>MR5WSWBsVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>5V5WSWBvVpF84aK</LINKTARGET><LINKCONTENT>SELECT</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>A selection from a finite set of options.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>Oa5WSWByVpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>Le5WSWB-VpF84aK</LINKTARGET><LINKCONTENT>OPTION</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>one option within a SELECT.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD2><TITLE><LOCATOR>USs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Proposed Elements</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>8k5WSWB2WpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>Ko5WSWB5WpF84aK</LINKTARGET><LINKCONTENT>HTEXTAREA</LINKCONTENT></LINK>  </TERM><DEFINITION><PARA>an input field for hypertext.  </PARA><PARA>
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>Each variable field is defined by an
+<LOCATOR>Tu5WSWB8WpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0D5WSWBjVpF84aK</LINKTARGET><LINKCONTENT>INPUT</LINKCONTENT></LINK> , TEXTAREA, or
+OPTION element and must have an NAME attribute which
+uniquely names the field in the document. Additional optional
+attributes can be used to specify the type of the field (defaults to
+free text), its size/precision, its initial value and whether the field
+is currently disabled or in error:  </PARA></HEAD2></HEAD1><HEAD1><TITLE><LOCATOR>rSs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example</TITLECONTENT></TITLE><LITERALLAYOUT>&lt;FORM&nbsp;ACTION="mailto:www_admin@info.cern.ch"&gt;&lnfeed;&lt;MH&nbsp;HIDDEN&gt;Subject:&nbsp;WWW&nbsp;Questionaire&lt;/MH&gt;&lnfeed;Please&nbsp;help&nbsp;up&nbsp;to&nbsp;improve&nbsp;the&nbsp;World&nbsp;Wide&nbsp;Web&nbsp;by&nbsp;filling&nbsp;in&nbsp;the&lnfeed;following&nbsp;questionaire:&lnfeed;&lt;P&gt;Your&nbsp;organization?&nbsp;&lt;INPUT&nbsp;NAME="org"&nbsp;SIZE="48"&gt;&lnfeed;&lt;P&gt;Commercial?&nbsp;&lt;INPUT&nbsp;NAME="commerce"&nbsp;TYPE=checkbox&gt;&lnfeed;How&nbsp;many&nbsp;users?&nbsp;&lt;INPUT&nbsp;NAME="users"&nbsp;TYPE=int&gt;&lnfeed;&lt;P&gt;Which&nbsp;browsers&nbsp;do&nbsp;you&nbsp;use?&lnfeed;&lt;UL&gt;&lnfeed;&lt;LI&gt;X&nbsp;Mosaic&nbsp;&lt;INPUT&nbsp;NAME="browsers"&nbsp;TYPE=checkbox&nbsp;VALUE="xmosaic"&gt;&lnfeed;&lt;LI&gt;Cello&nbsp;&lt;INPUT&nbsp;NAME="browsers"&nbsp;TYPE=checkbox&nbsp;VALUE="cello"&gt;&lnfeed;&lt;LI&gt;Others&nbsp;&lt;TEXTAREA&nbsp;NAME="others"&nbsp;COLS=48&nbsp;ROWS=4&gt;&lt;/TEXTAREA&gt;&lnfeed;&lt;/UL&gt;&lnfeed;A&nbsp;contact&nbsp;point&nbsp;for&nbsp;your&nbsp;site:&nbsp;&lt;INPUT&nbsp;NAME="contact"&nbsp;SIZE="42"&gt;&lnfeed;&lt;P&gt;Many&nbsp;thanks&nbsp;on&nbsp;behalf&nbsp;of&nbsp;the&nbsp;WWW&nbsp;central&nbsp;support&nbsp;team.&lnfeed;&lt;P&nbsp;ALIGN=CENTER&gt;&lt;INPUT&nbsp;TYPE=submit&gt;&nbsp;&lt;INPUT&nbsp;TYPE=reset&gt;&lnfeed;&lt;/FORM&gt;&lnfeed;</LITERALLAYOUT><PARA>This fictitious example is a questionnaire that will be emailed to
+www_admin@info.cern.ch.  </PARA><PARA>Servers can disable forms by sending an appropriate header or
+by an attribute on the optional HTMLPLUS element at the very
+start of the document, e.g. &lt;htmlplus forms=off&gt;.  </PARA><PARA>Here, the &lt;P&gt; and &lt;UL&gt; elements have been used to lay out the
+text (and input fields. The browser has changed the background
+color within the
+<LOCATOR>gG6WSWBBWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>E45WSWBdVpF84aK</LINKTARGET><LINKCONTENT>FORM</LINKCONTENT></LINK> element to distinguish the form from
+other parts of the document. The browser is responsible for
+handling the input focus, i.e. which field will currently get
+keyboard input.  </PARA><PARA>For many platforms there will be existing conventions for forms,
+e.g. "tab" and "shift-tab" keys to move the keyboard focus
+forwards and backwards between fields, while an "Enter" key
+submits the form. In the example, the "submit" and "reset"
+buttons are specified explicitly with special purpose fields. The
+"submit" button is used to email the form or send its contents to
+the server as specified by the ACTION attribute, while the
+"reset" button resets the fields to their initial values. When the
+form consists of a single text field, it may be appropriate to leave
+such buttons out and rely on the "Enter" key.  </PARA><PARA>The
+<LOCATOR>MN6WSWBEWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0D5WSWBjVpF84aK</LINKTARGET><LINKCONTENT>INPUT</LINKCONTENT></LINK> element is used for a large variety of typed of input
+fields.  </PARA><PARA>When you need to let users enter more than one line of text, you
+should use the
+<LOCATOR>WS6WSWBHWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>BM5WSWBpVpF84aK</LINKTARGET><LINKCONTENT>TEXTAREA</LINKCONTENT></LINK> element.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>0Us2TWBQnpF84aK</LOCATOR><TITLECONTENT>Representing choices</TITLECONTENT></TITLE><PARA>The
+<LOCATOR>LY6WSWBKWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>vb6WSWBNWpF84aK</LINKTARGET><LINKCONTENT>RADIO</LINKCONTENT></LINK> and
+<LOCATOR>pf6WSWBQWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>Oj6WSWBTWpF84aK</LINKTARGET><LINKCONTENT>CHECKBOX</LINKCONTENT></LINK> types of<LOCATOR>fn6WSWBWWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>0D5WSWBjVpF84aK</LINKTARGET><LINKCONTENT>INPUT</LINKCONTENT></LINK> field can be used to
+specify multiple choice forms in which every alternative is visible
+as part of the form. An alternative is to use the
+<LOCATOR>6s6WSWBZWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>5V5WSWBvVpF84aK</LINKTARGET><LINKCONTENT>SELECT</LINKCONTENT></LINK> element
+which is generally rendered in a more compact fashion as a pull
+down combo list.
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>HUs2TWBQnpF84aK</LOCATOR><TITLECONTENT>FORM</TITLECONTENT></TITLE><PARA>The FORM element is used to delimit the
+<LOCATOR>v47WSWBcWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>DerVSWBTQpF84aK</LINKTARGET><LINKCONTENT>form</LINKCONTENT></LINK> . There can be
+several forms in a single document, but the FORM element can&quot;t
+be nested.  </PARA><PARA>The ACTION attribute specifies a URL that designates an HTTP
+server or an email address. If missing, the URL for the document
+itself will be assumed. The effect of the action can be modified by
+including a method prefix, e.g. ACTION="POST http://...." . This
+prefix is used to select the HTTP method when sending the
+form&quot;s contents to an HTTP server. [[Would it be cleaner to use a
+separate attribute, e.g. METHOD ?]
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>WUs2TWBQnpF84aK</LOCATOR><TITLECONTENT>INPUT</TITLECONTENT></TITLE><PARA>The INPUT element represents a field whose contents may be
+edited by the user. It has the following attributes.  </PARA><VARIABLELIST><TERMDEFINITION><TERM>NAME  </TERM><DEFINITION><PARA>Symbolic name used when transferring the form&quot;s
+contents. This attribute is always needed and should
+uniquely identify this field.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>TYPE  </TERM><DEFINITION><PARA>Defines the type of data the field accepts. Defaults to free
+text.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>SIZE  </TERM><DEFINITION><PARA>Specifies the size or precision of the field according to its
+type.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>MAXLENGTH  </TERM><DEFINITION><PARA>The maximum number of characters that will be
+accepted as input. This can be greater that specified by
+SIZE , in which case the field will scroll appropriately.
+The default is unlimited.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>VALUE  </TERM><DEFINITION><PARA>The initial value for the field, or the value when checked
+for checkboxes and radio buttons. This attribute is
+required for radio buttons.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>SRC  </TERM><DEFINITION><PARA>A URL or URN specifying an image - for use only with
+TYPE=IMAGEMAP.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>ALIGN  </TERM><DEFINITION><PARA>Vertical alignment of the image - for use only with
+TYPE=IMAGEMAP.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD1><TITLE><LOCATOR>0Vs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Propsed</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>CHECKED  </TERM><DEFINITION><PARA>When present indicates that a checkbox or radio button
+is selected.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>DISABLED  </TERM><DEFINITION><PARA>When present indicates that this field is temporarily
+disabled. Browsers should show this by "greying it" out
+in some manner.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>ERROR  </TERM><DEFINITION><PARA>When present indicates that the field&quot;s initial value is in
+error in some way, e.g. because it is inconsistent with the
+values of other fields. Servers should include an
+explanatory error message with the form&quot;s text.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD1><HEAD1><TITLE><LOCATOR>EVs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Types</TITLECONTENT></TITLE><PARA>The following types of fields can be defined with the TYPE
+attribute :  </PARA><VARIABLELIST><TERMDEFINITION><TERM>TEXT  </TERM><DEFINITION><PARA>Single line text entry fields. Use the SIZE attribute to
+specify the visible width in characters, e.g. SIZE="24" for
+a 24 character field. The MAX attribute can be used to
+specify an upper limit to the number of characters that
+can be entered into a text field, e.g. MAX=72 . Use the
+TEXTAREA element for text fields which can accept
+multiple lines (see below).  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>HIDDEN  </TERM><DEFINITION><PARA>No field is presented to the user, but the content of the
+field is sent with the submitted form. This value may be
+used to transmit state information about client/server
+interaction.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>Oj6WSWBTWpF84aK</LOCATOR>CHECKBOX  </TERM><DEFINITION><PARA>Used for simple Boolean attributes, or for attributes
+which can take multiple values at the same time. The
+latter is represented by a number of checkbox fields each
+of which has the same NAME .  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>vb6WSWBNWpF84aK</LOCATOR>RADIO  </TERM><DEFINITION><PARA>For attributes which can take a single value from a set of
+alternatives. Each radio button field in the group should
+be given the same NAME .  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>SUBMIT  </TERM><DEFINITION><PARA>This is a button that when pressed submits the form. It
+offers authors control over the location of this button. You
+can use an image as a submit button by specifying a URL
+with the SRC attribute.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>RESET  </TERM><DEFINITION><PARA>This is a button that when pressed resets the form&quot;s
+fields to their initial values as specified by the VALUE
+attribute. You can use an image as a reeset button by
+specifying a URL with the SRC attribute.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD2><TITLE><LOCATOR>KWs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Proposed types</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>RANGE  </TERM><DEFINITION><PARA>This allows you to specify an integer range with the MIN
+and MAX attributes, e.g. MIN=1 MAX=100 . Users can
+select any value in this range.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>INT  </TERM><DEFINITION><PARA>For entering integer numbers, the maximum number of
+digits can be specified with the SIZE attribute (excluding
+the sign character), e.g. size=3 for a three digit number.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>FLOAT  </TERM><DEFINITION><PARA>For fields which can accept floating point numbers.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>SCRIBBLE  </TERM><DEFINITION><PARA>A field upon which you can write with a pen or mouse.
+The size of the field in millimeters is given as SIZE=
+width , height. The units are absolute as they relate to
+the dimensions of the human hand, rather than pixels of
+varying resolution. The scribble may involve time and
+pressure data in addition to the basic ink data. You can
+use scribble for signatures or sketches. The field can be
+initialised by setting the SRC attribute to a URL which
+contains the ink *2 . The VALUE attribute is ignored.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>AUDIO  </TERM><DEFINITION><PARA>This provides a way of entering spoken messages into a
+form. Browsers might show an icon which when clicked
+pops-up a set of tape controls that you can use to record
+and replay messages. The initial message can be set by
+specifying a URL with the SRC attribute. The VALUE
+attribute is ignored.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD2><HEAD2><TITLE><LOCATOR>tWs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Obsolete types</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>DATE  </TERM><DEFINITION><PARA>Fields which can accept a recognized date format.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>URL  </TERM><DEFINITION><PARA>For fields which expect document references as URLs or
+URNs.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>IMAGE  </TERM><DEFINITION><PARA>This allows you to specify an image field upon which you
+can click with a pointing device. The SRC and ALIGN
+attributes are exactly the same as for the IMG and
+IMAGE elements. The symbolic names for the x and y
+coordinates of the click event are specified with .x and .y
+for the given with the NAME attribute. The VALUE
+attribute is ignored.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>When you need to let users enter more than one line of text, you
+should use the
+<LOCATOR>B.7WSWBfWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>BM5WSWBpVpF84aK</LINKTARGET><LINKCONTENT>TEXTAREA</LINKCONTENT></LINK> element.
+</PARA></HEAD2></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>CXs2TWBQnpF84aK</LOCATOR><TITLECONTENT>TEXTAREA</TITLECONTENT></TITLE><PARA>When you need to let users enter more than one line of text, you
+should use the TEXTAREA element, e.g.  </PARA><LITERALLAYOUT>&lt;TEXTAREA&nbsp;NAME="address"&nbsp;ROWS=64&nbsp;COLS=6&gt;&lnfeed;Hewlett&nbsp;Packard&nbsp;Laboratories&lnfeed;1501&nbsp;Page&nbsp;Mill&nbsp;Road&lnfeed;Palo&nbsp;Alto,&nbsp;California&nbsp;94304-1126&lnfeed;&lt;/TEXTAREA&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>The text up to the end tag is used to initialize the field&quot;s value.
+This end tag is always required even if the field is initially blank.  </PARA><HEAD1><TITLE><LOCATOR>NXs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical rendering</TITLECONTENT></TITLE><PARA>The ROWS and COLS attributes determine the visible
+dimension of the field in characters. The field is rendered in a
+fixed-width font. Browsers are recommended to allow text to
+grow beyond these limits by scrolling as needed.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>TXs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Explanatory Note: TEXTAREA and
+INPUT/TEXT</TITLECONTENT></TITLE><PARA>In the initial design for forms, multi-line text fields were
+supported by the INPUT element with TYPE=TEXT .
+Unfortunately, this causes problems for fields with long text
+values as SGML limits the length of attribute literals. The
+HTML+ DTD allows for up to 1024 characters (the SGML default
+is only 240 characters!).
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>cXs2TWBQnpF84aK</LOCATOR><TITLECONTENT>SELECT</TITLECONTENT></TITLE><PARA>The SELECT element allows the user to chose one of a set of
+alternatives described by textual labels. Every alternative is
+represented by the<LOCATOR>5U8WSWBiWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>Le5WSWB-VpF84aK</LINKTARGET><LINKCONTENT>OPTION</LINKCONTENT></LINK> element.  </PARA><HEAD1><TITLE><LOCATOR>jXs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Attributes</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>MULTIPLE  </TERM><DEFINITION><PARA>The MULTIPLE attribute is needed when users are
+allowed to make several selections, e.g. &lt;SELECT
+MULTIPLE&gt; .
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD1><HEAD1><TITLE><LOCATOR>pXs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Proposed attributes</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>ERROR  </TERM><DEFINITION><PARA>The ERROR attribute can be used to indicate that the
+initial selection is in error in some way, e.g. because it is
+inconsistent with the values of other fields.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></HEAD1><HEAD1><TITLE><LOCATOR>wXs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Typical rendering</TITLECONTENT></TITLE><PARA>SELECT is typically rendered as a pull down or pop-up list.  </PARA></HEAD1><HEAD1><TITLE><LOCATOR>zXs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Example</TITLECONTENT></TITLE><PARA>e.g.  </PARA><LITERALLAYOUT>&tab;&tab;&lt;SELECT&nbsp;NAME="flavor"&gt;&lnfeed;&tab;&tab;&lt;OPTION&gt;Vanilla&lnfeed;&tab;&tab;&lt;OPTION&gt;Strawberry&lnfeed;&tab;&tab;&lt;OPTION&gt;Rum&nbsp;and&nbsp;Raisin&lnfeed;&tab;&tab;&lt;OPTION&gt;Peach&nbsp;and&nbsp;Orange&lnfeed;&tab;&tab;&lt;/SELECT&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>out in some manner.
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>6Ys2TWBQnpF84aK</LOCATOR><TITLECONTENT>OPTION</TITLECONTENT></TITLE><PARA>The OPTION element can only occur within a
+<LOCATOR>dt8WSWBlWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>5V5WSWBvVpF84aK</LINKTARGET><LINKCONTENT>SELECT</LINKCONTENT></LINK> element.
+It represents one choice, and can take the following attributes:  </PARA><VARIABLELIST><TERMDEFINITION><TERM>SELECTED  </TERM><DEFINITION><PARA>Indicates that this option is initially selected.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>VALUE  </TERM><DEFINITION><PARA>When present indicates the value to be returned if this
+option is chosen. The returned value defaults to the
+contents of the option element.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><HEAD1><TITLE><LOCATOR>RYs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Proposed attributes</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM>DISABLED  </TERM><DEFINITION><PARA>When present indicates that this option is temporarily
+disabled. Browsers typically show this by "greying it",
+etc.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>The contents of the OPTION element is presented to the user to
+represent the option. It is used as a returned value if the VALUE
+attribute is not present.
+</PARA></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>aYs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Obsolete elements</TITLECONTENT></TITLE><PARA>The following
+<LOCATOR>wB9WSWBoWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>JG9WSWBrWpF84aK</LINKTARGET><LINKCONTENT>elements of HTML</LINKCONTENT></LINK> are obsolete. It is recommended
+that client implementors implement the obsolete forms for
+compatibility with old servers.  </PARA><HEAD1><TITLE><LOCATOR>7L9WSWBuWpF84aK</LOCATOR><TITLECONTENT>Plaintext</TITLECONTENT></TITLE><PARA>Status:
+<LOCATOR>NP9WSWBxWpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>I7lVSWBoNpF84aK</LINKTARGET><LINKCONTENT>Obsolete</LINKCONTENT></LINK>.  </PARA><PARA>The empty PLAINTEXT tag terminates the HTML entity. What
+follows is not SGML. In stead, there&quot;s an old HTTP convention
+that what follows is an ASCII (MIME "text/plain") body.  </PARA><PARA>An example if its use is:  </PARA><LITERALLAYOUT>&tab;&tab;&tab;<LOCATOR>1W9WSWB.WpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>bZ9WSWB1XpF84aK</LINKTARGET><LINKCONTENT>&lt;PLAINTEXT&gt;&lnfeed;</LINKCONTENT></LINK>&tab;&tab;&tab;0001&nbsp;This&nbsp;is&nbsp;line&nbsp;one&nbsp;of&nbsp;a&nbsp;ling&nbsp;listing&lnfeed;&tab;&tab;&tab;0002&nbsp;file&nbsp;from&nbsp;&lt;any@host.inc.com&gt;&nbsp;which&nbsp;is&nbsp;sent&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>This tag allows the rest of a file to be read efficiently without
+parsing. Its presence is an optimization. There is no closing tag.
+The rest of the data is not in SGML.  </PARA><HEAD2><TITLE><LOCATOR>0h9WSWB4XpF84aK</LOCATOR><TITLECONTENT>XMP and LISTING: Example sections</TITLECONTENT></TITLE><PARA>Status:
+<LOCATOR>Qt9WSWBDXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>I7lVSWBoNpF84aK</LINKTARGET><LINKCONTENT>Obsolete</LINKCONTENT></LINK>. This are in use and should be recognized by
+browsers. New servers should use
+<LOCATOR>ex9WSWBGXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>L-9WSWBJXpF84aK</LINKTARGET><LINKCONTENT>&lt;PRE&gt;</LINKCONTENT></LINK> instead.  </PARA><PARA>These styles allow text of fixed-width characters to be embedded
+absolutely as is into the document. The syntax is:  </PARA><LITERALLAYOUT>&tab;&tab;&tab;&lt;LISTING&gt;&lnfeed;&tab;&tab;&tab;&tab;...&lnfeed;&tab;&tab;&tab;&lt;/LISTING&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>or  </PARA><LITERALLAYOUT>&tab;&tab;&tab;&lt;XMP&gt;&lnfeed;&tab;&tab;&tab;&tab;...&lnfeed;&tab;&tab;&tab;&lt;/XMP&gt;&lnfeed;&lnfeed;</LITERALLAYOUT><PARA>The text between these tags is to be portrayed in a fixed width
+font, so that any formatting done by character spacing on
+successive lines will be maintained. Between the opening and
+closing tags:  </PARA><ITEMIZEDLIST><BULLET><PARA>The text may contain any ISO Latin printable
+characters, but not the end tag opener. (See
+<LOCATOR>CAAWSWBMXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>xDAWSWBPXpF84aK</LINKTARGET><LINKCONTENT>Historical
+note</LINKCONTENT></LINK> )  </PARA></BULLET><BULLET><PARA>Line boundaries are significant, except any occurring
+immediately after the opening tag or before the closing
+tag. and are to be rendered as a move to the start of a new
+line.  </PARA></BULLET><BULLET><PARA>The ASCII Horizontal Tab (HT) character must be
+interpreted as the smallest positive nonzero number of
+spaces which will leave the number of characters so far
+on the line as a multiple of 8. Its use is not recommended
+however.
+</PARA></BULLET></ITEMIZEDLIST><PARA>The
+<LOCATOR>oKAWSWBSXpF84aK</LOCATOR>LISTING element is portrayed so that at least 132
+characters will fit on a line. The
+<LOCATOR>0PAWSWBVXpF84aK</LOCATOR>XMP  elementis portrayed in a
+font so that at least 80 characters will fit on a line but is
+otherwise identical to LISTING.  </PARA></HEAD2><HEAD2><TITLE><LOCATOR>iZs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Highlighted Phrase HP1 etc</TITLECONTENT></TITLE><PARA>Status:
+<LOCATOR>5UAWSWBYXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>4YAWSWBbXpF84aK</LINKTARGET><LINKCONTENT>Obsolete</LINKCONTENT></LINK>. These tags like all others should be ignored if
+not implemented. Replaced will more meaningful elements -- see
+<LOCATOR>BcAWSWBeXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>dBrVSWBBQpF84aK</LINKTARGET><LINKCONTENT>character highlighting</LINKCONTENT></LINK> .  </PARA><HEAD3><TITLE><LOCATOR>sZs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Examples of use:</TITLECONTENT></TITLE><LITERALLAYOUT>&tab;&tab;&lt;HP1&gt;...&lt;/HP1&gt;&nbsp;&nbsp;&nbsp;&lt;HP2&gt;...&nbsp;&lt;/HP2&gt;&nbsp;etc.&lnfeed;&lnfeed;</LITERALLAYOUT></HEAD3></HEAD2><HEAD2><TITLE><LOCATOR>xZs2TWBQnpF84aK</LOCATOR><TITLECONTENT>Comment element</TITLECONTENT></TITLE><PARA>Status:
+<LOCATOR>mjAWSWBhXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>I7lVSWBoNpF84aK</LINKTARGET><LINKCONTENT>Obsolete</LINKCONTENT></LINK>  </PARA><PARA>A comment element used for bracketing off unneed text and
+comment has been introduced in some browsers but will be
+replaced by the SGML command feature in new
+implementations.
+</PARA></HEAD2></HEAD1></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>4as2TWBQnpF84aK</LOCATOR><TITLECONTENT>Historical Note: XMP and LISTING</TITLECONTENT></TITLE><ABBREVTITLE>NOTE: XMP and LISTING</ABBREVTITLE><PARA>The
+<LOCATOR>S-AWSWBkXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>O7BWSWBnXpF84aK</LINKTARGET><LINKCONTENT>XMP and LISTING elements</LINKCONTENT></LINK> used historically to have non
+SGML conforming specifications, in that the text could contain
+any ISO Latin printable characters, including the tag opener, so
+long as it does not contain the closing tag in full.  </PARA><PARA>This form is not supported by SGML and so is not the specified
+HTML interpretation. Providers should be warned that
+implementations may vary on how they interpret end tags
+apparently within these elements
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>Ias2TWBQnpF84aK</LOCATOR><TITLECONTENT>Entities</TITLECONTENT></TITLE><PARA>The following entity names are used in
+<LOCATOR>zMBWSWBqXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>PTtVSWB4RpF84aK</LINKTARGET><LINKCONTENT>HTML</LINKCONTENT></LINK> , always prefixed
+by ampersand (&amp;) and followed by a semicolon as shown. They
+represent particular graphic characters which have special
+meanings in places in the markup, or may not be part of the
+character set available to the writer.  </PARA><VARIABLELIST><TERMDEFINITION><TERM>&amp;lt;  </TERM><DEFINITION><PARA>The less than sign &lt;  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;gt;  </TERM><DEFINITION><PARA>The "greater than" sign &gt;  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;amp;  </TERM><DEFINITION><PARA>The ampersand sign &amp;itself.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;quot;  </TERM><DEFINITION><PARA>The double quote sign "  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;nbsp;  </TERM><DEFINITION><PARA>A non-breaking space.
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST><PARA>Also allowed are references to any of the ISO Latin-1 alphabet,
+using the entity names in the
+<LOCATOR>KaBWSWBtXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>4eBWSWBwXpF84aK</LINKTARGET><LINKCONTENT>following table</LINKCONTENT></LINK>.
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>pas2TWBQnpF84aK</LOCATOR><TITLECONTENT>ISO Latin 1 character entities</TITLECONTENT></TITLE><PARA>This list is derived from "ISO 8879:1986//ENTITIES Added
+Latin 1//EN".  </PARA><VARIABLELIST><TERMDEFINITION><TERM>&amp;AElig;  </TERM><DEFINITION><PARA>capital AE diphthong (ligature)  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Aacute;  </TERM><DEFINITION><PARA>capital A, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Acirc;  </TERM><DEFINITION><PARA>capital A, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Agrave;  </TERM><DEFINITION><PARA>capital A, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Aring;  </TERM><DEFINITION><PARA>capital A, ring  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Atilde;  </TERM><DEFINITION><PARA>capital A, tilde  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Auml;  </TERM><DEFINITION><PARA>capital A, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Ccedil;  </TERM><DEFINITION><PARA>capital C, cedilla  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ETH;  </TERM><DEFINITION><PARA>capital Eth, Icelandic  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Eacute;  </TERM><DEFINITION><PARA>capital E, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Ecirc;  </TERM><DEFINITION><PARA>capital E, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Egrave;  </TERM><DEFINITION><PARA>capital E, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Euml;  </TERM><DEFINITION><PARA>capital E, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Iacute;  </TERM><DEFINITION><PARA>capital I, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Icirc;  </TERM><DEFINITION><PARA>capital I, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Igrave;  </TERM><DEFINITION><PARA>capital I, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Iuml;  </TERM><DEFINITION><PARA>capital I, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Ntilde;  </TERM><DEFINITION><PARA>capital N, tilde  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Oacute;  </TERM><DEFINITION><PARA>capital O, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Ocirc;  </TERM><DEFINITION><PARA>capital O, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Ograve;  </TERM><DEFINITION><PARA>capital O, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Oslash;  </TERM><DEFINITION><PARA>capital O, slash  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Otilde;  </TERM><DEFINITION><PARA>capital O, tilde  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Ouml;  </TERM><DEFINITION><PARA>capital O, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;THORN;  </TERM><DEFINITION><PARA>capital THORN, Icelandic  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Uacute;  </TERM><DEFINITION><PARA>capital U, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Ucirc;  </TERM><DEFINITION><PARA>capital U, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Ugrave;  </TERM><DEFINITION><PARA>capital U, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Uuml;  </TERM><DEFINITION><PARA>capital U, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;Yacute;  </TERM><DEFINITION><PARA>capital Y, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;aacute;  </TERM><DEFINITION><PARA>small a, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;acirc;  </TERM><DEFINITION><PARA>small a, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;aelig;  </TERM><DEFINITION><PARA>small ae diphthong (ligature)  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;agrave;  </TERM><DEFINITION><PARA>small a, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;aring;  </TERM><DEFINITION><PARA>small a, ring  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;atilde;  </TERM><DEFINITION><PARA>small a, tilde  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;auml;  </TERM><DEFINITION><PARA>small a, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ccedil;  </TERM><DEFINITION><PARA>small c, cedilla  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;eacute;  </TERM><DEFINITION><PARA>small e, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ecirc;  </TERM><DEFINITION><PARA>small e, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;egrave;  </TERM><DEFINITION><PARA>small e, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;eth;  </TERM><DEFINITION><PARA>small eth, Icelandic  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;euml;  </TERM><DEFINITION><PARA>small e, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;iacute;  </TERM><DEFINITION><PARA>small i, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;icirc;  </TERM><DEFINITION><PARA>small i, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;igrave;  </TERM><DEFINITION><PARA>small i, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;iuml;  </TERM><DEFINITION><PARA>small i, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ntilde;  </TERM><DEFINITION><PARA>small n, tilde  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;oacute;  </TERM><DEFINITION><PARA>small o, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ocirc;  </TERM><DEFINITION><PARA>small o, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ograve;  </TERM><DEFINITION><PARA>small o, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;oslash;  </TERM><DEFINITION><PARA>small o, slash  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;otilde;  </TERM><DEFINITION><PARA>small o, tilde  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ouml;  </TERM><DEFINITION><PARA>small o, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;szlig;  </TERM><DEFINITION><PARA>small sharp s, German (sz ligature)  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;thorn;  </TERM><DEFINITION><PARA>small thorn, Icelandic  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;uacute;  </TERM><DEFINITION><PARA>small u, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ucirc;  </TERM><DEFINITION><PARA>small u, circumflex accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;ugrave;  </TERM><DEFINITION><PARA>small u, grave accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;uuml;  </TERM><DEFINITION><PARA>small u, dieresis or umlaut mark  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;yacute;  </TERM><DEFINITION><PARA>small y, acute accent  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM>&amp;yuml;  </TERM><DEFINITION><PARA>small y, dieresis or umlaut mark
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>Eds2TWBQnpF84aK</LOCATOR><TITLECONTENT>Security Considerations</TITLECONTENT></TITLE><PARA>Anchors, embedded images, and all other elements which
+contain URls as parameters may cause the URI to be
+dereferenced, in which case the security considerations of the
+URI specification apply.  </PARA><PARA>Documents may be constructed whose visible contents mislead
+one to follow a link by to unsuitable or
+<LOCATOR>1LDWSWBzXpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>4PDWSWB0YpF84aK</LINKTARGET><LINKCONTENT>offensive material</LINKCONTENT></LINK>.
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>Wds2TWBQnpF84aK</LOCATOR><TITLECONTENT>Acknowledgements</TITLECONTENT></TITLE><PARA>The HTML document type was designed initially at CERN in
+1990 for the World-Wide Web project. The DTD was written, and
+the specification tightened up, by Dan Connolly in 1992.  </PARA><PARA>An internet draft was release in June of 1992 after much
+discussion on the network and some enhancement in particular
+the addition of inline images introduced by the NCSA "Mosaic"
+software for WWW.  </PARA><PARA>The FORMS material is derived from the HTML+ specification
+with the help of Dave Raggett.  </PARA><PARA>This document is the work of many contributors. Many thanks to
+Erik Naggum and James Clark for making SGML technology
+available, and to Terry Allen, Dave Raggett, Marc Andressen,
+William Perry, and the rest of the WWW community.
+</PARA></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>lds2TWBQnpF84aK</LOCATOR><TITLECONTENT>References</TITLECONTENT></TITLE><VARIABLELIST><TERMDEFINITION><TERM><LOCATOR>OCmVSWBDOpF84aK</LOCATOR>SGML  </TERM><DEFINITION><PARA>ISO 8879:1986, Information Processing Text and Office
+Systems Standard Generalized Markup Language
+(SGML).  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>hrDWSWB3YpF84aK</LOCATOR>sgmls  </TERM><DEFINITION><PARA>an SGML parser by James Clark
+<COMPUTEROUTPUT>&lt;jjc@jclark.com&gt;</COMPUTEROUTPUT>
+derived from the ARCSGML parser materials which
+were written by Charles F. Goldfarb. The source is
+available on
+<LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>KxDWSWB6YpF84aK</LINKTARGET><LINKCONTENT>the ftp.ifi.uio.no FTP server in the directory
+/pub/SGML/SGMLS</LINKCONTENT></LINK>.  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>QkhVSWBVNpF84aK</LOCATOR>W3  </TERM><DEFINITION><PARA>The
+<LOCATOR>X1EWSWB9YpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>B5EWSWBCYpF84aK</LINKTARGET><LINKCONTENT>World-Wide Web</LINKCONTENT></LINK> , a global information initiative.
+For bootstrap information, telnet info.cern.ch or find
+documents by ftp://info.cern.ch/pub/www/doc  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>5chVSWBPNpF84aK</LOCATOR>URI  </TERM><DEFINITION><PARA><LOCATOR>1BEWSWBFYpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>WEEWSWBIYpF84aK</LINKTARGET><LINKCONTENT>Universal Resource Identifiers</LINKCONTENT></LINK>. RFCxxx. Currently
+available by anonymous FTP from info.cern.ch in
+/pub/www/doc/url*.{ps,txt}  </PARA></DEFINITION></TERMDEFINITION><TERMDEFINITION><TERM><LOCATOR>cJEWSWBLYpF84aK</LOCATOR>MIME  </TERM><DEFINITION><PARA>N. Borenstein, N. Freed, "MIME (Multipurpose Internet
+Mail Extensions) Part One: Mechanisms for Specifying
+and Describing the Format of Internet Message Bodies",
+09/23/1993. (Pages=81) (Format=<LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>ZOEWSWBOYpF84aK</LINKTARGET><LINKCONTENT>.txt</LINKCONTENT></LINK>,
+<LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>jSEWSWBRYpF84aK</LINKTARGET><LINKCONTENT>.ps</LINKCONTENT></LINK>) (Obsoletes
+RFC1341) (Updated by RFC1590)
+</PARA></DEFINITION></TERMDEFINITION></VARIABLELIST></NODE><NODE><VERSION>$Header$
+$Id$</VERSION><TITLE><LOCATOR>Wes2TWBQnpF84aK</LOCATOR><TITLECONTENT>Author&quot;s addresses</TITLECONTENT></TITLE><LITERALLAYOUT>&lnfeed;&tab;&tab;&tab;&tab;<LOCATOR>LhEWSWBUYpF84aK</LOCATOR><LINK><LINKTYPE>node</LINKTYPE><LINKTARGET>1lEWSWBXYpF84aK</LINKTARGET><LINKCONTENT>Daniel&nbsp;W.&nbsp;Connolly&lnfeed;</LINKCONTENT></LINK>&tab;&tab;Affiliation:&tab;HaL&nbsp;Software&nbsp;Systems&lnfeed;&tab;&tab;&tab;&tab;Austin,&nbsp;TX&lnfeed;&tab;&tab;&tab;&tab;USA&lnfeed;&tab;&tab;email:&tab;&tab;connolly@hal.com&lnfeed;&lnfeed;&lnfeed;&tab;&tab;&tab;&tab;Tim&nbsp;Berners-Lee&lnfeed;&tab;&tab;Address&tab;&tab;CERN&lnfeed;&tab;&tab;&tab;&tab;1211&nbsp;Geneva&nbsp;23&lnfeed;&tab;&tab;&tab;&tab;Switzerland&lnfeed;&tab;&tab;Telephone:&nbsp;&tab;+41(22)767&nbsp;3755&lnfeed;&tab;&tab;Fax:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&tab;+41(22)767&nbsp;7155&lnfeed;&tab;&tab;email:&tab;&nbsp;&nbsp;&nbsp;&tab;timbl@info.cern.ch&lnfeed;&lnfeed;&lnfeed;</LITERALLAYOUT></NODE></NODESET>
