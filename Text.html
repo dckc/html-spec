@@ -1,13 +1,14 @@
 <TITLE>HTML Guide: Text and Markup</TITLE>
+<!-- $Id$ -->
 
 <H1>Text and Markup</H1>
 
-This part of <A NAME=id3 HREF="MarkUp.html">the HTML reference</A> is
+This part of <A HREF="HTML.html">the HTML reference</A> is
 an explanation of SGML syntax as it applies to HTML. For lexical
 issues, the purpose is to take the standard and reduce it from the
 abstract system that is SGML to a concrete language, HTML. For
 structural issues, the purpose is to give you enough background to
-read <A NAME=id1 HREF="html.dtd">the DTD</A>.
+read <A HREF="html.dtd">the DTD</A>.
 <P>
 
 <H2>Structured Text</H2>
@@ -18,7 +19,7 @@ the document as a start tag, which gives the name and attributes,
 followed by the content, followed by the end tag. For example:
 <P>
 
-<TYPEWRITER>
+<PRE>
 &lt;HTML>
  &lt;TITLE>
   A sample HTML document
@@ -31,14 +32,14 @@ followed by the content, followed by the end tag. For example:
  &lt;UL>
   &lt;LI>
   Item one has an
-  &lt;A NAME=anchor>
+  &lt;A NAME="anchor">
    anchor
   &lt;/A>
   &lt;LI>
   Here's item two.
  &lt;/UL>
 &lt;/HTML>
-</TYPEWRITER>
+</PRE>
 
 Some elements (e.g. P, LI) are "empty." They have no content. They
 show up as just a start tag.
@@ -46,7 +47,7 @@ show up as just a start tag.
 
 For the rest of the elements, the content is a sequence of data
 characters and nested elements. The content must match the element's
-model group from its declaration in <A NAME=id17 HREF="html.dtd">the
+model group from its declaration in <A HREF="html.dtd">the
 DTD</A>.<P>
 
 Using the example from above, the content of the UL element is the
@@ -61,7 +62,7 @@ characters are interpreted as markup, rather than document content.
 The following table lists the special character sequences that
 separate data from markup in an HTML document.
 
-<H3><A NAME=delimiters>SGML delimiters</A></H3>
+<H3><A NAME="delimiters">SGML delimiters</A></H3>
 
 <DL>
 
@@ -71,20 +72,20 @@ things like "&amp;#168;" and "&amp;#SPACE;". It is not used in HTML.
 
 
 <DT>ERO<DD>Entity Reference Open: "&amp;", when followed by a letter,
-signals an <A NAME=id2 HREF="#Entities">entity reference</A>.
+signals an <A HREF="#Entities">entity reference</A>.
 
-<DT><A NAME=ETAGO>ETAGO</A><DD>End Tag Open: "&lt;/", when followed by
+<DT><A NAME="ETAGO">ETAGO</A><DD>End Tag Open: "&lt;/", when followed by
 a letter, signals an <A HREF="#Tags">end tag.
 </A>
 
 <DT>MDO<DD>Markup Declaration Open: "&lt;!", when followed by a
 letter or "--" or "[", signals one of several SGML markup
 declarations.  The only purpose it serves in HTML is to introduce <A
-NAME=id11 HREF="#Comments">comments</A>.
+HREF="#Comments">comments</A>.
 
 <DT>MSC<DD>Marked Section Close: "]]", when followed by ">" signals
 the end of a marked section. While marked sections are not used
-by HTML, this sequence of characters is recognized and reported as an
+in HTML, this sequence of characters is recognized and reported as an
 error by conforming SGML parsers.
 
 <DT>PIO<DD>Processing Instruction Open: "&lt;?" signals a processing instruction. It is not used
@@ -95,30 +96,39 @@ signals a <A HREF="#Tags">start tag</A>.
 
 </DL>
 
-<H3><A NAME=PCDATA>Normal Text: Parsed Character Data</A></H3>
+<H3><A NAME="PCDATA">Parsed Character Data</A></H3>
 
-In <A NAME=id9 HREF="html.dtd">the DTD</A>, the symbol PCDATA stands
+In <A HREF="html.dtd">the DTD</A>, the symbol PCDATA stands
 for parsed character data, the normal text characters in an HTML
 document.
 <P>
 
-The text consists of a stream of lines. The division into lines has no
-significance apart from indicating a word end.<P>
-
-All of the SGML delimiters listed in <A NAME=id16
-HREF="#delimiters">the table of delimiters</A>are recognized in PCDATA.
+All of the SGML delimiters listed in <A HREF="#delimiters">the table
+of delimiters</A>are recognized in PCDATA.
 <P>
 
-<H3><A NAME=CDATA>Raw Text: Character Data</A></H3>
+<H3><A NAME="CDATA">Character Data</A></H3>
 
-In <A NAME=id15 HREF="html.dtd">the DTD</A>, the symbol CDATA stands
+The symbol CDATA stands
 for character data, the text without markup in an SGML document. Only
-the end tag open <A NAME=id14 HREF="#delimiters">delimiters</A> is
+the end tag open <A HREF="#delimiters">delimiter</A> is
 recognized in CDATA.
 <P>
 
+<H3><A NAME="RCDATA">Replaceable Character Data</A></H3>
 
-<H2><A NAME=Tags>Tags</A></H2>
+The symbol RCDATA stands for replaceable character data, the text
+without tags in an SGML document. The character reference open, entity
+reference open, and end tag open <A HREF="#delimiters">delimiters</A>
+are recognized in RCDATA.
+<P>
+
+Note that there is no way to include an end tag open
+delimiter-in-context in CDATA. Any sequence of characters is
+representable in replaceable character data through entity references,
+if necessary.
+
+<H2><A NAME="Tags">Tags</A></H2>
 
 The characters in an SGML document are organized into a heirarchy of
 elements by the use of tags. Tags are set off from the data characters
@@ -136,19 +146,20 @@ Following the element name, whitespace and attributes are allowed. An
 attribute consists of a name, an equal sign, and a value. Spaces are
 allowed around the equal sign.<P>
 
-The value is either a token or a literal. A token is up to 34 letters,
-digits, periods, or dashes. Tokens are case sensitive.<P>
-
-A literal is a string surrounded by single quotes or a string
-surrounded by double quotes. Entity references are processed inside
-attribute values as inside PCDATA. The length of an attribute value
-(after entity processing) is limited to 1024 characters.<P>
+The value is specified in a string surrounded by single quotes or a
+string surrounded by double quotes. (See:
+<A HREF="tolerated.html#attrval">other tolerated forms</A>) Entity
+references are processed inside attribute values as inside PCDATA. The
+length of an attribute value (after entity processing) is limited to
+1024 characters.
+<P>
 
 Each attribute has a type, which puts constraints on the values it can
-have. For example, the NAME attribute of the A element is an ID. An ID
-is a name that must be unique among all IDs in the document.
+have. For example, the NAME attribute of the A element is a NMTOKEN.
+An NMTOKEN must consist entirely of name characters: letters, digits,
+periods, and hyphens.
 
-<H2><A NAME=Entities>Entities</A></H2>
+<H2><A NAME="Entities">Entities</A></H2>
 
 In order to include characters that would otherwise be parsed as
 markup, you can use entity references refer to some of
@@ -158,11 +169,11 @@ An entity reference is an ampersand, followed by a name, followed by a
 semicolon. No spaces are allowed within an entity reference. For
 example:<P>
 
-<XMP>
+<PRE>
 This is how you include a &amp;lt;tag&amp;gt; as data.
-</XMP>
+</PRE>
 
-<H2><A NAME=Comments>Comments</A></H2>
+<H2><A NAME="Comments">Comments</A></H2>
 
 Comment declarations can be used include information aimed at persons
 and tools that read the document in source form. This information will
@@ -170,5 +181,9 @@ be ignored when the document is processed by an SGML parser.<P>
 
 Comments begin with the character sequence "&lt;!--" and end with
 "--", which must be followed by '&gt;'. (Technically, whitespace is
-allowed between the closing "--" and '&gt;'.) They are only allowed in
-PCDATA.
+allowed between the closing "--" and '&gt;'.)<P>
+
+Note that the markup delcaration open delimiter("&lt;!") that begins a
+comment is not recognized in <A HREF="#RCDATA">RCDATA</A> or <A
+HREF="#CDATA">CDATA</A>.
+
