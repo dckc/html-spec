@@ -1,0 +1,21 @@
+<HEAD><TITLE>PUBLIC DRAFT -- HTML</TITLE>
+
+</HEAD><BODY><H1>Introduction
+</H1>
+The HyperText Markup Language is defined in terms of the ISO Standard Generalized Markup Language [SGML]. SGML is a system for defining structured document types and markup languages to represent instances of those document types.<P>
+
+Every SGML document has three parts:<P>
+
+<UL><LI> An SGML declaration, which binds SGML processing quantities and syntax token names to specific values. For example, the SGML declaration in the HTML DTD specifies that the string that opens a tag is &#60;/ and the maximum length of a name is 40 characters. 
+<LI>A prologue including one or more document type declarations, which specifiy the element types, element relationships and attributes, and references that can be represented by markup. The HTML DTD specifies, for example, that the HEAD element contains at most one TITLE element.
+<LI>An instance, which contains the data and markup of the document.
+
+</UL>We use the term HTML to mean both the document type and the markup language for representing instances of that document type.<P>
+
+All HTML documents share the same SGML declaration an prologue. Hence implementations of the WorldWide Web generally only transmit and store the instance part of an HTML document. To construct an SGML document entity for processing by an SGML parser, it is necessary to prefix the text from ``HTML DTD'' on page 10 to the HTML instance.<P>
+
+Conversely, to implement an HTML parser, one need only implement those parts of an SGML parser that are needed to parse an instance after parsing the HTML DTD.<P>
+
+<Body> 
+</Body>
+</BODY>
