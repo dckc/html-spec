@@ -1,0 +1,6 @@
+PUBLIC "-//Houston//DTD snafu5//EN" /home/connolly/contrib/gf-0.44/sgml/snafu5.dtd
+PUBLIC "-//GMD//DTD qwertz//EN" /home/connolly/contrib/qwertz/dtd/qwertz.dtd
+#SYSTEM "general" /home/connolly/contrib/qwertz/rep/qwertz/min/general
+#SYSTEM "math" /home/connolly/contrib/qwertz/rep/qwertz/min/math
+
+
