@@ -1,10 +1,11 @@
+<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML 1.9//EN">
 <HTML>
 <HEAD>
 <TITLE>Structured Text in HTML</TITLE>
 <NEXTID N="z7">
 </HEAD>
 <BODY>
-<H1>Structured Text</H1>An HTML instance is like a text file,
+<H1>Structured Text</H1><P>An HTML instance is like a text file,
 except that some of the characters
 are interpreted as markup. The markup
 gives structure to the document.<P>
@@ -38,7 +39,7 @@ tag. For example:
 		 &lt;/UL>
 		&lt;/HTML>
 
-</PRE>Some elements (e.g. P, LI) are empty.
+</PRE><P>Some elements (e.g. P, LI) are empty.
 They have no content. They show up
 as just a start tag. <P>
 For the rest of the elements, the
@@ -51,19 +52,19 @@ fact.   No elements may be recursively
 nested.   Anchors and character highlighting
 may be put inside other constructs.
 <H2><A
-NAME="Tags">Tags</A></H2>Every element starts with a tag,
+NAME="Tags">Tags</A></H2><P>Every element starts with a tag,
 and every non-empty element ends
 with a tag. Start tags are delimited
 by &lt; and >, and end tags are delimited
 by &lt;/ and >. 
 <H3><A
-NAME="name">Names</A></H3>The element name immediately follows
+NAME="name">Names</A></H3><P>The element name immediately follows
 the tag open delimiter. Names consist
 of a letter followed by up to 33
 letters, digits, periods, or hyphens.
 Names are not case sensitive.
 <H3><A
-NAME="attribute">Attributes</A></H3>In a start tag, whitespace and attributes
+NAME="attribute">Attributes</A></H3><P>In a start tag, whitespace and attributes
 are allowed between the element name
 and the closing delimiter. An attribute
 consists of a name, an equal sign,
@@ -83,7 +84,7 @@ to be represented by character references.<P>
 The length of an attribute value
 (after parsing) is limited to 1024
 characters. 
-<H2>Element Types</H2>The name of a tag refers to an element
+<H2>Element Types</H2><P>The name of a tag refers to an element
 type declaration in the HTML DTD.
 An element type declaration associates
 an element name with
@@ -98,33 +99,33 @@ content
 the pattern of nested elements and
 data
 </UL>
-<H3>Empty Elements</H3>Empty elements have the keyword EMPTY
+<H3>Empty Elements</H3><P>Empty elements have the keyword EMPTY
 in their declaration. For example:
 <PRE>	&lt;!ELEMENT NEXTID - O EMPTY>
 	&lt;!ATTLIST NEXTID N NUMBER #REQUIRED>
 
-</PRE>This means that the following:
+</PRE><P>This means that the following:
 <PRE>	&lt;nextid n=''27''>
 
-</PRE>is legal, but these others are not:
+</PRE><P>is legal, but these others are not:
 <PRE>	&lt;nextid>
 	&lt;nextid n=''abc''>
 
 </PRE>
-<H3>Character Data</H3>The keyword CDATA indicates that
+<H3>Character Data</H3><P>The keyword CDATA indicates that
 the content of an element is character
 data. Character data is all the text
 up to the next end tag open delimiter-in-context.
 For example:
 <PRE>&lt;!ELEMENT XMP - - CDATA>
-</PRE>specifies that the following text
+</PRE><P>specifies that the following text
 is a legal XMP element:
 <PRE>	&lt;xmp>Here's an example. It looks like it has
 	&lt;tags> and &lt;!--comments-->
 	in it, but it does not. Even this
 	&lt;/ is data.&lt;/xmp>
 
-</PRE>The string &lt;/ is only recognized
+</PRE><P>The string &lt;/ is only recognized
 as the opening delimiter of an end
 tag when it is ``in context,'' that
 is, when it is followed by a letter.
@@ -137,15 +138,15 @@ is an error:
 
 </PRE>
 <H3><A
-NAME="RCDATA">Replaceable Character Data</A></H3>Elements with RCDATA content behave
+NAME="RCDATA">Replaceable Character Data</A></H3><P>Elements with RCDATA content behave
 much like those with CDATA, except
 for character references and entity
 references. Elements declared like:
 <PRE>&lt;!ELEMENT TITLE - - RCDATA>
-</PRE>can have any sequence of characters
+</PRE><P>can have any sequence of characters
 in their content.
 <H4><A
-NAME="z4">Character References</A></H4>To represent a character that would
+NAME="z4">Character References</A></H4><P>To represent a character that would
 otherwise be recognized as markup,
 use a character reference. The string
 &amp;# signals a character reference
@@ -157,7 +158,7 @@ a semicolon. For example:
 
 </PRE>
 <H4><A
-NAME="z5">Entity References</A></H4>The HTML DTD declares entities for
+NAME="z5">Entity References</A></H4><P>The HTML DTD declares entities for
 the less than, greater than, and
 ampersand characters and each of
 the ISO Latin 1 characters so that
@@ -180,7 +181,7 @@ of &lt;, >, and &amp; by character or entity
 references.
 </DL>
 
-<H3>Element Content</H3>Some elements have, in stead of a
+<H3>Element Content</H3><P>Some elements have, in stead of a
 keyword that states the type of content,
 a content model, which tells what
 patterns of data and nested elements
@@ -194,18 +195,18 @@ characters that are not markup, that
 is, data characters, are illegal.<P>
 For example:
 <PRE>&lt;!ELEMENT HEAD - - (TITLE? &amp; ISINDEX? &amp; NEXTID? &amp; LINK*)>
-</PRE>declares an element that may be used
+</PRE><P>declares an element that may be used
 as follows:
 <PRE>&lt;head>
  &lt;isindex>
  &lt;title>Head Example&lt;/title>
 &lt;/head>
-</PRE>But the following are illegal:
+</PRE><P>But the following are illegal:
 <PRE>&lt;head> no data allowed! &lt;/head>
 &lt;head>&lt;isindex>&lt;title>Two isindex tags&lt;/title>&lt;isindex>&lt;/head>
 
 </PRE>
-<H3>Mixed Content</H3>If the content model includes the
+<H3>Mixed Content</H3><P>If the content model includes the
 symbol #PCDATA, the content of the
 element is parsed as mixed content.
 For example:
@@ -213,7 +214,7 @@ For example:
 &lt;!ATTLIST PRE
 	WIDTH NUMBER #implied
 	>
-</PRE>This says that the PRE element contains
+</PRE><P>This says that the PRE element contains
 one or more A, B, I, U, or P elements
 or data characters. Here's an example
 of a PRE element:
@@ -223,7 +224,7 @@ of a PRE element:
 &lt;b>EXAMPLE&lt;/b>
     cat &lt;xyz
 &lt;/pre>
-</PRE>The content of the above PRE element
+</PRE><P>The content of the above PRE element
 is:
 <UL>
 <LI>A B element
@@ -233,7 +234,7 @@ is:
 <LI>Another B element
 <LI>The string ``\n   cat &lt;xyz''
 </UL>
-<H2>Comments and Other Markup</H2>To include comments in an HTML document
+<H2>Comments and Other Markup</H2><P>To include comments in an HTML document
 that will be ignored by the parser,
 surround them with &lt;!-- and -->.
 After the comment delimiter, all
@@ -248,7 +249,7 @@ For example:
 &lt;!-- $Id$ -->
 &lt;/HEAD>
  
-</PRE>There are a few other SGML markup
+</PRE><P>There are a few other SGML markup
 constructs that are deprecated or
 illegal.
 <DL>
@@ -267,17 +268,17 @@ no short reference maps, so these
 are errors. Terminated by >.
 </DL>
 
-<H2>Line Breaks</H2>A line break character is considered
+<H2>Line Breaks</H2><P>A line break character is considered
 markup (and ignored) if it is the
 first or last piece of content in
 an element. This allows you to write
 either
 <PRE>&lt;PRE>some example text&lt;/pre>
-</PRE>or
+</PRE><P>or
 <PRE>&lt;pre>
 some example text
 &lt;/pre>
-</PRE>and these will be processed identically.<P>
+</PRE><P>and these will be processed identically.<P>
 Also, a line that's not empty but
 contains no content will be ignored
 altogether. For example, the element
@@ -288,7 +289,7 @@ first line
 third line&lt;!-- the following linebreak is content: -->
 fourth line&lt;!-- this one's ignored because it's the last piece of content: -->
 &lt;/pre>
-</PRE>contains only the strings
+</PRE><P>contains only the strings
 <PRE>
  first line
 
@@ -296,7 +297,7 @@ fourth line&lt;!-- this one's ignored because it's the last piece of content: --
  fourth line.
 
 </PRE>
-<H2>Spaces and Tabs</H2>Space characters must be rendered
+<H2>Spaces and Tabs</H2><P>Space characters must be rendered
 as horizontal white space.  In HTML,
 multiple spaces should be rendered
 as single spaces.<P>
@@ -309,7 +310,7 @@ XMP, LISTING or PLAINTEXT) element.<P>
 Neither spaces nor tabs should be
 used to make SGML source layout more
 attractive or easier to read.
-<H2>Summary of Markup Signals</H2>The following delimiters may signal
+<H2>Summary of Markup Signals</H2><P>The following delimiters may signal
 markup, depending on context.
 <DL>
 <DT>Delimiter
@@ -324,7 +325,7 @@ markup, depending on context.
 <DD> End tag
 <DT>&lt;!
 <DD> Markup declaration
-<DT>]]>
+<DT>]]&gt;
 <DD> Marked section close (an error)
 <DT>&lt;
 <DD> Start tag

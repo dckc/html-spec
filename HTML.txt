@@ -1,14 +1,4 @@
-Hypertext Markup Language (HTML)          Tim Berners-Lee, CERN
-Internet Draft                          Daniel Connolly, Atrium
-IIIR Working Group                                    June 1993
-
-
-                  Hypertext Markup Language (HTML)
-                
-   A Representation of Textual Information and MetaInformation
-                   for Retrieval and Interchange
-
-
+                                      Hypertext Markup Language (HTML)
 Status of this Document
 
    This document is an Internet Draft. Internet Drafts are working
@@ -51,11 +41,6 @@ Abstract
    throughout the globe.  HTML provides one simple format for
    providing linked information, and  all W3 compatible programs are
    required to be capable of handling HTML.    W3 uses an Internet
-
-
-
-Berners-Lee and Connolly                                             1
-
    protocol (Hypertext Transfer Protocol, HTTP), which allows transfer
    representations to be negotiated between client and server, the
    result being returned in an extended MIME message.  HTML is
@@ -101,19 +86,16 @@ Berners-Lee and Connolly                                             1
                           The authority for extending lists of valid
                          vales.
                          
+  Acknowledgements       and a change history of the document
+                         
   References              to related documents
                          
   Authors addresses       Contact information.
                          
    table of contents
-   
-Vocabulary
-
-
-
-
-Berners-Lee and Connolly                                             2
-
+                            Vocabulary usied in the HTML specification
+                              VOCABULARY
+                                   
    This specification uses the words below with the precise meaning
    given.
    
@@ -124,8 +106,8 @@ Berners-Lee and Connolly                                             2
   Rendering               The form of presentation to information to
                          the human reader.
                          
-  IMPERATIVES
-  
+Imperatives
+
   may                     The implementation is not obliged to follow
                          this in  any way.
                          
@@ -145,13 +127,13 @@ Berners-Lee and Connolly                                             2
                          designers and to help explain the uses for
                          which the elements were intended.
                          
-  NOTES
-  
+Notes
+
    Sections marked "Note:" are not mandatory parts of the
    specification but for guidance only.
    
-  STATUS OF FEATURES
-  
+Status of features
+
   Mainstream              All parsers must recognize these features.
                          Features are mainstream unless otherwise
                          mentioned.
@@ -167,11 +149,8 @@ Berners-Lee and Connolly                                             2
                          preserve back-compatibility with previous
                          versions of this specification.
                          
-
-
-
-Berners-Lee and Connolly                                             3
-
+   
+                                                         HTML and MIME
                             HTML AND MIME
                                    
    The definition of the HTML content subtype is
@@ -201,20 +180,25 @@ Character sets
    used to encode characters in the upper half of the ISO Latin-1 set.
     In this way, documents may be prepared which are suitable for
    mailing through 7-bit limited systems.
-   
-                             INTRODUCTION
+                                    Hypertext Markup language and SGML
+                            HTML AND SGML
                                    
+   This section describes the relationship between HTML and SGML, and
+   guides the newcomer through interpreation of the DTD.  (This is not
+   a full tutorial on SGML, and in the event of any apparent conflict,
+   the SGML standard is definitive.)
+   
    The HyperText Markup Language is defined in terms of the ISO
-   Standard Generalized Markup Language []. SGML is a system for
-   defining structured document types and markup languages to
+   Standard Generalized Markup Language [ SGML ]. SGML is a system for
+   defining structured document types, and markup languages to
    represent instances of those document types.
    
    Every SGML document has three parts:
    
-       An SGML declaration, which binds SGML processing quantities and
+      An SGML declaration, which binds SGML processing quantities and
       syntax token names to specific values. For example, the SGML
       declaration in the HTML DTD specifies that the string that opens
-      a tag is </ and the maximum length of a name is 40 characters.
+      a tag is 60;/ and the maximum length of a name is 34 characters.
       
       A prologue including one or more document type declarations,
       which specifiy the element types, element relationships and
@@ -225,11 +209,6 @@ Character sets
       An instance, which contains the data and markup of the document.
       
    We use the term HTML to mean both the document type and the markup
-
-
-
-Berners-Lee and Connolly                                             4
-
    language for representing instances of that document type.
    
    All HTML documents share the same SGML declaration an prologue.
@@ -242,11 +221,9 @@ Berners-Lee and Connolly                                             4
    Conversely, to implement an HTML parser, one need only implement
    those parts of an SGML parser that are needed to parse an instance
    after parsing the HTML DTD.
-   
-   
-   
-Structured Text
-
+                                               Structured Text in HTML
+                           STRUCTURED TEXT
+                                   
    An HTML instance is like a text file, except that some of the
    characters are interpreted as markup. The markup gives structure to
    the document.
@@ -283,29 +260,24 @@ Structured Text
    For the rest of the elements, the content is a sequence of data
    characters and nested elements.  Note that the HTML DTD in fact
    severely limits the amount of nesting which is allowed: most things
-
-
-
-Berners-Lee and Connolly                                             5
-
    cannot be nested, in fact.   No elements may be recursively nested.
      Anchors and character highlighting may be put inside other
    constructs.
    
-  TAGS
-  
+Tags
+
    Every element starts with a tag, and every non-empty element ends
    with a tag. Start tags are delimited by < and >, and end tags are
    delimited by </ and >.
    
-    Names
-    
+  NAMES
+  
    The element name immediately follows the tag open delimiter. Names
    consist of a letter followed by up to 33 letters, digits, periods,
    or hyphens. Names are not case sensitive.
    
-    Attributes
-    
+  ATTRIBUTES
+  
    In a start tag, whitespace and attributes are allowed between the
    element name and the closing delimiter. An attribute consists of a
    name, an equal sign, and a value. Whitespace is allowed around the
@@ -321,8 +293,8 @@ Berners-Lee and Connolly                                             5
    The length of an attribute value (after parsing) is limited to 1024
    characters.
    
-  ELEMENT TYPES
-  
+Element Types
+
    The name of a tag refers to an element type declaration in the HTML
    DTD. An element type declaration associates an element name with
    
@@ -334,18 +306,14 @@ Berners-Lee and Connolly                                             5
       A content model, which specifies the pattern of nested elements
       and data
       
-    Empty Elements
-    
+  EMPTY ELEMENTS
+  
    Empty elements have the keyword EMPTY in their declaration. For
    example:
    
         <!ELEMENT NEXTID - O EMPTY>
         <!ATTLIST NEXTID N NUMBER #REQUIRED>
 
-
-
-Berners-Lee and Connolly                                             6
-
    This means that the following:
    
         <nextid n=''27''>
@@ -355,8 +323,8 @@ Berners-Lee and Connolly                                             6
         <nextid>
         <nextid n=''abc''>
 
-    Character Data
-    
+  CHARACTER DATA
+  
    The keyword CDATA indicates that the content of an element is
    character data. Character data is all the text up to the next end
    tag open delimiter-in-context. For example:
@@ -379,8 +347,8 @@ Berners-Lee and Connolly                                             6
         <xmp>There is no way to represent </end> tags
         in CDATA </xmp>
 
-    Replaceable Character Data
-    
+  REPLACEABLE CHARACTER DATA
+  
    Elements with RCDATA content behave much like those with CDATA,
    except for character references and entity references. Elements
    declared like:
@@ -389,8 +357,8 @@ Berners-Lee and Connolly                                             6
 
    can have any sequence of characters in their content.
    
-      Character References
-      
+    Character References
+    
    To represent a character that would otherwise be recognized as
    markup, use a character reference. The string &# signals a
    character reference when it is followed by a letter or a digit. The
@@ -399,13 +367,8 @@ Berners-Lee and Connolly                                             6
    
 <title>You can even represent &#60;/end> tags in RCDATA </title>
 
-
-
-
-Berners-Lee and Connolly                                             7
-
-      Entity References
-      
+    Entity References
+    
    The HTML DTD declares entities for the less than, greater than, and
    ampersand characters and each of the ISO Latin 1 characters so that
    you can reference them by name rather than by number.
@@ -421,8 +384,8 @@ Kurt G&ouml;del was a famous logician and mathematician.
                          occurrences of <, >, and & by character or
                          entity references.
                          
-    Element Content
-    
+  ELEMENT CONTENT
+  
    Some elements have, in stead of a keyword that states the type of
    content, a content model, which tells what patterns of data and
    nested elements are allowed. If the content model of an element
@@ -449,19 +412,14 @@ Kurt G&ouml;del was a famous logician and mathematician.
 <head> no data allowed! </head>
 <head><isindex><title>Two isindex tags</title><isindex></head>
 
-    Mixed Content
-    
+  MIXED CONTENT
+  
    If the content model includes the symbol #PCDATA, the content of
    the element is parsed as mixed content. For example:
    
 <!ELEMENT PRE - - (#PCDATA | A | B | I | U | P)+>
 <!ATTLIST PRE
         WIDTH NUMBER #implied
-
-
-
-Berners-Lee and Connolly                                             8
-
         >
 
    This says that the PRE element contains one or more A, B, I, U, or
@@ -488,8 +446,8 @@ Berners-Lee and Connolly                                             8
       
       The string ``\n   cat <xyz''
       
-  COMMENTS AND OTHER MARKUP
-  
+Comments and Other Markup
+
    To include comments in an HTML document that will be ignored by the
    parser, surround them with <!-- and -->. After the comment
    delimiter, all text up to the next occurrence of -- is ignored.
@@ -515,16 +473,11 @@ Berners-Lee and Connolly                                             8
                          complete information.
                          
   <!                      Markup declaration. HTML defines no short
-
-
-
-Berners-Lee and Connolly                                             9
-
                          reference maps, so these are errors.
                          Terminated by >.
                          
-  LINE BREAKS
-  
+Line Breaks
+
    A line break character is considered markup (and ignored) if it is
    the first or last piece of content in an element. This allows you
    to write either
@@ -559,11 +512,10 @@ ent: -->
  third line
  fourth line.
 
-  SPACES AND TABS
-  
+Spaces and Tabs
+
    Space characters must be rendered as horizontal white space.  In
-   HTML, multiple spaces should be rendered as proportionally larger
-   spaces.
+   HTML, multiple spaces should be rendered as single spaces.
    
    The rendering of a horizontal tab (HT) character is not defined,
    and HT should therefore not be used, except within a PRE (or
@@ -572,12 +524,8 @@ ent: -->
    Neither spaces nor tabs should be used to make SGML source layout
    more attractive or easier to read.
    
-  SUMMARY OF MARKUP SIGNALS
+Summary of Markup Signals
 
-
-
-Berners-Lee and Connolly                                             10
-
    The following delimiters may signal markup, depending on context.
    
   Delimiter               Signals
@@ -596,6 +544,8 @@ Berners-Lee and Connolly                                             10
                          
   <                       Start tag
                          
+   
+                                                     Elements of  HTML
                             HTML ELEMENTS
                                    
    This is a list of elements used in the HTML language.  Documents
@@ -631,11 +581,6 @@ Properties of the whole document
                          
 Text formatting
 
-
-
-
-Berners-Lee and Connolly                                             11
-
    These are elements which occur within the BODY element of a
    document. Their order is the logical order in which the elements
    should be rendered on the output device.
@@ -648,6 +593,11 @@ Berners-Lee and Connolly                                             11
                          
   Paragraph marks         The P element marks the break between two
                          paragraphs.
+                         
+  Line Breaks            Like paragraph marks, but just forces a new
+                         line.
+                         
+  Horizontal Rule        A horizontal dividing line etc
                          
   Address style           An ADDRESS element is displayed in a
                          particular style.
@@ -671,16 +621,18 @@ Obsolete elements
 
    The other elements are obsolete but should be recognised by parsers
    for back-compatibility.
-   
-HEAD
-
+                                                      HEAD -- Elements
+                                 HEAD
+                                   
    The HEAD element contains all information about the document in
    general.  It does not contain any text which is part of the
    document: this is in the BODY. Within the head element, only
    certain elements are allowed.
    
-BODY
-
+   
+                                              The BODY element in HTML
+                                 BODY
+                                   
    The BODY element contains all the information which is part of the
    document, as opposed information about the document which is in the
    HEAD .
@@ -689,13 +641,9 @@ BODY
    should be presented to the reader.
    
    See the list of things which are allowed within a BODY element .
-
-
-
-Berners-Lee and Connolly                                             12
-
-Anchors
-
+                                            The Anchor element in HTML
+                               ANCHORS
+                                   
    An anchor is a piece of text which marks the beginning and/or the
    end of a hypertext link.
    
@@ -747,11 +695,7 @@ Anchors
   URN                     OPTIONAL. If present, this specifies a
                          uniform resource number for the document. See
                          note .
-
-
-
-Berners-Lee and Connolly                                             13
-
+                         
   TITLE                   OPTIONAL. This is informational only. If
                          present the value of this field should equal
                          the value of the TITLE of the document whose
@@ -766,8 +710,8 @@ Berners-Lee and Connolly                                             13
    All attributes are optional, although one of NAME and HREF is
    necessary for the anchor to be useful. See also: LINK .
    
-  EXAMPLE OF USE:
-  
+Example of use:
+
         See <A HREF="http://info.cern.ch/">CERN</A>'s information for
         more details.
 
@@ -778,68 +722,22 @@ Berners-Lee and Connolly                                             13
         of a <a href="#serious">serious</A> crime.
 
 
-  NOTE : UNIVERSAL RESOURCE NUMBERS
-  
-   URNs are provided to allow a document to be recognized if duplicate
-   copies are found.  This should save a client implementation from
-   picking up a copy of something it already has.
    
-   The format of URNs is under discussion (1993) by various working
-   groups of the Internet Engineering Task Force.
-   
-  NOTE:  TITLE ATTRIBUTE OF LINKS
-  
-   The link may carry a TITLE attribute which should if present give
-   the title of the document whose address is given by the HREF
-   attribute.
-   
-   This is useful for at least two reasons
-   
-      The browser software may chose to display the title of the
-      document as a preliminary to retrieving it, for example as a
-      margin note or on a small box while the mouse is over the
-      anchor, or during document fetch.
-      
-      Some documents -- mainly those which are not marked up text,
-      such as graphics, plain text and also  Gopher menus, do not come
-      with a title themselves, and so putting a title in the link is
-      the only way to give them a title. This is how Gopher works.
-      Obviously it leads to duplication of data, and so it is
-
-
-
-Berners-Lee and Connolly                                             14
-
-      dangerous to assume that the title attribute of the link is a
-      valid and unique title for the destination document.
-      
-  NOTE: METHODS ATTRIBUTE OF LINKS
-  
-   The METHODS attributes of anchors and links are used to provide
-   information about the functions which the user may perform on an
-   object. These are more accurately given by the HTTP protocol when
-   it is used, but it may, for similar reasons as for the TITLE
-   attribute, be useful to include the information in advance in the
-   link.
-   
-   For example, The browser may chose a different rendering as a
-   function of the methods allowed (for example something which is
-   searchable may get a different icon)
-   
-Address
-
+                                                     Tags used in HTML
+                               ADDRESS
+                                   
    This element is for address information, signatures, authorship,
    etc, often at the top or bottom of a document.
    
-  TYPICAL RENDERING
-  
+Typical rendering
+
    Typically, an address element is italic and/or right justified or
    indented.  The address element implies a paragraph break. Paragraph
    marks within the address element do not cause extra white space to
    be inserted.
    
-  EXAMPLES OF USE:
-  
+Examples of use:
+
                 <ADDRESS><A HREF="Author.html">A.N.Other</A></ADDRESS>
 
 
@@ -851,8 +749,10 @@ Address
                 </ADDRESS>
 
 
-BASE
-
+   
+                                              The BASE element in HTML
+                                 BASE
+                                   
    This element allows the URL of the document itself to be recorded
    in situations in which the document may be read out of context.
    URLs within the  document may be in a "partial" form relative  to
@@ -863,20 +763,17 @@ BASE
    
    The one attribute is:
    
-
-
-
-Berners-Lee and Connolly                                             15
-
   HREF                    the URL
                          
-BLOCKQUOTE
-
+   
+                                                    BlockQuote in HTML
+                              BLOCKQUOTE
+                                   
    The BLOCKQUOTE element allows text quoted from another source to be
    rendered specially.
    
-  TYPICAL RENDERING
-  
+Typical rendering
+
    A typical rendering might be a slight extra left and right indent,
    and/or italic font.  BLOCKQUOTE causes a paragraph break, and
    typically a line or so of white space will be allowed between it
@@ -886,16 +783,18 @@ BLOCKQUOTE
    characters down the left margin to indicate quotation in the
    Internet mail style.
    
-  EXAMPLE
-  
+Example
+
 I think it ends
 <BLOCKQUOTE>Soft you now, the fair Ophelia. Nymph, in thy orisons,
 be all my sins remembered.
 </BLOCKQUOTE>
 but I am not sure.
 
-Headings
-
+   
+                                              Heading elements in HTML
+                               HEADINGS
+                                   
    Six levels  of heading are supported. (Note that a hypertext node
    within a hypertext work tends to need less levels of  heading than
    a work whose only structure is given by the nesting of headings.)
@@ -921,26 +820,21 @@ Headings
    strange results for example when generating other representations
    from the HTML.
    
+Example:
 
-
-
-Berners-Lee and Connolly                                             16
-
-  EXAMPLE:
-  
                 <H1>This is a heading</H1>
                 Here is some text
                 <H2>Second level heading</H2>
                 Here is some more text.
 
-  PARSER NOTE:
-  
+Parser Note:
+
    Parsers should not require any specific order to heading elements,
    even if the heading level increases by more than one between
    successive headings.
    
-  TYPICAL RENDERING
-  
+Typical Rendering
+
   H1                      Bold very large font, centered. One or two
                          lines clear space between this and anything
                          following.  If printed on paper, start new
@@ -972,18 +866,13 @@ Berners-Lee and Connolly                                             16
    The rendering software is responsible for generating suitable
    vertical white space between elements, so it is NOT normal or
    required to follow a heading element with a paragraph mark.
-   
-IMG: Embedded Images
-
+                                               The IMG Element in HTML
+                         IMG: EMBEDDED IMAGES
+                                   
    Status: Extra
    
    The IMG element allows another document to be inserted inline.  The
    document is normally an icon or small graphic, etc. This element is
-
-
-
-Berners-Lee and Connolly                                             17
-
    NOT intended for embedding other HTML text.
    
    Browsers which are not able to display inline images ignore IMG
@@ -1006,26 +895,29 @@ Berners-Lee and Connolly                                             17
                          bottoms of the graphics and text should be
                          aligned vertically.
                          
-  ALT                    Optional alternative text as an alternative
+  ALT                     Optional alternative text as an alternative
                          to the graphics for display in text-only
                          environments.
                          
    Note that IMG elements are allowed within anchors.
    
-  EXAMPLE
-  
+Example
+
         Warning: < IMG SRC ="triangle.gif" ALT="Warning:"> This must b
 e done by a
         qualified technician.
 
-        < A HREF="Go">< IMG SRC ="Button"> Press to start</A>
+        < A HREF="Go.html">< IMG SRC ="Button.ps" ALT="GO"></A>
 
 
 
 
 
-ISINDEX
 
+   
+                                               ISINDEX element in HTML
+                               ISINDEX
+                                   
    This element informs the reader that the document is an index
    document. As well as reading it, the reader may use a keyword
    search.
@@ -1037,23 +929,20 @@ ISINDEX
    Note that this tag is normally generated automatically by a server.
     If it is added by hand to an HTML document, then the client  will
    assume that the server can handle a search on the document.
-
-
-
-Berners-Lee and Connolly                                             18
-
    Obviously the server must have this capability for it to work:
    simply adding <ISINDEX> in the document is not enough to make
    searches happen if the server does not have a search engine!
    
    Status: standard.
    
-  EXAMPLE OF USE:
-  
+Example of use:
+
                 <ISINDEX>
 
-LINK
-
+   
+                                                      LINK -- Elements
+                                 LINK
+                                   
    The LINK element occurs within the HEAD element of an HTML
    document. It is used to indicate a relationship between the
    document and some other object.  A document may have any number of
@@ -1070,15 +959,18 @@ LINK
    
    Servers may also allow links to be added by those who do not have
    the right to alter the body of a document.
+                                          Lists and glossaries in HTML
+                        FORMS OF LIST IN HTML
+                                   
+   These lists may be nested
    
-Forms of list in HTML
+Glossaries
 
-  GLOSSARIES
-  
    A glossary (or definition list) is a list of paragraphs each of
    which has a short title alongside it. Apart from glossaries, this
    element is useful for presenting a set of named elements to the
-   reader. The elements within a glossary follow are
+   reader. The elements within a glossary follow are introduced by
+   these elements:
    
   DT                      The "term", typically placed in a wide left
                          indent
@@ -1086,22 +978,18 @@ Forms of list in HTML
   DD                      The "definition", which may wrap onto many
                          lines
                          
-   These elements must appear in pairs. Single occurrences of DT
-   without a following DD are illegal.  The one attribute which DL can
-   take is
+   These elements must appear in pairs.  Single occurrences of DT
+   without a following DD are allowed, and have the same significance
+   as if the DD had been present with no text..  The one attribute
+   which DL can take is
    
   COMPACT                 suggests that a compact rendering be used,
                          because the enclosed elements are
                          individually small, or the whole glossary is
                          rather large, or both.
                          
-
-
-
-Berners-Lee and Connolly                                             19
-
-    Typical rendering
-    
+  TYPICAL RENDERING
+  
    The definition list DT, DD pairs are arranged vertically.   For
    each pair, the DT element is on the left, in a column of about a
    third of the display area, and the DD element is in the right hand
@@ -1110,6 +998,9 @@ Berners-Lee and Connolly                                             19
    longer, it will either extend across the page, in which case the DD
    section is moved down to separate them, or it is wrapped onto
    successive lines of the left hand column.
+   
+   This is sometimes implemented with the use of a large negative
+   first line indent.
    
    White space is typically left between successive DT,DD pairs unless
    the COMPACT attribute is given.  The COMPACT attribute is
@@ -1121,8 +1012,8 @@ Berners-Lee and Connolly                                             19
    The COMPACT attribute may also reduce the width of the left-hand
    (DT) column.
    
-    Examples of use
-    
+  EXAMPLES OF USE
+  
         <DL>
         <DT>Term the first<DD>definition paragraph is reasonably
         long but is still displayed clearly
@@ -1137,8 +1028,8 @@ Berners-Lee and Connolly                                             19
 
 
 
-  LISTS
-  
+Lists
+
    A list is a sequence of paragraphs, each of which may be preceded
    by a special mark or sequence number. The syntax is:
    
@@ -1151,13 +1042,8 @@ Berners-Lee and Connolly                                             19
    The opening list tag  may be any of UL, OL, MENU or DIR.  It must
    be immediately followed by the first list element.
    
-    Typical rendering
-    
-
-
-
-Berners-Lee and Connolly                                             20
-
+  TYPICAL RENDERING
+  
    The representation of the list is not defined here, but a bulleted
    list for unordered lists,  and a sequence of numbered paragraphs
    for an ordered list would be quite appropriate. Other possibilities
@@ -1185,8 +1071,8 @@ Berners-Lee and Connolly                                             20
                          function of the widths of individual
                          elements, so much the better.
                          
-    Example of use
-    
+  EXAMPLE OF USE
+  
                 <OL>
                 <LI> When you get to the station, leave
                 by the southern exit, on platform one.
@@ -1209,13 +1095,11 @@ Berners-Lee and Connolly                                             20
 
 
 
-Next ID
 
-
-
-
-Berners-Lee and Connolly                                             21
-
+   
+                                                     Tags used in HTML
+                               NEXT ID
+                                   
    This tag takes a  single attribute which is the number of the next
    document-wide numeric identifier to be allocated of the form z123.
    
@@ -1225,13 +1109,15 @@ Berners-Lee and Connolly                                             21
    usually use mnemonic alphabetical identifiers. Browser software may
    ignore this tag.
    
-  EXAMPLE OF USE:
-  
+Example of use:
+
                 <NEXTID N=27>
 
 
-P: Paragraph mark
-
+   
+                                               Paragraph marks in HTML
+                          P: PARAGRAPH MARK
+                                   
    The empty P element indicates a paragraph break. The exact
    rendering of this (indentation,  leading, etc) is not defined here,
    and may be a function of other tags, style sheets etc.
@@ -1246,44 +1132,111 @@ P: Paragraph mark
    such elements which imply a paragraph break is has undefined effect
    and should be avoided.
    
-  TYPICAL RENDERING
-  
+Typical rendering
+
    Typically, <P> will generate a small vertical space (of a line or
    half a line) between the paragraphs. This is not the case
-   (typically) within ADDRESS  or (ever) within PRE elements.   With
+   (typically) within ADDRESS  or (ever) within PRE elements.  With
    some implementations, in normal text, <P> may generate a small
    extra left indent on the first line.
    
-  EXAMPLES OF USE
-  
+Examples of use
+
         <h1>What to do</h1>
         This is a one paragraph.< p >This is a second.
         < P >
         This is a third.
 
-  BAD EXAMPLE
-  
+Bad example
+
         <h1><P>What not to do</h1>
         <p>I found that on my XYZ browser it looked prettier to
         me if I put some paragraph marks
         <p>
         <ul><p><li>Around lists, and
         <li>After headings.
-
-
-
-Berners-Lee and Connolly                                             22
-
         </ul>
         <p>
         None of the paragraph marks in this example should
         be there.
 
+See also
+
+   Line Break
+                                                   Line Breaks in HTML
+                              LINE BREAK
+                                   
+   The line break element marks that a new line must be started at the
+   given point.
+   
+Syntax
+
+   The element is empty.
+   
+                <BR>
+
+Typical rendering
+
+   A new line with indent the same as that of line-wrapped text.
+   
+Examples
+
+                <ADDRESS>Tim Berners-Lee<BR>
+                World Wide Web project<BR>
+                CERN<BR>1211 Geneva 23<BR>Switzerland
+                </ADDRESS>
+
+                I think that I shall never see<BR>
+                A hoarding lovely as a tree<BR>
+                In fact, unless the hoardings fall<BR>
+                I'll never see a tree at all.<P>
 
 
 
-PRE: Preformatted text
+See also:
 
+   Paragraph  marks
+                                              Horizontal Rules in HTML
+                           HORIZONTAL RULE
+                                   
+   (The HR element is introduced in July 93 because so many documents
+   ended up with dividers formed of series of underline characters.)
+   
+Syntax
+
+   The <HR> element is empty:
+   
+                <HR>
+
+Typical Rendering
+
+   Some sort of divider between sections of text such as a full width
+   horizontal rule or equivalent graphic.
+   
+Example
+
+   The horizontal rule is typically used for separating heading
+   information (when more than just a heading) from content, etc.
+   
+                <H1>The Albatross</H1>
+                <Address>The Bumstead Monthly, 1948</Address>
+                The following information is culled from
+                this and suvccessive issues of the magazine.
+                Thanks are due to the editor-in-chief,
+                A.R. Bunstead, for her help and advice.
+                <H2>Copyright IQR Inc.</h2>
+                This recording may not be sold, resold,
+                hired out, used, or talked about in too great
+                a depth without the publisher's written or
+                videotaped consent.
+                <HR>
+                The Albatross, most fabled and infamous of ..
+
+
+   
+                                               The PRE element in HTML
+                        PRE: PREFORMATTED TEXT
+                                   
    Preformatted elements in HTML are displayed with text in a fixed
    width font, and so are suitable for text which has been formatted
    for a teletype by some existing formatting system.
@@ -1322,32 +1275,28 @@ PRE: Preformatted text
       the number of characters so far on the line as a multiple of 8.
       Its use is not recommended however.
       
-    Example of use
-    
+  EXAMPLE OF USE
+  
                         <PRE WIDTH="80">
                         This is an example line
                         </PRE>
 
-
-
-Berners-Lee and Connolly                                             23
-
-    Note: Highlighting
-    
+  NOTE: HIGHLIGHTING
+  
    Within a preformatted element,  the constraint that the rendering
    must be on a fixed horizontal character pitch may limit or prevent
    the ability of the renderer to render highlighting elements
    specially.
    
-    Note: Margins
-    
+  NOTE: MARGINS
+  
    The above references to the "beginning of a new line" must not be
    taken as implying that the renderer is forbidden from using a
    (constant) left indent for rendering preformatted text.   The left
    indent may of course be constrained by the width required.
-   
-TITLE
-
+                                             The TITLE element in HTML
+                                TITLE
+                                   
    The title of a document is specified by the TITLE element.  The
    TITLE element should occur in the HEAD of the document.
    
@@ -1366,8 +1315,8 @@ TITLE
    of a title (as it may be automatically generated from other data),
    information providers are warned that it may be truncated if long.
    
-    Examples of use
-    
+  EXAMPLES OF USE
+  
    Appropriate titles might be
    
                 <TITLE>Rivest and Neuman. 1989(b)</TITLE>
@@ -1385,11 +1334,6 @@ TITLE
    
                 <TITLE>Introduction</TITLE>
 
-
-
-
-Berners-Lee and Connolly                                             24
-
    or too long,
    
         <TITLE>Remarks on the Quantum-Gravity effects of "Bean
@@ -1401,8 +1345,11 @@ Berners-Lee and Connolly                                             24
 
 
 
-Character highlighting
 
+   
+                                                  Highlighting in HTML
+                        CHARACTER HIGHLIGHTING
+                                   
    Status: Extra
    
    These elements allow sections of text to be formatted in a
@@ -1423,8 +1370,8 @@ Character highlighting
    to the formatting in the text. (Eg, "The italic parts are
    mandatory".)
    
-    Note:
-    
+  NOTE:
+  
    Browsers unable to display a specified style may render it in some
    alternative, or the default, style, with some loss of quality for
    the reader. Some implementations may ignore these tags altogether,
@@ -1433,8 +1380,8 @@ Character highlighting
    
    These element names are derived from TeXInfo macro names.
    
-  PHYSICAL STYLES
-  
+Physical styles
+
   TT                      Fixed-width typewriter font.
                          
   B                       Boldface, where available, otherwise
@@ -1443,15 +1390,10 @@ Character highlighting
   I                       Italic font (or slanted if italic
                          unavailable).
                          
-
-
-
-Berners-Lee and Connolly                                             25
-
   U                       Underline.
                          
-  LOGICAL STYLES
-  
+Logical styles
+
   EM                      Emphasis, typically italic.
                          
   STRONG                  Stronger emphasis, typically bold.
@@ -1471,8 +1413,8 @@ Berners-Lee and Connolly                                             25
                          
   CITE                    A citation. Typically italic.
                          
-  EXAMPLES OF USE
-  
+Examples of use
+
         This text contains an <em>emphasized</em> word.
         <strong>Don't assume</strong> that it will be italic!
         It was made using the <CODE>EM</CODE> element. A citation is
@@ -1482,14 +1424,16 @@ Berners-Lee and Connolly                                             25
 
 
 
-Obsolete elements
-
+   
+                                            Obsolete Elements of  HTML
+                          OBSOLETE ELEMENTS
+                                   
    The following elements of HTML are obsolete.  It is recommended
    that client implementors implement the obsolete forms for
    compatibility with old servers.
    
-    Plaintext
-    
+  PLAINTEXT
+  
    Status: Obsolete .
    
    The empty PLAINTEXT tag terminates the HTML entity. What follows is
@@ -1501,19 +1445,14 @@ Obsolete elements
                         <PLAINTEXT>
                         0001 This is line one of a ling listing
                         0002 file from <any@host.inc.com> which is sen
-
-
-
-Berners-Lee and Connolly                                             26
-
 t
 
    This tag allows the rest of a file to be read efficiently without
    parsing. Its presence is an optimization. There is no closing tag.
    The rest of the data is not in SGML.
    
-    XMP and LISTING:   Example sections
-    
+  XMP AND LISTING:   EXAMPLE SECTIONS
+  
    Status:  Obsolete . This are in use and should be recognized by
    browsers. New servers should use <PRE> instead.
    
@@ -1552,30 +1491,26 @@ t
    at least 80 characters will fit on a line but is otherwise
    identical to LISTING.
    
-    Highlighted Phrase HP1 etc
-    
+  HIGHLIGHTED PHRASE HP1 ETC
+  
    Status: Obsolete . These tags like all others should be ignored if
    not implemented. Replaced will more meaningful elements -- see
    character highlighting .
    
-      Examples of use:
-
-
-
-Berners-Lee and Connolly                                             27
-
+    Examples of use:
+    
                 <HP1>...</HP1>   <HP2>... </HP2> etc.
 
-    Comment element
-    
+  COMMENT ELEMENT
+  
    Status: Obsolete
    
    A comment element used for bracketing off unneed text and comment
    has been introduced in some browsers but will be replaced by the
    SGML command feature in new implementations.
-   
-  HISTORICAL NOTE: XMP AND LISTING
-  
+                                      XMP and LISTING in HTML: History
+                   HISTORICAL NOTE: XMP AND LISTING
+                                   
    The XMP and LISTING elements used historically to have non SGML
    conforming specifications, in that the text could contain any ISO
    Latin printable characters, including the tag opener, so long as it
@@ -1585,7 +1520,7 @@ Berners-Lee and Connolly                                             27
    interpretation.  Providers should be warned that implementations
    may vary on how they interpret end tags apparently within these
    elements
-   
+                                                   Entities -- /MarkUp
                                ENTITIES
                                    
    The following entity names are used in HTML , always prefixed by
@@ -1602,11 +1537,13 @@ Berners-Lee and Connolly                                             27
                          
   &quot;                  The double quote sign "
                          
+  &nbsp;                 A non-breaking space
+                         
    Also allowed are references to any of the ISO Latin-1 alphabet,
    using the entity names in the following table.
-   
-ISO Latin 1 character entities
-
+                                          ISO Latin 1 Entities in HTML
+                    ISO LATIN 1 CHARACTER ENTITIES
+                                   
    This list is derived from "ISO 8879:1986//ENTITIES Added Latin
    1//EN".
    
@@ -1617,11 +1554,7 @@ ISO Latin 1 character entities
   &Acirc;                capital A, circumflex accent
                          
   &Agrave;               capital A, grave accent
-
-
-
-Berners-Lee and Connolly                                             28
-
+                         
   &Aring;                capital A, ring
                          
   &Atilde;               capital A, tilde
@@ -1675,11 +1608,7 @@ Berners-Lee and Connolly                                             28
   &Yacute;               capital Y, acute accent
                          
   &aacute;               small a, acute accent
-
-
-
-Berners-Lee and Connolly                                             29
-
+                         
   &acirc;                small a, circumflex accent
                          
   &aelig;                small ae diphthong (ligature)
@@ -1733,11 +1662,7 @@ Berners-Lee and Connolly                                             29
   &uacute;               small u, acute accent
                          
   &ucirc;                small u, circumflex accent
-
-
-
-Berners-Lee and Connolly                                             30
-
+                         
   &ugrave;               small u, grave accent
                          
   &uuml;                 small u, dieresis or umlaut mark
@@ -1746,12 +1671,13 @@ Berners-Lee and Connolly                                             30
                          
   &yuml;                 small y, dieresis or umlaut mark
                          
+   
+                                                The HTML DTD (heading)
                              THE HTML DTD
                                    
    The HTML DTD follows . Its relationship to the content of an SGML
    document is explained in the section "HTML and SGML" .
-   
-
+                                                The Annotated HTML DTD
 <!SGML  "ISO 8879:1986"
 --
         Document Type Definition for the HyperText Markup Language
@@ -1759,6 +1685,9 @@ Berners-Lee and Connolly                                             30
 
         NOTE: This is a definition of HTML with respect to
         SGML, and assumes an understanding of SGML terms.
+
+        If you find bugs in this DTD or find it does not compile
+        under some circumstances please mail www-bug@info.cern.ch
 --
 
 CHARSET
@@ -1791,11 +1720,6 @@ SYNTAX
 255
          BASESET  "ISO 646:1983//CHARSET
                    International Reference Version (IRV)//ESC 2/5 4/0"
-
-
-
-Berners-Lee and Connolly                                             31
-
          DESCSET  0 128 0
          FUNCTION RE          13
                   RS          10
@@ -1849,20 +1773,15 @@ FEATURES
 <!-- DTD definitions -->
 
 <!ENTITY % heading "H1|H2|H3|H4|H5|H6" >
-
-
-
-Berners-Lee and Connolly                                             32
-
-<!ENTITY % list "UL|OL|DIR|MENU">
-<!ENTITY % literal "XMP|LISTING">
+<!ENTITY % list " UL | OL | DIR | MENU ">
+<!ENTITY % literal " XMP | LISTING ">
 
 <!ENTITY % headelement
-         "TITLE|NEXTID|ISINDEX" >
+         " TITLE | NEXTID |ISINDEX" >
 
 <!ENTITY % bodyelement
-         "P | %heading |
-         %list | DL | HEADERS | ADDRESS | PRE | BLOCKQUOTE
+         "P | HR | %heading |
+         %list | DL | ADDRESS | PRE | BLOCKQUOTE
         | %literal">
 
 <!ENTITY % oldstyle "%headelement | %bodyelement | #PCDATA">
@@ -1875,7 +1794,7 @@ Berners-Lee and Connolly                                             32
 
 <!ENTITY % linkattributes
         "NAME NMTOKEN #IMPLIED
-        HREF %URL; #IMPLIED
+        HREF %URL;  #IMPLIED
         REL CDATA #IMPLIED -- forward relationship type --
         REV CDATA #IMPLIED -- reversed relationship type
                               to referent data:
@@ -1896,9 +1815,9 @@ ct:
 
 <!-- Document Element -->
 
-<!ELEMENT HTML O O  (( HEAD | BODY | %oldstyle)*, PLAINTEXT?)>
+<!ELEMENT HTML O O  (( HEAD | BODY | %oldstyle )*, PLAINTEXT?)>
 
-<!ELEMENT HEAD - -  (TITLE? & ISINDEX? & NEXTID? & LINK*
+<!ELEMENT HEAD - -  ( TITLE?  & ISINDEX?  & NEXTID?  & LINK*
                               & BASE?)>
 
 <!ELEMENT TITLE - -  RCDATA
@@ -1908,10 +1827,6 @@ ext.
              window title.
           -->
 
-
-
-Berners-Lee and Connolly                                             33
-
 <!ELEMENT ISINDEX - O EMPTY
           -- WWW clients should offer the option to perform a search o
 n
@@ -1942,7 +1857,14 @@ n
 
 <!ENTITY % text "#PCDATA | IMG | %inline;">
 
-<!ENTITY % htext "A | %text">
+<!ENTITY % htext "A | %text"    -- Plus links, no structure -->
+
+<!ENTITY % stext                -- as htext but also nested structure
+--
+                        "P | HR | %list | DL | ADDRESS
+                        | PRE | BLOCKQUOTE
+                        | %literal | %htext">
+
 
 <!ELEMENT BODY - -  (%bodyelement|%htext;)*>
 
@@ -1954,22 +1876,18 @@ n
 
 <!ELEMENT IMG    - O EMPTY --  Embedded image -->
 <!ATTLIST IMG
-        SRC %URL; #IMPLIED      -- URL of document to embed --
+        SRC %URL;  #IMPLIED     -- URL of document to embed --
         >
 
 
 <!ELEMENT P     - O EMPTY -- separates paragraphs -->
+<!ELEMENT HR    - O EMPTY -- horizontal rule -->
 
 <!ELEMENT ( %heading )  - -  (%htext;)+>
 
-<!ELEMENT DL    - -  (DT | DD | P | %htext;)*>
-<!--    Content should match ((DT,(%htext;)+)+,(DD,(%htext;)+))
-        But mixed content is messy.
-
-
-
-Berners-Lee and Connolly                                             34
-
+<!ELEMENT DL    - -  (DT | DD | %stext;)*>
+<!--    Content should match ((DT,(%htext;)+)+,(DD,(%stext;)+))
+        But mixed content is messy.  -Dan Connolly
   -->
 
 <!ELEMENT DT    - O EMPTY>
@@ -1997,76 +1915,72 @@ Berners-Lee and Connolly                                             34
         >
 
 <!-- Mnemonic character entities. -->
-<!ENTITY AElig "&#198;" -- capital AE diphthong (ligature) -->
+<!ENTITY AElig "&#198;"  -- capital AE diphthong (ligature) -->
 <!ENTITY Aacute "&#193;" -- capital A, acute accent -->
-<!ENTITY Acirc "&#194;" -- capital A, circumflex accent -->
+<!ENTITY Acirc "&#194;"  -- capital A, circumflex accent -->
 <!ENTITY Agrave "&#192;" -- capital A, grave accent -->
-<!ENTITY Aring "&#197;" -- capital A, ring -->
+<!ENTITY Aring "&#197;"  -- capital A, ring -->
 <!ENTITY Atilde "&#195;" -- capital A, tilde -->
-<!ENTITY Auml "&#196;" -- capital A, dieresis or umlaut mark -->
+<!ENTITY Auml "&#196;"   -- capital A, dieresis or umlaut mark -->
 <!ENTITY Ccedil "&#199;" -- capital C, cedilla -->
-<!ENTITY ETH "&#208;" -- capital Eth, Icelandic -->
+<!ENTITY ETH "&#208;"    -- capital Eth, Icelandic -->
 <!ENTITY Eacute "&#201;" -- capital E, acute accent -->
-<!ENTITY Ecirc "&#202;" -- capital E, circumflex accent -->
+<!ENTITY Ecirc "&#202;"  -- capital E, circumflex accent -->
 <!ENTITY Egrave "&#200;" -- capital E, grave accent -->
-<!ENTITY Euml "&#203;" -- capital E, dieresis or umlaut mark -->
+<!ENTITY Euml "&#203;"   -- capital E, dieresis or umlaut mark -->
 <!ENTITY Iacute "&#205;" -- capital I, acute accent -->
-<!ENTITY Icirc "&#206;" -- capital I, circumflex accent -->
+<!ENTITY Icirc "&#206;"  -- capital I, circumflex accent -->
 <!ENTITY Igrave "&#204;" -- capital I, grave accent -->
-<!ENTITY Iuml "&#207;" -- capital I, dieresis or umlaut mark -->
+<!ENTITY Iuml "&#207;"   -- capital I, dieresis or umlaut mark -->
 <!ENTITY Ntilde "&#209;" -- capital N, tilde -->
 <!ENTITY Oacute "&#211;" -- capital O, acute accent -->
-<!ENTITY Ocirc "&#212;" -- capital O, circumflex accent -->
+<!ENTITY Ocirc "&#212;"  -- capital O, circumflex accent -->
 <!ENTITY Ograve "&#210;" -- capital O, grave accent -->
 <!ENTITY Oslash "&#216;" -- capital O, slash -->
 <!ENTITY Otilde "&#213;" -- capital O, tilde -->
-<!ENTITY Ouml "&#214;" -- capital O, dieresis or umlaut mark -->
-<!ENTITY THORN "&#222;" -- capital THORN, Icelandic -->
+<!ENTITY Ouml "&#214;"   -- capital O, dieresis or umlaut mark -->
+<!ENTITY THORN "&#222;"  -- capital THORN, Icelandic -->
 <!ENTITY Uacute "&#218;" -- capital U, acute accent -->
-
-
-
-Berners-Lee and Connolly                                             35
-
-<!ENTITY Ucirc "&#219;" -- capital U, circumflex accent -->
+<!ENTITY Ucirc "&#219;"  -- capital U, circumflex accent -->
 <!ENTITY Ugrave "&#217;" -- capital U, grave accent -->
-<!ENTITY Uuml "&#220;" -- capital U, dieresis or umlaut mark -->
+<!ENTITY Uuml "&#220;"   -- capital U, dieresis or umlaut mark -->
 <!ENTITY Yacute "&#221;" -- capital Y, acute accent -->
 <!ENTITY aacute "&#225;" -- small a, acute accent -->
-<!ENTITY acirc "&#226;" -- small a, circumflex accent -->
-<!ENTITY aelig "&#230;" -- small ae diphthong (ligature) -->
+<!ENTITY acirc "&#226;"  -- small a, circumflex accent -->
+<!ENTITY aelig "&#230;"  -- small ae diphthong (ligature) -->
 <!ENTITY agrave "&#224;" -- small a, grave accent -->
-<!ENTITY amp "&amp;" -- ampersand -->
-<!ENTITY aring "&#229;" -- small a, ring -->
+<!ENTITY amp "&#38;"     -- ampersand -->
+<!ENTITY aring "&#229;"  -- small a, ring -->
 <!ENTITY atilde "&#227;" -- small a, tilde -->
-<!ENTITY auml "&#228;" -- small a, dieresis or umlaut mark -->
+<!ENTITY auml "&#228;"   -- small a, dieresis or umlaut mark -->
 <!ENTITY ccedil "&#231;" -- small c, cedilla -->
 <!ENTITY eacute "&#233;" -- small e, acute accent -->
-<!ENTITY ecirc "&#234;" -- small e, circumflex accent -->
+<!ENTITY ecirc "&#234;"  -- small e, circumflex accent -->
 <!ENTITY egrave "&#232;" -- small e, grave accent -->
-<!ENTITY eth "&#240;" -- small eth, Icelandic -->
-<!ENTITY euml "&#235;" -- small e, dieresis or umlaut mark -->
-<!ENTITY gt "&#62;" -- greater than -->
+<!ENTITY eth "&#240;"    -- small eth, Icelandic -->
+<!ENTITY euml "&#235;"   -- small e, dieresis or umlaut mark -->
+<!ENTITY gt "&#62;"      -- greater than -->
 <!ENTITY iacute "&#237;" -- small i, acute accent -->
-<!ENTITY icirc "&#238;" -- small i, circumflex accent -->
+<!ENTITY icirc "&#238;"  -- small i, circumflex accent -->
 <!ENTITY igrave "&#236;" -- small i, grave accent -->
-<!ENTITY iuml "&#239;" -- small i, dieresis or umlaut mark -->
-<!ENTITY lt "&lt;" -- less than -->
+<!ENTITY iuml "&#239;"   -- small i, dieresis or umlaut mark -->
+<!ENTITY lt "&#60;"      -- less than -->
+<!ENTITY nbsp "&#32;"    --  should be NON_BREAKING space -->
 <!ENTITY ntilde "&#241;" -- small n, tilde -->
 <!ENTITY oacute "&#243;" -- small o, acute accent -->
-<!ENTITY ocirc "&#244;" -- small o, circumflex accent -->
+<!ENTITY ocirc "&#244;"  -- small o, circumflex accent -->
 <!ENTITY ograve "&#242;" -- small o, grave accent -->
 <!ENTITY oslash "&#248;" -- small o, slash -->
 <!ENTITY otilde "&#245;" -- small o, tilde -->
-<!ENTITY ouml "&#246;" -- small o, dieresis or umlaut mark -->
-<!ENTITY szlig "&#223;" -- small sharp s, German (sz ligature) -->
-<!ENTITY thorn "&#254;" -- small thorn, Icelandic -->
+<!ENTITY ouml "&#246;"   -- small o, dieresis or umlaut mark -->
+<!ENTITY szlig "&#223;"  -- small sharp s, German (sz ligature) -->
+<!ENTITY thorn "&#254;"  -- small thorn, Icelandic -->
 <!ENTITY uacute "&#250;" -- small u, acute accent -->
-<!ENTITY ucirc "&#251;" -- small u, circumflex accent -->
+<!ENTITY ucirc "&#251;"  -- small u, circumflex accent -->
 <!ENTITY ugrave "&#249;" -- small u, grave accent -->
-<!ENTITY uuml "&#252;" -- small u, dieresis or umlaut mark -->
+<!ENTITY uuml "&#252;"   -- small u, dieresis or umlaut mark -->
 <!ENTITY yacute "&#253;" -- small y, acute accent -->
-<!ENTITY yuml "&#255;" -- small y, dieresis or umlaut mark -->
+<!ENTITY yuml "&#255;"   -- small y, dieresis or umlaut mark -->
 
 <!-- deprecated elements -->
 
@@ -2084,8 +1998,15 @@ Berners-Lee and Connolly                                             35
 
 
 
-Berners-Lee and Connolly                                             36
-
+
+
+
+
+
+
+
+   
+                                           Relationships in HTML links
                        LINK RELATIONSHIP VALUES
                                    
    Status: This list is not part of the standard.  It is intended to
@@ -2095,6 +2016,9 @@ Berners-Lee and Connolly                                             36
    Additions to this list will be controlled by the HTML registration
    authority . Experimental values may be used on the condition that
    they begin with "X-".
+   
+   Link relationship valies are NOT case sensitive. That is, "Made"
+   and "made" have th esame meaning.
    
    These values of the REL attribute of hypertext links have a
    significance defined here, and may be treated in special ways by
@@ -2114,10 +2038,9 @@ Berners-Lee and Connolly                                             36
    back to itself. These types of links may therefore be used to
    define trees.
    
-Relationships between documents
-
-   These relationships are between the documents themselves rather
-   than the subjects of the documents.
+   Most relationships (except where noted) are between the objecs
+   themselves rather than the subjects of the objects. Objects may be
+   documents, images, people (with mailto: URIs for example.)
    
   USEINDEX
   
@@ -2139,11 +2062,6 @@ Relationships between documents
    
   ANNOTATION
   
-
-
-
-Berners-Lee and Connolly                                             37
-
    The information in B is additional to and subsidiary to that in A.
    
    Annotation is used by one person to write the equivalent of "margin
@@ -2197,11 +2115,6 @@ Berners-Lee and Connolly                                             37
    
   SEARCH
   
-
-
-
-Berners-Lee and Connolly                                             38
-
    When the link is followed, the node B should be searched rather
    than presented. That is, where the client software allows it, the
    user should immediately be presented with a search panel and
@@ -2221,25 +2134,57 @@ Berners-Lee and Connolly                                             38
    A link reverse link must exist from B to A and to all other known
    versions of A.
    
-Relationships about subjects of documents
-
-   These relationships convey semantics about objects described by
-   documents, rather than the documents themselves.
+  MADE
+  
+   Person (etc) described by node A is author of B
+   
+   This information can be used for protection, and informing authors
+   of interest, for sending mail to authors, etc.
+   
+  OWNS
+  
+   The owner of an object carried resposabiliy for and authority over
+   the object.
+   
+   This information may be used for finding people responsible for
+   incorrect information, etc.  The creator (Made) and owner (Owns) of
+   an object may be different.
+   
+  APPROVES
+  
+   Approval of objects is a method of attributing value, or fiability,
+   to objects.  One determination of a value of an object is a
+   function of the  set of objects which approve it.
+   
+   A reviewed journal, for example, may operate by approving articles.
+    This could be expressed by an approval link from the journal
+   itself to the article.   In the view of the web as an
+   encyclopaedia, approval links one to filter information which has a
+   certain quality according to some standard.
+   
+  SUPPORTS
+  
+   A and B are objects representing assertions.  The assertion A
+   supports the assertion B.   This may be used to overlay a weak
+   semantics of argument onto the web. For example, giving such
+   relaionships within discussions  in this way will allow  arguments
+   to be analysed by machine and followed by people with greater ease.
+   See also: refutes.
+   
+  REFUTES
+  
+   This is the opposite of "Supports", indicating that A is a
+   proposition which refutes proposition B.
    
   INCLUDES
   
    A includes B, B is part of A.  For example, a person described by
    document A is a part of the group described by document B.
    
+   Note: This relationship conveys semantics about objects described
+   by objects, rather than the documents themselves.
+   
    Acyclic.
-   
-  MADE
-  
-   Person (etc) described by node A is author of, or is responsible
-   for B
-   
-   This information can be used for protection, and informing authors
-   of interest, for sending mail to authors, etc.
    
   INTERESTED
   
@@ -2255,26 +2200,38 @@ Relationships about subjects of documents
    related to it closely changes").   The amount of  change considered
    worth notifying people about is also subject to interpretation,
    varying from bit changes in the source to a "new edition" statement
-
-
-
-Berners-Lee and Connolly                                             39
-
    by the publisher.
-   
+                         Registration Authority for HTML relationships
                         REGISTRATION AUTHORITY
                                    
-   The HTTP Registration Authority is responsible for maintaining
+   The HTML Registration Authority is responsible for maintaining
    lists of:
    
       Relationship names for link and anchor elements
       
-   It is proposed that the Internet Assigned Numbers Authority or
-   their successors take this role.
+   It is proposed that a WWW consortium, the Internet Assigned Numbers
+   Authority,  or their successors take this role.
    
    Unregistered values may be used for experimental purposes if they
    are start with "X-".
+                                  HTML Spacification: Acknowledgements
+                           ACKNOWLEDGEMENTS
+                                   
+   The HTML document type was designed initially at CERN in 1990 for
+   the World-Wide Web project.     The DTD was written, and the
+   specification tightened up, by Dan Connolly After much discussion
+   on the network and some enhancement in particular the addition of
+   inline images introduced by the NCSA "Mosaic" software for WWW, it
+   was released as an Internet draft in 1993.
    
+   This version of the specification follows from certain minor
+   changes made at the WWW Wizard's Workshop in Cambridge, Mass., in
+   July 1993, in particular the introduction of <HR>, <BR>, &nbsp.
+   
+                                                                Tim BL
+                                                                      
+   
+                                       References - HTML specification
                               REFERENCES
                                    
   SGML                    ISO 8879:1986, Information Processing Text
@@ -2295,8 +2252,10 @@ Berners-Lee and Connolly                                             39
                          
   URL                     Universal Resource Locators. RFCxxx.
                          Currently  available by anonymous FTP from
-                         info.cern.ch in /pub/ietf.
+                         info.cern.ch in /pub/www/doc/url*.{ps,txt}
                          
+   
+                              Authors' addresses -- HTML specification
                           AUTHOR'S ADDRESSES
                                    
    This document was prepared with the help and advice of many people
@@ -2313,67 +2272,11 @@ Berners-Lee and Connolly                                             39
                 Fax:            +41(22)767 7155
                 email:          timbl@info.cern.ch
 
-
-
-
-Berners-Lee and Connolly                                             40
-
                                 Daniel Connolly
-                Address:        Atrium Technologies, Inc.
-                                5000 Plaza on the Lake, Suite 275
-                                Austin, TX 78746
+                Affiliation:    HaL Software Systems
+                                Austin, TX
                                 USA
-                email:          connolly@atrium.com
+                email:          connolly@hal.com
 
 
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Berners-Lee and Connolly                                             41
-

@@ -3,6 +3,7 @@
 #
 
 # Things outside this distribution
+ENV= SGML_PATH='./%N.%C:%N.dtd:%N.sgml'
 SGMLS = sgmls
 WWW = www
 HTML_SPEC_DIR = http://info.cern.ch/hypertext/WWW/MarkUp
@@ -16,24 +17,51 @@ PACKAGE = html_spec-$(RELEASE)
 DTD = HTML.dtd
 DECL = HTML.sgml
 
-DRAFT = draft-iiir-html-02.txt
+DRAFT = HTML.txt
+BIGDOC = html-spec-agg.sgml
+BIGPRE = html-spec-pre.sgml
 
-HTML2TXT = $(WWW) -n -na -p
+WIDTH=70
+HTML2TXT = $(WWW) -n -na -p -w$(WIDTH)
 
-HYPERTEXT = HTML.html \
-	StatusMeanings.html \
-	AndMIME.html \
-	Intro.html \
-	Text.html \
-	Tags.html \
-	Entities.html \
-	DTDHeading.html \
-	HTML.dtd.html \
-	Relationships.html \
-	RegistrationAuthority.html \
-	Acknowledgements.html \
-	References.html \
+HYPERTEXT = \
+	HTML.html\
+	StatusMeanings.html\
+	AndMIME.html\
+	Intro.html\
+	Text.html\
+	Tags.html\
+	Elements/HEAD.html\
+	Elements/BODY.html\
+	Elements/A.html\
+	Elements/ADDRESS.html\
+	Elements/BASE.html\
+	Elements/BLOCKQUOTE.html\
+	Headings.html\
+	Elements/IMG.html\
+	Elements/ISINDEX.html\
+	Elements/LINK.html\
+	Lists.html\
+	Elements/NEXTID.html\
+	Elements/P.html\
+	Elements/BR.html\
+	Elements/HR.html\
+	Elements/PRE.html\
+	Elements/TITLE.html\
+	Highlighting.html\
+	NonStandard.html\
+	LiteralHistory.html\
+	Entities.html\
+	ISOlat1.html\
+	DTDHeading.html\
+	HTML.dtd.html\
+	Relationships.html\
+	RegistrationAuthority.html\
+	Acknowledgements.html\
+	References.html\
 	Authors.html
+
+#@@	tolerated.html\
 
 all: draft
 
@@ -46,7 +74,9 @@ $(DRAFT): $(HYPERTEXT)
 
 snapshot:
 	for html in $(HYPERTEXT); do \
-		$(WWW) -source $(HTML_SPEC_DIR)/$$html >$$html ; \
+		[ -f $$html ] || \
+		  (echo $$html; \
+		  $(WWW) -source $(HTML_SPEC_DIR)/$$html >$$html) ; \
 	done
 
 tarZ: $(PACKAGE).tar.Z
@@ -55,12 +85,20 @@ $(PACKAGE).tar.Z: $(DIST)
 	tar cf $(PACKAGE).tar $(DIST)
 	compress $(PACKAGE).tar
 
-validate: $(HYPERTEXT)
-	(for sgml in $(HYPERTEXT); do \
-	   echo $$sgml; \
-	   (sgmls -s $(DECL) before $$sgml after || exit 0); \
-	 done;) >$@ 2>&1
-	rm before after
+$(BIGDOC): $(BIGPRE)
+	(cat $(BIGPRE); \
+	for html in $(HYPERTEXT); do \
+		b=`basename $$html .html`; \
+		echo "<!ENTITY $$b SYSTEM '$$html' SUBDOC>" ; \
+	done; \
+	echo "]>" ; \
+	for html in $(HYPERTEXT); do \
+		b=`basename $$html .html`; \
+		echo "&$$b;" ; \
+	done;) >$@
+	
+validate: $(HYPERTEXT) $(BIGDOC)
+	$(ENV) $(SGMLS) -s -e $(BIGDOC)
 
 # Obsolete
 IDTK = ../../installed
