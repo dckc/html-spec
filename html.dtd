@@ -4,6 +4,7 @@
         as used by the World Wide Web application (HTML DTD).
 
 	$Id$
+
 -->
 
 <!-- Feature Test Entities -->
@@ -25,6 +26,7 @@
 
 <!ENTITY % HTML.Minimal  "IGNORE">
 <!ENTITY % HTML.Obsolete "IGNORE">
+<!ENTITY % HTML.Prescriptive "IGNORE">
 
 <![ %HTML.Minimal [
 	<!ENTITY % HTML.linkRelationships "IGNORE">
@@ -33,16 +35,32 @@
 	<!ENTITY % HTML.forms "IGNORE">
 	<!-- @@ nested lists -->
 	<!-- @@ phrases -->
+	<!-- @@ headers inside A -->
+	<!-- @@ nested phrases, fonts -->
 	]]>
 	
 <![ %HTML.Obsolete [
-	<!ENTITY % HTML.PLAINTEXT "INCLUDE">
 	<!ENTITY % HTML.titleCDATA "INCLUDE">
 	<!ENTITY % HTML.litCDATA "INCLUDE">
-	<!ENTITY % HTML.font-phrase "INCLUDE">
-	<!ENTITY % HTML.anchorNameCDATA "INCLUDE">
 	<!ENTITY % HTML.pSeparator "INCLUDE">
 	]]>
+
+<![ %HTML.Prescriptive [
+	<!ENTITY % HTML.font-phrase "IGNORE">
+	<!ENTITY % HTML.anchorNameCDATA "IGNORE">
+	<!ENTITY % HTML.PLAINTEXT "IGNORE">
+	<!ENTITY HTML.Version
+	"-//connolly hal.com//DTD WWW HTML
+		 $Date 1994/04/19 17:24:06 $ Prescriptive//EN">
+	]]>
+
+<!ENTITY HTML.Version
+	"-//connolly hal.com//DTD WWW HTML $Date 1994/04/19 17:24:06 $//EN"
+	-- public identifier for "default" version                       -- 
+	-- actually, take the $'s out to get the real public identifer,  --
+	-- since $ is illegal in public identifier. When DTD stabilizes, --
+	-- we'll need to stop using RCS keywords to version the pub id   --
+	>
 
 <!ENTITY % HTML.GO "IGNORE"
 	-- The GO element used in ORA GNN. What is this??? -->
@@ -75,7 +93,7 @@
 	like URN, content type, title...
 	-->
 
-<!ENTITY % HTML.anchorNameCDATA "IGNORE"
+<!ENTITY % HTML.anchorNameCDATA "INCLUDE"
 	-- Anchor names should be distinct. SGML parser can validate
 	this if the NAME attribute of the A element is declared as ID.
 	But that restricts the syntax of an anchor name to an SGML name,
@@ -83,7 +101,7 @@
 	up to NAMELEN (34) characters long.
 	-->
 
-<!ENTITY % HTML.PLAINTEXT "IGNORE"
+<!ENTITY % HTML.PLAINTEXT "INCLUDE"
 	-- Support for the <PLAINTEXT> tag as a sign of the
 	end of th HTML data stream and the beginning of a stream
 	of text/plain data
@@ -100,7 +118,7 @@
 	next anchor id to use
 	-->
 
-<!ENTITY % HTML.font-phrase "IGNORE"
+<!ENTITY % HTML.font-phrase "INCLUDE"
 	-- allow B, I, TT, U outside PRE,
 	CITE, VAR, etc. inside PRE
 	-->
@@ -267,7 +285,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 		%block-form %block-p">
 
 
-<!ENTITY % body-content "%heading | %block %obsolete-htext">
+<!ENTITY % body-content "%heading | %block | %htext">
 <!ELEMENT BODY O O  (%body-content)*>
 
 
@@ -303,7 +321,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ELEMENT DL    - -  (DT*, DD?)+>
 <!ATTLIST DL
-	STYLE (COMPACT) #IMPLIED>
+	COMPACT (COMPACT) #IMPLIED>
 
 <!ELEMENT DT    - O (%htext)+>
 <!ELEMENT DD    - O (%htext|%block)+>
@@ -315,7 +333,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ELEMENT BLOCKQUOTE - - (%htext|%block)+ -- @# Hmm... --
         -- for quoting some other source -->
 
-<!ELEMENT ADDRESS - - (%htext;)+>
+<!ELEMENT ADDRESS - - (%htext;|%block)+>
 
 <!ELEMENT PRE - - (#PCDATA|%pre-inline|A)+>
 <!ATTLIST PRE
@@ -328,6 +346,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
   "ISO 8879:1986//ENTITIES Added Latin 1//EN">
 %ISOlat1;
 
+<!ENTITY #DEFAULT SDATA "&#38;unkown;" --display the markup-->
 <!ENTITY amp "&#38;"     -- ampersand -->
 <!ENTITY gt "&#62;"      -- greater than -->
 <!ENTITY lt "&#60;"      -- less than -->
@@ -366,7 +385,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	NAME CDATA #IMPLIED -- required for all but submit and reset --
 	VALUE CDATA #IMPLIED
 	SRC %URI #IMPLIED -- for image inputs -- 
-	STATE (CHECKED) #IMPLIED
+	CHECKED (CHECKED) #IMPLIED
 	SIZE CDATA #IMPLIED -- @# should be NUMBERS: delimit with space, not comma --
 	MAXLENGTH NUMBER #IMPLIED
 	ALIGN (top|middle|bottom|left|center|right) #IMPLIED --@#supported?--
@@ -376,12 +395,12 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ATTLIST SELECT
 	NAME CDATA #REQUIRED
 	SIZE NUMBER #IMPLIED
-	SELECTIONS (MULTIPLE) #IMPLIED
+	MULTIPLE (MULTIPLE) #IMPLIED
 	>
 
 <!ELEMENT OPTION - O (#PCDATA)>
 <!ATTLIST OPTION
-	STATE (SELECTED) #IMPLIED
+	SELECTED (SELECTED) #IMPLIED
 	VALUE CDATA #IMPLIED
 	>
 
