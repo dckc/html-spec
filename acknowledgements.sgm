@@ -17,36 +17,12 @@ whole, with updates being made by Eric Schieler, Mike Knezovich, and
 Eric W. Sink at Spyglass, Inc. Finally, Roy Fielding restructured the
 entire draft into its current form.
 
-<p>Special thanks to the many people who have contributed to this
-specification:
-
-Terry Allen	Marc Andreessen
-
-Tim Berners-Lee	Paul Burchard
-
-James Clark	Daniel W. Connolly
-
-Roy T. Fielding	Peter Flynn
-
-Jay Glicksman	Paul Grosso
-
-Eduardo Gutentag	Bill Hefley
-
-Chung-Jen Ho	Mike Knezovich
-
-Tom Magliery	Murray Maloney
-
-Larry Masinter	Karen Olson Muldrow
-
-Bill Perry	Dave Raggett
-
-E. Corprew Reed	Yuri Rubinsky
-
-Eric Schieler	James L. Seidman
-
-Eric W. Sink	Stuart Weibel
-
-Chris Wilson	Fran&ccedil;ois Yergeau
+<p>Special thanks to the many active participants in the HTML working
+group, too numerous to list individually, without whom there would be
+no standards process and no standard.  That this document approaches
+its objective of carefully converging a description of current
+practice and formalization of HTML's relationship to SGML is a tribute
+to their effort.
 
 <h2>Authors' Addresses
 

@@ -1,4 +1,4 @@
-<h3>Title: <tag/TITLE/
+<h3>Title: TITLE
 
 <p>Every HTML document must contain a <tag/TITLE/ element.
 
@@ -15,7 +15,7 @@ or as a label for the window displaying the document. Contrast with
 headings (<hdref refid=headings>), which are typically displayed with
 the body text flow.
 
-<h3 id=base>Base URI: <tag/BASE/
+<h3 id=base>Base URI: BASE
 
 <p>The optional <tag/BASE/ element specifies the URI of the document,
 overriding any context otherwise known to the user agent. The required
@@ -23,19 +23,23 @@ overriding any context otherwise known to the user agent. The required
 (see <hdref refid=hyperlink>). The value of the <attr/HREF/ attribute
 must be an absolute URI.
 
-<h3>Keyword Index: <tag/ISINDEX/
+<h3>Keyword Index: ISINDEX
 
 <p>The <tag/ISINDEX/ element indicates that the user agent should
 allow the user to search an index by giving keywords. See <hdref
 refid=query> for details.
 
-<h3>Link: <tag/LINK/
+<h3>Link: LINK
 
-<p>The <tag/LINK/ element represents a hyperlink. It is typically used
-to indicate authorship, related indexes and glossaries, older or more
-recent versions, stylesheets, document hierarchy etc.
+<p>The <tag/LINK/ element represents a hyperlink (see <hdref
+refid=hyperlink>). It has the same attributes as the <tag/A/ element
+(see <hdref refid=a>).
 
-<h3>Associated Metainformation: <tag/META/
+<p>The <tag/LINK/ element is typically used to indicate authorship,
+related indexes and glossaries, older or more recent versions,
+stylesheets, document hierarchy etc.
+
+<h3>Associated Metainformation: META
 
 <p> The <tag/META/ element is an extensible container for use in
 identifying, indexing, and cataloging specialized document
@@ -72,7 +76,7 @@ server implementation and the HTML user agent.
 <tl>
 <tli>HTTP-EQUIV: This attribute binds the element to an HTTP header
 field. An HTTP server may use this information to process the
-doducment. In particular, it should include a header field in the
+document. In particular, it should include a header field in the
 responses to <attr/GET/ requests for this document: the header name is
 taken from the <attr/HTTP-EQUIV/ attribute value, and the header value
 is taken from the value of the <attr/CONTENT/ attribute. HTTP header
@@ -117,7 +121,7 @@ inappropriate include <code/Server/, <code/Date/, and
 <code/Last-modified/ -- the exact list of inappropriate names is
 dependent on the particular server implementation.
 
-<h3>Next Id: <tag/NEXTID/
+<h3>Next Id: NEXTID
 
 <p> They <tag/NEXTID/ element gives a hint for the name to use for an
 <tag/A/ element when editing an HTML document. It should be distinct

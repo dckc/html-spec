@@ -141,11 +141,11 @@ abc &#60 def    => "abc ","<"," def"
 ]]></listing>
 
 And note that an ampersand is only recognized as markup when it
-is followed by a letter or digit:
+is followed by a letter or a <code/#/ and a digit:
 
 <listing><![CDATA[
 abc & lt def    => "abc & lt def"
-abc & 60 def    => "abc & 60 def"
+abc &# 60 def    => "abc &# 60 def"
 ]]></listing>
 
 A useful technique for translating plain text to HTML is to replace
@@ -303,6 +303,7 @@ any <code>></> character to be the termination of a comment.
 For example:
 
 <listing<![CDATA[
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <HEAD>
 <TITLE>HTML Comment Example</TITLE>
 <!-- Id: html-sgml.sgm,v 1.5 1995/05/26 21:29:50 connolly Exp  -->
@@ -316,7 +317,7 @@ For example:
 <h3>Example HTML Document
 
 <listing><![CDATA[
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <HTML>
 <!-- Here's a good place to put a comment. -->
 <HEAD>

@@ -19,26 +19,27 @@ the same as plain <B>bold </B><I>italic</I>
 
 <h3>Idiomatic Elements
 
-<h4>Citation: <tag/CITE/
+<h4>Citation: CITE
 
 <p>The <tag/CITE/ element is used to indicate the title of a book or
-other citation. It is typically typeset as italics.  For example:
+other citation. It is typically rendered as italics.  For example:
 
 <listing><![CDATA[
 He just couldn't get enough of <cite>The Grapes of Wrath</cite>.
 ]]></listing>
 
-<h4>Code: <tag/CODE/
+<h4>Code: CODE
 
 <p>The <tag/CODE/ element indicates an example of code, typically
 rendered in a monospaced font. Contrast with the <tag/PRE/ block
 structuring element in <hdref refid=pre>. For example:
 
 <listing><![CDATA[
-The expression <code>x += 1</code> is short for <code>x = x + 1</code>.
+The expression <code>x += 1</code>
+is short for <code>x = x + 1</code>.
 ]]></listing>
 
-<h4>Emphasis: <tag/EM/
+<h4>Emphasis: EM
 
 <p>The <tag/EM/ element indicates an emphasized phrase, typically
 rendered as italics. For example:
@@ -47,7 +48,7 @@ rendered as italics. For example:
 A singular subject <em>always</em> takes a singular verb.
 ]]></listing>
 
-<h4>Keyboard: <tag/KBD/
+<h4>Keyboard: KBD
 
 <p>The Keyboard element indicates text typed by a user, typically
 rendered in a monospaced font. This is commonly used in instruction
@@ -57,7 +58,7 @@ manuals. For example:
 Enter <kbd>FIND IT</kbd> to search the database.
 ]]></listing>
 
-<h4>Sample: <tag/SAMP/
+<h4>Sample: SAMP
 
 <p>The <tag/SAMP/ element indicates a sequence of literal characters,
 typically rendered in a monospaced font. For example:
@@ -66,7 +67,7 @@ typically rendered in a monospaced font. For example:
 The only word containing the letters <samp>mt</samp> is dreamt.
 ]]></listing>
 
-<h4>Strong Empasis: <tag/STRONG/
+<h4>Strong Empasis: STRONG
 
 <p>The <tag/STRONG/ element indicates strong emphasis,
 typically rendered in bold. For example:
@@ -75,7 +76,7 @@ typically rendered in bold. For example:
 <strong>STOP</strong>, or I'll say "<strong>STOP</strong>" again!.
 ]]></listing>
 
-<h4>Variable: <tag/VAR/
+<h4>Variable: VAR
 
 <p>The <tag/VAR/ element indicates a placeholder, typically rendered
 as italic. For example:
@@ -94,22 +95,22 @@ referring to a specific text attribute as in "The italic parts are
 mandatory" -- a typographic element can be used to ensure that the
 intended typography is used where possible.
 
-<h4>Bold: <tag/B/
+<h4>Bold: B
 
-<p>The <tag/B/ element indicated bold text. Where bold typography is
+<p>The <tag/B/ element indicates bold text. Where bold typography is
 unavailable, an alternative representation may be used.
 
-<h4>Italic: <tag/I/
+<h4>Italic: I
 
-<p>The <tag/I/ element indicated italic text. Where italic typography
+<p>The <tag/I/ element indicates italic text. Where italic typography
 is unavailable, an alternative representation may be used.
 
-<h4>Typewriter: <tag/TT/
+<h4>Typewriter: TT
 
 <p>The <tag/TT/ element indicates typewriter text. Where a typewriter
 font is unavailable, an alternative representation may be used.
 
-<h3>Anchor: <tag/A/
+<h3 id=a>Anchor: A
 
 <p>The <tag/A/ element indicates the source and/or destination of a
 hyperlink (see <hdref refid=hyperlink>). At least one of the
@@ -155,7 +156,7 @@ may chose a different rendering as a function of the methods allowed;
 for example, something that is searchable may get a different icon.
 </tl>
 
-<h2>Line Break: <tag/BR/
+<h2>Line Break: BR
 
 <p>The <tag/BR/ element specifies a line break between words (see
 <hdref refid=datachrs>). For example:
@@ -167,7 +168,7 @@ Pease porridge in the pot<BR>
 Nine days old.
 ]]></listing>
 
-<h2>Horizontal Rule: <tag/HR/
+<h2>Horizontal Rule: HR
 
 <p>The <tag/HR/ element is a divider between sections of text;
 typcially a full width horizontal rule or equivalent graphic. For
@@ -179,16 +180,16 @@ example:
 </BODY>
 ]]></listing>
 
-<h2 id=img>Image: <tag/IMG/
+<h2 id=img>Image: IMG
 
 <p>The <tag/IMG/ element refers to an image or icon.
 
-<p>HTML user agents that cannot process images ignore the <tag/IMG/
-element unless it the <attr/ALT/ attribute is present.
-
-<note>Some HTML user agents can process graphics linked via anchors ,
+<p>HTML user agents may process the value of the <attr/ALT/ attribute
+as an alternative to processing the image resource indicated by the
+<attr/SRC/ attribute.
+<note>Some HTML user agents can process graphics linked via anchors,
 but not <tag/IMG/ graphics. If a graphic is essential, it should be
-referenced from an <tag/A/ element rather than in <tag/IMG/ element.If
+referenced from an <tag/A/ element rather than in <tag/IMG/ element. If
 the graphic is not essential, then the <tag/IMG/ element is
 appropriate.
 </note>
@@ -196,7 +197,8 @@ appropriate.
 <p>Attributes of the <tag/IMG/ element:
 
 <tl>
-<tli>ALIGN: alignment of the image with respect to the text baseline.
+<tli>ALIGN: alignment of the image with respect to the text
+baseline.
 <ul>
 <li><code/TOP/ specifies that the top of the image aligns with the
 tallest item on the line contianing the image.
@@ -208,8 +210,8 @@ the baseline of the line containing the image.
 the baseline of the line containing the image.
 </ul>
 
-<tli>ALT: Optional alternative text, for use in non-graphical
-environments.
+<tli>ALT: text to use in place of the referenced image resource, for
+example due to processing constraints or user preference.
 
 <tli>ISMAP: indicates an image map (see <hdref refid=imagemap>).
 

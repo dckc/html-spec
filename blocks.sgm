@@ -4,7 +4,7 @@
 <p>Each of the following elements defines a block structure; that is,
 they indicate a paragraph break before and after.
 
-<h3>Paragraph: <tag/P/
+<h3>Paragraph: P
 
 <p>The <tag/P/ element indicates a paragraph. The exact indentation,
 leading space, etc. of a paragraph is not specified and may be a
@@ -25,9 +25,9 @@ convention facilitates document maintenance.</P>
 <P>This is the text of a third paragraph.</P>
 ]]></listing>
 
-<h3 id=pre>Preformatted Text: <tag/PRE/
+<h3 id=pre>Preformatted Text: PRE
 
-<p>The <tag/PRE/ element represents a character cell block of textand
+<p>The <tag/PRE/ element represents a character cell block of text and
 so is suitable for text that has been formatted on screen.
 
 <p>The <tag/PRE/ tag may be used with the optional WIDTH attribute. The
@@ -55,8 +55,8 @@ phrase markup.
 
 <li>Elements that define paragraph formatting (headings, address,
 etc.) must not be used.
-<NOTE>Som historical documents contain <tag/P/ tags in <tag/PRE/
-elements.  User agents are engcouraged to treat this a a line break. A
+<NOTE>Some historical documents contain <tag/P/ tags in <tag/PRE/
+elements.  User agents are encouraged to treat this a a line break. A
 <tag/P/ tag followed by a newline character should produce only one
 line break, not a line break plus a blank line.
 </note>
@@ -75,7 +75,7 @@ This is an example line.
 </PRE>
 ]]></listing>
 
-<h3>Address: <tag/ADDRESS/
+<h3>Address: ADDRESS
 
 <p>The <tag/ADDRESS/ element specifies such information as address,
 signature and authorship, often at the beginning or end of the body of
@@ -95,7 +95,7 @@ Tel (123) 456 7890
 </ADDRESS>
 ]]></listing>
 
-<h3>Block Quote: <tag/BLOCKQUOTE/
+<h3>Block Quote: BLOCKQUOTE
 
 <p>The <tag/BLOCKQUOTE/ element contains text quoted from another
 source.

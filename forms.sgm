@@ -1,10 +1,11 @@
 <h1 id=forms>Forms
 
-<p>A form is a template for a form data set -- sequence of name/value
-pair fields -- with an associated method and action URI. The names are
-specified on the <attr/NAME/ attributes of form input elements, and
-the values are given by the user. The resulting form data set is used
-to access an information service as a function of the action and
+<p>A form is a template for a form data set and an associated method
+and action URI. A form data set is a sequence of name/value pair
+fields. The names are specified on the <attr/NAME/ attributes of form
+input elements, and the values are given initial values by various
+forms of markup and edited by the user. The resulting form data set is
+used to access an information service as a function of the action and
 method.
 
 <p>Forms elements can be mixed in with document structuring
@@ -17,7 +18,7 @@ designing the layout of forms.
 
 <h2>Form Elements
 
-<h3>Form: <tag/FORM/
+<h3>Form: FORM
 
 <p>The <tag/FORM/ element contains a sequence of input elements, along
 with document structuring elements. The attributes are:
@@ -35,7 +36,7 @@ format.
 
 </tl>
 
-<h3 id=input>Input Field: <tag/INPUT/
+<h3 id=input>Input Field: INPUT
 
 <p>The <tag/INPUT/ element represents a field for user input. Attributes are:
 
@@ -64,6 +65,7 @@ input field according to its type.
 <tli>TYPE: indicates type of the field. Defaults to
 <code/TEXT/. Values are:
 
+<tl>
 <tli>CHECKBOX: an independent boolean value.
 
 <tli>HIDDEN: a hidden field. The user does not interact with this
@@ -86,6 +88,7 @@ field. The value of the form field is the <attr/VALUE/ of the element
 chosen by the user. The initial state may be indicated with the
 <attr/CHECKED/ attribute. The <attr/VALUE/ attribute is required for
 radio inputs.
+</tl>
 
 <tli>RESET: an input option, typically a button, that instructs the
 user agent to reset the form's fields to their initial states. Any
@@ -100,13 +103,13 @@ this element does not contribute a form field.
 
 <tli>TEXT: a single line text entry fields. The <attr/SIZE/ and
 <attr/MAXLENGTH/ attributes may be used to constrain the input or
-layout of the field. Use the <tag/TEXTAREA/ element for mulit-line
+layout of the field. Use the <tag/TEXTAREA/ element for multi-line
 text fields.
 
 <tli>VALUE: The initial value of the field.
 </tl>
 
-<h3>Selection: <tag/SELECT/
+<h3>Selection: SELECT
 
 <p>The <tag/SELECT/ element constrains the form field to an enumerated
 list of values. The values are given in <tag/OPTION/ elements.
@@ -139,7 +142,7 @@ greater than one are typically lists.
 <attr/SELECTED/ attribute is present on any of the <tag/OPTION/
 elements.
 
-<h4>Option: <tag/OPTION/
+<h4>Option: OPTION
 
 <p>The Option element can only occur within a Select element. It
 represents one choice, and has the following attributes:
@@ -156,10 +159,20 @@ option is chosen. The field value defaults to the content of the
 represent the option. It is used as a returned value if the VALUE
 attribute is not present.
 
-<h3>Text Area: <tag/TEXTAREA/
+<h3>Text Area: TEXTAREA
 
-<p>The <tag/TEXTAREA/ element represents a multi-line text field. For
-example:
+<p>The <tag/TEXTAREA/ element represents a multi-line text
+field. Attrubutes are:
+
+<tl>
+<tli>COLS: the number of visible columns to display for the text area,
+in characters.
+<tli>NAME: Specifies the name of the form field.
+<tli>ROWS: The number of visible rows to display for the text area, in
+characters.
+</tl>
+
+<p>For example:
 
 <listing><![CDATA[
 <TEXTAREA NAME="address" ROWS=64 COLS=6>
@@ -173,9 +186,9 @@ Campbell, California 95008
 value.
 
 <p>Typically, the ROWS and COLS attributes determine the visible
-dimension of the field in characters. The field is rendered in a
-fixed-width font. HTML user agents should allow text to extend beyond
-these limits by scrolling as needed.
+dimension of the field in characters. The field is typically rendered
+in a fixed-width font. HTML user agents should allow text to extend
+beyond these limits by scrolling as needed.
 
 <h2>Form Submission
 
@@ -197,12 +210,12 @@ the form.
 represented in this media type as follows:
 
 <ol>
-<li>The form field names and values are escaped: space characterss are
+<li>The form field names and values are escaped: space characters are
 replaced by <code/+/, and then reserved characters are escaped as per
 [URL]; that is, non-alphanumeric characters are replaced by
 <code/%HH/, a percent sign and two hexadecimal digits representing the
 ASCII code of the character. Line breaks, as in multi-line textfield
-values, are represented as CR LF pairs, i.e. <code/%0D0A/.
+values, are represented as CR LF pairs, i.e. <code/%0D%0A/.
 
 <li>The fields are listed in the order they appear in the document
 with the name separated from the value by <code/=/ and the pairs
@@ -263,6 +276,7 @@ as it would display the response from an HTTP GET above.
 <p>Consider the following document:
 
 <listing><![CDATA[
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <title>Sample of HTML Form Submission</title>
 <H1>Sample Questionnaire</H1>
 <P>Please fill out this questionnaire:
@@ -314,5 +328,5 @@ the linebreak):
 
 <listing><![CDATA[
 name=John+Doe&gender=male&family=5&city=kent%2Cmiami&
-other=abc%0D0Adef&nickname=J%26D
+other=abc%0D%0Adef&nickname=J%26D
 ]]></listing>

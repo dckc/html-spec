@@ -4,7 +4,7 @@
 combination; for example, a <tag/OL/ may be nested in an <tag/LI/
 element of a <tag/UL/.
 
-<h3>Unordered List: <tag/UL/, <tag/LI/
+<h3>Unordered List: UL, LI
 
 <p>The <tag/UL/ represents a list of items with no inherent ordering
 -- typically a bulleted list.
@@ -21,7 +21,7 @@ elements. For example:
 </UL>
 ]]></listing>
 
-<h3>Ordered List: <tag/OL/
+<h3>Ordered List: OL
 
 <p>The <tag/UL/ element represents an ordered list of items, sorted by
 sequence or order of importance.
@@ -45,7 +45,7 @@ window. The Web document you specified is displayed.
 <p>The <attr/COMPACT/ attribute suggests that a compact rendering be
 used.
 
-<h3>Directory List: <tag/DIR/
+<h3>Directory List: DIR
 
 <p>The <tag/DIR/ element is similar to the <tag/UL/ element.  It
 represents a list of short items, typically up to 20 characters
@@ -63,7 +63,7 @@ elements. Nested block elements are not allowed in the content of
 </DIR>
 ]]></listing>
 
-<h3>Menu List: <tag/MENU/
+<h3>Menu List: MENU
 
 <p>The <tag/MENU/ element is a list of items with typically one line
 per item. The menu list style is typically more compact than the style
@@ -81,12 +81,15 @@ elements. Nested block elements are not allowed in the content of
 </MENU>
 ]]></listing>
 
-<h3>Definition List: <tag/DL/, <tag/DT/, <tag/DD/
+<h3>Definition List: DL, DT, DD
 
 <p>A definition list is a list of terms and corresponding
 definitions. Definition lists are typically formatted with the term
 flush-left and the definition, formatted paragraph style, indented
 after the term.
+
+<p>The content of a DL element is a sequence of DT elements and/or DD
+elements, usually in pairs.
 
 <p>Example of use:
 

@@ -1,0 +1,153 @@
+<!SGML "ISO 8879:1986"
+CHARSET
+         BASESET  "ISO 646:1983//CHARSET
+                   International Reference Version (IRV)//ESC 2/5 4/0"
+         DESCSET  0   9   UNUSED
+                  9   2   9
+                  11  2   UNUSED
+                  13  1   13
+                  14  18  UNUSED
+                  32  95  32
+                  127 1   UNUSED
+
+CAPACITY	PUBLIC	"ISO 8879:1986//CAPACITY Reference//EN"
+  
+SCOPE    DOCUMENT
+SYNTAX   
+         SHUNCHAR CONTROLS 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+                           19 20 21 22 23 24 25 26 27 28 29 30 31 127 255
+         BASESET  "ISO 646:1983//CHARSET
+                   International Reference Version (IRV)//ESC 2/5 4/0"
+         DESCSET  0 128 0
+         FUNCTION RE          13
+                  RS          10
+                  SPACE       32
+                  TAB SEPCHAR  9
+         NAMING   LCNMSTRT ""
+                  UCNMSTRT ""
+                  LCNMCHAR ".-"
+                  UCNMCHAR ".-"
+                  NAMECASE GENERAL NO
+                           ENTITY  NO
+         DELIM    GENERAL  SGMLREF
+                  SHORTREF SGMLREF
+         NAMES    SGMLREF
+         QUANTITY SGMLREF
+                  NAMELEN  34
+		  LITLEN   1024
+		  ATTCNT 100
+
+FEATURES
+  MINIMIZE
+    DATATAG  NO OMITTAG  YES  RANK  NO     SHORTTAG YES 
+  LINK
+    SIMPLE   NO IMPLICIT NO   EXPLICIT NO
+  OTHER 
+    CONCUR   NO SUBDOC   NO   FORMAL   NO  APPINFO  NONE
+>
+<!DOCTYPE snafusty SYSTEM "snafusty.dtd">
+<snafusty>
+<tex>
+<tex-options
+	line-width=80
+	code-width=0
+	title-page=no-page
+	toc-page=toc-full-title
+	lof-page=lof-full-title
+	latex209-documentstyle="article"
+	latex209-sty-files="spaper,12pt,smallsects,pargap,nzdate"
+	latex209-ps-sty-files="epsf,rotate"
+	latex2e-documentclass="\documentclass[12pt]{spaper}"
+	latex2e-packages="\usepackage{pargap,nzdate,smallsects}"
+	latex2e-ps-packages="\usepackage[dvips]{graphics}"
+>
+</tex>
+
+<plain>
+<plain-options
+	datesty=ddmonthyyyy
+	use-sender=sender-never
+	line-width=80
+	code-width=132
+	num-depth=2
+	code-delimiter-intext-l='`' 
+	code-delimiter-intext-r='&#39'
+	hp1-delimiter='~' 
+	hp2-delimiter='*' 
+	hp3-delimiter='*' 
+	hp0-delimiter='' 
+	phrase-delimiter='*' 
+	tex-delimiter-intext='$' 
+	tex-delimiter-display='$$'
+	sent-spacing=double
+	ul-bullet='* ' 
+	tl-delimiter-l='' 
+	tl-delimiter-r=':  ' 
+	ol-sep=') '
+	note-delimiter-l='('
+	note-delimiter-r=')'
+	note-text-style=note
+	note-text='note'
+	annotate-text='annotation'
+	fn-text='footnote'
+	note-tag=': '>
+</plain>
+
+<rtf>
+<rtf-init>\sbknone</>
+<rtf-fonts>{\f0\froman Times New Roman;}{\f1\fmodern Courier;}</>
+<rtf-styles>{\s1\fs20\b0\sbasedon0\snext0 Normal;}{\s2\fs28\b\sbasedon0\snext0 Bold Large;}{\s3\fs20\b\sbasedon0\snext0 Bold Normal Size;}{\s4\fs20\b0\ul\sbasedon0\snext0 Underlined;}{\s5\fs20\b0\i\sbasedon0\snext0 Italic;}{\s20\fs14\sbasedon0\snext0 footnote text;}</>
+
+<rtf-options
+	ftitle=0
+	fsub=0
+	fpar=0
+	fhp0=0
+	fhp1=0
+	fhp2=0
+	fhp3=0
+	fphrase=0
+	fht1=0
+	fht2=0
+	fht3=0
+	fht4=0
+	fht5=0
+	ffn=0
+	ftaglist=0
+	fcode=1
+	stitle=2
+	ssub=3
+	spar=1
+	shp0=1
+	shp1=5
+	shp2=3
+	shp3=3
+	sphrase=5
+	sht1=2
+	sht2=3
+	sht3=3
+	sht4=3
+	sht5=3
+	sfn=20
+	staglist=3
+	scode=1
+	num-depth=2
+	use-sender=sender-never
+	tex-delimiter-intext='$' 
+	tex-delimiter-display='$$'
+	sent-spacing=single
+	ul-bullet='* '
+	ol-sep=') '>
+</rtf>
+
+<texinfo>
+<texinfo-options
+	num-depth=3
+	node-titles=use-titles
+	index-name="Index"
+	break-method=always-break
+	chapter-page=new
+	paper=default
+	headers=single-sided
+	texinfo-toc-page=toc-long>
+</texinfo>

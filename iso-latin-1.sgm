@@ -1,4 +1,4 @@
-<h2 id=iso-latin-1>The ANSI/ISO 8859-1 Coded Character Set
+<h1 id=iso-latin-1>The ANSI/ISO 8859-1 Coded Character Set
 
 <p>This list, sorted numerically, is derived from ANSI/ISO 8859-1 8-bit
 single-byte coded graphic character set:
@@ -12,7 +12,11 @@ REFERENCE	DESCRIPTION
 
 &#10;		Line feed
 
-&#11; - &#31;	Unused
+&#11; - &#12;	Unused
+
+&#13;		Carriage Return
+
+&#14; - &#31;	Unused
 
 &#32;		Space
 &#33;		Exclamation mark

@@ -2,9 +2,9 @@
 
 <p> In addition to general purpose elements such as paragraphs and
 lists, HTML documents can express hyperlinks. A hyperlink is a
-relationship between two resources, called the source and the
-destination of the hyperlink. Each resource has a Uniform Resource
-Identifier (URI).
+relationship between two anchor, called the head and the tail of the
+hyperlink. Anchors include HTML documents and named elements of HTML
+documents.
 
 <p> An HTML user agent allows navigating a collection of these
 resources. In the following interactions, the URI of the source
@@ -72,15 +72,15 @@ following anchor:
 
 <listing>
 <![CDATA[
-<p> See: <a href="app1.html#bannanas">appendix 1</a> for more detail
-on bannanas.</a>
+<p> See: <a href="app1.html#bananas">appendix 1</a> 
+for more detail on bananas.
 ]]>
 </listing>
 
 <p> then the user agent URI must access the resource
 <code>http://host/x/app1.html</>. Assuming the resource is represented
 using the <code>text/html</> media type, the user agent must locate
-the anchor named <code>bannanas</> and begin navigation there.
+the anchor named <code>bananas</> and begin navigation there.
 
 <p> The base URI for navigating the destination document may be
 different from the URI used to access it. For example, it may be
@@ -117,6 +117,7 @@ of the pixel to the URI given in the <tag/A/ element. For example, if
 a document contains:
 
 <listing><![CDATA[
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <head><title>ImageMap Example</title>
 <BASE HREF="http://host/index"></head>
 <body>
@@ -126,5 +127,5 @@ a document contains:
 
 <p> and the user chooses the upper-leftmost pixel, then chosen
 hyperlink is the one with the URI
-<code>http://host/cgi-bin/image?0,0</>.
+<code>http://host/cgi-bin/imagemap?0,0</>.
 

@@ -1,5 +1,5 @@
 <!-- $Id$ -->
-<h1 id=datachrs>Character, Words, and Paragraphs
+<h1 id=datachrs>Characters, Words, and Paragraphs
 
 An HTML user agent should present the body of an HTML document as
 a collection of typeset paragraphs and preformatted text. Except
@@ -14,7 +14,7 @@ lines.
 <h2 id=charlist>The ISO Latin 1 Character Repertoire
 
 The minimum character repertoire supported by all conforming HTML user
-agents is Latin Alphabet Nr. 1, or simply Latin-1.  Latin-1 includes
+agents is Latin Alphabet No. 1, or simply Latin-1.  Latin-1 includes
 characters from most Western European languages, as well as a number
 of control characters.  Latin-1 also includes a non-breaking space, a
 soft hyphen indicator, 93 graphical characters, 8 unassigned
@@ -33,13 +33,12 @@ positions assigned by ISO/IEC 10646-1.
 In SGML applications, the use of control characters is limited in
 order to maximize the chance of successful interchange over
 heterogeneous networks and operating systems. In HTML, only three
-control characters are allowed: Horizontal Tab (HT, encoded as 9
-decimal in <code/US-ASCII/ and <code/ISO-8859-1/), Carriage Return,
-and Line Feed.
+control characters are allowed: Horizontal Tab, Carriage Return, and
+Line Feed (code positions 9, 13, and 10 in ISO 8859-1).
 
 The HTML DTD references the Added Latin 1 entity set, to allow
-mnemonic representation of Latin 1 characters using only the widely
-supported ASCII character repertoire. For example:
+mnemonic representation of selected Latin 1 characters using only the
+widely supported ASCII character repertoire. For example:
 
 <listing><![CDATA[
 Kurt G&ouml;del was a famous logician and mathematician.

@@ -35,7 +35,7 @@
 <!entity status SYSTEM "draft-status.sgm">
 
 <!entity stat "Internet Draft">
-<!entity date "May 31, 1995">
+<!entity date "June 2, 1995">
 <!entity filename CDATA "&#60;draft-ietf-html-spec-03.txt&#62;">
 
 <!entity % plain "CDATA"
@@ -109,7 +109,7 @@ capabilities of HTML in common use prior to June 1994. HTML is an
 application of ISO Standard 8879:1986 Information Processing Text and
 Office Systems; Standard Generalized Markup Language (SGML).
 
-The <code>"text/html; version=2.0"</> Internet Media Type (RFC&nbsp;1590)
+The <code>text/html</> Internet Media Type (RFC&nbsp;1590)
 and MIME Content Type (RFC&nbsp;1521) is defined by this specification.
 
 &intro;
@@ -128,19 +128,10 @@ and MIME Content Type (RFC&nbsp;1521) is defined by this specification.
 
 &bib;
 
-<appendix>
-<h1>Appendices
-
-These appendices are provided for informational reasons only - they
-do not form a part  of the HTML specification.
-
-&iso-latin-1;
-
-&obsolete;
-
-&proposed;
-
 &acks;
+
+<appendix>
+&iso-latin-1;
 
 </spaper>
 

@@ -31,7 +31,7 @@ SPEC=html-spec
 
 SRCS = html.decl html.dtd ISOlat1.sgml catalog \
 	draft-status.sgm \
-	snafu.decl \
+	snafu.decl html-spec.style \
 	html-spec.sgm \
 	intro.sgm html-sgml.sgm html-mime.sgm \
 	elements.sgm head-elts.sgm doc-charset.sgm phrase.sgm hyperlink.sgm \
@@ -74,22 +74,31 @@ hypertext: $(SPEC)_toc.html
 $(SPEC)_toc.html: $(SPEC).texi
 	$(TEXI2HTML) -doctype html2 -debug 8 -expandinfo -split_chapter -glossary -verbose $(SPEC).texi
 
-hardcopy: $(SPEC).txt $(SPEC).ps
+hardcopy: $(SPEC).ps $(SPEC).ps.gz
 
-$(SPEC).txt: $(SPEC).ms
-	$(NROFF) -Tascii $(MACROS) $(SPEC).ms >$@
+#$(SPEC).txt: $(SPEC).ms
+#	$(NROFF) -Tascii $(MACROS) $(SPEC).ms >$@
 
 $(SPEC).ps: $(SPEC).dvi
 	dvips $(SPEC).dvi
 
+$(SPEC).ps.gz: $(SPEC).ps
+	gzip -c $(SPEC).ps >$(SPEC).ps.gz
+
 $(SPEC).dvi: $(SPEC).texi
 	texi2dvi $(SPEC).texi
+
+#$(SPEC).dvi: $(SPEC).tex
+#	latex $(SPEC).tex
 
 $(SPEC).ms: $(SPEC).texi
 	$(TEXI2ROFF) -ms $(SPEC).texi >$@
 
 $(SPEC).texi: $(SRCS)
-	$(GF) -f texinfo snafu.decl html-spec.sgm >$@
+	$(GF) -s html-spec.style -f texinfo snafu.decl html-spec.sgm >$@
+
+$(SPEC).tex: $(SRCS)
+	$(GF) -s html-spec.style -f latex2e snafu.decl html-spec.sgm >$@
 
 
 dist: $(PACKAGE).tar.gz

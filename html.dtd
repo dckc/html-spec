@@ -6,8 +6,8 @@
 	$Id$
 
 	Author: Daniel W. Connolly <connolly@w3.org>
-	See Also: html.decl, html-0.dtd, html-1.dtd
-	  http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
+	See Also: html.decl, html-1.dtd
+	  http://www.w3.org/hypertext/WWW/MarkUp/MarkUp.html
 -->
 
 <!ENTITY % HTML.Version

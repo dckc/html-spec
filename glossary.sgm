@@ -34,7 +34,7 @@ positions).
 
 <tli>conforming HTML user agent: A user agent that conforms to this
 specification in its processing of the Internet Media Type
-<code>text/html; version=2.0</code>.
+<code>text/html</code>.
 
 <tli>data character: Characters other than markup, which make up the
 content of elements.

@@ -19,9 +19,8 @@ Processing Text and Office Systems; Standard Generalized Markup
 Language</emph> (SGML). The HTML Document Type Definition (DTD) is a
 formal definition of the HTML syntax in terms of SGML.
 
-This specification also defines HTML as an Internet Media
-Type[IMEDIA] and MIME Content Type[MIME] called
-<code>text/html</>, or <code>text/html; version=2.0</>. As such, it
+This specification also defines HTML as an Internet Media Type[IMEDIA]
+and MIME Content Type[MIME] called <code>text/html</>. As such, it
 defines the semantics of the HTML syntax and how that syntax should be
 interpreted by user agents.
 
@@ -39,7 +38,7 @@ A document is a conforming HTML document only if:
 (see <hdref refid=dtd>).
 <note>There are a number of syntactic idioms that are not supported or
 are supported inconsistently in some historical user agent
-implementations. These idioms are called out in notes like this
+implementations. These idioms are identified in notes like this
 throughout this specification.
 
 HTML documents should not contain these idioms, at least until such
@@ -65,6 +64,8 @@ references agree with ISO10646 regardless of how the document is encoded.
 
 </ul>
 
+
+<h3 id=feature-test>Feature Test Entities
 
 The HTML DTD defines a standard HTML document type and several
 variations, based on feature test entities:
@@ -121,7 +122,8 @@ tokenization, and hence they do not influence the behaviour of
 conforming user agents.
 
 <li>It allows the user to traverse (or at least attempt to traverse,
-resources permitting) all hyperlinks in an HTML document.
+resources permitting) all hyperlinks from <tag/A/ elements in an HTML
+document.
 
 <li>It allows the user to express all form field values specified in
 an HTML document and to (attempt to) submit the values as requests to

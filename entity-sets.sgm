@@ -17,13 +17,13 @@ listed below are included.
 <listing><![CDATA[
 GLYPH	NAME	SYNTAX	DESCRIPTION
 
-<	lt	&lt;	Less than sign
+<       lt      &lt;    Less than sign
 
->	gt	&gt;	Greater than sign
+>       gt      &gt;    Greater than sign
 
-&	amp	&amp;	Ampersand
+&       amp     &amp;   Ampersand
 
-"	quot	&quot;	Double quote sign
+"       quot    &quot;  Double quote sign
 ]]></listing>
 
 <h3 id=lat1ent>ISO Latin 1 Character Entity Set
