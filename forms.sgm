@@ -1,3 +1,4 @@
+<!-- $Id -->
 <h1 id=forms>Forms
 
 <p>A form is a template for a form data set and an associated method
@@ -54,7 +55,8 @@ greater the the value of the <attr/SIZE/ attribute, the field should
 scroll appropriately. The default number of characters is unlimited.
 
 <tli>NAME: symbolic name for the form field corresponding to this
-element or group of elements.
+element or group of elements. The <attr/NAME/ attribute is required
+except in the case of <code/TYPE=SUBMIT/ or <code/TYPE=RESET/.
 
 <tli>SIZE: specifies the amount of display space allocated to this
 input field according to its type.

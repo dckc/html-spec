@@ -1,46 +1,13 @@
 <!doctype spaper public "-//Houston//DTD snafu5//EN" [
 <!-- $Id$ -->
 
-<!entity % u.phrases "file|dns|tag|attr|uri|mbox|doclink|publink">
-
-<!attlist (doclink|publink)
-       linkend NAME #required --@@ENTITY-->
-
-<![IGNORE[ -- can't get these to work right --
-
-<!notation DYNAMIC SYSTEM -- notation determined at fetch time -->
-
-<!entity rfc1630 SYSTEM "ftp://ds.internic.net/rfc/rfc1630.txt" NDATA ASCII>
-<!entity rfc1738 SYSTEM "ftp://ds.internic.net/rfc/rfc1738.txt" NDATA ASCII>
-<!entity draft-http system "ftp://ds.internic.net/internet-drafts/draft-ietf-http-v10-spec-00.ps" NDATA EPSF>
-
-<!entity rfc1521 SYSTEM "ftp://ds.internic.net/rfc/rfc1521.txt" NDATA ASCII>
-
-<!entity draft-relurl SYSTEM 
- "ftp://ds.internic.net/internet-drafts/draft-ietf-uri-relative-url-06.txt"
-	NDATA ASCII>
-<!entity rfc1590 SYSTEM "ftp://ds.internic.net/rfc/rfc1590.txt"
-	NDATA ASCII>
-<!entity rfc1700 SYSTEM "ftp://ds.internic.net/rfc/rfc1700.txt"
-	NDATA ASCII>
-<!entity sq.com SYSTEM "http://www.sq.com/" NDATA DYNAMIC>
-<!entity iso8859-order SYSTEM "http://www.iso.ch/cate/d16338.html" NDATA DYNAMIC>
-<!entity sgml-order SYSTEM "http://www.iso.ch/cate/d16387.html" NDATA DYNAMIC>
-]]>
-
-<!entity lt CDATA "<" --@@ only until I find a copy of isonum -->
-<!entity amp CDATA "&">
-<!entity nbsp CDATA " ">
+<!entity % u.phrases "file|dns|tag|attr|uri|mbox">
 
 <!entity status SYSTEM "draft-status.sgm">
 
 <!entity stat "Internet Draft">
-<!entity date "June 3, 1995">
-<!entity filename CDATA "&#60;draft-ietf-html-spec-03.txt&#62;">
-
-<!entity % plain "CDATA"
-	-- stuff that only goes in the plain text version --
-	>
+<!entity date "June 8, 1995">
+<!entity filename CDATA "&#60;draft-ietf-html-spec-04.txt&#62;">
 
 <!entity intro system "intro.sgm">
 
@@ -73,18 +40,11 @@
 <!entity bib system "references.sgm">
 <!entity acks system "acknowledgements.sgm">
 
-<!entity obsolete system "obsolete.sgm">
 <!entity proposed system "proposed.sgm">
 
 ]>
 
 <spaper>
-<!--
-HTML Working Group                                    T. Berners-Lee
-INTERNET-DRAFT                                           D. Connolly
-<draft-ietf-html-spec-03.txt>                                MIT/W3C
-Expires in six months                                    May 4, 1995
--->
     <title>Hypertext Markup Language - 2.0
     <author><name address=w3c>T. Berners-Lee
       <address id=w3c><org>MIT/W3C</>
@@ -137,9 +97,3 @@ and MIME Content Type (RFC&nbsp;1521) is defined by this specification.
 &proposed;
 
 </spaper>
-
-<!--
-Local Variables:
-sgml-declaration: "snaful.decl"
-End:
--->

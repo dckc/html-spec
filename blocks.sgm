@@ -61,10 +61,10 @@ elements.  User agents are encouraged to treat this a a line break. A
 line break, not a line break plus a blank line.
 </note>
 
-<li>The horizontal tab character (encoded in <code/US-ASCII/ and
-<code/ISO-8859-1/ as decimal 9) must be interpreted as the smallest
-positive nonzero number of spaces which will leave the number of
-characters so far on the line as a multiple of 8.
+<li>The horizontal tab character (code position 9 in [ISO-8859-1])
+must be interpreted as the smallest positive nonzero number of spaces
+which will leave the number of characters so far on the line as a
+multiple of 8.
 </ul>
 
 <p>Example of use:
@@ -79,15 +79,22 @@ Line 1.
 
 <h4>Example and Listing: XMP, LISTING
 
-<p>The <tag/XMP/ and <tag/LISTING/ elements are deprectated in favor
-of the <tag/PRE/ element (see <hdref refid=pre>), as their declaration
-makes use of <code/CDATA/ declared content, which tends to be
-implemented and used inconsistently.
+<p>The <tag/XMP/ and <tag/LISTING/ elements are similar to the
+<tag/PRE/ element, but they have a different syntax. Their content is
+declared as CDATA, which means that no markup except the end-tag open
+delimiter-in-context is recognized (see 9.6 "Delimiter Recognition" of
+[SGML]).
 <note>In a previous draft of the HTML specification, the syntax
 of <tag/XMP/ and <tag/LISTING/ elements allowed closing tags to
 be treated as data characters, as long as the tag name was not
 <tag/XMP/ or <tag/LISTING/, respectively.
 </note>
+
+<p>Since CDATA declared content has a number of unfortunate
+interactions with processing techniques and tends to be used and
+implemented inconsistently, HTML documents should not contain
+<tag/XMP/ nor <tag/LISTING/ elements -- the <tag/PRE/ tag is more
+expressive and more consistently supported.
 
 <p>The <tag/LISTING/ element should be rendered so that at least 132
 characters fit on a line. The <tag/XMP/ element should be rendered so

@@ -20,14 +20,3 @@ Distribution of this document is unlimited. Please send comments to
 the HTML working group (HTML-WG) of the Internet Engineering Task
 Force (IETF) at <mbox/html-wg@oclc.org/.  Discussions of the group are
 archived at <uri>http://www.acl.lanl.gov/HTML_WG/archives.html</>.
-
-In this draft, the first three sections are considered essentially
-finished. Sections 4 and 5 have been significantly revised and are
-open to comments, though I'm fairly happy with those parts. Section 6
-is somewhat new: it collects all information about hyperlinking into
-one place. Sections 7 (forms elements) has also been revised, and
-there are a few points I'm not sure on. The glossary (section 8) has
-also been tweaked. Section 8 "public text" has been stable for some
-time, but as it's critical, I'd appreciate a careful review just the
-same.
-

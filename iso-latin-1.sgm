@@ -1,7 +1,6 @@
-<h1 id=iso-latin-1>The ANSI/ISO 8859-1 Coded Character Set
+<h1 id=iso-latin-1>The ISO 8859-1 Coded Character Set
 
-<p>This list, sorted numerically, is derived from ANSI/ISO 8859-1 8-bit
-single-byte coded graphic character set:
+<p>This list, sorted numerically, is derived from [ISO-8859-1].
 
 <listing><![CDATA[
 REFERENCE	DESCRIPTION

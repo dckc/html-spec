@@ -49,17 +49,17 @@ time as support for them is widely deployed.
 specification. For example, the value of the <attr/HREF/ attribute of
 the <tag/A/ element must conform to the URI syntax.
 
-<li>Its document character set includes ANSI/ISO 8859-1 and agrees with
-ISO/IEC 10646-1; that is, each code position listed in <hdref
+<li>Its document character set includes [ISO-8859-1] and agrees with
+[ISO-10646]; that is, each code position listed in <hdref
 refid=iso-latin-1> is included, and each code position in the document
-character set is mapped to the same character as ISO10646 designates
+character set is mapped to the same character as [ISO-10646] designates
 for that code position.
 <note>The document character set is somewhat independent of the
 character encoding scheme used to represent a document. For example,
-the ISO-2022-JP character encoding scheme can be used for HTML
-documents, since its repertoire is a subset of the ISO10646
+the <code/ISO-2022-JP/ character encoding scheme can be used for HTML
+documents, since its repertoire is a subset of the [ISO-10646]
 repertoire. The critical distinction is that numeric character
-references agree with ISO10646 regardless of how the document is encoded.
+references agree with [ISO-10646] regardless of how the document is encoded.
 </note>
 
 </ul>
@@ -110,8 +110,8 @@ See <hdref refid=conv1> for details.
 processes each character in the ISO Latin Alphabet No. 1 as specified
 in <hdref refid=charlist>.
 <note>To support non-western writing systems, HTML user agents should
-support ISO-10646-UCS-2 or similar character encoding schemes and as
-much of the character repertoire of ISO10646 as is practical.
+support <code/ISO-10646-UCS-2/ or similar character encoding schemes and as
+much of the character repertoire of [ISO-10646] as is practical.
 </note>
 
 <li>It behaves identically for documents whose parsed token sequences

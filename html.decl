@@ -57,6 +57,7 @@ SYNTAX
                   NAMELEN  72    -- somewhat arbitrary; taken from
                                 internet line length conventions --
                   PILEN    1024
+                  TAGLVL   100
                   TAGLEN   2100
                   GRPGTCNT 150
                   GRPCNT   64                   

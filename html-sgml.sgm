@@ -107,7 +107,7 @@ SGML specifies an abstract syntax and a reference concrete
 syntax. Aside from certain quantities and capacities (e.g. the limit
 on the length of a name), all HTML documents use the reference
 concrete syntax. In particular, all markup characters are in the
-repertoire of ISO 646 IRV. Data characters are drawn from the document
+repertoire of [ISO-646]. Data characters are drawn from the document
 character set (see <hdref refid=datachrs>).
 
 A complete discussion of SGML parsing, e.g. the mapping of a sequence
@@ -201,10 +201,11 @@ deployed, their use is strongly discouraged.
 <h3>Names
 
 A name consists of a letter followed by up to 71 letters, digits,
-periods, or hyphens. Element names are not case sensitive, but entity
-names are. For example, <code>&lt;BLOCKQUOTE></>,
-<code>&lt;BlockQuote></>, and <code>&lt;blockquote></> are equivalent,
-whereas <code>&amp;amp;</> is different from <code>&amp;AMP;</>.
+periods, or hyphens. Element and attribute names are not case
+sensitive, but entity names are. For example,
+<code>&lt;BLOCKQUOTE></>, <code>&lt;BlockQuote></>, and
+<code>&lt;blockquote></> are equivalent, whereas <code>&amp;amp;</> is
+different from <code>&amp;AMP;</>.
 
 In a start-tag, the element name must immediately follow the tag 
 open delimiter <code>&lt;</>.
@@ -233,6 +234,7 @@ character reference. For example,
 </note>
 
 <li>A name token (a sequence of letters, digits, periods, or hyphens).
+Name tokens are not case sensitive.
 <note>Some historical implementations allow any character 
 except space or <code>></> in a name token.
 </note>

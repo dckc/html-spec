@@ -2,7 +2,7 @@
 # $Id$
 #
 
-RELEASE = 19950603
+RELEASE = 19950608
 PACKAGE = html-spec-$(RELEASE)
 
 # Things outside this distribution
@@ -39,7 +39,7 @@ SRCS = html.decl html.dtd html-1.dtd html-s.dtd html-1s.dtd\
 	blocks.sgm headings.sgm lists.sgm forms.sgm pubtext.sgm \
 	references.sgm glossary.sgm acknowledgements.sgm \
 	entity-sets.sgm iso-latin-1.sgm \
-	obsolete.sgm proposed.sgm
+	proposed.sgm
 
 ORIGINALS = Makefile $(SRCS) $(DTD) $(DTDAUX) $(DECL) \
 	head.ms abstract.ms
@@ -57,7 +57,8 @@ HYPERTEXT = html-spec_toc.html \
 	html-spec_9.html \
 	html-spec_10.html \
 	html-spec_11.html \
-	html-spec_12.html
+	html-spec_12.html \
+	html-spec_13.html
 
 
 
@@ -73,7 +74,7 @@ all: hypertext hardcopy
 hypertext: $(SPEC)_toc.html
 
 $(SPEC)_toc.html: $(SPEC).texi
-	$(TEXI2HTML) -doctype html2 -debug 8 -expandinfo -split_chapter -glossary Terms -bibliography References -verbose $(SPEC).texi
+	$(TEXI2HTML) -doctype html2 -expandinfo -split_chapter -glossary Terms -bibliography References -verbose $(SPEC).texi
 
 hardcopy: $(SPEC).ps $(SPEC).ps.gz
 
