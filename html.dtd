@@ -7,20 +7,16 @@
 
 	Author: Daniel W. Connolly <connolly@hal.com>
 	See Also: http://www.hal.com/%7Econnolly/html-spec/HTML.html
-		  http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
+		  http://info.cern.ch/hypertext/WWW/MarkUp2/MarkUp.html
 -->
 
 <!ENTITY HTML.Version
-	"-//connolly hal.com//DTD WWW HTML $Date 1994/04/19 17:24:06 $//EN"
+	"-//W3O//DTD WWW HTML 2.0//EN"
 	-- public identifier for "current pracitice" version             -- 
-	-- actually, take the $'s out to get the real public identifer,  --
-	-- since $ is illegal in public identifier. When DTD stabilizes, --
-	-- we'll need to stop using RCS keywords to version the pub id   --
 
         -- Typical usage:
 
-            <!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML
-						$Date$//EN">
+            <!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 	    <html>
 	    ...
 	    </html>
@@ -45,19 +41,22 @@
 	sgmls -s doctype.sgml foo.html
  -->
 
-<!ENTITY % HTML.Minimal  "IGNORE">
+<!ENTITY % HTML.Level0  "IGNORE">
 <!ENTITY % HTML.Obsolete "IGNORE">
 <!ENTITY % HTML.Prescriptive "IGNORE">
 
-<![ %HTML.Minimal [
+<![ %HTML.Level0 [
 	<!ENTITY % HTML.linkRelationships "IGNORE">
 	<!ENTITY % HTML.linkMethods "IGNORE">
 	<!ENTITY % HTML.linkRedundantInfo "IGNORE">
 	<!ENTITY % HTML.forms "IGNORE">
-	<!-- @@ nested lists -->
-	<!-- @@ phrases -->
-	<!-- @@ headers inside A -->
-	<!-- @@ nested phrases, fonts -->
+	<!ENTITY % HTML.phrase "IGNORE">
+	<!ENTITY % HTML.NEXTID "IGNORE">
+	<!-- @# Are the following required for conformance? -->
+	<!-- @# nested lists -->
+	<!-- @# IMG -->
+	<!-- @# headers inside A -->
+	<!-- @# nested phrases, fonts -->
 	]]>
 	
 <![ %HTML.Obsolete [
@@ -77,6 +76,10 @@
 	<!ENTITY % HTML.PLAINTEXT "IGNORE">
 	<!ENTITY % HTML.bodyBlockOnly "INCLUDE">
 	]]>
+
+<!ENTITY % HTML.phrase "INCLUDE"
+	-- phrase markup, ala TeXinfo: TT, EM, etc.
+	-->
 
 <!ENTITY % HTML.bodyBlockOnly "IGNORE"
 	-- only allow block elements in the BODY element
@@ -171,7 +174,6 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	capacity (1024 in the current version of html.decl),
 	so that URIs in HTML have a bounded length.
 
-	@@ Need to discuss relative addresses.
         -->
 
 <!ENTITY % Content-Type "CDATA"
@@ -267,6 +269,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	]]>
 <!ENTITY % u-font "">
 
+<![ %HTML.phrase [
 <!ENTITY % font "TT | B | I %u-font">
 <!ENTITY % phrase "EM | STRONG | CODE | SAMP | KBD | VAR | DFN | CITE
 	 | STRIKE %key-emph">
@@ -285,6 +288,10 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ENTITY % inline "%phrase %obsolete-font">
 <!ENTITY % pre-inline "%font %obsolete-phrase %obsolete-p">
+]]>
+
+<!ENTITY % inline "">
+<!ENTITY % pre-inline "">
 
 <!ENTITY % text "#PCDATA | IMG | %inline | BR %obsolete-p">
 
@@ -294,7 +301,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % font-content "#PCDATA">
 <!ELEMENT (%font;) - - (%font-content;)>
 
+<![ %HTML.phrase [
 <!ELEMENT (%phrase;) - - (%htext)+>
+]]>
 
 <!ENTITY % pre "PRE | XMP | LISTING">
 
