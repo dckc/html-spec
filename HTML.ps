@@ -1,0 +1,3617 @@
+%!
+%%BoundingBox: (atend)
+%%Pages: (atend)
+%%DocumentFonts: (atend)
+%%EndComments
+%
+% FrameMaker PostScript Prolog 3.0, for use with FrameMaker 3.0
+% Copyright (c) 1986,87,89,90,91 by Frame Technology Corporation.
+% All rights reserved.
+%
+% Known Problems:
+%	Due to bugs in Transcript, the 'PS-Adobe-' is omitted from line 1
+/FMversion (3.0) def 
+% Set up Color vs. Black-and-White
+	/FMPrintInColor systemdict /colorimage known
+		systemdict /currentcolortransfer known or def
+% Uncomment this line to force b&w on color printer
+%   /FMPrintInColor false def
+/FrameDict 195 dict def 
+systemdict /errordict known not {/errordict 10 dict def
+		errordict /rangecheck {stop} put} if
+% The readline in 23.0 doesn't recognize cr's as nl's on AppleTalk
+FrameDict /tmprangecheck errordict /rangecheck get put 
+errordict /rangecheck {FrameDict /bug true put} put 
+FrameDict /bug false put 
+mark 
+% Some PS machines read past the CR, so keep the following 3 lines together!
+currentfile 5 string readline
+00
+0000000000
+cleartomark 
+errordict /rangecheck FrameDict /tmprangecheck get put 
+FrameDict /bug get { 
+	/readline {
+		/gstring exch def
+		/gfile exch def
+		/gindex 0 def
+		{
+			gfile read pop 
+			dup 10 eq {exit} if 
+			dup 13 eq {exit} if 
+			gstring exch gindex exch put 
+			/gindex gindex 1 add def 
+		} loop
+		pop 
+		gstring 0 gindex getinterval true 
+		} def
+	} if
+/FMVERSION {
+	FMversion ne {
+		/Times-Roman findfont 18 scalefont setfont
+		100 100 moveto
+		(FrameMaker version does not match postscript_prolog!)
+		dup =
+		show showpage
+		} if
+	} def 
+/FMLOCAL {
+	FrameDict begin
+	0 def 
+	end 
+	} def 
+	/gstring FMLOCAL
+	/gfile FMLOCAL
+	/gindex FMLOCAL
+	/orgxfer FMLOCAL
+	/orgproc FMLOCAL
+	/organgle FMLOCAL
+	/orgfreq FMLOCAL
+	/yscale FMLOCAL
+	/xscale FMLOCAL
+	/manualfeed FMLOCAL
+	/paperheight FMLOCAL
+	/paperwidth FMLOCAL
+/FMDOCUMENT { 
+	array /FMfonts exch def 
+	/#copies exch def
+	FrameDict begin
+	0 ne dup {setmanualfeed} if
+	/manualfeed exch def
+	/paperheight exch def
+	/paperwidth exch def
+	/yscale exch def
+	/xscale exch def
+	currenttransfer cvlit /orgxfer exch def
+	currentscreen cvlit /orgproc exch def
+	/organgle exch def /orgfreq exch def
+	setpapername 
+	manualfeed {true} {papersize} ifelse 
+	{manualpapersize} {false} ifelse 
+	{desperatepapersize} if
+	end 
+	} def 
+	/pagesave FMLOCAL
+	/orgmatrix FMLOCAL
+	/landscape FMLOCAL
+/FMBEGINPAGE { 
+	FrameDict begin 
+	/pagesave save def
+	3.86 setmiterlimit
+	/landscape exch 0 ne def
+	landscape { 
+		90 rotate 0 exch neg translate pop 
+		}
+		{pop pop}
+		ifelse
+	xscale yscale scale
+	/orgmatrix matrix def
+	gsave 
+	} def 
+/FMENDPAGE {
+	grestore 
+	pagesave restore
+	end 
+	showpage
+	} def 
+/FMFONTDEFINE { 
+	FrameDict begin
+	findfont 
+	ReEncode 
+	1 index exch 
+	definefont 
+	FMfonts 3 1 roll 
+	put
+	end 
+	} def 
+/FMFILLS {
+	FrameDict begin
+	array /fillvals exch def
+	end 
+	} def 
+/FMFILL {
+	FrameDict begin
+	 fillvals 3 1 roll put
+	end 
+	} def 
+/FMNORMALIZEGRAPHICS { 
+	newpath
+	0.0 0.0 moveto
+	1 setlinewidth
+	0 setlinecap
+	0 0 0 sethsbcolor
+	0 setgray 
+	} bind def
+	/fx FMLOCAL
+	/fy FMLOCAL
+	/fh FMLOCAL
+	/fw FMLOCAL
+	/llx FMLOCAL
+	/lly FMLOCAL
+	/urx FMLOCAL
+	/ury FMLOCAL
+/FMBEGINEPSF { 
+	end 
+	/FMEPSF save def 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	[/fy /fx /fh /fw /ury /urx /lly /llx] {exch def} forall 
+	fx fy translate 
+	rotate
+	fw urx llx sub div fh ury lly sub div scale 
+	llx neg lly neg translate 
+	} bind def
+/FMENDEPSF {
+	FMEPSF restore
+	FrameDict begin 
+	} bind def
+FrameDict begin 
+/setmanualfeed {
+%%BeginFeature *ManualFeed True
+	 statusdict /manualfeed true put
+%%EndFeature
+	} def
+/max {2 copy lt {exch} if pop} bind def
+/min {2 copy gt {exch} if pop} bind def
+/inch {72 mul} def
+/pagedimen { 
+	paperheight sub abs 16 lt exch 
+	paperwidth sub abs 16 lt and
+	{/papername exch def} {pop} ifelse
+	} def
+	/papersizedict FMLOCAL
+/setpapername { 
+	/papersizedict 14 dict def 
+	papersizedict begin
+	/papername /unknown def 
+		/Letter 8.5 inch 11.0 inch pagedimen
+		/LetterSmall 7.68 inch 10.16 inch pagedimen
+		/Tabloid 11.0 inch 17.0 inch pagedimen
+		/Ledger 17.0 inch 11.0 inch pagedimen
+		/Legal 8.5 inch 14.0 inch pagedimen
+		/Statement 5.5 inch 8.5 inch pagedimen
+		/Executive 7.5 inch 10.0 inch pagedimen
+		/A3 11.69 inch 16.5 inch pagedimen
+		/A4 8.26 inch 11.69 inch pagedimen
+		/A4Small 7.47 inch 10.85 inch pagedimen
+		/B4 10.125 inch 14.33 inch pagedimen
+		/B5 7.16 inch 10.125 inch pagedimen
+	end
+	} def
+/papersize {
+	papersizedict begin
+		/Letter {lettertray letter} def
+		/LetterSmall {lettertray lettersmall} def
+		/Tabloid {11x17tray 11x17} def
+		/Ledger {ledgertray ledger} def
+		/Legal {legaltray legal} def
+		/Statement {statementtray statement} def
+		/Executive {executivetray executive} def
+		/A3 {a3tray a3} def
+		/A4 {a4tray a4} def
+		/A4Small {a4tray a4small} def
+		/B4 {b4tray b4} def
+		/B5 {b5tray b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	/FMdicttop countdictstack 1 add def 
+	statusdict begin stopped end 
+	countdictstack -1 FMdicttop {pop end} for 
+	} def
+/manualpapersize {
+	papersizedict begin
+		/Letter {letter} def
+		/LetterSmall {lettersmall} def
+		/Tabloid {11x17} def
+		/Ledger {ledger} def
+		/Legal {legal} def
+		/Statement {statement} def
+		/Executive {executive} def
+		/A3 {a3} def
+		/A4 {a4} def
+		/A4Small {a4small} def
+		/B4 {b4} def
+		/B5 {b5} def
+		/unknown {unknown} def
+	papersizedict dup papername known {papername} {/unknown} ifelse get
+	end
+	stopped 
+	} def
+/desperatepapersize {
+	statusdict /setpageparams known
+		{
+		paperwidth paperheight 0 1 
+		statusdict begin
+		{setpageparams} stopped pop 
+		end
+		} if
+	} def
+/savematrix {
+	orgmatrix currentmatrix pop
+	} bind def
+/restorematrix {
+	orgmatrix setmatrix
+	} bind def
+/dmatrix matrix def
+/dpi    72 0 dmatrix defaultmatrix dtransform
+    dup mul exch   dup mul add   sqrt def
+/freq dpi 18.75 div 8 div round dup 0 eq {pop 1} if 8 mul dpi exch div def
+/sangle 1 0 dmatrix defaultmatrix dtransform exch atan def
+/DiacriticEncoding [
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef /space /exclam /quotedbl
+/numbersign /dollar /percent /ampersand /quotesingle /parenleft
+/parenright /asterisk /plus /comma /hyphen /period /slash /zero /one
+/two /three /four /five /six /seven /eight /nine /colon /semicolon
+/less /equal /greater /question /at /A /B /C /D /E /F /G /H /I /J /K
+/L /M /N /O /P /Q /R /S /T /U /V /W /X /Y /Z /bracketleft /backslash
+/bracketright /asciicircum /underscore /grave /a /b /c /d /e /f /g /h
+/i /j /k /l /m /n /o /p /q /r /s /t /u /v /w /x /y /z /braceleft /bar
+/braceright /asciitilde /.notdef /Adieresis /Aring /Ccedilla /Eacute
+/Ntilde /Odieresis /Udieresis /aacute /agrave /acircumflex /adieresis
+/atilde /aring /ccedilla /eacute /egrave /ecircumflex /edieresis
+/iacute /igrave /icircumflex /idieresis /ntilde /oacute /ograve
+/ocircumflex /odieresis /otilde /uacute /ugrave /ucircumflex
+/udieresis /dagger /.notdef /cent /sterling /section /bullet
+/paragraph /germandbls /registered /copyright /trademark /acute
+/dieresis /.notdef /AE /Oslash /.notdef /.notdef /.notdef /.notdef
+/yen /.notdef /.notdef /.notdef /.notdef /.notdef /.notdef
+/ordfeminine /ordmasculine /.notdef /ae /oslash /questiondown
+/exclamdown /logicalnot /.notdef /florin /.notdef /.notdef
+/guillemotleft /guillemotright /ellipsis /.notdef /Agrave /Atilde
+/Otilde /OE /oe /endash /emdash /quotedblleft /quotedblright
+/quoteleft /quoteright /.notdef /.notdef /ydieresis /Ydieresis
+/fraction /currency /guilsinglleft /guilsinglright /fi /fl /daggerdbl
+/periodcentered /quotesinglbase /quotedblbase /perthousand
+/Acircumflex /Ecircumflex /Aacute /Edieresis /Egrave /Iacute
+/Icircumflex /Idieresis /Igrave /Oacute /Ocircumflex /.notdef /Ograve
+/Uacute /Ucircumflex /Ugrave /dotlessi /circumflex /tilde /macron
+/breve /dotaccent /ring /cedilla /hungarumlaut /ogonek /caron
+] def
+/ReEncode { 
+	dup 
+	length 
+	dict begin 
+	{
+	1 index /FID ne 
+		{def} 
+		{pop pop} ifelse 
+	} forall 
+	0 eq {/Encoding DiacriticEncoding def} if 
+	currentdict 
+	end 
+	} bind def
+/graymode true def
+	/bwidth FMLOCAL
+	/bpside FMLOCAL
+	/bstring FMLOCAL
+	/onbits FMLOCAL
+	/offbits FMLOCAL
+	/xindex FMLOCAL
+	/yindex FMLOCAL
+	/x FMLOCAL
+	/y FMLOCAL
+/setpattern {
+	 /bwidth  exch def
+	 /bpside  exch def
+	 /bstring exch def
+	 /onbits 0 def  /offbits 0 def
+	 freq sangle landscape {90 add} if 
+		{/y exch def
+		 /x exch def
+		 /xindex x 1 add 2 div bpside mul cvi def
+		 /yindex y 1 add 2 div bpside mul cvi def
+		 bstring yindex bwidth mul xindex 8 idiv add get
+		 1 7 xindex 8 mod sub bitshift and 0 ne
+		 {/onbits  onbits  1 add def 1}
+		 {/offbits offbits 1 add def 0}
+		 ifelse
+		}
+		setscreen
+	 {} settransfer
+	 offbits offbits onbits add div FMsetgray
+	/graymode false def
+	} bind def
+/grayness {
+	FMsetgray
+	graymode not {
+		/graymode true def
+		orgxfer cvx settransfer
+		orgfreq organgle orgproc cvx setscreen
+		} if
+	} bind def
+	/HUE FMLOCAL
+	/SAT FMLOCAL
+	/BRIGHT FMLOCAL
+	/Colors FMLOCAL
+FMPrintInColor 
+	
+	{
+	/HUE 0 def
+	/SAT 0 def
+	/BRIGHT 0 def
+	% array of arrays Hue and Sat values for the separations [HUE BRIGHT]
+	/Colors   
+	[[0    0  ]    % black
+	 [0    0  ]    % white
+	 [0.00 1.0]    % red
+	 [0.37 1.0]    % green
+	 [0.60 1.0]    % blue
+	 [0.50 1.0]    % cyan
+	 [0.83 1.0]    % magenta
+	 [0.16 1.0]    % comment / yellow
+	 ] def
+      
+	/BEGINBITMAPCOLOR { 
+		BITMAPCOLOR} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPCOLORc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUECOLOR } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUECOLORc } def
+	/K { 
+		Colors exch get dup
+		0 get /HUE exch store 
+		1 get /BRIGHT exch store
+		  HUE 0 eq BRIGHT 0 eq and
+			{1.0 SAT sub setgray}
+			{HUE SAT BRIGHT sethsbcolor} 
+		  ifelse
+		} def
+	/FMsetgray { 
+		/SAT exch 1.0 exch sub store 
+		  HUE 0 eq BRIGHT 0 eq and
+			{1.0 SAT sub setgray}
+			{HUE SAT BRIGHT sethsbcolor} 
+		  ifelse
+		} bind def
+	}
+	
+	{
+	/BEGINBITMAPCOLOR { 
+		BITMAPGRAY} def
+	/BEGINBITMAPCOLORc { 
+		BITMAPGRAYc} def
+	/BEGINBITMAPTRUECOLOR { 
+		BITMAPTRUEGRAY } def
+	/BEGINBITMAPTRUECOLORc { 
+		BITMAPTRUEGRAYc } def
+	/FMsetgray {setgray} bind def
+	/K { 
+		pop
+		} def
+	}
+ifelse
+/normalize {
+	transform round exch round exch itransform
+	} bind def
+/dnormalize {
+	dtransform round exch round exch idtransform
+	} bind def
+/lnormalize { 
+	0 dtransform exch cvi 2 idiv 2 mul 1 add exch idtransform pop
+	} bind def
+/H { 
+	lnormalize setlinewidth
+	} bind def
+/Z {
+	setlinecap
+	} bind def
+	/fillvals FMLOCAL
+/X { 
+	fillvals exch get
+	dup type /stringtype eq
+	{8 1 setpattern} 
+	{grayness}
+	ifelse
+	} bind def
+/V { 
+	gsave eofill grestore
+	} bind def
+/N { 
+	stroke
+	} bind def
+/M {newpath moveto} bind def
+/E {lineto} bind def
+/D {curveto} bind def
+/O {closepath} bind def
+	/n FMLOCAL
+/L { 
+ 	/n exch def
+	newpath
+	normalize
+	moveto 
+	2 1 n {pop normalize lineto} for
+	} bind def
+/Y { 
+	L 
+	closepath
+	} bind def
+	/x1 FMLOCAL
+	/x2 FMLOCAL
+	/y1 FMLOCAL
+	/y2 FMLOCAL
+	/rad FMLOCAL
+/R { 
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	x1 y1
+	x2 y1
+	x2 y2
+	x1 y2
+	4 Y 
+	} bind def
+/RR { 
+	/rad exch def
+	normalize
+	/y2 exch def
+	/x2 exch def
+	normalize
+	/y1 exch def
+	/x1 exch def
+	newpath
+	x1 y1 rad add moveto
+	x1 y2 x2 y2 rad arcto
+	x2 y2 x2 y1 rad arcto
+	x2 y1 x1 y1 rad arcto
+	x1 y1 x1 y2 rad arcto
+	closepath
+	16 {pop} repeat
+	} bind def
+/C { 
+	grestore
+	gsave
+	R 
+	clip
+	} bind def
+	/FMpointsize FMLOCAL
+/F { 
+	FMfonts exch get
+	FMpointsize scalefont
+	setfont
+	} bind def
+/Q { 
+	/FMpointsize exch def
+	F 
+	} bind def
+/T { 
+	moveto show
+	} bind def
+/RF { 
+	rotate
+	0 ne {-1 1 scale} if
+	} bind def
+/TF { 
+	gsave
+	moveto 
+	RF
+	show
+	grestore
+	} bind def
+/P { 
+	moveto
+	0 32 3 2 roll widthshow
+	} bind def
+/PF { 
+	gsave
+	moveto 
+	RF
+	0 32 3 2 roll widthshow
+	grestore
+	} bind def
+/S { 
+	moveto
+	0 exch ashow
+	} bind def
+/SF { 
+	gsave
+	moveto
+	RF
+	0 exch ashow
+	grestore
+	} bind def
+/B { 
+	moveto
+	0 32 4 2 roll 0 exch awidthshow
+	} bind def
+/BF { 
+	gsave
+	moveto
+	RF
+	0 32 4 2 roll 0 exch awidthshow
+	grestore
+	} bind def
+/G { 
+	gsave
+	newpath
+	normalize translate 0.0 0.0 moveto 
+	dnormalize scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	closepath fill
+	grestore
+	} bind def
+/A { 
+	gsave
+	savematrix
+	newpath
+	2 index 2 div add exch 3 index 2 div sub exch 
+	normalize 2 index 2 div sub exch 3 index 2 div add exch 
+	translate 
+	scale 
+	0.0 0.0 1.0 5 3 roll arc 
+	restorematrix
+	stroke
+	grestore
+	} bind def
+	/x FMLOCAL
+	/y FMLOCAL
+	/w FMLOCAL
+	/h FMLOCAL
+	/xx FMLOCAL
+	/yy FMLOCAL
+	/ww FMLOCAL
+	/hh FMLOCAL
+	/FMsaveobject FMLOCAL
+	/FMoptop FMLOCAL
+	/FMdicttop FMLOCAL
+/BEGINPRINTCODE { 
+	/FMdicttop countdictstack 1 add def 
+	/FMoptop count 4 sub def 
+	/FMsaveobject save def
+	userdict begin 
+	/showpage {} def 
+	FMNORMALIZEGRAPHICS 
+	3 index neg 3 index neg translate
+	} bind def
+/ENDPRINTCODE {
+	count -1 FMoptop {pop pop} for 
+	countdictstack -1 FMdicttop {pop end} for 
+	FMsaveobject restore 
+	} bind def
+/gn { 
+	0 
+	{	46 mul 
+		cf read pop 
+		32 sub 
+		dup 46 lt {exit} if 
+		46 sub add 
+		} loop
+	add 
+	} bind def
+	/str FMLOCAL
+/cfs { 
+	/str sl string def 
+	0 1 sl 1 sub {str exch val put} for 
+	str def 
+	} bind def
+/ic [ 
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0223
+	0
+	{0 hx} {1 hx} {2 hx} {3 hx} {4 hx} {5 hx} {6 hx} {7 hx} {8 hx} {9 hx}
+	{10 hx} {11 hx} {12 hx} {13 hx} {14 hx} {15 hx} {16 hx} {17 hx} {18 hx}
+	{19 hx} {gn hx} {0} {1} {2} {3} {4} {5} {6} {7} {8} {9} {10} {11} {12}
+	{13} {14} {15} {16} {17} {18} {19} {gn} {0 wh} {1 wh} {2 wh} {3 wh}
+	{4 wh} {5 wh} {6 wh} {7 wh} {8 wh} {9 wh} {10 wh} {11 wh} {12 wh}
+	{13 wh} {14 wh} {gn wh} {0 bl} {1 bl} {2 bl} {3 bl} {4 bl} {5 bl} {6 bl}
+	{7 bl} {8 bl} {9 bl} {10 bl} {11 bl} {12 bl} {13 bl} {14 bl} {gn bl}
+	{0 fl} {1 fl} {2 fl} {3 fl} {4 fl} {5 fl} {6 fl} {7 fl} {8 fl} {9 fl}
+	{10 fl} {11 fl} {12 fl} {13 fl} {14 fl} {gn fl}
+	] def
+	/sl FMLOCAL
+	/val FMLOCAL
+	/ws FMLOCAL
+	/im FMLOCAL
+	/bs FMLOCAL
+	/cs FMLOCAL
+	/len FMLOCAL
+	/pos FMLOCAL
+/ms { 
+	/sl exch def 
+	/val 255 def 
+	/ws cfs 
+	/im cfs 
+	/val 0 def 
+	/bs cfs 
+	/cs cfs 
+	} bind def
+400 ms 
+/ip { 
+	is 
+	0 
+	cf cs readline pop 
+	{	ic exch get exec 
+		add 
+		} forall 
+	pop 
+	
+	} bind def
+/wh { 
+	/len exch def 
+	/pos exch def 
+	ws 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/bl { 
+	/len exch def 
+	/pos exch def 
+	bs 0 len getinterval im pos len getinterval copy pop
+	pos len 
+	} bind def
+/s1 1 string def
+/fl { 
+	/len exch def 
+	/pos exch def 
+	/val cf s1 readhexstring pop 0 get def
+	pos 1 pos len add 1 sub {im exch val put} for
+	pos len 
+	} bind def
+/hx { 
+	3 copy getinterval 
+	cf exch readhexstring pop pop 
+	} bind def
+	/h FMLOCAL
+	/w FMLOCAL
+	/d FMLOCAL
+	/lb FMLOCAL
+	/bitmapsave FMLOCAL
+	/is FMLOCAL
+	/cf FMLOCAL
+/wbytes { 
+	dup 
+	8 eq {pop} {1 eq {7 add 8 idiv} {3 add 4 idiv} ifelse} ifelse
+	} bind def
+/BEGINBITMAPBWc { 
+	1 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAPGRAYc { 
+	8 {} COMMONBITMAPc
+	} bind def
+/BEGINBITMAP2BITc { 
+	2 {} COMMONBITMAPc
+	} bind def
+/COMMONBITMAPc { 
+	/r exch def
+	/d exch def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	r                    
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{ip} image 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BEGINBITMAPBW { 
+	1 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAPGRAY { 
+	8 {} COMMONBITMAP
+	} bind def
+/BEGINBITMAP2BIT { 
+	2 {} COMMONBITMAP
+	} bind def
+/COMMONBITMAP { 
+	/r exch def
+	/d exch def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/bitmapsave save def 
+	r                    
+	/is w d wbytes string def
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{cf is readhexstring pop} image
+	bitmapsave restore 
+	grestore
+	} bind def
+	/proc1 FMLOCAL
+	/proc2 FMLOCAL
+	/newproc FMLOCAL
+/Fmcc {
+    /proc2 exch cvlit def
+    /proc1 exch cvlit def
+    /newproc proc1 length proc2 length add array def
+    newproc 0 proc1 putinterval
+    newproc proc1 length proc2 putinterval
+    newproc cvx
+} bind def
+/ngrayt 256 array def
+/nredt 256 array def
+/nbluet 256 array def
+/ngreent 256 array def
+	/gryt FMLOCAL
+	/blut FMLOCAL
+	/grnt FMLOCAL
+	/redt FMLOCAL
+	/indx FMLOCAL
+	/cynu FMLOCAL
+	/magu FMLOCAL
+	/yelu FMLOCAL
+	/k FMLOCAL
+	/u FMLOCAL
+/colorsetup {
+	currentcolortransfer
+	/gryt exch def
+	/blut exch def
+	/grnt exch def
+	/redt exch def
+	0 1 255 {
+		/indx exch def
+		/cynu 1 red indx get 255 div sub def
+		/magu 1 green indx get 255 div sub def
+		/yelu 1 blue indx get 255 div sub def
+		/k cynu magu min yelu min def
+		/u k currentundercolorremoval exec def
+		nredt indx 1 0 cynu u sub max sub redt exec put
+		ngreent indx 1 0 magu u sub max sub grnt exec put
+		nbluet indx 1 0 yelu u sub max sub blut exec put
+		ngrayt indx 1 k currentblackgeneration exec sub gryt exec put
+	} for
+	{255 mul cvi nredt exch get}
+	{255 mul cvi ngreent exch get}
+	{255 mul cvi nbluet exch get}
+	{255 mul cvi ngrayt exch get}
+	setcolortransfer
+	{pop 0} setundercolorremoval
+	{} setblackgeneration
+	} bind def
+	/tran FMLOCAL
+/fakecolorsetup {
+	/tran 256 string def
+	0 1 255 {/indx exch def 
+		tran indx
+		red indx get 77 mul
+		green indx get 151 mul
+		blue indx get 28 mul
+		add add 256 idiv put} for
+	currenttransfer
+	{255 mul cvi tran exch get 255.0 div}
+	exch Fmcc settransfer
+} bind def
+/BITMAPCOLOR { 
+	/d 8 def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/bitmapsave save def 
+	colorsetup
+	/is w d wbytes string def
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{cf is readhexstring pop} {is} {is} true 3 colorimage 
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPCOLORc { 
+	/d 8 def
+	gsave
+	translate rotate scale /h exch def /w exch def
+	/lb w d wbytes def 
+	sl lb lt {lb ms} if 
+	/bitmapsave save def 
+	colorsetup
+	/is im 0 lb getinterval def 
+	ws 0 lb getinterval is copy pop 
+	/cf currentfile def 
+	w h d [w 0 0 h neg 0 h] 
+	{ip} {is} {is} true 3 colorimage
+	bitmapsave restore 
+	grestore
+	} bind def
+/BITMAPTRUECOLORc { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        
+        /is w string def
+        
+        ws 0 w getinterval is copy pop 
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        {ip} {gip} {bip} true 3 colorimage
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUECOLOR { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        /is w string def
+        /gis w string def
+        /bis w string def
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        { cf is readhexstring pop } 
+        { cf gis readhexstring pop } 
+        { cf bis readhexstring pop } 
+        true 3 colorimage 
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPTRUEGRAYc { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        
+        /is w string def
+        
+        ws 0 w getinterval is copy pop 
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        {ip gip bip w gray} image
+        bitmapsave restore 
+        grestore
+        } bind def
+/ww FMLOCAL
+/r FMLOCAL
+/g FMLOCAL
+/b FMLOCAL
+/i FMLOCAL
+/gray { 
+        /ww exch def
+        /b exch def
+        /g exch def
+        /r exch def
+        0 1 ww 1 sub { /i exch def r i get .299 mul g i get .587 mul
+			b i get .114 mul add add r i 3 -1 roll floor cvi put } for
+        r
+        } bind def
+/BITMAPTRUEGRAY { 
+        gsave
+        translate rotate scale /h exch def /w exch def
+        /bitmapsave save def 
+        /is w string def
+        /gis w string def
+        /bis w string def
+        /cf currentfile def 
+        w h 8 [w 0 0 h neg 0 h] 
+        { cf is readhexstring pop 
+          cf gis readhexstring pop 
+          cf bis readhexstring pop w gray}  image
+        bitmapsave restore 
+        grestore
+        } bind def
+/BITMAPGRAY { 
+	8 {fakecolorsetup} COMMONBITMAP
+	} bind def
+/BITMAPGRAYc { 
+	8 {fakecolorsetup} COMMONBITMAPc
+	} bind def
+/ENDBITMAP {
+	} bind def
+end 
+	/ALDsave FMLOCAL
+	/ALDmatrix matrix def ALDmatrix currentmatrix pop
+/StartALD {
+	/ALDsave save def
+	 savematrix
+	 ALDmatrix setmatrix
+	} bind def
+/InALD {
+	 restorematrix
+	} bind def
+/DoneALD {
+	 ALDsave restore
+	} bind def
+%%EndProlog
+%%BeginSetup
+(3.0) FMVERSION
+1 1 612 792 0 1 12 FMDOCUMENT
+0 0 /Times-Roman FMFONTDEFINE
+1 0 /Courier FMFONTDEFINE
+2 0 /NewCenturySchlbk-Roman FMFONTDEFINE
+3 0 /NewCenturySchlbk-Bold FMFONTDEFINE
+4 0 /NewCenturySchlbk-Italic FMFONTDEFINE
+5 0 /Times-Bold FMFONTDEFINE
+6 0 /AvantGarde-Book FMFONTDEFINE
+7 0 /Times-Italic FMFONTDEFINE
+32 FMFILLS
+0 0 FMFILL
+1 .1 FMFILL
+2 .3 FMFILL
+3 .5 FMFILL
+4 .7 FMFILL
+5 .9 FMFILL
+6 .97 FMFILL
+7 1 FMFILL
+8 <0f1e3c78f0e1c387> FMFILL
+9 <0f87c3e1f0783c1e> FMFILL
+10 <cccccccccccccccc> FMFILL
+11 <ffff0000ffff0000> FMFILL
+12 <8142241818244281> FMFILL
+13 <03060c183060c081> FMFILL
+14 <8040201008040201> FMFILL
+16 1 FMFILL
+17 .9 FMFILL
+18 .7 FMFILL
+19 .5 FMFILL
+20 .3 FMFILL
+21 .1 FMFILL
+22 0.03 FMFILL
+23 0 FMFILL
+24 <f0e1c3870f1e3c78> FMFILL
+25 <f0783c1e0f87c3e1> FMFILL
+26 <3333333333333333> FMFILL
+27 <0000ffff0000ffff> FMFILL
+28 <7ebddbe7e7dbbd7e> FMFILL
+29 <fcf9f3e7cf9f3f7e> FMFILL
+30 <7fbfdfeff7fbfdfe> FMFILL
+%%EndSetup
+%%Page: "14" 14
+%%BeginPaperSize: Letter
+%%EndPaperSize
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 9:00 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 14) 495.31 35.67 T
+1 9 Q
+(<!ENTITY) 108 714 T
+(Ocirc) 156.53 714 T
+("&#212;") 188.89 714 T
+(--) 237.42 714 T
+(capital) 253.6 714 T
+(O,) 296.74 714 T
+(circumflex) 312.91 714 T
+(accent) 372.23 714 T
+(-->) 409.98 714 T
+(<!ENTITY) 108 703 T
+(Ograve) 156.53 703 T
+("&#210;") 194.28 703 T
+(--) 242.81 703 T
+(capital) 258.99 703 T
+(O,) 302.13 703 T
+(grave) 318.31 703 T
+(accent) 350.66 703 T
+(-->) 388.41 703 T
+(<!ENTITY) 108 692 T
+(Oslash) 156.53 692 T
+("&#216;") 194.28 692 T
+(--) 242.81 692 T
+(capital) 258.99 692 T
+(O,) 302.13 692 T
+(slash) 318.31 692 T
+(-->) 350.66 692 T
+(<!ENTITY) 108 681 T
+(Otilde) 156.53 681 T
+("&#213;") 194.28 681 T
+(--) 242.81 681 T
+(capital) 258.99 681 T
+(O,) 302.13 681 T
+(tilde) 318.31 681 T
+(-->) 350.66 681 T
+(<!ENTITY) 108 670 T
+(Ouml) 156.53 670 T
+("&#214;") 183.49 670 T
+(--) 232.03 670 T
+(capital) 248.2 670 T
+(O,) 291.34 670 T
+(dieresis) 307.52 670 T
+(or) 356.05 670 T
+(umlaut) 372.23 670 T
+(mark) 409.98 670 T
+(-->) 436.94 670 T
+(<!ENTITY) 108 659 T
+(THORN) 156.53 659 T
+("&#222;") 188.89 659 T
+(--) 237.42 659 T
+(capital) 253.6 659 T
+(THORN,) 296.74 659 T
+(Icelandic) 334.48 659 T
+(-->) 388.41 659 T
+(<!ENTITY) 108 648 T
+(Uacute) 156.53 648 T
+("&#218;") 194.28 648 T
+(--) 242.81 648 T
+(capital) 258.99 648 T
+(U,) 302.13 648 T
+(acute) 318.31 648 T
+(accent) 350.66 648 T
+(-->) 388.41 648 T
+(<!ENTITY) 108 637 T
+(Ucirc) 156.53 637 T
+("&#219;") 188.89 637 T
+(--) 237.42 637 T
+(capital) 253.6 637 T
+(U,) 296.74 637 T
+(circumflex) 312.91 637 T
+(accent) 372.23 637 T
+(-->) 409.98 637 T
+(<!ENTITY) 108 626 T
+(Ugrave) 156.53 626 T
+("&#217;") 194.28 626 T
+(--) 242.81 626 T
+(capital) 258.99 626 T
+(U,) 302.13 626 T
+(grave) 318.31 626 T
+(accent) 350.66 626 T
+(-->) 388.41 626 T
+(<!ENTITY) 108 615 T
+(Uuml) 156.53 615 T
+("&#220;") 183.49 615 T
+(--) 232.03 615 T
+(capital) 248.2 615 T
+(U,) 291.34 615 T
+(dieresis) 307.52 615 T
+(or) 356.05 615 T
+(umlaut) 372.23 615 T
+(mark) 409.98 615 T
+(-->) 436.94 615 T
+(<!ENTITY) 108 604 T
+(Yacute) 156.53 604 T
+("&#221;") 194.28 604 T
+(--) 242.81 604 T
+(capital) 258.99 604 T
+(Y,) 302.13 604 T
+(acute) 318.31 604 T
+(accent) 350.66 604 T
+(-->) 388.41 604 T
+(<!ENTITY) 108 593 T
+(aacute) 156.53 593 T
+("&#225;") 194.28 593 T
+(--) 242.81 593 T
+(small) 258.99 593 T
+(a,) 291.34 593 T
+(acute) 307.52 593 T
+(accent) 339.88 593 T
+(-->) 377.62 593 T
+(<!ENTITY) 108 582 T
+(acirc) 156.53 582 T
+("&#226;") 188.89 582 T
+(--) 237.42 582 T
+(small) 253.6 582 T
+(a,) 285.95 582 T
+(circumflex) 302.13 582 T
+(accent) 361.45 582 T
+(-->) 399.19 582 T
+(<!ENTITY) 108 571 T
+(aelig) 156.53 571 T
+("&#230;") 188.89 571 T
+(--) 237.42 571 T
+(small) 253.6 571 T
+(ae) 285.95 571 T
+(diphthong) 302.13 571 T
+(\050ligature\051) 356.05 571 T
+(-->) 415.37 571 T
+(<!ENTITY) 108 560 T
+(agrave) 156.53 560 T
+("&#224;") 194.28 560 T
+(--) 242.81 560 T
+(small) 258.99 560 T
+(a,) 291.34 560 T
+(grave) 307.52 560 T
+(accent) 339.88 560 T
+(-->) 377.62 560 T
+(<!ENTITY) 108 549 T
+(amp) 156.53 549 T
+("&#38;") 178.1 549 T
+(--) 221.24 549 T
+(ampersand) 237.42 549 T
+(-->) 291.34 549 T
+(<!ENTITY) 108 538 T
+(aring) 156.53 538 T
+("&#229;") 188.89 538 T
+(--) 237.42 538 T
+(small) 253.6 538 T
+(a,) 285.95 538 T
+(ring) 302.13 538 T
+(-->) 329.09 538 T
+(<!ENTITY) 108 527 T
+(atilde) 156.53 527 T
+("&#227;") 194.28 527 T
+(--) 242.81 527 T
+(small) 258.99 527 T
+(a,) 291.34 527 T
+(tilde) 307.52 527 T
+(-->) 339.88 527 T
+(<!ENTITY) 108 516 T
+(auml) 156.53 516 T
+("&#228;") 183.49 516 T
+(--) 232.03 516 T
+(small) 248.2 516 T
+(a,) 280.56 516 T
+(dieresis) 296.74 516 T
+(or) 345.27 516 T
+(umlaut) 361.45 516 T
+(mark) 399.19 516 T
+(-->) 426.15 516 T
+(<!ENTITY) 108 505 T
+(ccedil) 156.53 505 T
+("&#231;") 194.28 505 T
+(--) 242.81 505 T
+(small) 258.99 505 T
+(c,) 291.34 505 T
+(cedilla) 307.52 505 T
+(-->) 350.66 505 T
+(<!ENTITY) 108 494 T
+(eacute) 156.53 494 T
+("&#233;") 194.28 494 T
+(--) 242.81 494 T
+(small) 258.99 494 T
+(e,) 291.34 494 T
+(acute) 307.52 494 T
+(accent) 339.88 494 T
+(-->) 377.62 494 T
+(<!ENTITY) 108 483 T
+(ecirc) 156.53 483 T
+("&#234;") 188.89 483 T
+(--) 237.42 483 T
+(small) 253.6 483 T
+(e,) 285.95 483 T
+(circumflex) 302.13 483 T
+(accent) 361.45 483 T
+(-->) 399.19 483 T
+(<!ENTITY) 108 472 T
+(egrave) 156.53 472 T
+("&#232;") 194.28 472 T
+(--) 242.81 472 T
+(small) 258.99 472 T
+(e,) 291.34 472 T
+(grave) 307.52 472 T
+(accent) 339.88 472 T
+(-->) 377.62 472 T
+(<!ENTITY) 108 461 T
+(eth) 156.53 461 T
+("&#240;") 178.1 461 T
+(--) 226.63 461 T
+(small) 242.81 461 T
+(eth,) 275.17 461 T
+(Icelandic) 302.13 461 T
+(-->) 356.05 461 T
+(<!ENTITY) 108 450 T
+(euml) 156.53 450 T
+("&#235;") 183.49 450 T
+(--) 232.03 450 T
+(small) 248.2 450 T
+(e,) 280.56 450 T
+(dieresis) 296.74 450 T
+(or) 345.27 450 T
+(umlaut) 361.45 450 T
+(mark) 399.19 450 T
+(-->) 426.15 450 T
+(<!ENTITY) 108 439 T
+(gt) 156.53 439 T
+("&#62;") 172.71 439 T
+(--) 215.85 439 T
+(greater) 232.03 439 T
+(than) 275.17 439 T
+(-->) 302.13 439 T
+(<!ENTITY) 108 428 T
+(iacute) 156.53 428 T
+("&#237;") 194.28 428 T
+(--) 242.81 428 T
+(small) 258.99 428 T
+(i,) 291.34 428 T
+(acute) 307.52 428 T
+(accent) 339.88 428 T
+(-->) 377.62 428 T
+(<!ENTITY) 108 417 T
+(icirc) 156.53 417 T
+("&#238;") 188.89 417 T
+(--) 237.42 417 T
+(small) 253.6 417 T
+(i,) 285.95 417 T
+(circumflex) 302.13 417 T
+(accent) 361.45 417 T
+(-->) 399.19 417 T
+(<!ENTITY) 108 406 T
+(igrave) 156.53 406 T
+("&#236;") 194.28 406 T
+(--) 242.81 406 T
+(small) 258.99 406 T
+(i,) 291.34 406 T
+(grave) 307.52 406 T
+(accent) 339.88 406 T
+(-->) 377.62 406 T
+(<!ENTITY) 108 395 T
+(iuml) 156.53 395 T
+("&#239;") 183.49 395 T
+(--) 232.03 395 T
+(small) 248.2 395 T
+(i,) 280.56 395 T
+(dieresis) 296.74 395 T
+(or) 345.27 395 T
+(umlaut) 361.45 395 T
+(mark) 399.19 395 T
+(-->) 426.15 395 T
+(<!ENTITY) 108 384 T
+(lt) 156.53 384 T
+("&#60;") 172.71 384 T
+(--) 215.85 384 T
+(less) 232.03 384 T
+(than) 258.99 384 T
+(-->) 285.95 384 T
+(<!ENTITY) 108 373 T
+(ntilde) 156.53 373 T
+("&#241;") 194.28 373 T
+(--) 242.81 373 T
+(small) 258.99 373 T
+(n,) 291.34 373 T
+(tilde) 307.52 373 T
+(-->) 339.88 373 T
+(<!ENTITY) 108 362 T
+(oacute) 156.53 362 T
+("&#243;") 194.28 362 T
+(--) 242.81 362 T
+(small) 258.99 362 T
+(o,) 291.34 362 T
+(acute) 307.52 362 T
+(accent) 339.88 362 T
+(-->) 377.62 362 T
+(<!ENTITY) 108 351 T
+(ocirc) 156.53 351 T
+("&#244;") 188.89 351 T
+(--) 237.42 351 T
+(small) 253.6 351 T
+(o,) 285.95 351 T
+(circumflex) 302.13 351 T
+(accent) 361.45 351 T
+(-->) 399.19 351 T
+(<!ENTITY) 108 340 T
+(ograve) 156.53 340 T
+("&#242;") 194.28 340 T
+(--) 242.81 340 T
+(small) 258.99 340 T
+(o,) 291.34 340 T
+(grave) 307.52 340 T
+(accent) 339.88 340 T
+(-->) 377.62 340 T
+(<!ENTITY) 108 329 T
+(oslash) 156.53 329 T
+("&#248;") 194.28 329 T
+(--) 242.81 329 T
+(small) 258.99 329 T
+(o,) 291.34 329 T
+(slash) 307.52 329 T
+(-->) 339.88 329 T
+(<!ENTITY) 108 318 T
+(otilde) 156.53 318 T
+("&#245;") 194.28 318 T
+(--) 242.81 318 T
+(small) 258.99 318 T
+(o,) 291.34 318 T
+(tilde) 307.52 318 T
+(-->) 339.88 318 T
+(<!ENTITY) 108 307 T
+(ouml) 156.53 307 T
+("&#246;") 183.49 307 T
+(--) 232.03 307 T
+(small) 248.2 307 T
+(o,) 280.56 307 T
+(dieresis) 296.74 307 T
+(or) 345.27 307 T
+(umlaut) 361.45 307 T
+(mark) 399.19 307 T
+(-->) 426.15 307 T
+(<!ENTITY) 108 296 T
+(szlig) 156.53 296 T
+("&#223;") 188.89 296 T
+(--) 237.42 296 T
+(small) 253.6 296 T
+(sharp) 285.95 296 T
+(s,) 318.31 296 T
+(German) 334.48 296 T
+(\050sz) 372.23 296 T
+(ligature\051) 393.8 296 T
+(-->) 447.73 296 T
+(<!ENTITY) 108 285 T
+(thorn) 156.53 285 T
+("&#254;") 188.89 285 T
+(--) 237.42 285 T
+(small) 253.6 285 T
+(thorn,) 285.95 285 T
+(Icelandic) 323.7 285 T
+(-->) 377.62 285 T
+(<!ENTITY) 108 274 T
+(uacute) 156.53 274 T
+("&#250;") 194.28 274 T
+(--) 242.81 274 T
+(small) 258.99 274 T
+(u,) 291.34 274 T
+(acute) 307.52 274 T
+(accent) 339.88 274 T
+(-->) 377.62 274 T
+(<!ENTITY) 108 263 T
+(ucirc) 156.53 263 T
+("&#251;") 188.89 263 T
+(--) 237.42 263 T
+(small) 253.6 263 T
+(u,) 285.95 263 T
+(circumflex) 302.13 263 T
+(accent) 361.45 263 T
+(-->) 399.19 263 T
+(<!ENTITY) 108 252 T
+(ugrave) 156.53 252 T
+("&#249;") 194.28 252 T
+(--) 242.81 252 T
+(small) 258.99 252 T
+(u,) 291.34 252 T
+(grave) 307.52 252 T
+(accent) 339.88 252 T
+(-->) 377.62 252 T
+(<!ENTITY) 108 241 T
+(uuml) 156.53 241 T
+("&#252;") 183.49 241 T
+(--) 232.03 241 T
+(small) 248.2 241 T
+(u,) 280.56 241 T
+(dieresis) 296.74 241 T
+(or) 345.27 241 T
+(umlaut) 361.45 241 T
+(mark) 399.19 241 T
+(-->) 426.15 241 T
+(<!ENTITY) 108 230 T
+(yacute) 156.53 230 T
+("&#253;") 194.28 230 T
+(--) 242.81 230 T
+(small) 258.99 230 T
+(y,) 291.34 230 T
+(acute) 307.52 230 T
+(accent) 339.88 230 T
+(-->) 377.62 230 T
+(<!ENTITY) 108 219 T
+(yuml) 156.53 219 T
+("&#255;") 183.49 219 T
+(--) 232.03 219 T
+(small) 248.2 219 T
+(y,) 280.56 219 T
+(dieresis) 296.74 219 T
+(or) 345.27 219 T
+(umlaut) 361.45 219 T
+(mark) 399.19 219 T
+(-->) 426.15 219 T
+(<!--) 108 197 T
+(deprecated) 134.96 197 T
+(elements) 194.28 197 T
+(-->) 242.81 197 T
+(<!ELEMENT) 108 175 T
+(\050%literal\051) 161.93 175 T
+(-) 221.24 175 T
+(-) 232.03 175 T
+(CDATA>) 248.2 175 T
+(<!ELEMENT) 108 153 T
+(PLAINTEXT) 161.93 153 T
+(-) 215.85 153 T
+(O) 226.63 153 T
+(EMPTY>) 237.42 153 T
+(<!--) 108 131 T
+(Local) 134.96 131 T
+(Variables:) 167.32 131 T
+(-->) 226.63 131 T
+(<!--) 108 120 T
+(mode:) 134.96 120 T
+(sgml) 167.32 120 T
+(-->) 194.28 120 T
+(<!--) 108 109 T
+(compile-command:) 134.96 109 T
+("sgmls) 226.63 109 T
+(-s) 264.38 109 T
+(-p) 280.56 109 T
+(") 296.74 109 T
+(-->) 307.52 109 T
+(<!--) 108 98 T
+(end:) 134.96 98 T
+(-->) 161.93 98 T
+(]>) 108 87 T
+FMENDPAGE
+%%EndPage: "14" 13
+%%Page: "13" 13
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 9:00 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 13) 495.31 35.67 T
+1 9 Q
+(>) 151.14 714 T
+(<!ELEMENT) 108 692 T
+(P) 161.93 692 T
+(-) 194.28 692 T
+(O) 205.06 692 T
+(EMPTY) 215.85 692 T
+(--) 248.2 692 T
+(separates) 264.38 692 T
+(paragraphs) 318.31 692 T
+(-->) 377.62 692 T
+(<!ELEMENT) 108 670 T
+(\050%heading\051) 161.93 670 T
+(-) 237.42 670 T
+(-) 248.2 670 T
+(\050%hypertext;\051+>) 264.38 670 T
+(<!ELEMENT) 108 648 T
+(DL) 161.93 648 T
+(-) 194.28 648 T
+(-) 205.06 648 T
+(\050DT) 221.24 648 T
+(|) 242.81 648 T
+(DD) 253.6 648 T
+(|) 269.77 648 T
+(P) 280.56 648 T
+(|) 291.34 648 T
+(%hypertext;\051*>) 302.13 648 T
+(<!--) 108 637 T
+(Content) 151.14 637 T
+(should) 194.28 637 T
+(match) 232.03 637 T
+(\050\050DT,\050%hypertext;\051+\051+,\050DD,\050%hypertext;\051+\051\051) 264.38 637 T
+(But) 151.14 626 T
+(mixed) 172.71 626 T
+(content) 205.06 626 T
+(is) 248.2 626 T
+(messy.) 264.38 626 T
+(-->) 118.79 615 T
+(<!ATTLIST) 108 604 T
+(DL) 161.93 604 T
+(STYLE) 151.14 593 T
+(NAME) 183.49 593 T
+(#IMPLIED) 210.46 593 T
+(--) 258.99 593 T
+(COMPACT,) 275.17 593 T
+(etc.--) 323.7 593 T
+(>) 151.14 582 T
+(<!ELEMENT) 108 560 T
+(DT) 161.93 560 T
+(-) 194.28 560 T
+(O) 205.06 560 T
+(EMPTY>) 215.85 560 T
+(<!ELEMENT) 108 549 T
+(DD) 161.93 549 T
+(-) 194.28 549 T
+(O) 205.06 549 T
+(EMPTY>) 215.85 549 T
+(<!ELEMENT) 108 527 T
+(\050UL|OL\051) 161.93 527 T
+(-) 205.06 527 T
+(-) 215.85 527 T
+(\050%hypertext;|LI|P\051+>) 232.03 527 T
+(<!ELEMENT) 108 516 T
+(\050DIR|MENU\051) 161.93 516 T
+(-) 221.24 516 T
+(-) 232.03 516 T
+(\050%hypertext;|LI\051+>) 248.2 516 T
+(<!--) 108 505 T
+(Content) 151.14 505 T
+(should) 194.28 505 T
+(match) 232.03 505 T
+(\050\050LI,\050%hypertext;\051+\051+\051) 264.38 505 T
+(But) 151.14 494 T
+(mixed) 172.71 494 T
+(content) 205.06 494 T
+(is) 248.2 494 T
+(messy.) 264.38 494 T
+(-->) 118.79 483 T
+(<!ELEMENT) 108 461 T
+(LI) 161.93 461 T
+(-) 194.28 461 T
+(O) 205.06 461 T
+(EMPTY>) 215.85 461 T
+(<!ELEMENT) 108 439 T
+(BLOCKQUOTE) 161.93 439 T
+(-) 221.24 439 T
+(-) 232.03 439 T
+(\050%hypertext;|P\051+) 242.81 439 T
+(--) 151.14 428 T
+(for) 167.32 428 T
+(quoting) 188.89 428 T
+(some) 232.03 428 T
+(other) 258.99 428 T
+(source) 291.34 428 T
+(-->) 329.09 428 T
+(<!ATTLIST) 108 417 T
+(BLOCKQUOTE) 161.93 417 T
+(SOURCE) 151.14 406 T
+(CDATA) 188.89 406 T
+(#IMPLIED) 221.24 406 T
+(--) 269.77 406 T
+(URL) 285.95 406 T
+(of) 307.52 406 T
+(source) 323.7 406 T
+(--) 361.45 406 T
+(>) 151.14 395 T
+(<!ELEMENT) 108 373 T
+(ADDRESS) 161.93 373 T
+(-) 205.06 373 T
+(-) 215.85 373 T
+(\050%hypertext;|P\051+>) 226.63 373 T
+(<!ELEMENT) 108 351 T
+(PRE) 161.93 351 T
+(-) 183.49 351 T
+(-) 194.28 351 T
+(\050#PCDATA) 205.06 351 T
+(|) 253.6 351 T
+(A) 264.38 351 T
+(|) 275.17 351 T
+(B) 285.95 351 T
+(|) 296.74 351 T
+(I) 307.52 351 T
+(|) 318.31 351 T
+(U) 329.09 351 T
+(|) 339.88 351 T
+(P\051+>) 350.66 351 T
+(<!ATTLIST) 108 340 T
+(PRE) 161.93 340 T
+(WIDTH) 151.14 329 T
+(NUMBER) 183.49 329 T
+(#implied) 221.24 329 T
+(>) 151.14 318 T
+(<!--) 108 285 T
+(Mnemonic) 134.96 285 T
+(character) 183.49 285 T
+(entities.) 237.42 285 T
+(-->) 291.34 285 T
+(<!ENTITY) 108 274 T
+(AElig) 156.53 274 T
+("&#198;") 188.89 274 T
+(--) 237.42 274 T
+(capital) 253.6 274 T
+(AE) 296.74 274 T
+(diphthong) 312.91 274 T
+(\050ligature\051) 366.84 274 T
+(-->) 426.15 274 T
+(<!ENTITY) 108 263 T
+(Aacute) 156.53 263 T
+("&#193;") 194.28 263 T
+(--) 242.81 263 T
+(capital) 258.99 263 T
+(A,) 302.13 263 T
+(acute) 318.31 263 T
+(accent) 350.66 263 T
+(-->) 388.41 263 T
+(<!ENTITY) 108 252 T
+(Acirc) 156.53 252 T
+("&#194;") 188.89 252 T
+(--) 237.42 252 T
+(capital) 253.6 252 T
+(A,) 296.74 252 T
+(circumflex) 312.91 252 T
+(accent) 372.23 252 T
+(-->) 409.98 252 T
+(<!ENTITY) 108 241 T
+(Agrave) 156.53 241 T
+("&#192;") 194.28 241 T
+(--) 242.81 241 T
+(capital) 258.99 241 T
+(A,) 302.13 241 T
+(grave) 318.31 241 T
+(accent) 350.66 241 T
+(-->) 388.41 241 T
+(<!ENTITY) 108 230 T
+(Aring) 156.53 230 T
+("&#197;") 188.89 230 T
+(--) 237.42 230 T
+(capital) 253.6 230 T
+(A,) 296.74 230 T
+(ring) 312.91 230 T
+(-->) 339.88 230 T
+(<!ENTITY) 108 219 T
+(Atilde) 156.53 219 T
+("&#195;") 194.28 219 T
+(--) 242.81 219 T
+(capital) 258.99 219 T
+(A,) 302.13 219 T
+(tilde) 318.31 219 T
+(-->) 350.66 219 T
+(<!ENTITY) 108 208 T
+(Auml) 156.53 208 T
+("&#196;") 183.49 208 T
+(--) 232.03 208 T
+(capital) 248.2 208 T
+(A,) 291.34 208 T
+(dieresis) 307.52 208 T
+(or) 356.05 208 T
+(umlaut) 372.23 208 T
+(mark) 409.98 208 T
+(-->) 436.94 208 T
+(<!ENTITY) 108 197 T
+(Ccedil) 156.53 197 T
+("&#199;") 194.28 197 T
+(--) 242.81 197 T
+(capital) 258.99 197 T
+(C,) 302.13 197 T
+(cedilla) 318.31 197 T
+(-->) 361.45 197 T
+(<!ENTITY) 108 186 T
+(ETH) 156.53 186 T
+("&#208;") 178.1 186 T
+(--) 226.63 186 T
+(capital) 242.81 186 T
+(Eth,) 285.95 186 T
+(Icelandic) 312.91 186 T
+(-->) 366.84 186 T
+(<!ENTITY) 108 175 T
+(Eacute) 156.53 175 T
+("&#201;") 194.28 175 T
+(--) 242.81 175 T
+(capital) 258.99 175 T
+(E,) 302.13 175 T
+(acute) 318.31 175 T
+(accent) 350.66 175 T
+(-->) 388.41 175 T
+(<!ENTITY) 108 164 T
+(Ecirc) 156.53 164 T
+("&#202;") 188.89 164 T
+(--) 237.42 164 T
+(capital) 253.6 164 T
+(E,) 296.74 164 T
+(circumflex) 312.91 164 T
+(accent) 372.23 164 T
+(-->) 409.98 164 T
+(<!ENTITY) 108 153 T
+(Egrave) 156.53 153 T
+("&#200;") 194.28 153 T
+(--) 242.81 153 T
+(capital) 258.99 153 T
+(E,) 302.13 153 T
+(grave) 318.31 153 T
+(accent) 350.66 153 T
+(-->) 388.41 153 T
+(<!ENTITY) 108 142 T
+(Euml) 156.53 142 T
+("&#203;") 183.49 142 T
+(--) 232.03 142 T
+(capital) 248.2 142 T
+(E,) 291.34 142 T
+(dieresis) 307.52 142 T
+(or) 356.05 142 T
+(umlaut) 372.23 142 T
+(mark) 409.98 142 T
+(-->) 436.94 142 T
+(<!ENTITY) 108 131 T
+(Iacute) 156.53 131 T
+("&#205;") 194.28 131 T
+(--) 242.81 131 T
+(capital) 258.99 131 T
+(I,) 302.13 131 T
+(acute) 318.31 131 T
+(accent) 350.66 131 T
+(-->) 388.41 131 T
+(<!ENTITY) 108 120 T
+(Icirc) 156.53 120 T
+("&#206;") 188.89 120 T
+(--) 237.42 120 T
+(capital) 253.6 120 T
+(I,) 296.74 120 T
+(circumflex) 312.91 120 T
+(accent) 372.23 120 T
+(-->) 409.98 120 T
+(<!ENTITY) 108 109 T
+(Igrave) 156.53 109 T
+("&#204;") 194.28 109 T
+(--) 242.81 109 T
+(capital) 258.99 109 T
+(I,) 302.13 109 T
+(grave) 318.31 109 T
+(accent) 350.66 109 T
+(-->) 388.41 109 T
+(<!ENTITY) 108 98 T
+(Iuml) 156.53 98 T
+("&#207;") 183.49 98 T
+(--) 232.03 98 T
+(capital) 248.2 98 T
+(I,) 291.34 98 T
+(dieresis) 307.52 98 T
+(or) 356.05 98 T
+(umlaut) 372.23 98 T
+(mark) 409.98 98 T
+(-->) 436.94 98 T
+(<!ENTITY) 108 87 T
+(Ntilde) 156.53 87 T
+("&#209;") 194.28 87 T
+(--) 242.81 87 T
+(capital) 258.99 87 T
+(N,) 302.13 87 T
+(tilde) 318.31 87 T
+(-->) 350.66 87 T
+(<!ENTITY) 108 76 T
+(Oacute) 156.53 76 T
+("&#211;") 194.28 76 T
+(--) 242.81 76 T
+(capital) 258.99 76 T
+(O,) 302.13 76 T
+(acute) 318.31 76 T
+(accent) 350.66 76 T
+(-->) 388.41 76 T
+FMENDPAGE
+%%EndPage: "13" 12
+%%Page: "12" 12
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 9:00 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 12) 495.31 35.67 T
+1 9 Q
+(<!ENTITY) 108 714 T
+(%) 156.53 714 T
+(oldstyle) 167.32 714 T
+("%headelement) 215.85 714 T
+(|) 291.34 714 T
+(%bodyelement) 302.13 714 T
+(|) 372.23 714 T
+(#PCDATA">) 383.02 714 T
+(<!ENTITY) 108 703 T
+(%) 156.53 703 T
+(URL) 167.32 703 T
+("CDATA") 188.89 703 T
+(--) 151.14 692 T
+(The) 167.32 692 T
+(term) 188.89 692 T
+(URL) 215.85 692 T
+(means) 237.42 692 T
+(a) 269.77 692 T
+(CDATA) 280.56 692 T
+(attribute) 312.91 692 T
+(whose) 167.32 681 T
+(value) 199.67 681 T
+(is) 232.03 681 T
+(a) 248.2 681 T
+(Universal) 258.99 681 T
+(Resource) 312.91 681 T
+(Locator,) 361.45 681 T
+(as) 167.32 670 T
+(defined) 183.49 670 T
+(in) 226.63 670 T
+(ftp://info.cern.ch/pub/www/doc/url3.txt) 242.81 670 T
+(-->) 151.14 659 T
+(<!ENTITY) 108 637 T
+(%) 156.53 637 T
+(linkattributes) 167.32 637 T
+("NAME) 151.14 626 T
+(NMTOKEN) 183.49 626 T
+(#IMPLIED) 226.63 626 T
+(HREF) 151.14 615 T
+(%URL;) 178.1 615 T
+(#IMPLIED) 210.46 615 T
+(TYPE) 151.14 604 T
+(NAME) 178.1 604 T
+(#IMPLIED) 205.06 604 T
+(--) 253.6 604 T
+(type) 269.77 604 T
+(of) 296.74 604 T
+(relashionship) 312.91 604 T
+(to) 388.41 604 T
+(referent) 404.58 604 T
+(data:) 453.12 604 T
+(PARENT) 280.56 593 T
+(CHILD,) 318.31 593 T
+(SIBLING,) 356.05 593 T
+(NEXT,) 404.58 593 T
+(TOP,) 436.94 593 T
+(DEFINITION,) 285.95 582 T
+(UPDATE,) 350.66 582 T
+(ORIGINAL) 393.8 582 T
+(etc.) 442.33 582 T
+(--) 469.3 582 T
+(URN) 151.14 571 T
+(CDATA) 172.71 571 T
+(#IMPLIED) 205.06 571 T
+(--) 253.6 571 T
+(universal) 269.77 571 T
+(resource) 323.7 571 T
+(number.) 372.23 571 T
+(unique) 415.37 571 T
+(doc) 453.12 571 T
+(id) 474.69 571 T
+(--) 490.86 571 T
+(TITLE) 151.14 560 T
+(CDATA) 183.49 560 T
+(#IMPLIED) 215.85 560 T
+(--) 264.38 560 T
+(advisory) 280.56 560 T
+(only) 329.09 560 T
+(--) 356.05 560 T
+(METHODS) 151.14 549 T
+(NAMES) 194.28 549 T
+(#IMPLIED) 226.63 549 T
+(--) 275.17 549 T
+(supported) 291.34 549 T
+(methods) 345.27 549 T
+(of) 388.41 549 T
+(the) 404.58 549 T
+(object:) 426.15 549 T
+(TEXTSEARCH,) 323.7 538 T
+(GET,) 388.41 538 T
+(HEAD,) 415.37 538 T
+(...) 447.73 538 T
+(--) 469.3 538 T
+(">) 151.14 527 T
+(<!--) 108 505 T
+(Document) 134.96 505 T
+(Element) 183.49 505 T
+(-->) 226.63 505 T
+(<!ELEMENT) 108 483 T
+(HTML) 161.93 483 T
+(O) 188.89 483 T
+(O) 199.67 483 T
+(\050\050HEAD) 215.85 483 T
+(|) 253.6 483 T
+(BODY) 264.38 483 T
+(|) 291.34 483 T
+(%oldstyle\051*,) 302.13 483 T
+(PLAINTEXT?\051>) 372.23 483 T
+(<!ELEMENT) 108 461 T
+(HEAD) 161.93 461 T
+(-) 188.89 461 T
+(-) 199.67 461 T
+(\050TITLE?) 215.85 461 T
+(&) 258.99 461 T
+(ISINDEX?) 269.77 461 T
+(&) 318.31 461 T
+(NEXTID?) 329.09 461 T
+(&) 372.23 461 T
+(LINK*\051>) 383.02 461 T
+(<!ELEMENT) 108 439 T
+(TITLE) 161.93 439 T
+(-) 194.28 439 T
+(-) 205.06 439 T
+(RCDATA) 221.24 439 T
+(--) 161.93 428 T
+(The) 178.1 428 T
+(TITLE) 199.67 428 T
+(element) 232.03 428 T
+(is) 275.17 428 T
+(not) 291.34 428 T
+(considered) 312.91 428 T
+(part) 372.23 428 T
+(of) 399.19 428 T
+(the) 415.37 428 T
+(flow) 436.94 428 T
+(of) 463.9 428 T
+(text.) 480.08 428 T
+(It) 178.1 417 T
+(should) 194.28 417 T
+(be) 232.03 417 T
+(displayed,) 248.2 417 T
+(for) 307.52 417 T
+(example) 329.09 417 T
+(as) 372.23 417 T
+(the) 388.41 417 T
+(page) 409.98 417 T
+(header) 436.94 417 T
+(or) 474.69 417 T
+(window) 178.1 406 T
+(title.) 215.85 406 T
+(-->) 161.93 395 T
+(<!ELEMENT) 108 373 T
+(ISINDEX) 161.93 373 T
+(-) 205.06 373 T
+(O) 215.85 373 T
+(EMPTY) 226.63 373 T
+(--) 161.93 362 T
+(WWW) 178.1 362 T
+(clients) 199.67 362 T
+(should) 242.81 362 T
+(offer) 280.56 362 T
+(the) 312.91 362 T
+(option) 334.48 362 T
+(to) 372.23 362 T
+(perform) 388.41 362 T
+(a) 431.55 362 T
+(search) 442.33 362 T
+(on) 480.08 362 T
+(documents) 178.1 351 T
+(containing) 232.03 351 T
+(ISINDEX.) 291.34 351 T
+(-->) 161.93 340 T
+(<!ELEMENT) 108 318 T
+(NEXTID) 161.93 318 T
+(-) 199.67 318 T
+(O) 210.46 318 T
+(EMPTY>) 221.24 318 T
+(<!ATTLIST) 108 307 T
+(NEXTID) 161.93 307 T
+(N) 199.67 307 T
+(NUMBER) 210.46 307 T
+(#REQUIRED) 248.2 307 T
+(--) 161.93 296 T
+(The) 178.1 296 T
+(number) 199.67 296 T
+(should) 237.42 296 T
+(be) 275.17 296 T
+(the) 291.34 296 T
+(highest) 312.91 296 T
+(number) 356.05 296 T
+(that) 393.8 296 T
+(appears) 420.76 296 T
+(in) 463.9 296 T
+(any) 178.1 285 T
+(NAME) 199.67 285 T
+(attribute) 226.63 285 T
+(in) 280.56 285 T
+(the) 296.74 285 T
+(document.) 318.31 285 T
+(-->) 161.93 274 T
+(<!ELEMENT) 108 252 T
+(LINK) 161.93 252 T
+(-) 188.89 252 T
+(O) 199.67 252 T
+(EMPTY>) 210.46 252 T
+(<!ATTLIST) 108 241 T
+(LINK) 161.93 241 T
+(%linkattributes>) 151.14 230 T
+(<!ENTITY) 108 208 T
+(%) 156.53 208 T
+(inline) 167.32 208 T
+("EM) 205.06 208 T
+(|) 226.63 208 T
+(TT) 237.42 208 T
+(|) 253.6 208 T
+(STRONG) 264.38 208 T
+(|) 302.13 208 T
+(B) 312.91 208 T
+(|) 323.7 208 T
+(I) 334.48 208 T
+(|) 345.27 208 T
+(U) 356.05 208 T
+(|) 366.84 208 T
+(CODE) 237.42 197 T
+(|) 264.38 197 T
+(SAMP) 275.17 197 T
+(|) 302.13 197 T
+(KBD) 312.91 197 T
+(|) 334.48 197 T
+(KEY) 345.27 197 T
+(|) 366.84 197 T
+(VAR) 377.62 197 T
+(|) 399.19 197 T
+(DFN) 409.98 197 T
+(|) 431.55 197 T
+(CITE) 442.33 197 T
+(") 469.3 197 T
+(>) 151.14 186 T
+(<!ELEMENT) 108 164 T
+(\050%inline;\051) 161.93 164 T
+(-) 221.24 164 T
+(-) 232.03 164 T
+(\050#PCDATA\051>) 242.81 164 T
+(<!ENTITY) 108 142 T
+(%) 156.53 142 T
+(hypertext) 167.32 142 T
+("#PCDATA) 221.24 142 T
+(|) 269.77 142 T
+(%inline;) 280.56 142 T
+(|) 329.09 142 T
+(A">) 339.88 142 T
+(<!ELEMENT) 108 120 T
+(BODY) 161.93 120 T
+(-) 188.89 120 T
+(-) 199.67 120 T
+(\050%bodyelement|%hypertext;\051*>) 215.85 120 T
+(<!ELEMENT) 108 98 T
+(A) 161.93 98 T
+(-) 194.28 98 T
+(-) 205.06 98 T
+(\050#PCDATA\051>) 221.24 98 T
+(<!ATTLIST) 108 87 T
+(A) 161.93 87 T
+(%linkattributes;) 151.14 76 T
+FMENDPAGE
+%%EndPage: "12" 11
+%%Page: "11" 11
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 9:00 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 1) 495.83 35.67 T
+(1) 533 35.67 T
+1 9 Q
+(UCNMCHAR) 205.06 714 T
+(".-") 253.6 714 T
+(NAMECASE) 205.06 703 T
+(GENERAL) 253.6 703 T
+(YES) 296.74 703 T
+(ENTITY) 253.6 692 T
+(NO) 296.74 692 T
+(DELIM) 156.53 681 T
+(GENERAL) 205.06 681 T
+(SGMLREF) 253.6 681 T
+(SHORTREF) 205.06 670 T
+(SGMLREF) 253.6 670 T
+(NAMES) 156.53 659 T
+(SGMLREF) 205.06 659 T
+(QUANTITY) 156.53 648 T
+(SGMLREF) 205.06 648 T
+(NAMELEN) 205.06 637 T
+(34) 253.6 637 T
+(TAGLVL) 205.06 626 T
+(100) 253.6 626 T
+(LITLEN) 205.06 615 T
+(1024) 253.6 615 T
+(GRPGTCNT) 205.06 604 T
+(150) 253.6 604 T
+(GRPCNT) 205.06 593 T
+(64) 253.6 593 T
+(FEATURES) 108 571 T
+(MINIMIZE) 118.79 560 T
+(DATATAG) 129.57 549 T
+(NO) 178.1 549 T
+(OMITTAG) 129.57 538 T
+(NO) 178.1 538 T
+(RANK) 129.57 527 T
+(NO) 178.1 527 T
+(SHORTTAG) 129.57 516 T
+(NO) 178.1 516 T
+(LINK) 118.79 505 T
+(SIMPLE) 129.57 494 T
+(NO) 178.1 494 T
+(IMPLICIT) 129.57 483 T
+(NO) 178.1 483 T
+(EXPLICIT) 129.57 472 T
+(NO) 178.1 472 T
+(OTHER) 118.79 461 T
+(CONCUR) 129.57 450 T
+(NO) 178.1 450 T
+(SUBDOC) 129.57 439 T
+(NO) 178.1 439 T
+(FORMAL) 129.57 428 T
+(YES) 178.1 428 T
+(APPINFO) 118.79 417 T
+(NONE) 178.1 417 T
+(>) 108 406 T
+(<!DOCTYPE) 108 384 T
+(HTML) 161.93 384 T
+([) 188.89 384 T
+(<!--) 108 373 T
+($Id:) 113.39 362 T
+(html.dtd,v) 140.35 362 T
+(1.4) 199.67 362 T
+(93/01/20) 221.24 362 T
+(20:56:08) 269.77 362 T
+(connolly) 318.31 362 T
+(Exp) 366.84 362 T
+($) 388.41 362 T
+(-->) 108 351 T
+(<!--) 108 329 T
+(Regarding) 151.14 329 T
+(clause) 205.06 329 T
+(6.1,) 242.81 329 T
+(SGML) 269.77 329 T
+(Document:) 296.74 329 T
+([1]) 151.14 307 T
+(SGML) 172.71 307 T
+(document) 199.67 307 T
+(=) 248.2 307 T
+(SGML) 258.99 307 T
+(document) 285.95 307 T
+(entity,) 334.48 307 T
+(\050SGML) 172.71 296 T
+(subdocument) 205.06 296 T
+(entity) 269.77 296 T
+(|) 307.52 296 T
+(SGML) 172.71 285 T
+(text) 199.67 285 T
+(entity) 226.63 285 T
+(|) 264.38 285 T
+(non-SGML) 275.17 285 T
+(data) 323.7 285 T
+(entity\051*) 350.66 285 T
+(The) 151.14 263 T
+(role) 172.71 263 T
+(of) 199.67 263 T
+(SGML) 215.85 263 T
+(document) 242.81 263 T
+(entity) 291.34 263 T
+(is) 329.09 263 T
+(filled) 345.27 263 T
+(by) 383.02 263 T
+(this) 399.19 263 T
+(DTD,) 426.15 263 T
+(followed) 151.14 252 T
+(by) 199.67 252 T
+(the) 215.85 252 T
+(conventional) 237.42 252 T
+(HTML) 307.52 252 T
+(data) 334.48 252 T
+(stream.) 361.45 252 T
+(-->) 108 241 T
+(<!--) 108 219 T
+(DTD) 134.96 219 T
+(definitions) 156.53 219 T
+(-->) 221.24 219 T
+(<!ENTITY) 108 197 T
+(%) 156.53 197 T
+(heading) 167.32 197 T
+("H1|H2|H3|H4|H5|H6") 210.46 197 T
+(>) 318.31 197 T
+(<!ENTITY) 108 186 T
+(%) 156.53 186 T
+(list) 167.32 186 T
+("UL|OL|DIR|MENU">) 194.28 186 T
+(<!ENTITY) 108 175 T
+(%) 156.53 175 T
+(literal) 167.32 175 T
+("XMP|LISTING">) 210.46 175 T
+(<!ENTITY) 108 153 T
+(%) 156.53 153 T
+(headelement) 167.32 153 T
+("TITLE) 156.53 142 T
+(|) 194.28 142 T
+(NEXTID) 205.06 142 T
+(|) 242.81 142 T
+(ISINDEX") 253.6 142 T
+(>) 302.13 142 T
+(<!ENTITY) 108 120 T
+(%) 156.53 120 T
+(bodyelement) 167.32 120 T
+("P) 156.53 109 T
+(|) 172.71 109 T
+(%heading) 183.49 109 T
+(|) 232.03 109 T
+(%list) 156.53 98 T
+(|) 188.89 98 T
+(DL) 199.67 98 T
+(|) 215.85 98 T
+(HEADERS) 226.63 98 T
+(|) 269.77 98 T
+(ADDRESS) 280.56 98 T
+(|) 323.7 98 T
+(PRE) 334.48 98 T
+(|) 356.05 98 T
+(BLOCKQUOTE) 366.84 98 T
+(|) 151.14 87 T
+(%literal">) 161.93 87 T
+FMENDPAGE
+%%EndPage: "11" 10
+%%Page: "10" 10
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 9:00 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 10) 495.31 35.67 T
+1 9 Q
+(<!SGML) 108 700 T
+("ISO) 151.14 700 T
+(8879:1986") 178.1 700 T
+(--) 108 689 T
+2 24 Q
+(HTML DTD) 256.69 656 T
+1 9 Q
+(Document) 151.14 628 T
+(Type) 199.67 628 T
+(Definition) 226.63 628 T
+(for) 285.95 628 T
+(the) 307.52 628 T
+(HyperText) 329.09 628 T
+(Markup) 383.02 628 T
+(Language) 420.76 628 T
+(as) 151.14 617 T
+(used) 167.32 617 T
+(by) 194.28 617 T
+(the) 210.46 617 T
+(World) 232.03 617 T
+(Wide) 264.38 617 T
+(Web) 291.34 617 T
+(application) 312.91 617 T
+(\050HTML) 377.62 617 T
+(DTD\051.) 409.98 617 T
+(NOTE:) 151.14 595 T
+(This) 183.49 595 T
+(is) 210.46 595 T
+(a) 226.63 595 T
+(definition) 237.42 595 T
+(of) 296.74 595 T
+(HTML) 312.91 595 T
+(with) 339.88 595 T
+(respect) 366.84 595 T
+(to) 409.98 595 T
+(SGML,) 151.14 584 T
+(and) 183.49 584 T
+(assumes) 205.06 584 T
+(an) 248.2 584 T
+(understaning) 264.38 584 T
+(of) 334.48 584 T
+(SGML) 350.66 584 T
+(terms.) 377.62 584 T
+(For) 151.14 562 T
+(a) 172.71 562 T
+(description) 183.49 562 T
+(of) 248.2 562 T
+(HTML) 264.38 562 T
+(in) 291.34 562 T
+(layman's) 307.52 562 T
+(terms,) 356.05 562 T
+(see) 393.8 562 T
+("HTML:) 151.14 540 T
+(A) 188.89 540 T
+(Representation) 199.67 540 T
+(for) 280.56 540 T
+(Nodes) 302.13 540 T
+(in) 334.48 540 T
+(the) 350.66 540 T
+(World) 372.23 540 T
+(Wide) 404.58 540 T
+(Web") 431.55 540 T
+(by) 194.28 529 T
+(Dan) 210.46 529 T
+(Connolly.) 232.03 529 T
+(aka) 151.14 507 T
+(http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html) 151.14 485 T
+(by) 194.28 474 T
+(<connolly@convex.com>) 210.46 474 T
+(--) 108 463 T
+(CHARSET) 108 441 T
+(BASESET) 156.53 430 T
+("ISO) 205.06 430 T
+(646:1983//CHARSET) 232.03 430 T
+(International) 210.46 419 T
+(Reference) 285.95 419 T
+(Version) 339.88 419 T
+(\050IRV\051//ESC) 383.02 419 T
+(2/5) 442.33 419 T
+(4/0") 463.9 419 T
+(DESCSET) 156.53 408 T
+(0) 205.06 408 T
+(9) 226.63 408 T
+(UNUSED) 248.2 408 T
+(9) 205.06 397 T
+(2) 226.63 397 T
+(9) 248.2 397 T
+(11) 205.06 386 T
+(2) 226.63 386 T
+(UNUSED) 248.2 386 T
+(13) 205.06 375 T
+(1) 226.63 375 T
+(13) 248.2 375 T
+(14) 205.06 364 T
+(18) 226.63 364 T
+(UNUSED) 248.2 364 T
+(32) 205.06 353 T
+(95) 226.63 353 T
+(32) 248.2 353 T
+(127) 205.06 342 T
+(1) 226.63 342 T
+(UNUSED) 248.2 342 T
+(BASESET) 134.96 331 T
+("ISO) 188.89 331 T
+(Registration) 215.85 331 T
+(Number) 285.95 331 T
+(100//CHARSET) 323.7 331 T
+(ECMA-94) 194.28 320 T
+(Right) 237.42 320 T
+(Part) 269.77 320 T
+(of) 296.74 320 T
+(Latin) 312.91 320 T
+(Alphabet) 345.27 320 T
+(Nr.) 393.8 320 T
+(1//ESC) 415.37 320 T
+(2/13) 453.12 320 T
+(4/1") 480.08 320 T
+(DESCSET) 134.96 309 T
+(128) 188.89 309 T
+(32) 210.46 309 T
+(UNUSED) 226.63 309 T
+(160) 188.89 298 T
+(95) 210.46 298 T
+(32) 226.63 298 T
+(255) 188.89 287 T
+(1) 215.85 287 T
+(UNUSED) 226.63 287 T
+(CAPACITY) 108 265 T
+(SGMLREF) 194.28 265 T
+(TOTALCAP) 194.28 254 T
+(150000) 280.56 254 T
+(GRPCAP) 194.28 243 T
+(150000) 280.56 243 T
+(SCOPE) 108 221 T
+(DOCUMENT) 156.53 221 T
+(SYNTAX) 108 210 T
+(SHUNCHAR) 156.53 199 T
+(CONTROLS) 205.06 199 T
+(0) 253.6 199 T
+(1) 264.38 199 T
+(2) 275.17 199 T
+(3) 285.95 199 T
+(4) 296.74 199 T
+(5) 307.52 199 T
+(6) 318.31 199 T
+(7) 329.09 199 T
+(8) 339.88 199 T
+(9) 350.66 199 T
+(10) 361.45 199 T
+(11) 377.62 199 T
+(12) 393.8 199 T
+(13) 409.98 199 T
+(14) 426.15 199 T
+(15) 442.33 199 T
+(16) 458.51 199 T
+(17) 474.69 199 T
+(18) 490.86 199 T
+(19) 253.6 188 T
+(20) 269.77 188 T
+(21) 285.95 188 T
+(22) 302.13 188 T
+(23) 318.31 188 T
+(24) 334.48 188 T
+(25) 350.66 188 T
+(26) 366.84 188 T
+(27) 383.02 188 T
+(28) 399.19 188 T
+(29) 415.37 188 T
+(30) 431.55 188 T
+(31) 447.73 188 T
+(127) 463.9 188 T
+(255) 485.47 188 T
+(BASESET) 156.53 177 T
+("ISO) 205.06 177 T
+(646:1983//CHARSET) 232.03 177 T
+(International) 210.46 166 T
+(Reference) 285.95 166 T
+(Version) 339.88 166 T
+(\050IRV\051//ESC) 383.02 166 T
+(2/5) 442.33 166 T
+(4/0") 463.9 166 T
+(DESCSET) 156.53 155 T
+(0) 205.06 155 T
+(128) 215.85 155 T
+(0) 237.42 155 T
+(FUNCTION) 156.53 144 T
+(RE) 205.06 144 T
+(13) 269.77 144 T
+(RS) 205.06 133 T
+(10) 269.77 133 T
+(SPACE) 205.06 122 T
+(32) 269.77 122 T
+(TAB) 205.06 111 T
+(SEPCHAR) 226.63 111 T
+(9) 275.17 111 T
+(NAMING) 156.53 100 T
+(LCNMSTRT) 205.06 100 T
+("") 253.6 100 T
+(UCNMSTRT) 205.06 89 T
+("") 253.6 89 T
+(LCNMCHAR) 205.06 78 T
+(".-") 253.6 78 T
+FMENDPAGE
+%%EndPage: "10" 9
+%%Page: "9" 9
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 8:50 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 9) 502.3 35.67 T
+2 24 Q
+(References) 263.83 704 T
+2 12 Q
+(ISO 8879:1986, Information Processing\321Text and) 252 674 T
+(Office Systems\321Standard Generalized Markup) 252 660 T
+(Language \050SGML\051) 252 646 T
+(sgmls) 126 629 T
+(an SGML parser by James Clark <jjc@jclark.com>) 252 629 T
+-0.68 (derived from) 252 615 P
+4 K
+-0.68 (the ARCSGML parser materials) 324.6 615 P
+0 K
+-0.68 ( which) 501.59 615 P
+(were written by Charles F. Goldfarb. The source is) 252 601 T
+-1.1 (available on) 252 587 P
+4 K
+-1.1 (the ifi.uio.no FTP server in the directory) 320.24 587 P
+(/pub/SGML/SGMLS) 252 573 T
+0 K
+(.) 362.86 573 T
+(WWW) 126 556 T
+(URL) 126 539 T
+FMENDPAGE
+%%EndPage: "9" 8
+%%Page: "8" 8
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 8:57 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 8) 502.3 35.67 T
+FMENDPAGE
+%%EndPage: "8" 7
+%%Page: "7" 7
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 8:57 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 7) 502.3 35.67 T
+1 12 Q
+(<?) 126 712 T
+2 F
+(Processing instruction. Terminated by) 252 712 T
+1 F
+(>) 467.45 712 T
+2 F
+(.) 474.65 712 T
+1 F
+(<![L) 126 695 T
+2 F
+(Marked section. Marked sections are deprecated.) 252 695 T
+(See the SGML standard for complete information.) 252 681 T
+1 F
+(<!L) 126 664 T
+2 F
+(Markup declaration. HTML defines no short) 252 664 T
+(reference maps, so these are errors. Terminated by) 252 650 T
+1 F
+(>) 252 636 T
+2 F
+(.) 259.2 636 T
+2 18 Q
+(Line Breaks) 108 606 T
+2 12 Q
+(A line break character is considered markup \050and ignored\051 if it is the first) 126 578 T
+(or last piece of content in an element. This allows you to write either) 126 564 T
+1 9 Q
+(<PRE>some example text</pre>) 108 543 T
+2 12 Q
+(or) 126 527 T
+1 9 Q
+(<pre>) 108 506 T
+(some example text) 108 495 T
+(</pre>) 108 484 T
+2 12 Q
+(and these will be processed identically.) 126 468 T
+(Also, a line that\325s not empty but contains no content will be ignored) 126 445 T
+(altogether. For example, the element) 126 431 T
+1 9 Q
+(<pre>) 108 410 T
+(<!-- this line is ignored, including the linebreak character -->) 108 396 T
+(first line) 108 382 T
+(third line<!-- the following linebreak is content: -->) 108 354 T
+(fourth line<!-- this one\325s ignored cuz it\325s the last piece of content: -->) 108 340 T
+(</pre>) 108 326 T
+2 12 Q
+(contains only the string) 126 310 T
+1 F
+(first line\134n\134nthird line\134nfourth line) 260.6 310 T
+2 F
+(.) 526.86 310 T
+2 18 Q
+(Summary of Markup Signals) 108 280 T
+2 12 Q
+(The following delimiters may signal markup, depending on context.) 126 252 T
+(Delimiter) 126 229 T
+(Signals) 252 229 T
+1 F
+(<!--) 126 212 T
+2 F
+(Comment) 252 212 T
+1 F
+(&#) 126 195 T
+2 F
+(Character reference) 252 195 T
+1 F
+(&) 126 178 T
+2 F
+(Entity reference) 252 178 T
+1 F
+(</) 126 161 T
+2 F
+(End tag) 252 161 T
+(<!) 126 144 T
+(Markup declaration) 252 144 T
+(]]>) 126 127 T
+(Marked section close \050an error\051) 252 127 T
+(<) 126 110 T
+(Start tag) 252 110 T
+FMENDPAGE
+%%EndPage: "7" 6
+%%Page: "6" 6
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 8:57 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 6) 502.3 35.67 T
+1 9 Q
+(<head> no data allowed! </head>) 108 714 T
+(<head><isindex><title>Two isindex tags</title><isindex></head>) 108 700 T
+3 12 Q
+(Mixed Content) 126 675 T
+2 F
+(If the content model includes the symbol) 126 658 T
+1 F
+(#PCDATA) 353.89 658 T
+2 F
+(, the content of the) 404.26 658 T
+(element is parsed as mixed content. For example:) 126 644 T
+1 9 Q
+(<!ELEMENT PRE - - \050#PCDATA | A | B | I | U | P\051+>) 108 623 T
+(<!ATTLIST PRE) 108 612 T
+(WIDTH NUMBER #implied) 148.5 601 T
+(>) 148.5 587 T
+2 12 Q
+(This says that the PRE element contains one or more A, B, I, U, or P) 126 571 T
+(elements or data characters. Here\325s an example of a PRE element:) 126 557 T
+1 9 Q
+(<pre>) 108 536 T
+(<b>NAME</b>) 108 522 T
+(cat -- concatenate<a href=\323terms.html#file\323>files</a>) 129.57 508 T
+(<b>EXAMPLE</b>) 108 494 T
+(cat &#60;xyz) 129.57 480 T
+(</pre>) 108 466 T
+2 12 Q
+(The content of the above PRE element is:) 126 450 T
+(\245) 144 427 T
+(A B element) 162 427 T
+(\245) 144 410 T
+(The string) 162 410 T
+1 F
+(\322) 223.08 410 T
+(cat -- concatenate\323) 251.87 410 T
+2 F
+(\245) 144 393 T
+(An A element) 162 393 T
+(\245) 144 376 T
+(The string) 162 376 T
+1 F
+(\322\134n\323) 223.08 376 T
+2 F
+(\245) 144 359 T
+(Another B element) 162 359 T
+(\245) 144 342 T
+(The string) 162 342 T
+1 F
+(\322\134n) 223.08 342 T
+(cat <xyz\323) 266.26 342 T
+2 18 Q
+(Comments and Other Markup) 108 312 T
+2 12 Q
+(To include comments in an HTML document that will be ignored by the) 126 284 T
+-0.85 (parser, surround them with) 126 270 P
+1 F
+-1.83 (<!--) 279.85 270 P
+2 F
+-0.85 ( and) 308.63 270 P
+1 F
+-1.83 (-->) 334.48 270 P
+2 F
+-0.85 (. After the comment delimiter, all) 356.07 270 P
+(text up to the next occurence of) 126 256 T
+1 F
+(--) 302.34 256 T
+2 F
+( is ignored. Hence comments cannot be) 316.73 256 T
+(nested. Whitespace is allowed between the closing) 126 242 T
+1 F
+(--) 406.99 242 T
+2 F
+( and) 421.39 242 T
+1 F
+(>) 448.93 242 T
+2 F
+(. \050But not) 456.13 242 T
+(between the opening) 126 228 T
+1 F
+(<!) 243.73 228 T
+2 F
+(and) 265.32 228 T
+1 F
+(--) 289.53 228 T
+2 F
+(.\051) 303.92 228 T
+(For example:) 126 205 T
+1 9 Q
+(<HEAD>) 108 184 T
+(<TITLE>HTML Guide: Recommended Usage</TITLE>) 108 173 T
+(<!-- $Id$ -->) 108 162 T
+(</HEAD>) 108 151 T
+2 12 Q
+(There are a few other SGML markup constructs that are deprecated or) 126 121 T
+(illegal.) 126 107 T
+(Delimiter) 126 84 T
+(Signals...) 252 84 T
+FMENDPAGE
+%%EndPage: "6" 5
+%%Page: "5" 5
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 8:57 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 5) 502.3 35.67 T
+1 9 Q
+(<xmp>There is no way to represent </end> tags in CDATA </xmp>) 108 714 T
+3 12 Q
+(Replaceable Character Data) 126 689 T
+2 F
+(Elements with RCDATA content behave much like thos with CDATA,) 126 672 T
+-0.58 (except for) 126 658 P
+4 F
+-0.58 ( character references) 179.38 658 P
+2 F
+-0.58 ( and) 290.75 658 P
+4 F
+-0.58 (entity references) 317.14 658 P
+2 F
+-0.58 (. Elements declared like:) 404.91 658 P
+1 9 Q
+(<!ELEMENT TITLE - - RCDATA>) 108 637 T
+2 12 Q
+(can have any sequence of characters in their content.) 126 621 T
+5 F
+(Character References) 126 598 T
+2 F
+(To represent a character that would otherwise be recognized as markup,) 126 578 T
+(use a character referece. The string) 126 564 T
+1 F
+(&#) 325.88 564 T
+2 F
+( signals a character reference when) 340.27 564 T
+-0.09 (it is followed by a letter or a digit. The delimiter is followed by the decimal) 126 550 P
+(character number and a semicolon. For example:) 126 536 T
+1 9 Q
+(<title>You can even represent &#60;/end> tags in RCDATA </title>) 108 515 T
+5 12 Q
+(Entity References) 126 496 T
+2 F
+(The HTML DTD declares entities for the less than, greater than, and) 126 476 T
+(ampersand characters and each of the ISO Latin 1 characters so that you) 126 462 T
+(can reference them by name rather than by number.) 126 448 T
+(The string) 126 425 T
+1 F
+(&) 187.08 425 T
+2 F
+( signals an entity reference when it is followed by a letter or a) 194.28 425 T
+(digit. The delimiter is followed by the entity name and a semicolon. For) 126 411 T
+(example:) 126 397 T
+1 9 Q
+(Kurt G&ouml;del was a famous logician and mathemetician.) 108 376 T
+3 12 Q
+(Note:) 126 360 T
+2 F
+-1 (To be sure that a string of characters has no markup,) 252 360 P
+-0.02 (HTML writers should represent all occurences of) 252 346 P
+1 F
+-0.04 (<) 526.15 346 P
+2 F
+-0.02 (,) 533.35 346 P
+1 F
+(>) 252 332 T
+2 F
+(, and) 259.2 332 T
+1 F
+(&) 290.08 332 T
+2 F
+( by character or entity references.) 297.27 332 T
+3 F
+(Element Content) 126 306 T
+2 F
+-0.02 (Some elements have, in stead of a keyword that states the type of content,) 126 289 P
+-0.47 (a content model, which tells what patterns of data and nested elements are) 126 275 P
+(allowed. If the content model of an element does not include the symbol) 126 261 T
+1 F
+(#PCDATA) 126 247 T
+2 F
+( , the content is element content.) 176.37 247 T
+(Whitespace in element content is considered markup and ignored. Any) 126 224 T
+(characters that are not markup, that is, data characters, are illegal.) 126 210 T
+(For example:) 126 187 T
+1 9 Q
+(<!ELEMENT HEAD - - \050TITLE? & ISINDEX? & NEXTID? & LINK*\051>) 108 166 T
+2 12 Q
+(declares an element that may be used as follows:) 126 150 T
+1 9 Q
+(<head>) 108 129 T
+( <isindex>) 108 118 T
+( <title>Head Example</title>) 108 107 T
+(</head>) 108 96 T
+2 12 Q
+(But the following are illegal:) 126 80 T
+FMENDPAGE
+%%EndPage: "5" 4
+%%Page: "4" 4
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 8:57 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 4) 502.3 35.67 T
+2 12 Q
+(The value is specified in a string surrounded by single quotes or a string) 126 712 T
+(surrounded by double quotes. \050See:) 126 698 T
+4 K
+(other tolerated forms) 322.8 698 T
+0 K
+(@@\051) 440.29 698 T
+(The string is parsed like RCDATA \050see) 126 675 T
+4 K
+(below) 344.57 675 T
+0 K
+(\051 to determine the attribute) 376.34 675 T
+(value. This allows, for example, quote characters in attribute values to be) 126 661 T
+(represented by character references.) 126 647 T
+(The length of an attribute value \050after parsing\051 is limited to 1024) 126 624 T
+(characters.) 126 610 T
+2 18 Q
+(Element Types) 108 580 T
+2 12 Q
+-0.43 (The name of a tag refers to an element type declaration in the HTML DTD.) 126 552 P
+(An element type declaration associates an element name with) 126 538 T
+(\245) 144 515 T
+(A list of attributes and their types and statuses) 162 515 T
+(\245) 144 498 T
+-0.8 (A content type \050one of) 162 498 P
+1 F
+-1.72 (EMPTY) 281.94 498 P
+2 F
+-0.8 (,) 317.92 498 P
+1 F
+-1.72 (CDATA) 323.79 498 P
+2 F
+-0.8 (,) 359.77 498 P
+1 F
+-1.72 (RCDATA) 365.64 498 P
+2 F
+-0.8 (, ELEMENT, or) 408.82 498 P
+1 F
+-1.72 (MIXED) 497.49 498 P
+2 F
+-0.8 (\051) 533.47 498 P
+(which determines the syntax of the element\325s content) 162 484 T
+(\245) 144 467 T
+-0.19 (A content model, which specifies the pattern of nested elements and) 162 467 P
+(data) 162 453 T
+3 F
+(Empty Elements) 126 427 T
+2 F
+-0.71 (Empty elements have the keyword) 126 410 P
+1 F
+-1.54 (EMPTY) 317.89 410 P
+2 F
+-0.71 ( in their declaration. For example:) 353.87 410 P
+1 9 Q
+(<!ELEMENT NEXTID - O EMPTY>) 108 389 T
+(<!ATTLIST NEXTID N NUMBER #REQUIRED>) 108 378 T
+2 12 Q
+(This means that the follwing:) 126 362 T
+1 9 Q
+(<nextid n=\32327\323>) 108 341 T
+2 12 Q
+(is legal, but these others are not:) 126 325 T
+1 9 Q
+(<nextid>) 108 304 T
+(<nextid n=\323abc\323>) 108 290 T
+3 12 Q
+(Character Data) 126 265 T
+2 F
+(The keyword) 126 248 T
+1 F
+(CDATA) 201.08 248 T
+2 F
+( indicates that the content of an element is character) 237.06 248 T
+-0.14 (data. Character data is all the text up to the next end tag open) 126 234 P
+4 F
+-0.14 (delimter-in-) 474.52 234 P
+(context) 126 220 T
+2 F
+(. For example:) 164.41 220 T
+1 9 Q
+(<!ELEMENT XMP - - CDATA>) 108 199 T
+2 12 Q
+(specifies that the following text is a legal) 126 183 T
+1 F
+(XMP) 355.7 183 T
+2 F
+( element:) 377.29 183 T
+1 9 Q
+(<xmp>Here\325s a title. It looks like it has <tags> and <!--comments-->) 108 162 T
+(in it, but it does not. Even this </ is data.</xmp>) 108 151 T
+2 12 Q
+-0.89 (The string) 126 135 P
+1 F
+-1.92 (</) 185.31 135 P
+2 F
+-0.89 ( is only recognized as the opening delimiter of an end tag when) 199.7 135 P
+-0.55 (it is \322in context,\323 that is, when it is followed by a letter. However, as soon as) 126 121 P
+-0.47 (the end tag open delimiter is recognized, it terminates the CDATA content.) 126 107 P
+(The following is an error:) 126 93 T
+FMENDPAGE
+%%EndPage: "4" 3
+%%Page: "3" 3
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 8:57 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 3) 502.3 35.67 T
+2 24 Q
+(Structured Text) 235.16 704 T
+2 12 Q
+-0.42 (An HTML instance is like a text file, except that some of the characters are) 126 674 P
+(interpreted as markup. The markup gives structure to the document.) 126 660 T
+-0.52 (The instance represents a hierarchy of) 126 637 P
+4 F
+-0.52 (elements) 339.66 637 P
+2 F
+-0.52 (. Each element has a) 387.16 637 P
+4 K
+-0.52 (name) 503.2 637 P
+0 K
+-0.52 (,) 533.85 637 P
+(some) 126 623 T
+4 K
+(attributes) 157.54 623 T
+0 K
+(, and some) 212.86 623 T
+4 F
+(content) 275.28 623 T
+2 F
+(. Most elements are represented in the) 315.03 623 T
+(document as a) 126 609 T
+4 F
+(start tag) 209.08 609 T
+2 F
+(, which gives the name and attributes, followed by) 255.94 609 T
+(the content, followed by the) 126 595 T
+4 F
+(end tag) 282.15 595 T
+2 F
+(. For example:) 323.02 595 T
+1 9 Q
+(<HTML>) 108 574 T
+(<TITLE>) 113.39 563 T
+(A) 118.79 552 T
+(sample) 129.57 552 T
+(HTML) 167.32 552 T
+(instance) 194.28 552 T
+(</TITLE>) 113.39 541 T
+(<H1>) 113.39 530 T
+(An) 118.79 519 T
+(Example) 134.96 519 T
+(of) 178.1 519 T
+(Structure) 194.28 519 T
+(</H1>) 113.39 508 T
+(Here's) 113.39 497 T
+(a) 151.14 497 T
+(typical) 161.93 497 T
+(paragraph.) 205.06 497 T
+(<P>) 113.39 486 T
+(<UL>) 113.39 475 T
+(<LI>) 118.79 464 T
+(Item) 118.79 453 T
+(one) 145.75 453 T
+(has) 167.32 453 T
+(an) 188.89 453 T
+(<A) 118.79 442 T
+(NAME="anchor">) 134.96 442 T
+(anchor) 124.18 431 T
+(</A>) 118.79 420 T
+(<LI>) 118.79 409 T
+(Here's) 118.79 398 T
+(item) 156.53 398 T
+(two.) 183.49 398 T
+(</UL>) 113.39 387 T
+(</HTML>) 108 376 T
+2 12 Q
+-0.07 (Some elements \050e.g. P, LI\051 are) 126 360 P
+4 F
+-0.07 (empty) 295.09 360 P
+2 F
+-0.07 (. They have no content. They show up) 328.18 360 P
+(as just a start tag.) 126 346 T
+(For the rest of the elements, the content is a sequence of) 126 323 T
+4 F
+(data characters) 441.63 323 T
+2 F
+(and nested elements.) 126 309 T
+2 18 Q
+(Tags) 108 279 T
+2 12 Q
+-0.33 (Every element starts with a tag, and every non-empty element ends with a) 126 251 P
+(tag. Start tags are delimited by) 126 237 T
+1 F
+(<) 302.84 237 T
+2 F
+( and) 310.04 237 T
+1 F
+(>) 337.59 237 T
+2 F
+(, and end tags are delimited by) 344.78 237 T
+1 F
+(</) 519.4 237 T
+2 F
+(and) 126 223 T
+1 F
+(>) 150.21 223 T
+2 F
+(.) 157.41 223 T
+3 F
+(Names) 126 197 T
+2 F
+(The element name immediately follows the tag open delimiter. Names) 126 180 T
+(consist of a letter followed by up to 33 letters, digits, periods, or hyphens.) 126 166 T
+(Names are not case sensitive.) 126 152 T
+3 F
+(Attributes) 126 126 T
+2 F
+(In a start tag, whitespace and attributes are allowed between the element) 126 109 T
+(name and the closing delimiter. An attribute consists of a name, an equal) 126 95 T
+(sign, and a value. Whitespace is allowed around the equal sign.) 126 81 T
+FMENDPAGE
+%%EndPage: "3" 2
+%%Page: "2" 2
+612 792 0 FMBEGINPAGE
+72 738 540 756 R
+7 X
+0 K
+V
+0 14 Q
+0 X
+(PUBLIC DRAFT -- HTML) 72 746.67 T
+(January 20, 1993 8:57 pm) 394.26 746.67 T
+72 27 540 45 R
+7 X
+V
+0 X
+(Connolly) 72 35.67 T
+(Page 2) 502.3 35.67 T
+2 24 Q
+(Introduction) 254.5 704 T
+2 12 Q
+-0.15 (The HyperText Markup Language is defined in terms of the ISO Standard) 126 674 P
+-0.97 (Generalized Markup Language []. SGML is a system for defining structured) 126 660 P
+(document types and markup languages to represent instances of those) 126 646 T
+(document types.) 126 632 T
+(Every SGML document has three parts:) 126 609 T
+(\245) 144 586 T
+-0.89 ( An) 162 586 P
+4 F
+-0.89 (SGML declaration) 182.87 586 P
+2 F
+-0.89 (, which binds SGML processing quantities and) 284.57 586 P
+(syntax token names to specific values. For example, the SGML) 162 572 T
+-0.04 (declaration in the HTML DTD specifies that the string that opens a) 162 558 P
+(tag is) 162 544 T
+6 F
+(</) 195.77 544 T
+2 F
+( and the maximum length of a name is 40 characters.) 208.28 544 T
+(\245) 144 527 T
+-0.26 (A prologue including one or more) 162 527 P
+4 F
+-0.26 (document type declarations) 347.42 527 P
+2 F
+-0.26 (, which) 497.43 527 P
+-0.72 (specifiy the element types, element relationships and attributes, and) 162 513 P
+(references that can be represented by markup. The HTML DTD) 162 499 T
+(specifies, for example, that the) 162 485 T
+1 F
+(HEAD) 335.26 485 T
+2 F
+( element contains at most one) 364.04 485 T
+1 F
+(TITLE) 162 471 T
+2 F
+( element.) 197.98 471 T
+(\245) 144 454 T
+(An instance, which contains the data and markup of the document.) 162 454 T
+(We use the term HTML to mean both the document type and the markup) 126 437 T
+(language for representing instances of that document type.) 126 423 T
+(All HTML documents share the same SGML declaration an prologue.) 126 400 T
+-0.71 (Hence implementations of the WorldWide Web generally only transmit and) 126 386 P
+(store the instance part of an HTML document. To construct an SGML) 126 372 T
+-0.56 (document entity for processing by an SGML parser, it is necessary to prefix) 126 358 P
+(the text from \322HTML DTD\323 on page) 126 344 T
+(10 to the HTML instance.) 327.69 344 T
+-0.61 (Conversely, to implement an HTML parser, one need only implement those) 126 321 P
+-0.61 (parts of an SGML parser that are needed to parse an instance after parsing) 126 307 P
+(the HTML DTD.) 126 293 T
+FMENDPAGE
+%%EndPage: "2" 1
+%%Page: "1" 1
+612 792 0 FMBEGINPAGE
+2 24 Q
+0 X
+0 K
+(HyperText Markup Language) 158.08 704 T
+2 14 Q
+(A Representation for Nodes in the World Wide Web) 157.52 672.67 T
+7 12 Q
+(Daniel W. Connolly, Convex Computer Corp.) 214.4 646 T
+(January, 1993) 289.36 626 T
+2 18 Q
+(Status of this Document) 108 596 T
+2 12 Q
+(Distribution of this document is unlimited. Please send comments to Dan) 126 568 T
+(Connolly <connolly@convex.com>.) 126 554 T
+2 18 Q
+(Abstract) 108 524 T
+2 12 Q
+(The World Wide Web project involves the processing of structured) 126 496 T
+(documents by diverse systems around the globe. Existing document) 126 482 T
+(representations geared towards typesetting, information retrieval, or) 126 468 T
+(multimedia are too tightly coupled to a hardware system, authoring) 126 454 T
+(environment, publication style, or field of study.) 126 440 T
+(HyperText Markup Language was created to fill the need to) 126 417 T
+(\245) 144 394 T
+(Represent existing bodies of information) 162 394 T
+(\245) 144 377 T
+(Connect information entities with hypertext links) 162 377 T
+(\245) 144 360 T
+(Scale to a world-wide scope) 162 360 T
+(\245) 144 343 T
+(Fit into existing and evolving user interface paradigms) 162 343 T
+(\245) 144 326 T
+(Provide an experimental platform for collaborative hypermedia) 162 326 T
+2 18 Q
+(Contents) 108 296 T
+2 12 Q
+(Introduction) 126 268 T
+(.) 200.05 268 T
+(.) 206.72 268 T
+(.) 213.39 268 T
+(.) 220.05 268 T
+(.) 226.72 268 T
+(.) 233.39 268 T
+(.) 240.06 268 T
+(.) 246.73 268 T
+(.) 253.4 268 T
+(.) 260.07 268 T
+(.) 266.73 268 T
+(.) 273.4 268 T
+(.) 280.07 268 T
+(.) 286.74 268 T
+(.) 293.41 268 T
+(.) 300.08 268 T
+(.) 306.74 268 T
+(.) 313.41 268 T
+(.) 320.08 268 T
+(.) 326.75 268 T
+(.) 333.42 268 T
+(.) 340.08 268 T
+(.) 346.75 268 T
+(.) 353.42 268 T
+(.) 360.09 268 T
+(.) 366.76 268 T
+(.) 373.43 268 T
+(.) 380.1 268 T
+(.) 386.76 268 T
+(.) 393.43 268 T
+(.) 400.1 268 T
+(.) 406.77 268 T
+(.) 413.44 268 T
+(.) 420.11 268 T
+(.) 426.77 268 T
+(.) 433.44 268 T
+(.) 440.11 268 T
+(.) 446.78 268 T
+(.) 453.45 268 T
+(.) 460.11 268 T
+(.) 466.78 268 T
+(.) 473.45 268 T
+(.) 480.12 268 T
+(.) 486.79 268 T
+(.) 493.46 268 T
+(.) 500.12 268 T
+(.) 506.79 268 T
+(.) 513.46 268 T
+(.) 520.13 268 T
+(.) 526.8 268 T
+(2) 533.33 268 T
+(Structured Text) 126 251 T
+(.) 220.05 251 T
+(.) 226.72 251 T
+(.) 233.39 251 T
+(.) 240.06 251 T
+(.) 246.73 251 T
+(.) 253.4 251 T
+(.) 260.07 251 T
+(.) 266.73 251 T
+(.) 273.4 251 T
+(.) 280.07 251 T
+(.) 286.74 251 T
+(.) 293.41 251 T
+(.) 300.08 251 T
+(.) 306.74 251 T
+(.) 313.41 251 T
+(.) 320.08 251 T
+(.) 326.75 251 T
+(.) 333.42 251 T
+(.) 340.08 251 T
+(.) 346.75 251 T
+(.) 353.42 251 T
+(.) 360.09 251 T
+(.) 366.76 251 T
+(.) 373.43 251 T
+(.) 380.1 251 T
+(.) 386.76 251 T
+(.) 393.43 251 T
+(.) 400.1 251 T
+(.) 406.77 251 T
+(.) 413.44 251 T
+(.) 420.11 251 T
+(.) 426.77 251 T
+(.) 433.44 251 T
+(.) 440.11 251 T
+(.) 446.78 251 T
+(.) 453.45 251 T
+(.) 460.11 251 T
+(.) 466.78 251 T
+(.) 473.45 251 T
+(.) 480.12 251 T
+(.) 486.79 251 T
+(.) 493.46 251 T
+(.) 500.12 251 T
+(.) 506.79 251 T
+(.) 513.46 251 T
+(.) 520.13 251 T
+(.) 526.8 251 T
+(3) 533.33 251 T
+(Tags) 153 234 T
+(.) 180.04 234 T
+(.) 186.71 234 T
+(.) 193.38 234 T
+(.) 200.05 234 T
+(.) 206.72 234 T
+(.) 213.39 234 T
+(.) 220.05 234 T
+(.) 226.72 234 T
+(.) 233.39 234 T
+(.) 240.06 234 T
+(.) 246.73 234 T
+(.) 253.4 234 T
+(.) 260.07 234 T
+(.) 266.73 234 T
+(.) 273.4 234 T
+(.) 280.07 234 T
+(.) 286.74 234 T
+(.) 293.41 234 T
+(.) 300.08 234 T
+(.) 306.74 234 T
+(.) 313.41 234 T
+(.) 320.08 234 T
+(.) 326.75 234 T
+(.) 333.42 234 T
+(.) 340.08 234 T
+(.) 346.75 234 T
+(.) 353.42 234 T
+(.) 360.09 234 T
+(.) 366.76 234 T
+(.) 373.43 234 T
+(.) 380.1 234 T
+(.) 386.76 234 T
+(.) 393.43 234 T
+(.) 400.1 234 T
+(.) 406.77 234 T
+(.) 413.44 234 T
+(.) 420.11 234 T
+(.) 426.77 234 T
+(.) 433.44 234 T
+(.) 440.11 234 T
+(.) 446.78 234 T
+(.) 453.45 234 T
+(.) 460.11 234 T
+(.) 466.78 234 T
+(.) 473.45 234 T
+(.) 480.12 234 T
+(.) 486.79 234 T
+(.) 493.46 234 T
+(.) 500.12 234 T
+(.) 506.79 234 T
+(.) 513.46 234 T
+(.) 520.13 234 T
+(.) 526.8 234 T
+(3) 533.33 234 T
+(Element Types) 153 217 T
+(.) 240.06 217 T
+(.) 246.73 217 T
+(.) 253.4 217 T
+(.) 260.07 217 T
+(.) 266.73 217 T
+(.) 273.4 217 T
+(.) 280.07 217 T
+(.) 286.74 217 T
+(.) 293.41 217 T
+(.) 300.08 217 T
+(.) 306.74 217 T
+(.) 313.41 217 T
+(.) 320.08 217 T
+(.) 326.75 217 T
+(.) 333.42 217 T
+(.) 340.08 217 T
+(.) 346.75 217 T
+(.) 353.42 217 T
+(.) 360.09 217 T
+(.) 366.76 217 T
+(.) 373.43 217 T
+(.) 380.1 217 T
+(.) 386.76 217 T
+(.) 393.43 217 T
+(.) 400.1 217 T
+(.) 406.77 217 T
+(.) 413.44 217 T
+(.) 420.11 217 T
+(.) 426.77 217 T
+(.) 433.44 217 T
+(.) 440.11 217 T
+(.) 446.78 217 T
+(.) 453.45 217 T
+(.) 460.11 217 T
+(.) 466.78 217 T
+(.) 473.45 217 T
+(.) 480.12 217 T
+(.) 486.79 217 T
+(.) 493.46 217 T
+(.) 500.12 217 T
+(.) 506.79 217 T
+(.) 513.46 217 T
+(.) 520.13 217 T
+(.) 526.8 217 T
+(4) 533.33 217 T
+(Comments and Other Markup) 153 200 T
+(.) 326.75 200 T
+(.) 333.42 200 T
+(.) 340.08 200 T
+(.) 346.75 200 T
+(.) 353.42 200 T
+(.) 360.09 200 T
+(.) 366.76 200 T
+(.) 373.43 200 T
+(.) 380.1 200 T
+(.) 386.76 200 T
+(.) 393.43 200 T
+(.) 400.1 200 T
+(.) 406.77 200 T
+(.) 413.44 200 T
+(.) 420.11 200 T
+(.) 426.77 200 T
+(.) 433.44 200 T
+(.) 440.11 200 T
+(.) 446.78 200 T
+(.) 453.45 200 T
+(.) 460.11 200 T
+(.) 466.78 200 T
+(.) 473.45 200 T
+(.) 480.12 200 T
+(.) 486.79 200 T
+(.) 493.46 200 T
+(.) 500.12 200 T
+(.) 506.79 200 T
+(.) 513.46 200 T
+(.) 520.13 200 T
+(.) 526.8 200 T
+(6) 533.33 200 T
+(Line Breaks) 153 183 T
+(.) 226.72 183 T
+(.) 233.39 183 T
+(.) 240.06 183 T
+(.) 246.73 183 T
+(.) 253.4 183 T
+(.) 260.07 183 T
+(.) 266.73 183 T
+(.) 273.4 183 T
+(.) 280.07 183 T
+(.) 286.74 183 T
+(.) 293.41 183 T
+(.) 300.08 183 T
+(.) 306.74 183 T
+(.) 313.41 183 T
+(.) 320.08 183 T
+(.) 326.75 183 T
+(.) 333.42 183 T
+(.) 340.08 183 T
+(.) 346.75 183 T
+(.) 353.42 183 T
+(.) 360.09 183 T
+(.) 366.76 183 T
+(.) 373.43 183 T
+(.) 380.1 183 T
+(.) 386.76 183 T
+(.) 393.43 183 T
+(.) 400.1 183 T
+(.) 406.77 183 T
+(.) 413.44 183 T
+(.) 420.11 183 T
+(.) 426.77 183 T
+(.) 433.44 183 T
+(.) 440.11 183 T
+(.) 446.78 183 T
+(.) 453.45 183 T
+(.) 460.11 183 T
+(.) 466.78 183 T
+(.) 473.45 183 T
+(.) 480.12 183 T
+(.) 486.79 183 T
+(.) 493.46 183 T
+(.) 500.12 183 T
+(.) 506.79 183 T
+(.) 513.46 183 T
+(.) 520.13 183 T
+(.) 526.8 183 T
+(7) 533.33 183 T
+(Summary of Markup Signals) 153 166 T
+(.) 313.41 166 T
+(.) 320.08 166 T
+(.) 326.75 166 T
+(.) 333.42 166 T
+(.) 340.08 166 T
+(.) 346.75 166 T
+(.) 353.42 166 T
+(.) 360.09 166 T
+(.) 366.76 166 T
+(.) 373.43 166 T
+(.) 380.1 166 T
+(.) 386.76 166 T
+(.) 393.43 166 T
+(.) 400.1 166 T
+(.) 406.77 166 T
+(.) 413.44 166 T
+(.) 420.11 166 T
+(.) 426.77 166 T
+(.) 433.44 166 T
+(.) 440.11 166 T
+(.) 446.78 166 T
+(.) 453.45 166 T
+(.) 460.11 166 T
+(.) 466.78 166 T
+(.) 473.45 166 T
+(.) 480.12 166 T
+(.) 486.79 166 T
+(.) 493.46 166 T
+(.) 500.12 166 T
+(.) 506.79 166 T
+(.) 513.46 166 T
+(.) 520.13 166 T
+(.) 526.8 166 T
+(7) 533.33 166 T
+(HTML semantics @@) 126 149 T
+(Rationale @@) 126 132 T
+(References) 126 115 T
+(.) 186.71 115 T
+(.) 193.38 115 T
+(.) 200.05 115 T
+(.) 206.72 115 T
+(.) 213.39 115 T
+(.) 220.05 115 T
+(.) 226.72 115 T
+(.) 233.39 115 T
+(.) 240.06 115 T
+(.) 246.73 115 T
+(.) 253.4 115 T
+(.) 260.07 115 T
+(.) 266.73 115 T
+(.) 273.4 115 T
+(.) 280.07 115 T
+(.) 286.74 115 T
+(.) 293.41 115 T
+(.) 300.08 115 T
+(.) 306.74 115 T
+(.) 313.41 115 T
+(.) 320.08 115 T
+(.) 326.75 115 T
+(.) 333.42 115 T
+(.) 340.08 115 T
+(.) 346.75 115 T
+(.) 353.42 115 T
+(.) 360.09 115 T
+(.) 366.76 115 T
+(.) 373.43 115 T
+(.) 380.1 115 T
+(.) 386.76 115 T
+(.) 393.43 115 T
+(.) 400.1 115 T
+(.) 406.77 115 T
+(.) 413.44 115 T
+(.) 420.11 115 T
+(.) 426.77 115 T
+(.) 433.44 115 T
+(.) 440.11 115 T
+(.) 446.78 115 T
+(.) 453.45 115 T
+(.) 460.11 115 T
+(.) 466.78 115 T
+(.) 473.45 115 T
+(.) 480.12 115 T
+(.) 486.79 115 T
+(.) 493.46 115 T
+(.) 500.12 115 T
+(.) 506.79 115 T
+(.) 513.46 115 T
+(.) 520.13 115 T
+(.) 526.8 115 T
+(9) 533.33 115 T
+(HTML DTD) 126 98 T
+(.) 193.38 98 T
+(.) 200.05 98 T
+(.) 206.72 98 T
+(.) 213.39 98 T
+(.) 220.05 98 T
+(.) 226.72 98 T
+(.) 233.39 98 T
+(.) 240.06 98 T
+(.) 246.73 98 T
+(.) 253.4 98 T
+(.) 260.07 98 T
+(.) 266.73 98 T
+(.) 273.4 98 T
+(.) 280.07 98 T
+(.) 286.74 98 T
+(.) 293.41 98 T
+(.) 300.08 98 T
+(.) 306.74 98 T
+(.) 313.41 98 T
+(.) 320.08 98 T
+(.) 326.75 98 T
+(.) 333.42 98 T
+(.) 340.08 98 T
+(.) 346.75 98 T
+(.) 353.42 98 T
+(.) 360.09 98 T
+(.) 366.76 98 T
+(.) 373.43 98 T
+(.) 380.1 98 T
+(.) 386.76 98 T
+(.) 393.43 98 T
+(.) 400.1 98 T
+(.) 406.77 98 T
+(.) 413.44 98 T
+(.) 420.11 98 T
+(.) 426.77 98 T
+(.) 433.44 98 T
+(.) 440.11 98 T
+(.) 446.78 98 T
+(.) 453.45 98 T
+(.) 460.11 98 T
+(.) 466.78 98 T
+(.) 473.45 98 T
+(.) 480.12 98 T
+(.) 486.79 98 T
+(.) 493.46 98 T
+(.) 500.12 98 T
+(.) 506.79 98 T
+(.) 513.46 98 T
+(.) 520.13 98 T
+(10) 526.66 98 T
+FMENDPAGE
+%%EndPage: "1" 0
+%%Trailer
+%%BoundingBox: 0 0 612 792
+%%Pages: 14 -1
+%%DocumentFonts: Times-Roman
+%%+ Courier
+%%+ NewCenturySchlbk-Roman
+%%+ NewCenturySchlbk-Bold
+%%+ NewCenturySchlbk-Italic
+%%+ Times-Bold
+%%+ AvantGarde-Book
+%%+ Times-Italic
