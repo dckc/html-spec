@@ -21,7 +21,7 @@ the same as plain <B>bold </B><I>italic</I>
 
 Phrases may be marked up to indicate certain idioms.
 <note>
-User agents may support the <tag/DFN/ elmenent, not
+User agents may support the <tag/DFN/ element, not
 included in this specification, as it has been deployed to some extent.
 It is used to indicate the defining instance of a term, and it is
 typically rendered in italic or bold italic.
@@ -39,7 +39,7 @@ He just couldn't get enough of <cite>The Grapes of Wrath</cite>.
 <h4>Code: CODE
 
 <p>The <tag/CODE/ element indicates an example of code, typically
-rendered in a monospaced font. Contrast with the <tag/PRE/ block
+rendered in a mono-spaced font. Contrast with the <tag/PRE/ block
 structuring element in <hdref refid=pre>. For example:
 
 <listing><![CDATA[
@@ -59,7 +59,7 @@ A singular subject <em>always</em> takes a singular verb.
 <h4>Keyboard: KBD
 
 <p>The Keyboard element indicates text typed by a user, typically
-rendered in a monospaced font. This is commonly used in instruction
+rendered in a mono-spaced font. This is commonly used in instruction
 manuals. For example:
 
 <listing><![CDATA[
@@ -69,13 +69,13 @@ Enter <kbd>FIND IT</kbd> to search the database.
 <h4>Sample: SAMP
 
 <p>The <tag/SAMP/ element indicates a sequence of literal characters,
-typically rendered in a monospaced font. For example:
+typically rendered in a mono-spaced font. For example:
 
 <listing><![CDATA[
 The only word containing the letters <samp>mt</samp> is dreamt.
 ]]></listing>
 
-<h4>Strong Empasis: STRONG
+<h4>Strong Emphasis: STRONG
 
 <p>The <tag/STRONG/ element indicates strong emphasis,
 typically rendered in bold. For example:
@@ -86,7 +86,7 @@ typically rendered in bold. For example:
 
 <h4>Variable: VAR
 
-<p>The <tag/VAR/ element indicates a placeholder, typically rendered
+<p>The <tag/VAR/ element indicates a place holder, typically rendered
 as italic. For example:
 
 <listing><![CDATA[
@@ -97,14 +97,14 @@ Take a guess: Roses are <var>blank</var>.
 
 <p>Typographic elements are used to specify the format of marked text.
 
-<p>Typical renderings for idomatic elements vary between user
+<p>Typical renderings for idiomatic elements vary between user
 agents. If a specific rendering is necessary -- for example, when
 referring to a specific text attribute as in "The italic parts are
 mandatory" -- a typographic element can be used to ensure that the
 intended typography is used where possible.
 
 <note>
-User agents may support some typographic elmenents not included in
+User agents may support some typographic elements not included in
 this specification, as they have been deployed to some extent. The
 <tag/STRIKE/ element indicates horizontal line through the characters,
 and the <tag/U/ element indicates an underline.
@@ -186,7 +186,7 @@ Nine days old.
 <h2>Horizontal Rule: HR
 
 <p>The <tag/HR/ element is a divider between sections of text;
-typcially a full width horizontal rule or equivalent graphic. For
+typically a full width horizontal rule or equivalent graphic. For
 example:
 
 <listing><![CDATA[
@@ -217,7 +217,7 @@ appropriate.
 baseline.
 <ul>
 <li><code/TOP/ specifies that the top of the image aligns with the
-tallest item on the line contianing the image.
+tallest item on the line containing the image.
 
 <li><code/MIDDLE/ specifies that the center of the image aligns with
 the baseline of the line containing the image.

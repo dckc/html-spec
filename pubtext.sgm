@@ -67,7 +67,7 @@ that maps external identifiers and/or entity names to file names.
 (such as a file name) with information about the external entity that
 appears in the SGML document.  In addition to entries that associate
 public identifiers, a catalog entry can associate an entity name with
-a storage object indentifier.  For example, the following are possible
+a storage object identifier.  For example, the following are possible
 catalog entries:
 
 <listing>

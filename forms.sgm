@@ -164,7 +164,7 @@ attribute is not present.
 <h3>Text Area: TEXTAREA
 
 <p>The <tag/TEXTAREA/ element represents a multi-line text
-field. Attrubutes are:
+field. Attributes are:
 
 <tl>
 <tli>COLS: the number of visible columns to display for the text area,
@@ -216,7 +216,7 @@ represented in this media type as follows:
 replaced by <code/+/, and then reserved characters are escaped as per
 [URL]; that is, non-alphanumeric characters are replaced by
 <code/%HH/, a percent sign and two hexadecimal digits representing the
-ASCII code of the character. Line breaks, as in multi-line textfield
+ASCII code of the character. Line breaks, as in multi-line text field
 values, are represented as CR LF pairs, i.e. <code/%0D%0A/.
 
 <li>The fields are listed in the order they appear in the document
@@ -299,7 +299,7 @@ Nickname: <INPUT NAME="nickname" SIZE="42">
 </FORM>
 ]]></listing>
 
-<p>The inital state of the form data set is:
+<p>The initial state of the form data set is:
 
 <tl>
 <tli>name: ""
@@ -326,7 +326,7 @@ submitted. At that point, suppose the values are:
 
 <p>The user agent then conducts an HTTP POST transaction using the URI
 <code>http://www.w3.org/sample</>. The message body would be (ignore
-the linebreak):
+the line break):
 
 <listing><![CDATA[
 name=John+Doe&gender=male&family=5&city=kent%2Cmiami&

@@ -16,7 +16,7 @@ from the appendixes of [SGML].
 <!ENTITY yen    CDATA "&#165;" -- yen sign -->
 <!ENTITY brvbar CDATA "&#166;" -- broken (vertical) bar -->
 <!ENTITY sect   CDATA "&#167;" -- section sign -->
-<!ENTITY uml    CDATA "&#168;" -- umlaut (diaresis) -->
+<!ENTITY uml    CDATA "&#168;" -- umlaut (dieresis) -->
 <!ENTITY copy   CDATA "&#169;" -- copyright sign -->
 <!ENTITY ordf   CDATA "&#170;" -- ordinal indicator, feminine -->
 <!ENTITY laquo  CDATA "&#171;" -- angle quotation mark, left -->

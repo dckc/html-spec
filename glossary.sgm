@@ -48,7 +48,7 @@ resolved via the document character set.
 markup of documents of a particular type, including a set of element
 and entity declarations. [SGML]
 
-<tli>element: A component of the hierarchical structure defined by a document type definition; it is identified in a document instance by descriptive markup, sually a start-tag and end-tag. [SGML]
+<tli>element: A component of the hierarchical structure defined by a document type definition; it is identified in a document instance by descriptive markup, usually a start-tag and end-tag. [SGML]
 
 <tli>end-tag: Descriptive markup that identifies the end of an
 element. [SGML]
@@ -58,7 +58,7 @@ example, a sequence of octets associated with an Internet Media
 Type.[SGML]
 
 <tli>fragment identifier: the portion of an <attr/HREF/ attribute
-value following the <code/#/ character which modifies the prenentation
+value following the <code/#/ character which modifies the presentation
 of the destination of a hyperlink.
 
 <tli>form data set: a sequence of name/value pairs; the names are
@@ -126,7 +126,7 @@ for designers and to help explain the uses for which the elements were
 intended.
 
 <tli>URI: A Universal Resource Identifier is a formatted string that
-serves as an identifier for a resource, typcally on the Internet. URIs
+serves as an identifier for a resource, typically on the Internet. URIs
 are used in HTML to identify the destination of hyperlinks. URIs in
 common practice include Uniform Resource Locators (URLs)[URL]
 and Relative URLs[RELURL].

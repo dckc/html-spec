@@ -1,7 +1,7 @@
 <h2 id=headings>Headings: H1 ... H6
 
 <p>The six heading elements, <tag/H1/ through <tag/H6/, denote section
-headings. Although the order and occurence of headings is not
+headings. Although the order and occurrence of headings is not
 constrained by the HTML DTD, documents should not skip levels (for
 example, from H1 to H3), as converting such documents to other
 representations is often problematic.
