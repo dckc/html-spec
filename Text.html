@@ -1,9 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 <HTML>
 
 <HEAD>
-<TITLE>Structured Text in HTML</TITLE> <NEXTID
-N="z7"></HEAD>
+<TITLE>Structured Text in HTML</TITLE></HEAD>
 
 <BODY>
 
@@ -14,16 +13,16 @@ except that some of the characters are interpreted as markup.
 The markup gives structure to the document.
 
 <P>The instance represents a hierarchy of elements.
-Each element has a <A HREF="#name" NAME="z0">name</A> ,
-some <A HREF="#attribute" NAME="z1">attributes</A> ,
+Each element has a <A NAME="z0"
+HREF="Text.html#name">name</A> , some <A
+NAME="z1" HREF="Text.html#attribute">attributes</A> ,
 and some content. Most elements are represented in the document
 as a start tag, which gives the name and attributes,
 followed by the content, followed by the end tag.
 For example:
 
 <PRE>
-	&#60;!DOCTYPE HTML PUBLIC
-	 	"-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN"&#62;
+	&#60;!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN"&#62;
 	&#60;HTML&#62;
 	  &#60;HEAD&#62;
 	    &#60;TITLE&#62;
@@ -50,17 +49,15 @@ For example:
 	    &#60;/UL&#62;
 	  &#60;/BODY&#62;
 	&#60;/HTML&#62;
-
 </PRE>
 
-<P>Some elements (e.g. <CODE>BR</CODE>) are empty.
+<P>Some elements (e.g. <CODE>BR</CODE> ) are empty.
 They have no content. They show up as just a start tag.
 
 <P>For the rest of the elements, the content is a sequence of
-data characters and nested elements. Note that the HTML DTD in
-fact severely limits the amount of nesting which is allowed:
-most things cannot be nested, in fact. No elements may be recursively
-nested. Anchors and character highlighting may be put inside
+data characters and nested elements. Some things such as forms
+and anchors cannot be nested, in which case this is mentioned
+in the text. Anchors and character highlighting may be put inside
 other constructs.
 
 <H2><A NAME="Tags">Tags</A></H2>
@@ -82,18 +79,14 @@ For example:
 	&#60;H1/&#62; &#60;H=1&#62;       &#60;!-- these are markup errors --&#62;
 </PRE>
 
-<DL>
+<H3>NOTE: SHORTTAG</H3>
 
-<DT><STRONG>NOTE:</STRONG>
-
-<DD><EM>The SGML declaration for HTML specifies <CODE>SHORTTAG
-YES</CODE>, which means that there are some other valid syntaxes
-for tags, e.g. NET tags: <CODE>&#60;em/.../</CODE>,
-empty start tags: <CODE>&#60;&#62;</CODE>,
-empty end tags: <CODE>&#60;/&#62;</CODE>.
+<P><EM>The SGML declaration for HTML specifies SHORTTAG YES ,
+which means that there are some other valid syntaxes for tags,
+e.g. NET tags: &#60;em/.../ , empty start tags:
+&#60;&#62; , empty end tags: &#60;/&#62; .
 Until such time as support for these idioms is widely deployed,
 their use is strongly discouraged.</EM>
-</DL>
 
 <P>The start and end tags for the HTML, HEAD,
 and BODY elements are omissable. The end tags of some other elements
@@ -102,14 +95,12 @@ This does not change the document structure -- the following
 documents are equivalent:
 
 <PRE>
-	&#60;!DOCTYPE HTML PUBLIC
-	 	"-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN"&#62;
+	&#60;!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN"&#62;
 	  &#60;TITLE&#62;Structural Example&#60;/TITLE&#62;
 	  &#60;H1&#62;Structural Example&#60;/H1&#62;
 	  &#60;P&#62;A paragraph...
 
-	&#60;!DOCTYPE HTML PUBLIC
-	 	"-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN"&#62;
+	&#60;!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN"&#62;
 	  &#60;HTML&#62;&#60;HEAD&#62;
 	  &#60;TITLE&#62;Structural Example&#60;/TITLE&#62;
 	  &#60;/HEAD&#62;
@@ -159,27 +150,23 @@ digits, periods, or hyphens.
 <P>The length of an attribute value (after replacing entity and
 numeric character referencees) is limited to 1024 characters.
 
-<DL>
+<H3>NOTE: Unquoted Attribute Value Literals</H3>
 
-<DT><STRONG>NOTE 1:</STRONG>
-
-<DD><EM>Some implementations allowed any character except space
-or '&#62;' in a name token, for example <CODE>&#60;A HREF=foo/bar.html&#62;</CODE>.
-As a result, there are many documents that contain attribute
+<P><EM>Some implementations allowed any character except space
+or '&#62;' in a name token, for example &#60;A HREF=foo/bar.html&#62;
+. As a result, there are many documents that contain attribute
 values that should be quoted but are not.
 While parser implementators are encouraged to support this idiom,
 its use in future documents is stictly prohibited.</EM>
 
-<DT><STRONG>NOTE 2:</STRONG>
+<H3>NOTE: <CODE>&#62;</CODE> in Attribute Value Literals</H3>
 
-<DD><EM>Some implementations also consider any occurence of the
-<CODE>&#62;</CODE> character to signal the end of a tag.
+<P><EM>Some implementations also consider any occurence of the
+&#62; character to signal the end of a tag.
 For compatibility with such implementations,
-it may be necessary to represent <CODE>&#62;</CODE> with an entity
-or numeric character reference; for example:
-<CODE>&#60;IMG SRC="eq1.ps" ALT="a &#38;#62;
-b"&#62;</CODE></EM>
-</DL>
+it may be necessary to represent &#62; with an entity or numeric
+character reference; for example: &#60;IMG SRC="eq1.ps" ALT="a
+&#38;#62; b"&#62;</EM>
 
 <P>Attributes with a delcared value of <CODE>NAME</CODE> (e.g.
 <CODE>ISMAP</CODE>, <CODE>COMPACT</CODE>) may be written using
@@ -188,12 +175,29 @@ a minimized syntax. The markup:
 <PRE>
 	&#60;UL COMPACT="COMPACT"&#62;
 </PRE>
-can be written as
+
+<P>can be written as
+
 <PRE>
 	&#60;UL COMPACT&#62;
 </PRE>
 
-<H2><A NAME="Data">Character Data</A></H2>
+<H2>Undefined tag and attribute names</H2>
+
+<P>It is a principle to be conservative in that which one produces,
+and liberal in that which one accepts. HTML parsers should be
+liberal except when verifying code. HTML generators should generate
+strictly conforming HTML.
+
+<P>The behaviour of WWW applications reading HTML documents and
+discovering tag or attribute names which they do not understand
+should be to behave as though, in the case of a tag,
+the whole tag had not been there but its content had,
+or in the case of an attribute, that the attribute had not been
+present.
+
+<H2><A NAME="Data">Character Data </A>
+</H2>
 
 <P>The charcters between the tags represent text in the ISO-Latin-1
 character set, which is a superset of ASCII.
@@ -202,45 +206,37 @@ they should be "escaped"; that is, represented by markup -- entity
 or numeric character references. For example:
 
 <PRE>
-When a&#38;#60;b, we can show that...
-Brought to you by AT&#38;amp;T
+                When a&#38;#60;b, we can show that...
+                Brought to you by AT&#38;amp;T
 </PRE>
 
 <P>The HTML DTD includes entities for each of the non-ASCII characters
 so that one may reference them by name if it is inconvenient
 to enter them directly:
 
-<PRE>Kurt G&#38;ouml;del was a famous logician and mathematician.
+<PRE>           Kurt G&#38;ouml;del was a famous logician and mathematician.
 
 </PRE>
 
-<DL>
+<H3>NOTE: Markup Characters</H3>
 
-<DT><STRONG>NOTE 1:</STRONG>
+<P><EM>To ensure that a string of characters has no markup,
+it is sufficient to represent all occurrences of &#60; ,
+&#62; , and &#38; by character or entity references.</EM>
 
-<DD><EM>To ensure that a string of characters has no markup,
-it is sufficient to represent all occurrences of <CODE>&#60;</CODE>,
-<CODE>&#62;</CODE>, and <CODE>&#38;</CODE> by character or entity
-references. </EM>
+<H3>NOTE: CDATA, RCDATA</H3>
 
-
-<DT><STRONG>NOTE 2:</STRONG>
-
-<DD><EM>There are SGML features (<CODE>CDATA</CODE>,
-<CODE>RCDATA</CODE>) to allow most <CODE>&#60;</CODE>,
-<CODE>&#62;</CODE>, and <CODE>&#38;</CODE> characters to be entered
-without the use of entity or character references.
-Because these features tend to be used and implemented incosistently,
-they are not employed in this version of the HTML DTD.</EM>
-<P><EM>An earlier HTML specification included an <CODE>XMP</CODE>
-element whose syntax is not expressible in SGML.
-Inside the <CODE>XMP</CODE>, no markup was recognized except
-the <CODE>&#60;/XMP&#62;</CODE> end tag.
+<P><EM>There are SGML features ( CDATA ,
+RCDATA ) to allow most &#60; , &#62; , and &#38; characters to
+be entered without the use of entity or character references.
+Because these features tend to be used and implemented inconsistently,
+and because they require 8-bit characters to represent non-ASCII
+characters, they are not employed in this version of the HTML
+DTD. An earlier HTML specification included an XMP element whose
+syntax is not expressible in SGML. Inside the XMP ,
+no markup was recognized except the &#60;/XMP&#62; end tag.
 While implementations are encouraged to support this idiom,
-its use is obsolete. </EM>
-
-
-</DL>
+its use is obsolete.</EM>
 
 <H3>Comments</H3>
 
@@ -257,7 +253,11 @@ Whitespace is allowed between the closing -- and &#62;.
 &#60;TITLE&#62;HTML Guide: Recommended Usage&#60;/TITLE&#62;
 &#60;!-- Id: Text.html,v 1.6 1994/04/25 17:33:48 connolly Exp --&#62;
 &#60;/HEAD&#62;
- 
 </PRE>
+
+<H3>Note: Tags in Comments</H3>
+
+<P><EM>Some historical implementations incorrectly consider a
+&#62; sign to terminate a comment.</EM>
 </BODY>
 </HTML>

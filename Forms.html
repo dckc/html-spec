@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>User Input Forms in HTML</TITLE> <NEXTID
+N="z18"></HEAD>
+
+<BODY>
+
+<H1>Fill-out Forms and Input fields</H1>
+
+<P>Forms are composed by placing input fields within paragraphs,
+preformatted/literal text, lists and tables.
+This gives considerable scope in designing the layout of forms.
+
+<H2>Elements</H2>
+
+<P>The form features use the following elements which are all
+known as HTML level 2 elements.
+
+<DL>
+
+<DT><A NAME="z12" REL="SUBDOCUMENT"
+HREF="Elements/FORM.html">FORM</A>
+
+<DD>a form within a document.
+
+<DT><A NAME="z13" REL="SUBDOCUMENT"
+HREF="Elements/INPUT.html">INPUT</A>
+
+<DD>one input field of one of a variety of typed
+
+<DT><A NAME="z14" REL="SUBDOCUMENT"
+HREF="Elements/TEXTAREA.html">TEXTAREA</A>
+
+<DD>a multline input field
+
+<DT><A NAME="z15" REL="SUBDOCUMENT"
+HREF="Elements/SELECT.html">SELECT</A>
+
+<DD>A selection from a finite set of options
+
+<DT><A NAME="z16" REL="SUBDOCUMENT"
+HREF="Elements/OPTION.html">OPTION</A>
+
+<DD>one option within a SELECT
+
+<DT>Proposed Elements
+
+<DT><A NAME="z17" REL="SUBDOCUMENT"
+HREF="Elements/HTEXTAREA.html">HTEXTAREA</A>
+
+<DD>an input field for hypertext.
+
+<DD>
+</DL>
+
+<H2></H2>
+
+<P>Each variable field is defined by an <A
+NAME="z3" HREF="Elements/INPUT.html">INPUT</A> ,
+TEXTAREA, or OPTION element and must have an NAME attribute which
+uniquely names the field in the document.
+Additional optional attributes can be used to specify the type
+of the field (defaults to free text), its size/precision,
+its initial value and whether the field is currently disabled
+or in error:
+
+<H2>Example</H2>
+
+<PRE>&#60;FORM ACTION="mailto:www_admin@info.cern.ch"&#62;
+&#60;MH HIDDEN&#62;Subject: WWW Questionaire&#60;/MH&#62;
+Please help up to improve the World Wide Web by filling in the
+following questionaire:
+&#60;P&#62;Your organization? &#60;INPUT NAME="org" SIZE="48"&#62;
+&#60;P&#62;Commercial? &#60;INPUT NAME="commerce" TYPE=checkbox&#62;
+How many users? &#60;INPUT NAME="users" TYPE=int&#62;
+&#60;P&#62;Which browsers do you use?
+&#60;UL&#62;
+&#60;LI&#62;X Mosaic &#60;INPUT NAME="browsers" TYPE=checkbox VALUE="xmosaic"&#62;
+&#60;LI&#62;Cello &#60;INPUT NAME="browsers" TYPE=checkbox VALUE="cello"&#62;
+&#60;LI&#62;Others &#60;TEXTAREA NAME="others" COLS=48 ROWS=4&#62;&#60;/TEXTAREA&#62;
+&#60;/UL&#62;
+A contact point for your site: &#60;INPUT NAME="contact" SIZE="42"&#62;
+&#60;P&#62;Many thanks on behalf of the WWW central support team.
+&#60;P ALIGN=CENTER&#62;&#60;INPUT TYPE=submit&#62; &#60;INPUT TYPE=reset&#62;
+&#60;/FORM&#62;
+</PRE>
+
+<P>This fictitious example is a questionnaire that will be emailed
+to www_admin@info.cern.ch .
+
+<P>Servers can disable forms by sending an appropriate header
+or by an attribute on the optional HTMLPLUS element at the very
+start of the document, e.g. &#60;htmlplus forms=off&#62; .
+
+<P>Here, the &#60;P&#62; and &#60;UL&#62; elements have been
+used to lay out the text (and input fields.
+The browser has changed the background color within the <A
+NAME="z11" HREF="Elements/FORM.html">FORM</A> element to distinguish
+the form from other parts of the document.
+The browser is responsible for handling the input focus,
+i.e. which field will currently get keyboard input.
+
+<P>For many platforms there will be existing conventions for
+forms, e.g. "tab" and "shift-tab" keys to move the keyboard focus
+forwards and backwards between fields, while an "Enter" key submits
+the form. In the example, the "submit" and "reset" buttons are
+specified explicitly with special purpose fields.
+The "submit" button is used to email the form or send its contents
+to the server as specified by the ACTION attribute,
+while the "reset" button resets the fields to their initial values.
+When the form consists of a single text field,
+it may be appropriate to leave such buttons out and rely on the
+"Enter" key.
+
+<P>The <A NAME="z2" HREF="Elements/INPUT.html">INPUT</A> element
+is used for a large variety of typed of input fields.
+
+<P>When you need to let users enter more than one line of text,
+you should use the <A NAME="z4"
+HREF="Elements/TEXTAREA.html">TEXTAREA</A> element.
+
+<H2>Representing choices</H2>
+
+<P>The <A NAME="z5"
+HREF="Elements/INPUT.html#z2">RADIO</A> and <A
+NAME="z6" HREF="Elements/INPUT.html#z3">CHECKBOX</A> types of<A
+NAME="z8" HREF="Elements/INPUT.html"> INPUT</A> field can be
+used to specify multiple choice forms in which every alternative
+is visible as part of the form. An alternative is to use the
+<A NAME="z7" HREF="Elements/SELECT.html">SELECT</A> element which
+is generally rendered in a more compact fashion as a pull down
+combo list.
+</BODY>
+</HTML>

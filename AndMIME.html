@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 <HTML>
 
 <HEAD>
@@ -26,15 +26,29 @@
 
 <DT>Optional parameters:
 
-<DD>charset <EM>@@What does the character set parameter mean?
-I think we should take it out. --DWC</EM>
+<DD>level, version, charset
 </DL>
+
+<H2>Level</H2>
+
+<P>The level parameter specifies the feature set which is used
+in the document. The level is an integer number,
+implying that any features of same or lower level may be present
+in the document. Levels are defined by this specification.
+
+<H2>Version</H2>
+
+<P>In order to help avoid future compatibility problems,
+the version parameter may be used to give the version number
+of this specification to which the document conforms.
+The version number appears at the front of this document and
+within public identifier for the SGML DTD.
 
 <H2>Character sets</H2>
 
 <P>The base character set (the SGML BASESET) for HTML is ISO
 Latin-1. This is the set referred to by any numeric <A
-HREF="Text.html#z4" NAME="z3">character references</A> .
+NAME="z3" HREF="Text.html#z4">character references</A> .
 The actual character set used in the representation of an HTML
 document may be ISO Latin 1, or its 7-bit subset which is ASCII.
 There is no obligation for an HTML document to contain any characters
@@ -44,11 +58,19 @@ in a representation of a document, though the HTTP access protocol
 used by W3 always allows 8 bit transfer.
 
 <P>When an HTML document is encoded using 7-bit characters,
-then the mechanisms of <A HREF="Text.html#z4"
-NAME="z1">character references</A> and <A
-HREF="Text.html#z5" NAME="z2">entity references</A> may be used
+then the mechanisms of <A NAME="z1"
+HREF="Text.html#z4">character references</A> and <A
+NAME="z2" HREF="Text.html#z5">entity references</A> may be used
 to encode characters in the upper half of the ISO Latin-1 set.
 In this way, documents may be prepared which are suitable for
 mailing through 7-bit limited systems.
+
+<H3>Character set option (proposed)</H3>
+
+<P>The SGML declaration specified ISO Latin 1 as the base character
+set. The charset parameter is reserved for future use.
+Its intended significance is to override the base character set
+of the SGML declaration. Support of character sets other than
+ISO-Latin-1 is not a requirement for conformance with this specification.
 </BODY>
 </HTML>

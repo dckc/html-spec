@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 <HTML>
 
 <HEAD>
@@ -7,10 +7,10 @@ N="z64"></HEAD>
 
 <BODY>
 
-<H1><A HREF="HTML.html">HTML Elements</A></H1>
+<H1><A NAME="z1" HREF="HTML.html">HTML Elements</A></H1>
 
 <P>This is a discussion of the elements in the HTML language,
-and how the interact to represent documents.
+and how they interact to represent documents.
 
 <H2>The HTML Document Element</H2>
 
@@ -18,10 +18,11 @@ and how the interact to represent documents.
 much like memo or a mail message:
 
 <PRE>
-	HTML
-	|
-	|_head
-	|_body
+          HTML
+          |
+          |_head
+          |_body
+
 </PRE>
 
 <P>The <CODE>HEAD</CODE> element is an small unordered collection
@@ -31,36 +32,64 @@ This organization allows an implementation to determine certain
 properties of a document -- the title, for example -- without
 parsing the entire document.
 
-<H2><A NAME="z30">Information in the HEAD Element</A></H2>
+<H2><A NAME="z30" REL="SUBDOCUMENT"
+HREF="Elements/HEAD.html">Information in the HEAD Element</A></H2>
 
 <DL>
 
-<DT><A HREF="Elements/TITLE.html" NAME="z25">TITLE</A>
+<DT><A NAME="z25" REL="SUBDOCUMENT"
+HREF="Elements/TITLE.html">TITLE</A>
 
 <DD>The title of the document
 
-<DT><A HREF="Elements/ISINDEX.html" NAME="z33">ISINDEX</A>
+<DT><A NAME="z33" REL="SUBDOCUMENT"
+HREF="Elements/ISINDEX.html">ISINDEX</A>
 
 <DD>Sent by a server in a searchable document
 
-<DT><A HREF="Elements/NEXTID.html" NAME="z27">NEXTID</A>
+<DT><A NAME="z27" REL="SUBDOCUMENT"
+HREF="Elements/NEXTID.html">NEXTID</A>
 
 <DD>A parameter used by editors to generate unique identifiers
 
-<DT><A HREF="Elements/LINK.html" NAME="z40">LINK</A>
+<DT><A NAME="z40" REL="SUBDOCUMENT"
+HREF="Elements/LINK.html">LINK</A>
 
 <DD>Relationship between this document and another.
-See also the <A HREF="Elements/A.html"
-NAME="z55">Anchor element</A> , <A
-HREF="Elements/LINK.html" NAME="z56">Relationships</A> .
+See also the <A NAME="z55"
+HREF="Elements/A.html">Anchor element</A> ,
+<A NAME="z56" HREF="Elements/LINK.html">Relationships</A> .
 A document may have many LINK elements.
 
-<DT><A HREF="Elements/BASE.html" NAME="z58">BASE</A>
+<DT><A NAME="z58" REL="SUBDOCUMENT"
+HREF="Elements/BASE.html">BASE</A>
 
 <DD>A record of the URL of the document when saved
 </DL>
 
-<H2><A NAME="z44">Body Elements</A></H2>
+<H3>Proposed head elements</H3>
+
+<DL>
+
+<DT>EXPIRES
+
+<DD>The date after which the document is invalid.
+Semantics as in the HTTP specification.
+</DL>
+
+<H3>Obsolete head elements</H3>
+
+<DL>
+
+<DT>META
+
+<DD>A wrapper for an HTTP element
+
+<DD>
+</DL>
+
+<H2><A NAME="z44" REL="SUBDOCUMENT"
+HREF="Elements/BODY.html">Body Elements (level 1)</A></H2>
 
 <P>The order of the contents of the BODY element should be preserved
 when it is rendered on the output device.
@@ -69,7 +98,8 @@ when it is rendered on the output device.
 
 <DL>
 
-<DT><A HREF="Elements/A.html" NAME="z28">Anchors</A>
+<DT><A NAME="z28" REL="SUBDOCUMENT"
+HREF="Elements/A.html">Anchors</A>
 
 <DD>Sections of text which form the beginning and/or end of hypertext
 links are called "anchors" and defined by the A tag.
@@ -82,32 +112,38 @@ flow of text. Whitespace between them is ignored.
 
 <DL>
 
-<DT><A HREF="Headings.html" NAME="z36">Headings</A>
+<DT>Headings
 
-<DD>Several levels of heading are supported.
+<DD>Several levels of <A REL="SUBDOCUMENT"
+HREF="Headings.html">headings</A> are supported.
 
-<DT><A HREF="Elements/P.html" NAME="z34">Paragraph</A>
+<DT><A NAME="z34" REL="SUBDOCUMENT"
+HREF="Elements/P.html">Paragraph</A>
 
 <DD>The P element represents a paragraph.
 
-<DT><A HREF="Elements/HR.html" NAME="z63">Horizontal Rule</A>
+<DT><A NAME="z63" REL="SUBDOCUMENT"
+HREF="Elements/HR.html">Horizontal Rule</A>
 
 <DD>A horizontal dividing line
 
-<DT><A HREF="Elements/ADDRESS.html" NAME="z37">Address style</A>
+<DT><A NAME="z37" REL="SUBDOCUMENT"
+HREF="Elements/ADDRESS.html">Address style</A>
 
 <DD>Used to represent authorship or status of a document
 
-<DT><A HREF="Elements/BLOCKQUOTE.html"
-NAME="z54">Blockquote style</A>
+<DT><A NAME="z54" REL="SUBDOCUMENT"
+HREF="Elements/BLOCKQUOTE.html">Blockquote style</A>
 
 <DD>A block of text quoted from another source.
 
-<DT><A HREF="Lists.html" NAME="z32">Lists</A>
+<DT><A NAME="z32" REL="SUBDOCUMENT"
+HREF="Lists.html">Lists</A>
 
 <DD>Bulleted lists, glossaries, etc.
 
-<DT><A HREF="Elements/PRE.html" NAME="z31">Preformatted text</A>
+<DT><A NAME="z31" REL="SUBDOCUMENT"
+HREF="Elements/PRE.html">Preformatted text</A>
 
 <DD>Sections in fixed-width font for preformatted text.
 </DL>
@@ -120,20 +156,40 @@ except in the PRE element, where it has its literal ASCII meaning.
 
 <DL>
 
-<DT><A HREF="Highlighting.html" NAME="z41">Special Phrases</A>
+<DT><A NAME="z41" REL="SUBDOCUMENT"
+HREF="Highlighting.html">Special Phrases</A>
 
 <DD>Emphasis, typographic distinctions, etc.
 
-<DT><A HREF="Elements/BR.html" NAME="z62">Line Breaks</A>
+<DT><A NAME="z62" REL="SUBDOCUMENT"
+HREF="Elements/BR.html">Line Breaks</A>
 
 <DD>Indicates a line break in a flow of text.
 
-<DT><A HREF="Elements/IMG.html" NAME="z59">IMG</A>
+<DT><A NAME="z59" REL="SUBDOCUMENT"
+HREF="Elements/IMG.html">IMG</A>
 
 <DD>The IMG tag allows inline graphics.
 </DL>
 
-<H2><A HREF="NonStandard.html" NAME="z57">Obsolete elements</A></H2>
+<H2>Body elements (level 2)</H2>
+
+<H3>Elements for forms</H3>
+
+<P>The FORM element and various other elements allowed only within
+it describe forms which allow user input.
+
+<DL>
+
+<DT><A NAME="z0" REL="SUBDOCUMENT"
+HREF="Forms.html">FORM elements</A>
+
+<DD>FORM, INPUT, SELECT, OPTION, TEXTAREA,
+etc
+</DL>
+
+<H2><A NAME="z57" REL="SUBDOCUMENT"
+HREF="NonStandard.html">Obsolete elements</A></H2>
 
 <P>The other elements are obsolete but should be recognised by
 parsers for back-compatibility.

@@ -1,49 +1,63 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 <HTML>
 
 <HEAD>
-<TITLE>Hypertext Markup Language (HTML)</TITLE> <NEXTID
-N="z16"></HEAD>
+<TITLE>Hypertext Markup Language (HTML)</TITLE><LINK
+REL="SUBDOCUMENT"
+HREF="IETF-Draft-Disclaimer.html"><LINK
+REL="SUBDOCUMENT" HREF="AndMIME.html"><LINK
+REL="SUBDOCUMENT" HREF="Intro.html"><LINK
+REL="SUBDOCUMENT" HREF="Text.html"><LINK
+REL="SUBDOCUMENT" HREF="Tags.html"><LINK
+REL="SUBDOCUMENT" HREF="Entities.html"><LINK
+REL="SUBDOCUMENT" HREF="DeclHeading.html"><LINK
+REL="SUBDOCUMENT" HREF="DTDHeading.html"><LINK
+REL="SUBDOCUMENT" HREF="Security.html"><LINK
+REL="SUBDOCUMENT" HREF="Acknowledgements.html"><LINK
+REL="SUBDOCUMENT" HREF="References.html"><LINK
+REL="SUBDOCUMENT" HREF="Authors.html"></HEAD>
 
 <BODY>
 
-<H1>Hypertext Markup Language (HTML)</H1>
+<H1><A REV="SUBDOCUMENT" NAME="z20"
+HREF="HTML_TOC.html">Hypertext Markup Language (HTML)</A></H1>
 
-<H3>An SGML Application Conforming to International Standard
-ISO 8879 -- Standard Generalized Markup Language</H3>
+<BLOCKQUOTE>
+<P><EM>An SGML Application Conforming to International Standard
+ISO 8879 -- Standard Generalized Markup Language </EM>
 
-<H2>Status of this Document</H2>
+</BLOCKQUOTE>
 
-<P><EM>This is a revision of the <A
-HREF="http://info.cern.ch/hypertext/WWW/MarkUp/HTML.html">HTML
-specification maintained by Tim Berners-Lee at CERN</A>.
-<BR>&#60;connolly@hal.com&#62; <BR>$Id$ </EM>
+<H2>About of this Document</H2>
 
+<P>This document describes the current practice and current proposals
+for future standardisation of HTML, as a basis for review and
+enhancement.
 
-<P>This document is an Internet Draft. Internet Drafts are working
-documents of the Internet Engineering Task Force (IETF),
-its Areas, and its Working Groups. Note that other groups may
-also distribute working documents as Internet Drafts.
+<P>The document is a draft form of a standard for interchange
+of information on the network which is proposed to be registered
+as a MIME (RFC1521) content type.
 
-<P>Internet Drafts are working documents valid for a maximum
-of six months. Internet Drafts may be updated,
-replaced, or obsoleted by other documents at any time.
-It is not appropriate to use Internet Drafts as reference material
-or to cite them other than as a "working draft" or "work in progress".
+<P>Please send comments to connolly@hal.com or the discussion
+list www-html@info.cern.ch.
 
-<P>Distribution of this document is unlimited.
-The document is a draft form of a standard for interchange of
-information on the network which is proposed to be registered
-as a MIME (RFC1521) content type. Please send comments to connolly@hal.com
-or the discussion list www-talk@info.cern.ch.
+<H3>Version</H3>
 
-<P>This is version 1.3 of this draft. This document is available
-in hypertext on the World-Wide Web as <CODE>http://www.hal.com/%7Econnolly/html-spec/HTML.html</CODE>
+<P>This is version 2.0 of this document,
+(released $Date$) It introduces forms for user input of information.
+This feature is known as a level 2 feature of HTML.
+All other specified features are known as level 1 features.
+Features of higher levels which are under discussion,
+(such as tables, figures, and mathematical formulae) where mentioned
+are described as "proposed".
+
+<P>The latest version of this document is currently available
+in hypertext on the World-Wide Web as <CODE>http://www.hal.com/%7Econnolly/html-spec</CODE>.
 
 <H2>Abstract</H2>
 
-<P><!-- HREF="MarkUp.html" --><A NAME="z14">HyperText Markup
-Language</A> (HTML) can be used to represent
+<P><A NAME="z14">HyperText Markup Language</A> (HTML) can be
+used to represent
 
 <UL>
 
@@ -71,70 +85,16 @@ of the representations used with W3.
 
 <P>HTML is proposed as a MIME content type.
 
-<P>HTML refers to the URL specification of RFCxxxx.
+<P>HTML refers to the <A NAME="z21"
+HREF="References.html#z7">URI</A> specification RFCxxxx.
 
 <P>Implementations of HTML parsers and generators can be found
-in the various W3 servers and browsers, in the public domain
-W3 code, and may also be built using various public domain SGML
-parsers such as <A HREF="References.html#z4"
-NAME="z7">[SGMLS]</A> . HTML documents are SGML documents with
-fairly generic semantics appropriate for representing information
-from a wide range of applications.
-
-<H1>In this document</H1>
-
-<P>This document contains the following parts:
-
-<DL>
-
-<DT><A HREF="StatusMeanings.html" NAME="z5">Vocabulary</A>
-
-<DD>used in this document, degrees of imperative.
-
-<DT><A HREF="AndMIME.html" NAME="z8">HTML and MIME</A>
-
-<DD>with discussion of character sets.
-
-<DT><A HREF="Intro.html" NAME="z3">HTML and SGML</A>
-
-<DD>and the relationship between them, and <A
-HREF="Text.html" NAME="z9">Structured text</A>:
-an summary of SGML syntax.
-
-<DT><A HREF="Tags.html" NAME="z4">HTML Elements</A>
-
-<DD>A list with description, example, and typical rendering.
-
-<DT><A HREF="Entities.html" NAME="z6">HTML Entities</A>
-
-<DD>Entities used to describe characters.
-
-<DT><A HREF="Acknowledgements.html" NAME="z15">Acknowledgements</A>
-
-<DD>and a change history of the document
-
-<DT><A HREF="References.html" NAME="z0">References</A>
-
-<DD>to related documents
-
-<DT><A HREF="Authors.html" NAME="z11">Authors addresses</A>
-
-<DD>Contact information.
-
-<DT><A HREF="ElementIndex.html">Appendix I:
-Element Reference</A>
-
-<DD>Alphabetical listing of elements with syntax descriptions
-
-<DT><A HREF="html.dtd" NAME="z2">Appendix II:
-The HTML DTD</A>
-
-<DD>The text of the SGML DTD for HTML
-
-<DT><A HREF="html.decl" NAME="z2">Appendix III:
-The HTML SMGL Declaration</A>
-
-<DD>The text of the SGML Declaration for HTML
-</DL>
+in the various <A NAME="z22"
+HREF="References.html#z10">W3</A> servers and browsers,
+in the public domain W3 code, and may also be built using various
+public domain SGML parsers such as [SGMLS] .
+HTML documents are SGML documents with fairly generic semantics
+appropriate for representing information from a wide range of
+applications.
 </BODY>
 </HTML>

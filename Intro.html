@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 <HTML>
 
 <HEAD>
@@ -10,14 +10,14 @@ N="z2"></HEAD>
 <H1>HTML and SGML</H1>
 
 <P>This section describes the relationship between HTML and SGML,
-and guides the newcomer through interpreation of the <A
-HREF="DTDHeading.html" NAME="z1">DTD</A>.
+and guides the newcomer through interpretation of the <A
+NAME="z1" HREF="DTDHeading.html">DTD</A> .
 (This is not a full tutorial on SGML, and in the event of any
 apparent conflict, the SGML standard is definitive.)
 
 <P>The HyperText Markup Language is an application conforming
 to International Standard ISO 8879 -- Standard Generalized Markup
-Language [<A HREF="References.html#z3" NAME="z0"> SGML</A> ].
+Language [<A NAME="z0" HREF="References.html#z3"> SGML</A> ].
 SGML is a system for defining structured document types,
 and markup languages to represent instances of those document
 types.
@@ -47,29 +47,17 @@ markup language for representing instances of that document type.
 <P>The SGML declaration for HTML is given in the appendix ``SGML
 Delcaration for HTML.'' It is implicit among WWW implementations.<!-- @@ include an explanation of how to use sgmls with this stuff -->
 
-<P>The prologue for an HTML document should<!-- @@ explain more -->
-look like:
+<P>The prologue for an HTML document should look like:<!-- @@ explain more -->
 
 <PRE>
-&#60;!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN"&#62;
+      &#60;!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN"&#62;
+
 </PRE>
 
-<DL>
+<H3>NOTE: Missing <CODE>&#60;DOCTYPE</CODE> declaration</H3>
 
-<DT><STRONG>@@NOTE 1:</STRONG>
-
-<DD><EM>The owner part "connolly hal.com" should be changed to
-the name of the institution that owns this specification,
-whatever that is. The "Date..." part should be shortened to something
-like "1.3", corresponding to the publication of this document.</EM>
-
-<DT><STRONG>NOTE 2:</STRONG>
-
-<DD><EM>Many extant HTML documents do not contain a prologue.
+<P>Many extant HTML documents do not contain a prologue.
 Implementations are encouraged to infer the above prologue if
 the document does not begin with <CODE>&#60;!</CODE>.
-</EM>
-
-</DL>
 </BODY>
 </HTML>
