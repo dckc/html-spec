@@ -1,13 +1,11 @@
 <HEAD><TITLE>PUBLIC DRAFT -- HTML</TITLE>
-
-</HEAD><BODY><H1>
-</H1><PRE>&#60;!SGML  "ISO 8879:1986"
+</HEAD>
+<BODY>
+<PRE>&#60;!SGML  "ISO 8879:1986"
 --
-</PRE>
-<H1>HTML DTD
-</H1><PRE>
+HTML DTD
         Document Type Definition for the HyperText Markup Language 
-        as used by the World Wide Web application .
+        as used by the World Wide Web application (HTML DTD).
 
         NOTE: This is a definition of HTML with respect to
         SGML, and assumes an understaning of SGML terms.
@@ -112,7 +110,7 @@ FEATURES
          "TITLE | NEXTID | ISINDEX" &#62;
 
 &#60;!ENTITY % bodyelement
-         "P | A | %heading |
+         "P | %heading |
          %list | DL | HEADERS | ADDRESS | PRE | BLOCKQUOTE
         | %literal"&#62;
 
@@ -141,11 +139,6 @@ FEATURES
 
 &#60;!ELEMENT HEAD - -  (TITLE? &#38; ISINDEX? &#38; NEXTID? &#38; LINK*)&#62;
 
-&#60;!ATTLIST HEAD
-        EXPIRES NUMBER #IMPLIED -- expiration date 
-                                in ISO format: yyyymmddhhmmssZ --
-        &#62;
-
 &#60;!ELEMENT TITLE - -  RCDATA
           -- The TITLE element is not considered part of the flow of text.
              It should be displayed, for example as the page header or
@@ -173,9 +166,9 @@ FEATURES
 
 &#60;!ELEMENT (%inline;) - - (#PCDATA)&#62;
 
-&#60;!ENTITY % text "#PCDATA | %inline;"&#62;
+&#60;!ENTITY % hypertext "#PCDATA | %inline; | A"&#62;
 
-&#60;!ELEMENT BODY - -  (%bodyelement|%text;)*&#62;
+&#60;!ELEMENT BODY - -  (%bodyelement|%hypertext;)*&#62;
 
 &#60;!ELEMENT A     - -  (#PCDATA)&#62;
 &#60;!ATTLIST A
@@ -184,42 +177,42 @@ FEATURES
 
 &#60;!ELEMENT P     - O EMPTY -- separates paragraphs --&#62;
 
-&#60;!ELEMENT (%heading)    - -  (%text;|A)+&#62;
+&#60;!ELEMENT (%heading)    - -  (%hypertext;)+&#62;
 
-&#60;!ELEMENT HEADERS - - (DT | #PCDATA | DD | A)+&#62;
-&#60;!ELEMENT DL    - -  (DT | DD | A | P | %text;)*&#62;
-&#60;!--    Content should match ((DT,(A|%text;)+)+,(DD,(A|%text;)+))
+&#60;!ELEMENT DL    - -  (DT | DD | P | %hypertext;)*&#62;
+&#60;!--    Content should match ((DT,(%hypertext;)+)+,(DD,(%hypertext;)+))
         But mixed content is messy.
   --&#62;
+&#60;!ATTLIST DL
+        STYLE NAME #IMPLIED -- COMPACT, etc.--
+        &#62;
  
 &#60;!ELEMENT DT    - O EMPTY&#62;
 &#60;!ELEMENT DD    - O EMPTY&#62;
 
-&#60;!ELEMENT (%list) - -  (%text;|LI|A|P)+&#62;
-&#60;!--    Content should match ((LI,(A|%text;)+)+)
+&#60;!ELEMENT (UL|OL) - -  (%hypertext;|LI|P)+&#62;
+&#60;!ELEMENT (DIR|MENU) - -  (%hypertext;|LI)+&#62;
+&#60;!--    Content should match ((LI,(%hypertext;)+)+)
         But mixed content is messy.
   --&#62;
-&#60;!ATTLIST (%list)
-        STYLE NAME #IMPLIED -- COMPACT, etc.--
-        &#62;
 
 &#60;!ELEMENT LI    - O EMPTY&#62;
 
-&#60;!ELEMENT BLOCKQUOTE - - (%text;|A|P|ADDRESS)+
+&#60;!ELEMENT BLOCKQUOTE - - (%hypertext;|P)+
         -- for quoting some other source --&#62;
 &#60;!ATTLIST BLOCKQUOTE
-        SOURCE CDATA #IMPLIED
+        SOURCE CDATA #IMPLIED -- URL of source --
         &#62;
 
-&#60;!ELEMENT ADDRESS - - (%text;|A|P)+&#62;
+&#60;!ELEMENT ADDRESS - - (%hypertext;|P)+&#62;
 
-&#60;!ELEMENT PRE - - (#PCDATA|A|P)+&#62;
+&#60;!ELEMENT PRE - - (#PCDATA | A | B | I | U | P)+&#62;
 &#60;!ATTLIST PRE
         WIDTH NUMBER #implied
         &#62;
 
 
-&#60;!-- Characters from various Latin alphabets. --&#62;
+&#60;!-- Mnemonic character entities. --&#62;
 &#60;!ENTITY AElig "&#38;#198;" -- capital AE diphthong (ligature) --&#62;
 &#60;!ENTITY Aacute "&#38;#193;" -- capital A, acute accent --&#62;
 &#60;!ENTITY Acirc "&#38;#194;" -- capital A, circumflex accent --&#62;
@@ -288,7 +281,7 @@ FEATURES
 
 &#60;!-- deprecated elements --&#62;
 
-&#60;!ELEMENT (%literal) - -  RCDATA&#62;
+&#60;!ELEMENT (%literal) - -  CDATA&#62;
 
 &#60;!ELEMENT PLAINTEXT - O EMPTY&#62;
 
@@ -297,5 +290,6 @@ FEATURES
 &#60;!-- compile-command: "sgmls -s -p " --&#62;
 &#60;!-- end: --&#62;
 ]&#62;
+ 
 </PRE>
 </BODY>
