@@ -1,20 +1,10 @@
 <!SGML  "ISO 8879:1986"
 --
-        Document Type Definition for the HyperText Markup Language 
-        as used by the World Wide Web application (HTML DTD).
+	SGML Declaration for HyperText Markup Language (HTML)
+	as used by the World-Wide Web (WWW) application.
 
-        NOTE: This is a definition of HTML with respect to
-        SGML, and assumes an understaning of SGML terms.
-
-        For a description of HTML in layman's terms, see
-
-        "HTML: A Representation for Nodes in the World Wide Web"
-                by Dan Connolly.
-
-        aka
-
-        http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
-                by <connolly@convex.com>
+	See below for more info, as many characters are not
+	allowed at this point in an SGML document.
 --
 
 CHARSET
@@ -67,7 +57,7 @@ SYNTAX
 FEATURES
   MINIMIZE
     DATATAG  NO
-    OMITTAG  NO
+    OMITTAG  YES
     RANK     NO
     SHORTTAG NO
   LINK
@@ -80,3 +70,15 @@ FEATURES
     FORMAL   YES
   APPINFO    NONE
 >
+<!-- 
+	$Id$
+
+	See also: http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
+	and/or http://info.cern.ch/hypertext/WWW/MarkUp/HTML.html
+
+	This is derived from the prologue that was published
+	in ftp://ds.internic.net/internet-drafts/draft-ietf-iiir-html-01.txt
+
+	The only modification is OMITTAG YES
+
+ -->
