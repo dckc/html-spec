@@ -1,3 +1,4 @@
+<!-- $Id$ -->
 <h1 id=datachrs>Character Content
 
 An HTML user agent should present the body of an HTML document as
@@ -12,9 +13,9 @@ lines.
 
 <h2>The ISO Latin 1 Character Repertoire
 
-Conforming HTML user agents are required to support the [US-ASCII] and
-[ISO-8859-1] character encodings, and the Latin Alphabet Nr. 1
-document character set as specified in <hdref refid=decl>.
+Conforming HTML user agents must support the [US-ASCII] and
+[ISO-8859-1] character encoding schemes, and the Latin Alphabet Nr. 1
+document character set (see <hdref refid=decl>).
 
 The character repertoire shared by the two encodings and the document
 character set is Latin Alphabet Nr. 1, or simply Latin-1.  Latin-1
@@ -42,5 +43,5 @@ Kurt G&ouml;del was a famous logician and mathematician.
 ]]></listing>
 
 See <hdref refid="lat1ent"> for a table of the "Added Latin 1" entities,
-and <hdref refid="iso-latin-1"> for a table of the code positionss of
+and <hdref refid="iso-latin-1"> for a table of the code positions of
 ISO-8859-1.

@@ -1,3 +1,4 @@
+<!-- $Id$ -->
 <h1>Introduction
 
 The HyperText Markup Language (HTML) is a simple data format
@@ -38,7 +39,7 @@ A document is a conforming HTML document only if:
 
 <li>It conforms to the application conventions in this
 specification. For example, the value of the <code/HREF/ attribute of
-the <code/A/ element must conform to the URI syntax.
+the <tag/A/ element must conform to the URI syntax.
 
 </ul>
 
@@ -108,4 +109,4 @@ of widely deployed conventions for handling non-conforming documents.
 See <hdref refid=conv1> for details.
 </note>
 
-@@Levels?
+<![%level[@@]]>

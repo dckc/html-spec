@@ -78,7 +78,7 @@ lines will be maintained.
 
 <ul>
 <li>The text may contain any ISO Latin-1 printable characters,
-expect for the end tag opener. The Example and Listing elements have
+except for the end-tag opener. The Example and Listing elements have
 historically used specifications which do not conform to
 SGML. Specifically, the text may contain ISO Latin printable
 characters, including the tag opener, as long it they does not contain
@@ -89,7 +89,7 @@ how they interpret other tags within Example and Listing elements.
 
 <li>Line boundaries within the text are rendered as a move to the
 beginning of the next line, except for one immediately following a
-start tag or immediately preceding an end tag.
+start-tag or immediately preceding an end-tag.
 
 <li>The horizontal tab character must be interpreted as the smallest
 positive nonzero number of spaces which will leave the number of

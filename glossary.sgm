@@ -27,20 +27,26 @@ character's code position (or, in rare cases, a few code positions).
 specification in its processing of the Internet Media Type
 <code>text/html; version=2.0</code>.
 
-<tli>data characters: Characters other than markup, which make up the
+<tli>data character: Characters other than markup, which make up the
 content of elements.
 
-<tli>DTD: document type definition. @@ A collection of
-declarations (entity, element, attribute, link, map, etc.) in SGML
-syntax that defines the components and structures available for a
-class (type) of documents. [SGML]
+<tli>document character set: a coded character set whose range
+includes all characters used in a document. Every SGML document has
+exactly one document character set. Numeric character references are
+resolved via the document character set.
 
-<tli>element: @@A component of the hierarchical structure defined by
-the document type definition; it is identified in a document instance
-by descriptive markup, usually a start-tag and an end- tag. [SGML]
+<tli>DTD: document type definition. Rules that apply SGML to the
+markup of documents of a particular type, including a set of element
+and entity declarations. [SGML]
+
+<tli>element: A component of the hierarchical structure defined by a document type definition; it is identified in a document instance by descriptive markup, sually a start-tag and end-tag. [SGML]
+
+<tli>end-tag: Descriptive markup that identifies the end of an
+element. [SGML]
 
 <tli>entity: data with an associated notation or interpretation; for
-example, a sequence of octets associated with an Internet Media Type. [SGML]
+example, a sequence of octets associated with an Internet Media
+Type.[SGML]
 
 <tli>HTML document: An SGML document conforming to this document type
 definition.
@@ -50,29 +56,41 @@ document to represent its structure. There are four different kinds of
 markup: descriptive markup (tags), references, markup declarations,
 and processing instructions.[SGML]
 
-<tli>may: The implementation is not obliged to follow this in any way.
+<tli>may: A document or user interface is conforming whether this
+statement applies or not.
 
 <tli>message entity: a head and body. The head is a collection of
 name/value fields, and the body is a sequence of octets. The head
 defines the content type and content transfer encoding of the body. [MIME]
 
+<![%level[
 <tli>minimally conforming HTML user agent: A user agent that conforms
 to this specification in its treatment of the Internet Media Type
 "text/html; level=0; version=2.0"
+]]>
 
-<tli>must: If this is not followed, the implementation does not
-conform to this specification.
+<tli>must: Documents or user agents in conflict with this statement
+are not conforming.
 
-<tli>SGML document: A set of entities, including the document entity,
-which is a text entity that conforms to the grammar specified in the
-SGML standard.[SGML]
+<tli>SGML document: A sequence of characters organized physically as a
+set of entities and logically into a hierarchy of elements. An SGML
+document consists of data characters and markup; the markup describes
+the structure of the information and an instance of that
+structure.[SGML]
 
 <tli>shall: If a document or user agent conflicts with this statement,
 it does not conform to this specification.
 
 <tli>should: If a document or user agent conflicts with this
-statement, undesirable results may occur in practice even though the
-document or user agent conforms to this specification.
+statement, undesirable results may occur in practice even though it
+conforms to this specification.
+
+<tli>start-tag: Descriptive markup that identifies the start of an
+element and specifies its generic identifier and attributes. [SGML]
+
+<tli>syntax-reference character set: A coded character set whose range
+includes all characters used for markup; e.g. name characters and
+delimiter characters.
 
 <tli>tag: Markup that delimits an element. A tag includes a name which
 refers to an element declaration in the DTD, and may include
@@ -80,9 +98,10 @@ attributes.[SGML]
 
 <tli>text entity: A finite sequence of characters. A text entity
 typically takes the form of a sequence of octets with some associated
-character encoding, transmitted over the network or stored in a file.[SGML]
+character encoding scheme, transmitted over the network or stored in a
+file.[SGML]
 
-<tli>typical: Typical rendering is described for many elements. This
+<tli>typical: Typical processing is described for many elements. This
 is not a mandatory part of the specification but is given as guidance
 for designers and to help explain the uses for which the elements were
 intended.

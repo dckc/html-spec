@@ -1,19 +1,18 @@
 <h2 id=entity-sets>Character Entity Sets
 
-<p>The following entity names are used in HTML, always prefixed by
-ampersand (&) and followed by a semicolon@@ as shown. They represent
+<p>The HTML DTD defines the following entities.  They represent
 particular graphic characters which have special meanings in places in
 the markup, or may not be part of the character set available to the
 writer.
 
 <h3>Numeric and Special Graphic Entity Set
 
-<p>The following table lists each of the supported characters
-specified in the Numeric and Special Graphic entity set, along with
-its name, syntax for use, and description. This list is derived from
-ISO Standard 8879:1986//ENTITIES Numeric and Special Graphic//EN.
-However, HTML does not provide support for the entire entity set -
-only the entities listed below are supported.
+<p>The following table lists each of the characters included from the
+Numeric and Special Graphic entity set, along with its name, syntax
+for use, and description. This list is derived from <code>ISO Standard
+8879:1986//ENTITIES Numeric and Special Graphic//EN</code>.  However,
+HTML does not include for the entire entity set -- only the entities
+listed below are included.
 
 <listing><![CDATA[
 GLYPH	NAME	SYNTAX	DESCRIPTION
@@ -34,7 +33,6 @@ Added Latin 1 entity set, along with its name, syntax for use, and
 description. This list is derived from ISO Standard
 8879:1986//ENTITIES Added Latin 1//EN. HTML includes the entire entity
 set.
-
 
 <listing>
 &isolat1-dtd;

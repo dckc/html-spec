@@ -2,7 +2,7 @@
 # $Id$
 #
 
-RELEASE = 19950504
+RELEASE = 19950504b
 PACKAGE = html-spec-$(RELEASE)
 
 # Things outside this distribution
@@ -30,11 +30,15 @@ DTDTOOL=www_dtd.pl
 SPEC=html-spec
 
 SRCS = html.decl html.dtd ISOlat1.sgml catalog \
-	snafu.decl html-spec.sgm \
+	draft-status.sgm \
+	snafu.decl \
+	html-spec.sgm \
 	intro.sgm html-sgml.sgm html-mime.sgm \
 	elements.sgm head-elts.sgm doc-charset.sgm phrase.sgm hyperlink.sgm \
 	blocks.sgm headings.sgm lists.sgm forms.sgm pubtext.sgm \
-	references.sgm glossary.sgm acknowledgements.sgm
+	references.sgm glossary.sgm acknowledgements.sgm \
+	entity-sets.sgm iso-latin-1.sgm \
+	obsolete.sgm proposed.sgm
 
 ORIGINALS = Makefile $(SRCS) $(DTD) $(DTDAUX) $(DECL) \
 	head.ms abstract.ms
@@ -67,10 +71,10 @@ PLAINTEXT = html-spec.txt
 
 all: hypertext hardcopy
 
-hypertext: $(SPEC).html
+hypertext: $(SPEC)_toc.html
 
-$(SPEC).html: $(SPEC).texi
-	$(TEXI2HTML) -doctype html2 -debug 9 -expandinfo -split_chapter -glossary -verbose $(SPEC).texi
+$(SPEC)_toc.html: $(SPEC).texi
+	$(TEXI2HTML) -doctype html2 -debug 8 -expandinfo -split_chapter -glossary -verbose $(SPEC).texi
 
 hardcopy: $(SPEC).txt $(SPEC).ps
 

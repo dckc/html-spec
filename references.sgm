@@ -29,7 +29,7 @@ Oxford University Press, 1990.
 <tli>[IMEDIA]: J. Postel. "Media Type Registration Procedure." RFC
 1590, USC/ISI, March 1994.
 
-<tli>[IANA"]: J. Reynolds and J. Postel. "Assigned Numbers." STD 2,
+<tli>[IANA]: J. Reynolds and J. Postel. "Assigned Numbers." STD 2,
 RFC 1700, USC/ISI, October 1994.
 
 <tli>[SQ91]: SoftQuad. "The SGML Primer." 3rd ed., SoftQuad Inc.,
@@ -52,4 +52,5 @@ alphabet No. 5, ISO 8859-9, 1990.
 <tli>[SGML]: ISO 8879. Information Processing - Text and Office
 Systems - Standard Generalized Markup Language (SGML), 1986.
 
+<!-- @@ ISO-646-IRV -->
 </tl>

@@ -1,3 +1,4 @@
+<!-- $Id$ -->
 <h1>Block Structuring Elements
 
 <p>The following elements may be included in the body of an HTML document:
@@ -53,9 +54,6 @@ widths being rounded up.
 <li>Line breaks within the text are rendered as a move to the
 beginning of the next line.
 
-<li>The &lt;P> tag should not be used@@. If found, it should be rendered
-as a move to the beginning of the next line.
-
 <li>Anchor elements and character highlighting elements may be used.
 
 <li>Elements that define paragraph formatting (headings, address,
@@ -66,6 +64,12 @@ as decimal 9) must be interpreted as the smallest positive nonzero
 number of spaces which will leave the number of characters so far on
 the line as a multiple of 8. Its use is not recommended however.
 </ul>
+
+<NOTE>Som historical documents contain <tag/P/ tags in <tag/PRE/
+elements.  User agents are engcouraged to treat this a a line break. A
+<tag/P/ tag followed by a newline character should produce only one
+line break, not a line break plus a blank line.
+</note>
 
 <NOTE>References to the "beginning of a new line" do not imply that
 the renderer is forbidden from using a constant left indent for

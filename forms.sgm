@@ -103,9 +103,6 @@ with the values of the METHOD and ENCTYPE attributes.
 in case the protocol does not impose a format itself.
 </ul>
 
-<p>The Level 2 specification defines@@ and requires support for the HTTP
-access protocol only.
-
 <p>When the ACTION attribute is set to an HTTP URL, the METHOD
 attribute must be set to an HTTP method&nbsp;[HTTP]. The
 default method is GET, although for many applications the POST method

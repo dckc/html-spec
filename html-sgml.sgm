@@ -1,3 +1,4 @@
+<!-- $Id$ -->
 <h1>HTML as an Application of SGML
 
 <p>HTML is an application of ISO Standard 8879:1986 - Standard
@@ -12,11 +13,10 @@ the markup language for representing instances of this document type.
 
 <h2>SGML Documents
 
-An HTML document is an SGML document; that is, a set of entities,
-including the document entity, which is text entity in which parsing
-begins. The first production of the SGML grammar separates an SGML
-document into three parts: an SGML declaration, a prologue, and an
-instance.
+An HTML document is an SGML document; that is, a sequence of
+characters. The first production of the SGML grammar separates an
+SGML document into three parts: an SGML declaration, a prologue, and
+an instance.
 
 For the purposes of this specification, the prologue is a DTD. This
 DTD describes another grammar: the start symbol is given in the
@@ -28,21 +28,21 @@ defined by this grammar.
 The SGML declaration determines the lexicon of the grammar. It
 specifies the document character set, which determines a
 character repertoire that contains all characters that occur in all
-text entities in the document, and the character numbers associated with
+text entities in the document, and the code positions associated with
 those characters.
 
-The SGML declaration also specifies the syntax character set of the
-document, and a few other parameters that bind the abstract syntax
-of SGML to a concrete syntax. This concrete syntax determines how
-each text entity is mapped to a sequence of terminals in the grammar
-of the prologue.
+The SGML declaration also specifies the syntax-reference character set
+of the document, and a few other parameters that bind the abstract
+syntax of SGML to a concrete syntax. This concrete syntax determines
+how the sequence of characters of the document is mapped to a sequence
+of terminals in the grammar of the prologue.
 
 For example, consider the following document:
 
 <listing><![CDATA[
 <!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <title>Parsing Example</title>
-<p>Some text. <em>&#42;wow&#42;</em>
+<p>Some text. <em>&#42;wow&#42;</em></p>
 ]]></listing>
 
 An HTML user agent should use the SGML declaration is given in <hdref
@@ -52,14 +52,14 @@ that the markup <code>&amp;#42;</> represents an asterisk character.
 The instance above is regarded as the following sequence of terminals:
 
 <ol>
-<li>TITLE start tag
+<li>TITLE start-tag
 <li>data characters: "Parsing Example"
-<li>TITLE end tag
-<li>P start tag
+<li>TITLE end-tag
+<li>P start-tag
 <li>data characters "Some text. "
-<li>EM start tag
+<li>EM start-tag
 <li>"*wow*"
-<li>EM end tag
+<li>EM end-tag
 </ol>
 
 The start symbol of the DTD grammar is HTML, and the productions
@@ -69,24 +69,47 @@ are given in the public text identified by <code>-//IETF//DTD HTML
 <listing><![CDATA[
    HTML
     |
-    \-HEAD,     BODY
-       |	 |
-       \-TITLE	 \-P
-           |	   |
-           |	   \-<P>,"Some text. ",EM
-           |                            |
-           |                            \-<EM>,"*wow*",</EM>
-           \-<TITLE>,"Parsing Example",</TITLE>
+    \-HEAD
+    |  |
+    |  \-TITLE
+    |      |
+    |      \-<TITLE>
+    |      |
+    |      \-"Parsing Example"
+    |      |
+    |      \-</TITLE>
+    |
+    \-BODY
+      |
+      \-P
+        |
+        \-<P>
+        |
+        \-"Some text. "
+        |
+        \-EM
+        |  |
+        |  \-<EM>
+        |  |
+        |  \-"*wow*"
+        |  |
+        |  \-</EM>
+        | 
+        \-</P>
+
 ]]></listing>
 
 <h2>HTML Lexical Syntax
 
-The syntax character set for all HTML documents is ISO-646-IRV. A
-minimally conforming HTML user agent must support the SGML
-declaration in <hdref refid=decl>, which specifies ISO Latin 1 (@@full
-name) as the document character set; it may support other SGML
-declarations, in particular, SGML declarations with other document
-character sets.
+The syntax-reference character set for all HTML documents is
+ISO-646-IRV. A conforming HTML user agent must support the
+SGML declaration in <hdref refid=decl>, which specifies ISO Latin
+Alphabet Nr. 1 as the document character set.
+
+<note>In order to avoid interoperability problems related to numeric
+character references, HTML user agents are encouraged to support only
+document character sets that agree with ISO-8859-1 and ISO10646.
+</note>
 
 A complete discussion of SGML parsing, e.g. the mapping of a sequence
 of characters to a sequence of tags and data is left to the SGML
@@ -95,7 +118,7 @@ standard[SGML]. This section is only a summary.
 <h3>Data Characters
 
 Any sequence of characters that do not constitute markup (see
-"Delimiter Recognition," section @@@ of [SGML]) are mapped directly to
+9.6 "Delimiter Recognition" of [SGML]) are mapped directly to
 strings of data characters. Some markup also maps to data character
 strings. Numeric character references also map to single-character
 strings, via the document character set. Each reference to one of the
@@ -119,7 +142,7 @@ abc &#60 def    => "abc ","<"," def"
 ]]></listing>
 
 And note that an ampersand is only recognized as markup when it
-is followed by a letter or number:
+is followed by a letter or digit:
 
 <listing><![CDATA[
 abc & lt def    => "abc & lt def"
@@ -148,18 +171,18 @@ of the HTML DTD.
 
 <h3>Tags
 
-Tags delimit elements such as headings, paragraphs, lists, 
-character highlighting and links. Most HTML elements are identified 
-in a document as a start tag, which gives the element name and 
-attributes, followed by the content, followed by the end tag. Start 
-tags are delimited by <code><</> and <code>></>; end tags are delimited by <code></</> 
-and <code>></>. An example is:
+Tags delimit elements such as headings, paragraphs, lists, character
+highlighting and links. Most HTML elements are identified in a
+document as a start-tag, which gives the element name and attributes,
+followed by the content, followed by the end tag. Start-tags are
+delimited by <code><</> and <code>></>; end tags are delimited by
+<code></</> and <code>></>. An example is:
 
 <listing><![CDATA[
 <H1>This is a Heading</H1>
 ]]></listing>
 
-Some elements only have a start tag without an end tag. For example,
+Some elements only have a start-tag without an end-tag. For example,
 to create a line break, you use the <code/&lt;BR>/ tag.  Additionally,
 the end tags of some other elements, such as Paragraph
 (<code>&lt;/P></>), List Item (<code>&lt;/LI></>), Definition Term
@@ -173,7 +196,7 @@ the HTML DTD, <hdref refid=dtd> for full details.
 <note>The SGML declaration for HTML specifies SHORTTAG YES, which
 means that there are other valid syntaxes for tags, such as NET tags,
 <code>&lt;EM/.../</>; empty start tags, <code>&lt></code>; and empty
-end tags, <code>&lt;/></>. Until support for these idioms is widely
+end-tags, <code>&lt;/></>. Until support for these idioms is widely
 deployed, their use is strongly discouraged.
 </note>
 
@@ -185,12 +208,12 @@ names are. For example, <code>&lt;BLOCKQUOTE></>,
 <code>&lt;BlockQuote></>, and <code>&lt;blockquote></> are equivalent,
 whereas <code>&amp;amp;</> is different from <code>&amp;AMP;</>.
 
-In a start tag, the element name must immediately follow the tag 
+In a start-tag, the element name must immediately follow the tag 
 open delimiter <code>&lt;</>.
 
 <h3>Attributes
 
-In a start tag, white space and attributes are allowed between the
+In a start-tag, white space and attributes are allowed between the
 element name and the closing delimiter. An attribute typically
 consists of an attribute name, an equal sign, and a value, though
 some attributes may be just a value. White space is allowed around
@@ -269,12 +292,13 @@ minimized syntax.
 
 <h3>Comments
 
-To include comments in an HTML document that will be eliminated in
-the mapping to terminals, surround them with <code><!--</> and
-<code>--></>. After the comment delimiter, all text up to the next
-occurrence of <code>--></> is ignored.  Hence comments cannot be
-nested. White space is allowed between the closing <code>--</> and <code>></>,
-but not between the opening <code><!</> and <code>--</>.
+To include comments in an HTML document that will be eliminated in the
+mapping to terminals, surround them with <code>&lt;!--</> and
+<code>--&gt;</>. After the comment delimiter, all text up to the next
+occurrence of <code>--&gt;</> is ignored.  Hence comments cannot be
+nested. White space is allowed between the closing <code>--</> and
+<code>></>, but not between the opening <code>&lt;!</> and
+<code>--</>.
 
 For example:
 
@@ -319,7 +343,7 @@ include character highlighting in a paragraph. <EM>This sentence
 of the paragraph is emphasized.</EM> Note that the &lt;/P&gt; 
 end tag has been omitted.
 <P>
-<IMG SRC ="triangle.xbm" alt="Warning:">
+<IMG SRC ="triangle.xbm" alt="Warning: ">
 Be sure to read these <b>bold instructions</b>.
 </BODY></HTML>
 ]]></listing>
