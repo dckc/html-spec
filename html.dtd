@@ -269,7 +269,6 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	]]>
 <!ENTITY % u-font "">
 
-<![ %HTML.phrase [
 <!ENTITY % font "TT | B | I %u-font">
 <!ENTITY % phrase "EM | STRONG | CODE | SAMP | KBD | VAR | DFN | CITE
 	 | STRIKE %key-emph">
@@ -288,7 +287,6 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ENTITY % inline "%phrase %obsolete-font">
 <!ENTITY % pre-inline "%font %obsolete-phrase %obsolete-p">
-]]>
 
 <!ENTITY % inline "">
 <!ENTITY % pre-inline "">
