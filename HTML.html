@@ -1,133 +1,131 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML 1.9//EN">
+<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
 <HTML>
+
 <HEAD>
-<TITLE>Hypertext Markup Language (HTML)</TITLE>
-<NEXTID N="z16">
-</HEAD>
+<TITLE>Hypertext Markup Language (HTML)</TITLE> <NEXTID
+N="z16"></HEAD>
+
 <BODY>
+
 <H2>Status of this Document</H2>
-<p>This document is an Internet Draft.
-Internet Drafts are working documents
-of the Internet Engineering Task
-Force (IETF), its Areas, and its
-Working Groups.  Note that other
-groups may also distribute working
-documents as Internet Drafts.<P>
-Internet Drafts are working documents
-valid for a maximum of six months.
-Internet Drafts may be updated, replaced,
-or  obsoleted by other documents
-at any time.  It is not appropriate
-to use Internet Drafts as reference
-material or to cite them other than
-as a "working draft" or "work in
-progress".<P>
-Distribution of this document is
-unlimited.   The document is a  draft
-form of a standard for interchange
-of information on the network which
-is proposed  to be registered as
-a MIME (RFC1341) content type. Please
-send comments to timbl@info.cern.ch
-or the discussion list www-talk@info.cern.ch.<P>
-This is version 1.2 of this draft.
-This document is available in hypertext
-on the World-Wide Web as http://info.cern.ch/hypertext/WWW/MarkUp/HTML.html
+
+<P>This document is an Internet Draft. Internet Drafts are working
+documents of the Internet Engineering Task Force (IETF),
+its Areas, and its Working Groups. Note that other groups may
+also distribute working documents as Internet Drafts.
+
+<P>Internet Drafts are working documents valid for a maximum
+of six months. Internet Drafts may be updated,
+replaced, or obsoleted by other documents at any time.
+It is not appropriate to use Internet Drafts as reference material
+or to cite them other than as a "working draft" or "work in progress".
+
+<P>Distribution of this document is unlimited.
+The document is a draft form of a standard for interchange of
+information on the network which is proposed to be registered
+as a MIME (RFC1341) content type. Please send comments to timbl@info.cern.ch
+or the discussion list www-talk@info.cern.ch.
+
+<P>This is version 1.2 of this draft. This document is available
+in hypertext on the World-Wide Web as http://info.cern.ch/hypertext/WWW/MarkUp/HTML.html
+
 <H2>Abstract</H2>
-<p><A
-NAME="z14" HREF="MarkUp.html">HyperText Markup Language</A> (HTML)
-can be used to represent
+
+<P><A HREF="MarkUp.html" NAME="z14">HyperText Markup Language</A>
+(HTML) can be used to represent
+
 <UL>
+
 <LI>Hypertext news, mail, online documentation,
 and collaborative hypermedia;
-<LI>Menus of  options;
+
+<LI>Menus of options;
+
 <LI>Database query results;
-<LI>Simple structured documents with
-inlined graphics.
-<LI>Hypertext views of existing bodies
-of information
+
+<LI>Simple structured documents with inlined graphics.
+
+<LI>Hypertext views of existing bodies of information
 </UL>
-<p>The World Wide Web (W3) initiative
-links related information throughout
-the globe.  HTML provides one simple
-format for providing linked information,
-and  all W3 compatible programs are
-required to be capable of handling
-HTML.    W3 uses an Internet protocol
-(Hypertext Transfer Protocol, HTTP),
-which allows transfer representations
-to be negotiated between client and
-server, the result being returned
-in an extended MIME message.  HTML
-is therefore just one, but an important
-one, of the representations used
-with W3.<P>
-HTML is proposed as a  MIME content
-type.<P>
-HTML refers to the URL specification
-of RFCxxxx.<P>
-Implementations of HTML parsers and
-generators can be found in the various
-W3 servers and browsers, in the public
-domain W3 code, and may also be built
-using various public domain SGML
-parsers such as <A
-NAME="z7" HREF="References.html#z4">[SGMLS]</A> .  HTML is
-an SGML document type with fairly
-generic semantics appropriate for
-representing information from a wide
-range of applications.  It is more
-generic than many specific SGML applications,
-but is still completely device-independent.
+
+<P>The World Wide Web (W3) initiative links related information
+throughout the globe. HTML provides one simple format for providing
+linked information, and all W3 compatible programs are required
+to be capable of handling HTML. W3 uses an Internet protocol
+(Hypertext Transfer Protocol, HTTP), which allows transfer representations
+to be negotiated between client and server,
+the result being returned in an extended MIME message.
+HTML is therefore just one, but an important one,
+of the representations used with W3.
+
+<P>HTML is proposed as a MIME content type.
+
+<P>HTML refers to the URL specification of RFCxxxx.
+
+<P>Implementations of HTML parsers and generators can be found
+in the various W3 servers and browsers, in the public domain
+W3 code, and may also be built using various public domain SGML
+parsers such as <A HREF="References.html#z4"
+NAME="z7">[SGMLS]</A> . HTML is an SGML document type with fairly
+generic semantics appropriate for representing information from
+a wide range of applications. It is more generic than many specific
+SGML applications, but is still completely device-independent.
+
 <H1>In this document</H1>
-<p>This document contains the following
-parts:
+
+<P>This document contains the following parts:
+
 <DL>
-<DT><A
-NAME="z5" HREF="StatusMeanings.html">Vocabulary</A> 
-<DD>used in this document,
-degrees of imperative.
-<DT><A
-NAME="z8" HREF="AndMIME.html">HTML and MIME</A> 
-<DD>with discussion of
-character sets.
-<DT><A
-NAME="z3" HREF="Intro.html">HTML and SGML</A> 
-<DD>and the relationship
-between them,  and <A
-NAME="z9" HREF="Text.html">Structured text</A>
-: an introduction for beginners to
-SGML.
-<DT><A
-NAME="z4" HREF="Tags.html">HTML Elements</A>
-<DD> A list with description,
-example, and typical rendering.
-<DT><A
-NAME="z6" HREF="Entities.html">HTML Entities</A>
-<DD> Entities used to describe
-characters.
-<DT><A
-NAME="z2" HREF="DTDHeading.html">The HTML DTD</A>
-<DD> The text of the SGML
-DTD for HTML
-<DT><A
-NAME="z1" HREF="Relationships.html">Link relationship values</A> .
-<DD> A provisional
-list. Not part of the standard.
-<DT><A
-NAME="z13" HREF="RegistrationAuthority.html">Registration Authority</A>
-<DD> The authority
-for extending lists of valid vales.
-<DT><A
-NAME="z15" HREF="Acknowledgements.html">Acknowledgements</A>
-<DD>and a change history
-of the document
-<DT><A
-NAME="z0" HREF="References.html">References</A>
-<DD> to related documents
-<DT><A
-NAME="z11" HREF="Authors.html">Authors addresses</A>
-<DD> Contact information.
+
+<DT><A HREF="StatusMeanings.html" NAME="z5">Vocabulary</A>
+
+<DD>used in this document, degrees of imperative.
+
+<DT><A HREF="AndMIME.html" NAME="z8">HTML and MIME</A>
+
+<DD>with discussion of character sets.
+
+<DT><A HREF="Intro.html" NAME="z3">HTML and SGML</A>
+
+<DD>and the relationship between them, and <A
+HREF="Text.html" NAME="z9">Structured text</A> :
+an introduction for beginners to SGML.
+
+<DT><A HREF="Tags.html" NAME="z4">HTML Elements</A>
+
+<DD>A list with description, example, and typical rendering.
+
+<DT><A HREF="Entities.html" NAME="z6">HTML Entities</A>
+
+<DD>Entities used to describe characters.
+
+<DT><A HREF="DTDHeading.html" NAME="z2">The HTML DTD</A>
+
+<DD>The text of the SGML DTD for HTML
+
+<DT><A HREF="Relationships.html" NAME="z1">Link relationship
+values</A> .
+
+<DD>A provisional list. Not part of the standard.
+
+<DT><A HREF="RegistrationAuthority.html"
+NAME="z13">Registration Authority</A>
+
+<DD>The authority for extending lists of valid vales.
+
+<DT><A HREF="Acknowledgements.html" NAME="z15">Acknowledgements</A>
+
+<DD>and a change history of the document
+
+<DT><A HREF="References.html" NAME="z0">References</A>
+
+<DD>to related documents
+
+<DT><A HREF="Authors.html" NAME="z11">Authors addresses</A>
+
+<DD>Contact information.
 </DL>
-<p>table of contents</BODY>
+
+<P>table of contents
+</BODY>
 </HTML>

@@ -1,91 +1,121 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML 1.9//EN">
+<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
 <HTML>
-<HEAD>
-<TITLE>Highlighting in HTML</TITLE>
-<NEXTID N="z5">
-</HEAD>
-<BODY>
-<H1>Character highlighting</H1><P>Status: <A
-NAME="z3" HREF="StatusMeanings.html#z5">Extra</A><P>
-These elements allow sections of
-text to be formatted in a particular
-way, to provide emphasis, etc.  The
-tags do NOT cause a paragraph break,
-and may be used on sections of text
-within paragraphs.<P>
-Where not supported by implementations,
-like all tags, these tags should
-be ignored but the content rendered.<P>
-All these tags have related closing
-tags, as in
-<PRE>		This is &lt;EM>emphasized&lt;/EM> text.
 
-</PRE><P>Some of these styles are more explicit
-than others about how they should
-be physically represented.  The logical
-styles should be used wherever possible,
-unless for example it is necessary
-to refer to the formatting in the
-text. (Eg, "The italic parts are
-mandatory".)
-<H3>Note:</H3><P>Browsers unable to display a specified
-style may render it in some alternative,
-or the default, style, with some
-loss of quality for the reader. Some
-implementations may ignore these
-tags altogether, so information providers
-should attempt not to rely on them
-as essential to the information content.<P>
-These element names are derived from
-TeXInfo macro names.
+<HEAD>
+<TITLE>Highlighting in HTML</TITLE> <NEXTID
+N="z5"></HEAD>
+
+<BODY>
+
+<H1>Character highlighting</H1>
+
+<P>Status: <A HREF="StatusMeanings.html#z5"
+NAME="z3">Extra</A>
+
+<P>These elements allow sections of text to be formatted in a
+particular way, to provide emphasis, etc.
+The tags do NOT cause a paragraph break,
+and may be used on sections of text within paragraphs.
+
+<P>Where not supported by implementations,
+like all tags, these tags should be ignored but the content rendered.
+
+<P>All these tags have related closing tags,
+as in
+
+<PRE>		This is &lt;EM&#62;emphasized&lt;/EM&#62; text.
+
+</PRE>
+
+<P>Some of these styles are more explicit than others about how
+they should be physically represented. The logical styles should
+be used wherever possible, unless for example it is necessary
+to refer to the formatting in the text. (Eg,
+"The italic parts are mandatory".)
+
+<H3>Note:</H3>
+
+<P>Browsers unable to display a specified style may render it
+in some alternative, or the default, style,
+with some loss of quality for the reader.
+Some implementations may ignore these tags altogether,
+so information providers should attempt not to rely on them as
+essential to the information content.
+
+<P>These element names are derived from TeXInfo macro names.
+
 <H2>Physical styles</H2>
+
 <DL>
+
 <DT>TT
-<DD> Fixed-width typewriter font.
+
+<DD>Fixed-width typewriter font.
+
 <DT>B
-<DD> Boldface, where available, otherwise
-alternative mapping allowed.
+
+<DD>Boldface, where available, otherwise alternative mapping
+allowed.
+
 <DT>I
-<DD> Italic font (or slanted if italic
-unavailable).
+
+<DD>Italic font (or slanted if italic unavailable).
+
 <DT>U
-<DD> Underline.
+
+<DD>Underline.
 </DL>
 
 <H2>Logical styles</H2>
+
 <DL>
+
 <DT>EM
-<DD> Emphasis, typically italic.
+
+<DD>Emphasis, typically italic.
+
 <DT>STRONG
-<DD> Stronger emphasis, typically
-bold.
+
+<DD>Stronger emphasis, typically bold.
+
 <DT>CODE
-<DD> Example of code. typically monospaced
-font. (Do not confuse with  <A
-NAME="z4" HREF="Elements/PRE.html">PRE</A> )
+
+<DD>Example of code. typically monospaced font.
+(Do not confuse with <A HREF="Elements/PRE.html"
+NAME="z4">PRE</A> )
+
 <DT>SAMP
-<DD> A sequence of literal characters.
+
+<DD>A sequence of literal characters.
+
 <DT>KBD
-<DD> in an instruction manual, Text
-typed by a user.
+
+<DD>in an instruction manual, Text typed by a user.
+
 <DT>VAR
-<DD> A variable name.
+
+<DD>A variable name.
+
 <DT>DFN
-<DD> The defining instance of a term.
-Typically bold or bold italic.
+
+<DD>The defining instance of a term. Typically bold or bold italic.
+
 <DT>CITE
-<DD> A citation. Typically italic.
+
+<DD>A citation. Typically italic.
 </DL>
 
 <H2>Examples of use</H2>
-<PRE>	This text contains an &lt;em>emphasized&lt;/em> word.
-	&lt;strong>Don't assume&lt;/strong> that it will be italic!
-	It was made using the &lt;CODE>EM&lt;/CODE> element. A citation is
+
+<PRE>	This text contains an &lt;em&#62;emphasized&lt;/em&#62; word.
+	&lt;strong&#62;Don't assume&lt;/strong&#62; that it will be italic!
+	It was made using the &lt;CODE&#62;EM&lt;/CODE&#62; element. A citation is
 	typically italic and has no formal necessary structure:
-	&lt;cite>Moby Dick&lt;/cite> is a book title.
+	&lt;cite&#62;Moby Dick&lt;/cite&#62; is a book title.
 
 
 
 
-</PRE></BODY>
+</PRE>
+</BODY>
 </HTML>

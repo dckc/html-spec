@@ -1,167 +1,173 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML 1.9//EN">
+<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
 <HTML>
+
 <HEAD>
-<TITLE>Lists and glossaries in HTML</TITLE>
-<NEXTID N="z42">
-</HEAD>
+<TITLE>Lists and glossaries in HTML</TITLE> <NEXTID
+N="z42"></HEAD>
+
 <BODY>
-<H1>Forms of list in HTML</H1><P>These lists may be nested
-<H2><A
-NAME="z32">Glossaries</A></H2><P>A glossary (or definition list) is
-a list of paragraphs each of which
-has a short title alongside it. Apart
-from glossaries, this element is
-useful for presenting a set of named
-elements to the reader. The elements
-within a glossary follow are introduced
-by these elements:
+
+<H1>Forms of list in HTML</H1>
+
+<P>These lists may be nested
+
+<H2><A NAME="z32">Glossaries</A></H2>
+
+<P>A glossary (or definition list) is a list of paragraphs each
+of which has a short title alongside it.
+Apart from glossaries, this element is useful for presenting
+a set of named elements to the reader. The elements within a
+glossary follow are introduced by these elements:
+
 <DL>
+
 <DT>DT
-<DD> The "term", typically placed in
-a wide left indent
+
+<DD>The "term", typically placed in a wide left indent
+
 <DT>DD
-<DD> The "definition", which may wrap
-onto many lines
+
+<DD>The "definition", which may wrap onto many lines
 </DL>
-<P>These elements must appear in pairs.
- Single occurrences of DT without
-a following DD are allowed, and have
-the same significance as if the DD
-had been present with no text.. 
-The one attribute which DL can take
-is
+
+<P>These elements must appear in pairs. Single occurrences of
+DT without a following DD are allowed, and have the same significance
+as if the DD had been present with no text..
+The one attribute which DL can take is
+
 <DL>
+
 <DT>COMPACT
-<DD> suggests that a compact rendering
-be used, because the enclosed elements
-are individually small, or the whole
-glossary is rather large, or both.
+
+<DD>suggests that a compact rendering be used,
+because the enclosed elements are individually small,
+or the whole glossary is rather large, or both.
 </DL>
 
-<H3>Typical rendering</H3><P>The definition list DT, DD pairs
-are arranged vertically.   For each
-pair, the DT element is on the left,
-in a column of about a third of the
-display area, and the DD element
-is in the right hand two thirds of
-the display area.  The DT term is
-normally small enough to fit on one
-line within the left-hand column.
-If it is longer, it will either extend
-across the page, in which case the
-DD section is moved down to separate
-them, or it is wrapped onto successive
-lines of the left hand column.<P>
-This is sometimes implemented with
-the use of a large negative first
-line indent.<P>
-White space is typically left between
-successive DT,DD pairs unless the
-COMPACT attribute is given.  The
-COMPACT attribute is appropriate
-for lists which are long and/or have
-DT,DD pairs which each take only
-a line or two.  It is of course possible
-for the rendering software to discover
-these cases itself and make its own
-decisions, and this is to be encouraged.<P>
-The COMPACT attribute may also reduce
-the width of the left-hand (DT) column.
-<H3>Examples of use</H3>
-<PRE>	&lt;DL>
-	&lt;DT>Term the first&lt;DD>definition paragraph is reasonably
-	long but is still displayed clearly
-	&lt;DT>Term2 follows&lt;DD>Definition of term2
-	&lt;/DL>
+<H3>Typical rendering</H3>
 
-	&lt;DL COMPACT>
-	&lt;DT>Term&lt;DD>definition paragraph
-	&lt;DT>Term2&lt;DD>Definition of term2
-	&lt;/DL>
+<P>The definition list DT, DD pairs are arranged vertically.
+For each pair, the DT element is on the left,
+in a column of about a third of the display area,
+and the DD element is in the right hand two thirds of the display
+area. The DT term is normally small enough to fit on one line
+within the left-hand column. If it is longer,
+it will either extend across the page, in which case the DD section
+is moved down to separate them, or it is wrapped onto successive
+lines of the left hand column.
+
+<P>This is sometimes implemented with the use of a large negative
+first line indent.
+
+<P>White space is typically left between successive DT,DD pairs
+unless the COMPACT attribute is given. The COMPACT attribute
+is appropriate for lists which are long and/or have DT,DD pairs
+which each take only a line or two. It is of course possible
+for the rendering software to discover these cases itself and
+make its own decisions, and this is to be encouraged.
+
+<P>The COMPACT attribute may also reduce the width of the left-hand
+(DT) column.
+
+<H3>Examples of use</H3>
+
+<PRE>	&lt;DL&#62;
+	&lt;DT&#62;Term the first&lt;DD&#62;definition paragraph is reasonably
+	long but is still displayed clearly
+	&lt;DT&#62;Term2 follows&lt;DD&#62;Definition of term2
+	&lt;/DL&#62;
+
+	&lt;DL COMPACT&#62;
+	&lt;DT&#62;Term&lt;DD&#62;definition paragraph
+	&lt;DT&#62;Term2&lt;DD&#62;Definition of term2
+	&lt;/DL&#62;
 
 
 
 
 </PRE>
-<H2>Lists</H2><P>A list is a sequence of paragraphs,
-each of which may be preceded by
-a special mark or sequence number.
-The syntax is:
-<PRE>
-		&lt;UL>
-		&lt;LI> list element
-		&lt;LI> another list element ...
-		&lt;/UL>
 
-</PRE><P>The opening list tag  may be any
-of UL, OL, MENU or DIR.  It must
-be immediately followed by the first
-list element. 
-<H3>Typical rendering</H3><P>The representation of the list is
-not defined here, but a bulleted
-list for unordered lists,  and a
-sequence of numbered paragraphs for
-an ordered list would be quite appropriate.
-Other possibilities for interactive
-display include embedded scrollable
-browse panels.<P>
-List elements with typical rendering
-are:
+<H2>Lists</H2>
+
+<P>A list is a sequence of paragraphs, each of which may be preceded
+by a special mark or sequence number. The syntax is:
+
+<PRE>
+		&lt;UL&#62;
+		&lt;LI&#62; list element
+		&lt;LI&#62; another list element ...
+		&lt;/UL&#62;
+
+</PRE>
+
+<P>The opening list tag may be any of UL,
+OL, MENU or DIR. It must be immediately followed by the first
+list element.
+
+<H3>Typical rendering</H3>
+
+<P>The representation of the list is not defined here,
+but a bulleted list for unordered lists,
+and a sequence of numbered paragraphs for an ordered list would
+be quite appropriate. Other possibilities for interactive display
+include embedded scrollable browse panels.
+
+<P>List elements with typical rendering are:
+
 <DL>
-<DT><A
-NAME="z35">UL</A>
-<DD> A list of multi-line paragraphs,
-typically separated by some white
-space and/or marked by bullets, etc.
-<DT><A
-NAME="z41">OL</A>
-<DD> As UL, but the paragraphs are
-typically numbered in some way to
-indicate the order as significant.
-<DT><A
-NAME="z36">MENU</A>
-<DD> A list of smaller paragraphs.
-Typically one line per item, with
-a style more compact than UL.
-<DT><A
-NAME="z40">DIR</A>
-<DD> A list of short elements, typically
-less than 20 characters.  These may
-be arranged in columns across the
-page, typically 24 character in width.
-If the rendering software is able
-to optimize the column width as function
-of the widths of individual elements,
-so much the better.
+
+<DT><A NAME="z35">UL</A>
+
+<DD>A list of multi-line paragraphs, typically separated by some
+white space and/or marked by bullets, etc.
+
+<DT><A NAME="z41">OL</A>
+
+<DD>As UL, but the paragraphs are typically numbered in some
+way to indicate the order as significant.
+
+<DT><A NAME="z36">MENU</A>
+
+<DD>A list of smaller paragraphs. Typically one line per item,
+with a style more compact than UL.
+
+<DT><A NAME="z40">DIR</A>
+
+<DD>A list of short elements, typically less than 20 characters.
+These may be arranged in columns across the page,
+typically 24 character in width. If the rendering software is
+able to optimize the column width as function of the widths of
+individual elements, so much the better.
 </DL>
 
 <H3>Example of use</H3>
-<PRE>		<A
-NAME="z34" HREF="HTML.dtd.html#z30">&lt;OL></A>
+
+<PRE>		<A HREF="HTML.dtd.html#z30" NAME="z34">&lt;OL&#62;</A>
 		<A
-NAME="z33" HREF="HTML.dtd.html#z27">&lt;LI></A> When you get to the station, leave
+HREF="HTML.dtd.html#z27" NAME="z33">&lt;LI&#62;</A> When you get to the station, leave
 		by the southern exit, on platform one.
-		&lt;LI>Turn left to face toward the mountain
-		&lt;LI>Walk for a mile or so until you reach the
+		&lt;LI&#62;Turn left to face toward the mountain
+		&lt;LI&#62;Walk for a mile or so until you reach the
 		"Asquith Arms" then 
-		&lt;LI>Wait and see...
-		&lt;/OL>
+		&lt;LI&#62;Wait and see...
+		&lt;/OL&#62;
 
 		&lt;<A
-NAME="z38" HREF="HTML.dtd.html#z29"> MENU</A> >
-		&lt;LI>The oranges should be pressed fresh
-		&lt;LI>The nuts may come from a packet
-		&lt;LI>The gin must be good quality
-		&lt;/MENU>
+HREF="HTML.dtd.html#z29" NAME="z38"> MENU</A> &#62;
+		&lt;LI&#62;The oranges should be pressed fresh
+		&lt;LI&#62;The nuts may come from a packet
+		&lt;LI&#62;The gin must be good quality
+		&lt;/MENU&#62;
 
 		&lt;<A
-NAME="z39" HREF="HTML.dtd.html#z31"> DIR</A> >
-		&lt;LI>A-H&lt;LI>I-M
-		&lt;LI>M-R&lt;LI>S-Z
-		&lt;/DIR>
+HREF="HTML.dtd.html#z31" NAME="z39"> DIR</A> &#62;
+		&lt;LI&#62;A-H&lt;LI&#62;I-M
+		&lt;LI&#62;M-R&lt;LI&#62;S-Z
+		&lt;/DIR&#62;
 
 
 
 
-</PRE></BODY>
+</PRE>
+</BODY>
 </HTML>

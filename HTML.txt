@@ -3,20 +3,20 @@ Status of this Document
 
    This document is an Internet Draft. Internet Drafts are working
    documents of the Internet Engineering Task Force (IETF), its Areas,
-   and its Working Groups.  Note that other groups may also distribute
+   and its Working Groups. Note that other groups may also distribute
    working documents as Internet Drafts.
    
    Internet Drafts are working documents valid for a maximum of six
-   months. Internet Drafts may be updated, replaced, or  obsoleted by
-   other documents at any time.  It is not appropriate to use Internet
+   months. Internet Drafts may be updated, replaced, or obsoleted by
+   other documents at any time. It is not appropriate to use Internet
    Drafts as reference material or to cite them other than as a
    "working draft" or "work in progress".
    
-   Distribution of this document is unlimited.   The document is a
-   draft form of a standard for interchange of information on the
-   network which is proposed  to be registered as a MIME (RFC1341)
-   content type. Please send comments to timbl@info.cern.ch or the
-   discussion list www-talk@info.cern.ch.
+   Distribution of this document is unlimited. The document is a draft
+   form of a standard for interchange of information on the network
+   which is proposed to be registered as a MIME (RFC1341) content
+   type. Please send comments to timbl@info.cern.ch or the discussion
+   list www-talk@info.cern.ch.
    
    This is version 1.2 of this draft. This document is available in
    hypertext on the World-Wide Web as
@@ -29,7 +29,7 @@ Abstract
       Hypertext news, mail, online documentation, and collaborative
       hypermedia;
       
-      Menus of  options;
+      Menus of options;
       
       Database query results;
       
@@ -38,25 +38,25 @@ Abstract
       Hypertext views of existing bodies of information
       
    The World Wide Web (W3) initiative links related information
-   throughout the globe.  HTML provides one simple format for
-   providing linked information, and  all W3 compatible programs are
-   required to be capable of handling HTML.    W3 uses an Internet
-   protocol (Hypertext Transfer Protocol, HTTP), which allows transfer
+   throughout the globe. HTML provides one simple format for providing
+   linked information, and all W3 compatible programs are required to
+   be capable of handling HTML. W3 uses an Internet protocol
+   (Hypertext Transfer Protocol, HTTP), which allows transfer
    representations to be negotiated between client and server, the
-   result being returned in an extended MIME message.  HTML is
+   result being returned in an extended MIME message. HTML is
    therefore just one, but an important one, of the representations
    used with W3.
    
-   HTML is proposed as a  MIME content type.
+   HTML is proposed as a MIME content type.
    
    HTML refers to the URL specification of RFCxxxx.
    
    Implementations of HTML parsers and generators can be found in the
    various W3 servers and browsers, in the public domain W3 code, and
    may also be built using various public domain SGML parsers such as
-   [SGMLS] .  HTML is an SGML document type with fairly generic
+   [SGMLS] . HTML is an SGML document type with fairly generic
    semantics appropriate for representing information from a wide
-   range of applications.  It is more generic than many specific SGML
+   range of applications. It is more generic than many specific SGML
    applications, but is still completely device-independent.
    
                            IN THIS DOCUMENT
@@ -67,30 +67,29 @@ Abstract
                          
   HTML and MIME          with discussion of character sets.
                          
-  HTML and SGML          and the relationship between them,  and
+  HTML and SGML          and the relationship between them, and
                          Structured text : an introduction for
                          beginners to SGML.
                          
-  HTML Elements           A list with description, example, and
-                         typical rendering.
+  HTML Elements          A list with description, example, and typical
+                         rendering.
                          
-  HTML Entities           Entities used to describe characters.
+  HTML Entities          Entities used to describe characters.
                          
-  The HTML DTD            The text of the SGML DTD for HTML
+  The HTML DTD           The text of the SGML DTD for HTML
                          
   Link relationship values .
-                          A provisional list. Not part of the
-                         standard.
+                         A provisional list. Not part of the standard.
                          
   Registration Authority
-                          The authority for extending lists of valid
+                         The authority for extending lists of valid
                          vales.
                          
   Acknowledgements       and a change history of the document
                          
-  References              to related documents
+  References             to related documents
                          
-  Authors addresses       Contact information.
+  Authors addresses      Contact information.
                          
    table of contents
                             Vocabulary usied in the HTML specification
@@ -99,29 +98,29 @@ Abstract
    This specification uses the words below with the precise meaning
    given.
    
-  Representation          The encoding of information for interchange.
+  Representation         The encoding of information for interchange.
                          For example, HTML is a representation of
                          hypertext.
                          
-  Rendering               The form of presentation to information to
+  Rendering              The form of presentation to information to
                          the human reader.
                          
 Imperatives
 
-  may                     The implementation is not obliged to follow
-                         this in  any way.
+  may                    The implementation is not obliged to follow
+                         this in any way.
                          
-  must                    If this is not followed, the implementation
+  must                   If this is not followed, the implementation
                          does not conform to this specification.
                          
-  shall                   as "must"
+  shall                  as "must"
                          
-  should                  If this is not followed, though the
+  should                 If this is not followed, though the
                          implementation officially conforms to the
                          standard, undesirable results may occur in
                          practice.
                          
-  typical                 Typical rendering is described for many
+  typical                Typical rendering is described for many
                          elements. This is not a mandatory part of the
                          standard but is given as guidance for
                          designers and to help explain the uses for
@@ -134,17 +133,17 @@ Notes
    
 Status of features
 
-  Mainstream              All parsers must recognize these features.
+  Mainstream             All parsers must recognize these features.
                          Features are mainstream unless otherwise
                          mentioned.
                          
-  Extra                   Standard HTML features which may safely be
+  Extra                  Standard HTML features which may safely be
                          ignored by parsers. It is legal to ignore
                          these, treat the contents as though the tags
                          were not there. (e.g. EM, and any undefined
                          elements)
                          
-  Obsolete                Not standard HTML.  Parsers should implement
+  Obsolete               Not standard HTML. Parsers should implement
                          these features as far as possible in order to
                          preserve back-compatibility with previous
                          versions of this specification.
@@ -155,13 +154,13 @@ Status of features
                                    
    The definition of the HTML content subtype is
    
-  MIME Type name          text
+  MIME Type name         text
                          
-  MIME subtype name:      html
+  MIME subtype name:     html
                          
-  Required parameters:    none
+  Required parameters:   none
                          
-  Optional parameters:    charset
+  Optional parameters:   charset
                          
 Character sets
 
@@ -170,7 +169,7 @@ Character sets
    The actual character set used in the representation of an HTML
    document may be ISO Latin 1, or its 7-bit subset which is ASCII.
    There is no obligation for an HTML document to contain any
-   characters above decimal 127.   It is possible that  a transport
+   characters above decimal 127. It is possible that a transport
    medium such as electronic mail imposes constraints on the number of
    bits in a representation of a document, though the HTTP access
    protocol used by W3 always allows 8 bit transfer.
@@ -178,13 +177,13 @@ Character sets
    When an HTML document is encoded using 7-bit characters, then the
    mechanisms of character references and entity references may be
    used to encode characters in the upper half of the ISO Latin-1 set.
-    In this way, documents may be prepared which are suitable for
+   In this way, documents may be prepared which are suitable for
    mailing through 7-bit limited systems.
                                     Hypertext Markup language and SGML
                             HTML AND SGML
                                    
    This section describes the relationship between HTML and SGML, and
-   guides the newcomer through interpreation of the DTD.  (This is not
+   guides the newcomer through interpreation of the DTD. (This is not
    a full tutorial on SGML, and in the event of any apparent conflict,
    the SGML standard is definitive.)
    
@@ -258,16 +257,16 @@ Character sets
    show up as just a start tag.
    
    For the rest of the elements, the content is a sequence of data
-   characters and nested elements.  Note that the HTML DTD in fact
+   characters and nested elements. Note that the HTML DTD in fact
    severely limits the amount of nesting which is allowed: most things
-   cannot be nested, in fact.   No elements may be recursively nested.
-     Anchors and character highlighting may be put inside other
+   cannot be nested, in fact. No elements may be recursively nested.
+   Anchors and character highlighting may be put inside other
    constructs.
    
 Tags
 
    Every element starts with a tag, and every non-empty element ends
-   with a tag. Start tags are delimited by < and >, and end tags are
+   with a tag. Start tags are delimited by <and >, and end tags are
    delimited by </ and >.
    
   NAMES
@@ -373,15 +372,15 @@ Element Types
    ampersand characters and each of the ISO Latin 1 characters so that
    you can reference them by name rather than by number.
    
-   The string & signals an entity reference when it is followed by a
+   The string &signals an entity reference when it is followed by a
    letter or a digit. The delimiter is followed by the entity name and
    a semicolon. For example:
    
 Kurt G&ouml;del was a famous logician and mathematician.
 
-  Note:                   To be sure that a string of characters has
-                         no markup, HTML writers should represent all
-                         occurrences of <, >, and & by character or
+  Note:                  To be sure that a string of characters has no
+                         markup, HTML writers should represent all
+                         occurrences of <, >, and &by character or
                          entity references.
                          
   ELEMENT CONTENT
@@ -436,7 +435,7 @@ Kurt G&ouml;del was a famous logician and mathematician.
    
       A B element
       
-      The string ``   cat -- concatenate''
+      The string `` cat -- concatenate''
       
       An A element
       
@@ -444,7 +443,7 @@ Kurt G&ouml;del was a famous logician and mathematician.
       
       Another B element
       
-      The string ``\n   cat <xyz''
+      The string ``\n cat <xyz''
       
 Comments and Other Markup
 
@@ -464,15 +463,15 @@ Comments and Other Markup
    There are a few other SGML markup constructs that are deprecated or
    illegal.
    
-  Delimiter               Signals...
+  Delimiter              Signals...
                          
-  <?                      Processing instruction. Terminated by >.
+  <?                     Processing instruction. Terminated by >.
                          
-  <![                     Marked section. Marked sections are
+  <![                    Marked section. Marked sections are
                          deprecated. See the SGML standard for
                          complete information.
                          
-  <!                      Markup declaration. HTML defines no short
+  <!                     Markup declaration. HTML defines no short
                          reference maps, so these are errors.
                          Terminated by >.
                          
@@ -514,7 +513,7 @@ ent: -->
 
 Spaces and Tabs
 
-   Space characters must be rendered as horizontal white space.  In
+   Space characters must be rendered as horizontal white space. In
    HTML, multiple spaces should be rendered as single spaces.
    
    The rendering of a horizontal tab (HT) character is not defined,
@@ -528,55 +527,55 @@ Summary of Markup Signals
 
    The following delimiters may signal markup, depending on context.
    
-  Delimiter               Signals
+  Delimiter              Signals
                          
-  <!--                    Comment
+  <!--                   Comment
                          
-  &#                      Character reference
+  &#                     Character reference
                          
-  &                       Entity reference
+  &                      Entity reference
                          
-  </                      End tag
+  </                     End tag
                          
-  <!                      Markup declaration
+  <!                     Markup declaration
                          
-  ]]>                     Marked section close (an error)
+  ]]>                    Marked section close (an error)
                          
-  <                       Start tag
+  <                      Start tag
                          
    
-                                                     Elements of  HTML
+                                                      Elements of HTML
                             HTML ELEMENTS
                                    
-   This is a list of elements used in the HTML language.  Documents
+   This is a list of elements used in the HTML language. Documents
    should (but need not absolutely) contain an initial HEAD element
    followed by a BODY element.
    
-    Old style documents may contain a just the contents of the normal
+   Old style documents may contain a just the contents of the normal
    HEAD and BODY elements, in any order. This is deprecated but must
    be supported by parsers.
    
-   See also:  Status of elements
+   See also: Status of elements
    
 Properties of the whole document
 
    Properties of the whole document are defined by the following
-   elements. They should appear within the HEAD element.  Their order
+   elements. They should appear within the HEAD element. Their order
    is not significant.
    
-  TITLE                   The title of the document
+  TITLE                  The title of the document
                          
-  ISINDEX                 Sent by a server in a searchable document
+  ISINDEX                Sent by a server in a searchable document
                          
-  NEXTID                  A parameter used by editors to generate
+  NEXTID                 A parameter used by editors to generate
                          unique identifiers
                          
-  LINK                    Relationship between this document and
+  LINK                   Relationship between this document and
                          another. See also the Anchor element ,
-                         Relationships .  A document may have many
-                         LINK elements.
+                         Relationships . A document may have many LINK
+                         elements.
                          
-  BASE                    A record of the URL of the document when
+  BASE                   A record of the URL of the document when
                          saved
                          
 Text formatting
@@ -585,13 +584,13 @@ Text formatting
    document. Their order is the logical order in which the elements
    should be rendered on the output device.
    
-  Headings                Several levels of heading are supported.
+  Headings               Several levels of heading are supported.
                          
-  Anchors                 Sections of text which form the beginning
+  Anchors                Sections of text which form the beginning
                          and/or end of hypertext links are called
                          "anchors" and defined by the A tag.
                          
-  Paragraph marks         The P element marks the break between two
+  Paragraph marks        The P element marks the break between two
                          paragraphs.
                          
   Line Breaks            Like paragraph marks, but just forces a new
@@ -599,23 +598,23 @@ Text formatting
                          
   Horizontal Rule        A horizontal dividing line etc
                          
-  Address style           An ADDRESS element is displayed in a
+  Address style          An ADDRESS element is displayed in a
                          particular style.
                          
-  Blockquote style        A block of text quoted from another source.
+  Blockquote style       A block of text quoted from another source.
                          
-  Lists                   Bulleted lists, glossaries, etc.
+  Lists                  Bulleted lists, glossaries, etc.
                          
-  Preformatted text       Sections in fixed-width font for
-                         preformatted text.
+  Preformatted text      Sections in fixed-width font for preformatted
+                         text.
                          
   Character highlighting
-                          Formatting elements which do not cause
+                         Formatting elements which do not cause
                          paragraph breaks.
                          
 Graphics
 
-  IMG                     The IMG tag allows inline graphics.
+  IMG                    The IMG tag allows inline graphics.
                          
 Obsolete elements
 
@@ -625,7 +624,7 @@ Obsolete elements
                                  HEAD
                                    
    The HEAD element contains all information about the document in
-   general.  It does not contain any text which is part of the
+   general. It does not contain any text which is part of the
    document: this is in the BODY. Within the head element, only
    certain elements are allowed.
    
@@ -651,9 +650,9 @@ Obsolete elements
    start or destination (or both) of a link. Attributes of the anchor
    tag are as follows.
    
-  HREF                    OPTIONAL. If the HREF attribute is present,
+  HREF                   OPTIONAL. If the HREF attribute is present,
                          the anchor is sensitive text: the start of a
-                         link. If the reader selects this text,  (s)he
+                         link. If the reader selects this text, (s)he
                          should be presented with another document
                          whose network address is defined by the value
                          of the HREF attribute . The format of the
@@ -665,47 +664,47 @@ Obsolete elements
                          the documents address (or specified base
                          address if any).
                          
-  NAME                    OPTIONAL. If present, the  attribute NAME
+  NAME                   OPTIONAL. If present, the attribute NAME
                          allows the anchor to be the destination of a
                          link. The value of the attribute is an
-                         identifier for the anchor.  Identifiers are
-                         arbitrary strings  but must be unique within
-                         the HTML document.   Another document can
-                         then make a reference explicitly to this
-                         anchor by putting the identifier after the
-                         address, separated by a hash sign .
+                         identifier for the anchor. Identifiers are
+                         arbitrary strings but must be unique within
+                         the HTML document. Another document can then
+                         make a reference explicitly to this anchor by
+                         putting the identifier after the address,
+                         separated by a hash sign .
                          
-  REL                     OPTIONAL. An attribute REL may give the
+  REL                    OPTIONAL. An attribute REL may give the
                          relationship (s) described by the hypertext
                          link. The value is a comma-separated list of
-                         relationship values.   Values and their
+                         relationship values. Values and their
                          semantics will be registered by the HTML
                          registration authority . The default
                          relationship if none other is given is void.
                          REL should not be present unless HREF is
                          present. See Relationship values , REV .
                          
-  REV                     OPTIONAL. The same as REL , but the
-                         semantics of the link type are in the reverse
-                         direction.  A link from A to B with REL="X"
+  REV                    OPTIONAL. The same as REL , but the semantics
+                         of the link type are in the reverse
+                         direction. A link from A to B with REL="X"
                          expresses the same relationship as a link
-                         from B to A with REV="X".   An anchor may
-                         have both REL and REV attributes.
+                         from B to A with REV="X". An anchor may have
+                         both REL and REV attributes.
                          
-  URN                     OPTIONAL. If present, this specifies a
+  URN                    OPTIONAL. If present, this specifies a
                          uniform resource number for the document. See
                          note .
                          
-  TITLE                   OPTIONAL. This is informational only. If
+  TITLE                  OPTIONAL. This is informational only. If
                          present the value of this field should equal
                          the value of the TITLE of the document whose
                          address is given by the HREF attribute. See
                          note .
                          
-  METHODS                 OPTIONAL. The value of this field is a
-                         string which if present must be a comma
-                         separated list of HTTP METHODS supported by
-                         the object for public use.  See note .
+  METHODS                OPTIONAL. The value of this field is a string
+                         which if present must be a comma separated
+                         list of HTTP METHODS supported by the object
+                         for public use. See note .
                          
    All attributes are optional, although one of NAME and HREF is
    necessary for the anchor to be useful. See also: LINK .
@@ -732,7 +731,7 @@ Example of use:
 Typical rendering
 
    Typically, an address element is italic and/or right justified or
-   indented.  The address element implies a paragraph break. Paragraph
+   indented. The address element implies a paragraph break. Paragraph
    marks within the address element do not cause extra white space to
    be inserted.
    
@@ -755,7 +754,7 @@ Examples of use:
                                    
    This element allows the URL of the document itself to be recorded
    in situations in which the document may be read out of context.
-   URLs within the  document may be in a "partial" form relative  to
+   URLs within the document may be in a "partial" form relative to
    this base address.
    
    Where the base address is not specified, the reader will use the
@@ -763,7 +762,7 @@ Examples of use:
    
    The one attribute is:
    
-  HREF                    the URL
+  HREF                   the URL
                          
    
                                                     BlockQuote in HTML
@@ -775,7 +774,7 @@ Examples of use:
 Typical rendering
 
    A typical rendering might be a slight extra left and right indent,
-   and/or italic font.  BLOCKQUOTE causes a paragraph break, and
+   and/or italic font. BLOCKQUOTE causes a paragraph break, and
    typically a line or so of white space will be allowed between it
    and any text before or after it.
    
@@ -795,9 +794,9 @@ but I am not sure.
                                               Heading elements in HTML
                                HEADINGS
                                    
-   Six levels  of heading are supported. (Note that a hypertext node
-   within a hypertext work tends to need less levels of  heading than
-   a work whose only structure is given by the nesting of headings.)
+   Six levels of heading are supported. (Note that a hypertext node
+   within a hypertext work tends to need less levels of heading than a
+   work whose only structure is given by the nesting of headings.)
    
    A heading element implies all the font changes, paragraph breaks
    before and after, and white space (for example) necessary to render
@@ -805,9 +804,9 @@ but I am not sure.
    required in HTML.
    
    H1 is the highest level of heading, and is recommended for the
-   start of a hypertext node.   It is suggested that the the text of
-   the first heading be suitable for a reader who is already browsing
-   in related information, in contrast to the title tag which should
+   start of a hypertext node. It is suggested that the the text of the
+   first heading be suitable for a reader who is already browsing in
+   related information, in contrast to the title tag which should
    identify the node in a wider context.
    
    The heading elements are
@@ -835,33 +834,33 @@ Parser Note:
    
 Typical Rendering
 
-  H1                      Bold very large font, centered. One or two
+  H1                     Bold very large font, centered. One or two
                          lines clear space between this and anything
-                         following.  If printed on paper, start new
+                         following. If printed on paper, start new
                          page.
                          
-  H2                      Bold, large font,, flush left against left
+  H2                     Bold, large font,, flush left against left
                          margin, no indent. One or two clear lines
                          above and below.
                          
-  H3                      Italic, large font, slightly indented from
+  H3                     Italic, large font, slightly indented from
                          the left margin. One or two clear lines above
                          and below.
                          
-  H4                      Bold, normal font, indented more than H3.
-                         One clear line above and below.
+  H4                     Bold, normal font, indented more than H3. One
+                         clear line above and below.
                          
-  H5                      Italic, normal font, indented as H4.  One
+  H5                     Italic, normal font, indented as H4. One
                          clear line above.
                          
-  H6                      Bold, indented same as normal text, more
-                         than H5. One clear line above.
+  H6                     Bold, indented same as normal text, more than
+                         H5. One clear line above.
                          
    These typical values are just an indication, and it is up to the
-   designer of the presentation software to define the styles.  The
-   reader may have options to customize these.  When writing
-   documents, you should assume that whatever is done it is designed
-   to have the same sort of effect as the styles above.
+   designer of the presentation software to define the styles. The
+   reader may have options to customize these. When writing documents,
+   you should assume that whatever is done it is designed to have the
+   same sort of effect as the styles above.
    
    The rendering software is responsible for generating suitable
    vertical white space between elements, so it is NOT normal or
@@ -871,7 +870,7 @@ Typical Rendering
                                    
    Status: Extra
    
-   The IMG element allows another document to be inserted inline.  The
+   The IMG element allows another document to be inserted inline. The
    document is normally an icon or small graphic, etc. This element is
    NOT intended for embedding other HTML text.
    
@@ -879,23 +878,23 @@ Typical Rendering
    elements. Authors should note that some browsers will be able to
    display (or print) linked graphics but not inline graphics. If the
    graphic is essential, it may be wiser to make a link to it rather
-   than to put it inline.  If the graphic is essentially decorative,
+   than to put it inline. If the graphic is essentially decorative,
    then IMG is appropriate.
    
    The IMG element is empty: it has no closing tag. It has two
    attributes:
    
-  SRC                     The value of this attribute is the URL of
-                         the document to be embedded. Its syntax is
-                         the same as that of the HREF attribute of the
-                         A tag. SRC is mandatory.
+  SRC                    The value of this attribute is the URL of the
+                         document to be embedded. Its syntax is the
+                         same as that of the HREF attribute of the A
+                         tag. SRC is mandatory.
                          
-  ALIGN                   Take values TOP or MIDDLE or BOTTOM,
-                         defining whether the tops or middles of
-                         bottoms of the graphics and text should be
-                         aligned vertically.
+  ALIGN                  Take values TOP or MIDDLE or BOTTOM, defining
+                         whether the tops or middles of bottoms of the
+                         graphics and text should be aligned
+                         vertically.
                          
-  ALT                     Optional alternative text as an alternative
+  ALT                    Optional alternative text as an alternative
                          to the graphics for display in text-only
                          environments.
                          
@@ -927,7 +926,7 @@ e done by a
    separated by plus signs. See the network address format .
    
    Note that this tag is normally generated automatically by a server.
-    If it is added by hand to an HTML document, then the client  will
+   If it is added by hand to an HTML document, then the client will
    assume that the server can handle a search on the document.
    Obviously the server must have this capability for it to work:
    simply adding <ISINDEX> in the document is not enough to make
@@ -945,14 +944,14 @@ Example of use:
                                    
    The LINK element occurs within the HEAD element of an HTML
    document. It is used to indicate a relationship between the
-   document and some other object.  A document may have any number of
+   document and some other object. A document may have any number of
    LINK elements.
    
    The LINK element is empty, but takes the same attributes as the
    anchor element .
    
-   Typical  uses are to indicate authorship, related indexes and
-   glossaries, older or more recent versions, etc.  Links can indicate
+   Typical uses are to indicate authorship, related indexes and
+   glossaries, older or more recent versions, etc. Links can indicate
    a static tree structure in which the document was authored by
    pointing to a "parent" and "next" and "previous" document, for
    example.
@@ -972,40 +971,40 @@ Glossaries
    reader. The elements within a glossary follow are introduced by
    these elements:
    
-  DT                      The "term", typically placed in a wide left
+  DT                     The "term", typically placed in a wide left
                          indent
                          
-  DD                      The "definition", which may wrap onto many
+  DD                     The "definition", which may wrap onto many
                          lines
                          
-   These elements must appear in pairs.  Single occurrences of DT
+   These elements must appear in pairs. Single occurrences of DT
    without a following DD are allowed, and have the same significance
-   as if the DD had been present with no text..  The one attribute
+   as if the DD had been present with no text.. The one attribute
    which DL can take is
    
-  COMPACT                 suggests that a compact rendering be used,
+  COMPACT                suggests that a compact rendering be used,
                          because the enclosed elements are
                          individually small, or the whole glossary is
                          rather large, or both.
                          
   TYPICAL RENDERING
   
-   The definition list DT, DD pairs are arranged vertically.   For
-   each pair, the DT element is on the left, in a column of about a
-   third of the display area, and the DD element is in the right hand
-   two thirds of the display area.  The DT term is normally small
-   enough to fit on one line within the left-hand column. If it is
-   longer, it will either extend across the page, in which case the DD
-   section is moved down to separate them, or it is wrapped onto
-   successive lines of the left hand column.
+   The definition list DT, DD pairs are arranged vertically. For each
+   pair, the DT element is on the left, in a column of about a third
+   of the display area, and the DD element is in the right hand two
+   thirds of the display area. The DT term is normally small enough to
+   fit on one line within the left-hand column. If it is longer, it
+   will either extend across the page, in which case the DD section is
+   moved down to separate them, or it is wrapped onto successive lines
+   of the left hand column.
    
    This is sometimes implemented with the use of a large negative
    first line indent.
    
    White space is typically left between successive DT,DD pairs unless
-   the COMPACT attribute is given.  The COMPACT attribute is
+   the COMPACT attribute is given. The COMPACT attribute is
    appropriate for lists which are long and/or have DT,DD pairs which
-   each take only a line or two.  It is of course possible for the
+   each take only a line or two. It is of course possible for the
    rendering software to discover these cases itself and make its own
    decisions, and this is to be encouraged.
    
@@ -1039,32 +1038,32 @@ Lists
                 <LI> another list element ...
                 </UL>
 
-   The opening list tag  may be any of UL, OL, MENU or DIR.  It must
-   be immediately followed by the first list element.
+   The opening list tag may be any of UL, OL, MENU or DIR. It must be
+   immediately followed by the first list element.
    
   TYPICAL RENDERING
   
    The representation of the list is not defined here, but a bulleted
-   list for unordered lists,  and a sequence of numbered paragraphs
-   for an ordered list would be quite appropriate. Other possibilities
-   for interactive display include embedded scrollable browse panels.
+   list for unordered lists, and a sequence of numbered paragraphs for
+   an ordered list would be quite appropriate. Other possibilities for
+   interactive display include embedded scrollable browse panels.
    
    List elements with typical rendering are:
    
-  UL                      A list of multi-line paragraphs, typically
+  UL                     A list of multi-line paragraphs, typically
                          separated by some white space and/or marked
                          by bullets, etc.
                          
-  OL                      As UL, but the paragraphs are typically
+  OL                     As UL, but the paragraphs are typically
                          numbered in some way to indicate the order as
                          significant.
                          
-  MENU                    A list of smaller paragraphs. Typically one
+  MENU                   A list of smaller paragraphs. Typically one
                          line per item, with a style more compact than
                          UL.
                          
-  DIR                     A list of short elements, typically less
-                         than 20 characters.  These may be arranged in
+  DIR                    A list of short elements, typically less than
+                         20 characters. These may be arranged in
                          columns across the page, typically 24
                          character in width. If the rendering software
                          is able to optimize the column width as
@@ -1100,11 +1099,11 @@ Lists
                                                      Tags used in HTML
                                NEXT ID
                                    
-   This tag takes a  single attribute which is the number of the next
+   This tag takes a single attribute which is the number of the next
    document-wide numeric identifier to be allocated of the form z123.
    
    When modifying a document, old anchor ids should not be reused, as
-   there may be references stored elsewhere which point to them.  This
+   there may be references stored elsewhere which point to them. This
    is read and generated by hypertext editors. Human writers of HTML
    usually use mnemonic alphabetical identifiers. Browser software may
    ignore this tag.
@@ -1119,26 +1118,26 @@ Example of use:
                           P: PARAGRAPH MARK
                                    
    The empty P element indicates a paragraph break. The exact
-   rendering of this (indentation,  leading, etc) is not defined here,
+   rendering of this (indentation, leading, etc) is not defined here,
    and may be a function of other tags, style sheets etc.
    
    <P> is used between two pieces of text which otherwise would be
    flowed together.
    
-   You do NOT need to use <P>  to put white space around heading,
-   list, address or blockquote elements which imply a paragraph break.
-   It is the responsibility of the rendering software to generate that
-   white space.   A paragraph mark which is preceded or followed by
-   such elements which imply a paragraph break is has undefined effect
-   and should be avoided.
+   You do NOT need to use <P> to put white space around heading, list,
+   address or blockquote elements which imply a paragraph break. It is
+   the responsibility of the rendering software to generate that white
+   space. A paragraph mark which is preceded or followed by such
+   elements which imply a paragraph break is has undefined effect and
+   should be avoided.
    
 Typical rendering
 
    Typically, <P> will generate a small vertical space (of a line or
    half a line) between the paragraphs. This is not the case
-   (typically) within ADDRESS  or (ever) within PRE elements.  With
-   some implementations, in normal text, <P> may generate a small
-   extra left indent on the first line.
+   (typically) within ADDRESS or (ever) within PRE elements. With some
+   implementations, in normal text, <P> may generate a small extra
+   left indent on the first line.
    
 Examples of use
 
@@ -1195,7 +1194,7 @@ Examples
 
 See also:
 
-   Paragraph  marks
+   Paragraph marks
                                               Horizontal Rules in HTML
                            HORIZONTAL RULE
                                    
@@ -1246,7 +1245,7 @@ Example
    The optional attribute is:
    
   WIDTH                  This attribute gives the maximum number of
-                         characters which will occur on a line.  It
+                         characters which will occur on a line. It
                          allows the presentation system to select a
                          suitable font and indentation. Where the
                          WIDTH attribute is not recognized, it is
@@ -1262,7 +1261,7 @@ Example
       beginning of the next line, except for one immediately following
       or immediately preceding a tag.
       
-       The <p> tag should not be used. If found, it should be rendered
+      The <p> tag should not be used. If found, it should be rendered
       as a move to the beginning of the next line.
       
       Anchor elements and character highlighting elements may be used.
@@ -1283,7 +1282,7 @@ Example
 
   NOTE: HIGHLIGHTING
   
-   Within a preformatted element,  the constraint that the rendering
+   Within a preformatted element, the constraint that the rendering
    must be on a fixed horizontal character pitch may limit or prevent
    the ability of the renderer to render highlighting elements
    specially.
@@ -1292,12 +1291,12 @@ Example
   
    The above references to the "beginning of a new line" must not be
    taken as implying that the renderer is forbidden from using a
-   (constant) left indent for rendering preformatted text.   The left
+   (constant) left indent for rendering preformatted text. The left
    indent may of course be constrained by the width required.
                                              The TITLE element in HTML
                                 TITLE
                                    
-   The title of a document is specified by the TITLE element.  The
+   The title of a document is specified by the TITLE element. The
    TITLE element should occur in the HEAD of the document.
    
    There may only be one title in any document. It should identify the
@@ -1308,11 +1307,11 @@ Example
    paragraph marks, or highlighting. The title may be used to identify
    the node in a history list, to label the window displaying the
    node, etc. It is not normally displayed in the text of a document
-   itself. Contrast titles with headings .  The title should ideally
-   be less than 64 characters in length.  That is, many applications
-   will display document titles in window titles, menus, etc where
-   there is only limited room.  Whilst there is no limit on the length
-   of a title (as it may be automatically generated from other data),
+   itself. Contrast titles with headings . The title should ideally be
+   less than 64 characters in length. That is, many applications will
+   display document titles in window titles, menus, etc where there is
+   only limited room. Whilst there is no limit on the length of a
+   title (as it may be automatically generated from other data),
    information providers are warned that it may be truncated if long.
    
   EXAMPLES OF USE
@@ -1353,7 +1352,7 @@ Example
    Status: Extra
    
    These elements allow sections of text to be formatted in a
-   particular way, to provide emphasis, etc.  The tags do NOT cause a
+   particular way, to provide emphasis, etc. The tags do NOT cause a
    paragraph break, and may be used on sections of text within
    paragraphs.
    
@@ -1365,10 +1364,9 @@ Example
                 This is <EM>emphasized</EM> text.
 
    Some of these styles are more explicit than others about how they
-   should be physically represented.  The logical styles should be
-   used wherever possible, unless for example it is necessary to refer
-   to the formatting in the text. (Eg, "The italic parts are
-   mandatory".)
+   should be physically represented. The logical styles should be used
+   wherever possible, unless for example it is necessary to refer to
+   the formatting in the text. (Eg, "The italic parts are mandatory".)
    
   NOTE:
   
@@ -1382,36 +1380,36 @@ Example
    
 Physical styles
 
-  TT                      Fixed-width typewriter font.
+  TT                     Fixed-width typewriter font.
                          
-  B                       Boldface, where available, otherwise
+  B                      Boldface, where available, otherwise
                          alternative mapping allowed.
                          
-  I                       Italic font (or slanted if italic
+  I                      Italic font (or slanted if italic
                          unavailable).
                          
-  U                       Underline.
+  U                      Underline.
                          
 Logical styles
 
-  EM                      Emphasis, typically italic.
+  EM                     Emphasis, typically italic.
                          
-  STRONG                  Stronger emphasis, typically bold.
+  STRONG                 Stronger emphasis, typically bold.
                          
-  CODE                    Example of code. typically monospaced font.
-                         (Do not confuse with  PRE )
+  CODE                   Example of code. typically monospaced font.
+                         (Do not confuse with PRE )
                          
-  SAMP                    A sequence of literal characters.
+  SAMP                   A sequence of literal characters.
                          
-  KBD                     in an instruction manual, Text typed by a
+  KBD                    in an instruction manual, Text typed by a
                          user.
                          
-  VAR                     A variable name.
+  VAR                    A variable name.
                          
-  DFN                     The defining instance of a term. Typically
+  DFN                    The defining instance of a term. Typically
                          bold or bold italic.
                          
-  CITE                    A citation. Typically italic.
+  CITE                   A citation. Typically italic.
                          
 Examples of use
 
@@ -1425,12 +1423,12 @@ Examples of use
 
 
    
-                                            Obsolete Elements of  HTML
+                                             Obsolete Elements of HTML
                           OBSOLETE ELEMENTS
                                    
-   The following elements of HTML are obsolete.  It is recommended
-   that client implementors implement the obsolete forms for
-   compatibility with old servers.
+   The following elements of HTML are obsolete. It is recommended that
+   client implementors implement the obsolete forms for compatibility
+   with old servers.
    
   PLAINTEXT
   
@@ -1438,7 +1436,7 @@ Examples of use
    
    The empty PLAINTEXT tag terminates the HTML entity. What follows is
    not SGML. In stead, there's an old HTTP convention that what
-   follows is an ASCII  (MIME "text/plain") body.
+   follows is an ASCII (MIME "text/plain") body.
    
    An example if its use is:
    
@@ -1451,9 +1449,9 @@ t
    parsing. Its presence is an optimization. There is no closing tag.
    The rest of the data is not in SGML.
    
-  XMP AND LISTING:   EXAMPLE SECTIONS
+  XMP AND LISTING: EXAMPLE SECTIONS
   
-   Status:  Obsolete . This are in use and should be recognized by
+   Status: Obsolete . This are in use and should be recognized by
    browsers. New servers should use <PRE> instead.
    
    These styles allow text of fixed-width characters to be embedded
@@ -1487,7 +1485,7 @@ t
       Its use is not recommended however.
       
    The LISTING element is portrayed so that at least 132 characters
-   will fit on a line.  The XMP elementis portrayed in a font so that
+   will fit on a line. The XMP  elementis portrayed in a font so that
    at least 80 characters will fit on a line but is otherwise
    identical to LISTING.
    
@@ -1517,25 +1515,25 @@ t
    does not contain the closing tag in full.
    
    This form is not supported by SGML and so is not the specified HTML
-   interpretation.  Providers should be warned that implementations
-   may vary on how they interpret end tags apparently within these
+   interpretation. Providers should be warned that implementations may
+   vary on how they interpret end tags apparently within these
    elements
                                                    Entities -- /MarkUp
                                ENTITIES
                                    
    The following entity names are used in HTML , always prefixed by
-   ampersand (&) and followed by a semicolon as shown.  They represent
+   ampersand (&) and followed by a semicolon as shown. They represent
    particular graphic characters which have special meanings in places
    in the markup, or may not be part of the character set available to
    the writer.
    
-  &lt;                    The less than sign <
+  &lt;                   The less than sign <
                          
-  &gt;                    The "greater than" sign >
+  &gt;                   The "greater than" sign >
                          
-  &amp;                   The ampersand sign & itself.
+  &amp;                  The ampersand sign &itself.
                          
-  &quot;                  The double quote sign "
+  &quot;                 The double quote sign "
                          
   &nbsp;                 A non-breaking space
                          
@@ -2009,7 +2007,7 @@ n
                                            Relationships in HTML links
                        LINK RELATIONSHIP VALUES
                                    
-   Status: This list is not part of the standard.  It is intended to
+   Status: This list is not part of the standard. It is intended to
    illustrate the use of link relationships and to provide a framework
    for further development.
    
@@ -2099,18 +2097,18 @@ n
    one link of the reverse relationship.
    
    Note: May be used to control navigational aids, generate printed
-   material, etc.  In conjunction with " subdocument ", may be used to
+   material, etc. In conjunction with " subdocument ", may be used to
    define a tree such as a printed book made of hypertext document.
    The document can only have one such tree.
    
   SUBDOCUMENT
   
-   B is a lower part in the author's hierarchy to A.  Acyclic. See
-   also Precedes .
+   B is a lower part in the author's hierarchy to A. Acyclic. See also
+   Precedes .
    
   PRESENT
   
-   Whenever A is presented, B must also be presented.  This implies
+   Whenever A is presented, B must also be presented. This implies
    that whenever A is retrieved, B must also be retrieved.
    
   SEARCH
@@ -2123,7 +2121,7 @@ n
    
   SUPERSEDES
   
-   B is a previous version of  A.
+   B is a previous version of A.
    
    Acyclic.
    
@@ -2147,28 +2145,28 @@ n
    the object.
    
    This information may be used for finding people responsible for
-   incorrect information, etc.  The creator (Made) and owner (Owns) of
+   incorrect information, etc. The creator (Made) and owner (Owns) of
    an object may be different.
    
   APPROVES
   
    Approval of objects is a method of attributing value, or fiability,
-   to objects.  One determination of a value of an object is a
-   function of the  set of objects which approve it.
+   to objects. One determination of a value of an object is a function
+   of the set of objects which approve it.
    
    A reviewed journal, for example, may operate by approving articles.
-    This could be expressed by an approval link from the journal
-   itself to the article.   In the view of the web as an
-   encyclopaedia, approval links one to filter information which has a
-   certain quality according to some standard.
+   This could be expressed by an approval link from the journal itself
+   to the article. In the view of the web as an encyclopaedia,
+   approval links one to filter information which has a certain
+   quality according to some standard.
    
   SUPPORTS
   
-   A and B are objects representing assertions.  The assertion A
-   supports the assertion B.   This may be used to overlay a weak
+   A and B are objects representing assertions. The assertion A
+   supports the assertion B. This may be used to overlay a weak
    semantics of argument onto the web. For example, giving such
-   relaionships within discussions  in this way will allow  arguments
-   to be analysed by machine and followed by people with greater ease.
+   relaionships within discussions in this way will allow arguments to
+   be analysed by machine and followed by people with greater ease.
    See also: refutes.
    
   REFUTES
@@ -2178,7 +2176,7 @@ n
    
   INCLUDES
   
-   A includes B, B is part of A.  For example, a person described by
+   A includes B, B is part of A. For example, a person described by
    document A is a part of the group described by document B.
    
    Note: This relationship conveys semantics about objects described
@@ -2197,7 +2195,7 @@ n
    
    The phrase "object B changes" may be interpreted narrowly (as "B
    itself changes") or widely (as "B or anythink linked to it or
-   related to it closely changes").   The amount of  change considered
+   related to it closely changes"). The amount of change considered
    worth notifying people about is also subject to interpretation,
    varying from bit changes in the source to a "new edition" statement
    by the publisher.
@@ -2210,7 +2208,7 @@ n
       Relationship names for link and anchor elements
       
    It is proposed that a WWW consortium, the Internet Assigned Numbers
-   Authority,  or their successors take this role.
+   Authority, or their successors take this role.
    
    Unregistered values may be used for experimental purposes if they
    are start with "X-".
@@ -2218,7 +2216,7 @@ n
                            ACKNOWLEDGEMENTS
                                    
    The HTML document type was designed initially at CERN in 1990 for
-   the World-Wide Web project.     The DTD was written, and the
+   the World-Wide Web project. The DTD was written, and the
    specification tightened up, by Dan Connolly After much discussion
    on the network and some enhancement in particular the addition of
    inline images introduced by the NCSA "Mosaic" software for WWW, it
@@ -2234,24 +2232,24 @@ n
                                        References - HTML specification
                               REFERENCES
                                    
-  SGML                    ISO 8879:1986, Information Processing Text
+  SGML                   ISO 8879:1986, Information Processing Text
                          and Office Systems Standard Generalized
                          Markup Language (SGML).
                          
-  sgmls                   an SGML parser by James Clark
+  sgmls                  an SGML parser by James Clark
                          <jjc@jclark.com> derived from the ARCSGML
                          parser materials which were written by
                          Charles F. Goldfarb. The source is available
                          on the ifi.uio.no FTP server in the directory
                          /pub/SGML/SGMLS .
                          
-  WWW                     The World-Wide Web , a global information
+  WWW                    The World-Wide Web , a global information
                          initiative. For bootstrap information, telnet
                          info.cern.ch or find documents by
                          ftp://info.cern.ch/pub/www/doc
                          
-  URL                     Universal Resource Locators. RFCxxx.
-                         Currently  available by anonymous FTP from
+  URL                    Universal Resource Locators. RFCxxx.
+                         Currently available by anonymous FTP from
                          info.cern.ch in /pub/www/doc/url*.{ps,txt}
                          
    
@@ -2259,7 +2257,7 @@ n
                           AUTHOR'S ADDRESSES
                                    
    This document was prepared with the help and advice of many people
-   across the net.  Dan Connolly prepared the DTD and the section on
+   across the net. Dan Connolly prepared the DTD and the section on
    HTML and SGML whilst with Convex Computer Corporation of 3000
    Waterview Parkway Richardson, TX 75083. He is now with Atrium
    Technology Inc., and is not a current editor of the document.
