@@ -1,107 +1,42 @@
-<HEAD>
-<TITLE>Hypertext Markup Language</TITLE>
-<!-- $Id$ -->
-</HEAD>
+<HEAD><TITLE>PUBLIC DRAFT -- HTML</TITLE>
 
-<BODY>
-<H1>HyperText Markup Language</H1>
+</HEAD><BODY><H1>HyperText Markup Language
+</H1>
+<H1>A Representation for Nodes in the World Wide Web
+</H1>
+<ADDRESS>Daniel W. Connolly, Convex Computer Corp.
+</ADDRESS>
+<ADDRESS>January, 1993
+</ADDRESS>
+<H2>Status of this Document
+</H2>
+Distribution of this document is unlimited. Please send comments to Dan Connolly &#60;connolly@convex.com&#62;.<P>
 
-A Representation for Nodes in the World Wide Web
+<H2>Abstract
+</H2>
+The World Wide Web project involves the processing of structured documents by diverse systems around the globe. Existing document representations geared towards typesetting, information retrieval, or multimedia are too tightly coupled to a hardware system, authoring environment, publication style, or field of study.<P>
 
-<ADDRESS>Dan Connolly &#60;connolly@convex.com&#62;</ADDRESS>
+HyperText Markup Language was created to fill the need to<P>
 
-<H3>Abstract</H3>
-
-The World Wide Web project involves the processing of structured
-documents by diverse systems around the globe. Existing systems geared
-towards typesetting, information retrieval, or multimedia are too
-tightly coupled to a hardware system, authoring environment,
-publication style, or field of study.<P>
-
-HyperText Markup Language was created to fill the need to
-<UL>
-<LI>Represent existing bodies of information
+<UL><LI>Represent existing bodies of information
 <LI>Connect information entities with hypertext links
 <LI>Scale to a world-wide scope
 <LI>Fit into existing and evolving user interface paradigms
 <LI>Provide an experimental platform for collaborative hypermedia
-</UL>
 
-
-<H2>Specification</H2>
-
-The HyperText Markup Language is defined in terms of
-<A HREF="#SGML">Standard Generalized Markup Language (SGML)</A>. The <A
-HREF="html.dtd">HyperText Markup Language Document Type Definition
-</A>
-specifies the syntax and structure of HTML.
-<P>
-
-<H2>Implementors' Guide</H2>
-
-This is intended as an introduction to the language and a guide to
-implementors. It does not comprise an integral part of the HTML
-specification.
-<P>
-
-<H3>Introduction</H3>
-
-<A HREF="Text.html">Text and Markup</A> is an introduction to SGML
-text and markup as it applies to HTML. It should prepare you to read
-<A HREF="html.dtd">the DTD</A>.
-<P>
-
-<H3>HTML by Example</H3>
-
-The following sections describe the HyperText Markup language by
-example. They are organized in order of complexity, both for the human
-reader and the SGML application.
-<P>
-
-<DL>
-
-<DT><A HREF="recommended.html">Recommended</A>
-
-<DD>Examples of how to write HTML that won't stress the processing
-software. Some things can't be done this way.
-
-<DT><A HREF="complete.html">Complete</A>
-
-<DD>Examples of all the constructs necessary to produce HTML
-documents.
-
-<DT><A HREF="tolerated.html">Tolerated</A>
-
-<DD>Examples of illegal constructs that are supported for historical
-reasons.
-
-<DT><A HREF="errors.html">Errors</A>
-
-<DD>These are just plain broken. Implementors should use these to
-bullet-proof their code.
-
-</DL>
-
-<H2>References</H2>
-
-<DL>
-
-<DT><A NAME="SGML">SGML</A><DD>ISO 8879:1986, Information Processing -- Text and Office
-Systems -- Standard Generalized Markup Language (SGML)
-
-<DT>SGMLs<DD>an SGML parser by James Clark &#60;jjc@jclark.com&#62;
-derived from <A
-HREF="ftp://ftp.ifi.uio.no/SIGhyper/SGMLUG/distrib/">the ARCSGML
-parser materials</A> which were written by Charles F. Goldfarb. The
-source is available on <A HREF="ftp://ifi.uio.no/pub/SGML/SGMLS/">the
-ifi.uio.no FTP server in the directory /pub/SGML/SGMLS</A>.
-
-<DT><A NAME="libHTML">libHTML</A><DD>A library of routines for reading
-HTML tags and data. By &#60;connolly@convex.com&#62;
-
-written in ANSI C (with some accomodataions for K&#38;R compilers). It
-supports the lexical constructs demonstrated in <A
-HREF="supported.html">HTML Extremes</A>.
-
+</UL><H2>Contents
+</H2>
+<DL><DT>Introduction<DD>2
+<DT>Structured Text<DD>3
+<DT>Tags<DD>3
+<DT>Element Types<DD>4
+<DT>Comments and Other Markup<DD>6
+<DT>Line Breaks<DD>7
+<DT>Summary of Markup Signals<DD>7
+<DT>HTML semantics @@
+<DT>Rationale @@
+<DT>References<DD>9
+<DT>HTML DTD<DD>10
+<DT> 
 </DL>
 </BODY>
