@@ -1,13 +1,14 @@
 <!--	html.dtd
 
-        Document Type Definition for the HyperText Markup Language (HTML DTD)
+        Document Type Definition for the HyperText Markup Language
+		 (HTML DTD)
 
 	$Id$
 
 	Author: Daniel W. Connolly <connolly@hal.com>
 	See Also: html.decl, html-0.dtd, html-1.dtd
-		  http://www.hal.com/%7Econnolly/html-spec/index.html
-		  http://info.cern.ch/hypertext/WWW/MarkUp2/MarkUp.html
+	  http://www.hal.com/%7Econnolly/html-spec/index.html
+	  http://info.cern.ch/hypertext/WWW/MarkUp2/MarkUp.html
 -->
 
 <!ENTITY % HTML.Version
@@ -23,13 +24,14 @@
 	>
 
 
-<!--================== Feature Test Entities ==============================-->
+<!--============ Feature Test Entities ========================-->
 
 <!ENTITY % HTML.Recommended "IGNORE"
-	-- Certain features of the language are necessary for compatibility
-	   with widespread usage, but they may compromise the structural
-	   integrity of a document. This feature test entity enables
-	   a more prescriptive document type definition that eliminates
+	-- Certain features of the language are necessary for
+	   compatibility with widespread usage, but they may
+	   compromise the structural integrity of a document.
+	   This feature test entity enables a more prescriptive
+	   document type definition that eliminates
 	   those features.
 	-->
 
@@ -38,17 +40,18 @@
 ]]>
 
 <!ENTITY % HTML.Deprecated "INCLUDE"
-	-- Certain features of the language are necessary for compatibility
-	   with earlier versions of the specification, but they tend
-	   to be used an implemented inconsistently, and their use is
-	   deprecated. This feature test entity enables a document type
-	   definition that eliminates these features.
+	-- Certain features of the language are necessary for
+	   compatibility with earlier versions of the specification,
+	   but they tend to be used an implemented inconsistently,
+	   and their use is deprecated. This feature test entity
+	   enables a document type definition that eliminates
+	   these features.
 	-->
 
 <!ENTITY % HTML.Highlighting "INCLUDE"
-	-- Use this feature test entity to validate that a document
-	   uses no highlighting tags, which may be ignored on minimal
-	   implementations.
+	-- Use this feature test entity to validate that a
+	   document uses no highlighting tags, which may be
+	   ignored on minimal implementations.
 	-->
 
 <!ENTITY % HTML.Forms "INCLUDE"
@@ -57,7 +60,7 @@
 	   implementations
 	-->
 
-<!--================== Imported Names =====================================-->
+<!--============== Imported Names ==============================-->
 
 <!ENTITY % Content-Type "CDATA"
 	-- meaning an internet media type
@@ -73,7 +76,6 @@
            whose value is a Uniform Resource Identifier,
            as defined by 
 	"Universal Resource Identifiers" by Tim Berners-Lee
-	aka http://info.cern.ch/hypertext/WWW/Addressing/URL/URI_Overview.html
 	aka RFC 1630
 
 	Note that CDATA attributes are limited by the LITLEN
@@ -83,14 +85,14 @@
         -->
 
 
-<!--================== DTD "Macros" =======================================-->
+<!--========= DTD "Macros" =====================-->
 
 <!ENTITY % heading "H1|H2|H3|H4|H5|H6">
 
 <!ENTITY % list " UL | OL | DIR | MENU " >
 
 
-<!--================ Character mnemonic entities ==========================-->
+<!--======= Character mnemonic entities =================-->
 
 <!ENTITY % ISOlat1 PUBLIC
   "ISO 8879-1986//ENTITIES Added Latin 1//EN//HTML">
@@ -102,29 +104,37 @@
 <!ENTITY quot CDATA "&#34;"    -- double quote       -->
 
 
-<!--=================== SGML Document Access (SDA) Parameter Entities =====-->
+<!--========= SGML Document Access (SDA) Parameter Entities =====-->
 
-<!-- HTML 2.0 contains SGML Document Access (SDA) fixed attributes in 
-support of easy transformation to the International Committee for 
-Accessible Document Design (ICADD) DTD "-//EC-USA-CDA/ICADD//DTD 
-ICADD22//EN".  ICADD applications are designed to support usable access 
-to structured information by print-impaired individuals through Braille, 
-large print and voice synthesis.  For more information on SDA & ICADD:  
-        - ISO 12083:1993, Annex A.8, Facilities for Braille, large print
-          and computer voice
-        - ICADD ListServ <ICADD%ASUACAD.BITNET@ARIZVM1.ccit.arizona.edu>
+<!-- HTML 2.0 contains SGML Document Access (SDA) fixed attributes
+in support of easy transformation to the International Committee
+for Accessible Document Design (ICADD) DTD
+	 "-//EC-USA-CDA/ICADD//DTD ICADD22//EN".
+ICADD applications are designed to support usable access to
+structured information by print-impaired individuals through
+Braille, large print and voice synthesis.  For more information on
+SDA & ICADD:  
+        - ISO 12083:1993, Annex A.8, Facilities for Braille,
+	  large print and computer voice
+        - ICADD ListServ
+	  <ICADD%ASUACAD.BITNET@ARIZVM1.ccit.arizona.edu>
         - Usenet news group bit.listserv.easi
         - Recording for the Blind, +1 800 221 4792
 -->
 
-<!ENTITY % SDAFORM  "SDAFORM  CDATA  #FIXED"  -- one to one mapping        -->
-<!ENTITY % SDARULE  "SDARULE  CDATA  #FIXED"  -- context-sensitive mapping -->
-<!ENTITY % SDAPREF  "SDAPREF  CDATA  #FIXED"  -- generated text prefix     -->
-<!ENTITY % SDASUFF  "SDASUFF  CDATA  #FIXED"  -- generated text suffix     -->
-<!ENTITY % SDASUSP  "SDASUSP  NAME   #FIXED"  -- suspend transform process -->
+<!ENTITY % SDAFORM  "SDAFORM  CDATA  #FIXED"
+	  -- one to one mapping        -->
+<!ENTITY % SDARULE  "SDARULE  CDATA  #FIXED"
+	  -- context-sensitive mapping -->
+<!ENTITY % SDAPREF  "SDAPREF  CDATA  #FIXED"
+	  -- generated text prefix     -->
+<!ENTITY % SDASUFF  "SDASUFF  CDATA  #FIXED"
+	  -- generated text suffix     -->
+<!ENTITY % SDASUSP  "SDASUSP  NAME   #FIXED"
+	  -- suspend transform process -->
 
 
-<!--=================== Text Markup =======================================-->
+<!--========== Text Markup =====================-->
 
 <![ %HTML.Highlighting [
 
@@ -171,7 +181,7 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 <!-- <BR>	Line break	-->
 
 
-<!--================== Link Markup ========================================-->
+<!--========= Link Markup ======================-->
 
 <![ %HTML.Recommended [
 	<!ENTITY % linkName "ID">
@@ -207,17 +217,17 @@ large print and voice synthesis.  For more information on SDA & ICADD:
         %linkExtraAttributes;
         %SDAPREF; "<?SDATrans A: #AttList>"
         >
-<!-- <A>		Anchor; source and/or destination of a link	-->
-<!-- <A NAME="...">	Name of this anchor				-->
-<!-- <A HREF="...">	Address of link destination			-->
-<!-- <A URN="...">	Permanent address of destination	 	-->
-<!-- <A REL=...>	Relationship of this anchor to destination	-->
-<!-- <A REV=...>	Relationship of destination to this anchor 	-->
-<!-- <A TITLE="...">	Title of destination (advisory)	 		-->
-<!-- <A METHODS="...">	Operations allowed on destination (advisory)	-->
+<!-- <A>		Anchor; source/destination of link	-->
+<!-- <A NAME="...">	Name of this anchor			-->
+<!-- <A HREF="...">	Address of link destination		-->
+<!-- <A URN="...">	Permanent address of destination	-->
+<!-- <A REL=...>	Relationship to destination		-->
+<!-- <A REV=...>	Relationship of destination to this 	-->
+<!-- <A TITLE="...">	Title of destination (advisory)	 	-->
+<!-- <A METHODS="...">	Operations on destination (advisory)	-->
 
 
-<!--=================== Images ============================================-->
+<!--========== Images ==========================-->
 
 <!ELEMENT IMG    - O EMPTY>
 <!ATTLIST IMG
@@ -234,7 +244,7 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 <!-- <IMG ALIGN=...>	Position relative to text 		-->
 <!-- <IMG ISMAP>	Each pixel can be a link		-->
 
-<!--=================== Paragraphs=========================================-->
+<!--========== Paragraphs=======================-->
 
 <!ELEMENT P     - O (%text)*>
 <!ATTLIST P
@@ -244,7 +254,7 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 <!-- <P>	Paragraph	-->
 
 
-<!--=================== Headings, Titles, Sections ========================-->
+<!--========== Headings, Titles, Sections ===============-->
 
 <!ELEMENT HR    - O EMPTY>
 <!ATTLIST HR
@@ -281,7 +291,7 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 <!-- <H6>	Heading, level 6 -->
 
 
-<!--=================== Text Flows ========================================-->
+<!--========== Text Flows ======================-->
 
 <![ %HTML.Forms [
 	<!ENTITY % block.forms "BLOCKQUOTE | FORM | ISINDEX">
@@ -342,7 +352,7 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 ]]>
 
 
-<!--=================== Lists =============================================-->
+<!--========== Lists ==================-->
 
 <!ELEMENT DL    - -  (DT | DD)+>
 <!ATTLIST DL
@@ -387,7 +397,8 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 <!ATTLIST DIR
         COMPACT (COMPACT) #IMPLIED
         %SDAFORM; "List"
-        %SDAPREF; "<?SDATrans Dir: #AttList><LHead>Directory</LHead>"
+        %SDAPREF;
+	 "<?SDATrans Dir: #AttList><LHead>Directory</LHead>"
         >
 <!ATTLIST MENU
         COMPACT (COMPACT) #IMPLIED
@@ -407,10 +418,10 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 
 <!-- <LI>		List item			-->
 
-<!--=================== Document Body =====================================-->
+<!--========== Document Body ===================-->
 
 <![ %HTML.Recommended [
-	<!ENTITY % body.content "(%heading|%block|HR|ADDRESS)*"
+	<!ENTITY % body.content "(%heading|%block|HR|ADDRESS|IMG)*"
 	-- <h1>Heading</h1>
 	   <p>Text ...
 		is preferred to
@@ -419,7 +430,8 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 	-->
 ]]>
 
-<!ENTITY % body.content "(%heading | %text | %block | HR | ADDRESS)*">
+<!ENTITY % body.content "(%heading | %text | %block |
+				 HR | ADDRESS)*">
 
 <!ELEMENT BODY O O  %body.content>
 <!ATTLIST BODY
@@ -441,10 +453,10 @@ large print and voice synthesis.  For more information on SDA & ICADD:
         %SDAPREF; "Address:&#RE;"
         >
 
-<!-- <ADDRESS>	Address, signature, or byline for document or passage	-->
+<!-- <ADDRESS>	Address, signature, or byline	-->
 
 
-<!--================ Forms ===============================================-->
+<!--======= Forms ====================-->
 
 <![ %HTML.Forms [
 
@@ -480,7 +492,7 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 
 <!-- <INPUT>			Form input datum		-->
 <!-- <INPUT TYPE=...>		Type of input interaction	-->
-<!-- <INPUT TYPE=...>		Name of form datum		-->
+<!-- <INPUT NAME=...>		Name of form datum		-->
 <!-- <INPUT VALUE="...">	Default/initial/selected value	-->
 <!-- <INPUT SRC="...">		Address of image		-->
 <!-- <INPUT CHECKED>		Initial state is "on"		-->
@@ -488,20 +500,21 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 <!-- <INPUT MAXLENGTH=...>	Data length maximum		-->
 <!-- <INPUT ALIGN=...>		Image alignment			-->
 
-<!ELEMENT SELECT - - (OPTION+)>
+<!ELEMENT SELECT - - (OPTION+) -(INPUT|SELECT|TEXTAREA)>
 <!ATTLIST SELECT
 	NAME CDATA #REQUIRED
 	SIZE NUMBER #IMPLIED
 	MULTIPLE (MULTIPLE) #IMPLIED
         %SDAFORM; "List"
         %SDAPREF;
-        "<?SDATrans Select: #AttList><LHead>Select #AttVal(Multiple)</LHead>"
+	"<?SDATrans Select:
+		 #AttList><LHead>Select #AttVal(Multiple)</LHead>"
 	>
 
-<!-- <SELECT>			Selection of option(s)			-->
-<!-- <SELECT NAME=...>		Name of form datum			-->
-<!-- <SELECT SIZE=...>		Number of options displayed at a time	-->
-<!-- <SELECT MULTIPLE>		Multiple selections allowed		-->
+<!-- <SELECT>			Selection of option(s)		-->
+<!-- <SELECT NAME=...>		Name of form datum		-->
+<!-- <SELECT SIZE=...>		Options displayed at a time	-->
+<!-- <SELECT MULTIPLE>		Multiple selections allowed	-->
 
 <!ELEMENT OPTION - O (#PCDATA)*>
 <!ATTLIST OPTION
@@ -509,14 +522,15 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 	VALUE CDATA #IMPLIED
         %SDAFORM; "LItem"
         %SDAPREF;
-        "<?SDATrans Option: #AttList>#AttVal(Value) #AttVal(Selected)"
+        "<?SDATrans Option:
+	 #AttList>#AttVal(Value) #AttVal(Selected)"
 	>
 
-<!-- <OPTION>			A selection option			-->
-<!-- <OPTION SELECTED>		Initial state				-->
-<!-- <OPTION VALUE="...">	Form datum value for this option	-->
+<!-- <OPTION>			A selection option		-->
+<!-- <OPTION SELECTED>		Initial state			-->
+<!-- <OPTION VALUE="...">	Form datum value for this option-->
 
-<!ELEMENT TEXTAREA - - (#PCDATA)*>
+<!ELEMENT TEXTAREA - - (#PCDATA)* -(INPUT|SELECT|TEXTAREA)>
 <!ATTLIST TEXTAREA
 	NAME CDATA #REQUIRED
 	ROWS NUMBER #REQUIRED
@@ -525,26 +539,24 @@ large print and voice synthesis.  For more information on SDA & ICADD:
         %SDAPREF; "<?SDATrans TextArea: #AttList>#AttVal(Name): "
 	>
 
-<!-- <TEXTAREA>			An area for text input			-->
-<!-- <TEXTAREA NAME=...>	Name of form datum			-->
-<!-- <TEXTAREA ROWS=...>	Height of area				-->
-<!-- <TEXTAREA COLS=...>	Width of area				-->
+<!-- <TEXTAREA>			An area for text input		-->
+<!-- <TEXTAREA NAME=...>	Name of form datum		-->
+<!-- <TEXTAREA ROWS=...>	Height of area			-->
+<!-- <TEXTAREA COLS=...>	Width of area			-->
 
 ]]>
 
 
-<!--================ Document Head ========================================-->
-
-<!ENTITY % head.link "& LINK*">
+<!--======= Document Head ======================-->
 
 <![ %HTML.Recommended [
-	<!ENTITY % head.nextid "">
+	<!ENTITY % head.extra "META* & LINK*">
 ]]>
-<!ENTITY % head.nextid "& NEXTID?">
 
-<!ENTITY % head.content "TITLE & ISINDEX? & BASE? & META*
-			 %head.nextid
-			 %head.link">
+<!ENTITY % head.extra "NEXTID? & META* & LINK*">
+
+<!ENTITY % head.content "TITLE & ISINDEX? & BASE? &
+			 (%head.extra)">
 
 <!ELEMENT HEAD O O  (%head.content)>
 <!ATTLIST HEAD
@@ -567,18 +579,19 @@ large print and voice synthesis.  For more information on SDA & ICADD:
         %SDAPREF; "<?SDATrans Link: #AttList>"
         >
 
-<!-- <LINK>		Link from this document				-->
-<!-- <LINK HREF="...">	Address of link destination			-->
-<!-- <LINK URN="...">	Lasting name of destination		 	-->
-<!-- <LINK REL=...>	Relationship of this document to destination	-->
-<!-- <LINK REV=...>	Relationship of destination to this document 	-->
-<!-- <LINK TITLE="...">	Title of destination (advisory)	 		-->
-<!-- <LINK METHODS="..."> Operations allowed on destination (advisory)	-->
+<!-- <LINK>		Link from this document			-->
+<!-- <LINK HREF="...">	Address of link destination		-->
+<!-- <LINK URN="...">	Lasting name of destination		-->
+<!-- <LINK REL=...>	Relationship to destination		-->
+<!-- <LINK REV=...>	Relationship of destination to this 	-->
+<!-- <LINK TITLE="...">	Title of destination (advisory)	 	-->
+<!-- <LINK METHODS="..."> Operations allowed (advisory)		-->
 
 <!ELEMENT ISINDEX - O EMPTY>
 <!ATTLIST ISINDEX
         %SDAPREF;
-   "<Para><?SDATrans IsIndex: #AttList>[Document indexed/searchable.]</Para>">
+   "<Para><?SDATrans
+	IsIndex: #AttList>[Document indexed/searchable.]</Para>">
 
 <!-- <ISINDEX>		Document is a searchable index		-->
 
@@ -597,8 +610,8 @@ large print and voice synthesis.  For more information on SDA & ICADD:
         %SDAPREF; "<?SDATrans NextID: #AttList>"
         >
 
-<!-- <NEXTID>		Next ID to use for link name			-->
-<!-- <NEXTID N=...>	Next ID to use for link name			-->
+<!-- <NEXTID>		Next ID to use for link name		-->
+<!-- <NEXTID N=...>	Next ID to use for link name		-->
 
 <!ELEMENT META - O EMPTY>
 <!ATTLIST META
@@ -613,7 +626,7 @@ large print and voice synthesis.  For more information on SDA & ICADD:
 <!-- <META HTTP-EQUIV=...>	Metainformation name		-->
 <!-- <META CONTENT="...">	Associated information		-->
 
-<!--================ Document Structure ===================================-->
+<!--======= Document Structure =================-->
 
 <![ %HTML.Deprecated [
 	<!ENTITY % html.content "HEAD, BODY, PLAINTEXT?">
@@ -629,4 +642,4 @@ large print and voice synthesis.  For more information on SDA & ICADD:
         %SDAPREF; "<?SDATrans HTML: #AttList>"
 	>
 
-<!-- <HTML>			HyperText Markup Language Document	-->
+<!-- <HTML>			HTML Document	-->
