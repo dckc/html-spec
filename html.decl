@@ -79,6 +79,9 @@ FEATURES
 	This is derived from the prologue that was published
 	in ftp://ds.internic.net/internet-drafts/draft-ietf-iiir-html-01.txt
 
-	The only modification is OMITTAG YES
-
+	OMITTAG has been changed to YES for implicit </LI> etc. tags
+	SHORTTAG has been changed to YES to support
+		<DL COMPACT> and <IMG ALIGN=top>
+	as short forms for
+		<DL STYLE="COMPACT"> and <IMG ALIGN="top">
  -->
