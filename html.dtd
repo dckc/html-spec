@@ -62,7 +62,7 @@ SYNTAX
 FEATURES
   MINIMIZE
     DATATAG  NO
-    OMITTAG  YES
+    OMITTAG  NO
     RANK     NO
     SHORTTAG NO
   LINK
@@ -72,7 +72,7 @@ FEATURES
   OTHER
     CONCUR   NO
     SUBDOC   NO
-    FORMAL   NO
+    FORMAL   YES
   APPINFO    NONE
 >
 
@@ -91,6 +91,8 @@ FEATURES
 	followed by the	conventional HTML data stream.
 -->
 
+<!-- DTD definitions -->
+
 <!ENTITY % heading "H1|H2|H3|H4|H5|H6" >
 <!ENTITY % list "UL|OL|DIR|MENU">
 <!ENTITY % literal "XMP|LISTING">
@@ -99,17 +101,30 @@ FEATURES
 	 "TITLE | NEXTID | ISINDEX" >
 
 <!ENTITY % bodyelement
-	 "P | A | %heading | %list | DL | ADDRESS | PRE | %literal">
+	 "P | A | %heading |
+	 %list | DL | HEADERS | ADDRESS | PRE | BLOCKQUOTE
+	| %literal">
 
-<!ENTITY % anyelement "HEAD | %headelement; | BODY | %bodyelement;">
+<!ENTITY % oldstyle "%headelement | %bodyelement | #PCDATA">
 
-<!ELEMENT HTML O O  ((%anyelement|#PCDATA)*, PLAINTEXT?)>
+<!-- Characters from various Latin alphabets. -->
+<!ENTITY % ISOlat1 PUBLIC
+	"ISO 8879:1986//ENTITIES Added Latin 1//EN">
+%ISOlat1;
+
+
+<!-- Document Element -->
+
+<!ELEMENT HTML O O  (HEAD | BODY | %oldstyle)*>
 
 <!ELEMENT HEAD - -  (TITLE? & ISINDEX? & NEXTID?)>
+<!-- LINK element (from timbl) -->
+<!ATTLIST HEAD
+	EXPIRES NUMBER #IMPLIED -- expiration date 
+				in ISO format: yyyymmddhhmmssZ --
+	>
 
-<!ELEMENT BODY - -  (%bodyelement|#PCDATA)*>
-
-<!ELEMENT TITLE	- -  CDATA
+<!ELEMENT TITLE	- -  RCDATA
 	  -- The TITLE element is not considered part of the flow of text.
 	     It should be displayed, for example as the page header or
 	     window title.
@@ -126,6 +141,16 @@ FEATURES
 	     any NAME attribute in the document.
 	  -->
 	
+<!ENTITY % inline "EM | TT | STRONG | B | I | U |
+			CODE | SAMP | KBD | KEY | VAR | DFN | CITE "
+	>
+
+<!ELEMENT (%inline;) - - (#PCDATA)>
+
+<!ENTITY % text "#PCDATA | %inline;">
+
+<!ELEMENT BODY - -  (%bodyelement|%text;)*>
+
 <!ENTITY % URL "CDATA"
 	-- The term URL means a CDATA attribute
 	   whose value is a Universal Resource Locator,
@@ -136,57 +161,59 @@ FEATURES
 <!ATTLIST A
 	NAME NMTOKEN #IMPLIED
 	HREF %URL; #IMPLIED
-	TEXT (PLAIN, X-HTML, X-RTF) #IMPLIED
-	-- choose MIME text/plain or text/html content type --
-	-- if not specified, inferred from HREF filename --
+	TYPE NAME #IMPLIED -- type of relashionship to referent data:
+				PARENT CHILD, SIBLING, NEXT, TOP,
+				 DEFINITION, UPDATE, ORIGINAL etc. --
+	URN CDATA #IMPLIED -- universal resource number. unique doc id --
+	TITLE CDATA #IMPLIED -- advisory only --
+	METHODS NAMES #IMPLIED -- supported methods of the object:
+					TEXTSEARCH, GET, HEAD, ... --
 	>
 
-<!ELEMENT P	- O EMPTY>
-<!-- P separates paragraphs -->
+<!ELEMENT P	- O EMPTY -- separates paragraphs -->
 
-<!ELEMENT (%heading)	- -  (#PCDATA|A)+>
+<!ELEMENT (%heading)	- -  (%text;|A)+>
 
-<!ELEMENT DL	- -  (DT|DD|A|P|#PCDATA)*>
-<!--	Content should match ((DT,(A|#PCDATA)+)+,(DD,(A|#PCDATA)+))
+<!ELEMENT HEADERS - - (DT | #PCDATA | DD | A)+>
+<!ELEMENT DL	- -  (DT | DD | A | P | %text;)*>
+<!--	Content should match ((DT,(A|%text;)+)+,(DD,(A|%text;)+))
 	But mixed content is messy.
   -->
  
 <!ELEMENT DT	- O EMPTY>
 <!ELEMENT DD	- O EMPTY>
 
-<!ELEMENT (%list) - -  (#PCDATA|LI|A|P)+>
-<!--	Content should match ((LI,(A|#PCDATA)+)+)
+<!ELEMENT (%list) - -  (%text;|LI|A|P)+>
+<!--	Content should match ((LI,(A|%text;)+)+)
 	But mixed content is messy.
   -->
+<!ATTLIST (%list)
+	STYLE NAME #IMPLIED -- COMPACT, etc.--
+	>
 
 <!ELEMENT LI	- O EMPTY>
 
-<!ELEMENT ADDRESS - - (#PCDATA|A|P)+>
+<!ELEMENT BLOCKQUOTE - - (%text;|A|P|ADDRESS)+
+	-- for quoting some other source -->
+<!ATTLIST BLOCKQUOTE
+	SOURCE CDATA #IMPLIED
+	>
+
+<!ELEMENT ADDRESS - - (%text;|A|P)+>
 
 <!ELEMENT PRE - - (#PCDATA|A|P)+>
 <!ATTLIST PRE
-	WIDTH NUMBER 80
+	WIDTH NUMBER #implied
         >
 
-<!ELEMENT (%literal) - -  CDATA>
+<!-- deprecated elements -->
+
+<!ELEMENT (%literal) - -  RCDATA>
 
 <!ELEMENT PLAINTEXT - O EMPTY>
-<!--	  The <PLAINTEXT> tag, if present, signals the end of the SGML
-	  document entity. The data that follows serves as a non-SGML
-	  data entity.
-  -->
 
-<!--      Text Entities       -->
-
-<!-- Characters that may begin a delimiter-in-context sequence
-	From "ISO 8879:1986//ENTITIES Numeric and Special Graphic//EN" -->
-<!ENTITY lt "<">
-<!ENTITY gt ">">
-<!ENTITY amp "&">
-
-<!-- Characters from various Latin alphabets. -->
-<!ENTITY % ISOlat1 PUBLIC
-       "ISO 8879:1986//ENTITIES Added Latin 1//EN">
-%ISOlat1;
-
+<!-- Local Variables: -->
+<!-- mode: sgml -->
+<!-- compile-command: "sgmls -s -p " -->
+<!-- end: -->
 ]>
