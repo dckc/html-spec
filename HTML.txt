@@ -1,0 +1,700 @@
+
+                                                           PUBLIC DRAFT -- HTML
+                           HYPERTEXT MARKUP LANGUAGE
+                                       
+               A REPRESENTATION FOR NODES IN THE WORLD WIDE WEB
+                                       
+                                      Daniel W. Connolly, Convex Computer Corp.
+                                                                               
+                                                                  January, 1993
+                                                                               
+Status of this Document
+
+   This draft is for review only. Please send comments to Dan Connolly
+   <connolly@convex.com>.
+   
+Abstract
+
+   The World Wide Web project involves the processing of structured documents
+   by diverse systems around the globe. Existing document representations
+   geared towards typesetting, information retrieval, or multimedia are too
+   tightly coupled to a hardware system, authoring environment, publication
+   style, or field of study.
+   
+   HyperText Markup Language was created to fill the need to
+   
+      Represent existing bodies of information
+      
+      Connect information entities with hypertext links
+      
+      Scale to a world-wide scope
+      
+      Fit into existing and evolving user interface paradigms
+      
+      Provide an experimental platform for collaborative hypermedia
+      
+Contents
+
+  Introduction           2
+                         
+  Structured Text        3
+                         
+  Tags                   3
+                         
+  Element Types          4
+                         
+  Comments and Other Markup
+                         6
+                         
+  Line Breaks            7
+                         
+  Summary of Markup Signals
+                         7
+                         
+  HTML semantics @@
+                         
+  Rationale @@
+                         
+  References             9
+                         
+  HTML DTD               10
+                         
+  
+                         
+   
+
+                                                           PUBLIC DRAFT -- HTML
+                                 INTRODUCTION
+                                       
+   The HyperText Markup Language is defined in terms of the ISO Standard
+   Generalized Markup Language [SGML]. SGML is a system for defining structured
+   document types and markup languages to represent instances of those document
+   types.
+   
+   Every SGML document has three parts:
+   
+       An SGML declaration, which binds SGML processing quantities and syntax
+      token names to specific values. For example, the SGML declaration in the
+      HTML DTD specifies that the string that opens a tag is </ and the maximum
+      length of a name is 40 characters.
+      
+      A prologue including one or more document type declarations, which
+      specifiy the element types, element relationships and attributes, and
+      references that can be represented by markup. The HTML DTD specifies, for
+      example, that the HEAD element contains at most one TITLE element.
+      
+      An instance, which contains the data and markup of the document.
+      
+   We use the term HTML to mean both the document type and the markup language
+   for representing instances of that document type.
+   
+   All HTML documents share the same SGML declaration an prologue. Hence
+   implementations of the WorldWide Web generally only transmit and store the
+   instance part of an HTML document. To construct an SGML document entity for
+   processing by an SGML parser, it is necessary to prefix the text from ``HTML
+   DTD'' on page 10 to the HTML instance.
+   
+   Conversely, to implement an HTML parser, one need only implement those parts
+   of an SGML parser that are needed to parse an instance after parsing the
+   HTML DTD.
+   
+   
+
+                                                           PUBLIC DRAFT -- HTML
+                                STRUCTURED TEXT
+                                       
+   An HTML instance is like a text file, except that some of the characters are
+   interpreted as markup. The markup gives structure to the document.
+   
+   The instance represents a hierarchy of elements. Each element has a name ,
+   some attributes , and some content. Most elements are represented in the
+   document as a start tag, which gives the name and attributes, followed by
+   the content, followed by the end tag. For example:
+   
+   <HTML>
+    <TITLE>
+     A sample HTML instance
+    </TITLE>
+    <H1>
+     An Example of Structure
+    </H1>
+    Here's a typical paragraph.
+    <P>
+    <UL>
+     <LI>
+     Item one has an
+     <A NAME="anchor">
+      anchor
+     </A>
+     <LI>
+     Here's item two.
+    </UL>
+   </HTML>
+   
+   Some elements (e.g. P, LI) are empty. They have no content. They show up as
+   just a start tag.
+   
+   For the rest of the elements, the content is a sequence of data characters
+   and nested elements.
+   
+Tags
+
+   Every element starts with a tag, and every non-empty element ends with a
+   tag. Start tags are delimited by < and >, and end tags are delimited by </
+   and >.
+   
+  NAMES
+  
+   The element name immediately follows the tag open delimiter. Names consist
+   of a letter followed by up to 33 letters, digits, periods, or hyphens. Names
+   are not case sensitive.
+   
+  ATTRIBUTES
+  
+   In a start tag, whitespace and attributes are allowed between the element
+   name and the closing delimiter. An attribute consists of a name, an equal
+   sign, and a value. Whitespace is allowed around the equal sign.
+   
+   The value is specified in a string surrounded by single quotes or a string
+   surrounded by double quotes. (See: other tolerated forms @@)
+   
+   The string is parsed like RCDATA (see below ) to determine the attribute
+   value. This allows, for example, quote characters in attribute values to be
+   represented by character references.
+   
+   The length of an attribute value (after parsing) is limited to 1024
+   characters.
+   
+Element Types
+
+   The name of a tag refers to an element type declaration in the HTML DTD. An
+   element type declaration associates an element name with
+   
+      A list of attributes and their types and statuses
+      
+      A content type (one of EMPTY, CDATA, RCDATA, ELEMENT, or MIXED) which
+      determines the syntax of the element's content
+      
+      A content model, which specifies the pattern of nested elements and data
+      
+  EMPTY ELEMENTS
+  
+   Empty elements have the keyword EMPTY in their declaration. For example:
+   
+   <!ELEMENT NEXTID - O EMPTY>
+   <!ATTLIST NEXTID N NUMBER #REQUIRED>
+   
+   This means that the follwing:
+   
+   <nextid n=''27''>
+   
+   is legal, but these others are not:
+   
+   <nextid>
+   <nextid n=''abc''>
+   
+  CHARACTER DATA
+  
+   The keyword CDATA indicates that the content of an element is character
+   data. Character data is all the text up to the next end tag open
+   delimter-in-context. For example:
+   
+   <!ELEMENT XMP - - CDATA>
+   
+   specifies that the following text is a legal XMP element:
+   
+   <xmp>Here's a title. It looks like it has <tags> and <!--comments-->
+   in it, but it does not. Even this </ is data.</xmp>
+   
+   The string </ is only recognized as the opening delimiter of an end tag when
+   it is ``in context,'' that is, when it is followed by a letter. However, as
+   soon as the end tag open delimiter is recognized, it terminates the CDATA
+   content. The following is an error:
+   
+   <xmp>There is no way to represent </end> tags in CDATA </xmp>
+   
+  REPLACEABLE CHARACTER DATA
+  
+   Elements with RCDATA content behave much like thos with CDATA, except for
+   character references and entity references. Elements declared like:
+   
+   <!ELEMENT TITLE - - RCDATA>
+   
+   can have any sequence of characters in their content.
+   
+    Character References
+    
+   To represent a character that would otherwise be recognized as markup, use a
+   character referece. The string &# signals a character reference when it is
+   followed by a letter or a digit. The delimiter is followed by the decimal
+   character number and a semicolon. For example:
+   
+   <title>You can even represent &#60;/end> tags in RCDATA </title>
+   
+    Entity References
+    
+   The HTML DTD declares entities for the less than, greater than, and
+   ampersand characters and each of the ISO Latin 1 characters so that you can
+   reference them by name rather than by number.
+   
+   The string & signals an entity reference when it is followed by a letter or
+   a digit. The delimiter is followed by the entity name and a semicolon. For
+   example:
+   
+   Kurt G&ouml;del was a famous logician and mathemetician.
+   
+  Note:                  To be sure that a string of characters has no markup,
+                         HTML writers should represent all occurences of <, >,
+                         and & by character or entity references.
+                         
+  ELEMENT CONTENT
+  
+   Some elements have, in stead of a keyword that states the type of content, a
+   content model, which tells what patterns of data and nested elements are
+   allowed. If the content model of an element does not include the symbol
+   #PCDATA , the content is element content.
+   
+   Whitespace in element content is considered markup and ignored. Any
+   characters that are not markup, that is, data characters, are illegal.
+   
+   For example:
+   
+   <!ELEMENT HEAD - - (TITLE? & ISINDEX? & NEXTID? & LINK*)>
+   
+   declares an element that may be used as follows:
+   
+   <head>
+    <isindex>
+    <title>Head Example</title>
+   </head>
+   
+   But the following are illegal:
+   
+   <head> no data allowed! </head>
+   <head><isindex><title>Two isindex tags</title><isindex></head>
+   
+  MIXED CONTENT
+  
+   If the content model includes the symbol #PCDATA, the content of the element
+   is parsed as mixed content. For example:
+   
+   <!ELEMENT PRE - - (#PCDATA | A | B | I | U | P)+>
+   <!ATTLIST PRE
+        WIDTH NUMBER #implied
+        >
+   
+   This says that the PRE element contains one or more A, B, I, U, or P
+   elements or data characters. Here's an example of a PRE element:
+   
+   <pre>
+   <b>NAME</b>
+       cat -- concatenate<a href=''terms.html#file''>files</a>
+   <b>EXAMPLE</b>
+       cat &#60;xyz
+   </pre>
+   
+   The content of the above PRE element is:
+   
+      A B element
+      
+      The string ``   cat -- concatenate''
+      
+      An A element
+      
+      The string ``\n''
+      
+      Another B element
+      
+      The string ``\n   cat <xyz''
+      
+Comments and Other Markup
+
+   To include comments in an HTML document that will be ignored by the parser,
+   surround them with <!-- and -->. After the comment delimiter, all text up to
+   the next occurence of -- is ignored. Hence comments cannot be nested.
+   Whitespace is allowed between the closing -- and >. (But not between the
+   opening <! and --.)
+   
+   For example:
+   
+   <HEAD>
+   <TITLE>HTML Guide: Recommended Usage</TITLE>
+   <!-- $Id$ -->
+   </HEAD>
+   
+   There are a few other SGML markup constructs that are deprecated or illegal.
+   
+  Delimiter              Signals...
+                         
+  <?                     Processing instruction. Terminated by >.
+                         
+  <![L                   Marked section. Marked sections are deprecated. See
+                         the SGML standard for complete information.
+                         
+  <!L                    Markup declaration. HTML defines no short reference
+                         maps, so these are errors. Terminated by >.
+                         
+Line Breaks
+
+   A line break character is considered markup (and ignored) if it is the first
+   or last piece of content in an element. This allows you to write either
+   
+   <PRE>some example text</pre>
+   
+   or
+   
+   <pre>
+   some example text
+   </pre>
+   
+   and these will be processed identically.
+   
+   Also, a line that's not empty but contains no content will be ignored
+   altogether. For example, the element
+   
+   <pre>
+   <!-- this line is ignored, including the linebreak character -->
+   first line
+   
+   third line<!-- the following linebreak is content: -->
+   fourth line<!-- this one's ignored cuz it's the last piece of content: -->
+   </pre>
+   
+   contains only the string first line\n\nthird line\nfourth line.
+   
+Summary of Markup Signals
+
+   The following delimiters may signal markup, depending on context.
+   
+  Delimiter              Signals
+                         
+  <!--                   Comment
+                         
+  &#                     Character reference
+                         
+  &                      Entity reference
+                         
+  </                     End tag
+                         
+  <!                     Markup declaration
+                         
+  ]]>                    Marked section close (an error)
+                         
+  <                      Start tag
+                         
+  
+                         
+   
+
+                                                           PUBLIC DRAFT -- HTML
+                                  REFERENCES
+                                       
+                         ISO 8879:1986, Information ProcessingText and Office
+                         SystemsStandard Generalized Markup Language (SGML)
+                         
+  sgmls                  an SGML parser by James Clark <jjc@jclark.com> derived
+                         from the ARCSGML parser materials  which were written
+                         by Charles F. Goldfarb. The source is available on the
+                         ifi.uio.no FTP server in the directory /pub/SGML/SGMLS
+                         .
+                         
+  WWW
+                         
+  URL
+                         
+  
+                         
+   
+<!SGML  "ISO 8879:1986"
+                                                           PUBLIC DRAFT -- HTML
+--
+HTML DTD
+        Document Type Definition for the HyperText Markup Language
+        as used by the World Wide Web application (HTML DTD).
+
+        NOTE: This is a definition of HTML with respect to
+        SGML, and assumes an understaning of SGML terms.
+
+        For a description of HTML in layman's terms, see
+
+        "HTML: A Representation for Nodes in the World Wide Web"
+                by Dan Connolly.
+
+        aka
+
+        http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
+                by <connolly@convex.com>
+--
+
+CHARSET
+         BASESET  "ISO 646:1983//CHARSET
+                   International Reference Version (IRV)//ESC 2/5 4/0"
+         DESCSET  0   9   UNUSED
+                  9   2   9
+                  11  2   UNUSED
+                  13  1   13
+                  14  18  UNUSED
+                  32  95  32
+                  127 1   UNUSED
+     BASESET   "ISO Registration Number 100//CHARSET
+                ECMA-94 Right Part of Latin Alphabet Nr. 1//ESC 2/13 4/1"
+     DESCSET   128 32 UNUSED
+               160 95 32
+               255  1 UNUSED
+
+CAPACITY        SGMLREF
+                TOTALCAP        150000
+                GRPCAP          150000
+
+SCOPE    DOCUMENT
+SYNTAX
+         SHUNCHAR CONTROLS 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+                           19 20 21 22 23 24 25 26 27 28 29 30 31 127 255
+         BASESET  "ISO 646:1983//CHARSET
+                   International Reference Version (IRV)//ESC 2/5 4/0"
+         DESCSET  0 128 0
+         FUNCTION RE          13
+                  RS          10
+                  SPACE       32
+                  TAB SEPCHAR  9
+         NAMING   LCNMSTRT ""
+                  UCNMSTRT ""
+                  LCNMCHAR ".-"
+                  UCNMCHAR ".-"
+                  NAMECASE GENERAL YES
+                           ENTITY  NO
+         DELIM    GENERAL  SGMLREF
+                  SHORTREF SGMLREF
+         NAMES    SGMLREF
+         QUANTITY SGMLREF
+                  NAMELEN  34
+                  TAGLVL   100
+                  LITLEN   1024
+                  GRPGTCNT 150
+                  GRPCNT   64
+
+FEATURES
+  MINIMIZE
+    DATATAG  NO
+    OMITTAG  NO
+    RANK     NO
+    SHORTTAG NO
+  LINK
+    SIMPLE   NO
+    IMPLICIT NO
+    EXPLICIT NO
+  OTHER
+    CONCUR   NO
+    SUBDOC   NO
+    FORMAL   YES
+  APPINFO    NONE
+>
+
+<!DOCTYPE HTML [
+<!--
+ $Id$
+-->
+
+<!--    Regarding clause 6.1, SGML Document:
+
+        [1] SGML document = SGML document entity,
+            (SGML subdocument entity |
+            SGML text entity | non-SGML data entity)*
+
+        The role of SGML document entity is filled by this DTD,
+        followed by the conventional HTML data stream.
+-->
+
+<!-- DTD definitions -->
+
+<!ENTITY % heading "H1|H2|H3|H4|H5|H6" >
+<!ENTITY % list "UL|OL|DIR|MENU">
+<!ENTITY % literal "XMP|LISTING">
+
+<!ENTITY % headelement
+         "TITLE | NEXTID | ISINDEX" >
+
+<!ENTITY % bodyelement
+         "P | %heading |
+         %list | DL | HEADERS | ADDRESS | PRE | BLOCKQUOTE
+        | %literal">
+
+<!ENTITY % oldstyle "%headelement | %bodyelement | #PCDATA">
+<!ENTITY % URL "CDATA"
+        -- The term URL means a CDATA attribute
+           whose value is a Universal Resource Locator,
+           as defined in ftp://info.cern.ch/pub/www/doc/url3.txt
+        -->
+
+<!ENTITY % linkattributes
+        "NAME NMTOKEN #IMPLIED
+        HREF %URL; #IMPLIED
+        TYPE NAME #IMPLIED -- type of relashionship to referent data:
+                                PARENT CHILD, SIBLING, NEXT, TOP,
+                                 DEFINITION, UPDATE, ORIGINAL etc. --
+        URN CDATA #IMPLIED -- universal resource number. unique doc id --
+        TITLE CDATA #IMPLIED -- advisory only --
+        METHODS NAMES #IMPLIED -- supported methods of the object:
+                                        TEXTSEARCH, GET, HEAD, ... --
+        ">
+
+<!-- Document Element -->
+
+<!ELEMENT HTML O O  ((HEAD | BODY | %oldstyle)*, PLAINTEXT?)>
+
+<!ELEMENT HEAD - -  (TITLE? & ISINDEX? & NEXTID? & LINK*)>
+
+<!ELEMENT TITLE - -  RCDATA
+          -- The TITLE element is not considered part of the flow of text.
+             It should be displayed, for example as the page header or
+             window title.
+          -->
+
+<!ELEMENT ISINDEX - O EMPTY
+          -- WWW clients should offer the option to perform a search on
+             documents containing ISINDEX.
+          -->
+
+<!ELEMENT NEXTID - O EMPTY>
+<!ATTLIST NEXTID N NUMBER #REQUIRED
+          -- The number should be the highest number that appears in
+             any NAME attribute in the document.
+          -->
+
+<!ELEMENT LINK - O EMPTY>
+<!ATTLIST LINK
+        %linkattributes>
+
+<!ENTITY % inline "EM | TT | STRONG | B | I | U |
+                        CODE | SAMP | KBD | KEY | VAR | DFN | CITE "
+        >
+
+<!ELEMENT (%inline;) - - (#PCDATA)>
+
+<!ENTITY % hypertext "#PCDATA | %inline; | A">
+
+<!ELEMENT BODY - -  (%bodyelement|%hypertext;)*>
+
+<!ELEMENT A     - -  (#PCDATA)>
+<!ATTLIST A
+        %linkattributes;
+        >
+
+<!ELEMENT P     - O EMPTY -- separates paragraphs -->
+
+<!ELEMENT (%heading)    - -  (%hypertext;)+>
+
+<!ELEMENT DL    - -  (DT | DD | P | %hypertext;)*>
+<!--    Content should match ((DT,(%hypertext;)+)+,(DD,(%hypertext;)+))
+        But mixed content is messy.
+  -->
+<!ATTLIST DL
+        STYLE NAME #IMPLIED -- COMPACT, etc.--
+        >
+
+<!ELEMENT DT    - O EMPTY>
+<!ELEMENT DD    - O EMPTY>
+
+<!ELEMENT (UL|OL) - -  (%hypertext;|LI|P)+>
+<!ELEMENT (DIR|MENU) - -  (%hypertext;|LI)+>
+<!--    Content should match ((LI,(%hypertext;)+)+)
+        But mixed content is messy.
+  -->
+
+<!ELEMENT LI    - O EMPTY>
+
+<!ELEMENT BLOCKQUOTE - - (%hypertext;|P)+
+        -- for quoting some other source -->
+<!ATTLIST BLOCKQUOTE
+        SOURCE CDATA #IMPLIED -- URL of source --
+        >
+
+<!ELEMENT ADDRESS - - (%hypertext;|P)+>
+
+<!ELEMENT PRE - - (#PCDATA | A | B | I | U | P)+>
+<!ATTLIST PRE
+        WIDTH NUMBER #implied
+        >
+
+
+<!-- Mnemonic character entities. -->
+<!ENTITY AElig "&#198;" -- capital AE diphthong (ligature) -->
+<!ENTITY Aacute "&#193;" -- capital A, acute accent -->
+<!ENTITY Acirc "&#194;" -- capital A, circumflex accent -->
+<!ENTITY Agrave "&#192;" -- capital A, grave accent -->
+<!ENTITY Aring "&#197;" -- capital A, ring -->
+<!ENTITY Atilde "&#195;" -- capital A, tilde -->
+<!ENTITY Auml "&#196;" -- capital A, dieresis or umlaut mark -->
+<!ENTITY Ccedil "&#199;" -- capital C, cedilla -->
+<!ENTITY ETH "&#208;" -- capital Eth, Icelandic -->
+<!ENTITY Eacute "&#201;" -- capital E, acute accent -->
+<!ENTITY Ecirc "&#202;" -- capital E, circumflex accent -->
+<!ENTITY Egrave "&#200;" -- capital E, grave accent -->
+<!ENTITY Euml "&#203;" -- capital E, dieresis or umlaut mark -->
+<!ENTITY Iacute "&#205;" -- capital I, acute accent -->
+<!ENTITY Icirc "&#206;" -- capital I, circumflex accent -->
+<!ENTITY Igrave "&#204;" -- capital I, grave accent -->
+<!ENTITY Iuml "&#207;" -- capital I, dieresis or umlaut mark -->
+<!ENTITY Ntilde "&#209;" -- capital N, tilde -->
+<!ENTITY Oacute "&#211;" -- capital O, acute accent -->
+<!ENTITY Ocirc "&#212;" -- capital O, circumflex accent -->
+<!ENTITY Ograve "&#210;" -- capital O, grave accent -->
+<!ENTITY Oslash "&#216;" -- capital O, slash -->
+<!ENTITY Otilde "&#213;" -- capital O, tilde -->
+<!ENTITY Ouml "&#214;" -- capital O, dieresis or umlaut mark -->
+<!ENTITY THORN "&#222;" -- capital THORN, Icelandic -->
+<!ENTITY Uacute "&#218;" -- capital U, acute accent -->
+<!ENTITY Ucirc "&#219;" -- capital U, circumflex accent -->
+<!ENTITY Ugrave "&#217;" -- capital U, grave accent -->
+<!ENTITY Uuml "&#220;" -- capital U, dieresis or umlaut mark -->
+<!ENTITY Yacute "&#221;" -- capital Y, acute accent -->
+<!ENTITY aacute "&#225;" -- small a, acute accent -->
+<!ENTITY acirc "&#226;" -- small a, circumflex accent -->
+<!ENTITY aelig "&#230;" -- small ae diphthong (ligature) -->
+<!ENTITY agrave "&#224;" -- small a, grave accent -->
+<!ENTITY amp "&#38;" -- ampersand -->
+<!ENTITY aring "&#229;" -- small a, ring -->
+<!ENTITY atilde "&#227;" -- small a, tilde -->
+<!ENTITY auml "&#228;" -- small a, dieresis or umlaut mark -->
+<!ENTITY ccedil "&#231;" -- small c, cedilla -->
+<!ENTITY eacute "&#233;" -- small e, acute accent -->
+<!ENTITY ecirc "&#234;" -- small e, circumflex accent -->
+<!ENTITY egrave "&#232;" -- small e, grave accent -->
+<!ENTITY eth "&#240;" -- small eth, Icelandic -->
+<!ENTITY euml "&#235;" -- small e, dieresis or umlaut mark -->
+<!ENTITY gt "&#62;" -- greater than -->
+<!ENTITY iacute "&#237;" -- small i, acute accent -->
+<!ENTITY icirc "&#238;" -- small i, circumflex accent -->
+<!ENTITY igrave "&#236;" -- small i, grave accent -->
+<!ENTITY iuml "&#239;" -- small i, dieresis or umlaut mark -->
+<!ENTITY lt "&#60;" -- less than -->
+<!ENTITY ntilde "&#241;" -- small n, tilde -->
+<!ENTITY oacute "&#243;" -- small o, acute accent -->
+<!ENTITY ocirc "&#244;" -- small o, circumflex accent -->
+<!ENTITY ograve "&#242;" -- small o, grave accent -->
+<!ENTITY oslash "&#248;" -- small o, slash -->
+<!ENTITY otilde "&#245;" -- small o, tilde -->
+<!ENTITY ouml "&#246;" -- small o, dieresis or umlaut mark -->
+<!ENTITY szlig "&#223;" -- small sharp s, German (sz ligature) -->
+<!ENTITY thorn "&#254;" -- small thorn, Icelandic -->
+<!ENTITY uacute "&#250;" -- small u, acute accent -->
+<!ENTITY ucirc "&#251;" -- small u, circumflex accent -->
+<!ENTITY ugrave "&#249;" -- small u, grave accent -->
+<!ENTITY uuml "&#252;" -- small u, dieresis or umlaut mark -->
+<!ENTITY yacute "&#253;" -- small y, acute accent -->
+<!ENTITY yuml "&#255;" -- small y, dieresis or umlaut mark -->
+
+<!-- deprecated elements -->
+
+<!ELEMENT (%literal) - -  CDATA>
+
+<!ELEMENT PLAINTEXT - O EMPTY>
+
+<!-- Local Variables: -->
+<!-- mode: sgml -->
+<!-- compile-command: "sgmls -s -p " -->
+<!-- end: -->
+]>
+
+   
+
