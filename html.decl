@@ -57,6 +57,8 @@ SYNTAX
                                 internet line length conventions --
                   PILEN    1024
                   TAGLEN   2100
+                  GRPGTCNT 150
+                  GRPCNT   64                   
 
 FEATURES
   MINIMIZE
