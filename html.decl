@@ -51,12 +51,12 @@ SYNTAX
                   SHORTREF SGMLREF
          NAMES    SGMLREF
          QUANTITY SGMLREF
-                  NAMELEN  72    -- somewhat arbitrary; taken from
-				internet line length conventions --
-                  TAGLVL   100
+                  ATTSPLEN 2100
                   LITLEN   1024
-                  GRPGTCNT 150
-                  GRPCNT   64                   
+                  NAMELEN  72    -- somewhat arbitrary; taken from
+                                internet line length conventions --
+                  PILEN    1024
+                  TAGLEN   2100
 
 FEATURES
   MINIMIZE
