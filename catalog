@@ -1,0 +1,19 @@
+	-- catalog: SGML Open style entity catalog for HTML --
+	-- $Id$ --
+
+	-- Ways to refer to Level 2: most general to most specific --
+PUBLIC  "-//IETF//DTD HTML//EN"			html.dtd
+PUBLIC  "-//IETF//DTD HTML//EN//2.0"		html.dtd
+PUBLIC  "-//IETF//DTD HTML Level 2//EN"		html.dtd
+PUBLIC  "-//IETF//DTD HTML Level 2//EN//2.0"	html.dtd
+
+	-- Ways to refer to Level 1: most general to most specific --
+PUBLIC  "-//IETF//DTD HTML Level 1//EN"		html-1.dtd
+PUBLIC  "-//IETF//DTD HTML Level 1//EN//2.0"	html-1.dtd
+
+	-- Ways to refer to Level 0: most general to most specific --
+PUBLIC  "-//IETF//DTD HTML Level 0//EN"		html-0.dtd
+PUBLIC  "-//IETF//DTD HTML Level 0//EN//2.0"	html-0.dtd
+
+	-- ISO latin 1 entity set for HTML -- 
+PUBLIC	"-//IETF//ENTITIES Added Latin 1//EN"	ISOlat1.sgml
