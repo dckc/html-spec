@@ -1,295 +1,354 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML 1.9//EN">
+<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
 <HTML>
+
 <HEAD>
-<TITLE>Structured Text in HTML</TITLE>
-<NEXTID N="z7">
-</HEAD>
+<TITLE>Structured Text in HTML</TITLE> <NEXTID
+N="z7"></HEAD>
+
 <BODY>
-<H1>Structured Text</H1><P>An HTML instance is like a text file,
-except that some of the characters
-are interpreted as markup. The markup
-gives structure to the document.<P>
-The instance represents a hierarchy
-of elements. Each element has a <A
-NAME="z0" HREF="#name">name</A>
-, some <A
-NAME="z1" HREF="#attribute">attributes</A> , and some content.
-Most elements are represented in
-the document as a start tag, which
-gives the name and attributes, followed
-by the content, followed by the end
-tag. For example: 
-<PRE>		&lt;HTML>
-		 &lt;TITLE>
+
+<H1>Structured Text</H1>
+
+<P>An HTML instance is like a text file,
+except that some of the characters are interpreted as markup.
+The markup gives structure to the document.
+
+<P>The instance represents a hierarchy of elements.
+Each element has a <A HREF="#name" NAME="z0">name</A> ,
+some <A HREF="#attribute" NAME="z1">attributes</A> ,
+and some content. Most elements are represented in the document
+as a start tag, which gives the name and attributes,
+followed by the content, followed by the end tag.
+For example:
+
+<PRE>		&lt;HTML&#62;
+		 &lt;TITLE&#62;
 		  A sample HTML instance
-		 &lt;/TITLE>
-		 &lt;H1>
+		 &lt;/TITLE&#62;
+		 &lt;H1&#62;
 		  An Example of Structure
-		 &lt;/H1>
+		 &lt;/H1&#62;
 		 Here's a typical paragraph.
-		 &lt;P>
-		 &lt;UL>
-		  &lt;LI>
+		 &lt;P&#62;
+		 &lt;UL&#62;
+		  &lt;LI&#62;
 		  Item one has an
-		  &lt;A NAME="anchor">
+		  &lt;A NAME="anchor"&#62;
 		   anchor
-		  &lt;/A>
-		  &lt;LI>
+		  &lt;/A&#62;
+		  &lt;LI&#62;
 		  Here's item two.
-		 &lt;/UL>
-		&lt;/HTML>
+		 &lt;/UL&#62;
+		&lt;/HTML&#62;
 
-</PRE><P>Some elements (e.g. P, LI) are empty.
-They have no content. They show up
-as just a start tag. <P>
-For the rest of the elements, the
-content is a sequence of data characters
-and nested elements.  Note that the
-HTML DTD in fact severely limits
-the amount of nesting which is allowed:
-most things cannot be nested, in
-fact.   No elements may be recursively
-nested.   Anchors and character highlighting
-may be put inside other constructs.
-<H2><A
-NAME="Tags">Tags</A></H2><P>Every element starts with a tag,
-and every non-empty element ends
-with a tag. Start tags are delimited
-by &lt; and >, and end tags are delimited
-by &lt;/ and >. 
-<H3><A
-NAME="name">Names</A></H3><P>The element name immediately follows
-the tag open delimiter. Names consist
-of a letter followed by up to 33
-letters, digits, periods, or hyphens.
-Names are not case sensitive.
-<H3><A
-NAME="attribute">Attributes</A></H3><P>In a start tag, whitespace and attributes
-are allowed between the element name
-and the closing delimiter. An attribute
-consists of a name, an equal sign,
-and a value. Whitespace is allowed
-around the equal sign.<P>
-The value is specified in a string
-surrounded by single quotes or a
-string surrounded by double quotes.
-(See: <A
-NAME="z2" HREF="tolerated.html#attrval">other tolerated forms</A> @@)<P>
-The string is parsed like RCDATA
-(see <A
-NAME="z3" HREF="#RCDATA">below</A> ) to determine the attribute
-value. This allows, for example,
-quote characters in attribute values
-to be represented by character references.<P>
-The length of an attribute value
-(after parsing) is limited to 1024
-characters. 
-<H2>Element Types</H2><P>The name of a tag refers to an element
-type declaration in the HTML DTD.
-An element type declaration associates
-an element name with
+</PRE>
+
+<P>Some elements (e.g. P, LI) are empty.
+They have no content. They show up as just a start tag.
+
+<P>For the rest of the elements, the content is a sequence of
+data characters and nested elements. Note that the HTML DTD in
+fact severely limits the amount of nesting which is allowed:
+most things cannot be nested, in fact. No elements may be recursively
+nested. Anchors and character highlighting may be put inside
+other constructs.
+
+<H2><A NAME="Tags">Tags</A></H2>
+
+<P>Every element starts with a tag, and every non-empty element
+ends with a tag. Start tags are delimited by &lt;and &#62;,
+and end tags are delimited by &lt;/ and &#62;.
+
+<H3><A NAME="name">Names</A></H3>
+
+<P>The element name immediately follows the tag open delimiter.
+Names consist of a letter followed by up to 33 letters,
+digits, periods, or hyphens. Names are not case sensitive.
+
+<H3><A NAME="attribute">Attributes</A></H3>
+
+<P>In a start tag, whitespace and attributes are allowed between
+the element name and the closing delimiter.
+An attribute consists of a name, an equal sign,
+and a value. Whitespace is allowed around the equal sign.
+
+<P>The value is specified in a string surrounded by single quotes
+or a string surrounded by double quotes.
+(See: <A HREF="tolerated.html#attrval" NAME="z2">other tolerated
+forms</A> @@)
+
+<P>The string is parsed like RCDATA (see <A
+HREF="#RCDATA" NAME="z3">below</A> ) to determine the attribute
+value. This allows, for example, quote characters in attribute
+values to be represented by character references.
+
+<P>The length of an attribute value (after parsing) is limited
+to 1024 characters.
+
+<H2>Element Types</H2>
+
+<P>The name of a tag refers to an element type declaration in
+the HTML DTD. An element type declaration associates an element
+name with
+
 <UL>
-<LI>A list of attributes and their types
-and statuses
+
+<LI>A list of attributes and their types and statuses
+
 <LI>A content type (one of EMPTY, CDATA,
-RCDATA, ELEMENT, or MIXED) which
-determines the syntax of the element's
-content
-<LI>A content model, which specifies
-the pattern of nested elements and
-data
+RCDATA, ELEMENT, or MIXED) which determines the syntax of the
+element's content
+
+<LI>A content model, which specifies the pattern of nested elements
+and data
 </UL>
-<H3>Empty Elements</H3><P>Empty elements have the keyword EMPTY
-in their declaration. For example:
-<PRE>	&lt;!ELEMENT NEXTID - O EMPTY>
-	&lt;!ATTLIST NEXTID N NUMBER #REQUIRED>
 
-</PRE><P>This means that the following:
-<PRE>	&lt;nextid n=''27''>
+<H3>Empty Elements</H3>
 
-</PRE><P>is legal, but these others are not:
-<PRE>	&lt;nextid>
-	&lt;nextid n=''abc''>
+<P>Empty elements have the keyword EMPTY in their declaration.
+For example:
+
+<PRE>	&lt;!ELEMENT NEXTID - O EMPTY&#62;
+	&lt;!ATTLIST NEXTID N NUMBER #REQUIRED&#62;
 
 </PRE>
-<H3>Character Data</H3><P>The keyword CDATA indicates that
-the content of an element is character
-data. Character data is all the text
-up to the next end tag open delimiter-in-context.
-For example:
-<PRE>&lt;!ELEMENT XMP - - CDATA>
-</PRE><P>specifies that the following text
-is a legal XMP element:
-<PRE>	&lt;xmp>Here's an example. It looks like it has
-	&lt;tags> and &lt;!--comments-->
+
+<P>This means that the following:
+
+<PRE>	&lt;nextid n=''27''&#62;
+
+</PRE>
+
+<P>is legal, but these others are not:
+
+<PRE>	&lt;nextid&#62;
+	&lt;nextid n=''abc''&#62;
+
+</PRE>
+
+<H3>Character Data</H3>
+
+<P>The keyword CDATA indicates that the content of an element
+is character data. Character data is all the text up to the next
+end tag open delimiter-in-context. For example:
+
+<PRE>&lt;!ELEMENT XMP - - CDATA&#62;
+</PRE>
+
+<P>specifies that the following text is a legal XMP element:
+
+<PRE>	&lt;xmp&#62;Here's an example. It looks like it has
+	&lt;tags&#62; and &lt;!--comments--&#62;
 	in it, but it does not. Even this
-	&lt;/ is data.&lt;/xmp>
-
-</PRE><P>The string &lt;/ is only recognized
-as the opening delimiter of an end
-tag when it is ``in context,'' that
-is, when it is followed by a letter.
-However, as soon as the end tag open
-delimiter is recognized, it terminates
-the CDATA content. The following
-is an error:
-<PRE>	&lt;xmp>There is no way to represent &lt;/end> tags
-	in CDATA &lt;/xmp>
+	&lt;/ is data.&lt;/xmp&#62;
 
 </PRE>
-<H3><A
-NAME="RCDATA">Replaceable Character Data</A></H3><P>Elements with RCDATA content behave
-much like those with CDATA, except
-for character references and entity
-references. Elements declared like:
-<PRE>&lt;!ELEMENT TITLE - - RCDATA>
-</PRE><P>can have any sequence of characters
-in their content.
-<H4><A
-NAME="z4">Character References</A></H4><P>To represent a character that would
-otherwise be recognized as markup,
-use a character reference. The string
-&amp;# signals a character reference
-when it is followed by a letter or
-a digit. The delimiter is followed
-by the decimal character number and
+
+<P>The string &lt;/ is only recognized as the opening delimiter
+of an end tag when it is ``in context,'' that is,
+when it is followed by a letter. However,
+as soon as the end tag open delimiter is recognized,
+it terminates the CDATA content. The following is an error:
+
+<PRE>	&lt;xmp&#62;There is no way to represent &lt;/end&#62; tags
+	in CDATA &lt;/xmp&#62;
+
+</PRE>
+
+<H3><A NAME="RCDATA">Replaceable Character Data</A></H3>
+
+<P>Elements with RCDATA content behave much like those with CDATA,
+except for character references and entity references.
+Elements declared like:
+
+<PRE>&lt;!ELEMENT TITLE - - RCDATA&#62;
+</PRE>
+
+<P>can have any sequence of characters in their content.
+
+<H4><A NAME="z4">Character References</A></H4>
+
+<P>To represent a character that would otherwise be recognized
+as markup, use a character reference. The string &amp;# signals
+a character reference when it is followed by a letter or a digit.
+The delimiter is followed by the decimal character number and
 a semicolon. For example:
-<PRE>&lt;title>You can even represent &amp;#60;/end> tags in RCDATA &lt;/title>
+
+<PRE>&lt;title&#62;You can even represent &amp;#60;/end&#62; tags in RCDATA &lt;/title&#62;
 
 </PRE>
-<H4><A
-NAME="z5">Entity References</A></H4><P>The HTML DTD declares entities for
-the less than, greater than, and
-ampersand characters and each of
-the ISO Latin 1 characters so that
-you can reference them by name rather
-than by number.<P>
-The string &amp; signals an entity reference
-when it is followed by a letter or
-a digit. The delimiter is followed
-by the entity name and a semicolon.
-For example:
+
+<H4><A NAME="z5">Entity References</A></H4>
+
+<P>The HTML DTD declares entities for the less than,
+greater than, and ampersand characters and each of the ISO Latin
+1 characters so that you can reference them by name rather than
+by number.
+
+<P>The string &amp;signals an entity reference when it is followed
+by a letter or a digit. The delimiter is followed by the entity
+name and a semicolon. For example:
+
 <PRE>Kurt G&amp;ouml;del was a famous logician and mathematician.
 
 </PRE>
+
 <DL>
+
 <DT>Note:
-<DD> To be sure that a string of
-characters has no markup, HTML writers
-should represent all occurrences
-of &lt;, >, and &amp; by character or entity
-references.
+
+<DD>To be sure that a string of characters has no markup,
+HTML writers should represent all occurrences of &lt;,
+&#62;, and &amp;by character or entity references.
 </DL>
 
-<H3>Element Content</H3><P>Some elements have, in stead of a
-keyword that states the type of content,
-a content model, which tells what
-patterns of data and nested elements
-are allowed. If the content model
-of an element does not include the
-symbol #PCDATA , the content is element
-content. <P>
-Whitespace in element content is
-considered markup and ignored. Any
-characters that are not markup, that
-is, data characters, are illegal.<P>
-For example:
-<PRE>&lt;!ELEMENT HEAD - - (TITLE? &amp; ISINDEX? &amp; NEXTID? &amp; LINK*)>
-</PRE><P>declares an element that may be used
-as follows:
-<PRE>&lt;head>
- &lt;isindex>
- &lt;title>Head Example&lt;/title>
-&lt;/head>
-</PRE><P>But the following are illegal:
-<PRE>&lt;head> no data allowed! &lt;/head>
-&lt;head>&lt;isindex>&lt;title>Two isindex tags&lt;/title>&lt;isindex>&lt;/head>
+<H3>Element Content</H3>
+
+<P>Some elements have, in stead of a keyword that states the
+type of content, a content model, which tells what patterns of
+data and nested elements are allowed. If the content model of
+an element does not include the symbol #PCDATA ,
+the content is element content.
+
+<P>Whitespace in element content is considered markup and ignored.
+Any characters that are not markup, that is,
+data characters, are illegal.
+
+<P>For example:
+
+<PRE>&lt;!ELEMENT HEAD - - (TITLE? &amp; ISINDEX? &amp; NEXTID? &amp; LINK*)&#62;
+</PRE>
+
+<P>declares an element that may be used as follows:
+
+<PRE>&lt;head&#62;
+ &lt;isindex&#62;
+ &lt;title&#62;Head Example&lt;/title&#62;
+&lt;/head&#62;
+</PRE>
+
+<P>But the following are illegal:
+
+<PRE>&lt;head&#62; no data allowed! &lt;/head&#62;
+&lt;head&#62;&lt;isindex&#62;&lt;title&#62;Two isindex tags&lt;/title&#62;&lt;isindex&#62;&lt;/head&#62;
 
 </PRE>
-<H3>Mixed Content</H3><P>If the content model includes the
-symbol #PCDATA, the content of the
-element is parsed as mixed content.
+
+<H3>Mixed Content</H3>
+
+<P>If the content model includes the symbol #PCDATA,
+the content of the element is parsed as mixed content.
 For example:
-<PRE>&lt;!ELEMENT PRE - - (#PCDATA | A | B | I | U | P)+>
+
+<PRE>&lt;!ELEMENT PRE - - (#PCDATA | A | B | I | U | P)+&#62;
 &lt;!ATTLIST PRE
 	WIDTH NUMBER #implied
-	>
-</PRE><P>This says that the PRE element contains
-one or more A, B, I, U, or P elements
-or data characters. Here's an example
-of a PRE element:
-<PRE>&lt;pre>
-&lt;b>NAME&lt;/b>
-    cat -- concatenate&lt;a href=''terms.html#file''>files&lt;/a>
-&lt;b>EXAMPLE&lt;/b>
+	&#62;
+</PRE>
+
+<P>This says that the PRE element contains one or more A,
+B, I, U, or P elements or data characters.
+Here's an example of a PRE element:
+
+<PRE>&lt;pre&#62;
+&lt;b&#62;NAME&lt;/b&#62;
+    cat -- concatenate&lt;a href=''terms.html#file''&#62;files&lt;/a&#62;
+&lt;b&#62;EXAMPLE&lt;/b&#62;
     cat &lt;xyz
-&lt;/pre>
-</PRE><P>The content of the above PRE element
-is:
+&lt;/pre&#62;
+</PRE>
+
+<P>The content of the above PRE element is:
+
 <UL>
+
 <LI>A B element
-<LI>The string ``   cat -- concatenate''
+
+<LI>The string `` cat -- concatenate''
+
 <LI>An A element
+
 <LI>The string ``\n''
+
 <LI>Another B element
-<LI>The string ``\n   cat &lt;xyz''
+
+<LI>The string ``\n cat &lt;xyz''
 </UL>
-<H2>Comments and Other Markup</H2><P>To include comments in an HTML document
-that will be ignored by the parser,
-surround them with &lt;!-- and -->.
-After the comment delimiter, all
-text up to the next occurrence of
--- is ignored. Hence comments cannot
-be nested. Whitespace is allowed
-between the closing -- and >. (But
-not between the opening &lt;! and --.)<P>
-For example:
-<PRE>&lt;HEAD>
-&lt;TITLE>HTML Guide: Recommended Usage&lt;/TITLE>
-&lt;!-- Id: Text.html,v 1.6 1994/04/25 17:33:48 connolly Exp -->
-&lt;/HEAD>
+
+<H2>Comments and Other Markup</H2>
+
+<P>To include comments in an HTML document that will be ignored
+by the parser, surround them with &lt;!-- and --&#62;.
+After the comment delimiter, all text up to the next occurrence
+of -- is ignored. Hence comments cannot be nested.
+Whitespace is allowed between the closing -- and &#62;.
+(But not between the opening &lt;! and --.)
+
+<P>For example:
+
+<PRE>&lt;HEAD&#62;
+&lt;TITLE&#62;HTML Guide: Recommended Usage&lt;/TITLE&#62;
+&lt;!-- Id: Text.html,v 1.6 1994/04/25 17:33:48 connolly Exp --&#62;
+&lt;/HEAD&#62;
  
-</PRE><P>There are a few other SGML markup
-constructs that are deprecated or
-illegal.
+</PRE>
+
+<P>There are a few other SGML markup constructs that are deprecated
+or illegal.
+
 <DL>
+
 <DT>Delimiter
-<DD> Signals...
+
+<DD>Signals...
+
 <DT>&lt;?
-<DD> Processing instruction. Terminated
-by >. 
+
+<DD>Processing instruction. Terminated by &#62;.
+
 <DT>&lt;![
-<DD> Marked section. Marked sections
-are deprecated. See the SGML standard
-for complete information.
+
+<DD>Marked section. Marked sections are deprecated.
+See the SGML standard for complete information.
+
 <DT>&lt;!
-<DD> Markup declaration. HTML defines
-no short reference maps, so these
-are errors. Terminated by >.
+
+<DD>Markup declaration. HTML defines no short reference maps,
+so these are errors. Terminated by &#62;.
 </DL>
 
-<H2>Line Breaks</H2><P>A line break character is considered
-markup (and ignored) if it is the
-first or last piece of content in
-an element. This allows you to write
-either
-<PRE>&lt;PRE>some example text&lt;/pre>
-</PRE><P>or
-<PRE>&lt;pre>
+<H2>Line Breaks</H2>
+
+<P>A line break character is considered markup (and ignored)
+if it is the first or last piece of content in an element.
+This allows you to write either
+
+<PRE>&lt;PRE&#62;some example text&lt;/pre&#62;
+</PRE>
+
+<P>or
+
+<PRE>&lt;pre&#62;
 some example text
-&lt;/pre>
-</PRE><P>and these will be processed identically.<P>
-Also, a line that's not empty but
-contains no content will be ignored
-altogether. For example, the element
-<PRE>&lt;pre>
-&lt;!-- this line is ignored, including the linebreak character -->
+&lt;/pre&#62;
+</PRE>
+
+<P>and these will be processed identically.
+
+<P>Also, a line that's not empty but contains no content will
+be ignored altogether. For example, the element
+
+<PRE>&lt;pre&#62;
+&lt;!-- this line is ignored, including the linebreak character --&#62;
 first line
  
-third line&lt;!-- the following linebreak is content: -->
-fourth line&lt;!-- this one's ignored because it's the last piece of content: -->
-&lt;/pre>
-</PRE><P>contains only the strings
+third line&lt;!-- the following linebreak is content: --&#62;
+fourth line&lt;!-- this one's ignored because it's the last piece of content: --&#62;
+&lt;/pre&#62;
+</PRE>
+
+<P>contains only the strings
+
 <PRE>
  first line
 
@@ -297,38 +356,58 @@ fourth line&lt;!-- this one's ignored because it's the last piece of content: --
  fourth line.
 
 </PRE>
-<H2>Spaces and Tabs</H2><P>Space characters must be rendered
-as horizontal white space.  In HTML,
-multiple spaces should be rendered
-as single spaces.<P>
-The rendering of a horizontal tab
-(HT) character is not defined, and
-HT should therefore not be used,
-except within a <A
-NAME="z6" HREF="Elements/PRE.html">PRE</A> (or obsolete
-XMP, LISTING or PLAINTEXT) element.<P>
-Neither spaces nor tabs should be
-used to make SGML source layout more
-attractive or easier to read.
-<H2>Summary of Markup Signals</H2><P>The following delimiters may signal
-markup, depending on context.
+
+<H2>Spaces and Tabs</H2>
+
+<P>Space characters must be rendered as horizontal white space.
+In HTML, multiple spaces should be rendered as single spaces.
+
+<P>The rendering of a horizontal tab (HT) character is not defined,
+and HT should therefore not be used, except within a <A
+HREF="Elements/PRE.html" NAME="z6">PRE</A> (or obsolete XMP,
+LISTING or PLAINTEXT) element.
+
+<P>Neither spaces nor tabs should be used to make SGML source
+layout more attractive or easier to read.
+
+<H2>Summary of Markup Signals</H2>
+
+<P>The following delimiters may signal markup,
+depending on context.
+
 <DL>
+
 <DT>Delimiter
-<DD> Signals
+
+<DD>Signals
+
 <DT>&lt;!--
-<DD> Comment
+
+<DD>Comment
+
 <DT>&amp;#
-<DD> Character reference
+
+<DD>Character reference
+
 <DT>&amp;
-<DD> Entity reference
+
+<DD>Entity reference
+
 <DT>&lt;/
-<DD> End tag
+
+<DD>End tag
+
 <DT>&lt;!
-<DD> Markup declaration
+
+<DD>Markup declaration
+
 <DT>]]&gt;
-<DD> Marked section close (an error)
+
+<DD>Marked section close (an error)
+
 <DT>&lt;
-<DD> Start tag
+
+<DD>Start tag
 </DL>
 </BODY>
 </HTML>
