@@ -273,3 +273,15 @@ ChangeLog:
 	pick +cm --module web/html-spec
 	rmm notp
 	packf -file ChangeLog
+
+
+#postscript Apr 2002:
+NSGMLS=nsgmls # from, e.g. debian sp package
+PYTHON=python # http://www.python.org/ ; tested with 2.1.2
+
+html-spec.xml: html-spec.esis esis2xml.py
+	$(PYTHON) esis2xml.py <html-spec.esis >$@
+
+html-spec.esis: $(SRCS) catalog.snafu snafu.decl
+	$(NSGMLS) -m catalog.snafu snafu.decl  html-spec.sgm >$@
+
