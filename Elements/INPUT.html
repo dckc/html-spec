@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>The INPUT element in HTML</TITLE> <NEXTID
+N="z4"></HEAD>
+
+<BODY>
+
+<H1>INPUT</H1>
+
+<P>The INPUT element represents a field whose contents may be
+edited by the user. It has the following attributes.
+
+<DL>
+
+<DT>NAME
+
+<DD>Symbolic name used when transferring the form's contents.
+This attribute is always needed and should uniquely identify
+this field.
+
+<DT>TYPE
+
+<DD>Defines the type of data the field accepts.
+Defaults to free text.
+
+<DT>SIZE
+
+<DD>Specifies the size or precision of the field according to
+its type.
+
+<DT>MAXLENGTH
+
+<DD>The maximum number of characters that will be accepted as
+input. This can be greater that specified by SIZE ,
+in which case the field will scroll appropriately.
+The default is unlimited.
+
+<DT>VALUE
+
+<DD>The initial value for the field, or the value when checked
+for checkboxes and radio buttons. This attribute is required
+for radio buttons.
+
+<DT>SRC
+
+<DD>A URL or URN specifying an image - for use only with TYPE=IMAGEMAP.
+
+<DT>ALIGN
+
+<DD>Vertical alignment of the image - for use only with TYPE=IMAGEMAP.
+</DL>
+
+<H3>Propsed</H3>
+
+<DL>
+
+<DT>CHECKED
+
+<DD>When present indicates that a checkbox or radio button is
+selected.
+
+<DT>DISABLED
+
+<DD>When present indicates that this field is temporarily disabled.
+Browsers should show this by "greying it" out in some manner.
+
+<DT>ERROR
+
+<DD>When present indicates that the field's initial value is
+in error in some way, e.g. because it is inconsistent with the
+values of other fields. Servers should include an explanatory
+error message with the form's text.
+</DL>
+
+<H2>Types</H2>
+
+<P>The following types of fields can be defined with the TYPE
+attribute :
+
+<DL>
+
+<DT>TEXT
+
+<DD>Single line text entry fields. Use the SIZE attribute to
+specify the visible width in characters,
+e.g. SIZE="24" for a 24 character field.
+The MAX attribute can be used to specify an upper limit to the
+number of characters that can be entered into a text field,
+e.g. MAX=72 . Use the TEXTAREA element for text fields which
+can accept multiple lines (see below).
+
+<DT>HIDDEN
+
+<DD>No field is presented to the user, but the content of the
+field is sent with the submitted form. This value may be used
+to transmit state information about client/server interaction.
+
+<DT><A NAME="z3">CHECKBOX</A>
+
+<DD>Used for simple Boolean attributes, or for attributes which
+can take multiple values at the same time.
+The latter is represented by a number of checkbox fields each
+of which has the same NAME .
+
+<DT><A NAME="z2">RADIO</A>
+
+<DD>For attributes which can take a single value from a set of
+alternatives. Each radio button field in the group should be
+given the same NAME .
+
+<DT>SUBMIT
+
+<DD>This is a button that when pressed submits the form.
+It offers authors control over the location of this button.
+You can use an image as a submit button by specifying a URL with
+the SRC attribute.
+
+<DT>RESET
+
+<DD>This is a button that when pressed resets the form's fields
+to their initial values as specified by the VALUE attribute.
+You can use an image as a reeset button by specifying a URL with
+the SRC attribute.
+</DL>
+
+<H3>Proposed types</H3>
+
+<DL>
+
+<DT>RANGE
+
+<DD>This allows you to specify an integer range with the MIN
+and MAX attributes, e.g. MIN=1 MAX=100 .
+Users can select any value in this range.
+
+<DT>INT
+
+<DD>For entering integer numbers, the maximum number of digits
+can be specified with the SIZE attribute (excluding the sign
+character), e.g. size=3 for a three digit number.
+
+<DT>FLOAT
+
+<DD>For fields which can accept floating point numbers.
+
+<DT>SCRIBBLE
+
+<DD>A field upon which you can write with a pen or mouse.
+The size of the field in millimeters is given as SIZE= width
+, height. The units are absolute as they relate to the dimensions
+of the human hand, rather than pixels of varying resolution.
+The scribble may involve time and pressure data in addition to
+the basic ink data. You can use scribble for signatures or sketches.
+The field can be initialised by setting the SRC attribute to
+a URL which contains the ink *2 . The VALUE attribute is ignored.
+
+<DT>AUDIO
+
+<DD>This provides a way of entering spoken messages into a form.
+Browsers might show an icon which when clicked pops-up a set
+of tape controls that you can use to record and replay messages.
+The initial message can be set by specifying a URL with the SRC
+attribute. The VALUE attribute is ignored.
+</DL>
+
+<H3>Obsolete types</H3>
+
+<DL>
+
+<DT>DATE
+
+<DD>Fields which can accept a recognized date format.
+
+<DT>URL
+
+<DD>For fields which expect document references as URLs or URNs.
+
+<DT>IMAGE
+
+<DD>This allows you to specify an image field upon which you
+can click with a pointing device. The SRC and ALIGN attributes
+are exactly the same as for the IMG and IMAGE elements.
+The symbolic names for the x and y coordinates of the click event
+are specified with .x and .y for the given with the NAME attribute.
+The VALUE attribute is ignored.
+</DL>
+
+<P>When you need to let users enter more than one line of text,
+you should use the <A NAME="z1"
+HREF="TEXTAREA.html">TEXTAREA</A> element.
+</BODY>
+</HTML>

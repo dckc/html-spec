@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
+<HTML>
+
+<HEAD>
+<TITLE>The TEXTAREA element in HTML</TITLE> <NEXTID
+N="z1"></HEAD>
+
+<BODY>
+
+<H1>TEXTAREA</H1>
+
+<P>When you need to let users enter more than one line of text,
+you should use the TEXTAREA element, e.g.
+
+<PRE>&#60;TEXTAREA NAME="address" ROWS=64 COLS=6&#62;
+Hewlett Packard Laboratories
+1501 Page Mill Road
+Palo Alto, California 94304-1126
+&#60;/TEXTAREA&#62;
+
+</PRE>
+
+<P>The text up to the end tag is used to initialize the field's
+value. This end tag is always required even if the field is initially
+blank.
+
+<H2>Typical rendering</H2>
+
+<P>The ROWS and COLS attributes determine the visible dimension
+of the field in characters. The field is rendered in a fixed-width
+font. Browsers are recommended to allow text to grow beyond these
+limits by scrolling as needed.
+
+<H2>Explanatory Note: TEXTAREA and INPUT/TEXT</H2>
+
+<P>In the initial design for forms, multi-line text fields were
+supported by the INPUT element with TYPE=TEXT .
+Unfortunately, this causes problems for fields with long text
+values as SGML limits the length of attribute literals.
+The HTML+ DTD allows for up to 1024 characters (the SGML default
+is only 240 characters!).
+</BODY>
+</HTML>
