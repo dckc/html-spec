@@ -113,7 +113,7 @@ documents are equivalent:
 <H3><A NAME="name">Names</A></H3>
 
 <P>The element name immediately follows the tag open delimiter.
-Names consist of a letter followed by up to 33 letters,
+Names consist of a letter followed by up to 72 letters,
 digits, periods, or hyphens. Names are not case sensitive.
 For example:
 
@@ -168,7 +168,7 @@ it may be necessary to represent &#62; with an entity or numeric
 character reference; for example: &#60;IMG SRC="eq1.ps" ALT="a
 &#38;#62; b"&#62;</EM>
 
-<P>Attributes with a delcared value of <CODE>NAME</CODE> (e.g.
+<P>Attributes with a declared value of <CODE>NAME</CODE> (e.g.
 <CODE>ISMAP</CODE>, <CODE>COMPACT</CODE>) may be written using
 a minimized syntax. The markup:
 
@@ -221,8 +221,9 @@ to enter them directly:
 <H3>NOTE: Markup Characters</H3>
 
 <P><EM>To ensure that a string of characters has no markup,
-it is sufficient to represent all occurrences of &#60; ,
-&#62; , and &#38; by character or entity references.</EM>
+it is sufficient to represent all occurrences of <CODE>&#60;</CODE>,
+<CODE>&#62;</CODE>, and <CODE>&#38;</CODE> by character or entity
+references.</EM>
 
 <H3>NOTE: CDATA, RCDATA</H3>
 
@@ -232,11 +233,13 @@ be entered without the use of entity or character references.
 Because these features tend to be used and implemented inconsistently,
 and because they require 8-bit characters to represent non-ASCII
 characters, they are not employed in this version of the HTML
-DTD. An earlier HTML specification included an XMP element whose
-syntax is not expressible in SGML. Inside the XMP ,
-no markup was recognized except the &#60;/XMP&#62; end tag.
-While implementations are encouraged to support this idiom,
-its use is obsolete.</EM>
+DTD.</EM>
+
+<P><EM>An earlier HTML specification included an XMP element
+whose syntax is not expressible in SGML.
+Inside the XMP , no markup was recognized except the &#60;/XMP&#62;
+end tag. While implementations are encouraged to support this
+idiom, its use is obsolete.</EM>
 
 <H3>Comments</H3>
 

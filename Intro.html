@@ -30,7 +30,7 @@ types.
 and syntax token names to specific values.
 For example, the SGML declaration in the HTML DTD specifies that
 the string that opens an end tag is <CODE>&#60;/</CODE> and the
-maximum length of a name is 34 characters.
+maximum length of a name is 72 characters.
 
 <LI>A prologue including one or more document type declarations,
 which specifiy the element types, element relationships and attributes,
@@ -54,10 +54,10 @@ Delcaration for HTML.'' It is implicit among WWW implementations.<!-- @@ include
 
 </PRE>
 
-<H3>NOTE: Missing <CODE>&#60;DOCTYPE</CODE> declaration</H3>
+<H3>NOTE: Missing <CODE>&#60;!DOCTYPE</CODE> declaration</H3>
 
-<P>Many extant HTML documents do not contain a prologue.
+<P><EM>Many extant HTML documents do not contain a prologue.
 Implementations are encouraged to infer the above prologue if
-the document does not begin with <CODE>&#60;!</CODE>.
+the document does not begin with <CODE>&#60;!</CODE>.</EM>
 </BODY>
 </HTML>

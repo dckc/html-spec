@@ -1,50 +1,50 @@
 <!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
-<HTML>
+<!-- $Id$ --><HTML>
 
 <HEAD>
-<TITLE>Highlighting in HTML</TITLE> <NEXTID
-N="z5"></HEAD>
+<TITLE>Highlighting in HTML</TITLE></HEAD>
 
 <BODY>
 
-<H1>Character highlighting</H1>
+<H1>Highlighting</H1>
 
-<P>Status: <A HREF="StatusMeanings.html#z5"
-NAME="z3">Extra</A>
+<P>This is a <A HREF="StatusMeanings.html#z5">level 1</A> feature.
+Highlighting tags may be ignored by minimal implementations.
 
 <P>These elements allow sections of text to be formatted in a
 particular way, to provide emphasis, etc.
 The tags do NOT cause a paragraph break,
 and may be used on sections of text within paragraphs.
 
-<P>Where not supported by implementations,
-like all tags, these tags should be ignored but the content rendered.
-
-<P>All these tags have related closing tags,
+<P>All these tags have required end tags,
 as in
 
 <PRE>		This is &#60;EM&#62;emphasized&#60;/EM&#62; text.
 
 </PRE>
 
-<P>Some of these styles are more explicit than others about how
-they should be physically represented. The logical styles should
-be used wherever possible, unless for example it is necessary
-to refer to the formatting in the text. (Eg,
-"The italic parts are mandatory".)
+<P>Level 1 implementations must render highlighted text (i.e.
+the content of any of the elements below) distinctly from plain
+text (i.e. text that is not contained in one of these elements).
 
-<H3>Note:</H3>
+<P><CODE>EM</CODE> content must be rendered as distinct from
+<CODE>STRONG</CODE> content, and <CODE>B</CODE> content must
+rendered as distinct from <CODE>I</CODE> content.
 
-<P>Browsers unable to display a specified style may render it
-in some alternative, or the default, style,
-with some loss of quality for the reader.
-Some implementations may ignore these tags altogether,
-so information providers should attempt not to rely on them as
-essential to the information content.
+<P>Highlighting elements are allowed within the content of other
+highlighting elements, but implementations are not required to
+render these nested highlighting elements distinctly from non-nested
+elements. For example, implementations may render the following
+two cases identically:
 
-<P>These element names are derived from TeXInfo macro names.
+<PRE>
+	plain &#60;B&#62;bold &#60;I&#62;italic&#60;/I&#62;&#60;/B&#62;
+	plain &#60;B&#62;bold &#60;/B&#62;&#60;I&#62;italic&#60;/I&#62;
+</PRE>
 
-<H2>Physical styles</H2>
+<P>These element names are derived from TeXInfo macro names:
+
+<H2>Character Formatting Elements</H2>
 
 <DL>
 
@@ -54,19 +54,27 @@ essential to the information content.
 
 <DT><A NAME="B.index">B</A>
 
-<DD>Boldface, where available, otherwise alternative mapping
-allowed.
+<DD>Boldface.
 
 <DT><A NAME="I.index">I</A>
 
-<DD>Italic font (or slanted if italic unavailable).
+<DD>Italics.
+</DL>
+
+<H3>Proposed Character Formatting Elements</H3>
+
+<DL>
 
 <DT><A NAME="U.index">U</A>
 
 <DD>Underline.
+
+<DT><A NAME="S.index">S</A>
+
+<DD>Strikethrough, typically a line through the characters.
 </DL>
 
-<H2>Logical styles</H2>
+<H2>Special Phrase Elements</H2>
 
 <DL>
 
@@ -96,13 +104,18 @@ NAME="z4">PRE</A> )
 
 <DD>A variable name.
 
-<DT><A NAME="DFN.index">DFN</A>
-
-<DD>The defining instance of a term. Typically bold or bold italic.
-
 <DT><A NAME="CITE.index">CITE</A>
 
 <DD>A citation. Typically italic.
+</DL>
+
+<H3>Proposed Special Phrase Elements</H3>
+
+<DL>
+
+<DT><A NAME="DFN.index">DFN</A>
+
+<DD>The defining instance of a term. Typically bold or bold italic.
 
 <DT><A NAME="STRIKE.index">STRIKE</A>
 
@@ -117,5 +130,26 @@ NAME="z4">PRE</A> )
 	typically italic and has no formal necessary structure:
 	&#60;cite&#62;Moby Dick&#60;/cite&#62; is a book title.
 </PRE>
+
+<H3>NOTE: Highlighting Distinctions</H3>
+
+<P><EM>Implementations may render each of the highlighting elements
+distinctly, but they are not required to.
+While <CODE>CITE</CODE> must be rendered as distinct from plain
+text, it may be rendered the same as <CODE>EM</CODE> or the same
+as <CODE>STRONG</CODE> (but not both, since <CODE>EM</CODE> and
+<CODE>STRONG</CODE> must be distinct).</EM>
+
+<H3>NOTE: <CODE>EM</CODE> and <CODE>STRONG</CODE> vs.
+<CODE>I</CODE> and <CODE>B</CODE></H3>
+
+<P><EM>While <CODE>EM</CODE> and <CODE>I</CODE> often give the
+same effect, authors are encouraged to use <CODE>EM</CODE> except
+in the case that it is necessary to refer to the formatting in
+the text. (E.g. "The italic parts are mandatory".)</EM>
+
+<P><EM>This results in greater consistency between documents
+from various sources if, for example, a reader prefers to use
+color in stead of italics for emphasis.</EM>
 </BODY>
 </HTML>

@@ -196,7 +196,7 @@ mif: HTML-1.mif
 
 MIF_STYLESHEET = mif/template.mif
 PYWWW = ../pywww
-HTML2MIF = PYTHONPATH=$(PYWWW) $(PYTHON) $(PYWWW)/MIFReport.py
+HTML2MIF = PYTHONPATH=$(PYWWW) $(PYTHON) $(PYWWW)/MIFNodeSet.py
 
 HTML-1.mif: $(HYPERTEXT)
 	$(HTML2MIF) $(HYPERTEXT) >$@

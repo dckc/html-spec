@@ -1,4 +1,4 @@
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                       Hypertext Markup Language (HTML)
@@ -57,7 +57,7 @@ Abstract
    be capable of handling HTML. W3 uses an Internet protocol
    (Hypertext Transfer Protocol, HTTP), which allows transfer
    representations to be negotiated between client and server, the
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    result being returned in an extended MIME message. HTML is
@@ -74,7 +74,7 @@ Abstract
    [SGMLS] . HTML documents are SGML documents with fairly generic
    semantics appropriate for representing information from a wide
    range of applications.
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                             Vocabulary usied in the HTML specification
@@ -123,7 +123,8 @@ Status of features
                          otherwise mentioned.
                          
   Optional               Standard HTML features which may safely be
-                         ignored by parsers. It is legal to ignore
+                         ignored by minimally conforming
+                         impelementations. It is legal to ignore
                          these, treat the contents as though the tags
                          were not there. (e.g. EM, and processing
                          instructions) . Authors should be aware that
@@ -132,10 +133,10 @@ Status of features
                          
   Proposed               The specification of these features is not
                          final. They should not be regarded as part
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
                          ofthe standard, but indicate possible
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
                          directions for future versions.
                          
   Obsolete               Not standard HTML. Parsers should implement
@@ -144,7 +145,7 @@ Status of features
                          versions of this specification.
                          
    
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                          HTML and MIME
@@ -177,30 +178,32 @@ Version
    
 Character sets
 
-   The base character set (the SGML BASESET) for HTML is ISO Latin-1.
-   This is the set referred to by any numeric character references.
-   The actual character set used in the representation of an HTML
-   document may be ISO Latin 1, or its 7-bit subset which is ASCII.
-   There is no obligation for an HTML document to contain any
-   characters above decimal 127. It is possible that a transport
-   medium such as electronic mail imposes constraints on the number of
-   bits in a representation of a document, though the HTTP access
-   protocol used by W3 always allows 8 bit transfer.
+   The base character set (the SGML BASESET) for HTML is ISO 8859/1,
+   also known as Latin alphabet No. 1 or simply Latin-1 This is the
+   set referred to by any numeric character references. The actual
+   character set used in the representation of an HTML document may be
+   ISO 8859/1, or its 7-bit subset which is ISO 646 (ASCII). There is
+   no obligation for an HTML document to contain any characters above
+   decimal 127. It is possible that a transport medium such as
+   electronic mail imposes constraints on the number of bits in a
+   representation of a document, though the HTTP access protocol used
+   by W3 always allows 8 bit transfer.
    
    When an HTML document is encoded using 7-bit characters, then the
    mechanisms of character references and entity references may be
-   used to encode characters in the upper half of the ISO Latin-1 set.
-   In this way, documents may be prepared which are suitable for
-   mailing through 7-bit limited systems.
+   used to encode characters in the upper half of the ISO 8859/1
+   Latin-1 set. In this way, documents may be prepared which are
+   suitable for mailing through 7-bit limited systems.
    
   CHARACTER SET OPTION (PROPOSED)
   
-   The SGML declaration specified ISO Latin 1 as the base character
-   set. The charset parameter is reserved for future use. Its intended
-   significance is to override the base character set of the SGML
-   declaration. Support of character sets other than ISO-Latin-1 is
-   not a requirement for conformance with this specification.
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+   The SGML declaration specifies ISO 8859/1 Latin alphabet No. 1 as
+   the base character set. The charset parameter is reserved for
+   future use. Its intended significance is to override the base
+   character set of the SGML declaration. Support of character sets
+   other than ISO 8859/1 Latin alphabet No. 1 is not a requirement for
+   conformance with this specification.
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                     Hypertext Markup language and SGML
@@ -222,7 +225,7 @@ Character sets
       An SGML declaration, which binds SGML processing quantities and
       syntax token names to specific values. For example, the SGML
       declaration in the HTML DTD specifies that the string that opens
-      an end tag is </ and the maximum length of a name is 34
+      an end tag is </ and the maximum length of a name is 72
       characters.
       
       A prologue including one or more document type declarations,
@@ -244,12 +247,12 @@ Character sets
 
       <!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
 
-  NOTE: MISSING <DOCTYPE DECLARATION
+  NOTE: MISSING <!DOCTYPE DECLARATION
   
    Many extant HTML documents do not contain a prologue.
    Implementations are encouraged to infer the above prologue if the
    document does not begin with <!.
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                Structured Text in HTML
@@ -308,7 +311,7 @@ Tags
    Most elements start and end with tags. Empty elements have no end
    tag. Start tags are delimited by < and >, and end tags are
    delimited by </ and >. For example:
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    
@@ -353,7 +356,7 @@ Tags
   NAMES
   
    The element name immediately follows the tag open delimiter. Names
-   consist of a letter followed by up to 33 letters, digits, periods,
+   consist of a letter followed by up to 72 letters, digits, periods,
    or hyphens. Names are not case sensitive. For example:
    
 
@@ -367,7 +370,7 @@ Tags
    equal sign.
    
    The value is either:
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
    
@@ -404,7 +407,7 @@ Tags
    or numeric character reference; for example: <IMG SRC="eq1.ps"
    ALT="a &#62; b">
    
-   Attributes with a delcared value of NAME (e.g. ISMAP, COMPACT) may
+   Attributes with a declared value of NAME (e.g. ISMAP, COMPACT) may
    be written using a minimized syntax. The markup:
    
 
@@ -426,7 +429,7 @@ Undefined tag and attribute names
    discovering tag or attribute names which they do not understand
    should be to behave as though, in the case of a tag, the whole tag
    had not been there but its content had, or in the case of an
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 4
 
 
    attribute, that the attribute had not been present.
@@ -452,8 +455,8 @@ Character Data
   NOTE: MARKUP CHARACTERS
   
    To ensure that a string of characters has no markup, it is
-   sufficient to represent all occurrences of < , > , and & by
-   character or entity references.
+   sufficient to represent all occurrences of <, >, and & by character
+   or entity references.
    
   NOTE: CDATA, RCDATA
   
@@ -462,11 +465,12 @@ Character Data
    character references. Because these features tend to be used and
    implemented inconsistently, and because they require 8-bit
    characters to represent non-ASCII characters, they are not employed
-   in this version of the HTML DTD. An earlier HTML specification
-   included an XMP element whose syntax is not expressible in SGML.
-   Inside the XMP , no markup was recognized except the </XMP> end
-   tag. While implementations are encouraged to support this idiom,
-   its use is obsolete.
+   in this version of the HTML DTD.
+   
+   An earlier HTML specification included an XMP element whose syntax
+   is not expressible in SGML. Inside the XMP , no markup was
+   recognized except the </XMP> end tag. While implementations are
+   encouraged to support this idiom, its use is obsolete.
    
   COMMENTS
   
@@ -484,13 +488,13 @@ Character Data
 </HEAD>
 
   NOTE: TAGS IN COMMENTS
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
   
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
-
    Some historical implementations incorrectly consider a > sign to
    terminate a comment.
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       Elements of HTML
@@ -549,7 +553,7 @@ Body Elements (level 1)
    when it is rendered on the output device.
    
   HYPERTEXT ANCHORS
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   
@@ -584,7 +588,7 @@ Body Elements (level 1)
    Whitespace between them separates words, except in the PRE element,
    where it has its literal ASCII meaning.
    
-  Special Phrases        Emphasis, typographic distinctions, etc.
+  Highlighting           Emphasis, typographic distinctions, etc.
                          
   Line Breaks            Indicates a line break in a flow of text.
                          
@@ -603,7 +607,7 @@ Obsolete elements
 
    The other elements are obsolete but should be recognised by parsers
    for back-compatibility.
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       HEAD -- Elements
@@ -615,7 +619,7 @@ Obsolete elements
    certain elements are allowed.
    
    
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                              The TITLE element in HTML
@@ -670,7 +674,7 @@ Obsolete elements
 
 
    
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                ISINDEX element in HTML
@@ -698,7 +702,7 @@ Example of use:
                 <ISINDEX>
 
    
-Jun 13 17:52 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       LINK -- Elements
@@ -720,7 +724,7 @@ Example of use:
    
    Servers may also allow links to be added by those who do not have
    the right to alter the body of a document.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               The BASE element in HTML
@@ -739,7 +743,7 @@ Example of use:
   HREF                   the URL
                          
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                      Tags used in HTML
@@ -760,7 +764,7 @@ Example of use:
 
 
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                    The META element in HTML (proposed)
@@ -819,7 +823,7 @@ lding)">
 
    The server may include the headers:
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
 
@@ -862,7 +866,7 @@ Examples of misuse
                     Message-Id: <9406120221.aa08921@paris.ics.uci.edu>
                                                                       
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               The BODY element in HTML
@@ -876,7 +880,7 @@ Examples of misuse
    should be presented to the reader.
    
    See the list of things which are allowed within a BODY element .
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                             The Anchor element in HTML
@@ -921,7 +925,7 @@ Examples of misuse
                          registration authority . The default
                          relationship if none other is given is void.
                          REL should not be present unless HREF is
-                         present. See Relationship values , REV .
+                         present.
                          
   REV                    OPTIONAL. The same as REL , but the semantics
                          of the link type are in the reverse
@@ -935,7 +939,7 @@ Examples of misuse
                          note .
                          
   TITLE                  OPTIONAL. This is informational only. If
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
                          present the value of this field should equal
@@ -964,7 +968,7 @@ Example of use:
 
 
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                          URN -- MarkUp
@@ -976,7 +980,7 @@ Example of use:
    
    The format of URNs is under discussion (1993) by various working
    groups of the Internet Engineering Task Force.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                     Note: On TITLE attributes of links
@@ -1002,7 +1006,7 @@ Example of use:
       valid and unique title for the destination document.
       
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                LinkMethods -- Elements
@@ -1018,7 +1022,7 @@ Example of use:
    For example, The browser may chose a different rendering as a
    function of the methods allowed (for example something which is
    searchable may get a different icon)
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               Heading elements in HTML
@@ -1077,7 +1081,7 @@ Typical Rendering
                          the left margin. One or two clear lines above
                          and below.
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   H4                     Bold, normal font, indented more than H3. One
@@ -1098,7 +1102,7 @@ Typical Rendering
    The rendering software is responsible for generating suitable
    vertical white space between elements, so it is NOT normal or
    required to follow a heading element with a paragraph mark.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     Paragraphs in HTML
@@ -1145,7 +1149,7 @@ to
 See also
 
    Line Break
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                    Line Breaks in HTML
@@ -1175,76 +1179,83 @@ Examples
 See also:
 
    the P (paragraph) element
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                   Highlighting in HTML
-                        CHARACTER HIGHLIGHTING
+                             HIGHLIGHTING
                                    
-   Status: Extra
+   This is a level 1 feature. Highlighting tags may be ignored by
+   minimal implementations.
    
    These elements allow sections of text to be formatted in a
    particular way, to provide emphasis, etc. The tags do NOT cause a
    paragraph break, and may be used on sections of text within
    paragraphs.
    
-   Where not supported by implementations, like all tags, these tags
-   should be ignored but the content rendered.
-   
-   All these tags have related closing tags, as in
+   All these tags have required end tags, as in
    
                 This is <EM>emphasized</EM> text.
 
-   Some of these styles are more explicit than others about how they
-   should be physically represented. The logical styles should be used
-   wherever possible, unless for example it is necessary to refer to
-   the formatting in the text. (Eg, "The italic parts are mandatory".)
+   Level 1 implementations must render highlighted text (i.e. the
+   content of any of the elements below) distinctly from plain text
+   (i.e. text that is not contained in one of these elements).
    
-  NOTE:
-  
-   Browsers unable to display a specified style may render it in some
-   alternative, or the default, style, with some loss of quality for
-   the reader. Some implementations may ignore these tags altogether,
-   so information providers should attempt not to rely on them as
-   essential to the information content.
+   EM content must be rendered as distinct from STRONG content, and B
+   content must rendered as distinct from I content.
    
-   These element names are derived from TeXInfo macro names.
+   Highlighting elements are allowed within the content of other
+   highlighting elements, but implementations are not required to
+   render these nested highlighting elements distinctly from
+   non-nested elements. For example, implementations may render the
+   following two cases identically:
    
-Physical styles
+
+        plain <B>bold <I>italic</I></B>
+        plain <B>bold </B><I>italic</I>
+
+   These element names are derived from TeXInfo macro names:
+   
+Character Formatting Elements
 
   TT                     Fixed-width typewriter font.
                          
-  B                      Boldface, where available, otherwise
-                         alternative mapping allowed.
+  B                      Boldface.
                          
-  I                      Italic font (or slanted if italic
-                         unavailable).
+  I                      Italics.
                          
+  PROPOSED CHARACTER FORMATTING ELEMENTS
+  
   U                      Underline.
                          
-Logical styles
+  S                      Strikethrough, typically a line through the
+                         characters.
+                         
+Special Phrase Elements
 
   EM                     Emphasis, typically italic.
                          
   STRONG                 Stronger emphasis, typically bold.
                          
   CODE                   Example of code. typically monospaced font.
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
                          (Do not confuse with PRE )
                          
   SAMP                   A sequence of literal characters.
                          
   KBD                    in an instruction manual, Text typed by a
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
                          user.
                          
   VAR                    A variable name.
                          
+  CITE                   A citation. Typically italic.
+                         
+  PROPOSED SPECIAL PHRASE ELEMENTS
+  
   DFN                    The defining instance of a term. Typically
                          bold or bold italic.
-                         
-  CITE                   A citation. Typically italic.
                          
   STRIKE                 "strike out" text, as in a legal document.
                          
@@ -1256,8 +1267,24 @@ Examples of use
         typically italic and has no formal necessary structure:
         <cite>Moby Dick</cite> is a book title.
 
+  NOTE: HIGHLIGHTING DISTINCTIONS
+  
+   Implementations may render each of the highlighting elements
+   distinctly, but they are not required to. While CITE must be
+   rendered as distinct from plain text, it may be rendered the same
+   as EM or the same as STRONG (but not both, since EM and STRONG must
+   be distinct).
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+  NOTE: EM AND STRONG VS. I AND B
+  
+   While EM and I often give the same effect, authors are encouraged
+   to use EM except in the case that it is necessary to refer to the
+   formatting in the text. (E.g. "The italic parts are mandatory".)
+   
+   This results in greater consistency between documents from various
+   sources if, for example, a reader prefers to use color in stead of
+   italics for emphasis.
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                The IMG Element in HTML
@@ -1309,7 +1336,7 @@ e done by a
 
 
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               Horizontal Rules in HTML
@@ -1341,7 +1368,7 @@ Example
 
 
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                      Tags used in HTML
@@ -1371,7 +1398,7 @@ Examples of use:
 
 
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     BlockQuote in HTML
@@ -1400,7 +1427,7 @@ be all my sins remembered.
 but I am not sure.
 
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                           Lists and glossaries in HTML
@@ -1459,7 +1486,7 @@ Glossaries
   EXAMPLES OF USE
   
         <DL>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
         <DT>Term the first<DD>definition paragraph is reasonably
@@ -1518,7 +1545,7 @@ Lists
                          function of the widths of individual
                          elements, so much the better.
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
   EXAMPLE OF USE
@@ -1547,7 +1574,7 @@ Lists
 
 
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                The PRE element in HTML
@@ -1606,14 +1633,14 @@ Lists
    
   NOTE: MARGINS
   
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    The above references to the "beginning of a new line" must not be
    taken as implying that the renderer is forbidden from using a
    (constant) left indent for rendering preformatted text. The left
    indent may of course be constrained by the width required.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               User Input Forms in HTML
@@ -1638,8 +1665,8 @@ Elements
                          
   OPTION                 one option within a SELECT.
                          
-  Proposed Elements
-                         
+  PROPOSED ELEMENTS
+  
   HTEXTAREA              an input field for hypertext.
                          
    Each variable field is defined by an INPUT , TEXTAREA, or OPTION
@@ -1672,7 +1699,7 @@ A contact point for your site: <INPUT NAME="contact" SIZE="42">
    This fictitious example is a questionnaire that will be emailed to
    www_admin@info.cern.ch.
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    Servers can disable forms by sending an appropriate header or by an
@@ -1709,7 +1736,7 @@ Representing choices
    of the form. An alternative is to use the SELECT element which is
    generally rendered in a more compact fashion as a pull down combo
    list.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       FORM -- Elements
@@ -1725,7 +1752,7 @@ Representing choices
    prefix is used to select the HTTP method when sending the form's
    contents to an HTTP server. [[Would it be cleaner to use a separate
    attribute, e.g. METHOD ?]
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                              The INPUT element in HTML
@@ -1784,7 +1811,7 @@ Types
    attribute :
    
   TEXT                   Single line text entry fields. Use the SIZE
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
                          attribute to specify the visible width in
@@ -1843,7 +1870,7 @@ Types
                          
   SCRIBBLE               A field upon which you can write with a pen
                          or mouse. The size of the field in
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
                          millimeters is given as SIZE= width , height.
@@ -1884,7 +1911,7 @@ Types
                          
    When you need to let users enter more than one line of text, you
    should use the TEXTAREA element.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                           The TEXTAREA element in HTML
@@ -1917,7 +1944,7 @@ Explanatory Note: TEXTAREA and INPUT/TEXT
    causes problems for fields with long text values as SGML limits the
    length of attribute literals. The HTML+ DTD allows for up to 1024
    characters (the SGML default is only 240 characters!).
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                             The SELECT element in HTML
@@ -1956,7 +1983,7 @@ Example
                 </SELECT>
 
    out in some manner.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                             The OPTION element in HTML
@@ -1982,7 +2009,7 @@ Example
    The contents of the OPTION element is presented to the user to
    represent the option. It is used as a returned value if the VALUE
    attribute is not present.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                              Obsolete Elements of HTML
@@ -2041,7 +2068,7 @@ t
       immediately after the opening tag or before the closing tag. and
       are to be rendered as a move to the start of a new line.
       
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
       The ASCII Horizontal Tab (HT) character must be interpreted as
@@ -2071,7 +2098,7 @@ t
    A comment element used for bracketing off unneed text and comment
    has been introduced in some browsers but will be replaced by the
    SGML command feature in new implementations.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                       XMP and LISTING in HTML: History
@@ -2086,7 +2113,7 @@ t
    interpretation. Providers should be warned that implementations may
    vary on how they interpret end tags apparently within these
    elements
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                    Entities -- /MarkUp
@@ -2110,7 +2137,7 @@ t
                          
    Also allowed are references to any of the ISO Latin-1 alphabet,
    using the entity names in the following table.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                           ISO Latin 1 Entities in HTML
@@ -2169,7 +2196,7 @@ t
                          
   &THORN;                capital THORN, Icelandic
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   &Uacute;               capital U, acute accent
@@ -2228,7 +2255,7 @@ t
                          
   &otilde;               small o, tilde
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
   &ouml;                 small o, dieresis or umlaut mark
@@ -2250,7 +2277,7 @@ t
   &yuml;                 small y, dieresis or umlaut mark
                          
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                        Security considertions for HTML
@@ -2262,7 +2289,7 @@ t
    
    Documents may be constructed whose visible contents mislead one to
    follow a link by to unsuitable or offensive material.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                   HTML Specification: Acknowledgements
@@ -2283,7 +2310,7 @@ t
    Naggum and James Clark for making SGML technology available, and to
    Terry Allen, Dave Raggett, Marc Andressen, William Perry, and the
    rest of the WWW community.
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                        References - HTML specification
@@ -2317,7 +2344,7 @@ t
                          (Obsoletes RFC1341) (Updated by RFC1590)
                          
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                               Authors' addresses -- HTML specification
@@ -2341,7 +2368,7 @@ t
 
 
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     HTML DTD Reference
@@ -2360,12 +2387,12 @@ Alphabetical Index
    
 A
 
-  Required Parts         <A>characters...</A>
+  Required Parts         <A>characters... </A>
                          
-  All Parts              <A NAME="..." HREF="...">characters...<H1>
-                         <H2> <H3> <H4> <H5> <H6> <P> <HR> <UL> <OL>
-                         <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> <BR> </A>
+  All Parts              <A NAME="..."  HREF="..." >characters... <H1>
+                         <H2> <H3> <H4> <H5> <H6> <P> <UL> <OL> <DIR>
+                         <MENU> <DL> <PRE> <XMP> <LISTING>
+                         <BLOCKQUOTE> <BR> </A>
                          
   Allowed In Content Of...
                          <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <DT> <H1>
@@ -2380,14 +2407,13 @@ A
    
 ADDRESS
 
-  Required Parts         <ADDRESS>characters...</ADDRESS>
+  Required Parts         <ADDRESS>characters... </ADDRESS>
                          
-  All Parts              <ADDRESS>characters...<A> <BR> <P> <HR> <UL>
-                         <OL> <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> </ADDRESS>
+  All Parts              <ADDRESS>characters... <A> <BR> <P>
+                         </ADDRESS>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -2398,12 +2424,12 @@ ADDRESS
    
 BASE
 
-  Required Parts         <BASE HREF="...">
+  Required Parts         <BASE HREF="..." >
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+  All Parts              <BASE HREF="..." >
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
-  All Parts              <BASE HREF="...">
                          
   Allowed In Content Of...
                          <HEAD>
@@ -2417,15 +2443,15 @@ BASE
    
 BLOCKQUOTE
 
-  Required Parts         <BLOCKQUOTE>characters...</BLOCKQUOTE>
+  Required Parts         <BLOCKQUOTE>characters... </BLOCKQUOTE>
                          
-  All Parts              <BLOCKQUOTE>characters...<A> <BR> <P> <HR>
-                         <UL> <OL> <DIR> <MENU> <DL> <PRE> <XMP>
-                         <LISTING> <BLOCKQUOTE> <ADDRESS>
-                         </BLOCKQUOTE>
+  All Parts              <BLOCKQUOTE>characters... <H1> <H2> <H3> <H4>
+                         <H5> <H6> <A> <BR> <P> <UL> <OL> <DIR> <MENU>
+                         <DL> <PRE> <XMP> <LISTING> <BLOCKQUOTE> <HR>
+                         <ADDRESS> </BLOCKQUOTE>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -2438,9 +2464,9 @@ BODY
 
   Required Parts         characters...
                          
-  All Parts              <BODY>characters...<H1> <H2> <H3> <H4> <H5>
-                         <H6> <A> <BR> <P> <HR> <UL> <OL> <DIR> <MENU>
-                         <DL> <PRE> <XMP> <LISTING> <BLOCKQUOTE>
+  All Parts              <BODY>characters... <H1> <H2> <H3> <H4> <H5>
+                         <H6> <A> <BR> <P> <UL> <OL> <DIR> <MENU> <DL>
+                         <PRE> <XMP> <LISTING> <BLOCKQUOTE> <HR>
                          <ADDRESS> </BODY>
                          
   Allowed In Content Of...
@@ -2459,10 +2485,10 @@ BR
                          
   All Parts              <BR>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
   Allowed In Content Of...
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
                          <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <DT>
                          <H1> <H2> <H3> <H4> <H5> <H6> <LI> <P>
                          
@@ -2477,9 +2503,9 @@ DD
 
   Required Parts         <DD>characters...
                          
-  All Parts              <DD>characters...<A> <BR> <P> <HR> <UL> <OL>
+  All Parts              <DD>characters... <A> <BR> <P> <UL> <OL>
                          <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> </DD>
+                         <BLOCKQUOTE> </DD>
                          
   Allowed In Content Of...
                          <DL>
@@ -2498,7 +2524,7 @@ DIR
   All Parts              <DIR><LI> </DIR>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -2514,14 +2540,14 @@ DL
   All Parts              <DL COMPACT><DT> <DD> </DL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
-
       in Lists and glossaries in HTML
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
+
       
    
    T
@@ -2530,7 +2556,7 @@ DT
 
   Required Parts         <DT>characters...
                          
-  All Parts              <DT>characters...<A> <BR> </DT>
+  All Parts              <DT>characters... <A> <BR> </DT>
                          
   Allowed In Content Of...
                          <DL>
@@ -2544,12 +2570,12 @@ DT
    
 H1
 
-  Required Parts         <H1>characters...</H1>
+  Required Parts         <H1>characters... </H1>
                          
-  All Parts              <H1>characters...<A> <BR> </H1>
+  All Parts              <H1>characters... <A> <BR> </H1>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -2560,12 +2586,12 @@ H1
    
 H2
 
-  Required Parts         <H2>characters...</H2>
+  Required Parts         <H2>characters... </H2>
                          
-  All Parts              <H2>characters...<A> <BR> </H2>
+  All Parts              <H2>characters... <A> <BR> </H2>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -2576,15 +2602,15 @@ H2
    
 H3
 
-  Required Parts         <H3>characters...</H3>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
-
+  Required Parts         <H3>characters... </H3>
                          
-  All Parts              <H3>characters...<A> <BR> </H3>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
+  All Parts              <H3>characters... <A> <BR> </H3>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -2595,12 +2621,12 @@ H3
    
 H4
 
-  Required Parts         <H4>characters...</H4>
+  Required Parts         <H4>characters... </H4>
                          
-  All Parts              <H4>characters...<A> <BR> </H4>
+  All Parts              <H4>characters... <A> <BR> </H4>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -2611,12 +2637,12 @@ H4
    
 H5
 
-  Required Parts         <H5>characters...</H5>
+  Required Parts         <H5>characters... </H5>
                          
-  All Parts              <H5>characters...<A> <BR> </H5>
+  All Parts              <H5>characters... <A> <BR> </H5>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -2627,19 +2653,19 @@ H5
    
 H6
 
-  Required Parts         <H6>characters...</H6>
+  Required Parts         <H6>characters... </H6>
                          
-  All Parts              <H6>characters...<A> <BR> </H6>
+  All Parts              <H6>characters... <A> <BR> </H6>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 6
-
-
       in Heading elements in HTML
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+
+
       
    
    T
@@ -2668,7 +2694,7 @@ HR
   All Parts              <HR>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -2695,10 +2721,10 @@ HTML
 ISINDEX
 
   Required Parts         <ISINDEX>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 7
-
-
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+
+
   All Parts              <ISINDEX>
                          
   Allowed In Content Of...
@@ -2715,9 +2741,9 @@ LI
 
   Required Parts         <LI>characters...
                          
-  All Parts              <LI>characters...<A> <BR> <P> <HR> <UL> <OL>
+  All Parts              <LI>characters... <A> <BR> <P> <UL> <OL>
                          <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> </LI>
+                         <BLOCKQUOTE> </LI>
                          
   Allowed In Content Of...
                          <DIR> <MENU> <OL> <UL>
@@ -2731,12 +2757,12 @@ LI
    
 LISTING
 
-  Required Parts         <LISTING>characters...</LISTING>
+  Required Parts         <LISTING>characters... </LISTING>
                          
-  All Parts              <LISTING>characters...</LISTING>
+  All Parts              <LISTING>characters... </LISTING>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -2752,12 +2778,12 @@ MENU
   All Parts              <MENU><LI> </MENU>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 8
-
-
   Discussion
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+
+
                          
       in Lists and glossaries in HTML
       
@@ -2766,9 +2792,9 @@ MENU
    
 NEXTID
 
-  Required Parts         <NEXTID N="...">
+  Required Parts         <NEXTID N="..." >
                          
-  All Parts              <NEXTID N="...">
+  All Parts              <NEXTID N="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -2787,7 +2813,7 @@ OL
   All Parts              <OL><LI> </OL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -2800,7 +2826,7 @@ P
 
   Required Parts         <P>characters...
                          
-  All Parts              <P>characters...<A> <BR> </P>
+  All Parts              <P>characters... <A> <BR> </P>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
@@ -2813,13 +2839,13 @@ P
    T
    
 PLAINTEXT
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 9
 
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 9
 
 
   Required Parts         <PLAINTEXT>characters...
                          
-  All Parts              <PLAINTEXT>characters...</PLAINTEXT>
+  All Parts              <PLAINTEXT>characters... </PLAINTEXT>
                          
   Allowed In Content Of...
                          <HTML>
@@ -2833,12 +2859,12 @@ PLAINTEXT
    
 PRE
 
-  Required Parts         <PRE>characters...</PRE>
+  Required Parts         <PRE>characters... </PRE>
                          
-  All Parts              <PRE WIDTH="...">characters...<A> </PRE>
+  All Parts              <PRE WIDTH="..." >characters... <A> </PRE>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -2849,9 +2875,9 @@ PRE
    
 TITLE
 
-  Required Parts         <TITLE>characters...</TITLE>
+  Required Parts         <TITLE>characters... </TITLE>
                          
-  All Parts              <TITLE>characters...</TITLE>
+  All Parts              <TITLE>characters... </TITLE>
                          
   Allowed In Content Of...
                          <HEAD>
@@ -2870,12 +2896,12 @@ UL
   All Parts              <UL><LI> </UL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 10
-
-
   Discussion
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 10
+
+
                          
       in Lists and glossaries in HTML
       
@@ -2884,19 +2910,19 @@ UL
    
 XMP
 
-  Required Parts         <XMP>characters...</XMP>
+  Required Parts         <XMP>characters... </XMP>
                          
-  All Parts              <XMP>characters...</XMP>
+  All Parts              <XMP>characters... </XMP>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
       in Obsolete Elements of HTML
       
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     HTML DTD Reference
@@ -2914,13 +2940,14 @@ Alphabetical Index
    
 A
 
-  Required Parts         <A>characters...</A>
+  Required Parts         <A>characters... </A>
                          
-  All Parts              <A NAME="..." HREF="...">characters...<BR>
+  All Parts              <A NAME="..."  HREF="..." >characters... <BR>
                          </A>
                          
   Allowed In Content Of...
-                         <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P> <PRE>
+                         <ADDRESS> <DD> <DT> <H1> <H2> <H3> <H4> <H5>
+                         <H6> <LI> <P> <PRE>
                          
   Discussion
                          
@@ -2931,13 +2958,12 @@ A
    
 ADDRESS
 
-  Required Parts         <ADDRESS></ADDRESS>
+  Required Parts         <ADDRESS>characters... </ADDRESS>
                          
-  All Parts              <ADDRESS><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> </ADDRESS>
+  All Parts              <ADDRESS>characters... <A> <BR> </ADDRESS>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -2948,14 +2974,14 @@ ADDRESS
    
 BASE
 
-  Required Parts         <BASE HREF="...">
+  Required Parts         <BASE HREF="..." >
                          
-  All Parts              <BASE HREF="...">
+  All Parts              <BASE HREF="..." >
                          
   Allowed In Content Of...
                          <HEAD>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   Discussion
@@ -2969,11 +2995,12 @@ BLOCKQUOTE
 
   Required Parts         <BLOCKQUOTE></BLOCKQUOTE>
                          
-  All Parts              <BLOCKQUOTE><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> </BLOCKQUOTE>
+  All Parts              <BLOCKQUOTE><H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <UL> <OL> <DL> <PRE> <BLOCKQUOTE> <HR>
+                         <ADDRESS> </BLOCKQUOTE>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -2986,8 +3013,8 @@ BODY
 
   Required Parts
                          
-  All Parts              <BODY><H1> <H2> <H3> <H4> <H5> <H6> <P> <HR>
-                         <UL> <OL> <DL> <PRE> <BLOCKQUOTE> <ADDRESS>
+  All Parts              <BODY><H1> <H2> <H3> <H4> <H5> <H6> <P> <UL>
+                         <OL> <DL> <PRE> <BLOCKQUOTE> <HR> <ADDRESS>
                          </BODY>
                          
   Allowed In Content Of...
@@ -3007,24 +3034,25 @@ BR
   All Parts              <BR>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <DD> <DT> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <LI> <P>
                          
   Discussion
                          
       Line Breaks in HTML
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
       
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
    T
    
 DD
 
-  Required Parts         <DD>
+  Required Parts         <DD>characters...
                          
-  All Parts              <DD><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> </DD>
+  All Parts              <DD>characters... <A> <BR> <P> <UL> <OL> <DL>
+                         <PRE> <BLOCKQUOTE> </DD>
                          
   Allowed In Content Of...
                          <DL>
@@ -3043,7 +3071,7 @@ DL
   All Parts              <DL COMPACT><DT> <DD> </DL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -3056,7 +3084,7 @@ DT
 
   Required Parts         <DT>characters...
                          
-  All Parts              <DT>characters...<A> <BR> </DT>
+  All Parts              <DT>characters... <A> <BR> </DT>
                          
   Allowed In Content Of...
                          <DL>
@@ -3070,15 +3098,15 @@ DT
    
 H1
 
-  Required Parts         <H1>characters...</H1>
+  Required Parts         <H1>characters... </H1>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
+
                          
-  All Parts              <H1>characters...<A> <BR> </H1>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
-
+  All Parts              <H1>characters... <A> <BR> </H1>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3089,12 +3117,12 @@ H1
    
 H2
 
-  Required Parts         <H2>characters...</H2>
+  Required Parts         <H2>characters... </H2>
                          
-  All Parts              <H2>characters...<A> <BR> </H2>
+  All Parts              <H2>characters... <A> <BR> </H2>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3105,12 +3133,12 @@ H2
    
 H3
 
-  Required Parts         <H3>characters...</H3>
+  Required Parts         <H3>characters... </H3>
                          
-  All Parts              <H3>characters...<A> <BR> </H3>
+  All Parts              <H3>characters... <A> <BR> </H3>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3121,31 +3149,31 @@ H3
    
 H4
 
-  Required Parts         <H4>characters...</H4>
+  Required Parts         <H4>characters... </H4>
                          
-  All Parts              <H4>characters...<A> <BR> </H4>
+  All Parts              <H4>characters... <A> <BR> </H4>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
       in Heading elements in HTML
       
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
-
    
    T
    
 H5
 
-  Required Parts         <H5>characters...</H5>
+  Required Parts         <H5>characters... </H5>
                          
-  All Parts              <H5>characters...<A> <BR> </H5>
+  All Parts              <H5>characters... <A> <BR> </H5>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3156,12 +3184,12 @@ H5
    
 H6
 
-  Required Parts         <H6>characters...</H6>
+  Required Parts         <H6>characters... </H6>
                          
-  All Parts              <H6>characters...<A> <BR> </H6>
+  All Parts              <H6>characters... <A> <BR> </H6>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3189,14 +3217,14 @@ HEAD
 HR
 
   Required Parts         <HR>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+
+
                          
   All Parts              <HR>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 6
-
-
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3238,21 +3266,21 @@ ISINDEX
    
 LI
 
-  Required Parts         <LI>
+  Required Parts         <LI>characters...
                          
-  All Parts              <LI><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> </LI>
+  All Parts              <LI>characters... <A> <BR> <P> <UL> <OL> <DL>
+                         <PRE> <BLOCKQUOTE> </LI>
                          
   Allowed In Content Of...
                          <OL> <UL>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+
+
       in Lists and glossaries in HTML
       
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 7
-
-
    
    T
    
@@ -3263,7 +3291,7 @@ OL
   All Parts              <OL><LI> </OL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -3276,10 +3304,10 @@ P
 
   Required Parts         <P>characters...
                          
-  All Parts              <P>characters...<A> <BR> </P>
+  All Parts              <P>characters... <A> <BR> </P>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -3290,12 +3318,12 @@ P
    
 PRE
 
-  Required Parts         <PRE>characters...</PRE>
+  Required Parts         <PRE>characters... </PRE>
                          
-  All Parts              <PRE WIDTH="...">characters...<A> </PRE>
+  All Parts              <PRE WIDTH="..." >characters... <A> </PRE>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -3306,12 +3334,12 @@ PRE
    
 TITLE
 
-  Required Parts         <TITLE>characters...</TITLE>
+  Required Parts         <TITLE>characters... </TITLE>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+
+
                          
-  All Parts              <TITLE>characters...</TITLE>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 8
-
-
+  All Parts              <TITLE>characters... </TITLE>
                          
   Allowed In Content Of...
                          <HEAD>
@@ -3330,14 +3358,14 @@ UL
   All Parts              <UL><LI> </UL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
       in Lists and glossaries in HTML
       
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     HTML DTD Reference
@@ -3349,30 +3377,29 @@ UL
 Alphabetical Index
 
    A,  ADDRESS,  B,  BASE,  BLOCKQUOTE,  BODY,  BR,  CITE,  CODE,  DD,
-    DFN,  DIR,  DL,  DT,  EM,  H1,  H2,  H3,  H4,  H5,  H6,  HEAD,
-   HR,  HTML,  I,  IMG,  ISINDEX,  KBD,  LI,  LINK,  LISTING,  MENU,
-   NEXTID,  OL,  P,  PLAINTEXT,  PRE,  SAMP,  STRIKE,  STRONG,  TITLE,
-    TT,  UL,  VAR,  XMP,
+    DIR,  DL,  DT,  EM,  H1,  H2,  H3,  H4,  H5,  H6,  HEAD,  HR,
+   HTML,  I,  IMG,  ISINDEX,  KBD,  LI,  LINK,  LISTING,  MENU,
+   NEXTID,  OL,  P,  PLAINTEXT,  PRE,  SAMP,  STRONG,  TITLE,  TT,
+   UL,  VAR,  XMP,
    T
    
 A
 
-  Required Parts         <A>characters...</A>
+  Required Parts         <A>characters... </A>
                          
-  All Parts              <A NAME="..." HREF="..." REL="..." REV="..."
-                         URN="..." TITLE="..."
-                         METHODS="...">characters...<H1> <H2> <H3>
-                         <H4> <H5> <H6> <P> <HR> <UL> <OL> <DIR>
-                         <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </A>
+  All Parts              <A NAME="..."  HREF="..."  REL="..."
+                         REV="..."  URN="..."  TITLE="..."
+                         METHODS="..." >characters... <H1> <H2> <H3>
+                         <H4> <H5> <H6> <P> <UL> <OL> <DIR> <MENU>
+                         <DL> <PRE> <XMP> <LISTING> <BLOCKQUOTE> <IMG>
+                         <BR> <EM> <STRONG> <CODE> <SAMP> <KBD> <VAR>
+                         <CITE> <TT> <B> <I> </A>
                          
   Allowed In Content Of...
                          <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -3383,40 +3410,38 @@ A
    
 ADDRESS
 
-  Required Parts         <ADDRESS>characters...</ADDRESS>
+  Required Parts         <ADDRESS>characters... </ADDRESS>
                          
-  All Parts              <ADDRESS>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> <P> <HR> <UL>
-                         <OL> <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> </ADDRESS>
+  All Parts              <ADDRESS>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> </ADDRESS>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
       Tags used in HTML
       
    
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
    T
    
 B
 
-  Required Parts         <B>characters...</B>
+  Required Parts         <B>characters... </B>
                          
-  All Parts              <B>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </B>
+  All Parts              <B>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </B>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -3427,9 +3452,9 @@ B
    
 BASE
 
-  Required Parts         <BASE HREF="...">
+  Required Parts         <BASE HREF="..." >
                          
-  All Parts              <BASE HREF="...">
+  All Parts              <BASE HREF="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -3443,23 +3468,24 @@ BASE
    
 BLOCKQUOTE
 
-  Required Parts         <BLOCKQUOTE>characters...</BLOCKQUOTE>
+  Required Parts         <BLOCKQUOTE>characters... </BLOCKQUOTE>
                          
-  All Parts              <BLOCKQUOTE>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> <P> <HR> <UL>
-                         <OL> <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> </BLOCKQUOTE>
+  All Parts              <BLOCKQUOTE>characters... <H1> <H2> <H3> <H4>
+                         <H5> <H6> <A> <IMG> <BR> <EM> <STRONG> <CODE>
+                         <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I> <P>
+                         <UL> <OL> <DIR> <MENU> <DL> <PRE> <XMP>
+                         <LISTING> <BLOCKQUOTE> <HR> <ADDRESS>
+                         </BLOCKQUOTE>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
                          
       BlockQuote in HTML
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
       
    
    T
@@ -3468,12 +3494,11 @@ BODY
 
   Required Parts         characters...
                          
-  All Parts              <BODY>characters...<H1> <H2> <H3> <H4> <H5>
+  All Parts              <BODY>characters... <H1> <H2> <H3> <H4> <H5>
                          <H6> <A> <IMG> <BR> <EM> <STRONG> <CODE>
-                         <SAMP> <KBD> <VAR> <DFN> <CITE> <STRIKE> <TT>
-                         <B> <I> <P> <HR> <UL> <OL> <DIR> <MENU> <DL>
-                         <PRE> <XMP> <LISTING> <BLOCKQUOTE> <ADDRESS>
-                         </BODY>
+                         <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I> <P>
+                         <UL> <OL> <DIR> <MENU> <DL> <PRE> <XMP>
+                         <LISTING> <BLOCKQUOTE> <HR> <ADDRESS> </BODY>
                          
   Allowed In Content Of...
                          <HTML>
@@ -3493,9 +3518,9 @@ BR
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <SAMP>
-                         <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <SAMP> <STRONG>
+                         <TT> <VAR>
                          
   Discussion
                          
@@ -3506,20 +3531,20 @@ BR
    
 CITE
 
-  Required Parts         <CITE>characters...</CITE>
+  Required Parts         <CITE>characters... </CITE>
                          
-  All Parts              <CITE>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </CITE>
+  All Parts              <CITE>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </CITE>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 4
 
 
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -3530,17 +3555,17 @@ CITE
    
 CODE
 
-  Required Parts         <CODE>characters...</CODE>
+  Required Parts         <CODE>characters... </CODE>
                          
-  All Parts              <CODE>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </CODE>
+  All Parts              <CODE>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </CODE>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -3553,11 +3578,10 @@ DD
 
   Required Parts         <DD>characters...
                          
-  All Parts              <DD>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> <P> <HR> <UL> <OL>
-                         <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> </DD>
+  All Parts              <DD>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> <UL> <OL> <DIR> <MENU> <DL>
+                         <PRE> <XMP> <LISTING> <BLOCKQUOTE> </DD>
                          
   Allowed In Content Of...
                          <DL>
@@ -3569,30 +3593,6 @@ DD
    
    T
    
-DFN
-
-  Required Parts         <DFN>characters...</DFN>
-                         
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
-
-  All Parts              <DFN>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </DFN>
-                         
-  Allowed In Content Of...
-                         <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
-                         
-  Discussion
-                         
-      in Highlighting in HTML
-      
-   
-   T
-   
 DIR
 
   Required Parts         <DIR></DIR>
@@ -3600,7 +3600,10 @@ DIR
   All Parts              <DIR><LI> </DIR>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
                          
   Discussion
                          
@@ -3616,7 +3619,7 @@ DL
   All Parts              <DL COMPACT><DT> <DD> </DL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -3629,12 +3632,9 @@ DT
 
   Required Parts         <DT>characters...
                          
-  All Parts              <DT>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </DT>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 6
-
-
+  All Parts              <DT>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </DT>
                          
   Allowed In Content Of...
                          <DL>
@@ -3648,18 +3648,21 @@ DT
    
 EM
 
-  Required Parts         <EM>characters...</EM>
+  Required Parts         <EM>characters... </EM>
                          
-  All Parts              <EM>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </EM>
+  All Parts              <EM>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </EM>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+
+
   Discussion
                          
       in Highlighting in HTML
@@ -3669,14 +3672,14 @@ EM
    
 H1
 
-  Required Parts         <H1>characters...</H1>
+  Required Parts         <H1>characters... </H1>
                          
-  All Parts              <H1>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H1>
+  All Parts              <H1>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H1>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3687,17 +3690,14 @@ H1
    
 H2
 
-  Required Parts         <H2>characters...</H2>
+  Required Parts         <H2>characters... </H2>
                          
-  All Parts              <H2>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 7
-
-
-                         <STRIKE> <TT> <B> <I> </H2>
+  All Parts              <H2>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H2>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3708,17 +3708,20 @@ H2
    
 H3
 
-  Required Parts         <H3>characters...</H3>
+  Required Parts         <H3>characters... </H3>
                          
-  All Parts              <H3>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H3>
+  All Parts              <H3>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H3>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+
+
       in Heading elements in HTML
       
    
@@ -3726,14 +3729,14 @@ H3
    
 H4
 
-  Required Parts         <H4>characters...</H4>
+  Required Parts         <H4>characters... </H4>
                          
-  All Parts              <H4>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H4>
+  All Parts              <H4>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H4>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3744,17 +3747,14 @@ H4
    
 H5
 
-  Required Parts         <H5>characters...</H5>
+  Required Parts         <H5>characters... </H5>
                          
-  All Parts              <H5>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H5>
+  All Parts              <H5>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H5>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 8
-
-
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -3765,19 +3765,22 @@ H5
    
 H6
 
-  Required Parts         <H6>characters...</H6>
+  Required Parts         <H6>characters... </H6>
                          
-  All Parts              <H6>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H6>
+  All Parts              <H6>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H6>
                          
   Allowed In Content Of...
-                         <A> <BODY>
+                         <A> <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
       in Heading elements in HTML
       
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+
+
    
    T
    
@@ -3805,13 +3808,10 @@ HR
   All Parts              <HR>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 9
-
-
       Horizontal Rules in HTML
       
    
@@ -3834,17 +3834,20 @@ HTML
    
 I
 
-  Required Parts         <I>characters...</I>
+  Required Parts         <I>characters... </I>
                          
-  All Parts              <I>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </I>
+  All Parts              <I>characters... <A> <IMG> <BR> <EM> <STRONG>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 9
+
+
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </I>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -3855,22 +3858,20 @@ I
    
 IMG
 
-  Required Parts         <IMG SRC="...">
+  Required Parts         <IMG SRC="..." >
                          
-  All Parts              <IMG SRC="..." ALT="..." ALIGN="..." ISMAP>
+  All Parts              <IMG SRC="..."  ALT="..."  ALIGN="..."
+                         ISMAP>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <SAMP>
-                         <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <SAMP> <STRONG>
+                         <TT> <VAR>
                          
   Discussion
                          
       The IMG Element in HTML
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 10
-
-
       
    
    T
@@ -3893,17 +3894,20 @@ ISINDEX
    
 KBD
 
-  Required Parts         <KBD>characters...</KBD>
+  Required Parts         <KBD>characters... </KBD>
                          
-  All Parts              <KBD>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </KBD>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 10
+
+
+  All Parts              <KBD>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </KBD>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -3916,20 +3920,16 @@ LI
 
   Required Parts         <LI>characters...
                          
-  All Parts              <LI>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> <P> <HR> <UL> <OL>
-                         <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> </LI>
+  All Parts              <LI>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> <UL> <OL> <DIR> <MENU> <DL>
+                         <PRE> <XMP> <LISTING> <BLOCKQUOTE> </LI>
                          
   Allowed In Content Of...
                          <DIR> <MENU> <OL> <UL>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 11
-
-
       in Lists and glossaries in HTML
       
    
@@ -3937,10 +3937,10 @@ LI
    
 LINK
 
-  Required Parts         <LINK HREF="...">
+  Required Parts         <LINK HREF="..." >
                          
-  All Parts              <LINK HREF="..." REL="..." REV="..."
-                         URN="..." TITLE="..." METHODS="...">
+  All Parts              <LINK HREF="..."  REL="..."  REV="..."
+                         URN="..."  TITLE="..."  METHODS="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -3954,12 +3954,15 @@ LINK
    
 LISTING
 
-  Required Parts         <LISTING>characters...</LISTING>
+  Required Parts         <LISTING>characters... </LISTING>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 11
+
+
                          
-  All Parts              <LISTING>characters...</LISTING>
+  All Parts              <LISTING>characters... </LISTING>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -3975,7 +3978,7 @@ MENU
   All Parts              <MENU><LI> </MENU>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -3986,12 +3989,9 @@ MENU
    
 NEXTID
 
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 12
-
-
-  Required Parts         <NEXTID N="...">
+  Required Parts         <NEXTID N="..." >
                          
-  All Parts              <NEXTID N="...">
+  All Parts              <NEXTID N="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -4010,10 +4010,13 @@ OL
   All Parts              <OL><LI> </OL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 12
+
+
       in Lists and glossaries in HTML
       
    
@@ -4023,9 +4026,9 @@ P
 
   Required Parts         <P>characters...
                          
-  All Parts              <P>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </P>
+  All Parts              <P>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </P>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
@@ -4041,13 +4044,10 @@ PLAINTEXT
 
   Required Parts         <PLAINTEXT>characters...
                          
-  All Parts              <PLAINTEXT>characters...</PLAINTEXT>
+  All Parts              <PLAINTEXT>characters... </PLAINTEXT>
                          
   Allowed In Content Of...
                          <HTML>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 13
-
-
                          
   Discussion
                          
@@ -4058,14 +4058,14 @@ PLAINTEXT
    
 PRE
 
-  Required Parts         <PRE>characters...</PRE>
+  Required Parts         <PRE>characters... </PRE>
                          
-  All Parts              <PRE WIDTH="...">characters...<A> <TT> <B>
+  All Parts              <PRE WIDTH="..." >characters... <A> <TT> <B>
                          <I> <EM> <STRONG> <CODE> <SAMP> <KBD> <VAR>
-                         <DFN> <CITE> <STRIKE> </PRE>
+                         <CITE> </PRE>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -4073,44 +4073,23 @@ PRE
       
    
    T
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 13
+
+
    
 SAMP
 
-  Required Parts         <SAMP>characters...</SAMP>
+  Required Parts         <SAMP>characters... </SAMP>
                          
-  All Parts              <SAMP>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </SAMP>
+  All Parts              <SAMP>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </SAMP>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
-                         
-  Discussion
-                         
-      in Highlighting in HTML
-      
-   
-   T
-   
-STRIKE
-
-  Required Parts         <STRIKE>characters...</STRIKE>
-                         
-  All Parts              <STRIKE>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </STRIKE>
-                         
-  Allowed In Content Of...
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 14
-
-
-                         <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4121,17 +4100,17 @@ STRIKE
    
 STRONG
 
-  Required Parts         <STRONG>characters...</STRONG>
+  Required Parts         <STRONG>characters... </STRONG>
                          
-  All Parts              <STRONG>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </STRONG>
+  All Parts              <STRONG>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </STRONG>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4142,9 +4121,9 @@ STRONG
    
 TITLE
 
-  Required Parts         <TITLE>characters...</TITLE>
+  Required Parts         <TITLE>characters... </TITLE>
                          
-  All Parts              <TITLE>characters...</TITLE>
+  All Parts              <TITLE>characters... </TITLE>
                          
   Allowed In Content Of...
                          <HEAD>
@@ -4153,25 +4132,25 @@ TITLE
                          
       The TITLE element in HTML
       
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 14
+
+
    
    T
    
 TT
 
-  Required Parts         <TT>characters...</TT>
+  Required Parts         <TT>characters... </TT>
                          
-  All Parts              <TT>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </TT>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 15
-
-
+  All Parts              <TT>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </TT>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4187,7 +4166,7 @@ UL
   All Parts              <UL><LI> </UL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -4198,20 +4177,23 @@ UL
    
 VAR
 
-  Required Parts         <VAR>characters...</VAR>
+  Required Parts         <VAR>characters... </VAR>
                          
-  All Parts              <VAR>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </VAR>
+  All Parts              <VAR>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </VAR>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <H1> <H2> <H3>
-                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <H1> <H2> <H3> <H4>
+                         <H5> <H6> <I> <KBD> <LI> <P> <PRE> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 15
+
+
       in Highlighting in HTML
       
    
@@ -4219,22 +4201,19 @@ VAR
    
 XMP
 
-  Required Parts         <XMP>characters...</XMP>
+  Required Parts         <XMP>characters... </XMP>
                          
-  All Parts              <XMP>characters...</XMP>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 16
-
-
+  All Parts              <XMP>characters... </XMP>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
       in Obsolete Elements of HTML
       
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     HTML DTD Reference
@@ -4246,25 +4225,25 @@ XMP
 Alphabetical Index
 
    A,  ADDRESS,  B,  BASE,  BLOCKQUOTE,  BODY,  BR,  CITE,  CODE,  DD,
-    DFN,  DL,  DT,  EM,  H1,  H2,  H3,  H4,  H5,  H6,  HEAD,  HR,
-   HTML,  I,  IMG,  ISINDEX,  KBD,  LI,  LINK,  OL,  P,  PRE,  SAMP,
-   STRIKE,  STRONG,  TITLE,  TT,  UL,  VAR,
+    DL,  DT,  EM,  H1,  H2,  H3,  H4,  H5,  H6,  HEAD,  HR,  HTML,  I,
+    IMG,  ISINDEX,  KBD,  LI,  LINK,  OL,  P,  PRE,  SAMP,  STRONG,
+   TITLE,  TT,  UL,  VAR,
    T
    
 A
 
-  Required Parts         <A>characters...</A>
+  Required Parts         <A>characters... </A>
                          
-  All Parts              <A NAME="..." HREF="..." REL="..." REV="..."
-                         URN="..." TITLE="..."
-                         METHODS="...">characters...<IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> </A>
+  All Parts              <A NAME="..."  HREF="..."  REL="..."
+                         REV="..."  URN="..."  TITLE="..."
+                         METHODS="..." >characters... <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </A>
                          
   Allowed In Content Of...
-                         <B> <CITE> <CODE> <DFN> <DT> <EM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <ADDRESS> <B> <CITE> <CODE> <DD> <DT> <EM>
+                         <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD> <LI>
+                         <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4275,13 +4254,14 @@ A
    
 ADDRESS
 
-  Required Parts         <ADDRESS></ADDRESS>
+  Required Parts         <ADDRESS>characters... </ADDRESS>
                          
-  All Parts              <ADDRESS><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> </ADDRESS>
+  All Parts              <ADDRESS>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </ADDRESS>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -4292,15 +4272,19 @@ ADDRESS
    
 B
 
-  Required Parts         <B>characters...</B>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
+  Required Parts         <B>characters... </B>
                          
-  All Parts              <B>characters...<A> </B>
+  All Parts              <B>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </B>
                          
   Allowed In Content Of...
-                         <PRE>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4311,9 +4295,9 @@ B
    
 BASE
 
-  Required Parts         <BASE HREF="...">
+  Required Parts         <BASE HREF="..." >
                          
-  All Parts              <BASE HREF="...">
+  All Parts              <BASE HREF="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -4329,11 +4313,12 @@ BLOCKQUOTE
 
   Required Parts         <BLOCKQUOTE></BLOCKQUOTE>
                          
-  All Parts              <BLOCKQUOTE><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> </BLOCKQUOTE>
+  All Parts              <BLOCKQUOTE><H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <UL> <OL> <DL> <PRE> <BLOCKQUOTE> <HR>
+                         <ADDRESS> </BLOCKQUOTE>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -4346,15 +4331,15 @@ BODY
 
   Required Parts
                          
-  All Parts              <BODY><H1> <H2> <H3> <H4> <H5> <H6> <P> <HR>
-                         <UL> <OL> <DL> <PRE> <BLOCKQUOTE> <ADDRESS>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
+  All Parts              <BODY><H1> <H2> <H3> <H4> <H5> <H6> <P> <UL>
+                         <OL> <DL> <PRE> <BLOCKQUOTE> <HR> <ADDRESS>
                          </BODY>
                          
   Allowed In Content Of...
                          <HTML>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
                          
   Discussion
                          
@@ -4370,7 +4355,9 @@ BR
   All Parts              <BR>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4381,12 +4368,16 @@ BR
    
 CITE
 
-  Required Parts         <CITE>characters...</CITE>
+  Required Parts         <CITE>characters... </CITE>
                          
-  All Parts              <CITE>characters...<A> </CITE>
+  All Parts              <CITE>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </CITE>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4397,12 +4388,19 @@ CITE
    
 CODE
 
-  Required Parts         <CODE>characters...</CODE>
+  Required Parts         <CODE>characters... </CODE>
                          
-  All Parts              <CODE>characters...<A> </CODE>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
+
+  All Parts              <CODE>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </CODE>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4411,15 +4409,14 @@ CODE
    
    T
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
-
 DD
 
-  Required Parts         <DD>
+  Required Parts         <DD>characters...
                          
-  All Parts              <DD><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> </DD>
+  All Parts              <DD>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> <UL> <OL> <DL> <PRE>
+                         <BLOCKQUOTE> </DD>
                          
   Allowed In Content Of...
                          <DL>
@@ -4431,22 +4428,6 @@ DD
    
    T
    
-DFN
-
-  Required Parts         <DFN>characters...</DFN>
-                         
-  All Parts              <DFN>characters...<A> </DFN>
-                         
-  Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
-                         
-  Discussion
-                         
-      in Highlighting in HTML
-      
-   
-   T
-   
 DL
 
   Required Parts         <DL></DL>
@@ -4454,7 +4435,7 @@ DL
   All Parts              <DL COMPACT><DT> <DD> </DL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -4467,12 +4448,12 @@ DT
 
   Required Parts         <DT>characters...
                          
-  All Parts              <DT>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </DT>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+  All Parts              <DT>characters... <A> <IMG> <BR> <EM>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 5
 
 
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </DT>
                          
   Allowed In Content Of...
                          <DL>
@@ -4486,12 +4467,16 @@ DT
    
 EM
 
-  Required Parts         <EM>characters...</EM>
+  Required Parts         <EM>characters... </EM>
                          
-  All Parts              <EM>characters...<A> </EM>
+  All Parts              <EM>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </EM>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4502,14 +4487,14 @@ EM
    
 H1
 
-  Required Parts         <H1>characters...</H1>
+  Required Parts         <H1>characters... </H1>
                          
-  All Parts              <H1>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H1>
+  All Parts              <H1>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H1>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -4520,18 +4505,18 @@ H1
    
 H2
 
-  Required Parts         <H2>characters...</H2>
+  Required Parts         <H2>characters... </H2>
                          
-  All Parts              <H2>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H2>
+  All Parts              <H2>characters... <A> <IMG> <BR> <EM>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+
+
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H2>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 6
-
-
   Discussion
                          
       in Heading elements in HTML
@@ -4541,14 +4526,14 @@ H2
    
 H3
 
-  Required Parts         <H3>characters...</H3>
+  Required Parts         <H3>characters... </H3>
                          
-  All Parts              <H3>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H3>
+  All Parts              <H3>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H3>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -4559,14 +4544,14 @@ H3
    
 H4
 
-  Required Parts         <H4>characters...</H4>
+  Required Parts         <H4>characters... </H4>
                          
-  All Parts              <H4>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H4>
+  All Parts              <H4>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H4>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -4577,20 +4562,20 @@ H4
    
 H5
 
-  Required Parts         <H5>characters...</H5>
+  Required Parts         <H5>characters... </H5>
                          
-  All Parts              <H5>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H5>
+  All Parts              <H5>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H5>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+
+
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 7
-
-
       in Heading elements in HTML
       
    
@@ -4598,14 +4583,14 @@ H5
    
 H6
 
-  Required Parts         <H6>characters...</H6>
+  Required Parts         <H6>characters... </H6>
                          
-  All Parts              <H6>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H6>
+  All Parts              <H6>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H6>
                          
   Allowed In Content Of...
-                         <BODY>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
@@ -4637,19 +4622,19 @@ HR
   All Parts              <HR>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+
+
       Horizontal Rules in HTML
       
    
    T
    
 HTML
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 8
-
-
 
   Required Parts
                          
@@ -4666,12 +4651,16 @@ HTML
    
 I
 
-  Required Parts         <I>characters...</I>
+  Required Parts         <I>characters... </I>
                          
-  All Parts              <I>characters...<A> </I>
+  All Parts              <I>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </I>
                          
   Allowed In Content Of...
-                         <PRE>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4682,17 +4671,23 @@ I
    
 IMG
 
-  Required Parts         <IMG SRC="...">
+  Required Parts         <IMG SRC="..." >
                          
-  All Parts              <IMG SRC="..." ALT="..." ALIGN="..." ISMAP>
+  All Parts              <IMG SRC="..."  ALT="..."  ALIGN="..."
+                         ISMAP>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
       The IMG Element in HTML
       
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 9
+
+
    
    T
    
@@ -4706,9 +4701,6 @@ ISINDEX
                          <HEAD>
                          
   Discussion
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 9
-
-
                          
       ISINDEX element in HTML
       
@@ -4717,12 +4709,16 @@ ISINDEX
    
 KBD
 
-  Required Parts         <KBD>characters...</KBD>
+  Required Parts         <KBD>characters... </KBD>
                          
-  All Parts              <KBD>characters...<A> </KBD>
+  All Parts              <KBD>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </KBD>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4733,10 +4729,12 @@ KBD
    
 LI
 
-  Required Parts         <LI>
+  Required Parts         <LI>characters...
                          
-  All Parts              <LI><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> </LI>
+  All Parts              <LI>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> <UL> <OL> <DL> <PRE>
+                         <BLOCKQUOTE> </LI>
                          
   Allowed In Content Of...
                          <OL> <UL>
@@ -4746,14 +4744,17 @@ LI
       in Lists and glossaries in HTML
       
    
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 10
+
+
    T
    
 LINK
 
-  Required Parts         <LINK HREF="...">
+  Required Parts         <LINK HREF="..." >
                          
-  All Parts              <LINK HREF="..." REL="..." REV="..."
-                         URN="..." TITLE="..." METHODS="...">
+  All Parts              <LINK HREF="..."  REL="..."  REV="..."
+                         URN="..."  TITLE="..."  METHODS="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -4765,9 +4766,6 @@ LINK
    
    T
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 10
-
-
 OL
 
   Required Parts         <OL></OL>
@@ -4775,7 +4773,7 @@ OL
   All Parts              <OL><LI> </OL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -4788,12 +4786,12 @@ P
 
   Required Parts         <P>characters...
                          
-  All Parts              <P>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </P>
+  All Parts              <P>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </P>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -4804,13 +4802,17 @@ P
    
 PRE
 
-  Required Parts         <PRE>characters...</PRE>
+  Required Parts         <PRE>characters... </PRE>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 11
+
+
                          
-  All Parts              <PRE WIDTH="...">characters...<A> <TT> <B>
-                         <I> </PRE>
+  All Parts              <PRE WIDTH="..." >characters... <A> <TT> <B>
+                         <I> <EM> <STRONG> <CODE> <SAMP> <KBD> <VAR>
+                         <CITE> </PRE>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -4821,31 +4823,16 @@ PRE
    
 SAMP
 
-  Required Parts         <SAMP>characters...</SAMP>
+  Required Parts         <SAMP>characters... </SAMP>
                          
-  All Parts              <SAMP>characters...<A> </SAMP>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 11
-
-
-                         
-  Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
-                         
-  Discussion
-                         
-      in Highlighting in HTML
-      
-   
-   T
-   
-STRIKE
-
-  Required Parts         <STRIKE>characters...</STRIKE>
-                         
-  All Parts              <STRIKE>characters...<A> </STRIKE>
+  All Parts              <SAMP>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </SAMP>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4856,12 +4843,16 @@ STRIKE
    
 STRONG
 
-  Required Parts         <STRONG>characters...</STRONG>
+  Required Parts         <STRONG>characters... </STRONG>
                          
-  All Parts              <STRONG>characters...<A> </STRONG>
+  All Parts              <STRONG>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </STRONG>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4871,10 +4862,13 @@ STRONG
    T
    
 TITLE
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 12
 
-  Required Parts         <TITLE>characters...</TITLE>
+
+
+  Required Parts         <TITLE>characters... </TITLE>
                          
-  All Parts              <TITLE>characters...</TITLE>
+  All Parts              <TITLE>characters... </TITLE>
                          
   Allowed In Content Of...
                          <HEAD>
@@ -4883,20 +4877,21 @@ TITLE
                          
       The TITLE element in HTML
       
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 12
-
-
    
    T
    
 TT
 
-  Required Parts         <TT>characters...</TT>
+  Required Parts         <TT>characters... </TT>
                          
-  All Parts              <TT>characters...<A> </TT>
+  All Parts              <TT>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </TT>
                          
   Allowed In Content Of...
-                         <PRE>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4912,7 +4907,7 @@ UL
   All Parts              <UL><LI> </UL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <LI>
                          
   Discussion
                          
@@ -4923,19 +4918,26 @@ UL
    
 VAR
 
-  Required Parts         <VAR>characters...</VAR>
+  Required Parts         <VAR>characters... </VAR>
                          
-  All Parts              <VAR>characters...<A> </VAR>
+  All Parts              <VAR>characters... <A> <IMG> <BR> <EM>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 13
+
+
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </VAR>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
       in Highlighting in HTML
       
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     HTML DTD Reference
@@ -4947,31 +4949,30 @@ VAR
 Alphabetical Index
 
    A,  ADDRESS,  B,  BASE,  BLOCKQUOTE,  BODY,  BR,  CITE,  CODE,  DD,
-    DFN,  DIR,  DL,  DT,  EM,  FORM,  H1,  H2,  H3,  H4,  H5,  H6,
-   HEAD,  HR,  HTML,  I,  IMG,  INPUT,  ISINDEX,  KBD,  LI,  LINK,
-   LISTING,  MENU,  NEXTID,  OL,  OPTION,  P,  PLAINTEXT,  PRE,  SAMP,
-    SELECT,  STRIKE,  STRONG,  TEXTAREA,  TITLE,  TT,  UL,  VAR,  XMP,
-   
+    DIR,  DL,  DT,  EM,  FORM,  H1,  H2,  H3,  H4,  H5,  H6,  HEAD,
+   HR,  HTML,  I,  IMG,  INPUT,  ISINDEX,  KBD,  LI,  LINK,  LISTING,
+   MENU,  NEXTID,  OL,  OPTION,  P,  PLAINTEXT,  PRE,  SAMP,  SELECT,
+   STRONG,  TEXTAREA,  TITLE,  TT,  UL,  VAR,  XMP,
    T
    
 A
 
-  Required Parts         <A>characters...</A>
+  Required Parts         <A>characters... </A>
                          
-  All Parts              <A NAME="..." HREF="..." REL="..." REV="..."
-                         URN="..." TITLE="..."
-                         METHODS="...">characters...<H1> <H2> <H3>
-                         <H4> <H5> <H6> <P> <HR> <UL> <OL> <DIR>
-                         <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX> <IMG>
-                         <BR> <EM> <STRONG> <CODE> <SAMP> <KBD> <VAR>
-                         <DFN> <CITE> <STRIKE> <TT> <B> <I> </A>
+  All Parts              <A NAME="..."  HREF="..."  REL="..."
+                         REV="..."  URN="..."  TITLE="..."
+                         METHODS="..." >characters... <H1> <H2> <H3>
+                         <H4> <H5> <H6> <P> <UL> <OL> <DIR> <MENU>
+                         <DL> <PRE> <XMP> <LISTING> <BLOCKQUOTE>
+                         <FORM> <ISINDEX> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </A>
                          
   Allowed In Content Of...
                          <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -4982,42 +4983,38 @@ A
    
 ADDRESS
 
-  Required Parts         <ADDRESS>characters...</ADDRESS>
+  Required Parts         <ADDRESS>characters... </ADDRESS>
                          
-  All Parts              <ADDRESS>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> <P> <HR> <UL>
-                         <OL> <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX>
-                         </ADDRESS>
+  All Parts              <ADDRESS>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> </ADDRESS>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
       Tags used in HTML
       
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
    
    T
    
 B
 
-  Required Parts         <B>characters...</B>
+  Required Parts         <B>characters... </B>
                          
-  All Parts              <B>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </B>
+  All Parts              <B>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </B>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5028,9 +5025,9 @@ B
    
 BASE
 
-  Required Parts         <BASE HREF="...">
+  Required Parts         <BASE HREF="..." >
                          
-  All Parts              <BASE HREF="...">
+  All Parts              <BASE HREF="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -5044,24 +5041,23 @@ BASE
    
 BLOCKQUOTE
 
-  Required Parts         <BLOCKQUOTE>characters...</BLOCKQUOTE>
+  Required Parts         <BLOCKQUOTE>characters... </BLOCKQUOTE>
                          
-  All Parts              <BLOCKQUOTE>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> <P> <HR> <UL>
-                         <OL> <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX>
-                         </BLOCKQUOTE>
+  All Parts              <BLOCKQUOTE>characters... <H1> <H2> <H3> <H4>
+                         <H5> <H6> <A> <IMG> <BR> <EM> <STRONG> <CODE>
+                         <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I> <P>
+                         <UL> <OL> <DIR> <MENU> <DL> <PRE> <XMP>
+                         <LISTING> <BLOCKQUOTE> <FORM> <ISINDEX> <HR>
+                         <ADDRESS> </BLOCKQUOTE>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
       BlockQuote in HTML
       
    
@@ -5071,12 +5067,12 @@ BODY
 
   Required Parts         characters...
                          
-  All Parts              <BODY>characters...<H1> <H2> <H3> <H4> <H5>
+  All Parts              <BODY>characters... <H1> <H2> <H3> <H4> <H5>
                          <H6> <A> <IMG> <BR> <EM> <STRONG> <CODE>
-                         <SAMP> <KBD> <VAR> <DFN> <CITE> <STRIKE> <TT>
-                         <B> <I> <P> <HR> <UL> <OL> <DIR> <MENU> <DL>
-                         <PRE> <XMP> <LISTING> <BLOCKQUOTE> <ADDRESS>
-                         <FORM> <ISINDEX> </BODY>
+                         <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I> <P>
+                         <UL> <OL> <DIR> <MENU> <DL> <PRE> <XMP>
+                         <LISTING> <BLOCKQUOTE> <FORM> <ISINDEX> <HR>
+                         <ADDRESS> </BODY>
                          
   Allowed In Content Of...
                          <HTML>
@@ -5096,9 +5092,9 @@ BR
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <SAMP>
-                         <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5109,20 +5105,20 @@ BR
    
 CITE
 
-  Required Parts         <CITE>characters...</CITE>
+  Required Parts         <CITE>characters... </CITE>
                          
-  All Parts              <CITE>characters...<A> <IMG> <BR> <EM>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
-
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </CITE>
+  All Parts              <CITE>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </CITE>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
+
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5133,17 +5129,17 @@ CITE
    
 CODE
 
-  Required Parts         <CODE>characters...</CODE>
+  Required Parts         <CODE>characters... </CODE>
                          
-  All Parts              <CODE>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </CODE>
+  All Parts              <CODE>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </CODE>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5156,11 +5152,11 @@ DD
 
   Required Parts         <DD>characters...
                          
-  All Parts              <DD>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> <P> <HR> <UL> <OL>
-                         <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX> </DD>
+  All Parts              <DD>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> <UL> <OL> <DIR> <MENU> <DL>
+                         <PRE> <XMP> <LISTING> <BLOCKQUOTE> <FORM>
+                         <ISINDEX> </DD>
                          
   Allowed In Content Of...
                          <DL>
@@ -5171,40 +5167,18 @@ DD
       
    
    T
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
-
-   
-DFN
-
-  Required Parts         <DFN>characters...</DFN>
-                         
-  All Parts              <DFN>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </DFN>
-                         
-  Allowed In Content Of...
-                         <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
-                         
-  Discussion
-                         
-      in Highlighting in HTML
-      
-   
-   T
    
 DIR
 
   Required Parts         <DIR></DIR>
                          
   All Parts              <DIR><LI> </DIR>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -5220,8 +5194,7 @@ DL
   All Parts              <DL COMPACT><DT> <DD> </DL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -5230,16 +5203,13 @@ DL
    
    T
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 6
-
-
 DT
 
   Required Parts         <DT>characters...
                          
-  All Parts              <DT>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </DT>
+  All Parts              <DT>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </DT>
                          
   Allowed In Content Of...
                          <DL>
@@ -5253,17 +5223,20 @@ DT
    
 EM
 
-  Required Parts         <EM>characters...</EM>
+  Required Parts         <EM>characters... </EM>
                          
-  All Parts              <EM>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </EM>
+  All Parts              <EM>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </EM>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+
+
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5274,24 +5247,19 @@ EM
    
 FORM
 
-  Required Parts         <FORM ACTION="...">characters...</FORM>
+  Required Parts         <FORM ACTION="..." >characters... </FORM>
                          
-  All Parts              <FORM ACTION="..." METHOD="..."
-                         ENCTYPE="...">characters...<H1> <H2> <H3>
+  All Parts              <FORM ACTION="..."  METHOD="..."
+                         ENCTYPE="..." >characters... <H1> <H2> <H3>
                          <H4> <H5> <H6> <A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> <P> <HR> <UL> <OL>
-                         <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX>
-                         </FORM>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         <P> <UL> <OL> <DIR> <MENU> <DL> <PRE> <XMP>
+                         <LISTING> <BLOCKQUOTE> <FORM> <ISINDEX> <HR>
+                         <ADDRESS> </FORM>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 7
-
-
   Discussion
                          
       FORM -- Elements
@@ -5301,14 +5269,14 @@ FORM
    
 H1
 
-  Required Parts         <H1>characters...</H1>
+  Required Parts         <H1>characters... </H1>
                          
-  All Parts              <H1>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H1>
+  All Parts              <H1>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H1>
                          
   Allowed In Content Of...
-                         <A> <BODY> <FORM>
+                         <A> <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -5319,14 +5287,17 @@ H1
    
 H2
 
-  Required Parts         <H2>characters...</H2>
+  Required Parts         <H2>characters... </H2>
                          
-  All Parts              <H2>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H2>
+  All Parts              <H2>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+
+
+                         <TT> <B> <I> </H2>
                          
   Allowed In Content Of...
-                         <A> <BODY> <FORM>
+                         <A> <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -5337,20 +5308,17 @@ H2
    
 H3
 
-  Required Parts         <H3>characters...</H3>
+  Required Parts         <H3>characters... </H3>
                          
-  All Parts              <H3>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H3>
+  All Parts              <H3>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H3>
                          
   Allowed In Content Of...
-                         <A> <BODY> <FORM>
+                         <A> <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 8
-
-
       in Heading elements in HTML
       
    
@@ -5358,14 +5326,14 @@ H3
    
 H4
 
-  Required Parts         <H4>characters...</H4>
+  Required Parts         <H4>characters... </H4>
                          
-  All Parts              <H4>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H4>
+  All Parts              <H4>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H4>
                          
   Allowed In Content Of...
-                         <A> <BODY> <FORM>
+                         <A> <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -5376,14 +5344,17 @@ H4
    
 H5
 
-  Required Parts         <H5>characters...</H5>
+  Required Parts         <H5>characters... </H5>
                          
-  All Parts              <H5>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H5>
+  All Parts              <H5>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H5>
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+
+
   Allowed In Content Of...
-                         <A> <BODY> <FORM>
+                         <A> <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -5394,22 +5365,19 @@ H5
    
 H6
 
-  Required Parts         <H6>characters...</H6>
+  Required Parts         <H6>characters... </H6>
                          
-  All Parts              <H6>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </H6>
+  All Parts              <H6>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H6>
                          
   Allowed In Content Of...
-                         <A> <BODY> <FORM>
+                         <A> <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
       in Heading elements in HTML
       
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 9
-
-
    
    T
    
@@ -5437,11 +5405,13 @@ HR
   All Parts              <HR>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 9
+
+
       Horizontal Rules in HTML
       
    
@@ -5464,20 +5434,17 @@ HTML
    
 I
 
-  Required Parts         <I>characters...</I>
+  Required Parts         <I>characters... </I>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 10
-
-
-  All Parts              <I>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </I>
+  All Parts              <I>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </I>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5488,18 +5455,22 @@ I
    
 IMG
 
-  Required Parts         <IMG SRC="...">
+  Required Parts         <IMG SRC="..." >
                          
-  All Parts              <IMG SRC="..." ALT="..." ALIGN="..." ISMAP>
+  All Parts              <IMG SRC="..."  ALT="..."  ALIGN="..."
+                         ISMAP>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <SAMP>
-                         <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <SAMP>
+                         <STRONG> <TT> <VAR>
                          
   Discussion
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 10
+
+
       The IMG Element in HTML
       
    
@@ -5509,9 +5480,9 @@ INPUT
 
   Required Parts         <INPUT>
                          
-  All Parts              <INPUT TYPE="..." NAME="..." VALUE="..."
-                         SRC="..." CHECKED SIZE="..." MAXLENGTH="..."
-                         ALIGN="...">
+  All Parts              <INPUT TYPE="..."  NAME="..."  VALUE="..."
+                         SRC="..."  CHECKED SIZE="..."
+                         MAXLENGTH="..."  ALIGN="..." >
                          
   Allowed In Content Of...
                          
@@ -5525,15 +5496,12 @@ INPUT
 ISINDEX
 
   Required Parts         <ISINDEX>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 11
-
-
                          
   All Parts              <ISINDEX>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <HEAD> <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <HEAD>
+                         <LI>
                          
   Discussion
                          
@@ -5544,21 +5512,24 @@ ISINDEX
    
 KBD
 
-  Required Parts         <KBD>characters...</KBD>
+  Required Parts         <KBD>characters... </KBD>
                          
-  All Parts              <KBD>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </KBD>
+  All Parts              <KBD>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </KBD>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
       in Highlighting in HTML
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 11
+
+
       
    
    T
@@ -5567,11 +5538,11 @@ LI
 
   Required Parts         <LI>characters...
                          
-  All Parts              <LI>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> <P> <HR> <UL> <OL>
-                         <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX> </LI>
+  All Parts              <LI>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> <UL> <OL> <DIR> <MENU> <DL>
+                         <PRE> <XMP> <LISTING> <BLOCKQUOTE> <FORM>
+                         <ISINDEX> </LI>
                          
   Allowed In Content Of...
                          <DIR> <MENU> <OL> <UL>
@@ -5584,14 +5555,11 @@ LI
    T
    
 LINK
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 12
 
-
-
-  Required Parts         <LINK HREF="...">
+  Required Parts         <LINK HREF="..." >
                          
-  All Parts              <LINK HREF="..." REL="..." REV="..."
-                         URN="..." TITLE="..." METHODS="...">
+  All Parts              <LINK HREF="..."  REL="..."  REV="..."
+                         URN="..."  TITLE="..."  METHODS="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -5605,13 +5573,12 @@ LINK
    
 LISTING
 
-  Required Parts         <LISTING>characters...</LISTING>
+  Required Parts         <LISTING>characters... </LISTING>
                          
-  All Parts              <LISTING>characters...</LISTING>
+  All Parts              <LISTING>characters... </LISTING>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -5619,6 +5586,9 @@ LISTING
       
    
    T
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 12
+
+
    
 MENU
 
@@ -5627,8 +5597,7 @@ MENU
   All Parts              <MENU><LI> </MENU>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -5639,13 +5608,10 @@ MENU
    
 NEXTID
 
-  Required Parts         <NEXTID N="...">
+  Required Parts         <NEXTID N="..." >
                          
-  All Parts              <NEXTID N="...">
+  All Parts              <NEXTID N="..." >
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 13
-
-
   Allowed In Content Of...
                          <HEAD>
                          
@@ -5663,8 +5629,7 @@ OL
   All Parts              <OL><LI> </OL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -5677,9 +5642,12 @@ OPTION
 
   Required Parts         <OPTION>characters...
                          
-  All Parts              <OPTION SELECTED
-                         VALUE="...">characters...</OPTION>
+  All Parts              <OPTION SELECTED VALUE="..." >characters...
+                         </OPTION>
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 13
+
+
   Allowed In Content Of...
                          <SELECT>
                          
@@ -5694,17 +5662,14 @@ P
 
   Required Parts         <P>characters...
                          
-  All Parts              <P>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </P>
+  All Parts              <P>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </P>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
                          <LI>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 14
-
-
   Discussion
                          
       Paragraphs in HTML
@@ -5716,7 +5681,7 @@ PLAINTEXT
 
   Required Parts         <PLAINTEXT>characters...
                          
-  All Parts              <PLAINTEXT>characters...</PLAINTEXT>
+  All Parts              <PLAINTEXT>characters... </PLAINTEXT>
                          
   Allowed In Content Of...
                          <HTML>
@@ -5730,16 +5695,18 @@ PLAINTEXT
    
 PRE
 
-  Required Parts         <PRE>characters...</PRE>
+  Required Parts         <PRE>characters... </PRE>
                          
-  All Parts              <PRE WIDTH="...">characters...<A> <TT> <B>
+  All Parts              <PRE WIDTH="..." >characters... <A> <TT> <B>
                          <I> <EM> <STRONG> <CODE> <SAMP> <KBD> <VAR>
-                         <DFN> <CITE> <STRIKE> </PRE>
+                         <CITE> </PRE>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 14
+
+
   Discussion
                          
       The PRE element in HTML
@@ -5749,21 +5716,18 @@ PRE
    
 SAMP
 
-  Required Parts         <SAMP>characters...</SAMP>
+  Required Parts         <SAMP>characters... </SAMP>
                          
-  All Parts              <SAMP>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </SAMP>
+  All Parts              <SAMP>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </SAMP>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 15
-
-
   Discussion
                          
       in Highlighting in HTML
@@ -5773,9 +5737,9 @@ SAMP
    
 SELECT
 
-  Required Parts         <SELECT NAME="..."></SELECT>
+  Required Parts         <SELECT NAME="..." ></SELECT>
                          
-  All Parts              <SELECT NAME="..." SIZE="..."
+  All Parts              <SELECT NAME="..."  SIZE="..."
                          MULTIPLE><OPTION> </SELECT>
                          
   Allowed In Content Of...
@@ -5787,43 +5751,22 @@ SELECT
    
    T
    
-STRIKE
-
-  Required Parts         <STRIKE>characters...</STRIKE>
-                         
-  All Parts              <STRIKE>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </STRIKE>
-                         
-  Allowed In Content Of...
-                         <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
-                         
-  Discussion
-                         
-      in Highlighting in HTML
-      
-   
-   T
-   
 STRONG
 
-  Required Parts         <STRONG>characters...</STRONG>
+  Required Parts         <STRONG>characters... </STRONG>
                          
-  All Parts              <STRONG>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </STRONG>
+  All Parts              <STRONG>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </STRONG>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 16
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 15
 
 
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5834,11 +5777,11 @@ STRONG
    
 TEXTAREA
 
-  Required Parts         <TEXTAREA NAME="..." ROWS="..."
-                         COLS="...">characters...</TEXTAREA>
+  Required Parts         <TEXTAREA NAME="..."  ROWS="..."  COLS="..."
+                         >characters... </TEXTAREA>
                          
-  All Parts              <TEXTAREA NAME="..." ROWS="..."
-                         COLS="...">characters...</TEXTAREA>
+  All Parts              <TEXTAREA NAME="..."  ROWS="..."  COLS="..."
+                         >characters... </TEXTAREA>
                          
   Allowed In Content Of...
                          
@@ -5851,9 +5794,9 @@ TEXTAREA
    
 TITLE
 
-  Required Parts         <TITLE>characters...</TITLE>
+  Required Parts         <TITLE>characters... </TITLE>
                          
-  All Parts              <TITLE>characters...</TITLE>
+  All Parts              <TITLE>characters... </TITLE>
                          
   Allowed In Content Of...
                          <HEAD>
@@ -5867,19 +5810,19 @@ TITLE
    
 TT
 
-  Required Parts         <TT>characters...</TT>
+  Required Parts         <TT>characters... </TT>
                          
-  All Parts              <TT>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> <TT> <B> <I> </TT>
+  All Parts              <TT>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </TT>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 17
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 16
 
 
   Discussion
@@ -5896,8 +5839,7 @@ UL
   All Parts              <UL><LI> </UL>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -5908,17 +5850,17 @@ UL
    
 VAR
 
-  Required Parts         <VAR>characters...</VAR>
+  Required Parts         <VAR>characters... </VAR>
                          
-  All Parts              <VAR>characters...<A> <IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> <TT> <B> <I> </VAR>
+  All Parts              <VAR>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </VAR>
                          
   Allowed In Content Of...
                          <A> <ADDRESS> <B> <BLOCKQUOTE> <BODY> <CITE>
-                         <CODE> <DD> <DFN> <DT> <EM> <FORM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <CODE> <DD> <DT> <EM> <FORM> <H1> <H2> <H3>
+                         <H4> <H5> <H6> <I> <KBD> <LI> <P> <PRE>
+                         <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5929,23 +5871,22 @@ VAR
    
 XMP
 
-  Required Parts         <XMP>characters...</XMP>
+  Required Parts         <XMP>characters... </XMP>
                          
-  All Parts              <XMP>characters...</XMP>
+  All Parts              <XMP>characters... </XMP>
                          
   Allowed In Content Of...
-                         <A> <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <A> <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 18
-
-
                          
       in Obsolete Elements of HTML
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 17
+
+
       
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     HTML DTD Reference
@@ -5957,26 +5898,26 @@ XMP
 Alphabetical Index
 
    A,  ADDRESS,  B,  BASE,  BLOCKQUOTE,  BODY,  BR,  CITE,  CODE,  DD,
-    DFN,  DL,  DT,  EM,  FORM,  H1,  H2,  H3,  H4,  H5,  H6,  HEAD,
-   HR,  HTML,  I,  IMG,  INPUT,  ISINDEX,  KBD,  LI,  LINK,  OL,
-   OPTION,  P,  PRE,  SAMP,  SELECT,  STRIKE,  STRONG,  TEXTAREA,
-   TITLE,  TT,  UL,  VAR,
+    DL,  DT,  EM,  FORM,  H1,  H2,  H3,  H4,  H5,  H6,  HEAD,  HR,
+   HTML,  I,  IMG,  INPUT,  ISINDEX,  KBD,  LI,  LINK,  OL,  OPTION,
+   P,  PRE,  SAMP,  SELECT,  STRONG,  TEXTAREA,  TITLE,  TT,  UL,
+   VAR,
    T
    
 A
 
-  Required Parts         <A>characters...</A>
+  Required Parts         <A>characters... </A>
                          
-  All Parts              <A NAME="..." HREF="..." REL="..." REV="..."
-                         URN="..." TITLE="..."
-                         METHODS="...">characters...<IMG> <BR> <EM>
-                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
-                         <CITE> <STRIKE> </A>
+  All Parts              <A NAME="..."  HREF="..."  REL="..."
+                         REV="..."  URN="..."  TITLE="..."
+                         METHODS="..." >characters... <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </A>
                          
   Allowed In Content Of...
-                         <B> <CITE> <CODE> <DFN> <DT> <EM> <H1> <H2>
-                         <H3> <H4> <H5> <H6> <I> <KBD> <P> <PRE>
-                         <SAMP> <STRIKE> <STRONG> <TT> <VAR>
+                         <ADDRESS> <B> <CITE> <CODE> <DD> <DT> <EM>
+                         <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD> <LI>
+                         <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -5987,15 +5928,14 @@ A
    
 ADDRESS
 
-  Required Parts         <ADDRESS></ADDRESS>
+  Required Parts         <ADDRESS>characters... </ADDRESS>
                          
-  All Parts              <ADDRESS><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX>
-                         </ADDRESS>
+  All Parts              <ADDRESS>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </ADDRESS>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -6004,17 +5944,21 @@ ADDRESS
    
    T
    
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
 B
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
-  Required Parts         <B>characters...</B>
+
+
+  Required Parts         <B>characters... </B>
                          
-  All Parts              <B>characters...<A> </B>
+  All Parts              <B>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </B>
                          
   Allowed In Content Of...
-                         <PRE>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -6025,9 +5969,9 @@ B
    
 BASE
 
-  Required Parts         <BASE HREF="...">
+  Required Parts         <BASE HREF="..." >
                          
-  All Parts              <BASE HREF="...">
+  All Parts              <BASE HREF="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -6043,13 +5987,12 @@ BLOCKQUOTE
 
   Required Parts         <BLOCKQUOTE></BLOCKQUOTE>
                          
-  All Parts              <BLOCKQUOTE><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX>
-                         </BLOCKQUOTE>
+  All Parts              <BLOCKQUOTE><H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <UL> <OL> <DL> <PRE> <BLOCKQUOTE> <FORM>
+                         <ISINDEX> <HR> <ADDRESS> </BLOCKQUOTE>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -6061,13 +6004,13 @@ BLOCKQUOTE
 BODY
 
   Required Parts
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
                          
-  All Parts              <BODY><H1> <H2> <H3> <H4> <H5> <H6> <P> <HR>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
-                         <UL> <OL> <DL> <PRE> <BLOCKQUOTE> <ADDRESS>
-                         <FORM> <ISINDEX> </BODY>
+  All Parts              <BODY><H1> <H2> <H3> <H4> <H5> <H6> <P> <UL>
+                         <OL> <DL> <PRE> <BLOCKQUOTE> <FORM> <ISINDEX>
+                         <HR> <ADDRESS> </BODY>
                          
   Allowed In Content Of...
                          <HTML>
@@ -6086,7 +6029,9 @@ BR
   All Parts              <BR>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -6097,12 +6042,16 @@ BR
    
 CITE
 
-  Required Parts         <CITE>characters...</CITE>
+  Required Parts         <CITE>characters... </CITE>
                          
-  All Parts              <CITE>characters...<A> </CITE>
+  All Parts              <CITE>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </CITE>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -6113,18 +6062,22 @@ CITE
    
 CODE
 
-  Required Parts         <CODE>characters...</CODE>
+  Required Parts         <CODE>characters... </CODE>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
+
                          
-  All Parts              <CODE>characters...<A> </CODE>
+  All Parts              <CODE>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </CODE>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
-
       in Highlighting in HTML
       
    
@@ -6132,10 +6085,12 @@ CODE
    
 DD
 
-  Required Parts         <DD>
+  Required Parts         <DD>characters...
                          
-  All Parts              <DD><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX> </DD>
+  All Parts              <DD>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> <UL> <OL> <DL> <PRE>
+                         <BLOCKQUOTE> <FORM> <ISINDEX> </DD>
                          
   Allowed In Content Of...
                          <DL>
@@ -6147,22 +6102,6 @@ DD
    
    T
    
-DFN
-
-  Required Parts         <DFN>characters...</DFN>
-                         
-  All Parts              <DFN>characters...<A> </DFN>
-                         
-  Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
-                         
-  Discussion
-                         
-      in Highlighting in HTML
-      
-   
-   T
-   
 DL
 
   Required Parts         <DL></DL>
@@ -6170,8 +6109,7 @@ DL
   All Parts              <DL COMPACT><DT> <DD> </DL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -6181,15 +6119,15 @@ DL
    T
    
 DT
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
-
 
   Required Parts         <DT>characters...
                          
-  All Parts              <DT>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </DT>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
+  All Parts              <DT>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </DT>
                          
   Allowed In Content Of...
                          <DL>
@@ -6203,12 +6141,16 @@ DT
    
 EM
 
-  Required Parts         <EM>characters...</EM>
+  Required Parts         <EM>characters... </EM>
                          
-  All Parts              <EM>characters...<A> </EM>
+  All Parts              <EM>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </EM>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -6219,16 +6161,15 @@ EM
    
 FORM
 
-  Required Parts         <FORM ACTION="..."></FORM>
+  Required Parts         <FORM ACTION="..." ></FORM>
                          
-  All Parts              <FORM ACTION="..." METHOD="..."
-                         ENCTYPE="..."><H1> <H2> <H3> <H4> <H5> <H6>
-                         <P> <HR> <UL> <OL> <DL> <PRE> <BLOCKQUOTE>
-                         <ADDRESS> <FORM> <ISINDEX> </FORM>
+  All Parts              <FORM ACTION="..."  METHOD="..."
+                         ENCTYPE="..." ><H1> <H2> <H3> <H4> <H5> <H6>
+                         <P> <UL> <OL> <DL> <PRE> <BLOCKQUOTE> <FORM>
+                         <ISINDEX> <HR> <ADDRESS> </FORM>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -6239,17 +6180,17 @@ FORM
    
 H1
 
-  Required Parts         <H1>characters...</H1>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+  Required Parts         <H1>characters... </H1>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 6
 
 
                          
-  All Parts              <H1>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H1>
+  All Parts              <H1>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H1>
                          
   Allowed In Content Of...
-                         <BODY> <FORM>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -6260,14 +6201,14 @@ H1
    
 H2
 
-  Required Parts         <H2>characters...</H2>
+  Required Parts         <H2>characters... </H2>
                          
-  All Parts              <H2>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H2>
+  All Parts              <H2>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H2>
                          
   Allowed In Content Of...
-                         <BODY> <FORM>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -6278,14 +6219,14 @@ H2
    
 H3
 
-  Required Parts         <H3>characters...</H3>
+  Required Parts         <H3>characters... </H3>
                          
-  All Parts              <H3>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H3>
+  All Parts              <H3>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H3>
                          
   Allowed In Content Of...
-                         <BODY> <FORM>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -6296,17 +6237,17 @@ H3
    
 H4
 
-  Required Parts         <H4>characters...</H4>
+  Required Parts         <H4>characters... </H4>
                          
-  All Parts              <H4>characters...<A> <IMG> <BR> <EM> <STRONG>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+  All Parts              <H4>characters... <A> <IMG> <BR> <EM>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 7
 
 
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H4>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H4>
                          
   Allowed In Content Of...
-                         <BODY> <FORM>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -6317,14 +6258,14 @@ H4
    
 H5
 
-  Required Parts         <H5>characters...</H5>
+  Required Parts         <H5>characters... </H5>
                          
-  All Parts              <H5>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H5>
+  All Parts              <H5>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H5>
                          
   Allowed In Content Of...
-                         <BODY> <FORM>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -6335,14 +6276,14 @@ H5
    
 H6
 
-  Required Parts         <H6>characters...</H6>
+  Required Parts         <H6>characters... </H6>
                          
-  All Parts              <H6>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </H6>
+  All Parts              <H6>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </H6>
                          
   Allowed In Content Of...
-                         <BODY> <FORM>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -6358,7 +6299,7 @@ HEAD
   All Parts              <HEAD><TITLE> <ISINDEX> <BASE> <LINK> </HEAD>
                          
   Allowed In Content Of...
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 8
 
 
                          <HTML>
@@ -6377,8 +6318,7 @@ HR
   All Parts              <HR>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <FORM>
                          
   Discussion
                          
@@ -6404,31 +6344,38 @@ HTML
    
 I
 
-  Required Parts         <I>characters...</I>
+  Required Parts         <I>characters... </I>
                          
-  All Parts              <I>characters...<A> </I>
+  All Parts              <I>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </I>
                          
   Allowed In Content Of...
-                         <PRE>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
       in Highlighting in HTML
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 9
+
+
       
    
    T
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 9
-
-
    
 IMG
 
-  Required Parts         <IMG SRC="...">
+  Required Parts         <IMG SRC="..." >
                          
-  All Parts              <IMG SRC="..." ALT="..." ALIGN="..." ISMAP>
+  All Parts              <IMG SRC="..."  ALT="..."  ALIGN="..."
+                         ISMAP>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -6441,9 +6388,9 @@ INPUT
 
   Required Parts         <INPUT>
                          
-  All Parts              <INPUT TYPE="..." NAME="..." VALUE="..."
-                         SRC="..." CHECKED SIZE="..." MAXLENGTH="..."
-                         ALIGN="...">
+  All Parts              <INPUT TYPE="..."  NAME="..."  VALUE="..."
+                         SRC="..."  CHECKED SIZE="..."
+                         MAXLENGTH="..."  ALIGN="..." >
                          
   Allowed In Content Of...
                          
@@ -6461,8 +6408,7 @@ ISINDEX
   All Parts              <ISINDEX>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <HEAD> <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <FORM> <HEAD> <LI>
                          
   Discussion
                          
@@ -6471,17 +6417,21 @@ ISINDEX
    
    T
    
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 10
+
+
 KBD
 
-  Required Parts         <KBD>characters...</KBD>
+  Required Parts         <KBD>characters... </KBD>
                          
-  All Parts              <KBD>characters...<A> </KBD>
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 10
-
-
+  All Parts              <KBD>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </KBD>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -6492,10 +6442,12 @@ KBD
    
 LI
 
-  Required Parts         <LI>
+  Required Parts         <LI>characters...
                          
-  All Parts              <LI><P> <HR> <UL> <OL> <DL> <PRE>
-                         <BLOCKQUOTE> <ADDRESS> <FORM> <ISINDEX> </LI>
+  All Parts              <LI>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> <P> <UL> <OL> <DL> <PRE>
+                         <BLOCKQUOTE> <FORM> <ISINDEX> </LI>
                          
   Allowed In Content Of...
                          <OL> <UL>
@@ -6509,10 +6461,10 @@ LI
    
 LINK
 
-  Required Parts         <LINK HREF="...">
+  Required Parts         <LINK HREF="..." >
                          
-  All Parts              <LINK HREF="..." REL="..." REV="..."
-                         URN="..." TITLE="..." METHODS="...">
+  All Parts              <LINK HREF="..."  REL="..."  REV="..."
+                         URN="..."  TITLE="..."  METHODS="..." >
                          
   Allowed In Content Of...
                          <HEAD>
@@ -6524,6 +6476,9 @@ LINK
    
    T
    
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 11
+
+
 OL
 
   Required Parts         <OL></OL>
@@ -6531,13 +6486,9 @@ OL
   All Parts              <OL><LI> </OL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 11
-
-
                          
       in Lists and glossaries in HTML
       
@@ -6548,8 +6499,8 @@ OPTION
 
   Required Parts         <OPTION>characters...
                          
-  All Parts              <OPTION SELECTED
-                         VALUE="...">characters...</OPTION>
+  All Parts              <OPTION SELECTED VALUE="..." >characters...
+                         </OPTION>
                          
   Allowed In Content Of...
                          <SELECT>
@@ -6565,13 +6516,12 @@ P
 
   Required Parts         <P>characters...
                          
-  All Parts              <P>characters...<A> <IMG> <BR> <EM> <STRONG>
-                         <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
-                         <STRIKE> </P>
+  All Parts              <P>characters... <A> <IMG> <BR> <EM> <STRONG>
+                         <CODE> <SAMP> <KBD> <VAR> <CITE> <TT> <B> <I>
+                         </P>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -6582,33 +6532,37 @@ P
    
 PRE
 
-  Required Parts         <PRE>characters...</PRE>
+  Required Parts         <PRE>characters... </PRE>
                          
-  All Parts              <PRE WIDTH="...">characters...<A> <TT> <B>
-                         <I> </PRE>
+  All Parts              <PRE WIDTH="..." >characters... <A> <TT> <B>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 12
+
+
+                         <I> <EM> <STRONG> <CODE> <SAMP> <KBD> <VAR>
+                         <CITE> </PRE>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
       The PRE element in HTML
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 12
-
-
       
    
    T
    
 SAMP
 
-  Required Parts         <SAMP>characters...</SAMP>
+  Required Parts         <SAMP>characters... </SAMP>
                          
-  All Parts              <SAMP>characters...<A> </SAMP>
+  All Parts              <SAMP>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </SAMP>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -6619,9 +6573,9 @@ SAMP
    
 SELECT
 
-  Required Parts         <SELECT NAME="..."></SELECT>
+  Required Parts         <SELECT NAME="..." ></SELECT>
                          
-  All Parts              <SELECT NAME="..." SIZE="..."
+  All Parts              <SELECT NAME="..."  SIZE="..."
                          MULTIPLE><OPTION> </SELECT>
                          
   Allowed In Content Of...
@@ -6633,33 +6587,21 @@ SELECT
    
    T
    
-STRIKE
-
-  Required Parts         <STRIKE>characters...</STRIKE>
-                         
-  All Parts              <STRIKE>characters...<A> </STRIKE>
-                         
-  Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
-                         
-  Discussion
-                         
-      in Highlighting in HTML
-      
-   
-   T
-   
 STRONG
 
-  Required Parts         <STRONG>characters...</STRONG>
+  Required Parts         <STRONG>characters... </STRONG>
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 13
+  All Parts              <STRONG>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </STRONG>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 13
 
 
-  All Parts              <STRONG>characters...<A> </STRONG>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
@@ -6670,11 +6612,11 @@ STRONG
    
 TEXTAREA
 
-  Required Parts         <TEXTAREA NAME="..." ROWS="..."
-                         COLS="...">characters...</TEXTAREA>
+  Required Parts         <TEXTAREA NAME="..."  ROWS="..."  COLS="..."
+                         >characters... </TEXTAREA>
                          
-  All Parts              <TEXTAREA NAME="..." ROWS="..."
-                         COLS="...">characters...</TEXTAREA>
+  All Parts              <TEXTAREA NAME="..."  ROWS="..."  COLS="..."
+                         >characters... </TEXTAREA>
                          
   Allowed In Content Of...
                          
@@ -6687,9 +6629,9 @@ TEXTAREA
    
 TITLE
 
-  Required Parts         <TITLE>characters...</TITLE>
+  Required Parts         <TITLE>characters... </TITLE>
                          
-  All Parts              <TITLE>characters...</TITLE>
+  All Parts              <TITLE>characters... </TITLE>
                          
   Allowed In Content Of...
                          <HEAD>
@@ -6703,18 +6645,22 @@ TITLE
    
 TT
 
-  Required Parts         <TT>characters...</TT>
+  Required Parts         <TT>characters... </TT>
                          
-  All Parts              <TT>characters...<A> </TT>
+  All Parts              <TT>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </TT>
                          
   Allowed In Content Of...
-                         <PRE>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+Jun 21 11:40 1994  HTML Specification	 Connolly and Berners-Lee Page 14
+
+
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
-Jun 13 17:53 1994  HTML Specification	 Connolly and Berners-Lee Page 14
-
-
       in Highlighting in HTML
       
    
@@ -6727,8 +6673,7 @@ UL
   All Parts              <UL><LI> </UL>
                          
   Allowed In Content Of...
-                         <ADDRESS> <BLOCKQUOTE> <BODY> <DD> <FORM>
-                         <LI>
+                         <BLOCKQUOTE> <BODY> <DD> <FORM> <LI>
                          
   Discussion
                          
@@ -6739,19 +6684,23 @@ UL
    
 VAR
 
-  Required Parts         <VAR>characters...</VAR>
+  Required Parts         <VAR>characters... </VAR>
                          
-  All Parts              <VAR>characters...<A> </VAR>
+  All Parts              <VAR>characters... <A> <IMG> <BR> <EM>
+                         <STRONG> <CODE> <SAMP> <KBD> <VAR> <CITE>
+                         <TT> <B> <I> </VAR>
                          
   Allowed In Content Of...
-                         <A> <DT> <H1> <H2> <H3> <H4> <H5> <H6> <P>
+                         <A> <ADDRESS> <B> <CITE> <CODE> <DD> <DT>
+                         <EM> <H1> <H2> <H3> <H4> <H5> <H6> <I> <KBD>
+                         <LI> <P> <PRE> <SAMP> <STRONG> <TT> <VAR>
                          
   Discussion
                          
       in Highlighting in HTML
       
    
-Jun 13 17:20 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 14 15:36 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
 <!SGML  "ISO 8879:1986"
@@ -6810,7 +6759,7 @@ SYNTAX
                   RS          10
                   SPACE       32
                   TAB SEPCHAR  9
-Jun 13 17:20 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 14 15:36 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
 	
@@ -6825,7 +6774,8 @@ SYNTAX
                   SHORTREF SGMLREF
          NAMES    SGMLREF
          QUANTITY SGMLREF
-                  NAMELEN  34
+                  NAMELEN  72    -- somewhat arbitrary; taken from
+					internet line length conventions --
                   TAGLVL   100
                   LITLEN   1024
                   GRPGTCNT 150
@@ -6855,7 +6805,7 @@ FEATURES
 	See also: http://www.hal.com/%7Econnolly/html-spec
 		  http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
  -->
-Jun 13 17:26 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 16 16:51 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
 <!--	html-0.dtd
@@ -6914,7 +6864,7 @@ FEATURES
 <!ENTITY % linkattributes-1 "" -- level 1 link attributes -->
 
 <!ENTITY % linkattributes
-Jun 13 17:26 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 16 16:51 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
         "NAME CDATA #IMPLIED
@@ -6924,9 +6874,9 @@ FEATURES
 
 <!-- Text Markup -->
 
-<!ENTITY % text "#PCDATA | BR ">
+<!ENTITY % text "#PCDATA | BR">
 
-<!ELEMENT BR    - O EMPTY -- @# BR -> &br; -->
+<!ELEMENT BR    - O EMPTY>
 
 <!--   Mnemonic character entities. -->
 
@@ -6935,14 +6885,15 @@ FEATURES
 %ISOlat1;
 
 <!ENTITY #DEFAULT SDATA "&#38;unkown;" --display the markup-->
-<!ENTITY amp CDATA "&#38;"     -- ampersand -->
-<!ENTITY gt CDATA "&#62;"      -- greater than -->
-<!ENTITY lt CDATA "&#60;"      -- less than -->
-<!ENTITY quot CDATA "&#34;"    -- double quote -->
+<!ENTITY amp CDATA "&#38;"     -- ampersand          -->
+<!ENTITY gt CDATA "&#62;"      -- greater than       -->
+<!ENTITY lt CDATA "&#60;"      -- less than          -->
+<!ENTITY quot CDATA "&#34;"    -- double quote       -->
 
-<!--   Processing Entities -->
-
-<!ENTITY nbsp "<? nonbreaking-space>" -- @# -->
+<![ %HTML.Proposed [
+<!ENTITY nbsp CDATA "&#160;"   -- non-breaking space -->
+<!ENTITY shy  CDATA "&#173;"   -- soft hyphen        -->
+]]>
 
 
 <!-- DTD "macros" -->
@@ -6961,19 +6912,19 @@ FEATURES
 <!ENTITY % block-2 "" -- block elements added in level 2 -->
 
 <![ %HTML.Obsolete [
-	<!ENTITY % block "P | HR | %list | DL
+	<!ENTITY % block "P | %list | DL
 		| PRE | XMP | LISTING
-		| BLOCKQUOTE | ADDRESS %block-2">
+		| BLOCKQUOTE %block-2">
 ]]>
 
-<!ENTITY % block "P | HR | %list | DL
-		| PRE | BLOCKQUOTE | ADDRESS %block-2">
+<!ENTITY % block "P | %list | DL
+		| PRE | BLOCKQUOTE %block-2">
 
 <!-- HyperText -->
 
 <!ENTITY % htext "A | %text"    -- Plus links, no structure -->
+Jun 16 16:51 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
-Jun 13 17:26 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
 <![ %HTML.Prescriptive [
@@ -7013,10 +6964,7 @@ FEATURES
 
 <!-- Text Flows -->
 
-<![ %HTML.Prescriptive [
-	<!ENTITY % flow "%block" --@# requires P tags that cause problems!-->
-]]>
-<!ENTITY % flow "%htext|%block">
+<!ENTITY % flow "(%htext|%block)*">
 
 <!-- Lists -->
 
@@ -7026,16 +6974,16 @@ FEATURES
 	COMPACT (COMPACT) #IMPLIED>
 
 <!ELEMENT DT    - O (%htext)+>
-<!ELEMENT DD    - O (%flow)+>
+<!ELEMENT DD    - O %flow>
 
 <!ELEMENT (%list) - -  (LI)+>
 
-<!ELEMENT LI    - O (%flow)+>
-
-Jun 13 17:26 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
+<!ELEMENT LI    - O %flow>
 
 <!-- Preformatted Text -->
+
+Jun 16 16:51 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
 
 <!ENTITY % pre.content "#PCDATA | A">
 <!ELEMENT PRE - - (%pre.content)+>
@@ -7057,18 +7005,26 @@ FEATURES
 ]]>
 
 
-<!-- Misc. Block Elements -->
-
-<!ELEMENT BLOCKQUOTE - - (%flow)+ -- @# Hmm... --
-        -- for quoting some other source -->
-
-<!ELEMENT ADDRESS - - (%flow)+>
-
-
 <!-- Document Body -->
 
-<!ENTITY % body.content "(%heading|%flow)+">
+<![ %HTML.Prescriptive [
+	<!ENTITY % body.content "(%heading|%block|HR|ADDRESS)*">
+]]>
+
+<!ENTITY % body.content "(%heading | %htext | %block | HR | ADDRESS)*">
+
 <!ELEMENT BODY O O  %body.content>
+
+<!-- Misc. Body Elements -->
+
+<!ELEMENT BLOCKQUOTE - - %body.content>
+
+<![ %HTML.Prescriptive [
+	<!ENTITY % address.content "(%htext)*">
+]]>
+<!ENTITY % address.content "(%htext|P)*">
+<!ELEMENT ADDRESS - - %address.content>
+
 
 <!-- Document Head -->
 
@@ -7085,14 +7041,14 @@ FEATURES
           -- WWW clients should offer the option to perform a search on
              documents containing ISINDEX.
           -->
+Jun 16 16:51 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
 
 <!ELEMENT BASE - O EMPTY    -- Reference context for URIs -->
 <!ATTLIST BASE
         HREF %URI; #REQUIRED
         >
-
-Jun 13 17:26 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
 
 <![ %HTML.Obsolete [
 <!ELEMENT NEXTID - O EMPTY>
@@ -7115,7 +7071,7 @@ FEATURES
 
 
 
-Jun 13 15:55 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 16 16:51 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
 <!--	html-1.dtd
@@ -7143,8 +7099,9 @@ FEATURES
 	>
 
 
-<!ENTITY % HTML.Prescriptive "IGNORE"
-	-- marks things that may go away in the future -->
+<!ENTITY % HTML.Proposed "IGNORE"
+	-- marks things that have been proposed, but aren't
+ 	   yet widely supported -->
 
 <!ENTITY % linkType "NAME"
 	-- a list of these will be specified at a later date -->
@@ -7163,29 +7120,37 @@ FEATURES
         ">
 
 
+<![ %HTML.Proposed [
+<!ENTITY % head.content-1 "& LINK* & META*">
+<!ELEMENT META - O EMPTY    -- Generic Metainformation -->
+<!ATTLIST META
+        HTTP-EQUIV  NAME    #IMPLIED  -- HTTP response header name  --
+        NAME        NAME    #IMPLIED  -- metainformation name       --
+        VALUE       CDATA   #REQUIRED -- associated information     --
+        >
+]]>
+
+Jun 16 16:51 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
 <!ENTITY % head.content-1 "& LINK*">
 
 <!ELEMENT LINK - O EMPTY>
 <!ATTLIST LINK
 	HREF %URI #REQUIRED
         %linkattributes-1; >
-        
-<!ENTITY % font " TT | B | I "
-	-- @# U underline? S strike? -->
 
-<!ENTITY % phrase "EM | STRONG | CODE | SAMP 
-Jun 13 15:55 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
-	| KBD | VAR | DFN | CITE | STRIKE ">
-
-
-
-<![ %HTML.Prescriptive [
-	<!ENTITY % text "#PCDATA | IMG | BR | %phrase">
-	<!ENTITY % phrase.content "#PCDATA | A">
-	<!ENTITY % pre.content "#PCDATA | A | %font ">
+<![ %HTML.Proposed [
+	<!ENTITY % font " TT | B | I | U | S ">
+	<!ENTITY % phrase "EM | STRONG | CODE | SAMP | KBD | VAR | CITE
+				| STRIKE | DFN | KEY">
 ]]>
+
+<!ENTITY % font " TT | B | I ">
+
+<!ENTITY % phrase "EM | STRONG | CODE | SAMP | KBD | VAR | CITE ">
+
+
 
 <!ENTITY % text "#PCDATA | IMG | BR | %phrase | %font">
 <!ENTITY % htext "A | %text"    -- Plus links, no structure -->
