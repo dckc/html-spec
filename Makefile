@@ -2,7 +2,7 @@
 # $Id$
 #
 
-RELEASE = 19950608
+RELEASE = 19950616
 PACKAGE = html-spec-$(RELEASE)
 
 # Things outside this distribution

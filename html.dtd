@@ -182,6 +182,8 @@ SDA & ICADD:
 
 <!--========= Link Markup ======================-->
 
+<!ENTITY % linkType "NAME">
+
 <!ENTITY % linkExtraAttributes
         "REL %linkType #IMPLIED
         REV %linkType #IMPLIED
