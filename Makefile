@@ -5,8 +5,12 @@
 # Things outside this distribution
 ENV= SGML_PATH='./%N.%C:%N.dtd:%N.sgml'
 SGMLS = sgmls
+PERL=perl
+
 WWW = www
 HTML_SPEC_DIR = http://info.cern.ch/hypertext/WWW/MarkUp
+CANON_FILTER = test_html -c
+DTDTOOL=www_dtd.pl
 
 #
 # "No user-serviceable parts inside"
@@ -14,8 +18,10 @@ HTML_SPEC_DIR = http://info.cern.ch/hypertext/WWW/MarkUp
 ORIGINALS = Makefile $(HYPERTEXT)
 RELEASE = 199404??
 PACKAGE = html_spec-$(RELEASE)
-DTD = HTML.dtd
-DECL = HTML.sgml
+DTD = html.dtd
+DECL = html.decl
+
+ELTINDEX = ElementIndex.html
 
 DRAFT = HTML.txt
 BIGDOC = html-spec-agg.sgml
@@ -53,24 +59,32 @@ HYPERTEXT = \
 	LiteralHistory.html\
 	Entities.html\
 	ISOlat1.html\
-	DTDHeading.html\
-	HTML.dtd.html\
-	Relationships.html\
-	RegistrationAuthority.html\
 	Acknowledgements.html\
 	References.html\
-	Authors.html
+	Authors.html \
 
 #@@	tolerated.html\
+#@@	HTML.dtd.html\
+#	Relationships.html\
+#	RegistrationAuthority.html\
+#	DTDHeading.html\
 
-all: draft
+all: validate canonicalize generate validate text
 
-draft: $(DRAFT)
+generate: $(ELTINDEX)
 
-$(DRAFT): $(HYPERTEXT)
-	(for html in $(HYPERTEXT); do \
-		$(HTML2TXT) $$html; \
-	done;) >$@
+text: $(DRAFT)
+
+HEADER =  HTML Specification    Connolly and Berners-Lee
+FF = $(PERL) -e 'print "\f"'
+
+$(DRAFT): $(HYPERTEXT) $(ELTINDEX) $(DTD) $(DECL)
+	(for html in $(HYPERTEXT) $(ELTINDEX); do \
+		$(HTML2TXT) $$html | pr -f -h '$(HEADER)'; \
+		$(FF); \
+	done; \
+	pr -f -h '$(HEADER)' $(DTD); $(FF); \
+	pr -f -h '$(HEADER)' $(DTD); $(FF); ) >$@
 
 snapshot:
 	for html in $(HYPERTEXT); do \
@@ -99,6 +113,17 @@ $(BIGDOC): $(BIGPRE)
 	
 validate: $(HYPERTEXT) $(BIGDOC)
 	$(ENV) $(SGMLS) -s -e $(BIGDOC)
+	touch $@
+
+$(ELTINDEX): $(HYPERTEXT) $(DTD) $(DTDTOOL)
+	$(PERL) $(DTDTOOL) -hypertext HTML $(HYPERTEXT) <$(DTD) >$@
+
+canonicalize: $(HYPERTEXT)
+	for h in $(HYPERTEXT); do \
+		$(CANON_FILTER) <$$h >,xxx; \
+		mv ,xxx $$h; \
+	done
+	touch $@
 
 # Obsolete
 IDTK = ../../installed

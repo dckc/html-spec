@@ -7,7 +7,18 @@ N="z16"></HEAD>
 
 <BODY>
 
+<H1>Hypertext Markup Language (HTML)</H1>
+
+<H3>An SGML Application Conforming to International Standard
+ISO 8879 -- Standard Generalized Markup Language</H3>
+
 <H2>Status of this Document</H2>
+
+<P><EM>This is a revision of the <A
+HREF="http://info.cern.ch/hypertext/WWW/MarkUp/HTML.html">HTML
+specification maintained by Tim Berners-Lee at CERN</A>.
+<BR>&#60;connolly@hal.com&#62; <BR>$Id$ </EM>
+
 
 <P>This document is an Internet Draft. Internet Drafts are working
 documents of the Internet Engineering Task Force (IETF),
@@ -23,16 +34,16 @@ or to cite them other than as a "working draft" or "work in progress".
 <P>Distribution of this document is unlimited.
 The document is a draft form of a standard for interchange of
 information on the network which is proposed to be registered
-as a MIME (RFC1341) content type. Please send comments to timbl@info.cern.ch
+as a MIME (RFC1521) content type. Please send comments to connolly@hal.com
 or the discussion list www-talk@info.cern.ch.
 
-<P>This is version 1.2 of this draft. This document is available
-in hypertext on the World-Wide Web as http://info.cern.ch/hypertext/WWW/MarkUp/HTML.html
+<P>This is version 1.3 of this draft. This document is available
+in hypertext on the World-Wide Web as <CODE>http://www.hal.com/%7Econnolly/html-spec/HTML.html</CODE>
 
 <H2>Abstract</H2>
 
-<P><A HREF="MarkUp.html" NAME="z14">HyperText Markup Language</A>
-(HTML) can be used to represent
+<P><!-- HREF="MarkUp.html" --><A NAME="z14">HyperText Markup
+Language</A> (HTML) can be used to represent
 
 <UL>
 
@@ -66,10 +77,9 @@ of the representations used with W3.
 in the various W3 servers and browsers, in the public domain
 W3 code, and may also be built using various public domain SGML
 parsers such as <A HREF="References.html#z4"
-NAME="z7">[SGMLS]</A> . HTML is an SGML document type with fairly
-generic semantics appropriate for representing information from
-a wide range of applications. It is more generic than many specific
-SGML applications, but is still completely device-independent.
+NAME="z7">[SGMLS]</A> . HTML documents are SGML documents with
+fairly generic semantics appropriate for representing information
+from a wide range of applications.
 
 <H1>In this document</H1>
 
@@ -88,8 +98,8 @@ SGML applications, but is still completely device-independent.
 <DT><A HREF="Intro.html" NAME="z3">HTML and SGML</A>
 
 <DD>and the relationship between them, and <A
-HREF="Text.html" NAME="z9">Structured text</A> :
-an introduction for beginners to SGML.
+HREF="Text.html" NAME="z9">Structured text</A>:
+an summary of SGML syntax.
 
 <DT><A HREF="Tags.html" NAME="z4">HTML Elements</A>
 
@@ -98,20 +108,6 @@ an introduction for beginners to SGML.
 <DT><A HREF="Entities.html" NAME="z6">HTML Entities</A>
 
 <DD>Entities used to describe characters.
-
-<DT><A HREF="DTDHeading.html" NAME="z2">The HTML DTD</A>
-
-<DD>The text of the SGML DTD for HTML
-
-<DT><A HREF="Relationships.html" NAME="z1">Link relationship
-values</A> .
-
-<DD>A provisional list. Not part of the standard.
-
-<DT><A HREF="RegistrationAuthority.html"
-NAME="z13">Registration Authority</A>
-
-<DD>The authority for extending lists of valid vales.
 
 <DT><A HREF="Acknowledgements.html" NAME="z15">Acknowledgements</A>
 
@@ -124,8 +120,21 @@ NAME="z13">Registration Authority</A>
 <DT><A HREF="Authors.html" NAME="z11">Authors addresses</A>
 
 <DD>Contact information.
-</DL>
 
-<P>table of contents
+<DT><A HREF="ElementIndex.html">Appendix I:
+Element Reference</A>
+
+<DD>Alphabetical listing of elements with syntax descriptions
+
+<DT><A HREF="html.dtd" NAME="z2">Appendix II:
+The HTML DTD</A>
+
+<DD>The text of the SGML DTD for HTML
+
+<DT><A HREF="html.decl" NAME="z2">Appendix III:
+The HTML SMGL Declaration</A>
+
+<DD>The text of the SGML Declaration for HTML
+</DL>
 </BODY>
 </HTML>

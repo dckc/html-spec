@@ -15,9 +15,9 @@ HREF="DTDHeading.html" NAME="z1">DTD</A>.
 (This is not a full tutorial on SGML, and in the event of any
 apparent conflict, the SGML standard is definitive.)
 
-<P>The HyperText Markup Language is defined in terms of the ISO
-Standard Generalized Markup Language [<A
-HREF="References.html#z3" NAME="z0"> SGML</A> ].
+<P>The HyperText Markup Language is an application conforming
+to International Standard ISO 8879 -- Standard Generalized Markup
+Language [<A HREF="References.html#z3" NAME="z0"> SGML</A> ].
 SGML is a system for defining structured document types,
 and markup languages to represent instances of those document
 types.
@@ -29,8 +29,8 @@ types.
 <LI>An SGML declaration, which binds SGML processing quantities
 and syntax token names to specific values.
 For example, the SGML declaration in the HTML DTD specifies that
-the string that opens a tag is 60;/ and the maximum length of
-a name is 34 characters.
+the string that opens a tag is <CODE>&#60;/</CODE> and the maximum
+length of a name is 34 characters.
 
 <LI>A prologue including one or more document type declarations,
 which specifiy the element types, element relationships and attributes,
@@ -44,15 +44,32 @@ at most one TITLE element.
 <P>We use the term HTML to mean both the document type and the
 markup language for representing instances of that document type.
 
-<P>All HTML documents share the same SGML declaration an prologue.
-Hence implementations of the WorldWide Web generally only transmit
-and store the instance part of an HTML document.
-To construct an SGML document entity for processing by an SGML
-parser, it is necessary to prefix the text from ``HTML DTD''
-on page 10 to the HTML instance.
+<P>The SGML declaration for HTML is given in the appendix ``SGML
+Delcaration for HTML.'' It is implicit among WWW implementations.<!-- @@ include an explanation of how to use sgmls with this stuff -->
 
-<P>Conversely, to implement an HTML parser,
-one need only implement those parts of an SGML parser that are
-needed to parse an instance after parsing the HTML DTD.
+<P>The prologue for an HTML document should<!-- @@ explain more -->
+look like:
+
+<PRE>
+&#60;!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN"&#62;
+</PRE>
+
+<DL>
+
+<DT><STRONG>@@NOTE 1:</STRONG>
+
+<DD><EM>The owner part "connolly hal.com" should be changed to
+the name of the institution that owns this specification,
+whatever that is. The "Date..." part should be shortened to something
+like "1.3", corresponding to the publication of this document.</EM>
+
+<DT><STRONG>NOTE 2:</STRONG>
+
+<DD><EM>Many extant HTML documents do not contain a prologue.
+Implementations are encouraged to infer the above prologue if
+the document does not begin with <CODE>&#60;!</CODE>.
+</EM>
+
+</DL>
 </BODY>
 </HTML>

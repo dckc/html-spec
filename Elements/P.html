@@ -2,44 +2,37 @@
 <HTML>
 
 <HEAD>
-<TITLE>Paragraph marks in HTML</TITLE> <NEXTID
+<TITLE>Paragraphs in HTML</TITLE> <NEXTID
 N="z36"></HEAD>
 
 <BODY>
 
-<H1>P: Paragraph mark</H1>
+<H1>P: Paragraph</H1>
 
-<P>The empty P element indicates a paragraph break.
+<P>The empty P element represents a paragraph.
 The exact rendering of this (indentation,
 leading, etc) is not defined here, and may be a function of other
 tags, style sheets etc.
 
-<P>&#60;P&#62; is used between two pieces of text which otherwise
-would be flowed together.
-
 <P>You do NOT need to use &#60;P&#62; to put white space around
-heading, list, address or blockquote elements which imply a paragraph
-break. It is the responsibility of the rendering software to
-generate that white space. A paragraph mark which is preceded
-or followed by such elements which imply a paragraph break is
-has undefined effect and should be avoided.
+heading, list, address or blockquote elements.
+It is the responsibility of the rendering software to generate
+that white space. An empty paragraph has undefined effect and
+should be avoided.
 
 <H2>Typical rendering</H2>
 
-<P>Typically, &#60;P&#62; will generate a small vertical space
-(of a line or half a line) between the paragraphs.
-This is not the case (typically) within ADDRESS or (ever) within
-PRE elements. With some implementations,
-in normal text, &#60;P&#62; may generate a small extra left indent
-on the first line.
+<P>Typically, paragraphs are surrounded by a small vertical space
+(of a line or half a line). This is not the case (typically)
+within ADDRESS or (ever) within PRE elements.
+With some implementations, normal paragraphs may have a small
+extra left indent on the first line.
 
 <H2>Examples of use</H2>
 
 <PRE>	&#60;h1&#62;What to do&#60;/h1&#62;
-	This is a one paragraph.&#60;<A
-HREF="../HTML.dtd.html#z26" NAME="z35"> p</A> &#62;This is a second.
-	&#60;<A
-HREF="../HTML.dtd.html#z26" NAME="z34"> P</A> &#62;
+	&#60;p&#62;This is a one paragraph.&#60;P&#62;This is a second.
+	&#60;P&#62;
 	This is a third.
 
 </PRE>
@@ -47,15 +40,15 @@ HREF="../HTML.dtd.html#z26" NAME="z34"> P</A> &#62;
 <H2>Bad example</H2>
 
 <PRE>        &#60;h1&#62;&#60;P&#62;What not to do&#60;/h1&#62;
-	&#60;p&#62;I found that on my XYZ browser it looked prettier to
-	me if I put some paragraph marks
+	&#60;address&#62;&#60;p&#62;I found that on my XYZ browser it looked prettier to
+	me if I put some paragraph tags&#60;/address&#62;
 	&#60;p&#62;
 	&#60;ul&#62;&#60;p&#62;&#60;li&#62;Around lists, and
-	&#60;li&#62;After headings.
+	&#60;li&#62;Inside headings.
 	&#60;/ul&#62;
 	&#60;p&#62;
-	None of the paragraph marks in this example should
-	be there.
+	&#60;h2&#62;None of the paragraph tags in this example should
+	be there.&#60;/h2&#62;
 
 </PRE>
 
