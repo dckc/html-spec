@@ -3,8 +3,8 @@
 <p> In addition to general purpose elements such as paragraphs and
 lists, HTML documents can express hyperlinks. A hyperlink is a
 relationship between two anchors, called the head and the tail of the
-hyperlink. An anchor is a resource such as an HTML document, or some
-fragment of, i.e. view on or portion of a resource.
+hyperlink[DEXTER]. An anchor is a resource such as an HTML document,
+or some fragment of, i.e. view on or portion of a resource.
 
 <p> Anchors are addressed by Uniform Resource Identifiers (URI). URIs
 either refer directly to an anchor in absolute form for example as in
