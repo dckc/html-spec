@@ -42,7 +42,7 @@ of a hyperlink or set of hyperlinks:
 means of an absolute URI, or indirectly by means of a relative URI,
 which must be combined with the base URI as in [RELURL] to determine
 the address of the head anchor. The markup may also include fragment
-identifiers, separeted from the URI by a '#' character.
+identifiers, separated from the URI by a '#' character.
 
 <h2>Accessing Resources
 
@@ -63,9 +63,26 @@ the <tag/IMG/ element.
 
 <p>If the URI in the address of the head anchor is the same as the
 base URI, then the base document is sufficient as a representation of
-the resource. A user agent must <emph/not/, for example, use any network
-information retrieval protocols to obtain a new representation of the
-resourse.
+the resource. A user agent must <emph/not/, for example, use any
+network information retrieval protocols to obtain a new representation
+of the resourse.
+
+<p>For example, if the base uri is
+<code/http://www.w3.org/hypertext/WWW/TheProject.html/, then each of
+the following markup constructs indicates a link whose head and tail
+anchors have the same URI in their address:
+
+<listing><![CDATA[
+<a href="#xyz">
+<a href="../WWW/TheProject.html">
+<a href="./TheProject.html">
+<a href="TheProject.html">
+<a href="TheProject.html#z21">
+<a href="../../hypertext/WWW/TheProject.html">
+<a href="http://www.w3.org/hypertext/WWW/TheProject.html">
+]]>
+</listing>
+
 
 <h2 id=traverse>Activation of Hyperlinks
 
@@ -98,7 +115,7 @@ during the processing of the document.
 <h2>Fragment Identifiers
 
 Any characters following a <code/#/ character in a hypertext address
-constitute a fragment identifier. As a degenerate case, an address of
+constitute a fragment identifier. In particular, an address of
 the form <code/#fragment/ refers to an anchor in the same document.
 
 The meaning of fragment identifiers depends on the media type of the

@@ -6,7 +6,7 @@
 <!entity status SYSTEM "draft-status.sgm">
 
 <!entity stat "Internet Draft">
-<!entity date "August 4, 1995">
+<!entity date "August 8, 1995">
 <!entity filename CDATA "&#60;draft-ietf-html-spec-05.txt&#62;">
 
 <!entity intro system "intro.sgm">

@@ -17,12 +17,12 @@ within the body text flow.
 
 <h3 id=base>Base Address: BASE
 
-<p>The optional <tag/BASE/ element allows the address a document to be
-recorded in situations in which the document may be read out of
-context. The required <attr/HREF/ attribute specifies specifies the
-base URI (see <hdref refid=hyperlink>) for navigating the document,
-overriding any context otherwise known to the user agent. The value of
-the <attr/HREF/ attribute must be an absolute URI.
+<p>The optional <tag/BASE/ element allows the address of a document to
+be recorded in situations in which the document may be read out of
+context. The required <attr/HREF/ attribute specifies the base URI
+(see <hdref refid=hyperlink>) for navigating the document, overriding
+any context otherwise known to the user agent. The value of the
+<attr/HREF/ attribute must be an absolute URI.
 
 <h3>Keyword Index: ISINDEX
 

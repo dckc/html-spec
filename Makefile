@@ -2,7 +2,7 @@
 # $Id$
 #
 
-RELEASE = 19950804
+RELEASE = 19950808
 PACKAGE = html-spec-$(RELEASE)
 PUBTEXT = html-pubtext-$(RELEASE)
 
