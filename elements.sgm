@@ -1,15 +1,15 @@
-><h1>Document Structure Elements
+<h1>Document Structure
 
 <p>To identify information as an HTML document conforming to this
-specification, each document should start with the prologue:
+specification, each document should start with the following prologue:
 
 <listing><![CDATA[
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 ]]></listing>
 
-<NOTE>If the body of a text/html body part does not begin with a
-document type declaration, an HTML user agent should infer the above
-document type declaration.
+<NOTE>If the body of a <code>text/html</> message entity does not begin
+with a document type declaration, an HTML user agent should infer the
+above document type declaration.
 </note>
 
 HTML user agents are required to support the above document type
@@ -38,15 +38,6 @@ like a memo or a mail message. Within the head, you can specify the
 title and other information about the document. Within the body,
 you can structure text into paragraphs and lists, as well as
 highlight phrases and create links, using HTML elements.
-
-<note>The start and end tags for HTML, Head, 
-and Body elements are omissible; however, this is not 
-recommended since the head/body structure allows an 
-implementation to determine certain properties of a 
-document, such as the title, without parsing the entire 
-document.
-</note<
-
 
 <h2>Head
 

@@ -136,5 +136,6 @@ specification apply.
 The widely deployed methods for submitting forms requests -- HTTP and
 SMTP -- provide little assurance of confidentiality. Information
 providers who request sensitive information via forms -- especially by
-way of the <code/PASSWORD/ type input field -- should be aware and
-make their users aware of the lack of confidentiality.
+way of the <code/PASSWORD/ type input field (see <hdref refid=input>)
+-- should be aware and make their users aware of the lack of
+confidentiality.

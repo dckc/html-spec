@@ -123,7 +123,7 @@ value was not altered by the user). In particular, unselected radio
 buttons and checkboxes should be excluded from the contents list.
 </note>
 
-<h2>Input
+<h2 id=input>Input
 
 <![CDATA[
 <INPUT>	Level 2

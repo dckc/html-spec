@@ -105,8 +105,8 @@ and markup as per [SGML].
 processes each character in the ISO Latin Alphabet Nr. 1 as specified
 in <hdref refid=charlist>.
 <note>To support non-western writing systems, HTML user agents should
-support the Unicode-1-1-UTF-8 and Unicode-1-1-UCS-2 encodings and as
-much of the character repertoire of ISO10646 as is possible as well.
+support ISO-10646-UCS-2 or similar character encoding schemes and as
+much of the character repertoire of ISO10646 as is practical as well.
 </note>
 
 <li>It behaves identically for documents whose parsed token sequences
