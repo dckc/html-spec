@@ -1,4 +1,4 @@
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                       Hypertext Markup Language (HTML)
@@ -57,7 +57,7 @@ Abstract
    (Hypertext Transfer Protocol, HTTP), which allows transfer
    representations to be negotiated between client and server, the
    result being returned in an extended MIME message. HTML is
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    therefore just one, but an important one, of the representations
@@ -73,7 +73,7 @@ Abstract
    [SGMLS] . HTML documents are SGML documents with fairly generic
    semantics appropriate for representing information from a wide
    range of applications.
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                             Vocabulary usied in the HTML specification
@@ -125,14 +125,14 @@ Status of features
                          ignored by parsers. It is legal to ignore
                          these, treat the contents as though the tags
                          were not there. (e.g. EM, and processing
-                         instructions) . Authors should be awarethat
+                         instructions) . Authors should be aware that
                          these features may be ignored by some
                          applications.
                          
   Proposed               The specification of these features is not
                          final. They should not be regarded as part
                          ofthe standard, but indicate possible
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
                          directions for future versions.
@@ -143,7 +143,7 @@ Status of features
                          versions of this specification.
                          
    
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                          HTML and MIME
@@ -177,7 +177,7 @@ Version
 Character sets
 
    The base character set (the SGML BASESET) for HTML is ISO Latin-1.
-   This is the set referred to by any numeric character references .
+   This is the set referred to by any numeric character references.
    The actual character set used in the representation of an HTML
    document may be ISO Latin 1, or its 7-bit subset which is ASCII.
    There is no obligation for an HTML document to contain any
@@ -199,16 +199,16 @@ Character sets
    significance is to override the base character set of the SGML
    declaration. Support of character sets other than ISO-Latin-1 is
    not a requirement for conformance with this specification.
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                     Hypertext Markup language and SGML
                             HTML AND SGML
                                    
    This section describes the relationship between HTML and SGML, and
-   guides the newcomer through interpretation of the DTD . (This is
-   not a full tutorial on SGML, and in the event of any apparent
-   conflict, the SGML standard is definitive.)
+   guides the newcomer through interpretation of the DTD. (This is not
+   a full tutorial on SGML, and in the event of any apparent conflict,
+   the SGML standard is definitive.)
    
    The HyperText Markup Language is an application conforming to
    International Standard ISO 8879 -- Standard Generalized Markup
@@ -221,7 +221,8 @@ Character sets
       An SGML declaration, which binds SGML processing quantities and
       syntax token names to specific values. For example, the SGML
       declaration in the HTML DTD specifies that the string that opens
-      a tag is </ and the maximum length of a name is 34 characters.
+      an end tag is </ and the maximum length of a name is 34
+      characters.
       
       A prologue including one or more document type declarations,
       which specifiy the element types, element relationships and
@@ -247,7 +248,7 @@ Character sets
    Many extant HTML documents do not contain a prologue.
    Implementations are encouraged to infer the above prologue if the
    document does not begin with <!.
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                Structured Text in HTML
@@ -304,9 +305,9 @@ Character sets
 Tags
 
    Most elements start and end with tags. Empty elements have no end
-   tag. Start tags are delimited by <and >, and end tags are delimited
-   by </ and >. For example:
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+   tag. Start tags are delimited by < and >, and end tags are
+   delimited by </ and >. For example:
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    
@@ -365,7 +366,7 @@ Tags
    equal sign.
    
    The value is either:
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
    
@@ -424,14 +425,14 @@ Undefined tag and attribute names
    discovering tag or attribute names which they do not understand
    should be to behave as though, in the case of a tag, the whole tag
    had not been there but its content had, or in the case of an
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 4
 
 
    attribute, that the attribute had not been present.
    
 Character Data
 
-   The charcters between the tags represent text in the ISO-Latin-1
+   The characters between the tags represent text in the ISO-Latin-1
    character set, which is a superset of ASCII. Because certain
    characters will be interpreted as markup, they should be "escaped";
    that is, represented by markup -- entity or numeric character
@@ -483,12 +484,12 @@ Character Data
 
   NOTE: TAGS IN COMMENTS
   
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 5
 
 
    Some historical implementations incorrectly consider a > sign to
    terminate a comment.
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       Elements of HTML
@@ -525,11 +526,11 @@ Information in the HEAD Element
                          
   LINK                   Relationship between this document and
                          another. See also the Anchor element ,
-                         Relationships . A document may have many LINK
+                         Relationships. A document may have many LINK
                          elements.
                          
   BASE                   A record of the URL of the document when
-                         saved
+                         saved.
                          
   PROPOSED HEAD ELEMENTS
   
@@ -547,7 +548,7 @@ Body Elements (level 1)
    
   HYPERTEXT ANCHORS
   
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   Anchors                Sections of text which form the beginning
@@ -563,7 +564,7 @@ Body Elements (level 1)
                          
   Paragraph              The P element represents a paragraph.
                          
-  Horizontal Rule        A horizontal dividing line
+  Horizontal Rule        A horizontal dividing line.
                          
   Address style          Used to represent authorship or status of a
                          document
@@ -594,13 +595,13 @@ Body elements (level 2)
    The FORM element and various other elements allowed only within it
    describe forms which allow user input.
    
-  FORM elements          FORM, INPUT, SELECT, OPTION, TEXTAREA, etc
+  FORM elements          FORM, INPUT, SELECT, OPTION, TEXTAREA, etc.
                          
 Obsolete elements
 
    The other elements are obsolete but should be recognised by parsers
    for back-compatibility.
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       HEAD -- Elements
@@ -612,7 +613,7 @@ Obsolete elements
    certain elements are allowed.
    
    
-Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:24 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                              The TITLE element in HTML
@@ -667,7 +668,7 @@ Obsolete elements
 
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                ISINDEX element in HTML
@@ -695,7 +696,7 @@ Example of use:
                 <ISINDEX>
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       LINK -- Elements
@@ -717,7 +718,7 @@ Example of use:
    
    Servers may also allow links to be added by those who do not have
    the right to alter the body of a document.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               The BASE element in HTML
@@ -736,7 +737,7 @@ Example of use:
   HREF                   the URL
                          
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                      Tags used in HTML
@@ -757,7 +758,7 @@ Example of use:
 
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               The BODY element in HTML
@@ -771,7 +772,7 @@ Example of use:
    should be presented to the reader.
    
    See the list of things which are allowed within a BODY element .
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                             The Anchor element in HTML
@@ -830,7 +831,7 @@ Example of use:
                          note .
                          
   TITLE                  OPTIONAL. This is informational only. If
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
                          present the value of this field should equal
@@ -859,11 +860,11 @@ Example of use:
 
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                          URN -- MarkUp
-                  NOTE : UNIVERSAL RESOURCE NUMBERS
+                   NOTE: UNIVERSAL RESOURCE NUMBERS
                                    
    URNs are provided to allow a document to be recognized if duplicate
    copies are found. This should save a client implementation from
@@ -871,7 +872,7 @@ Example of use:
    
    The format of URNs is under discussion (1993) by various working
    groups of the Internet Engineering Task Force.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                     Note: On TITLE attributes of links
@@ -897,7 +898,7 @@ Example of use:
       valid and unique title for the destination document.
       
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                LinkMethods -- Elements
@@ -913,7 +914,7 @@ Example of use:
    For example, The browser may chose a different rendering as a
    function of the methods allowed (for example something which is
    searchable may get a different icon)
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               Heading elements in HTML
@@ -964,7 +965,7 @@ Typical Rendering
                          following. If printed on paper, start new
                          page.
                          
-  H2                     Bold, large font,, flush left against left
+  H2                     Bold, large font, flush left against left
                          margin, no indent. One or two clear lines
                          above and below.
                          
@@ -972,7 +973,7 @@ Typical Rendering
                          the left margin. One or two clear lines above
                          and below.
                          
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   H4                     Bold, normal font, indented more than H3. One
@@ -993,7 +994,7 @@ Typical Rendering
    The rendering software is responsible for generating suitable
    vertical white space between elements, so it is NOT normal or
    required to follow a heading element with a paragraph mark.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     Paragraphs in HTML
@@ -1040,7 +1041,7 @@ to
 See also
 
    Line Break
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                    Line Breaks in HTML
@@ -1070,7 +1071,7 @@ Examples
 See also:
 
    the P (paragraph) element
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                   Highlighting in HTML
@@ -1129,7 +1130,7 @@ Logical styles
   SAMP                   A sequence of literal characters.
                          
   KBD                    in an instruction manual, Text typed by a
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
                          user.
@@ -1152,7 +1153,7 @@ Examples of use
         <cite>Moby Dick</cite> is a book title.
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                The IMG Element in HTML
@@ -1204,7 +1205,7 @@ e done by a
 
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               Horizontal Rules in HTML
@@ -1236,7 +1237,7 @@ Example
 
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                      Tags used in HTML
@@ -1266,7 +1267,7 @@ Examples of use:
 
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     BlockQuote in HTML
@@ -1295,7 +1296,7 @@ be all my sins remembered.
 but I am not sure.
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                           Lists and glossaries in HTML
@@ -1312,15 +1313,15 @@ Glossaries
    these elements:
    
   DT                     The "term", typically placed in a wide left
-                         indent
+                         indent.
                          
   DD                     The "definition", which may wrap onto many
                          lines
                          
    These elements must appear in pairs. Single occurrences of DT
    without a following DD are allowed, and have the same significance
-   as if the DD had been present with no text.. The one attribute
-   which DL can take is
+   as if the DD had been present with no text. The one attribute which
+   DL can take is
    
   COMPACT                suggests that a compact rendering be used,
                          because the enclosed elements are
@@ -1354,7 +1355,7 @@ Glossaries
   EXAMPLES OF USE
   
         <DL>
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
         <DT>Term the first<DD>definition paragraph is reasonably
@@ -1413,7 +1414,7 @@ Lists
                          function of the widths of individual
                          elements, so much the better.
                          
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
   EXAMPLE OF USE
@@ -1442,7 +1443,7 @@ Lists
 
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                The PRE element in HTML
@@ -1501,14 +1502,14 @@ Lists
    
   NOTE: MARGINS
   
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    The above references to the "beginning of a new line" must not be
    taken as implying that the renderer is forbidden from using a
    (constant) left indent for rendering preformatted text. The left
    indent may of course be constrained by the width required.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               User Input Forms in HTML
@@ -1525,13 +1526,13 @@ Elements
    
   FORM                   a form within a document.
                          
-  INPUT                  one input field of one of a variety of typed
+  INPUT                  one input field.
                          
-  TEXTAREA               a multline input field
+  TEXTAREA               a multline input field.
                          
-  SELECT                 A selection from a finite set of options
+  SELECT                 A selection from a finite set of options.
                          
-  OPTION                 one option within a SELECT
+  OPTION                 one option within a SELECT.
                          
   Proposed Elements
                          
@@ -1565,14 +1566,14 @@ A contact point for your site: <INPUT NAME="contact" SIZE="42">
 </FORM>
 
    This fictitious example is a questionnaire that will be emailed to
-   www_admin@info.cern.ch .
+   www_admin@info.cern.ch.
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    Servers can disable forms by sending an appropriate header or by an
    attribute on the optional HTMLPLUS element at the very start of the
-   document, e.g. <htmlplus forms=off> .
+   document, e.g. <htmlplus forms=off>.
    
    Here, the <P> and <UL> elements have been used to lay out the text
    (and input fields. The browser has changed the background color
@@ -1604,7 +1605,7 @@ Representing choices
    of the form. An alternative is to use the SELECT element which is
    generally rendered in a more compact fashion as a pull down combo
    list.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       FORM -- Elements
@@ -1620,7 +1621,7 @@ Representing choices
    prefix is used to select the HTTP method when sending the form's
    contents to an HTTP server. [[Would it be cleaner to use a separate
    attribute, e.g. METHOD ?]
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                              The INPUT element in HTML
@@ -1679,7 +1680,7 @@ Types
    attribute :
    
   TEXT                   Single line text entry fields. Use the SIZE
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
                          attribute to specify the visible width in
@@ -1738,7 +1739,7 @@ Types
                          
   SCRIBBLE               A field upon which you can write with a pen
                          or mouse. The size of the field in
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
                          millimeters is given as SIZE= width , height.
@@ -1779,7 +1780,7 @@ Types
                          
    When you need to let users enter more than one line of text, you
    should use the TEXTAREA element.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                           The TEXTAREA element in HTML
@@ -1812,7 +1813,7 @@ Explanatory Note: TEXTAREA and INPUT/TEXT
    causes problems for fields with long text values as SGML limits the
    length of attribute literals. The HTML+ DTD allows for up to 1024
    characters (the SGML default is only 240 characters!).
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                             The SELECT element in HTML
@@ -1851,7 +1852,7 @@ Example
                 </SELECT>
 
    out in some manner.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                             The OPTION element in HTML
@@ -1877,7 +1878,7 @@ Example
    The contents of the OPTION element is presented to the user to
    represent the option. It is used as a returned value if the VALUE
    attribute is not present.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                              Obsolete Elements of HTML
@@ -1889,7 +1890,7 @@ Example
    
   PLAINTEXT
   
-   Status: Obsolete .
+   Status: Obsolete.
    
    The empty PLAINTEXT tag terminates the HTML entity. What follows is
    not SGML. In stead, there's an old HTTP convention that what
@@ -1908,7 +1909,7 @@ t
    
   XMP AND LISTING: EXAMPLE SECTIONS
   
-   Status: Obsolete . This are in use and should be recognized by
+   Status: Obsolete. This are in use and should be recognized by
    browsers. New servers should use <PRE> instead.
    
    These styles allow text of fixed-width characters to be embedded
@@ -1936,7 +1937,7 @@ t
       immediately after the opening tag or before the closing tag. and
       are to be rendered as a move to the start of a new line.
       
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
       The ASCII Horizontal Tab (HT) character must be interpreted as
@@ -1951,7 +1952,7 @@ t
    
   HIGHLIGHTED PHRASE HP1 ETC
   
-   Status: Obsolete . These tags like all others should be ignored if
+   Status: Obsolete. These tags like all others should be ignored if
    not implemented. Replaced will more meaningful elements -- see
    character highlighting .
    
@@ -1966,7 +1967,7 @@ t
    A comment element used for bracketing off unneed text and comment
    has been introduced in some browsers but will be replaced by the
    SGML command feature in new implementations.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                       XMP and LISTING in HTML: History
@@ -1981,7 +1982,7 @@ t
    interpretation. Providers should be warned that implementations may
    vary on how they interpret end tags apparently within these
    elements
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                    Entities -- /MarkUp
@@ -2001,11 +2002,11 @@ t
                          
   &quot;                 The double quote sign "
                          
-  &nbsp;                 A non-breaking space
+  &nbsp;                 A non-breaking space.
                          
    Also allowed are references to any of the ISO Latin-1 alphabet,
    using the entity names in the following table.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                           ISO Latin 1 Entities in HTML
@@ -2064,7 +2065,7 @@ t
                          
   &THORN;                capital THORN, Icelandic
                          
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   &Uacute;               capital U, acute accent
@@ -2123,7 +2124,7 @@ t
                          
   &otilde;               small o, tilde
                          
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
   &ouml;                 small o, dieresis or umlaut mark
@@ -2145,7 +2146,7 @@ t
   &yuml;                 small y, dieresis or umlaut mark
                          
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                        Security considertions for HTML
@@ -2157,7 +2158,7 @@ t
    
    Documents may be constructed whose visible contents mislead one to
    follow a link by to unsuitable or offensive material.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                   HTML Specification: Acknowledgements
@@ -2178,7 +2179,7 @@ t
    Naggum and James Clark for making SGML technology available, and to
    Terry Allen, Dave Raggett, Marc Andressen, William Perry, and the
    rest of the WWW community.
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                        References - HTML specification
@@ -2212,7 +2213,7 @@ t
                          (Obsoletes RFC1341) (Updated by RFC1590)
                          
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                               Authors' addresses -- HTML specification
@@ -2236,7 +2237,7 @@ t
 
 
    
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     HTML DTD Reference
@@ -2295,7 +2296,7 @@ ADDRESS
    
 B
 
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   Required Parts         <B>characters...</B>
@@ -2354,7 +2355,7 @@ BODY
                          <B> <I> <BR> </BODY>
                          
   Discussion
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
                          
@@ -2413,7 +2414,7 @@ DD
   All Parts              <DD>characters...<A> <IMG> <EM> <STRONG>
                          <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
                          <STRIKE> <TT> <B> <I> <BR> <HR> <UL> <OL>
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 4
 
 
                          <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
@@ -2472,7 +2473,7 @@ DT
 
   Required Parts         <DT>characters...
                          
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 5
 
 
   All Parts              <DT>characters...<A> <IMG> <EM> <STRONG>
@@ -2531,7 +2532,7 @@ H1
   Discussion
                          
       in Heading elements in HTML
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 6
 
 
       
@@ -2590,7 +2591,7 @@ H5
   All Parts              <H5>characters...<A> <IMG> <EM> <STRONG>
                          <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
                          <STRIKE> <TT> <B> <I> <BR> </H5>
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 7
 
 
                          
@@ -2649,7 +2650,7 @@ HTML
                          
   All Parts              <HTML><HEAD> <BODY> <PLAINTEXT> </HTML>
                          
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 8
 
 
   Discussion
@@ -2708,7 +2709,7 @@ ISINDEX
                          
   All Parts              <ISINDEX>
                          
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 9
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 9
 
 
   Discussion
@@ -2767,7 +2768,7 @@ LINK
    T
    
 LISTING
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 10
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 10
 
 
 
@@ -2826,7 +2827,7 @@ OPTION
   Required Parts         <OPTION>characters...
                          
   All Parts              <OPTION SELECTED
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 11
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 11
 
 
                          VALUE="...">characters...</OPTION>
@@ -2885,7 +2886,7 @@ SAMP
 
   Required Parts         <SAMP>characters...</SAMP>
                          
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 12
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 12
 
 
   All Parts              <SAMP>characters...<A> <IMG> <EM> <STRONG>
@@ -2944,7 +2945,7 @@ STRONG
    T
    
 TEXTAREA
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 13
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 13
 
 
 
@@ -3003,7 +3004,7 @@ UL
    T
    
 VAR
-Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 14
+Jun 13 09:25 1994  HTML Specification	 Connolly and Berners-Lee Page 14
 
 
 
