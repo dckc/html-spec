@@ -1,0 +1,17 @@
+Dan--
+
+I *think* all the extra scripts are here,
+but let me know if you find anything missing.
+
+Put these files in a 'specs' subdirectory, and run:
+
+sgmls snafu.decl filename.sgm | costsh -S specs/snafu-plain.spec > filename.txt
+
+This writes page numbers to an auxilliary file 'cost.aux';
+run it again to get the table of contents right.
+
+Make sure that $COSTLIB is set, too.
+
+Let me know if you have any problems,
+
+--Joe
