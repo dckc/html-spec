@@ -1,4 +1,4 @@
-<!--	html.dtd
+<!--    html.dtd
 
         Document Type Definition for the HyperText Markup Language
 		 (HTML DTD)
@@ -12,16 +12,16 @@
 -->
 
 <!ENTITY % HTML.Version
-	"-//IETF//DTD HTML 2.0//EN"
+        "-//IETF//DTD HTML 2.0//EN"
 
         -- Typical usage:
 
             <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
-	    <html>
-	    ...
-	    </html>
-	--
-	>
+            <html>
+            ...
+            </html>
+        --
+        >
 
 
 <!--============ Feature Test Entities ========================-->
@@ -36,7 +36,7 @@
 	-->
 
 <![ %HTML.Recommended [
-	<!ENTITY % HTML.Deprecated "IGNORE">
+        <!ENTITY % HTML.Deprecated "IGNORE">
 ]]>
 
 <!ENTITY % HTML.Deprecated "INCLUDE"
@@ -55,21 +55,21 @@
 	-->
 
 <!ENTITY % HTML.Forms "INCLUDE"
-	-- Use this feature test entity to validate that a document
-	   contains no forms, which may not be supported in minimal
-	   implementations
-	-->
+        -- Use this feature test entity to validate that a document
+           contains no forms, which may not be supported in minimal
+           implementations
+        -->
 
 <!--============== Imported Names ==============================-->
 
 <!ENTITY % Content-Type "CDATA"
-	-- meaning an internet media type
-	   (aka MIME content type, as per RFC1521)
-	-->
+        -- meaning an internet media type
+           (aka MIME content type, as per RFC1521)
+        -->
 
 <!ENTITY % HTTP-Method "GET | POST"
-	-- as per HTTP specification, in progress
-	-->
+        -- as per HTTP specification, in progress
+        -->
 
 <!ENTITY % URI "CDATA"
         -- The term URI means a CDATA attribute
@@ -155,17 +155,17 @@ SDA & ICADD:
         %SDAFORM; "It"
         >
 
-<!-- <TT>	Typewriter text				-->
-<!-- <B>	Bold text				-->
-<!-- <I>	Italic text				-->
+<!-- <TT>       Typewriter text                         -->
+<!-- <B>        Bold text                               -->
+<!-- <I>        Italic text                             -->
 
-<!-- <EM>	Emphasized phrase			-->
-<!-- <STRONG>	Strong emphais				-->
-<!-- <CODE>	Source code phrase			-->
-<!-- <SAMP>	Sample text or characters		-->
-<!-- <KBD>	Keyboard phrase, e.g. user input	-->
-<!-- <VAR>	Variable phrase or substituable		-->
-<!-- <CITE>	Name or title of cited work		-->
+<!-- <EM>       Emphasized phrase                       -->
+<!-- <STRONG>   Strong emphais                          -->
+<!-- <CODE>     Source code phrase                      -->
+<!-- <SAMP>     Sample text or characters               -->
+<!-- <KBD>      Keyboard phrase, e.g. user input        -->
+<!-- <VAR>      Variable phrase or substituable         -->
+<!-- <CITE>     Name or title of cited work             -->
 
 <!ENTITY % pre.content "#PCDATA | A | HR | BR | %font | %phrase">
 
@@ -178,19 +178,19 @@ SDA & ICADD:
         %SDAPREF; "&#RE;"
         >
 
-<!-- <BR>	Line break	-->
+<!-- <BR>       Line break      -->
 
 
 <!--========= Link Markup ======================-->
 
 <![ %HTML.Recommended [
-	<!ENTITY % linkName "ID">
+        <!ENTITY % linkName "ID">
 ]]>
 
 <!ENTITY % linkName "CDATA">
 
 <!ENTITY % linkType "NAME"
-	-- a list of these will be specified at a later date -->
+        -- a list of these will be specified at a later date -->
 
 <!ENTITY % linkExtraAttributes
         "REL %linkType #IMPLIED
@@ -201,21 +201,21 @@ SDA & ICADD:
         ">
 
 <![ %HTML.Recommended [
-	<!ENTITY % A.content   "(%text)*"
-	-- <H1><a name="xxx">Heading</a></H1>
-		is preferred to
-	   <a name="xxx"><H1>Heading</H1></a>
-	-->
+        <!ENTITY % A.content   "(%text)*"
+        -- <H1><a name="xxx">Heading</a></H1>
+                is preferred to
+           <a name="xxx"><H1>Heading</H1></a>
+        -->
 ]]>
 
 <!ENTITY % A.content   "(%heading|%text)*">
 
 <!ELEMENT A     - - %A.content -(A)>
 <!ATTLIST A
-	HREF %URI #IMPLIED
-	NAME %linkName #IMPLIED
+        HREF %URI #IMPLIED
+        NAME %linkName #IMPLIED
         %linkExtraAttributes;
-        %SDAPREF; "<?SDATrans A: #AttList>"
+        %SDAPREF; "<Anchor: #AttList>"
         >
 <!-- <A>		Anchor; source/destination of link	-->
 <!-- <A NAME="...">	Name of this anchor			-->
@@ -232,17 +232,17 @@ SDA & ICADD:
 <!ELEMENT IMG    - O EMPTY>
 <!ATTLIST IMG
         SRC %URI;  #REQUIRED
-	ALT CDATA #IMPLIED
-	ALIGN (top|middle|bottom) #IMPLIED
-	ISMAP (ISMAP) #IMPLIED
+        ALT CDATA #IMPLIED
+        ALIGN (top|middle|bottom) #IMPLIED
+        ISMAP (ISMAP) #IMPLIED
         %SDAPREF; "<Fig><?SDATrans Img: #AttList>#AttVal(Alt)</Fig>"
         >
 
-<!-- <IMG>		Image; icon, glyph or illustration	-->
-<!-- <IMG SRC="...">	Address of image object	 		-->
-<!-- <IMG ALT="...">	Textual alternative 			-->
-<!-- <IMG ALIGN=...>	Position relative to text 		-->
-<!-- <IMG ISMAP>	Each pixel can be a link		-->
+<!-- <IMG>              Image; icon, glyph or illustration      -->
+<!-- <IMG SRC="...">    Address of image object                 -->
+<!-- <IMG ALT="...">    Textual alternative                     -->
+<!-- <IMG ALIGN=...>    Position relative to text               -->
+<!-- <IMG ISMAP>        Each pixel can be a link                -->
 
 <!--========== Paragraphs=======================-->
 
@@ -251,17 +251,17 @@ SDA & ICADD:
         %SDAFORM; "Para"
         >
 
-<!-- <P>	Paragraph	-->
+<!-- <P>        Paragraph       -->
 
 
 <!--========== Headings, Titles, Sections ===============-->
 
 <!ELEMENT HR    - O EMPTY>
 <!ATTLIST HR
-        %SDAPREF; "<Para><?SDATrans HR: #AttList></Para>"
+        %SDAPREF; "&#RE;&#RE;"
         >
 
-<!-- <HR>	Horizontal rule -->
+<!-- <HR>       Horizontal rule -->
 
 <!ELEMENT ( %heading )  - -  (%text;)*>
 <!ATTLIST H1
@@ -283,31 +283,31 @@ SDA & ICADD:
         %SDAFORM; "H6"
         >
 
-<!-- <H1>	Heading, level 1 -->
-<!-- <H2>	Heading, level 2 -->
-<!-- <H3>	Heading, level 3 -->
-<!-- <H4>	Heading, level 4 -->
-<!-- <H5>	Heading, level 5 -->
-<!-- <H6>	Heading, level 6 -->
+<!-- <H1>       Heading, level 1 -->
+<!-- <H2>       Heading, level 2 -->
+<!-- <H3>       Heading, level 3 -->
+<!-- <H4>       Heading, level 4 -->
+<!-- <H5>       Heading, level 5 -->
+<!-- <H6>       Heading, level 6 -->
 
 
 <!--========== Text Flows ======================-->
 
 <![ %HTML.Forms [
-	<!ENTITY % block.forms "BLOCKQUOTE | FORM | ISINDEX">
+        <!ENTITY % block.forms "BLOCKQUOTE | FORM | ISINDEX">
 ]]>
 
 <!ENTITY % block.forms "BLOCKQUOTE">
 
 <![ %HTML.Deprecated [
-	<!ENTITY % preformatted "PRE | XMP | LISTING">
+        <!ENTITY % preformatted "PRE | XMP | LISTING">
 ]]>
 
 <!ENTITY % preformatted "PRE">
 
 <!ENTITY % block "P | %list | DL
-	| %preformatted
-	| %block.forms">
+        | %preformatted
+        | %block.forms">
 
 <!ENTITY % flow "(%text|%block)*">
 
@@ -316,19 +316,18 @@ SDA & ICADD:
 <!ATTLIST PRE
         WIDTH NUMBER #implied
         %SDAFORM; "Lit"
-        %SDAPREF; "<?SDATrans Pre: #AttList>"
         >
 
-<!-- <PRE>		Preformatted text		-->
-<!-- <PRE WIDTH=...>	Maximum characters per line	-->
+<!-- <PRE>              Preformatted text               -->
+<!-- <PRE WIDTH=...>    Maximum characters per line     -->
 
 <![ %HTML.Deprecated [
 
 <!ENTITY % literal "CDATA"
-	-- historical, non-conforming parsing mode where
-	   the only markup signal is the end tag
-	   in full
-	-->
+        -- historical, non-conforming parsing mode where
+           the only markup signal is the end tag
+           in full
+        -->
 
 <!ELEMENT (XMP|LISTING) - -  %literal>
 <!ATTLIST XMP
@@ -340,11 +339,11 @@ SDA & ICADD:
         %SDAPREF; "Listing:&#RE;"
         >
 
-<!-- <XMP>		Example section		-->
-<!-- <LISTING>		Computer listing	-->
+<!-- <XMP>              Example section         -->
+<!-- <LISTING>          Computer listing        -->
 
 <!ELEMENT PLAINTEXT - O %literal>
-<!-- <PLAINTEXT>	Plain text passage	-->
+<!-- <PLAINTEXT>        Plain text passage      -->
 
 <!ATTLIST PLAINTEXT
         %SDAFORM; "Lit"
@@ -356,10 +355,10 @@ SDA & ICADD:
 
 <!ELEMENT DL    - -  (DT | DD)+>
 <!ATTLIST DL
-	COMPACT (COMPACT) #IMPLIED
+        COMPACT (COMPACT) #IMPLIED
         %SDAFORM; "List"
-        %SDAPREF; "<?SDATrans DL: #AttList>"
-	>
+        %SDAPREF; "Definition List:"
+        >
 
 <!ELEMENT DT    - O (%text)*>
 <!ATTLIST DT
@@ -371,52 +370,49 @@ SDA & ICADD:
         %SDAFORM; "LItem"
         >
 
-<!-- <DL>		Definition list, or glossary	-->
-<!-- <DL COMPACT>	Compact style list		-->
-<!-- <DT>		Term in definition list		-->
-<!-- <DD>		Definition of term		-->
+<!-- <DL>               Definition list, or glossary    -->
+<!-- <DL COMPACT>       Compact style list              -->
+<!-- <DT>               Term in definition list         -->
+<!-- <DD>               Definition of term              -->
 
 <!ELEMENT (OL|UL) - -  (LI)+>
 <!ATTLIST OL
         COMPACT (COMPACT) #IMPLIED
         %SDAFORM; "List"
-        %SDAPREF; "<?SDATrans OL: #AttList>"
         >
 <!ATTLIST UL
         COMPACT (COMPACT) #IMPLIED
         %SDAFORM; "List"
-        %SDAPREF; "<?SDATrans UL: #AttList>"
         >
-<!-- <UL>		Unordered list			-->
-<!-- <UL COMPACT>	Compact list style		-->
-<!-- <OL>		Ordered, or numbered list	-->
-<!-- <OL COMPACT>	Compact list style		-->
+<!-- <UL>               Unordered list                  -->
+<!-- <UL COMPACT>       Compact list style              -->
+<!-- <OL>               Ordered, or numbered list       -->
+<!-- <OL COMPACT>       Compact list style              -->
 
 
 <!ELEMENT (DIR|MENU) - -  (LI)+ -(%block)>
 <!ATTLIST DIR
         COMPACT (COMPACT) #IMPLIED
         %SDAFORM; "List"
-        %SDAPREF;
-	 "<?SDATrans Dir: #AttList><LHead>Directory</LHead>"
+        %SDAPREF; "<LHead>Directory</LHead>"
         >
 <!ATTLIST MENU
         COMPACT (COMPACT) #IMPLIED
         %SDAFORM; "List"
-        %SDAPREF; "<?SDATrans Menu: #AttList><LHead>Menu</LHead>"
+        %SDAPREF; "<LHead>Menu</LHead>"
         >
 
-<!-- <DIR>		Directory list			-->
-<!-- <DIR COMPACT>	Compact list style		-->
-<!-- <MENU>		Menu list			-->
-<!-- <MENU COMPACT>	Compact list style		-->
+<!-- <DIR>              Directory list                  -->
+<!-- <DIR COMPACT>      Compact list style              -->
+<!-- <MENU>             Menu list                       -->
+<!-- <MENU COMPACT>     Compact list style              -->
 
 <!ELEMENT LI    - O %flow>
 <!ATTLIST LI
         %SDAFORM; "LItem"
         >
 
-<!-- <LI>		List item			-->
+<!-- <LI>               List item                       -->
 
 <!--========== Document Body ===================-->
 
@@ -434,18 +430,15 @@ SDA & ICADD:
 				 HR | ADDRESS)*">
 
 <!ELEMENT BODY O O  %body.content>
-<!ATTLIST BODY
-        %SDAPREF; "<?SDATrans Body: #AttList>"
-        >
 
-<!-- <BODY>	Document body	-->
+<!-- <BODY>     Document body   -->
 
 <!ELEMENT BLOCKQUOTE - - %body.content>
 <!ATTLIST BLOCKQUOTE
         %SDAFORM; "BQ"
         >
 
-<!-- <BLOCKQUOTE>	Quoted passage	-->
+<!-- <BLOCKQUOTE>       Quoted passage  -->
 
 <!ELEMENT ADDRESS - - (%text|P)*>
 <!ATTLIST  ADDRESS
@@ -462,21 +455,21 @@ SDA & ICADD:
 
 <!ELEMENT FORM - - %body.content -(FORM) +(INPUT|SELECT|TEXTAREA)>
 <!ATTLIST FORM
-	ACTION %URI #IMPLIED
-	METHOD (%HTTP-Method) GET
-	ENCTYPE %Content-Type; "application/x-www-form-urlencoded"
-        %SDAPREF; "<Para><?SDATrans Form: #AttList>Form:</Para>"
-        %SDASUFF; "<Para><?SDATrans Form: #End>Form End.</Para>"
-	>
+        ACTION %URI #IMPLIED
+        METHOD (%HTTP-Method) GET
+        ENCTYPE %Content-Type; "application/x-www-form-urlencoded"
+        %SDAPREF; "<Para>Form:</Para>"
+        %SDASUFF; "<Para>Form End.</Para>"
+        >
 
-<!-- <FORM>			Fill-out or data-entry form	-->
-<!-- <FORM ACTION="...">	Address for completed form	-->
-<!-- <FORM METHOD=...>		Method of submitting form	-->
-<!-- <FORM ENCTYPE="...">	Representation of form data	-->
+<!-- <FORM>                     Fill-out or data-entry form     -->
+<!-- <FORM ACTION="...">        Address for completed form      -->
+<!-- <FORM METHOD=...>          Method of submitting form       -->
+<!-- <FORM ENCTYPE="...">       Representation of form data     -->
 
 <!ENTITY % InputType "(TEXT | PASSWORD | CHECKBOX |
-			RADIO | SUBMIT | RESET |
-			IMAGE | HIDDEN )">
+                        RADIO | SUBMIT | RESET |
+                        IMAGE | HIDDEN )">
 <!ELEMENT INPUT - O EMPTY>
 <!ATTLIST INPUT
 	TYPE %InputType TEXT
@@ -487,7 +480,7 @@ SDA & ICADD:
 	SIZE CDATA #IMPLIED
 	MAXLENGTH NUMBER #IMPLIED
 	ALIGN (top|middle|bottom) #IMPLIED
-        %SDAPREF; "<?SDATrans Input: #AttList>"
+        %SDAPREF; "Input: "
 	>
 
 <!-- <INPUT>			Form input datum		-->
@@ -502,13 +495,12 @@ SDA & ICADD:
 
 <!ELEMENT SELECT - - (OPTION+) -(INPUT|SELECT|TEXTAREA)>
 <!ATTLIST SELECT
-	NAME CDATA #REQUIRED
-	SIZE NUMBER #IMPLIED
-	MULTIPLE (MULTIPLE) #IMPLIED
+        NAME CDATA #REQUIRED
+        SIZE NUMBER #IMPLIED
+        MULTIPLE (MULTIPLE) #IMPLIED
         %SDAFORM; "List"
         %SDAPREF;
-	"<?SDATrans Select:
-		 #AttList><LHead>Select #AttVal(Multiple)</LHead>"
+        "<LHead>Select #AttVal(Multiple)</LHead>"
 	>
 
 <!-- <SELECT>			Selection of option(s)		-->
@@ -518,12 +510,11 @@ SDA & ICADD:
 
 <!ELEMENT OPTION - O (#PCDATA)*>
 <!ATTLIST OPTION
-	SELECTED (SELECTED) #IMPLIED
-	VALUE CDATA #IMPLIED
+        SELECTED (SELECTED) #IMPLIED
+        VALUE CDATA #IMPLIED
         %SDAFORM; "LItem"
         %SDAPREF;
-        "<?SDATrans Option:
-	 #AttList>#AttVal(Value) #AttVal(Selected)"
+        "Option: #AttVal(Value) #AttVal(Selected)"
 	>
 
 <!-- <OPTION>			A selection option		-->
@@ -532,12 +523,12 @@ SDA & ICADD:
 
 <!ELEMENT TEXTAREA - - (#PCDATA)* -(INPUT|SELECT|TEXTAREA)>
 <!ATTLIST TEXTAREA
-	NAME CDATA #REQUIRED
-	ROWS NUMBER #REQUIRED
-	COLS NUMBER #REQUIRED
+        NAME CDATA #REQUIRED
+        ROWS NUMBER #REQUIRED
+        COLS NUMBER #REQUIRED
         %SDAFORM; "Para"
-        %SDAPREF; "<?SDATrans TextArea: #AttList>#AttVal(Name): "
-	>
+        %SDAPREF; "Input Text -- #AttVal(Name): "
+        >
 
 <!-- <TEXTAREA>			An area for text input		-->
 <!-- <TEXTAREA NAME=...>	Name of form datum		-->
@@ -559,25 +550,20 @@ SDA & ICADD:
 			 (%head.extra)">
 
 <!ELEMENT HEAD O O  (%head.content)>
-<!ATTLIST HEAD
-        %SDAPREF; "<?SDATrans Head: #AttList>"
-      >
 
-<!-- <HEAD>	Document head	-->
+<!-- <HEAD>     Document head   -->
 
 <!ELEMENT TITLE - -  (#PCDATA)*>
 <!ATTLIST TITLE
-        %SDAFORM; "Ti"
-      >
+        %SDAFORM; "Ti"    >
 
-<!-- <TITLE>	Title of document -->
+<!-- <TITLE>    Title of document -->
 
 <!ELEMENT LINK - O EMPTY>
 <!ATTLIST LINK
-	HREF %URI #REQUIRED
+        HREF %URI #REQUIRED
         %linkExtraAttributes;
-        %SDAPREF; "<?SDATrans Link: #AttList>"
-        >
+        %SDAPREF; "Linked to : #AttVal (TITLE) (URN) (HREF)>"    >
 
 <!-- <LINK>		Link from this document			-->
 <!-- <LINK HREF="...">	Address of link destination		-->
@@ -590,25 +576,20 @@ SDA & ICADD:
 <!ELEMENT ISINDEX - O EMPTY>
 <!ATTLIST ISINDEX
         %SDAPREF;
-   "<Para><?SDATrans
-	IsIndex: #AttList>[Document indexed/searchable.]</Para>">
+   "<Para>[Document is indexed/searchable.]</Para>">
 
-<!-- <ISINDEX>		Document is a searchable index		-->
+<!-- <ISINDEX>          Document is a searchable index          -->
 
 <!ELEMENT BASE - O EMPTY>
 <!ATTLIST BASE
-        HREF %URI; #REQUIRED
-        %SDAPREF; "<?SDATrans Base: #AttList>"
-        >
+        HREF %URI; #REQUIRED     >
 
-<!-- <BASE>		Base context document			-->
-<!-- <BASE HREF="...">	Address for this document		-->
+<!-- <BASE>             Base context document                   -->
+<!-- <BASE HREF="...">  Address for this document               -->
 
 <!ELEMENT NEXTID - O EMPTY>
 <!ATTLIST NEXTID
-        N %linkName #REQUIRED
-        %SDAPREF; "<?SDATrans NextID: #AttList>"
-        >
+        N %linkName #REQUIRED     >
 
 <!-- <NEXTID>		Next ID to use for link name		-->
 <!-- <NEXTID N=...>	Next ID to use for link name		-->
@@ -617,19 +598,17 @@ SDA & ICADD:
 <!ATTLIST META
         HTTP-EQUIV  NAME    #IMPLIED
         NAME        NAME    #IMPLIED
-        CONTENT     CDATA   #REQUIRED
-        %SDAPREF; "<?SDATrans Meta: #AttList>"
-        >
+        CONTENT     CDATA   #REQUIRED    >
 
-<!-- <META>			Generic Metainformation		-->
-<!-- <META HTTP-EQUIV=...>	HTTP response header name	-->
-<!-- <META HTTP-EQUIV=...>	Metainformation name		-->
-<!-- <META CONTENT="...">	Associated information		-->
+<!-- <META>                     Generic Metainformation         -->
+<!-- <META HTTP-EQUIV=...>      HTTP response header name       -->
+<!-- <META HTTP-EQUIV=...>      Metainformation name            -->
+<!-- <META CONTENT="...">       Associated information          -->
 
 <!--======= Document Structure =================-->
 
 <![ %HTML.Deprecated [
-	<!ENTITY % html.content "HEAD, BODY, PLAINTEXT?">
+        <!ENTITY % html.content "HEAD, BODY, PLAINTEXT?">
 ]]>
 <!ENTITY % html.content "HEAD, BODY">
 
@@ -637,9 +616,8 @@ SDA & ICADD:
 <!ENTITY % version.attr "VERSION CDATA #FIXED '%HTML.Version;'">
 
 <!ATTLIST HTML
-	%version.attr;
+        %version.attr;
         %SDAFORM; "Book"
-        %SDAPREF; "<?SDATrans HTML: #AttList>"
-	>
+        >
 
 <!-- <HTML>			HTML Document	-->
