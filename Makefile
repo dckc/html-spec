@@ -205,3 +205,10 @@ HTML-1.mif: $(HYPERTEXT)
 HTML-2.mif: $(ELTINDEX)
 	$(HTML2MIF) -section $(ELTINDEX) >$@
 
+
+ChangeLog:
+	folder +cm
+	inc +cm -file $$HOME/cm/CVSROOT/commit.mbox
+	pick +cm --module web/html-spec
+	rmm notp
+	packf -file ChangeLog
