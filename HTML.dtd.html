@@ -8,7 +8,7 @@ N="z48"></HEAD>
 <BODY>
 
 <PRE>
-&lt;!SGML  "ISO 8879:1986"
+&#60;!SGML  "ISO 8879:1986"
 --
 	Document Type Definition for the <A
 HREF="MarkUp.html" NAME="z12">HyperText Markup Language</A> 
@@ -87,9 +87,9 @@ FEATURES
   APPINFO    NONE
 &#62;
 
-&lt;!DOCTYPE HTML [
-&lt;!-- Jul 1 93 --&#62;
-&lt;!--	Regarding clause 6.1, SGML Document:
+&#60;!DOCTYPE HTML [
+&#60;!-- Jul 1 93 --&#62;
+&#60;!--	Regarding clause 6.1, SGML Document:
 
 	[1] SGML document = SGML document entity,
 	    (SGML subdocument entity |
@@ -99,45 +99,45 @@ FEATURES
 	followed by the	conventional HTML data stream.
 --&#62;
 
-&lt;!-- DTD definitions --&#62;
+&#60;!-- DTD definitions --&#62;
 
-&lt;!ENTITY % <A
+&#60;!ENTITY % <A
 HREF="Headings.html" NAME="z1">heading</A> "H1|H2|H3|H4|H5|H6" &#62;
-&lt;!ENTITY % <A
+&#60;!ENTITY % <A
 HREF="Lists.html" NAME="z2">list</A> "<A
 HREF="Lists.html#z35" NAME="z28"> UL</A> |<A
 HREF="Lists.html#z41" NAME="z30"> OL</A> |<A
 HREF="Lists.html#z40" NAME="z31"> DIR</A> |<A
 HREF="Lists.html#z36" NAME="z29"> MENU</A> "&#62;
-&lt;!ENTITY % <A
+&#60;!ENTITY % <A
 HREF="NonStandard.html#8" NAME="z18">literal</A> "<A
 HREF="LiteralHistory.html#z1" NAME="z33"> XMP</A> |<A
 HREF="LiteralHistory.html#z1" NAME="z32"> LISTING</A> "&#62;
 
-&lt;!ENTITY % <A
+&#60;!ENTITY % <A
 HREF="Tags.html#z30" NAME="z15">headelement</A>
 	 "<A
 HREF="Elements/TITLE.html" NAME="z16"> TITLE</A> |<A
 HREF="Elements/NEXTID.html" NAME="z17"> NEXTID</A> |ISINDEX" &#62;
 
-&lt;!ENTITY % <A
+&#60;!ENTITY % <A
 HREF="Tags.html#z44" NAME="z19">bodyelement</A>
 	 "P | HR | %heading |
 	 %list | DL | ADDRESS | PRE | BLOCKQUOTE
 	| %literal"&#62;
 
-&lt;!ENTITY % <A
+&#60;!ENTITY % <A
 HREF="Tags.html#z49" NAME="z20">oldstyle</A> "%headelement | <A
 HREF="#z19" NAME="z46">%bodyelement</A> | #PCDATA"&#62;
 
-&lt;!ENTITY % <A
+&#60;!ENTITY % <A
 NAME="z42">URL</A> "CDATA"
 	-- The term URL means a CDATA attribute
 	   whose value is a Uniform Resource Locator,
 	   as defined. (A URN may also be usable here when defined.)
 	--&#62;
 
-&lt;!ENTITY % linkattributes
+&#60;!ENTITY % linkattributes
         "NAME NMTOKEN #IMPLIED
 	HREF <A
 HREF="#z42" NAME="z44">%URL;</A>  #IMPLIED
@@ -158,207 +158,207 @@ HREF="#z42" NAME="z44">%URL;</A>  #IMPLIED
 	"&#62;
 
 
-&lt;!-- Document Element --&#62;
+&#60;!-- Document Element --&#62;
 
-&lt;!ELEMENT HTML O O  ((<A
+&#60;!ELEMENT HTML O O  ((<A
 HREF="Elements/HEAD.html" NAME="z5"> HEAD</A> | <A
 HREF="Elements/BODY.html" NAME="z4">BODY</A> | <A
 HREF="Tags.html#z49" NAME="z21">%oldstyle</A> )*, PLAINTEXT?)&#62;
 
-&lt;!ELEMENT HEAD - -  (<A
-HREF="Elements/TITLE.html" NAME="z6"> TITLE?</A>  &amp; <A
-HREF="Elements/ISINDEX.html" NAME="z8">ISINDEX?</A>  &amp; <A
-HREF="Elements/NEXTID.html" NAME="z9">NEXTID?</A>  &amp; <A
+&#60;!ELEMENT HEAD - -  (<A
+HREF="Elements/TITLE.html" NAME="z6"> TITLE?</A>  &#38; <A
+HREF="Elements/ISINDEX.html" NAME="z8">ISINDEX?</A>  &#38; <A
+HREF="Elements/NEXTID.html" NAME="z9">NEXTID?</A>  &#38; <A
 HREF="#z22" NAME="z37">LINK*</A> 
-                              &amp; <A
+                              &#38; <A
 HREF="#z38" NAME="z39">BASE?)&#62;</A>
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Elements/TITLE.html" NAME="z3">TITLE</A>	- -  RCDATA
 	  -- The TITLE element is not considered part of the flow of text.
 	     It should be displayed, for example as the page header or
 	     window title.
 	  --&#62;
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Elements/ISINDEX.html" NAME="z7">ISINDEX</A> - O EMPTY
 	  -- WWW clients should offer the option to perform a search on
 	     documents containing ISINDEX.
 	  --&#62;
  
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Elements/NEXTID.html" NAME="z10">NEXTID</A> - O EMPTY&#62;
-&lt;!ATTLIST NEXTID N NAME #REQUIRED
+&#60;!ATTLIST NEXTID N NAME #REQUIRED
 	  -- The number should be a name suitable for use
 	     for the ID of a new element. When used, the value
 	     has its numeric part incremented. EG Z67 becomes Z68
 	  --&#62;
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Tags.html#z49" NAME="z22">LINK</A> - O EMPTY&#62;
-&lt;!ATTLIST LINK
+&#60;!ATTLIST LINK
         %linkattributes&#62;
 	
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 NAME="z38">BASE</A> - O EMPTY    -- Reference context for URLS --&#62;
-&lt;!ATTLIST BASE
+&#60;!ATTLIST BASE
 
 	HREF %URL; #IMPLIED
 
         &#62;
-&lt;!ENTITY % <A
+&#60;!ENTITY % <A
 HREF="Highlighting.html" NAME="z11">inline</A> "EM | TT | STRONG | B | I | U |
 			CODE | SAMP | KBD | KEY | VAR | DFN | CITE "
 	&#62;
 
-&lt;!ELEMENT (%inline;) - - (#PCDATA)&#62;
+&#60;!ELEMENT (%inline;) - - (#PCDATA)&#62;
 
-&lt;!ENTITY % text "#PCDATA | IMG | %inline;"&#62;
+&#60;!ENTITY % text "#PCDATA | IMG | %inline;"&#62;
 
-&lt;!ENTITY % htext "A | %text"	-- Plus links, no structure --&#62;
+&#60;!ENTITY % htext "A | %text"	-- Plus links, no structure --&#62;
 
-&lt;!ENTITY % stext		-- as htext but also nested structure --
+&#60;!ENTITY % stext		-- as htext but also nested structure --
 			"P | HR | %list | DL | ADDRESS
 			| PRE | BLOCKQUOTE
 			| %literal | %htext"&#62;
 
 
-&lt;!ELEMENT BODY - -  (%bodyelement|%htext;)*&#62;
+&#60;!ELEMENT BODY - -  (%bodyelement|%htext;)*&#62;
 
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Tags.html#z49" NAME="z24">A</A>	- -  (%text)&#62;
-&lt;!ATTLIST A
+&#60;!ATTLIST A
 	%linkattributes;
 	&#62;
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Elements/IMG.html" NAME="z40">IMG</A>    - O EMPTY --  Embedded image --&#62;
-&lt;!ATTLIST IMG
+&#60;!ATTLIST IMG
         <A
 NAME="z41">SRC</A> <A HREF="#z42" NAME="z43">%URL;</A>  #IMPLIED	-- URL of document to embed --
 	&#62;
 
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Elements/P.html" NAME="z26">P</A>	- O EMPTY -- separates paragraphs --&#62;
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Elements/HR.html" NAME="z45">HR</A>    - O EMPTY -- horizontal rule --&#62;
 
-&lt;!ELEMENT (<A
+&#60;!ELEMENT (<A
 HREF="Tags.html#z49" NAME="z23"> %heading</A> )	- -  (%htext;)+&#62;
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Lists.html#z32" NAME="z25">DL</A>	- -  (DT | DD | %stext;)*&#62;
-&lt;!--	Content should match ((DT,(%htext;)+)+,(DD,(%stext;)+))
+&#60;!--	Content should match ((DT,(%htext;)+)+,(DD,(%stext;)+))
 	But mixed content is messy.  -Dan Connolly
   --&#62;
  
-&lt;!ELEMENT DT	- O EMPTY&#62;
-&lt;!ELEMENT DD	- O EMPTY&#62;
+&#60;!ELEMENT DT	- O EMPTY&#62;
+&#60;!ELEMENT DD	- O EMPTY&#62;
 
-&lt;!ELEMENT (UL|OL) - -  (%htext;|LI|P)+&#62;
-&lt;!ELEMENT (DIR|MENU) - -  (%htext;|LI)+&#62;
-&lt;!--    Content should match ((LI,(%htext;)+)+)
+&#60;!ELEMENT (UL|OL) - -  (%htext;|LI|P)+&#62;
+&#60;!ELEMENT (DIR|MENU) - -  (%htext;|LI)+&#62;
+&#60;!--    Content should match ((LI,(%htext;)+)+)
         But mixed content is messy.
   --&#62;
-&lt;!ATTLIST (%list)
+&#60;!ATTLIST (%list)
 	COMPACT NAME #IMPLIED -- COMPACT, etc.--
 	&#62;
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Lists.html#z33" NAME="z27">LI</A>	- O EMPTY&#62;
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 NAME="z36">BLOCKQUOTE</A> - - (%htext;|P)+
 	-- for quoting some other source --&#62;
 
-&lt;!ELEMENT ADDRESS - - (%htext;|P)+&#62;
+&#60;!ELEMENT ADDRESS - - (%htext;|P)+&#62;
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="Elements/PRE.html" NAME="z34">PRE</A> - - (#PCDATA|%inline|A|P)+&#62;
-&lt;!ATTLIST PRE
+&#60;!ATTLIST PRE
 	WIDTH NUMBER #implied
         &#62;
 
-&lt;!-- Mnemonic character entities. --&#62;
-&lt;!ENTITY AElig "&amp;#198;"  -- capital AE diphthong (ligature) --&#62;
-&lt;!ENTITY Aacute "&amp;#193;" -- capital A, acute accent --&#62;
-&lt;!ENTITY Acirc "&amp;#194;"  -- capital A, circumflex accent --&#62;
-&lt;!ENTITY Agrave "&amp;#192;" -- capital A, grave accent --&#62;
-&lt;!ENTITY Aring "&amp;#197;"  -- capital A, ring --&#62;
-&lt;!ENTITY Atilde "&amp;#195;" -- capital A, tilde --&#62;
-&lt;!ENTITY Auml "&amp;#196;"   -- capital A, dieresis or umlaut mark --&#62;
-&lt;!ENTITY Ccedil "&amp;#199;" -- capital C, cedilla --&#62;
-&lt;!ENTITY ETH "&amp;#208;"    -- capital Eth, Icelandic --&#62;
-&lt;!ENTITY Eacute "&amp;#201;" -- capital E, acute accent --&#62;
-&lt;!ENTITY Ecirc "&amp;#202;"  -- capital E, circumflex accent --&#62;
-&lt;!ENTITY Egrave "&amp;#200;" -- capital E, grave accent --&#62;
-&lt;!ENTITY Euml "&amp;#203;"   -- capital E, dieresis or umlaut mark --&#62;
-&lt;!ENTITY Iacute "&amp;#205;" -- capital I, acute accent --&#62;
-&lt;!ENTITY Icirc "&amp;#206;"  -- capital I, circumflex accent --&#62;
-&lt;!ENTITY Igrave "&amp;#204;" -- capital I, grave accent --&#62;
-&lt;!ENTITY Iuml "&amp;#207;"   -- capital I, dieresis or umlaut mark --&#62;
-&lt;!ENTITY Ntilde "&amp;#209;" -- capital N, tilde --&#62;
-&lt;!ENTITY Oacute "&amp;#211;" -- capital O, acute accent --&#62;
-&lt;!ENTITY Ocirc "&amp;#212;"  -- capital O, circumflex accent --&#62;
-&lt;!ENTITY Ograve "&amp;#210;" -- capital O, grave accent --&#62;
-&lt;!ENTITY Oslash "&amp;#216;" -- capital O, slash --&#62;
-&lt;!ENTITY Otilde "&amp;#213;" -- capital O, tilde --&#62;
-&lt;!ENTITY Ouml "&amp;#214;"   -- capital O, dieresis or umlaut mark --&#62;
-&lt;!ENTITY THORN "&amp;#222;"  -- capital THORN, Icelandic --&#62;
-&lt;!ENTITY Uacute "&amp;#218;" -- capital U, acute accent --&#62;
-&lt;!ENTITY Ucirc "&amp;#219;"  -- capital U, circumflex accent --&#62;
-&lt;!ENTITY Ugrave "&amp;#217;" -- capital U, grave accent --&#62;
-&lt;!ENTITY Uuml "&amp;#220;"   -- capital U, dieresis or umlaut mark --&#62;
-&lt;!ENTITY Yacute "&amp;#221;" -- capital Y, acute accent --&#62;
-&lt;!ENTITY aacute "&amp;#225;" -- small a, acute accent --&#62;
-&lt;!ENTITY acirc "&amp;#226;"  -- small a, circumflex accent --&#62;
-&lt;!ENTITY aelig "&amp;#230;"  -- small ae diphthong (ligature) --&#62;
-&lt;!ENTITY agrave "&amp;#224;" -- small a, grave accent --&#62;
-&lt;!ENTITY amp "&amp;#38;"     -- ampersand --&#62;
-&lt;!ENTITY aring "&amp;#229;"  -- small a, ring --&#62;
-&lt;!ENTITY atilde "&amp;#227;" -- small a, tilde --&#62;
-&lt;!ENTITY auml "&amp;#228;"   -- small a, dieresis or umlaut mark --&#62;
-&lt;!ENTITY ccedil "&amp;#231;" -- small c, cedilla --&#62;
-&lt;!ENTITY eacute "&amp;#233;" -- small e, acute accent --&#62;
-&lt;!ENTITY ecirc "&amp;#234;"  -- small e, circumflex accent --&#62;
-&lt;!ENTITY egrave "&amp;#232;" -- small e, grave accent --&#62;
-&lt;!ENTITY eth "&amp;#240;"    -- small eth, Icelandic --&#62;
-&lt;!ENTITY euml "&amp;#235;"   -- small e, dieresis or umlaut mark --&#62;
-&lt;!ENTITY gt "&amp;#62;"      -- greater than --&#62;
-&lt;!ENTITY iacute "&amp;#237;" -- small i, acute accent --&#62;
-&lt;!ENTITY icirc "&amp;#238;"  -- small i, circumflex accent --&#62;
-&lt;!ENTITY igrave "&amp;#236;" -- small i, grave accent --&#62;
-&lt;!ENTITY iuml "&amp;#239;"   -- small i, dieresis or umlaut mark --&#62;
-&lt;!ENTITY lt "&amp;#60;"      -- less than --&#62;
-&lt;!ENTITY nbsp "&amp;#32;"    --  should be NON_BREAKING space --&#62;
-&lt;!ENTITY ntilde "&amp;#241;" -- small n, tilde --&#62;
-&lt;!ENTITY oacute "&amp;#243;" -- small o, acute accent --&#62;
-&lt;!ENTITY ocirc "&amp;#244;"  -- small o, circumflex accent --&#62;
-&lt;!ENTITY ograve "&amp;#242;" -- small o, grave accent --&#62;
-&lt;!ENTITY oslash "&amp;#248;" -- small o, slash --&#62;
-&lt;!ENTITY otilde "&amp;#245;" -- small o, tilde --&#62;
-&lt;!ENTITY ouml "&amp;#246;"   -- small o, dieresis or umlaut mark --&#62;
-&lt;!ENTITY szlig "&amp;#223;"  -- small sharp s, German (sz ligature) --&#62;
-&lt;!ENTITY thorn "&amp;#254;"  -- small thorn, Icelandic --&#62;
-&lt;!ENTITY uacute "&amp;#250;" -- small u, acute accent --&#62;
-&lt;!ENTITY ucirc "&amp;#251;"  -- small u, circumflex accent --&#62;
-&lt;!ENTITY ugrave "&amp;#249;" -- small u, grave accent --&#62;
-&lt;!ENTITY uuml "&amp;#252;"   -- small u, dieresis or umlaut mark --&#62;
-&lt;!ENTITY yacute "&amp;#253;" -- small y, acute accent --&#62;
-&lt;!ENTITY yuml "&amp;#255;"   -- small y, dieresis or umlaut mark --&#62;
+&#60;!-- Mnemonic character entities. --&#62;
+&#60;!ENTITY AElig "&#38;#198;"  -- capital AE diphthong (ligature) --&#62;
+&#60;!ENTITY Aacute "&#38;#193;" -- capital A, acute accent --&#62;
+&#60;!ENTITY Acirc "&#38;#194;"  -- capital A, circumflex accent --&#62;
+&#60;!ENTITY Agrave "&#38;#192;" -- capital A, grave accent --&#62;
+&#60;!ENTITY Aring "&#38;#197;"  -- capital A, ring --&#62;
+&#60;!ENTITY Atilde "&#38;#195;" -- capital A, tilde --&#62;
+&#60;!ENTITY Auml "&#38;#196;"   -- capital A, dieresis or umlaut mark --&#62;
+&#60;!ENTITY Ccedil "&#38;#199;" -- capital C, cedilla --&#62;
+&#60;!ENTITY ETH "&#38;#208;"    -- capital Eth, Icelandic --&#62;
+&#60;!ENTITY Eacute "&#38;#201;" -- capital E, acute accent --&#62;
+&#60;!ENTITY Ecirc "&#38;#202;"  -- capital E, circumflex accent --&#62;
+&#60;!ENTITY Egrave "&#38;#200;" -- capital E, grave accent --&#62;
+&#60;!ENTITY Euml "&#38;#203;"   -- capital E, dieresis or umlaut mark --&#62;
+&#60;!ENTITY Iacute "&#38;#205;" -- capital I, acute accent --&#62;
+&#60;!ENTITY Icirc "&#38;#206;"  -- capital I, circumflex accent --&#62;
+&#60;!ENTITY Igrave "&#38;#204;" -- capital I, grave accent --&#62;
+&#60;!ENTITY Iuml "&#38;#207;"   -- capital I, dieresis or umlaut mark --&#62;
+&#60;!ENTITY Ntilde "&#38;#209;" -- capital N, tilde --&#62;
+&#60;!ENTITY Oacute "&#38;#211;" -- capital O, acute accent --&#62;
+&#60;!ENTITY Ocirc "&#38;#212;"  -- capital O, circumflex accent --&#62;
+&#60;!ENTITY Ograve "&#38;#210;" -- capital O, grave accent --&#62;
+&#60;!ENTITY Oslash "&#38;#216;" -- capital O, slash --&#62;
+&#60;!ENTITY Otilde "&#38;#213;" -- capital O, tilde --&#62;
+&#60;!ENTITY Ouml "&#38;#214;"   -- capital O, dieresis or umlaut mark --&#62;
+&#60;!ENTITY THORN "&#38;#222;"  -- capital THORN, Icelandic --&#62;
+&#60;!ENTITY Uacute "&#38;#218;" -- capital U, acute accent --&#62;
+&#60;!ENTITY Ucirc "&#38;#219;"  -- capital U, circumflex accent --&#62;
+&#60;!ENTITY Ugrave "&#38;#217;" -- capital U, grave accent --&#62;
+&#60;!ENTITY Uuml "&#38;#220;"   -- capital U, dieresis or umlaut mark --&#62;
+&#60;!ENTITY Yacute "&#38;#221;" -- capital Y, acute accent --&#62;
+&#60;!ENTITY aacute "&#38;#225;" -- small a, acute accent --&#62;
+&#60;!ENTITY acirc "&#38;#226;"  -- small a, circumflex accent --&#62;
+&#60;!ENTITY aelig "&#38;#230;"  -- small ae diphthong (ligature) --&#62;
+&#60;!ENTITY agrave "&#38;#224;" -- small a, grave accent --&#62;
+&#60;!ENTITY amp "&#38;#38;"     -- ampersand --&#62;
+&#60;!ENTITY aring "&#38;#229;"  -- small a, ring --&#62;
+&#60;!ENTITY atilde "&#38;#227;" -- small a, tilde --&#62;
+&#60;!ENTITY auml "&#38;#228;"   -- small a, dieresis or umlaut mark --&#62;
+&#60;!ENTITY ccedil "&#38;#231;" -- small c, cedilla --&#62;
+&#60;!ENTITY eacute "&#38;#233;" -- small e, acute accent --&#62;
+&#60;!ENTITY ecirc "&#38;#234;"  -- small e, circumflex accent --&#62;
+&#60;!ENTITY egrave "&#38;#232;" -- small e, grave accent --&#62;
+&#60;!ENTITY eth "&#38;#240;"    -- small eth, Icelandic --&#62;
+&#60;!ENTITY euml "&#38;#235;"   -- small e, dieresis or umlaut mark --&#62;
+&#60;!ENTITY gt "&#38;#62;"      -- greater than --&#62;
+&#60;!ENTITY iacute "&#38;#237;" -- small i, acute accent --&#62;
+&#60;!ENTITY icirc "&#38;#238;"  -- small i, circumflex accent --&#62;
+&#60;!ENTITY igrave "&#38;#236;" -- small i, grave accent --&#62;
+&#60;!ENTITY iuml "&#38;#239;"   -- small i, dieresis or umlaut mark --&#62;
+&#60;!ENTITY lt "&#38;#60;"      -- less than --&#62;
+&#60;!ENTITY nbsp "&#38;#32;"    --  should be NON_BREAKING space --&#62;
+&#60;!ENTITY ntilde "&#38;#241;" -- small n, tilde --&#62;
+&#60;!ENTITY oacute "&#38;#243;" -- small o, acute accent --&#62;
+&#60;!ENTITY ocirc "&#38;#244;"  -- small o, circumflex accent --&#62;
+&#60;!ENTITY ograve "&#38;#242;" -- small o, grave accent --&#62;
+&#60;!ENTITY oslash "&#38;#248;" -- small o, slash --&#62;
+&#60;!ENTITY otilde "&#38;#245;" -- small o, tilde --&#62;
+&#60;!ENTITY ouml "&#38;#246;"   -- small o, dieresis or umlaut mark --&#62;
+&#60;!ENTITY szlig "&#38;#223;"  -- small sharp s, German (sz ligature) --&#62;
+&#60;!ENTITY thorn "&#38;#254;"  -- small thorn, Icelandic --&#62;
+&#60;!ENTITY uacute "&#38;#250;" -- small u, acute accent --&#62;
+&#60;!ENTITY ucirc "&#38;#251;"  -- small u, circumflex accent --&#62;
+&#60;!ENTITY ugrave "&#38;#249;" -- small u, grave accent --&#62;
+&#60;!ENTITY uuml "&#38;#252;"   -- small u, dieresis or umlaut mark --&#62;
+&#60;!ENTITY yacute "&#38;#253;" -- small y, acute accent --&#62;
+&#60;!ENTITY yuml "&#38;#255;"   -- small y, dieresis or umlaut mark --&#62;
 
-&lt;!-- deprecated elements --&#62;
+&#60;!-- deprecated elements --&#62;
 
-&lt;!ELEMENT (%literal) - -  CDATA&#62;
+&#60;!ELEMENT (%literal) - -  CDATA&#62;
 
-&lt;!ELEMENT <A
+&#60;!ELEMENT <A
 HREF="NonStandard.html#7" NAME="z35">PLAINTEXT</A> - O EMPTY&#62;
 
-&lt;!-- Local Variables: --&#62;
-&lt;!-- mode: sgml --&#62;
-&lt;!-- compile-command: "sgmls -s -p " --&#62;
-&lt;!-- end: --&#62;
+&#60;!-- Local Variables: --&#62;
+&#60;!-- mode: sgml --&#62;
+&#60;!-- compile-command: "sgmls -s -p " --&#62;
+&#60;!-- end: --&#62;
 ]&#62;
 
 
