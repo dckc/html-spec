@@ -1,0 +1,482 @@
+<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML 1.7.2.3//EN">
+<head>
+<title>Toward Closure on HTML</title>
+<link rev="made" href="mailto:connolly@hal.com">
+</head>
+
+<h1>Toward Closure on HTML</h1>
+
+<address>Version: $Id$<br>
+Daniel W. Connolly &lt;connolly@hal.com&gt;</address>
+
+<p>When I began looking at HTML and WWW, it was difficult to tell exactly
+what HTML was, so I tried to develop a specification. That spec
+apparently hasn't solved much :-{ It failed to address a number of
+features essential to the successful deployment of HTML.
+
+<p>But HTML is a couple years older now, and perhaps now we're in a
+position to see the majority of the issues clearly now. It has been
+suggested (see <a
+href="http://gummo.stanford.edu/html/hypermail/www-talk-1994q1.messages/1056.html"><cite>heretical
+suggestion</cite></a>) that now is the time to take the current
+practice and capture it in a specification.
+
+<h2>The Purpose of HTML</h2>
+
+<p>If we take a step back and look at the purpose and requirements and
+such for HTML, I'd say the purpose of HTML is:
+
+<strong>to promote computer mediated communication between parties on
+the internet by representing information in terms of available
+hypermedia technology.
+</strong>
+
+<p>The idea is that I use the tools available on my box to capture my
+ideas at a fairly high level, so that you can use the tools on your
+box to filter/navigate/display the ideas. And even though your tools
+and my tools are not exactly the same, there's a high degree of
+confidence that the ideas get through in-tact.
+
+<p>So to me, the idea of deploying specialized HTML editors on all the
+various platforms makes HTML no better than RTF or PostScript -- the
+data is tied to the supporting code. This is not to discourage the
+development of specialized HTML tools, but to encourage
+interoperability between existing tools (MS Word, FrameMaker,
+emacs...) and HTML applications, and to discourage "creeping
+featurism" in HTML.
+
+<h2>The Goals of an HTML Specification</h2>
+
+<p>The goal of any HTML specification should be to promote that
+confidence in the fidelity of communications using HTML. This means:
+<ol>
+	<li>making it clear to authors what idioms are available
+to express their ideas
+	<li>making it clear to implementors how to interpret the
+HTML format so that authors' ideas will be represented faithfully
+	<li>keeping HTML simple enough that it can be implemented
+using readily available technology and processed interactively
+	<li>making HTML expressive enough that it can represent
+a useful majority of the contemporary communications idioms in
+this community
+	<li>making some allowance for expressing idioms not captured
+by the specification
+	<li>addressing relavent interoperability issues with other
+applications and technologies
+</ol>
+
+<h2>HTML Architecture: SGML</h2>
+
+<p>From <A
+HREF="http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html"><CITE>HyperText
+Mark-up Language</CITE></A>:
+
+<BLOCKQUOTE>
+The <A
+NAME="z0" HREF="http://info.cern.ch/hypertext/WWW/TheProject.html">WWW</A> system uses marked up text
+to represent a hypertext document
+for transmision over the network.
+The hypertext markup language is
+an <A
+NAME="z7" HREF="http://info.cern.ch/hypertext/WWW/MarkUp/SGML.html">SGML</A> format.
+</BLOCKQUOTE>
+<!-- I should be able to use relative links within the above quote... -->
+
+<p>The costs and benefits of basing using SGML to define HTML have
+been discussed at great length. Simplifications have been suggested
+(see, for example, <a
+href="http://gummo.stanford.edu/html/hypermail/www-talk-1994q1.messages/632.html"><cite>A
+thought on implementation...</cite></a> and responses). But at this
+point, it appears that there is a clear requirement that <strong>an
+HTML document shall be a <A
+HREF="sgml-excerpts.html#SGML4.51"><CITE>conforming SGML
+document</CITE>
+</a>.</strong>
+
+<p>The benefits of using SGML to define HTML include:
+
+<ul>
+<li>Given a formal definition of HTML in SGML (i.e. an html <a
+HREF="sgml-excerpts.html#SGML4.105">DTD</a>), the question of whether a
+document conforms to that definition can be determined by machine
+(e.g. by the <a href="ftp://ifi.uio.no/pub/SGML/SGMLS/">SGMLs software
+package</a>, or by various interactive SGML editing tools). This
+allows authors a certain degree of confidence that they have prepared
+a well-formed document, and supports goal #1.
+
+<li>The SGML standard, combined with a DTD for HTML, defines an
+abstract parsing model for reducing an SGML document in source form to
+an abstract representation called the Entity Structure Information
+Set. This provides a basis for a common interpretation of HTML
+documents, in support of goal #2.
+
+<li>SGML is designed for document interchange, and many vendors have
+seen the value in supporting SGML as an interchange option. This
+supports goal #6.
+
+</ul>
+
+<p>The costs of using SGML to define HTML include:
+
+<ul>
+
+<li>The SGML standard is an extremely dense document. It is not
+designed for easy reading. SGML documents, on the other hand, are
+largely transparent. But not completely. It is quite common to browse
+a number of SGML documents and reach intuitive conclusions that are
+inconsitent with the standard. This is in direct conflict with goal
+#2.
+
+<li>There are mechanisms in SGML to support modularization (entities
+model the #include feature of C) conditional usage (marked sections
+model #ifdef fairly well) and macros (another usage of entities), but
+they involve more complexity than interactive processing (goal #3)
+would suggest.
+
+</ul>
+
+
+<h2>Outstanding Issues in HTML</h2>
+
+<p>The current working <a
+HREF="http://info.cern.ch/hypertext/WWW/MarkUp/HTML.html">specification
+for HTML</a> does not faithfully represent contemporary practice as
+supported by applications such as Mosiac and Lynx. Nor do those
+applications give a precise definition for HTML.
+
+<p>The following is a commentary on the current document in the form
+of an enumeration of the outstanding issues as I see
+them.
+
+<h3>Status of features</h3>
+
+<p>The current specification defines the following:
+
+<DL>
+<DT><A
+NAME="z2">Mainstream</A>
+<DD> All parsers must recognize
+these features.  Features are mainstream
+unless otherwise mentioned.
+<DT><A
+NAME="z5">Extra</A>
+<DD> Standard HTML features which
+may safely be ignored by parsers.
+It is legal to ignore these, treat
+the contents as though the tags were
+not there. (e.g. EM, and any undefined
+elements)
+<DT><A
+NAME="z8">Obsolete</A>
+<DD> Not standard HTML.  Parsers
+should implement these features as
+far as possible in order to preserve
+back-compatibility with previous
+versions of this specification.
+</DL>
+
+<p>On the one hand, authors would like to be certain that the markup
+they compose will be faithfully represented on the other end. On the
+other hand, information consumers should be able to filter and format
+documents as they please.
+
+<p>Currently, a lot of markup is ignored by various pieces of
+software without any warning. It should be possible to determine
+whether a document uses any features outside the "Mainstream" or
+"Extra" set.
+
+<p>Also, there is a need to represent features not specified by the
+standard. Pilot projects will want to represent non-standard features
+without causing interoperability problems with conforming
+implementations.
+
+<H4>Proposal</h4>
+
+<ol>
+<li>Include a document type declaration in future HTML documents to be
+explicit about the features used, for example:
+
+<pre>
+&lt;DOCTYPE HTML PUBLIC "-//timbl info.cern.ch//DTD WWW HTML 2.1/EN"&gt;
+</pre>
+
+<P>to refer to the ENglish version of the DTD named "WWW HTML 2.1"
+owned by "timbl info.cern.ch" (can't use @ in SGML public identifiers)
+
+<P>or perhaps:
+
+<pre>
+&lt;DOCTYPE HTML SYSTEM "http://info.cern.ch/pub/doc/html-19940415.dtd"&gt;
+</pre>
+
+<p>This implies splitting the HTML DTD into parts for use with SGML
+tools: (a) an SGML declaration, and (b) a document type declaration
+subset. This is consistent with the representations of DTDs for
+applications such as CALs and DocBook.
+
+<p>It also implies specifying how to process documents that do not
+have the explicit <code>&lt;!DOCTYPE...</code> markup.
+
+<LI> Reserve the symbols HTML.Minimal, HTML.Obsolete, HTML.Optional,
+and HTML.Nonstandard as "feature test macros." Enhance the DTD to
+represent each of these feature sets. For example, to test that a
+document uses only Minimal and Optional, but no Obsolete or
+Nonstandard features, one might invoke:
+
+<pre>
+	sgmls -i Minimal -i Optional foo.html
+</pre>
+
+<LI>Require some warning or other indication to be given when markup
+is ignored. This includes unrecognized element and attribute names.
+These warnings can be suppressed at the explicit request of the user
+(this is just a form of filtering), but they should be on by default.
+
+</ol>
+
+<h3>MIME Character sets</h3>
+
+<P>The spec lists "charset" as an optional parameter in the HTML
+content type registration. It should be pointed out that the only
+possible values for charset in an HTML content type are "US-ASCII" and
+"ISO-Latin1." Using any other character set is meaningless, given that
+the document character set for HTML is ISO Latin-1.
+
+<h3>Newlines, Paragraph breaks, and &lt;P&gt;</h3>
+<!-- @@blank lines for paragraph breaks -->
+
+<P>Folks have asked why the &lt;p&gt; tag is necessary at all -- why
+can't we just use a blank line like troff and TeX?
+
+<P>First, it's too late to do that: there are too many documents with
+blank lines that <EM>don't</EM> indicate a paragraph break.
+
+<P>Second, not everybody wants it that way: I'd like to be free to
+stick blank lines in lists and such without introducing paragram
+breaks.
+
+<p>Third, the mechanism for expressing this in SGML, SHORTREF,
+introduces significant complexity to parsing HTML. It opens up a can
+of worms including <CODE>&lt;em/foo/</CODE> and other tricky parsing
+idioms.
+
+<p>But I would like to introduce one change to the way P elements
+work: I'd like to make the P element a paragraph container rather than
+a paragraph separator. The only required change is to put a &lt;p&gt;
+tag at the beginning of every paragraph -- we can use the OMITTAG
+feature to make &lt;/p&gt; tags implicit. It makes for a much cleaner
+DTD in many ways, and it just makes more sense.
+
+<h3>Centering and other formatting</h3>
+
+<P>The traditional strategy for formatting SGML documents is to mark
+up the structure of the document and map that structure onto a set of
+formatting features.
+
+<P>It so happens that after we had exhausted the structural
+distinctions we needed for HTML, there were several formatting
+distinctions that were not expressible through structural markup.
+
+<P>The traditional solution to this situation is to introduce
+processing instructions, e.g.
+
+<PRE>
+...
+
+&lt;!-- Crud... this header gets widowed at the bottom of the
+page. I'll just jimmy it with a page break...--&gt;
+&lt;? newpage&gt;
+
+&lt;H2&gt;Header Two&lt;/h2&gt;
+</PRE>
+
+<P>I suggest we introduce a whole set of processing instructions so
+that folks can mark up the formatting of their document without
+affecting the structure.
+
+<P>For example, rather than the <CODE>&lt;BR&gt;</CODE> element, I'd
+suggest a <CODE>&lt;? linebreak&gt;</CODE> processing instruction, and
+a <CODE>&amp;br;</CODE> entity as a shorthand form.
+
+<P>The <CODE>&amp;nbsp;</CODE> is another wierd one -- it's currently
+defined as <CODE>&amp;#32;</CODE>, which is indistinguishable from a
+normal " " character in a conforming implementation. A "structure
+controlled application" never sees the entities until they're
+expanded, so it can't tell <CODE>&amp;nbsp;</CODE> from a normal space
+character.
+
+<P>It's fortunate that <CODE>&amp;nbsp;</CODE> is an entity, though --
+unlike the <CODE>&lt;BR&gt;</CODE> idiom, there's no change necessary
+to the documents themselves -- just to the DTD and applications.
+
+The set of processing instrcutions should cover:
+
+<UL>
+<LI> List styles
+<LI> Line breaks
+<LI> Page breaks
+<LI> Centering, justification
+<LI> Other RTF-style idioms
+</UL>
+
+<h3>Structure</h3>
+
+<P>The text of the current spec says very little about the order and
+occurence of elements within the <CODE>BODY</CODE> element.
+
+<P>Are lists allowed within lists? The DTD says no, but Mosaic
+supports it and the LaTeX-&gt;HTML converters I've seen make good use
+of it.
+
+<P>Is <CODE>STRONG</CODE> allowed within <CODE>EM</CODE>? Are anchors
+allowed inside anchors? Can an anchor span paragraphs?
+
+<P>Are P, LI, DT and DD empty or do they contain stuff? (I'm now of
+the opinion that they should contain stuff).
+
+<P>I'm working on a DTD that mirrors the set of combinations that
+Mosiac seems to support. I'm also generating a test suite so we can
+see what the other browsers do, and so future implementors will have a
+concrete place to start. But there are a lot of subtleties to get
+through here.
+
+<P>I think it's important to keep interoperability in mind here: we
+don't want to make it impossible to convert HTML to RTF. But then,
+there's a lot of value in being able to represent LaTeX style
+constructs the way Mosaic does rather than the way the linemode
+version of WWW does.
+
+<h3>Navigation idioms</h3>
+
+<p>I've seen several collections of nodes that represent a sort of
+"toolbar" including Next, Previous, Up, Contents, Index, etc. ...
+There should be a way of labelling these things so that a browser
+could grab that stuff out of the text flow and implement it with an
+integrated user-interface feature like a button bar or the like.
+
+<h3>Publication Idioms</h3>
+
+<p>The same goes for author, last modified, etc. A WWW browser should
+be able to implement a "Reply..." menu item which is active iff it
+spots author info in the node.
+
+<P>Also, we should realize that HTML nodes get "published" much like
+email messages, and as such, it should be required that they have the
+equivalent of the RFC822 From:, To:, Date:, and possibly Message-Id:
+headers.
+
+<P>These elements can and should be automated, and it should be
+possible for a node to say "I'm published as part of node XXX... get
+author and status info there."
+
+<h3>Reliable Links</h3>
+
+<P>I'll take this opportunity to argue once again that content type
+info should be allowed in a link. I've made numerous links to
+compressed tar archives, and I routinely get mail about "why does
+Mosaic display gibberish when I click on the 'compressed tar file'
+link?"
+
+<P>I think it's time to support more traditional SGML idioms for
+linking, for example:
+
+<PRE>
+&lt;A HREF="#z12"&gt;
+&lt;A HREF="foo.html#z12"&gt;
+&lt;A HREF="http://host.com/foo.html#z12"&gt;
+</PRE>
+
+<P>becomes
+
+<PRE>
+&lt;A IDREF="z12"&gt;
+&lt;A NEIGHBOR="foo.html" FRAGMENT="z12"&gt;
+&lt;A RESOURCE="http://host.com/foo.html" fragment="z12"&gt;
+</PRE>
+
+<P>or better yet, start supporting HyTime ala...
+
+<PRE>
+&lt;url id="u1"&gt;http://host.com/foo.html&lt;/url&gt;
+&lt;nameloc locsrc="u1" id="z12"&gt;z12&lt;/nameloc&gt;
+&lt;A linkend="z12"&gt;
+</PRE>
+
+<h3>"Ownership" of the Standard</h3>
+
+<p>The most recent publication of the HTML specification was an
+internet draft:
+<pre>
+  "Hypertext Markup Language (HTML): A Representation of Textual 
+  Information and MetaInformation for Retrieval and 
+  Interchange",07/23/1993, &lt;draft-ietf-iiir-html-01.txt, .ps&gt;
+</pre>
+
+<p>under the IIIR (Integration of Internet Information Resources) working
+group of the IETF (Internet Engineering Task Force).
+
+<p>Making HTML an internet standards-track RFC involves more overhead
+than is warrented. In the future, the HTML specification will be
+published as informational RFCs (FYI documents) from the WWW team at
+CERN.
+
+<h2>Future Directions in HTML</h2>
+
+<p>The following issues should remain apart from the immenent HTML
+standard.
+
+<h3>Forms, Tables, and Math</h3>
+
+<P>I think forms should be a separate document type. I don't see a
+requirement to be able to include forms inside arbitrary documents.
+And I see more value in separating them from the normal HTML document
+type.
+
+<P>The same goes for tables, math, and small inline images. Rather
+than trying to squeeze these into the HTML DTD, we need a way to
+transmit multiple MIME body parts in one transaction.
+
+<h3>Multi-byte character sets</h3>
+
+<p>Some folks have employed <a
+href="http://www.ntt.jp/japan/note-on-JP/encoding.html">techniques for
+encoding multibyte character sets in HTML</a>. They point out the
+interaction between multibyte characters and SGML delimiter
+recognition. The SGML standard way to resolve this is to use a
+different document character set in the SGML declaraction for HTML.
+This places extra requirements on all SGML parsers used for such
+documents.
+
+<h4>Proposal</h4>
+
+<p>Explain the use of SGML declarations for use with
+multibyte character sets in the spec.
+
+<h3>Marked Sections</h3>
+
+<p>This is SGML's equivalent of <code>#ifdef</code> in C. It may be
+worth supporting them for a variety of reasons -- one of which is that
+we're non-conforming unless we do! But in order for them to be really
+useful, we'd have to support the <code>#define</code> equivalent too:
+entity declarations. For example:
+
+<pre>
+&lt;!DOCTYPE HTML PUBLIC "..." [
+&lt;!ENTITY hal-site "IGNORE" -- gets redefined as "INCLUDE" within HaL --&gt;
+]&gt;
+... &lt;![ &amp;hal-site; [ For folks at hal only: here's the phone
+number: 555-1212 ]]&gt;
+</pre>
+
+<h3>Large Documents</h3>
+
+<P>I've heard gross things about folks using cpp and other hacks to
+deal with the problem of organizing large HTML documents. And we have
+no common way to aggregate a collection of HTML nodes to, for example,
+print them.
+
+<h3>Style Sheets and Multiple DTDs</h3>
+
+<p>In the long run, we should be headed toward a system that accomodates
+a variety of DTDs, using stylesheets somehow.
+
