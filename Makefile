@@ -45,6 +45,7 @@ HYPERTEXT = \
      Elements/LINK.html \
      Elements/BASE.html \
      Elements/NEXTID.html \
+     Elements/META.html \
 	\
      Elements/BODY.html \
      Elements/A.html \
