@@ -18,37 +18,27 @@ $Id$
     The public text includes the DTD, an SGML declaration, and a version
     of the ISO Added Latin 1 entity set.
 
-<h2> Changes in the October 7 Revision </h2>
+<h2> Changes in the November 15 Revision </h2>
 
 <ul>
 
-<li> The DTD is no longer spread across three files. The Level 0 and Level 1
-     files contain just feature test entities now. The <tt>html.dtd</tt>
-     contains all the elements.
+<li> Added one-line comment for each element and attribute in the DTD.<br>
+Removed some other comments
 
-<li> The META tag was promoted from Proposed to standard. The Proposed
-     feature test entity has been eliminated. (The nbsp and shy entities
-     went away with it: they should come back in 2.1)
+<li> ALT is no longer required in level 0: some images are completely
+inessential.
 
-<li> The HTML.Prescriptive feature test entity is now called HTML.Recommended.
-     It switches the content of BODY and A between the "free form" style
-     generally found on the net and the more structured, recommended form.
+<li> Changed DL content model to (DT | DD)+
 
-<li> The HTML.Obsolete feature test entity is now called HTML.Deprecated.
-     It switches <tt>XMP</tt>, <tt>LISTING</tt>, and <tt>PLAINTEXT</tt>.
+<li> ADDRESS content model is always (%text|P)*
 
-<li> The standard A content model now includes <tt>H1</tt>-<tt>H6</tt>
-     and <tt>%text</tt> only -- <tt>%block</tt> has been removed.
+<li> FORM ACTION attribute is #IMPLIED (defaults to address of document)
 
-<li> The public text owner is now <tt>-//IETF//</tt>. If and when the
-     IETF becomes a registerd ISO public text owner, the <tt>-//</tt>
-     should be changed to <tt>+//</tt>.
-
-<li> The reference to the ISO latin 1 entity set now references the
-     HTML version of this entity set, and not the public version
-     from the SGML standard.
+<li> Removed remaining references to World-Wide Web
 
 </ul>
+
+<p> See also: <a href="ChangeLog">changelog of html.dtd from <strong>1992/12/03</strong> thru <strong>1994/11/15</strong></a>
 
 <h2>The Public Text</h2>
 
