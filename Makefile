@@ -28,6 +28,7 @@ HYPERTEXT = HTML.html \
 	Tags.html \
 	Entities.html \
 	DTDHeading.html \
+	HTML.dtd.html \
 	Relationships.html \
 	RegistrationAuthority.html \
 	Acknowledgements.html \
