@@ -1,0 +1,570 @@
+<!-- $Id$ -->
+<html>
+<head>
+<title>Toward a Formalism for Communication On the Web</title>
+</head>
+<body>
+
+<ADDRESS>Daniel W. Connolly &lt;connolly@hal.com&gt; <P>
+$Id$
+</ADDRESS>
+
+<H2>Status</H2>
+
+ <P>I had hoped to polish this more before publishing it, but I can't seem
+to get caught up... there's so much new stuff all the time!
+
+<H1>Some Background on SGML for the World-Wide Web
+</H1>
+
+ <p>In late 1992 and early 1993, I did quite a bit of work on the HTML DTD
+while I was working at Convex in the online documentation group.
+
+ <p>When I began, there was the LineMode browser and the NeXT
+implementation, and a few nodes in The Web describing HTML with some
+oblique references to SGML. I was not intimately familiar with SGML, but
+I was quite familiar with the problems of document interchange, and I
+was eager to apply some of my formal systems background to the problem.
+
+<H2>On Formally Unconvertable Document Formats
+</H2>
+
+ <P>My experience with document interchange led me to classify document
+formats using the essential distinction that some are "programmable" and
+some are not. Most widely used source forms are programmable: TeX,
+troff, postscript, and the like. On the other hand, there are several "static"
+formats: plain text, Microsoft RTF, FrameMaker MIF, GNU's TeXinfo,
+
+ <P>The reason that this distinction is essential with respect to document
+interchange is that extracting information from documents in
+"programmable" document formats is equivalent to the halting problem.
+That is, it is arbitrarily difficult and cannot be automated in a
+general fashion.
+
+ <P>For example, I conjecture that it is impossible to write a program that
+will extract the third word from a TeX document. It would be an easy
+task for 80% of the TeX documents out there -- just skip over some
+formatting stuff and grab the third bunch of characters surrounded by
+whitespace. But that "formatting stuff" might be a program that
+generates 100 words from the hypenation dictionary. So the simple
+lexical scan of the TeX source would find a word that is <em>not</em> third
+word of the document when printed.
+
+ <P>This may seem like an obscure and unimportant problem, but I assure you
+that the problem of converting TeX tables to FrameMaker MIF is just as
+unsolvable.
+
+ <P>So while "programmable" document formats have the advantage that
+features can be added on a per-document basis, they suffer the
+disadvantage that these features cannot be recovered by the machine and
+translated in an automated fashion.
+
+
+<H2>Document Formats as Communications Media
+</H2>
+
+ <P>If we look at document formats in light of the conventional
+sender/message/medium/receiver communications model, we see that
+document formats capture the message at various levels of
+"concreteness".
+
+ <P>The message begins as a collection of concepts and ideas in the mind of
+the sender. In order to communicate, the sender and receiver must share
+some language. That is, they must both understand some common set of
+symbols and the way those symbols combine to represent ideas. The
+senders job is to express the message in terms of the common symbols and
+express them on the medium -- that is "render" or "present" them. The
+the medium stimulates the receiver to reconstruct the symbols in his/her
+brain -- that is, the receiver "interprets" or "recognizes" the symbols
+from the medium. Those symbols interact with other symbols in the
+receiver's brain, and the receiver "gets the message."
+
+ <P>The communications medium is often a layered combination of more and
+less concrete media. For example, folks first render their ideas in the
+symbology of the English language, and then render those symbols as
+sequences of spoken phonemes or written characters. Those written
+characters are in turn combinations of lines, curves, strokes, and
+points. The receiving folks then assemble the strokes into characters,
+the characters into words, the words into phrases, sentences, thoughts,
+ideas, and so on.
+
+ <P>The most common and ubiquitous document format, plain ASCII text,
+captures or digitizes messages at the level of written characters.
+PostScript captures the characters as lines, curves, and paths. The GIF
+format captures a document as an array of pixels. GIF is in many ways
+infinitely more expressive than plain text, which is limited to
+arrangements of the 96 ASCII characters.
+
+ <P>The RTF, TeX, nroff, etc. document formats provide very sophisticated
+automated techniques for authors of documents to express their ideas. It
+seems strange at first to see that plain text is still so widely used.
+It would seem that PostScript is the ultimate document format, in that
+its expressive capabilities include essentially anything that the human
+eye is capable of perceiving, and yet it is device-independent.
+
+ <P>And yet if we take a look at the task of interpreting data back into
+the ideas that they represent, we find that plain text is much to be
+preferred, since reading plain text is so much easier to automate than
+reading GIF files (optical character recognition) or postscript
+documents (halting problem). In the end, while the source to a various
+TeX or troff documents may correspond closely to the structure of the
+ideas of the author, and while PostScript allows the author very precise
+control and tremenous expressive capability, all these documents
+ultimately capture an image of a document for presentation to the human
+eye. They don't capture the original information as symbols that can be
+processed by machine.
+
+ <P>To put it another way, rendering ideas in PostScript is not going to
+help solve the problem of information overload -- it will only compound
+the situation.
+
+ <P>As a real world example, suppose you had a 5000 page document in
+PostScript, and you wanted to find a particular piece of information
+inside it. The author may have organized the document very well, but
+you'd have to print it to use those clues. If the characters aren't
+kerned much, you might be able to use grep or sick a WAIS indexing
+engine on it. Then, once you've found what looks like postscript code
+for some relavent information, you'd pray that the document adheres to
+the Adobe Document Structuring conventions so that you could pick out
+the page containing the information you need and view that page.
+
+ <P>If that's too perverse, look at the problem of navigating a large
+collection of technical papers coded in TeX. Many of the authors use
+LaTeX, and you may be able to convince the indexing engine to filter
+out common LaTeX formatting idioms -- or better yet, weight headings,
+abstracts, etc. more heavily than other sections based on the
+formatting idioms. While there are heuristic solutions to this problem
+that will work in the typical 80%/20% fashion, the general solution is
+once again equivalent to the halting problem; for example, individual
+documents might have bits of TeX programming that change the
+significance of words in a way that the indexing engine won't be able
+to understand.
+
+
+<H2>SGML as a Layered Communications Medium
+</H2>
+
+ <P>So where does SGML fit into the sender/message/medium/receiver game?
+
+ <P>I'll use PostScript as a basis of comparison. The PostScript model
+consists of a fairly powerful and general purpose two dimensional
+imaging model, that is, a set of primitive symbols for specifying sets
+of points in two dimensions using handy computational techniques, and a
+general purpose programming model for building complex symbols out of
+those primitives. That model is applied extensively to the problem of
+typography, and there is a an architecture (that is, a set of well known
+symbols derived from the primitives) for using and building fonts.
+
+ <P>So to communicate message consisting of symbols from human
+communications in PostScript, one may choose from a well known set of
+typefaces, or create a new typeface using the well known font
+architecture, or free-hand draw some characters using postscript
+primitives, or draw lines, boxes, circles and such using postscript
+primitives, or scribble on a piece of paper, scan it, and convert the
+bits to use the postscript image operator. The space of symbols is
+nearly limitless, as long as those symbols can be expressed ultimately
+as pixels on a page.
+
+ <P>The distinctive feature of PostScript (an advantage at times, and a
+disadvantage at others) is that whether you print it and deliver the
+paper or you deliver the PostScript and the receiver prints it out, the
+result is the same bunch of images.
+
+ <P>The SGML model, on the other hand, specifies no general purpose
+programming model where complex symbols can be defined in terms of
+primitive symbols. The meaning of a symbol is either found in the SGML
+standard itself, or in some PUBLIC document (which may or may not be
+machine readable), or in some SYSTEM specific manner, or defined by an
+SGML application. The only real primitives are the character and the
+"non-SGML data entity".
+
+ <P>The model perscribes that a document consist of a declaration, a
+prologue, and an instance. The declaration is expressed in ASCII and
+specifies the character sets and syntactic symbols used by the prologue
+and instance. The prologue is expressed in a standard language using the
+syntactic symbols from the delcaration, and specifies a set of entities
+and a grammar of element types available to the instance.
+
+ <P>The instance is a sequence of elements, character data, and entities
+constrained by the grammar set forth in the prologue, and the SGML
+standard does not specify any semantics or meaning for the instance.
+
+ <P>So to communicate using SGML, the sender first chooses a character set
+and certain processing quatities and capacities. For example "I'm
+writing in ASCII, and I'll never use an element name more than 40
+characters long" is some information that can be expressed in the SGML
+declaration. [The standard allows the SGML declaration to be implicitly
+agreed upon by sender and receiver, and this is generally the case].
+
+ <P>The tricky part is the prologue, where the sender gives a grammar that
+constrains the structure of the document. Along with the information
+actually expressed in SGML in the prologue, there is usually some amound
+of application defined semantics attached to the element types. For
+example, the prologue may express in SGML that an H2 element must occur
+within the content of an H1 element. But the convention that text in an
+H1 is usually displayed larger and considered more important is
+application defined.
+
+ <P>Once the prologue is determined (this usually involves considerable
+discussion between a collection of authors and consumers in some
+domain -- in the end, there may be some "parameter entities" in the
+prologue which allow some variation on a per-document basis), the sender
+is constrained to a rigorous structure for the organization of the
+symbols and character data of the document. On the other hand, s/he has
+an automated technique for verifying that s/he has not viloated the
+structure, and hence there is some confidence that the document can be
+consumed and processed by machine.
+
+
+<H1>The HTML DTD: Conforming, though Expedient
+</H1>
+
+<H2>Design Constraints of the HTML DTD
+</H2>
+
+ <P>Tim's original conception of HTML is that it should be about as
+expressive as RTF. In contrast to traditional SGML applications where
+documents might be batch processed and complex structure is the norm,
+HTML documents are intended to be processed interactively. And the
+widespread success of WYSIWYG word processors based on fairly flat
+paragraph structure was proof that something like RTF was suitable for a
+fairly wide variety of tasks.
+
+ <P>As I learned a little about SGML, it was clear that the WWW browser
+implementation of HTML sorely lacked anything resembling an SGML entity
+manager. And there were some syntactic inconsitencies with the SGML
+standard. And it didn't use the ID/IDREF feature where it should have...
+
+ <P>Then, as I began to comprehend SGML with all its warts, (who's idea was
+it to attach the significance of a newline character to the phase of the
+moon anyway?) I was less gung-ho about declaring all the HTML out there
+to be blasphemy to the One True SGML Way.
+
+ <P>Thus I chose for my battle to find some formal relationship between the
+SGML standard and the  HTML that was "out there." The quest was:
+
+<H3>Find some DTD such that the vast majority of HTML documents are
+instances of that DTD, conversely, such that all its instances make
+sense to the existing WWW clients.
+</H3>
+
+ <P>I struggled mightily with such issues as:
+
+<UL>
+<LI>Should we be sticking &lt;! DOCTYPE HTML SYSTEM> in .html files? What
+if somebody puts an entity declaration in there? (And does that mean
+that WWW clients have to be able to parse SGML prologues in general?
+
+<LI>What's the syntax of an attribute value? If we allow SHORTTAG YES,
+does that mean we have to parse <CODE>&lt;em/this/</CODE> style of
+markup too?
+
+<LI>Can we put some short reference maps in the DTD that will cause real
+SGML parsers and current WWW browsers to do the same thing w.r.t
+newlines? (i.e. can we make all that phase-of-the-moon processing with
+newlines a moot issue)
+
+<LI>What about marked sections? Short reference maps?
+
+<LI>What character set should we be using? How do I express ISO-Latin-1
+in the SGML declaration? How should authors express the '<' character?
+How should this be expressed in the DTD?
+
+<LI>How do you put quotes in an attribute value literal?
+
+<LI>How can I deal with the current paragraph element idioms without
+using minimization?
+
+<LI>Can I stick base64 encoded stuff in a CDATA element? Do I have to
+watch out for <'s and such?
+
+<LI>How do we combine SGML and multimedia data in the same data stream?
+
+</UL>
+
+
+ <P>I found solutions to some problems, and punted on others. I probably
+should have put more comments in the DTD regarding the compromises. But
+I wanted to keep the DTD stripped down to the normative information and
+keep the informative information in other documents.
+
+ <P>I did, by the way, draft a series of 4 or 5 documents demonstrating
+various structural and syntactic features of SGML -- a sort of
+validation suite. I'm not sure where it went.
+
+ <P>I'd like to respond to Elliot Kimber's critique of the HTML DTD that I
+posted.
+
+<pre>
+>At the bottom of this posting is a slightly modified copy of the
+>HTML DTD that conforms to the HyTime standard.  I have not modified
+>the elements or content models in any way.  I have not added any
+>new elements.  I have only added to the attribute lists of a few
+>elements.
+>
+>The biggest change I made was to the way URL addresses are handled.
+>In order to use HyTime (as opposed to application-specific)
+>methods for doing addressing, I had to change the URL address
+>from a direct reference into an entity reference where the
+>entity's system identifier is its URL address.
+</pre>
+
+ <P>I suggested this long ago, but Tim shot the idea down. As I recall, he
+said that all that extra markup was a waste. On the one hand, I agree
+with him -- the purpose of a language is to be able to express common
+idioms succinctly, and SGML/HyTime are poor in that respect. On the
+other hand, once you've chosen SGML, you might as do as the Romans do.
+
+<pre>
+>  This makes
+>the link elements conform to the architectural forms and puts
+>in enough indirection to allow other addressing methods to
+>be used to locate the objects without having to modify the
+>links, only the entity declarations.
+</pre>
+
+ <P>Why is it easier to modify entity declarations than links? Six of one,
+half-dozen of the other if you ask me.
+
+<pre>
+>  I use SUBDOC entities
+>for refering to other complete documents, although I'm not
+>sure this the best thing, but there's no other construct in
+>SGML that works as well.  Note that nowwhere in 8879 does it
+>define what must happen as the result of a SUBDOC reference,
+>except that a new parsing context is established.  The actual
+>result of a SUBDOC reference is a matter of style and presumably
+>in a WWW context it would result in the retrieval of the document
+>and its presentation in a seperate window.  The key is that
+>the subdoc reference establishes a specific relationship between
+>the source of the link and the target, namely one document
+>refering to another.  The target document could also be defined
+>as a data entity with whatever notation is appropriate (possibly
+>even SGML if it's another SGML document).  This may be the better
+>approach, I don't know.
+</pre>
+
+ <P>I don't expect that the data entity/subdocument entity distinction
+matters one hill of beans to contemporary WWW clients. I'm interested to
+know if it means anything to HyTime engines.
+
+<pre>
+>If I were re-designing the HTML, I would add direct support
+>for HyTime location ladders using at a minimum the nameloc,
+>notloc, and dataloc addressing elements.  However, if these
+>elements are needed for interchange they could be generated
+>from the information contained in WWW documents using the
+>DTD below, so it's not critical.
+>
+</pre>
+
+ <P>Could you expand on that? If we'll be "generating" compliant SGML for
+interchange, we might as well use TeXinfo or something practical like
+that for application-specific purposes.
+
+<pre>
+>This is just one attempt at applying HyTime to the HTML.
+>I'm sure there are other equally-valid (or more valid)
+>ways it could be done.  Given the current functionality
+>of the WWW, I'm sure there are ways to express that functionality
+>using HyTime constructs.  HyTime constructs may also suggest
+>useful ways to extend the WWW functionality, who knows.
+</pre>
+
+ <P>I finally got to actually read the HyTime standard the other day, and 
+the clink and noteloc forms looked most useful. I'm also interested in
+expressing some of the "relative link" idioms used in HTML.
+(e.g how would we express HREF="../foo/bar.html#zabc" using HyTime? The
+object of the game is to do it in such a way that the markup can be
+copied verbatim from one system to another (say unix to VMS) and have
+the right meaning)
+
+<pre>
+>&lt;!ENTITY % URL "CDATA"
+>        -- The term URL means a CDATA attribute
+>           whose value is a Universal Resource Locator,
+>           as defined in ftp://info.cern.ch/pub/www/doc/url3.txt
+>        -->
+>&lt;!--=====================================================================
+>    WEK:  I have defined URL addresses as a notation so that they can
+>          be then used in a notloc element.
+>    =====================================================================-->
+>&lt;!NOTATION url PUBLIC "-//WWW//NOTATION URL/Universal Resource Locator
+>                             /'ftp: info.cern.ch/pub/www/doc/url3.txt'
+>                             //EN"
+>>
+</pre>
+
+ <P>Cool good idea.
+
+<pre>
+>
+>&lt;!ENTITY % linkattributes
+>        "NAME NMTOKEN #IMPLIED
+>        HREF ENTITY #IMPLIED
+>
+> --=== WEK =======================================================
+>
+>      HREF is now an entity attribute rather than containing a
+>      URL address directly.  To create a link using a URL address,
+>      declare a SUBDOC or data entity and make the system
+>      identifier the URL address of the object:
+>
+>      &lt;!ENTITY  mydoc SYSTEM "URL address of document " SUBDOC >
+>
+>      This indirection gives to things:
+>
+>      1. A way to protect links in the source from changes in the
+>         location of a document since the physical address is only
+>         specified once.
+</pre>
+
+ <P>Ah... now I get it... in case you have lots of links to mydoc or parts
+of mydoc, you only have one place that defines where mydoc is. Nifty.
+
+<pre>
+>
+>      2. An opportunity to use other addressing methods, including
+>         possibly replacing the URL with an ISO formal public
+>         identifier.
+>    =================================================================-->
+>
+>        TYPE NAME #IMPLIED -- type of relashionship to referent data:
+>                                PARENT CHILD, SIBLING, NEXT, TOP,
+>                                 DEFINITION, UPDATE, ORIGINAL etc. --
+>        URN CDATA #IMPLIED -- universal resource number. unique doc id --
+>        TITLE CDATA #IMPLIED -- advisory only --
+>        METHODS NAMES #IMPLIED -- supported methods of the object:
+>                                        TEXTSEARCH, GET, HEAD, ... --
+>        -- WEK: --
+>        LINKENDS  NAMES #IMPLIED
+>          -- Linkends takes one or more NAME= values for local links--
+>        HyNames  CDATA #FIXED 'TYPE ANCHROLE URN DOCORSUB'
+>        ">
+</pre>
+
+ <P>I thought the ANCHROLEs of a clink were defined by HyTime to be
+REFsomething and REFSUB. Or are those just defaults? Also... does the
+HyNames think work locally like this? What a HACK!
+
+<pre>
+>
+>&lt;!--=== WEK ==========================
+>
+>    The HyNames= attribute maps the local attribute names to their
+>    cooresponding HyTime forms.
+>
+>    The Methods= attribute is bit of a puzzle since it is really
+>    a part of the hyperlink presentation/processing style, not
+>    a property of the anchors, but there's nothing wrong with
+>    having application-specific stuff in your HyTime application.
+</pre>
+
+The Methods= attribute has been striken :-(. It was motivated by the
+observation that textsearch interactions in WWW go like this:
+
+<OL>
+<LI>Doc A says "click here[23] to see the index"
+<LI>user clicks
+<LI>client fetches link 23, "http://host/index"
+<LI>displays "cover page" document
+<LI>user enters FIND abc
+<LI>client fetches "http://host/index?abc"
+<LI>search results are displayed
+</OL>
+
+Wheras in gopher, you get to save a step if you like:
+
+<OL>
+<LI>Doc A says "click here[23] to search the index"
+<LI>user clicks
+<LI>client displayes "enter search words here: " dialog
+<LI>user enters FIND abc
+<LI>client fetches "http://host/index?abc"
+<LI>search results are displayed
+</OL>
+
+So to specify the latter, you would create a link with Methods=textsearch.
+
+<pre>
+>    I added LinkEnds= so that the various linking elements will
+>    completely conform to the clink and ilink forms.  The presence
+>    of the LinkEnds= attribute does not imply required support
+>    for this type of linking, but it does make HTML more consistent
+>    with other DTDs that do use the LinkEnds= attribute form.
+>
+>    Note that 10744 shows the attribute name for the ILINK form
+>    to be 'linkend', not 'linkends'.  I consider this to be a
+>    typo, as there's no logical reason to disallow multiple anchors
+>    from a clink and lack of it puts an undue requirement of
+>    specifying otherwise unneeded nameloc elements.  In any case,
+>    an application can transform linkends= to linkend= plus a
+>    nameloc, so it doesn't matter in practice.
+</pre>
+
+Are there <EM>any</EM> HyTime implementations out there? Do they use
+'linkend' or 'linkends'? It's hard to beleive that HyTime became a
+standard without a proof-of-concept implementation.
+
+<pre>
+>
+>&lt;!ELEMENT P     - O EMPTY -- separates paragraphs -->
+>&lt;!--=== WEK ==========================================================
+>
+>    Design note:  This seems like a clumsy way to structure information.
+>                  One would expect paragraphs to be containing.
+>
+>    ==================================================================-->
+</pre>
+
+Yeah, well, try implementing end tag inference in &lt;1000 or so lines of code.
+Maybe we'll get it right next time...
+
+<pre>
+>&lt;!ELEMENT DL    - -  (DT | DD | P | %hypertext;)*>
+>&lt;!--    Content should match ((DT,(%hypertext;)+)+,(DD,(%hypertext;)+))
+>        But mixed content is messy.
+>  -->
+>&lt;!--=== WEK ============================================================
+>
+>    Design note:  This content should be:
+>
+>    &lt;!ELEMENT DL  - - (DT+, DD)+ >
+>    &lt;!ELEMENT (DT | DD) - O (%hypertext;)* >
+>
+>    There's no reason for DT and DD to be empty.  Perhaps there was
+>    some confusion about the problems with mixed content?  There are
+>    none here.
+>
+>    These comments apply to the other list elements as well.
+>
+>    ====================================================================-->
+</pre>
+
+The problem is that DL, DT, DD, UL, OL, and LI were marked up in extant
+HTML documents as if minimization were supported. But I didn't want to
+introduce minimization into the implementation, so I made the DT, DD,
+and LI elements empty.
+<p>
+
+It's possible I'm confused about mixed content, but the way I understand
+it, you don't want to use mixed content except in repeatable or groups
+because authors will stick whitespace in where it is meant to be ignored
+but it won't be.
+
+<pre>
+>
+>&lt;!-- Character entities omitted.  These should be separate from
+>     the main DTD so specific applications can define their values.
+>     ISO entity sets could be used for this.
+>  --&gt;
+</pre>
+
+Another point I should have explained in the DTD: the WWW application
+specifies that HTML uses the Latin-1 character set, and that the Ouml
+entity represents exactly that character from the Latin-1 character and
+not some system specific thingy. Translation to system character sets is
+done <em>outside</em> of the SGML parser.
+
+</body>
+</html>
