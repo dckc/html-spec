@@ -5,16 +5,17 @@
 <META NAME="author" CONTENT="Connolly">
 <META NAME="status" CONTENT="Internet Draft">
 <META NAME="title" CONTENT="Character Terminology">
-<META NAME="date" CONTENT="April, 1995">
+<META NAME="date" CONTENT="May, 1995">
 <base href="http://www.w3.org/hypertext/WWW/MarkUp/html-spec/charset-harmful.html">
+<!-- $Id$ -->
 </HEAD>
 
 <body>
 <PRE>
-HTML Working Group                                           <a href="http://www.w3.org/hypertext/WWW/People/Connolly">D. Connolly</a>
+HTML Working Group                                           <a href="http://www.w3.org/hypertext/WWW/People/Connolly/">D. Connolly</a>
 INTERNET-DRAFT                                               <A HREF="../../Consortium/Prospectus/Overview.html">MIT/W3C</a>
-draft-ietf-html-charset-harmful-00.txt                       April 16, 1995
-Expires October, 1995
+draft-ietf-html-charset-harmful-00.txt                       May 2, 1995
+Expires November, 1995
 
 </pre>
 <h1><em>Character Set</em> Considered Harmful</h1>
@@ -81,19 +82,9 @@ is a set of integers, and whose range is a set of characters.
 or no use of such conventional mathematical terms as function, domain
 and range. Perhaps the authors of those documents intend the documents
 to be comprehensible without a prior understanding of mathematics. But
-the expectation that notions such as the conformance of an SGML
-document or SGML system can be understood without an understanding of
-basic logic and mathematics seems absurd.
-
-<p> And as we demonstrate below, these notions can be captured in the
-same simple terminology used to define most classical mathematics and
-computer science, the logic of Zermelo-Frankel set theory, dating back
-to 1908.
-
-<p> The terms <em>set</em>, <em>element</em>, <em>union</em>, and
-<em>intersection</em> are introduced to students as young as five
-years of age. The notions of proof, axioms, rules of inference, and
-theorems, are taught in introductory geometry and rhetoric classes.
+the specification of notions such as the conformance of an SGML
+document or SGML system are much more complex than the basics of logic
+and mathematics.
 
 <p> In his text on Calculus<a href="#Spivak">[Spivak]</a>, Michael
 Spivak writes:
@@ -117,8 +108,9 @@ questions.
 <p> This document is not intended as the first real encounter with
 mathematics. But neither will we make any effort to avoid or apologize
 for mathematical terminology. The reader is referred to the large body
-of literature on logic and set theory, including Douglas Hofstadter's
-fascinating book<a href="#GEB">[GEB]</a>.
+of literature on logic and set theory, including a history of writings
+on math and logic[SET] and Douglas Hofstadter's fascinating book<a
+href="#GEB">[GEB]</a>.
 
 <h2>Coded Character Sets</h2>
 
@@ -176,69 +168,17 @@ its domain determine a character.
 <p> The only practical means for exchanging information on the
 Internet is to represent it as a sequence of octets (bytes).
 
-<p> To discuss the representation of an SGML document using MIME, we
-define the following terms:
+<p> One way to transmit a sequence of characters is to agree on
+a coded character set and transmit the character numbers of each
+of the characters.
 
-<dl>
-
-<dt>text entity
-
-<dd>a sequence of characters
-
-<dt>message entity
-
-<dd>a pair (T, OS) where T is an Internet Media Type and OS is a
-sequence of octets.
-
-</dl>
-
-
-@@@@@@@@@
-In the
-case of a "single byte" coded character set, that is:
-
-<pre>
-	s : {0,1,2, ..., N} -> R
-where
-	N < 256, R is a set of characters, and s is invertible
-</pre>
-
-<p>there is an obvious straightforward representation,
-wherein each octet is mapped to a character via <i>s</i>:
-
-<pre>
-	encode : SEQ(character) -> SEQ(octet)
-              s
-               
-where
-                                -1
-	encode (char . rest) = s  (char) . encode (rest)
-              s                                  s
-</pre>
-
-<p> But in the general case, the code position of a character may be
-greater than 255. The natural extension of the above is the "double
-byte" coded character set <i>d</i> and the following representation:
-
-<pre>
-                           -1
-  encode (char . rest) = (d  (char) div 256) .
-        d
-                           -1
-                         (d  (char) mod 256) . encode (rest)
-                                                     d
-</pre>
-
-<p> But in practice, the general case is more complex. One popular
-optimization for the common case of code positions below 128 is to
-reserve bit 7 of the first octet that represents a character as a flag
-bit, and omit the zero byte if it is clear. Escape sequences are
-another popular optimization. The representation of a sequence of
-characters is not generally as simple as representing each character
-as some octets and concatenating them.
-
-<p> In fact, the mapping from a sequence of octets to a sequence of
-characters is often something we want to name and refer to. So we define:
+<p> But in practice, characters are encoded using a variety of
+optimizations of this brute-force approach: code switching techniques,
+escape sequences, etc. The encoding of a sequence of characters is
+not, in general, the result of encoding each character independently
+and then concatenating them. But it is sufficiently general to note
+that sequences of characters are encoded as a sequence of bytes. So we
+define:
 
 <dl>
 
@@ -254,20 +194,16 @@ repertoire.
 
 </dl>
 
-<p> Note that for some encoding schemes, a single sequence of characters may
-have more than one representation, i.e. it inverse of the function is
-not necessarily unique. But for every sequence of characters over the
-repertoire, some representation as a sequence of octets is guaranteed
-to exist.
 
-<h2> MIME Charset vs. SGML Document Character Set</h2>
+<h2>Representation of SGML Text Entities</h2>
 
-<p> In this terminology, the <tt>charset</tt> parameter on text/*
-Internet Media Types refers to a character encoding scheme, whereas an SGML
-document character set names a coded character set.
+<p> An SGML document is made up of entities: a text entity called the
+document entity, and possibly some other text entities and data
+entities.
 
-<p> To discuss the representation of an SGML document using MIME, we
-define the following terms:
+<p> A text entity is a sequence of characters. The representation of a
+text entity is not specified by the SGML standard. For the purpose of
+MIME-based interchange of SGML text entities, we define the following:
 
 <dl>
 
@@ -277,34 +213,77 @@ define the following terms:
 
 <dt>message entity
 
-<dd>a sequence of octets with an associated Internet Media Type
+<dd>a pair (T, OS) where T is an Internet Media Type and OS is a
+sequence of octets.
 
 </dl>
 
-<p> A message entity of type <tt>text/*</tt> is equivalent to a text
-entity: the <tt>charset</tt> parameter of the Internet Media Type
-refers to a character encoding scheme, which maps the octets of the message
-enitity to a sequence of characters, i.e. a text entity.
+<p> Note that each <tt>text/*</tt> media type has an associated
+<tt>charset</tt> parameter, which designates a character encoding
+scheme. The character encoding scheme maps the body -- a sequence of
+octets -- to a text entity -- a sequence of characters. Hence any
+message entity of type <tt>text/*</tt> is equivalent to a text entity.
 
-<p> An SGML document is a set of entities, one of which is a text
-entity called the document entity. The document entity includes an
-SGML declaration, which indicates the document character set[sic],
-among other things.
 
-<p> In simple cases, where the document character set is ISO-646-IRV
-(aka ASCII) and the document is just the document entity, the document
-can be represented as a message entity by mapping the characters to
-octets directly. The <tt>US-ASCII</tt> character encoding scheme can be
-defined in terms of the ISO-646-IRV coded character set:
+<h2>Numeric Character References</h2>
+
+<p> Numeric character references are a great source of confusion. The
+key insights are that:
+
+<ul>
+
+<li> Every SGML document has exactly one document character set, which
+is a coded character set
+
+<li> Numeric character references give code positions in the document
+character set
+
+</ul>
+
+<h3>Example: ISO2022 Encoding with ISO10646 Coded Character Set</h3>
+
+<p> Consider the following message entity:
 
 <pre>
- decode        (octet . rest) = ASCII(octet) . decode        (rest)
-       US-ASCII                                      US-ASCII
+Date: Saturday, 29-Apr-95 03:53:33 GMT
+MIME-version: 1.0
+Content-Type: text/html; charset=iso-2022-jp
+
+&lt;TITLE>...&lt;/TITLE>
+&lt;BODY>
+Here is some normal text.
+Here is a 10646 numeric character reference &#2432;.
+Here is some ISO-2022-JP text: ...
+&lt;/BODY>
+
 </pre>
 
-<p> But the US-ASCII character encoding scheme is actually sufficient to
-represent all SGML documents (except those rare documents that use
-characters outside the repertiore of ISO-646-IRV for markup).
+<p> To interpret the message entity, we notice that the
+<tt>Content-Type</tt> is <tt>text/html</tt>, so this represents a text
+entity. The <tt>charset</tt> parameter <tt>iso-2022-jp</tt>, along
+with the octet sequence of the body, determines a sequence of
+characters. The octets denoted above by '...' represent characters,
+as per <tt>iso-2022-jp</tt>.
+
+<p> To parse the resulting text entity as per SGML, the sender and
+receiver must agree on an SGML declaration, since none is present in
+the document entity. For this example, we assume that SGML declaration
+specifies ISO10646 as the document character set. So the numeric
+character reference <tt>&#2432;</tt> is resolved with respect to
+ISO10646.
+
+<p> It may seem contradictory that the <tt>ISO-2022-JP</tt> character
+encoding scheme is defined in terms of a collection of coded character
+sets, none of which is ISO10646. But there is no contradiction. Each
+character encoded by <tt>ISO-2022-JP</tt> is in the repertoire of one
+of those coded character sets, each of which is a subset of the
+repertoire of ISO10646.
+
+<p> So while <tt>ISO-2022-JP</tt> is not sufficient for every ISO10646
+document, it is the case that ISO10646 is a sufficient document
+character set for any entity encoded with <tt>ISO-2022-JP</tt>.
+
+<h3>Example: Reducing the Repertoire of an Entity</h3>
 
 <p> Suppose we have an SGML document D whose document character set is
 the coded character set ISO10646. We find the document entity DE in
@@ -312,8 +291,7 @@ the form of sequence of octets OS in a disk file, encoded using the
 Unicode-UCS-2 character encoding scheme.
 
 <pre>
-	decode             (OS) = DE
-	      Unicode-UCS-2
+	Unicode-UCS-2(OS) = DE
 </pre>
 
 <p> We can reduce the character repertoire necessary to represent the
@@ -338,19 +316,21 @@ and
 
 
 <pre>
-	decode        (OS') = DE' = reduce(DE, ISO10646, ISO-646-IRV)
-              US-ASCII
+	US-ASCII(OS') = DE' = reduce(DE, ISO10646, ISO-646-IRV)
 </pre>
 
 <p> Hence, we can represent the document D as a message entity whose
 content type is "text/plain; charset=US-ASCII" and whose body is OS'.
 
 
-<p> <em>@@ more on why mixing character encoding schemes and coded
-character sets arbitrarily (given their repertoires intersect
-appropriately) may be possible, but in practice it's not a good idea:
-a convention for mapping character encoding schemes to coded character
-sets should be deployed.</em>
+<h2>Conclusion</h2>
+
+<p> It is critical to keep separate the notion of a simple table of
+characters and their numbers, i.e. a coded character set, separate
+from the various algorithms to encoded sequences of characters,
+i.e. character encoding schemes. This separation allows a
+representation of a text entity which is consistent with both the MIME
+and SGML specifications.
 
 <h2>Acknowledgements</h2>
 
@@ -359,7 +339,7 @@ sets should be deployed.</em>
 Klensin. The notion of character encoding scheme was inspired by the
 MIME specification by Ned Freed. James Clark, Ed Levinson, and several
 other members of the MIMESGML working group collaborated in
-discussions leading up to this draft. Liam Quin (sp?) from SoftQuad
+discussions leading up to this draft. Liam Quin from SoftQuad
 and Gavin Nicol from EBT have provided guidance on these issues in the
 past. Erik Naggum has provided invaluable aid in understanding the
 SGML standard.
@@ -403,11 +383,13 @@ Information Interchange. Standard ANSI X3.4-1986, ANSI, 1986.
 Multilingual World Wide Web</a>, Gavin T. Nicol, Electronic Book
 Technologies, Japan <tt>gtn@ebt.com</tt>
 
-<dt> @@ DSSSL draft spec
+<!-- @@ DSSSL draft spec -->
 
-<dt> @@ O'Reilly's internationalization book
+<!-- @@ O'Reilly's internationalization book -->
 
-<dt> @@ ISO 10646
+<!-- @@ ISO 10646 -->
+
+<!-- @@ ISO 2022-jp RFC -->
 
 <dt> <a name="lee">[Lee]</a>
 
@@ -422,7 +404,7 @@ Technologies, Japan <tt>gtn@ebt.com</tt>
 G&ouml;del, Escher, Bach: An Eternal Golden Braid, 1979
 ISBN 0-394-75682-7
 
-<dt>
+<dt>[SET]
 <dd>
 "Investigations in the foundations of set theory I", in Jean van
 Heijenoort (ed.) _From Frege to Godel: A Source Book in Mathematical
