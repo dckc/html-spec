@@ -246,7 +246,7 @@
 <!--=================== Document Body =====================================-->
 
 <![ %HTML.Recommended [
-	<!ENTITY % body.content "(%heading|%block|HR|ADDRESS)*">
+	<!ENTITY % body.content "(%heading|%block|HR|ADDRESS)*"
 	-- <h1>Heading</h1>
 	   <p>Text ...
 		is preferred to
