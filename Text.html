@@ -21,25 +21,25 @@ as a start tag, which gives the name and attributes,
 followed by the content, followed by the end tag.
 For example:
 
-<PRE>		&lt;HTML&#62;
-		 &lt;TITLE&#62;
+<PRE>		&#60;HTML&#62;
+		 &#60;TITLE&#62;
 		  A sample HTML instance
-		 &lt;/TITLE&#62;
-		 &lt;H1&#62;
+		 &#60;/TITLE&#62;
+		 &#60;H1&#62;
 		  An Example of Structure
-		 &lt;/H1&#62;
+		 &#60;/H1&#62;
 		 Here's a typical paragraph.
-		 &lt;P&#62;
-		 &lt;UL&#62;
-		  &lt;LI&#62;
+		 &#60;P&#62;
+		 &#60;UL&#62;
+		  &#60;LI&#62;
 		  Item one has an
-		  &lt;A NAME="anchor"&#62;
+		  &#60;A NAME="anchor"&#62;
 		   anchor
-		  &lt;/A&#62;
-		  &lt;LI&#62;
+		  &#60;/A&#62;
+		  &#60;LI&#62;
 		  Here's item two.
-		 &lt;/UL&#62;
-		&lt;/HTML&#62;
+		 &#60;/UL&#62;
+		&#60;/HTML&#62;
 
 </PRE>
 
@@ -56,8 +56,8 @@ other constructs.
 <H2><A NAME="Tags">Tags</A></H2>
 
 <P>Every element starts with a tag, and every non-empty element
-ends with a tag. Start tags are delimited by &lt;and &#62;,
-and end tags are delimited by &lt;/ and &#62;.
+ends with a tag. Start tags are delimited by &#60;and &#62;,
+and end tags are delimited by &#60;/ and &#62;.
 
 <H3><A NAME="name">Names</A></H3>
 
@@ -108,21 +108,21 @@ and data
 <P>Empty elements have the keyword EMPTY in their declaration.
 For example:
 
-<PRE>	&lt;!ELEMENT NEXTID - O EMPTY&#62;
-	&lt;!ATTLIST NEXTID N NUMBER #REQUIRED&#62;
+<PRE>	&#60;!ELEMENT NEXTID - O EMPTY&#62;
+	&#60;!ATTLIST NEXTID N NUMBER #REQUIRED&#62;
 
 </PRE>
 
 <P>This means that the following:
 
-<PRE>	&lt;nextid n=''27''&#62;
+<PRE>	&#60;nextid n=''27''&#62;
 
 </PRE>
 
 <P>is legal, but these others are not:
 
-<PRE>	&lt;nextid&#62;
-	&lt;nextid n=''abc''&#62;
+<PRE>	&#60;nextid&#62;
+	&#60;nextid n=''abc''&#62;
 
 </PRE>
 
@@ -132,26 +132,26 @@ For example:
 is character data. Character data is all the text up to the next
 end tag open delimiter-in-context. For example:
 
-<PRE>&lt;!ELEMENT XMP - - CDATA&#62;
+<PRE>&#60;!ELEMENT XMP - - CDATA&#62;
 </PRE>
 
 <P>specifies that the following text is a legal XMP element:
 
-<PRE>	&lt;xmp&#62;Here's an example. It looks like it has
-	&lt;tags&#62; and &lt;!--comments--&#62;
+<PRE>	&#60;xmp&#62;Here's an example. It looks like it has
+	&#60;tags&#62; and &#60;!--comments--&#62;
 	in it, but it does not. Even this
-	&lt;/ is data.&lt;/xmp&#62;
+	&#60;/ is data.&#60;/xmp&#62;
 
 </PRE>
 
-<P>The string &lt;/ is only recognized as the opening delimiter
+<P>The string &#60;/ is only recognized as the opening delimiter
 of an end tag when it is ``in context,'' that is,
 when it is followed by a letter. However,
 as soon as the end tag open delimiter is recognized,
 it terminates the CDATA content. The following is an error:
 
-<PRE>	&lt;xmp&#62;There is no way to represent &lt;/end&#62; tags
-	in CDATA &lt;/xmp&#62;
+<PRE>	&#60;xmp&#62;There is no way to represent &#60;/end&#62; tags
+	in CDATA &#60;/xmp&#62;
 
 </PRE>
 
@@ -161,7 +161,7 @@ it terminates the CDATA content. The following is an error:
 except for character references and entity references.
 Elements declared like:
 
-<PRE>&lt;!ELEMENT TITLE - - RCDATA&#62;
+<PRE>&#60;!ELEMENT TITLE - - RCDATA&#62;
 </PRE>
 
 <P>can have any sequence of characters in their content.
@@ -169,12 +169,12 @@ Elements declared like:
 <H4><A NAME="z4">Character References</A></H4>
 
 <P>To represent a character that would otherwise be recognized
-as markup, use a character reference. The string &amp;# signals
+as markup, use a character reference. The string &#38;# signals
 a character reference when it is followed by a letter or a digit.
 The delimiter is followed by the decimal character number and
 a semicolon. For example:
 
-<PRE>&lt;title&#62;You can even represent &amp;#60;/end&#62; tags in RCDATA &lt;/title&#62;
+<PRE>&#60;title&#62;You can even represent &#38;#60;/end&#62; tags in RCDATA &#60;/title&#62;
 
 </PRE>
 
@@ -185,11 +185,11 @@ greater than, and ampersand characters and each of the ISO Latin
 1 characters so that you can reference them by name rather than
 by number.
 
-<P>The string &amp;signals an entity reference when it is followed
+<P>The string &#38;signals an entity reference when it is followed
 by a letter or a digit. The delimiter is followed by the entity
 name and a semicolon. For example:
 
-<PRE>Kurt G&amp;ouml;del was a famous logician and mathematician.
+<PRE>Kurt G&#38;ouml;del was a famous logician and mathematician.
 
 </PRE>
 
@@ -198,8 +198,8 @@ name and a semicolon. For example:
 <DT>Note:
 
 <DD>To be sure that a string of characters has no markup,
-HTML writers should represent all occurrences of &lt;,
-&#62;, and &amp;by character or entity references.
+HTML writers should represent all occurrences of &#60;,
+&#62;, and &#38;by character or entity references.
 </DL>
 
 <H3>Element Content</H3>
@@ -216,21 +216,21 @@ data characters, are illegal.
 
 <P>For example:
 
-<PRE>&lt;!ELEMENT HEAD - - (TITLE? &amp; ISINDEX? &amp; NEXTID? &amp; LINK*)&#62;
+<PRE>&#60;!ELEMENT HEAD - - (TITLE? &#38; ISINDEX? &#38; NEXTID? &#38; LINK*)&#62;
 </PRE>
 
 <P>declares an element that may be used as follows:
 
-<PRE>&lt;head&#62;
- &lt;isindex&#62;
- &lt;title&#62;Head Example&lt;/title&#62;
-&lt;/head&#62;
+<PRE>&#60;head&#62;
+ &#60;isindex&#62;
+ &#60;title&#62;Head Example&#60;/title&#62;
+&#60;/head&#62;
 </PRE>
 
 <P>But the following are illegal:
 
-<PRE>&lt;head&#62; no data allowed! &lt;/head&#62;
-&lt;head&#62;&lt;isindex&#62;&lt;title&#62;Two isindex tags&lt;/title&#62;&lt;isindex&#62;&lt;/head&#62;
+<PRE>&#60;head&#62; no data allowed! &#60;/head&#62;
+&#60;head&#62;&#60;isindex&#62;&#60;title&#62;Two isindex tags&#60;/title&#62;&#60;isindex&#62;&#60;/head&#62;
 
 </PRE>
 
@@ -240,8 +240,8 @@ data characters, are illegal.
 the content of the element is parsed as mixed content.
 For example:
 
-<PRE>&lt;!ELEMENT PRE - - (#PCDATA | A | B | I | U | P)+&#62;
-&lt;!ATTLIST PRE
+<PRE>&#60;!ELEMENT PRE - - (#PCDATA | A | B | I | U | P)+&#62;
+&#60;!ATTLIST PRE
 	WIDTH NUMBER #implied
 	&#62;
 </PRE>
@@ -250,12 +250,12 @@ For example:
 B, I, U, or P elements or data characters.
 Here's an example of a PRE element:
 
-<PRE>&lt;pre&#62;
-&lt;b&#62;NAME&lt;/b&#62;
-    cat -- concatenate&lt;a href=''terms.html#file''&#62;files&lt;/a&#62;
-&lt;b&#62;EXAMPLE&lt;/b&#62;
-    cat &lt;xyz
-&lt;/pre&#62;
+<PRE>&#60;pre&#62;
+&#60;b&#62;NAME&#60;/b&#62;
+    cat -- concatenate&#60;a href=''terms.html#file''&#62;files&#60;/a&#62;
+&#60;b&#62;EXAMPLE&#60;/b&#62;
+    cat &#60;xyz
+&#60;/pre&#62;
 </PRE>
 
 <P>The content of the above PRE element is:
@@ -272,24 +272,24 @@ Here's an example of a PRE element:
 
 <LI>Another B element
 
-<LI>The string ``\n cat &lt;xyz''
+<LI>The string ``\n cat &#60;xyz''
 </UL>
 
 <H2>Comments and Other Markup</H2>
 
 <P>To include comments in an HTML document that will be ignored
-by the parser, surround them with &lt;!-- and --&#62;.
+by the parser, surround them with &#60;!-- and --&#62;.
 After the comment delimiter, all text up to the next occurrence
 of -- is ignored. Hence comments cannot be nested.
 Whitespace is allowed between the closing -- and &#62;.
-(But not between the opening &lt;! and --.)
+(But not between the opening &#60;! and --.)
 
 <P>For example:
 
-<PRE>&lt;HEAD&#62;
-&lt;TITLE&#62;HTML Guide: Recommended Usage&lt;/TITLE&#62;
-&lt;!-- Id: Text.html,v 1.6 1994/04/25 17:33:48 connolly Exp --&#62;
-&lt;/HEAD&#62;
+<PRE>&#60;HEAD&#62;
+&#60;TITLE&#62;HTML Guide: Recommended Usage&#60;/TITLE&#62;
+&#60;!-- Id: Text.html,v 1.6 1994/04/25 17:33:48 connolly Exp --&#62;
+&#60;/HEAD&#62;
  
 </PRE>
 
@@ -302,16 +302,16 @@ or illegal.
 
 <DD>Signals...
 
-<DT>&lt;?
+<DT>&#60;?
 
 <DD>Processing instruction. Terminated by &#62;.
 
-<DT>&lt;![
+<DT>&#60;![
 
 <DD>Marked section. Marked sections are deprecated.
 See the SGML standard for complete information.
 
-<DT>&lt;!
+<DT>&#60;!
 
 <DD>Markup declaration. HTML defines no short reference maps,
 so these are errors. Terminated by &#62;.
@@ -323,14 +323,14 @@ so these are errors. Terminated by &#62;.
 if it is the first or last piece of content in an element.
 This allows you to write either
 
-<PRE>&lt;PRE&#62;some example text&lt;/pre&#62;
+<PRE>&#60;PRE&#62;some example text&#60;/pre&#62;
 </PRE>
 
 <P>or
 
-<PRE>&lt;pre&#62;
+<PRE>&#60;pre&#62;
 some example text
-&lt;/pre&#62;
+&#60;/pre&#62;
 </PRE>
 
 <P>and these will be processed identically.
@@ -338,13 +338,13 @@ some example text
 <P>Also, a line that's not empty but contains no content will
 be ignored altogether. For example, the element
 
-<PRE>&lt;pre&#62;
-&lt;!-- this line is ignored, including the linebreak character --&#62;
+<PRE>&#60;pre&#62;
+&#60;!-- this line is ignored, including the linebreak character --&#62;
 first line
  
-third line&lt;!-- the following linebreak is content: --&#62;
-fourth line&lt;!-- this one's ignored because it's the last piece of content: --&#62;
-&lt;/pre&#62;
+third line&#60;!-- the following linebreak is content: --&#62;
+fourth line&#60;!-- this one's ignored because it's the last piece of content: --&#62;
+&#60;/pre&#62;
 </PRE>
 
 <P>contains only the strings
@@ -381,31 +381,31 @@ depending on context.
 
 <DD>Signals
 
-<DT>&lt;!--
+<DT>&#60;!--
 
 <DD>Comment
 
-<DT>&amp;#
+<DT>&#38;#
 
 <DD>Character reference
 
-<DT>&amp;
+<DT>&#38;
 
 <DD>Entity reference
 
-<DT>&lt;/
+<DT>&#60;/
 
 <DD>End tag
 
-<DT>&lt;!
+<DT>&#60;!
 
 <DD>Markup declaration
 
-<DT>]]&gt;
+<DT>]]&#62;
 
 <DD>Marked section close (an error)
 
-<DT>&lt;
+<DT>&#60;
 
 <DD>Start tag
 </DL>
