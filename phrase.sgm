@@ -41,7 +41,7 @@ He just couldn't get enough of <cite>The Grapes of Wrath</cite>.
 <p>The <tag/CODE/ element indicates an example of code, typically
 rendered in a mono-spaced font. The <tag/CODE/ element is intended
 for short words or phrases of code; the <tag/PRE/ block
-structuring element (<hdref refid=pre>) is more apropriate for
+structuring element (<hdref refid=pre>) is more appropriate for
 multiple-line listings. For example:
 
 <listing><![CDATA[
@@ -83,7 +83,7 @@ The only word containing the letters <samp>mt</samp> is dreamt.
 typically rendered in bold. For example:
 
 <listing><![CDATA[
-<strong>STOP</strong>, or I'll say "<strong>STOP</strong>" again!.
+<strong>STOP</strong>, or I'll say "<strong>STOP</strong>" again!
 ]]></listing>
 
 <h4>Variable: VAR
@@ -155,7 +155,8 @@ text and Gopher menus, for use as a window title.
 
 <tli>REL: The <attr/REL/ attribute gives the relationship(s) described
 by the hyperlink. The value is a whitespace separated list of
-relationship names.
+relationship names. The semantics of link relationships are not
+specified in this document.
 
 <tli>REV: same as the REL attribute, but the semantics of the
 relationship are in the reverse direction. A link from A to B with

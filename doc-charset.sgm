@@ -18,7 +18,7 @@ supported by HTML user agents. It includes the graphic characters of
 Latin Alphabet No. 1, or simply Latin-1.  Latin-1 comprises 191
 graphic characters, including the alphabets of most Western European
 languages.
-<note>Use the non-breaking space and soft hyphen indicator characters is 
+<note>Use of the non-breaking space and soft hyphen indicator characters is 
 discouraged because support for them is not widely deployed.
 </note>
 <note>

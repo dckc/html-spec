@@ -5,10 +5,10 @@ lists, HTML documents can express hyperlinks. An HTML user agent
 allows the user to navigate these hyperlinks.
 
 <p> A hyperlink is a relationship between two anchors, called the head
-and the tail of the hyperlink[DEXTER]. Each anchor is addressed, or
-uniquely identified, by an absolute Uniform Resource Identifier (URI),
+and the tail of the hyperlink[DEXTER]. Each anchor uniquely identified
+by an anchor address: an absolute Uniform Resource Identifier (URI),
 optionally followed by a '#' and a sequence of characters called a
-fragment identifier, as per [RELURL]. For example:
+fragment identifier. For example:
 
 <listing><![CDATA[
 http://www.w3.org/hypertext/WWW/TheProject.html
@@ -22,10 +22,6 @@ that represents the resource, such as an HTML document. The fragment
 identifier, if present, refers to some view on, or portion of the
 resource.
 
-<p>An HTML user agent begins navigation with an absolute URI, called
-the base URI, and an HTML document that is a representation of the
-resource identified by the base URI.
-
 <p> Each of the following markup constructs indicates the tail anchor
 of a hyperlink or set of hyperlinks:
 
@@ -38,16 +34,19 @@ of a hyperlink or set of hyperlinks:
 <li> <tag/FORM/ elements with <code/METHOD=GET/.
 </ul>
 
-<p>These markup constructs refer to head anchors either directly by
-means of an absolute URI, or indirectly by means of a relative URI,
-which must be combined with the base URI as in [RELURL] to determine
-the address of the head anchor. The markup may also include fragment
-identifiers, separated from the URI by a '#' character.
+<p>These markup constructs refer to head anchors by a URI, either
+absolute or relative, or a fragment identifier, or both.
+
+<p>In the case of a relative URI, the absolute URI in the address of
+the head anchor is the result of combining the relative URI with a
+base absolute URI as in [RELURL]. The base document is taken from the
+document's <tag/BASE/ element, if present; else, it is determined as
+in [RELURL].
 
 <h2>Accessing Resources
 
 <p>Once the address of the head anchor is determined, the user agent
-may obtain a representation of the resource, for example as in [URL].
+may obtain a representation of the resource.
 
 <p>For example, if the base URI is <code>http://host/x/y.html</> and
 the document contains:
@@ -58,30 +57,8 @@ the document contains:
 </listing>
 
 <p> then the user agent uses the URI
-<code>http://host/icons/abc.gif</> to access the resource linked from
-the <tag/IMG/ element.
-
-<p>If the URI in the address of the head anchor is the same as the
-base URI, then the base document is sufficient as a representation of
-the resource. A user agent must <emph/not/, for example, use any
-network information retrieval protocols to obtain a new representation
-of the resourse.
-
-<p>For example, if the base uri is
-<code/http://www.w3.org/hypertext/WWW/TheProject.html/, then each of
-the following markup constructs indicates a link whose head and tail
-anchors have the same URI in their address:
-
-<listing><![CDATA[
-<a href="#xyz">
-<a href="../WWW/TheProject.html">
-<a href="./TheProject.html">
-<a href="TheProject.html">
-<a href="TheProject.html#z21">
-<a href="../../hypertext/WWW/TheProject.html">
-<a href="http://www.w3.org/hypertext/WWW/TheProject.html">
-]]>
-</listing>
+<code>http://host/icons/abc.gif</> to access the resource, as in
+[URL]..
 
 
 <h2 id=traverse>Activation of Hyperlinks
@@ -94,11 +71,7 @@ element hyperlinks.
 <p> To activate a link, the user agent obtains a representation of the
 resource identified in the address of the head anchor. If the
 representation is another HTML document, navigation may begin again
-with this new document. The base URI for navigation is taken from the
-head anchor by default; however, any <tag/BASE/ tag in the destination
-document overrides this default. The process of obtaining the
-destination document may also override the base URI, as in the case of
-an HTTP <code/URI:/ header or redirection transaction.
+with this new document.
 
 <h2 id=image-present>Simultaneous Presentation of Image Resources
 

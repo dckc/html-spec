@@ -60,7 +60,7 @@ define a particular mapping methodology or notation.
 
 <p>To assist the interoperability among various SGML tools and
 systems, the SGML Open consortium has passed a technical resolution
-that defines a format for an application- independent entity catalog
+that defines a format for an application-independent entity catalog
 that maps external identifiers and/or entity names to file names.
 
 <p>Each entry in the catalog associates a storage object identifier

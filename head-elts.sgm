@@ -17,12 +17,16 @@ within the body text flow.
 
 <h3 id=base>Base Address: BASE
 
-<p>The optional <tag/BASE/ element allows the address of a document to
-be recorded in situations in which the document may be read out of
-context. The required <attr/HREF/ attribute specifies the base URI
-(see <hdref refid=hyperlink>) for navigating the document, overriding
-any context otherwise known to the user agent. The value of the
-<attr/HREF/ attribute must be an absolute URI.
+<p>The optional <tag/BASE/ element provides a base address for
+interpreting relative URLs when the document is read out of context
+(see <hdref refid=hyperlink>). The value of the <attr/HREF/ attribute
+must be an absolute URI.
+
+<note>HTML user agents should use the address in the
+<tag/BASE/ element in preference to other URLs
+to refer to the document, for example,
+in hotlists, bookmarks, and document address displays.
+</note>
 
 <h3>Keyword Index: ISINDEX
 
@@ -33,12 +37,13 @@ refid=query> for details.
 <h3>Link: LINK
 
 <p>The <tag/LINK/ element represents a hyperlink (see <hdref
-refid=hyperlink>). It has the same attributes as the <tag/A/ element
-(see <hdref refid=a>).
+refid=hyperlink>).  Any number of LINK elements may occur in the
+<tag/HEAD/ element of an HTML document.  It has the same attributes as
+the <tag/A/ element (see <hdref refid=a>).
 
 <p>The <tag/LINK/ element is typically used to indicate authorship,
 related indexes and glossaries, older or more recent versions,
-style sheets, document hierarchy etc.
+document hierarchy, associated resources such as style sheets, etc.
 
 <h3>Associated Meta-information: META
 
@@ -59,7 +64,9 @@ META elements are provided with the same name, their combined
 contents&mdash;concatenated as a comma-separated list&mdash;is the value
 associated with that name.
 <note>The <tag/META/ element should not be used where a specific
-element, such as <tag/TITLE/, would be more appropriate.
+element, such as <tag/TITLE/, would be more appropriate. Rather
+than a <tag/META/ element with a URI as the value of the <attr/CONTENT/
+attribute, use a <tag/LINK/ element.
 </note>
 
 <p>HTTP servers may read the content of the document <tag/HEAD/ to
@@ -124,7 +131,7 @@ information controlled by the HTTP server, for example <code/Server/,
 <h3>Next Id: NEXTID
 
 <p> The <tag/NEXTID/ element is included for historical reasons only.
-HTML document should not contain <tag/NEXTID/ elements.
+HTML documents should not contain <tag/NEXTID/ elements.
 
 <p> The <tag/NEXTID/ element gives a hint for the name to use for a
 new <tag/A/ element when editing an HTML document. It should be

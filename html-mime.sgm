@@ -46,7 +46,7 @@ RFC 1521[MIME]) may be given to specify the character encoding scheme
 used to represent the HTML document as a sequence of octets. The
 default value is outside the scope of this specification; but for
 example, the default is <code/US-ASCII/ in the context of MIME mail,
-and <code/ISO-8859-1/ in the context of HTTP.
+and <code/ISO-8859-1/ in the context of HTTP [HTTP].
 
 </tl>
 

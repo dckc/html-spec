@@ -101,7 +101,7 @@ are given in the public text identified by <code>-//IETF//DTD HTML
 
 ]]></listing>
 
-Some of the elements are delimited explicity by tags, while the
+Some of the elements are delimited explicitly by tags, while the
 boundaries of others are inferred. The <tag/HTML/ element contains a
 <tag/HEAD/ element and a <tag/BODY/ element. The <tag/HEAD/ contains
 <tag/TITLE/, which is explicitly delimited by start- and end-tags.
@@ -190,10 +190,10 @@ delimited by <code><</> and <code>></>; end tags are delimited by
 ]]></listing>
 
 Some elements only have a start-tag without an end-tag. For example,
-to create a line break, you use the <code/&lt;BR>/ tag.  Additionally,
+to create a line break, use the <code/&lt;BR>/ tag.  Additionally,
 the end tags of some other elements, such as Paragraph
 (<code>&lt;/P></>), List Item (<code>&lt;/LI></>), Definition Term
-(<code>&lt;/DT></>), and Definition Description (<code>&lt;DD></>)
+(<code>&lt;/DT></>), and Definition Description (<code>&lt;/DD></>)
 elements, may be omitted.
 
 The content of an element is a sequence of data character strings and nested 
@@ -211,7 +211,7 @@ deployed, their use is strongly discouraged.
 
 A name consists of a letter followed by letters, digits, periods, or
 hyphens. The length of a name is limited to 72 characters by the
-<code/NAMELEN/ parameter in the SGML delcaration for HTML, <hdref
+<code/NAMELEN/ parameter in the SGML declaration for HTML, <hdref
 refid=decl>.  Element and attribute names are not case sensitive, but
 entity names are. For example, <code>&lt;BLOCKQUOTE></>,
 <code>&lt;BlockQuote></>, and <code>&lt;blockquote></> are equivalent,

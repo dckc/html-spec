@@ -9,8 +9,8 @@ used.
 
 <h3>Unordered List: UL, LI
 
-<p>The <tag/UL/ represents a list of items &mdash; typically a
-bulleted list.
+<p>The <tag/UL/ represents a list of items &mdash; typically rendered
+as a bulleted list.
 
 <p>The content of a <tag/UL/ element is a sequence of <tag/LI/
 elements. For example:

@@ -52,7 +52,7 @@ attribute.
 <h4>Text Field: INPUT TYPE=TEXT
 
 <p>The default vaule of the <attr/TYPE/ attribute is <code/TEXT/,
-indicating a single line text entry fields. (Use the <tag/TEXTAREA/
+indicating a single line text entry field. (Use the <tag/TEXTAREA/
 element for multi-line text fields.)
 
 <p>Required attributes are:
@@ -62,7 +62,7 @@ element for multi-line text fields.)
 element.
 </tl>
 
-The optional attriubtes are:
+The optional attributes are:
 
 <tl>
 <tli>MAXLENGTH: constrains the number of characters that can be

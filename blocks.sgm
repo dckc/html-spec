@@ -48,7 +48,7 @@ width required.
 </note>
 
 <li>Anchor elements and phrase markup may be used.
-<NOTE>Constraints on the processing of <tag/PRE/ content may may limit or
+<NOTE>Constraints on the processing of <tag/PRE/ content may limit or
 prevent the ability of the HTML user agent to faithfully render
 phrase markup.
 </note>
@@ -144,7 +144,7 @@ greater than symbol (>), in the left margin.
 <p>Example of use:
 
 <listing><![CDATA[
-I think the poem ends
+I think the play ends
 <BLOCKQUOTE>
 <P>Soft you now, the fair Ophelia. Nymph, in thy orisons, be all 
 my sins remembered.

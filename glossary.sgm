@@ -10,7 +10,7 @@ marked as an <tag/A/ element.
 URI to determine another absolute URI.
 
 <tli>character: An atom of information, for example a letter or a
-digit.  Graphic characters have associated glyphs, where as control
+digit.  Graphic characters have associated glyphs, whereas control
 characters have associated processing semantics.
 
 <tli>character encoding scheme: A function whose domain is the set of
@@ -69,8 +69,9 @@ given by an HTML document and the values are given by a user.
 <tli>HTML document: An SGML document conforming to this document type
 definition.
 
-<tli>hyperlink: a relationship between two anchors, called the tail
-and the head.
+<tli>hyperlink: a relationship between two anchors, called the head
+and the tail. The link goes from the tail to the head. The head
+and tail are also known as destination and source, respectively.
 
 <tli>markup: Syntactically delimited characters added to the data of a
 document to represent its structure. There are four different kinds of
