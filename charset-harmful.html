@@ -46,7 +46,7 @@ href="http://www.acl.lanl.gov/HTML_WG/archives.html">http://www.acl.lanl.gov/HTM
 
 <h2>Abstract</h2>
 
-<p> The term "character set" is often used to describe a ditigal
+<p> The term <em>character set</em> is often used to describe a ditigal
 representation of text. ASCII is perhaps the most widely deployed
 representation of text, and in the interest of interoperability,
 information systems on the Internet traditionally rely on it
@@ -60,7 +60,7 @@ Generalized Markup Language (SGML).
 
 <p> In the MIME and SGML specifications, the discussion of characters
 representation is notoriously complex, and apparently subtly
-inconsistent or incompatible. This article presents a collection of
+inconsistent or incompatible. This document presents a collection of
 terms intended to reconcile the two specifications, and serve as a
 basis for rigorous discussion of characters and their digital
 representations.
@@ -68,14 +68,58 @@ representations.
 
 <h2>Introduction</h2>
 
-<p> The term "character set" is often used to describe a ditigal
+<p> The term <em>character set</em> is often used to describe a ditigal
 representation of text. The specifications of such a representation
 typically involves identifying a sufficiently expressive collection of
 characters, and giving each of them a number.
 
-<p> In conventional mathematical terminology then, a "character set"
+<p> In conventional mathematics terminology then, a "character set"
 is not just a set of characters, but a <em>function</em> whose domain
 is a set of integers, and whose range is a set of characters.
+
+<p> It seems that some standards documents, including the SGML
+standard, go to great lengths to avoid such conventional mathematical
+terms as function, domain and range. Perhaps the authors of those
+documents intend the documents to be comprehensible without a prior
+understanding of mathematics. But the expectation that notions such as
+the conformance of an SGML document or SGML system can be understood
+without an understanding of basic logic and mathematics seems absurd.
+
+<p> And as we demonstrate below, these notions can be captured in the
+terminology of Zermelo-Frankel set theory, a small, simple portion of
+mathematics that is several hundred years old (if not thousands),
+extremely widely understood, and used as the underpinnings of most of
+mathematics and computer science.
+
+<p> The terms <em>set</em>, <em>element</em>, <em>union</em>, and
+<em>intersection</em> are introduced to students as young as five
+years of age. The notions of proof, axioms, rules of inference, and
+theorems, are taught in introductory geometry and rhetoric classes.
+
+<p> In his text on Calculus<a href="#Spivak">[Spivak]</a>, Michael
+Spivak writes:
+
+<blockquote>
+
+<p> Every aspect of this book was influenced by the desire to present
+calculus not merely as a prelude to but as the first real encounter
+with mathematics. Since the foundation of analysis provided the arena
+in which modern modes of mathematical thinking developed, calculus
+ought to be the place in which to expect, rather than avoid, the
+strengthening of insight with logic. In addition to developing the
+students' intuition about the beautiful concepts of analysis, it is
+surely equally important to persuade them that precision and rigor are
+neither deterrents to intuition, nor ends in themselves, but the
+natural medium in which to formulate and think about mathematical
+questions.
+
+</blockquote>
+
+<p> This document is not intended as the first real encounter with
+mathematics. But neither will we make any effort to avoid or apologize
+for mathematical terminology. The reader is referred to the large body
+of literature on logic and set theory, including Douglas Hofstadter's
+fascinating book<a href="#GEB">[GEB]</a>.
 
 <h2>Coded Character Sets</h2>
 
@@ -165,11 +209,17 @@ characters is often something we want to name and refer to. So we define:
 
 <dl>
 
+<dt>octet
+
+<dd>an element of the set {0, 1, 2, ..., 255}
+
 <dt>character encoding
 
 <dd>a function whose range is the set of sequences of octets, and
 whose range is the set of sequences of characters over some character
 repertoire.
+
+</dl>
 
 <p> Note that for some encodings, a single sequence of characters may
 have more than one representation, i.e. it inverse of the function is
@@ -177,35 +227,101 @@ not necessarily unique. But for every sequence of characters over the
 repertoire, some representation as a sequence of octets is guaranteed
 to exist.
 
-</dl>
-
 <h2> MIME Charset vs. SGML Document Character Set</h2>
 
 <p> In this terminology, the <tt>charset</tt> parameter on text/*
-Internet Media Types refers to a character encoding, not a coded
-character set. A message entity of type <tt>text/*</tt> represents a
-sequence of characters determined by this character encoding and the
-octets of the body.
+Internet Media Types refers to a character encoding, whereas an SGML
+document character set names a coded character set.
 
-<p> For example, the <tt>US-ASCII</tt> character encoding
-can be defined in terms of the ASCII coded character set:
+<p> To discuss the representation of an SGML document using MIME, we
+define the following terms:
+
+<dl>
+
+<dt>text entity
+
+<dd>a sequence of characters
+
+<dt>message entity
+
+<dd>a sequence of octets with an associated Internet Media Type
+
+</dl>
+
+<p> A message entity of type <tt>text/*</tt> is equivalent to a text
+entity: the <tt>charset</tt> parameter of the Internet Media Type
+refers to a character encoding, which maps the octets of the message
+enitity to a sequence of characters, i.e. a text entity.
+
+<p> An SGML document is a set of entities, one of which is a text
+entity called the document entity. The document entity includes an
+SGML declaration, which indicates the document character set[sic],
+among other things.
+
+<p> In simple cases, where the document character set is ISO-646-IRV
+(aka ASCII) and the document is just the document entity, the document
+can be represented as a message entity by mapping the characters to
+octets directly. The <tt>US-ASCII</tt> character encoding can be
+defined in terms of the ISO-646-IRV coded character set:
 
 <pre>
  decode        (octet . rest) = ASCII(octet) . decode        (rest)
        US-ASCII                                      US-ASCII
 </pre>
 
+<p> But the US-ASCII character encoding is actually sufficient to
+represent all SGML documents (except those rare documents that use
+characters outside the repertiore of ISO-646-IRV for markup).
 
-<h2> Postscript Encoding Vectors </h2>
+<p> Suppose we have an SGML document D whose document character set is
+the coded character set ISO10646. We find the document entity DE in
+the form of sequence of octets OS in a disk file, encoded using the
+Unicode-UCS-2 character encoding.
 
-<h2> X Windows Font Encodings </h2>
+<pre>
+	decode             (OS) = DE
+	      Unicode-UCS-2
+</pre>
 
-<h2> SGML Document Character Set </h2>
+<p> We can reduce the character repertoire necessary to represent the
+document entity by replacing characters outside the ISO-646-IRV
+character repertoire with numeric character references:
+
+<pre>
+	DE' = reduce(DE, ISO10646, ISO-646-IRV)
+
+where
+
+  reduce : SEQ(char) X Coded Character Set X Character Repertoire -> SEQ(char)
+
+and
+
+  reduce(c . rest, CCS, R) = if c in R, c . reduce(rest, CCS, R)
+					else &#N; . reduce(rest, CCS, R)
+					where CCS(N) = c
+</pre>
+
+<p> The resulting entity, DE' can then be endoded using US-ASCII
+
+
+	decode        (OS') = DE' = reduce(DE, ISO10646, ISO-646-IRV)
+              US-ASCII
+
+<p> Hence, we can represent the document D as a message entity whose
+content type is "text/plain; charset=US-ASCII" and whose body is OS'.
+
+
+<p> <em>@@ more on why mixing character encodings and coded character
+sets arbitrarily (given their repertoires intersect appropriately) may
+be possible, but in practice it's not a good idea: a convention for
+mapping character encodings to coded character sets should be
+deployed.</em>
 
 <h2>Acknowledgements</h2>
 
-<p> The idea for the title of this article actually came from John
-Kleinsin. The notion of character encoding was inspired by the MIME
+
+<p> The idea for the title of this document actually came from John
+Klensin. The notion of character encoding was inspired by the MIME
 specification by Ned Freed. James Clark, Ed Levinson, and several
 other members of the MIMESGML working group collaborated in
 discussions leading up to this draft. Liam Quin (sp?) from SoftQuad
@@ -261,6 +377,15 @@ Technologies, Japan <tt>gtn@ebt.com</tt>
 <dt> <a name="lee">[Lee]</a>
 
 <dd> Private communication with Liam Quin, from SoftQuad.
+
+<dt> <a name="Spivak">[Spivak]</a>
+<dd> Spivak, Michael. Calculus. 2nd Ed. 1967 ISBN 0-914098-77-2
+
+<dt> <a name="GEB">[GEB]</a>
+
+<dd> Hofstadter, Douglas R.
+G&ouml;del, Escher, Bach: An Eternal Golden Braid, 1979
+ISBN 0-394-75682-7
 
 </dl>
 
