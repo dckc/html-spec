@@ -1,0 +1,72 @@
+================================================================
+Agenda for APP    html      Hypertext Markup Language WG
+
+Wednesday, April 5, 1995
+1530-1730  Afternoon Session
+
+For the first session, I'd just like to discuss the various proposed
+features, their complexity, and their maturity, and the market
+demand/activity. In the second session, I'd like to work toward
+deciding which features should go in which specs, and by when.
+
+05      Agenda check & approval of last meeting's minutes
+
+15	Navigational idioms
+		(i.e. bookmarks, TOC, HOME, Banner)
+
+20      Forms and interactive applications
+	      -- file upload
+	      -- client-side image maps
+	      -- scripting (safe-tcl, java) (suggest: OUT OF SCOPE for HTML)
+
+20	Tables: what are we after?
+		-- enough to eliminate the current kludges in forms etc.
+		-- parity with word processors (current proposal is here)
+		-- CALS
+
+20      Math: what do we need? how much does it cost, once you've done tables?
+
+20	StyleSheets
+		suggest: out of scope for HTML, but we should provide
+		extensibility (e.g. ID, CLASS, STYLE)
+
+20      Internationalization: encodings, charsets, languages, and writing
+	systems.
+
+
+================================================================
+Thursday, April 6, 1995
+0930-1130   Morning Sesssion (mbone)
+
+
+10	HTML 2.0 terminology: user agent, character encoding, ...
+	conformance, closure.
+
+10      char set issues:
+	2.0: model defined, charsets other than ISO-8859-1 reserved
+	for future use, i.e. unspecified.
+
+	2.1 revision for more complete charset discussion? (e.g. Unicode)
+
+10      File upload: orthogonal to 2.0, might as well be part of 3.0.
+	Independendent specificaion is valuable.
+
+30	Table Deployment.
+	Is a 2.0+tables spec effort worth the effort?
+	If no 2.0+tables spec, what do we do with browsers that
+	implement 2.0+tables, but not 3.0?
+
+30      HTML 3.0 requirements. Suggestions:
+	enough tables to satisfy the needs of FORMs applications
+	Capture existing navigation idioms
+		(i.e. bookmarks, TOC, HOME, Banner)
+	parity with major word-processors.
+		(e.g. sufficiently rich tables, math)
+	extensibility in the direction of stylesheets
+		(i.e. ID, class attrs, STYLE element)
+	extensibility in the direction of non-western writing systems
+		(i.e. LANG attr. Is it enough? Can we defer this?)
+
+30	Liason activity: scripting languages, graphics formats,
+	Unicode, HyTime, MID, MIMESGML, etc.
+
