@@ -1,40 +1,40 @@
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                       Hypertext Markup Language (HTML)
                    HYPERTEXT MARKUP LANGUAGE (HTML)
                                    
-  AN SGML APPLICATION CONFORMING TO INTERNATIONAL STANDARD ISO 8879 --
-  STANDARD GENERALIZED MARKUP LANGUAGE
-  
-Status of this Document
+       An SGML Application Conforming to International Standard I
+     SO 8879 -- Standard Generalized Markup Language
+     
+About of this Document
 
-   This is a revision of the HTML specification maintained by Tim
-   Berners-Lee at CERN.
-   <connolly@hal.com>
-   $Id$
+   This document describes the current practice and current proposals
+   for future standardisation of HTML, as a basis for review and
+   enhancement.
    
-   This document is an Internet Draft. Internet Drafts are working
-   documents of the Internet Engineering Task Force (IETF), its Areas,
-   and its Working Groups. Note that other groups may also distribute
-   working documents as Internet Drafts.
+   The document is a draft form of a standard for interchange of
+   information on the network which is proposed to be registered as a
+   MIME (RFC1521) content type.
    
-   Internet Drafts are working documents valid for a maximum of six
-   months. Internet Drafts may be updated, replaced, or obsoleted by
-   other documents at any time. It is not appropriate to use Internet
-   Drafts as reference material or to cite them other than as a
-   "working draft" or "work in progress".
+   Please send comments to connolly@hal.com or the discussion list
+   www-html@info.cern.ch.
    
-   Distribution of this document is unlimited. The document is a draft
-   form of a standard for interchange of information on the network
-   which is proposed to be registered as a MIME (RFC1521) content
-   type. Please send comments to connolly@hal.com or the discussion
-   list www-talk@info.cern.ch.
+  VERSION
+  
+   This is version 2.0 of this document, (released $Date: 1994/06/03
+   22:18:28 $) It introduces forms for user input of information. This
+   feature is known as a level 2 feature of HTML. All other specified
+   features are known as level 1 features. Features of higher levels
+   which are under discussion, (such as tables, figures, and
+   mathematical formulae) where mentioned are described as "proposed".
    
-   This is version 1.3 of this draft. This document is available in
+   The latest version of this document is currently available in
    hypertext on the World-Wide Web as
-   http://www.hal.com/%7Econnolly/html-spec/HTML.html
    
+
+http://www.hal.com/%7Econnolly/html-spec
+
 Abstract
 
    HyperText Markup Language (HTML) can be used to represent
@@ -57,7 +57,7 @@ Abstract
    (Hypertext Transfer Protocol, HTTP), which allows transfer
    representations to be negotiated between client and server, the
    result being returned in an extended MIME message. HTML is
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
    therefore just one, but an important one, of the representations
@@ -65,7 +65,7 @@ Abstract
    
    HTML is proposed as a MIME content type.
    
-   HTML refers to the URL specification of RFCxxxx.
+   HTML refers to the URI specification RFCxxxx.
    
    Implementations of HTML parsers and generators can be found in the
    various W3 servers and browsers, in the public domain W3 code, and
@@ -73,41 +73,7 @@ Abstract
    [SGMLS] . HTML documents are SGML documents with fairly generic
    semantics appropriate for representing information from a wide
    range of applications.
-   
-                           IN THIS DOCUMENT
-                                   
-   This document contains the following parts:
-   
-  Vocabulary             used in this document, degrees of imperative.
-                         
-  HTML and MIME          with discussion of character sets.
-                         
-  HTML and SGML          and the relationship between them, and
-                         Structured text: an summary of SGML syntax.
-                         
-  HTML Elements          A list with description, example, and typical
-                         rendering.
-                         
-  HTML Entities          Entities used to describe characters.
-                         
-  Acknowledgements       and a change history of the document
-                         
-  References             to related documents
-                         
-  Authors addresses      Contact information.
-                         
-  Appendix I: Element Reference
-                         Alphabetical listing of elements with syntax
-                         descriptions
-                         
-  Appendix II: The HTML DTD
-                         The text of the SGML DTD for HTML
-                         
-  Appendix III: The HTML SMGL Declaration
-                         The text of the SGML Declaration for HTML
-                         
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                             Vocabulary usied in the HTML specification
@@ -151,26 +117,33 @@ Notes
    
 Status of features
 
-  Minimal                All parsers must recognize these features.
-                         Features are mainstream unless otherwise
-                         mentioned.
+  Mandatory              These features must be implemented in the
+                         rendering. Features are mandatory unless
+                         otherwise mentioned.
                          
   Optional               Standard HTML features which may safely be
                          ignored by parsers. It is legal to ignore
                          these, treat the contents as though the tags
                          were not there. (e.g. EM, and processing
-                         instructions)
+                         instructions) . Authors should be awarethat
+                         these features may be ignored by some
+                         applications.
+                         
+  Proposed               The specification of these features is not
+                         final. They should not be regarded as part
+                         ofthe standard, but indicate possible
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
+                         directions for future versions.
                          
   Obsolete               Not standard HTML. Parsers should implement
                          these features as far as possible in order to
                          preserve back-compatibility with previous
                          versions of this specification.
                          
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                          HTML and MIME
@@ -184,10 +157,23 @@ Status of features
                          
   Required parameters:   none
                          
-  Optional parameters:   charset @@What does the character set
-                         parameter mean? I think we should take it
-                         out. --DWC
+  Optional parameters:   level, version, charset
                          
+Level
+
+   The level parameter specifies the feature set which is used in the
+   document. The level is an integer number, implying that any
+   features of same or lower level may be present in the document.
+   Levels are defined by this specification.
+   
+Version
+
+   In order to help avoid future compatibility problems, the version
+   parameter may be used to give the version number of this
+   specification to which the document conforms. The version number
+   appears at the front of this document and within public identifier
+   for the SGML DTD.
+   
 Character sets
 
    The base character set (the SGML BASESET) for HTML is ISO Latin-1.
@@ -205,16 +191,24 @@ Character sets
    used to encode characters in the upper half of the ISO Latin-1 set.
    In this way, documents may be prepared which are suitable for
    mailing through 7-bit limited systems.
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+   
+  CHARACTER SET OPTION (PROPOSED)
+  
+   The SGML declaration specified ISO Latin 1 as the base character
+   set. The charset parameter is reserved for future use. Its intended
+   significance is to override the base character set of the SGML
+   declaration. Support of character sets other than ISO-Latin-1 is
+   not a requirement for conformance with this specification.
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                     Hypertext Markup language and SGML
                             HTML AND SGML
                                    
    This section describes the relationship between HTML and SGML, and
-   guides the newcomer through interpreation of the DTD. (This is not
-   a full tutorial on SGML, and in the event of any apparent conflict,
-   the SGML standard is definitive.)
+   guides the newcomer through interpretation of the DTD . (This is
+   not a full tutorial on SGML, and in the event of any apparent
+   conflict, the SGML standard is definitive.)
    
    The HyperText Markup Language is an application conforming to
    International Standard ISO 8879 -- Standard Generalized Markup
@@ -246,23 +240,14 @@ Character sets
    The prologue for an HTML document should look like:
    
 
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/
-19 17:24:06 //EN">
+      <!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
 
-  @@NOTE 1:              The owner part "connolly hal.com" should be
-                         changed to the name of the institution that
-                         owns this specification, whatever that is.
-                         The "Date..." part should be shortened to
-                         something like "1.3", corresponding to the
-                         publication of this document.
-                         
-  NOTE 2:                Many extant HTML documents do not contain a
-                         prologue. Implementations are encouraged to
-                         infer the above prologue if the document does
-                         not begin with <!.
-                         
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+  NOTE: MISSING <DOCTYPE DECLARATION
+  
+   Many extant HTML documents do not contain a prologue.
+   Implementations are encouraged to infer the above prologue if the
+   document does not begin with <!.
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                Structured Text in HTML
@@ -279,9 +264,7 @@ Character sets
    For example:
    
 
-        <!DOCTYPE HTML PUBLIC
-                "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:
-24:06 //EN">
+        <!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
         <HTML>
           <HEAD>
             <TITLE>
@@ -313,20 +296,19 @@ Character sets
    up as just a start tag.
    
    For the rest of the elements, the content is a sequence of data
-   characters and nested elements. Note that the HTML DTD in fact
-   severely limits the amount of nesting which is allowed: most things
-   cannot be nested, in fact. No elements may be recursively nested.
-   Anchors and character highlighting may be put inside other
+   characters and nested elements. Some things such as forms and
+   anchors cannot be nested, in which case this is mentioned in the
+   text. Anchors and character highlighting may be put inside other
    constructs.
    
 Tags
 
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
    Most elements start and end with tags. Empty elements have no end
    tag. Start tags are delimited by <and >, and end tags are delimited
    by </ and >. For example:
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
    
 
         <h1> ... </H1>   <!-- uppercase = lowercase  -->
@@ -338,30 +320,26 @@ Tags
         < h1>             <!-- this is not a tag at all -->
         <H1/> <H=1>       <!-- these are markup errors -->
 
-  NOTE:                  The SGML declaration for HTML specifies
-                         SHORTTAG YES, which means that there are some
-                         other valid syntaxes for tags, e.g. NET tags:
-                         <em/.../, empty start tags: <>, empty end
-                         tags: </>. Until such time as support for
-                         these idioms is widely deployed, their use is
-                         strongly discouraged.
-                         
+  NOTE: SHORTTAG
+  
+   The SGML declaration for HTML specifies SHORTTAG YES , which means
+   that there are some other valid syntaxes for tags, e.g. NET tags:
+   <em/.../ , empty start tags: <> , empty end tags: </> . Until such
+   time as support for these idioms is widely deployed, their use is
+   strongly discouraged.
+   
    The start and end tags for the HTML, HEAD, and BODY elements are
    omissable. The end tags of some other elements (e.g. P, LI, DT, DD)
    can be ommitted (see the DTD for details). This does not change the
    document structure -- the following documents are equivalent:
    
 
-        <!DOCTYPE HTML PUBLIC
-                "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:
-24:06 //EN">
+        <!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
           <TITLE>Structural Example</TITLE>
           <H1>Structural Example</H1>
           <P>A paragraph...
 
-        <!DOCTYPE HTML PUBLIC
-                "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:
-24:06 //EN">
+        <!DOCTYPE HTML PUBLIC "-//W3O//DTD W3 HTML 2.0//EN">
           <HTML><HEAD>
           <TITLE>Structural Example</TITLE>
           </HEAD>
@@ -380,9 +358,6 @@ Tags
         A H1 h1 another.name name-with-hyphens
 
   ATTRIBUTES
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
   
    In a start tag, whitespace and attributes are allowed between the
    element name and the closing delimiter. An attribute consists of a
@@ -390,6 +365,9 @@ Tags
    equal sign.
    
    The value is either:
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
    
       A string literal, delimited by single quotes or double quotes,
       or
@@ -407,23 +385,23 @@ Tags
    The length of an attribute value (after replacing entity and
    numeric character referencees) is limited to 1024 characters.
    
-  NOTE 1:                Some implementations allowed any character
-                         except space or '>' in a name token, for
-                         example <A HREF=foo/bar.html>. As a result,
-                         there are many documents that contain
-                         attribute values that should be quoted but
-                         are not. While parser implementators are
-                         encouraged to support this idiom, its use in
-                         future documents is stictly prohibited.
-                         
-  NOTE 2:                Some implementations also consider any
-                         occurence of the > character to signal the
-                         end of a tag. For compatibility with such
-                         implementations, it may be necessary to
-                         represent > with an entity or numeric
-                         character reference; for example: <IMG
-                         SRC="eq1.ps" ALT="a &#62; b">
-                         
+  NOTE: UNQUOTED ATTRIBUTE VALUE LITERALS
+  
+   Some implementations allowed any character except space or '>' in a
+   name token, for example <A HREF=foo/bar.html> . As a result, there
+   are many documents that contain attribute values that should be
+   quoted but are not. While parser implementators are encouraged to
+   support this idiom, its use in future documents is stictly
+   prohibited.
+   
+  NOTE: > IN ATTRIBUTE VALUE LITERALS
+  
+   Some implementations also consider any occurence of the > character
+   to signal the end of a tag. For compatibility with such
+   implementations, it may be necessary to represent > with an entity
+   or numeric character reference; for example: <IMG SRC="eq1.ps"
+   ALT="a &#62; b">
+   
    Attributes with a delcared value of NAME (e.g. ISMAP, COMPACT) may
    be written using a minimized syntax. The markup:
    
@@ -435,46 +413,59 @@ Tags
 
         <UL COMPACT>
 
+Undefined tag and attribute names
+
+   It is a principle to be conservative in that which one produces,
+   and liberal in that which one accepts. HTML parsers should be
+   liberal except when verifying code. HTML generators should generate
+   strictly conforming HTML.
+   
+   The behaviour of WWW applications reading HTML documents and
+   discovering tag or attribute names which they do not understand
+   should be to behave as though, in the case of a tag, the whole tag
+   had not been there but its content had, or in the case of an
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
+
+   attribute, that the attribute had not been present.
+   
 Character Data
 
    The charcters between the tags represent text in the ISO-Latin-1
    character set, which is a superset of ASCII. Because certain
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
-
    characters will be interpreted as markup, they should be "escaped";
    that is, represented by markup -- entity or numeric character
    references. For example:
    
 
-When a&#60;b, we can show that...
-Brought to you by AT&amp;T
+                When a&#60;b, we can show that...
+                Brought to you by AT&amp;T
 
    The HTML DTD includes entities for each of the non-ASCII characters
    so that one may reference them by name if it is inconvenient to
    enter them directly:
    
-Kurt G&ouml;del was a famous logician and mathematician.
+           Kurt G&ouml;del was a famous logician and mathematician.
 
-  NOTE 1:                To ensure that a string of characters has no
-                         markup, it is sufficient to represent all
-                         occurrences of <, >, and & by character or
-                         entity references.
-                         
-  NOTE 2:                There are SGML features (CDATA, RCDATA) to
-                         allow most <, >, and & characters to be
-                         entered without the use of entity or
-                         character references. Because these features
-                         tend to be used and implemented
-                         incosistently, they are not employed in this
-                         version of the HTML DTD.
-                         
-  An earlier HTML specification included an XMPelement whose syntax is
-                         not expressible in SGML. Inside the XMP, no
-                         markup was recognized except the </XMP> end
-                         tag. While implementations are encouraged to
-                         support this idiom, its use is obsolete.
-                         
+  NOTE: MARKUP CHARACTERS
+  
+   To ensure that a string of characters has no markup, it is
+   sufficient to represent all occurrences of < , > , and & by
+   character or entity references.
+   
+  NOTE: CDATA, RCDATA
+  
+   There are SGML features ( CDATA , RCDATA ) to allow most < , > ,
+   and & characters to be entered without the use of entity or
+   character references. Because these features tend to be used and
+   implemented inconsistently, and because they require 8-bit
+   characters to represent non-ASCII characters, they are not employed
+   in this version of the HTML DTD. An earlier HTML specification
+   included an XMP element whose syntax is not expressible in SGML.
+   Inside the XMP , no markup was recognized except the </XMP> end
+   tag. While implementations are encouraged to support this idiom,
+   its use is obsolete.
+   
   COMMENTS
   
    To include comments in an HTML document that will be ignored by the
@@ -490,15 +481,21 @@ Kurt G&ouml;del was a famous logician and mathematician.
 <!-- Id: Text.html,v 1.6 1994/04/25 17:33:48 connolly Exp -->
 </HEAD>
 
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+  NOTE: TAGS IN COMMENTS
+  
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
+   Some historical implementations incorrectly consider a > sign to
+   terminate a comment.
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       Elements of HTML
                             HTML ELEMENTS
                                    
    This is a discussion of the elements in the HTML language, and how
-   the interact to represent documents.
+   they interact to represent documents.
    
 The HTML Document Element
 
@@ -506,13 +503,13 @@ The HTML Document Element
    or a mail message:
    
 
-        HTML
-        |
-        |_head
-        |_body
+          HTML
+          |
+          |_head
+          |_body
 
    The HEAD element is an small unordered collection of information
-   about the document, whereas the BODYis an ordered sequence of
+   about the document, whereas the BODY is an ordered sequence of
    information elements of arbitrary length. This organization allows
    an implementation to determine certain properties of a document --
    the title, for example -- without parsing the entire document.
@@ -534,13 +531,25 @@ Information in the HEAD Element
   BASE                   A record of the URL of the document when
                          saved
                          
-Body Elements
+  PROPOSED HEAD ELEMENTS
+  
+  EXPIRES                The date after which the document is invalid.
+                         Semantics as in the HTTP specification.
+                         
+  OBSOLETE HEAD ELEMENTS
+  
+  META                   A wrapper for an HTTP element
+                         
+Body Elements (level 1)
 
    The order of the contents of the BODY element should be preserved
    when it is rendered on the output device.
    
   HYPERTEXT ANCHORS
   
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
   Anchors                Sections of text which form the beginning
                          and/or end of hypertext links are called
                          "anchors" and defined by the A tag.
@@ -550,10 +559,7 @@ Body Elements
    These elements typically stack vertically in the rendered flow of
    text. Whitespace between them is ignored.
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
-  Headings               Several levels of heading are supported.
+  Headings               Several levels of headings are supported.
                          
   Paragraph              The P element represents a paragraph.
                          
@@ -581,11 +587,20 @@ Body Elements
                          
   IMG                    The IMG tag allows inline graphics.
                          
+Body elements (level 2)
+
+  ELEMENTS FOR FORMS
+  
+   The FORM element and various other elements allowed only within it
+   describe forms which allow user input.
+   
+  FORM elements          FORM, INPUT, SELECT, OPTION, TEXTAREA, etc
+                         
 Obsolete elements
 
    The other elements are obsolete but should be recognised by parsers
    for back-compatibility.
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                       HEAD -- Elements
@@ -597,7 +612,152 @@ Obsolete elements
    certain elements are allowed.
    
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:22 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                             The TITLE element in HTML
+                                TITLE
+                                   
+   The title of a document is specified by the TITLE element. The
+   TITLE element must occur in the HEAD of the document.
+   
+   There may only be one title in any document. It should identify the
+   content of the document in a fairly wide context.
+   
+   It may not contain anchors, paragraph marks, or highlighting. The
+   title may be used to identify the node in a history list, to label
+   the window displaying the node, etc. It is not normally displayed
+   in the text of a document itself. Contrast titles with headings .
+   The title should ideally be less than 64 characters in length. That
+   is, many applications will display document titles in window
+   titles, menus, etc where there is only limited room. Whilst there
+   is no limit on the length of a title (as it may be automatically
+   generated from other data), information providers are warned that
+   it may be truncated if long.
+   
+  EXAMPLES OF USE
+  
+   Appropriate titles might be
+   
+                <TITLE>Rivest and Neuman. 1989(b)</TITLE>
+
+   or
+   
+                <TITLE>A Recipe for Maple Syrup Flap-Jack</TITLE>
+
+   or
+   
+                <TITLE>Introduction -- AFS user's Guide</TITLE>
+
+   Examples of inappropriate titles are those which are only
+   meaningful within context,
+   
+                <TITLE>Introduction</TITLE>
+
+   or too long,
+   
+        <TITLE>Remarks on the Quantum-Gravity effects of "Bean
+        Pole" diversification in Mononucleosis patients in Developing
+        Countries under Economic Conditions Prevalent during
+        the Second half of the Twentieth Century, and Related Papers:
+        a Summary</TITLE>
+
+
+
+
+
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                               ISINDEX element in HTML
+                               ISINDEX
+                                   
+   This element informs the reader that the document is an index
+   document. As well as reading it, the reader may use a keyword
+   search.
+   
+   The node may be queried with a keyword search by suffixing the node
+   address with a question mark, followed by a list of keywords
+   separated by plus signs. See the network address format .
+   
+   Note that this tag is normally generated automatically by a server.
+   If it is added by hand to an HTML document, then the client will
+   assume that the server can handle a search on the document.
+   Obviously the server must have this capability for it to work:
+   simply adding <ISINDEX> in the document is not enough to make
+   searches happen if the server does not have a search engine!
+   
+   Status: standard.
+   
+Example of use:
+
+                <ISINDEX>
+
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                                      LINK -- Elements
+                                 LINK
+                                   
+   The LINK element occurs within the HEAD element of an HTML
+   document. It is used to indicate a relationship between the
+   document and some other object. A document may have any number of
+   LINK elements.
+   
+   The LINK element is empty, but takes the same attributes as the
+   anchor element .
+   
+   Typical uses are to indicate authorship, related indexes and
+   glossaries, older or more recent versions, etc. Links can indicate
+   a static tree structure in which the document was authored by
+   pointing to a "parent" and "next" and "previous" document, for
+   example.
+   
+   Servers may also allow links to be added by those who do not have
+   the right to alter the body of a document.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                              The BASE element in HTML
+                                 BASE
+                                   
+   This element allows the URL of the document itself to be recorded
+   in situations in which the document may be read out of context.
+   URLs within the document may be in a "partial" form relative to
+   this base address.
+   
+   Where the base address is not specified, the reader will use the
+   URL it used to access the document to resolve any relative URLs.
+   
+   The one attribute is:
+   
+  HREF                   the URL
+                         
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                                     Tags used in HTML
+                               NEXT ID
+                                   
+   This tag takes a single attribute which is the number of the next
+   document-wide numeric identifier to be allocated of the form z123.
+   
+   When modifying a document, old anchor ids should not be reused, as
+   there may be references stored elsewhere which point to them. This
+   is read and generated by hypertext editors. Human writers of HTML
+   usually use mnemonic alphabetical identifiers. Browser software may
+   ignore this tag.
+   
+Example of use:
+
+                <NEXTID N=z27>
+
+
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               The BODY element in HTML
@@ -611,7 +771,7 @@ Obsolete elements
    should be presented to the reader.
    
    See the list of things which are allowed within a BODY element .
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                             The Anchor element in HTML
@@ -638,11 +798,6 @@ Obsolete elements
                          the documents address (or specified base
                          address if any).
                          
-  @@NOTE:                This refers to the URI specification, which
-                         does not cover relative addresses. There is
-                         no specification of how to distinguish
-                         relative addresses from absolute addresses.
-                         
   NAME                   OPTIONAL. If present, the attribute NAME
                          allows the anchor to be the destination of a
                          link. The value of the attribute is an
@@ -652,10 +807,6 @@ Obsolete elements
                          make a reference explicitly to this anchor by
                          putting the identifier after the address,
                          separated by a hash sign .
-                         
-  @@NOTE:                This feature is representable in SGML as an
-                         ID attribute, if we restrict the identifiers
-                         to be SGML names.
                          
   REL                    OPTIONAL. An attribute REL may give the
                          relationship (s) described by the hypertext
@@ -670,9 +821,6 @@ Obsolete elements
   REV                    OPTIONAL. The same as REL , but the semantics
                          of the link type are in the reverse
                          direction. A link from A to B with REL="X"
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
                          expresses the same relationship as a link
                          from B to A with REV="X". An anchor may have
                          both REL and REV attributes.
@@ -682,6 +830,9 @@ Obsolete elements
                          note .
                          
   TITLE                  OPTIONAL. This is informational only. If
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
                          present the value of this field should equal
                          the value of the TITLE of the document whose
                          address is given by the HREF attribute. See
@@ -708,85 +859,61 @@ Example of use:
 
 
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
-                                                     Tags used in HTML
-                               ADDRESS
+                                                         URN -- MarkUp
+                  NOTE : UNIVERSAL RESOURCE NUMBERS
                                    
-   This element is for address information, signatures, authorship,
-   etc, often at the top or bottom of a document.
+   URNs are provided to allow a document to be recognized if duplicate
+   copies are found. This should save a client implementation from
+   picking up a copy of something it already has.
    
-Typical rendering
-
-   Typically, an address element is italic and/or right justified or
-   indented. The address element implies a paragraph break. Paragraph
-   marks within the address element do not cause extra white space to
-   be inserted.
-   
-Examples of use:
-
-                <ADDRESS><A HREF="Author.html">A.N.Other</A></ADDRESS>
+   The format of URNs is under discussion (1993) by various working
+   groups of the Internet Engineering Task Force.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
-                <ADDRESS>
-                Newsletter editor<p>
-                J.R. Brown<p>
-                JimquickPost News, Jumquick, CT 01234<p>
-                Tel (123) 456 7890
-                </ADDRESS>
-
-
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                              The BASE element in HTML
-                                 BASE
+                                    Note: On TITLE attributes of links
+                    NOTE: TITLE ATTRIBUTE OF LINKS
                                    
-   This element allows the URL of the document itself to be recorded
-   in situations in which the document may be read out of context.
-   URLs within the document may be in a "partial" form relative to
-   this base address.
+   The link may carry a TITLE attribute which should if present give
+   the title of the document whose address is given by the HREF
+   attribute.
    
-   Where the base address is not specified, the reader will use the
-   URL it used to access the document to resolve any relative URLs.
+   This is useful for at least two reasons
    
-   The one attribute is:
+      The browser software may chose to display the title of the
+      document as a preliminary to retrieving it, for example as a
+      margin note or on a small box while the mouse is over the
+      anchor, or during document fetch.
+      
+      Some documents -- mainly those which are not marked up text,
+      such as graphics, plain text and also Gopher menus, do not come
+      with a title themselves, and so putting a title in the link is
+      the only way to give them a title. This is how Gopher works.
+      Obviously it leads to duplication of data, and so it is
+      dangerous to assume that the title attribute of the link is a
+      valid and unique title for the destination document.
+      
    
-  HREF                   the URL
-                         
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
-                                                    BlockQuote in HTML
-                              BLOCKQUOTE
+                                               LinkMethods -- Elements
+                   NOTE: METHODS ATTRIBUTE OF LINKS
                                    
-   The BLOCKQUOTE element allows text quoted from another source to be
-   rendered specially.
+   The METHODS attributes of anchors and links are used to provide
+   information about the functions which the user may perform on an
+   object. These are more accurately given by the HTTP protocol when
+   it is used, but it may, for similar reasons as for the TITLE
+   attribute, be useful to include the information in advance in the
+   link.
    
-Typical rendering
-
-   A typical rendering might be a slight extra left and right indent,
-   and/or italic font. BLOCKQUOTE causes a paragraph break, and
-   typically a line or so of white space will be allowed between it
-   and any text before or after it.
-   
-   Single-font rendition may for example put a vertical line of ">"
-   characters down the left margin to indicate quotation in the
-   Internet mail style.
-   
-Example
-
-I think it ends
-<BLOCKQUOTE>Soft you now, the fair Ophelia. Nymph, in thy orisons,
-be all my sins remembered.
-</BLOCKQUOTE>
-but I am not sure.
-
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+   For example, The browser may chose a different rendering as a
+   function of the methods allowed (for example something which is
+   searchable may get a different icon)
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                               Heading elements in HTML
@@ -845,7 +972,7 @@ Typical Rendering
                          the left margin. One or two clear lines above
                          and below.
                          
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   H4                     Bold, normal font, indented more than H3. One
@@ -866,277 +993,7 @@ Typical Rendering
    The rendering software is responsible for generating suitable
    vertical white space between elements, so it is NOT normal or
    required to follow a heading element with a paragraph mark.
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                               The IMG Element in HTML
-                         IMG: EMBEDDED IMAGES
-                                   
-   Status: Extra
-   
-   The IMG element allows another document to be inserted inline. The
-   document is normally an icon or small graphic, etc. This element is
-   NOT intended for embedding other HTML text.
-   
-   Browsers which are not able to display inline images ignore IMG
-   elements. Authors should note that some browsers will be able to
-   display (or print) linked graphics but not inline graphics. If the
-   graphic is essential, it may be wiser to make a link to it rather
-   than to put it inline. If the graphic is essentially decorative,
-   then IMG is appropriate.
-   
-   The IMG element is empty: it has no closing tag. It has two
-   attributes:
-   
-  SRC                    The value of this attribute is the URL of the
-                         document to be embedded. Its syntax is the
-                         same as that of the HREF attribute of the A
-                         tag. SRC is mandatory.
-                         
-  ALIGN                  Take values TOP or MIDDLE or BOTTOM, defining
-                         whether the tops or middles of bottoms of the
-                         graphics and text should be aligned
-                         vertically.
-                         
-  ALT                    Optional alternative text as an alternative
-                         to the graphics for display in text-only
-                         environments.
-                         
-   Note that IMG elements are allowed within anchors.
-   
-Example
-
-        Warning: < IMG SRC ="triangle.gif" ALT="Warning:"> This must b
-e done by a
-        qualified technician.
-
-        < A HREF="Go.html">< IMG SRC ="Button.ps" ALT="GO"></A>
-
-
-
-
-
-
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                               ISINDEX element in HTML
-                               ISINDEX
-                                   
-   This element informs the reader that the document is an index
-   document. As well as reading it, the reader may use a keyword
-   search.
-   
-   The node may be queried with a keyword search by suffixing the node
-   address with a question mark, followed by a list of keywords
-   separated by plus signs. See the network address format .
-   
-   Note that this tag is normally generated automatically by a server.
-   If it is added by hand to an HTML document, then the client will
-   assume that the server can handle a search on the document.
-   Obviously the server must have this capability for it to work:
-   simply adding <ISINDEX> in the document is not enough to make
-   searches happen if the server does not have a search engine!
-   
-   Status: standard.
-   
-Example of use:
-
-                <ISINDEX>
-
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                                      LINK -- Elements
-                                 LINK
-                                   
-   The LINK element occurs within the HEAD element of an HTML
-   document. It is used to indicate a relationship between the
-   document and some other object. A document may have any number of
-   LINK elements.
-   
-   The LINK element is empty, but takes the same attributes as the
-   anchor element .
-   
-   Typical uses are to indicate authorship, related indexes and
-   glossaries, older or more recent versions, etc. Links can indicate
-   a static tree structure in which the document was authored by
-   pointing to a "parent" and "next" and "previous" document, for
-   example.
-   
-   Servers may also allow links to be added by those who do not have
-   the right to alter the body of a document.
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                          Lists and glossaries in HTML
-                        FORMS OF LIST IN HTML
-                                   
-   These lists may be nested
-   
-Glossaries
-
-   A glossary (or definition list) is a list of paragraphs each of
-   which has a short title alongside it. Apart from glossaries, this
-   element is useful for presenting a set of named elements to the
-   reader. The elements within a glossary follow are introduced by
-   these elements:
-   
-  DT                     The "term", typically placed in a wide left
-                         indent
-                         
-  DD                     The "definition", which may wrap onto many
-                         lines
-                         
-   These elements must appear in pairs. Single occurrences of DT
-   without a following DD are allowed, and have the same significance
-   as if the DD had been present with no text.. The one attribute
-   which DL can take is
-   
-  COMPACT                suggests that a compact rendering be used,
-                         because the enclosed elements are
-                         individually small, or the whole glossary is
-                         rather large, or both.
-                         
-  TYPICAL RENDERING
-  
-   The definition list DT, DD pairs are arranged vertically. For each
-   pair, the DT element is on the left, in a column of about a third
-   of the display area, and the DD element is in the right hand two
-   thirds of the display area. The DT term is normally small enough to
-   fit on one line within the left-hand column. If it is longer, it
-   will either extend across the page, in which case the DD section is
-   moved down to separate them, or it is wrapped onto successive lines
-   of the left hand column.
-   
-   This is sometimes implemented with the use of a large negative
-   first line indent.
-   
-   White space is typically left between successive DT,DD pairs unless
-   the COMPACT attribute is given. The COMPACT attribute is
-   appropriate for lists which are long and/or have DT,DD pairs which
-   each take only a line or two. It is of course possible for the
-   rendering software to discover these cases itself and make its own
-   decisions, and this is to be encouraged.
-   
-   The COMPACT attribute may also reduce the width of the left-hand
-   (DT) column.
-   
-  EXAMPLES OF USE
-  
-        <DL>
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
-        <DT>Term the first<DD>definition paragraph is reasonably
-        long but is still displayed clearly
-        <DT>Term2 follows<DD>Definition of term2
-        </DL>
-
-        <DL COMPACT>
-        <DT>Term<DD>definition paragraph
-        <DT>Term2<DD>Definition of term2
-        </DL>
-
-
-
-
-Lists
-
-   A list is a sequence of paragraphs, each of which may be preceded
-   by a special mark or sequence number. The syntax is:
-   
-
-                <UL>
-                <LI> list element
-                <LI> another list element ...
-                </UL>
-
-   The opening list tag may be any of UL, OL, MENU or DIR. It must be
-   immediately followed by the first list element.
-   
-  TYPICAL RENDERING
-  
-   The representation of the list is not defined here, but a bulleted
-   list for unordered lists, and a sequence of numbered paragraphs for
-   an ordered list would be quite appropriate. Other possibilities for
-   interactive display include embedded scrollable browse panels.
-   
-   List elements with typical rendering are:
-   
-  UL                     A list of multi-line paragraphs, typically
-                         separated by some white space and/or marked
-                         by bullets, etc.
-                         
-  OL                     As UL, but the paragraphs are typically
-                         numbered in some way to indicate the order as
-                         significant.
-                         
-  MENU                   A list of smaller paragraphs. Typically one
-                         line per item, with a style more compact than
-                         UL.
-                         
-  DIR                    A list of short elements, typically less than
-                         20 characters. These may be arranged in
-                         columns across the page, typically 24
-                         character in width. If the rendering software
-                         is able to optimize the column width as
-                         function of the widths of individual
-                         elements, so much the better.
-                         
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
-  EXAMPLE OF USE
-  
-                <OL>
-                <LI> When you get to the station, leave
-                by the southern exit, on platform one.
-                <LI>Turn left to face toward the mountain
-                <LI>Walk for a mile or so until you reach the
-                "Asquith Arms" then
-                <LI>Wait and see...
-                </OL>
-
-                < MENU >
-                <LI>The oranges should be pressed fresh
-                <LI>The nuts may come from a packet
-                <LI>The gin must be good quality
-                </MENU>
-
-                < DIR >
-                <LI>A-H<LI>I-M
-                <LI>M-R<LI>S-Z
-                </DIR>
-
-
-
-
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                                     Tags used in HTML
-                               NEXT ID
-                                   
-   This tag takes a single attribute which is the number of the next
-   document-wide numeric identifier to be allocated of the form z123.
-   
-   When modifying a document, old anchor ids should not be reused, as
-   there may be references stored elsewhere which point to them. This
-   is read and generated by hypertext editors. Human writers of HTML
-   usually use mnemonic alphabetical identifiers. Browser software may
-   ignore this tag.
-   
-Example of use:
-
-                <NEXTID N=z27>
-
-
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     Paragraphs in HTML
@@ -1183,7 +1040,7 @@ to
 See also
 
    Line Break
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                    Line Breaks in HTML
@@ -1212,161 +1069,8 @@ Examples
 
 See also:
 
-   Paragraph marks
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                              Horizontal Rules in HTML
-                           HORIZONTAL RULE
-                                   
-Typical Rendering
-
-   Some sort of divider between sections of text such as a full width
-   horizontal rule or equivalent graphic.
-   
-Example
-
-   The horizontal rule is typically used for separating heading
-   information (when more than just a heading) from content, etc.
-   
-                <H1>The Albatross</H1>
-                <Address>The Bumstead Monthly, 1948</Address>
-                The following information is culled from
-                this and suvccessive issues of the magazine.
-                Thanks are due to the editor-in-chief,
-                A.R. Bunstead, for her help and advice.
-                <H2>Copyright IQR Inc.</h2>
-                This recording may not be sold, resold,
-                hired out, used, or talked about in too great
-                a depth without the publisher's written or
-                videotaped consent.
-                <HR>
-                The Albatross, most fabled and infamous of ..
-
-
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                               The PRE element in HTML
-                        PRE: PREFORMATTED TEXT
-                                   
-   Preformatted elements in HTML are displayed with text in a fixed
-   width font, and so are suitable for text which has been formatted
-   for a teletype by some existing formatting system.
-   
-
-
-   The optional attribute is:
-   
-  WIDTH                  This attribute gives the maximum number of
-                         characters which will occur on a line. It
-                         allows the presentation system to select a
-                         suitable font and indentation. Where the
-                         WIDTH attribute is not recognized, it is
-                         recommended that a width of 80 be assumed.
-                         Where WIDTH is supported, it is recommended
-                         that at least widths of 40, 80 and 132
-                         characters be presented optimally, with other
-                         widths being rounded up.
-                         
-   Within a PRE element,
-   
-      Line boundaries within the text are rendered as a move to the
-      beginning of the next line, except for one immediately following
-      or immediately preceding a tag.
-      
-      The <p> tag should not be used. If found, it should be rendered
-      as a move to the beginning of the next line.
-      
-      Anchor elements and character highlighting elements may be used.
-      
-      Elements which define paragraph formatting (Headings, Address,
-      etc) must not be used.
-      
-      The ASCII Horizontal Tab (HT) character must be interpreted as
-      the smallest positive nonzero number of spaces which will leave
-      the number of characters so far on the line as a multiple of 8.
-      Its use is not recommended however.
-      
-  EXAMPLE OF USE
-  
-                        <PRE WIDTH="80">
-                        This is an example line
-                        </PRE>
-
-  NOTE: HIGHLIGHTING
-  
-   Within a preformatted element, the constraint that the rendering
-   must be on a fixed horizontal character pitch may limit or prevent
-   the ability of the renderer to render highlighting elements
-   specially.
-   
-  NOTE: MARGINS
-  
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
-
-
-   The above references to the "beginning of a new line" must not be
-   taken as implying that the renderer is forbidden from using a
-   (constant) left indent for rendering preformatted text. The left
-   indent may of course be constrained by the width required.
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
-
-
-                                             The TITLE element in HTML
-                                TITLE
-                                   
-   The title of a document is specified by the TITLE element. The
-   TITLE element must occur in the HEAD of the document.
-   
-   There may only be one title in any document. It should identify the
-   content of the document in a fairly wide context.
-   
-   It may not contain anchors, paragraph marks, or highlighting. The
-   title may be used to identify the node in a history list, to label
-   the window displaying the node, etc. It is not normally displayed
-   in the text of a document itself. Contrast titles with headings .
-   The title should ideally be less than 64 characters in length. That
-   is, many applications will display document titles in window
-   titles, menus, etc where there is only limited room. Whilst there
-   is no limit on the length of a title (as it may be automatically
-   generated from other data), information providers are warned that
-   it may be truncated if long.
-   
-  EXAMPLES OF USE
-  
-   Appropriate titles might be
-   
-                <TITLE>Rivest and Neuman. 1989(b)</TITLE>
-
-   or
-   
-                <TITLE>A Recipe for Maple Syrup Flap-Jack</TITLE>
-
-   or
-   
-                <TITLE>Introduction -- AFS user's Guide</TITLE>
-
-   Examples of inappropriate titles are those which are only
-   meaningful within context,
-   
-                <TITLE>Introduction</TITLE>
-
-   or too long,
-   
-        <TITLE>Remarks on the Quantum-Gravity effects of "Bean
-        Pole" diversification in Mononucleosis patients in Developing
-        Countries under Economic Conditions Prevalent during
-        the Second half of the Twentieth Century, and Related Papers:
-        a Summary</TITLE>
-
-
-
-
-
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+   the P (paragraph) element
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                   Highlighting in HTML
@@ -1425,7 +1129,7 @@ Logical styles
   SAMP                   A sequence of literal characters.
                          
   KBD                    in an instruction manual, Text typed by a
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
                          user.
@@ -1437,6 +1141,8 @@ Logical styles
                          
   CITE                   A citation. Typically italic.
                          
+  STRIKE                 "strike out" text, as in a legal document.
+                         
 Examples of use
 
         This text contains an <em>emphasized</em> word.
@@ -1446,7 +1152,732 @@ Examples of use
         <cite>Moby Dick</cite> is a book title.
 
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                               The IMG Element in HTML
+                         IMG: EMBEDDED IMAGES
+                                   
+   Status: Extra
+   
+   The IMG element allows another document to be inserted inline. The
+   document is normally an icon or small graphic, etc. This element is
+   NOT intended for embedding other HTML text.
+   
+   Browsers which are not able to display inline images ignore IMG
+   elements. Authors should note that some browsers will be able to
+   display (or print) linked graphics but not inline graphics. If the
+   graphic is essential, it may be wiser to make a link to it rather
+   than to put it inline. If the graphic is essentially decorative,
+   then IMG is appropriate.
+   
+   The IMG element is empty: it has no closing tag. It has two
+   attributes:
+   
+  SRC                    The value of this attribute is the URL of the
+                         document to be embedded. Its syntax is the
+                         same as that of the HREF attribute of the A
+                         tag. SRC is mandatory.
+                         
+  ALIGN                  Take values TOP or MIDDLE or BOTTOM, defining
+                         whether the tops or middles of bottoms of the
+                         graphics and text should be aligned
+                         vertically.
+                         
+  ALT                    Optional alternative text as an alternative
+                         to the graphics for display in text-only
+                         environments.
+                         
+   Note that IMG elements are allowed within anchors.
+   
+Example
+
+        Warning: < IMG SRC ="triangle.gif" ALT="Warning:"> This must b
+e done by a
+        qualified technician.
+
+        < A HREF="Go.html">< IMG SRC ="Button.ps" ALT="GO"></A>
+
+
+
+
+
+
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                              Horizontal Rules in HTML
+                           HORIZONTAL RULE
+                                   
+Typical Rendering
+
+   Some sort of divider between sections of text such as a full width
+   horizontal rule or equivalent graphic.
+   
+Example
+
+   The horizontal rule is typically used for separating heading
+   information (when more than just a heading) from content, etc.
+   
+                <H1>The Albatross</H1>
+                <Address>The Bumstead Monthly, 1948</Address>
+                The following information is culled from
+                this and suvccessive issues of the magazine.
+                Thanks are due to the editor-in-chief,
+                A.R. Bunstead, for her help and advice.
+                <H2>Copyright IQR Inc.</h2>
+                This recording may not be sold, resold,
+                hired out, used, or talked about in too great
+                a depth without the publisher's written or
+                videotaped consent.
+                <HR>
+                The Albatross, most fabled and infamous of ..
+
+
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                                     Tags used in HTML
+                               ADDRESS
+                                   
+   This element is for address information, signatures, authorship,
+   etc, often at the top or bottom of a document.
+   
+Typical rendering
+
+   Typically, an address element is italic and/or right justified or
+   indented. The address element implies a paragraph break. Paragraph
+   marks within the address element do not cause extra white space to
+   be inserted.
+   
+Examples of use:
+
+                <ADDRESS><A HREF="Author.html">A.N.Other</A></ADDRESS>
+
+
+                <ADDRESS>
+                Newsletter editor<p>
+                J.R. Brown<p>
+                JimquickPost News, Jumquick, CT 01234<p>
+                Tel (123) 456 7890
+                </ADDRESS>
+
+
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                                    BlockQuote in HTML
+                              BLOCKQUOTE
+                                   
+   The BLOCKQUOTE element allows text quoted from another source to be
+   rendered specially.
+   
+Typical rendering
+
+   A typical rendering might be a slight extra left and right indent,
+   and/or italic font. BLOCKQUOTE causes a paragraph break, and
+   typically a line or so of white space will be allowed between it
+   and any text before or after it.
+   
+   Single-font rendition may for example put a vertical line of ">"
+   characters down the left margin to indicate quotation in the
+   Internet mail style.
+   
+Example
+
+I think it ends
+<BLOCKQUOTE>Soft you now, the fair Ophelia. Nymph, in thy orisons,
+be all my sins remembered.
+</BLOCKQUOTE>
+but I am not sure.
+
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                          Lists and glossaries in HTML
+                        FORMS OF LIST IN HTML
+                                   
+   These lists may be nested
+   
+Glossaries
+
+   A glossary (or definition list) is a list of paragraphs each of
+   which has a short title alongside it. Apart from glossaries, this
+   element is useful for presenting a set of named elements to the
+   reader. The elements within a glossary follow are introduced by
+   these elements:
+   
+  DT                     The "term", typically placed in a wide left
+                         indent
+                         
+  DD                     The "definition", which may wrap onto many
+                         lines
+                         
+   These elements must appear in pairs. Single occurrences of DT
+   without a following DD are allowed, and have the same significance
+   as if the DD had been present with no text.. The one attribute
+   which DL can take is
+   
+  COMPACT                suggests that a compact rendering be used,
+                         because the enclosed elements are
+                         individually small, or the whole glossary is
+                         rather large, or both.
+                         
+  TYPICAL RENDERING
+  
+   The definition list DT, DD pairs are arranged vertically. For each
+   pair, the DT element is on the left, in a column of about a third
+   of the display area, and the DD element is in the right hand two
+   thirds of the display area. The DT term is normally small enough to
+   fit on one line within the left-hand column. If it is longer, it
+   will either extend across the page, in which case the DD section is
+   moved down to separate them, or it is wrapped onto successive lines
+   of the left hand column.
+   
+   This is sometimes implemented with the use of a large negative
+   first line indent.
+   
+   White space is typically left between successive DT,DD pairs unless
+   the COMPACT attribute is given. The COMPACT attribute is
+   appropriate for lists which are long and/or have DT,DD pairs which
+   each take only a line or two. It is of course possible for the
+   rendering software to discover these cases itself and make its own
+   decisions, and this is to be encouraged.
+   
+   The COMPACT attribute may also reduce the width of the left-hand
+   (DT) column.
+   
+  EXAMPLES OF USE
+  
+        <DL>
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
+        <DT>Term the first<DD>definition paragraph is reasonably
+        long but is still displayed clearly
+        <DT>Term2 follows<DD>Definition of term2
+        </DL>
+
+        <DL COMPACT>
+        <DT>Term<DD>definition paragraph
+        <DT>Term2<DD>Definition of term2
+        </DL>
+
+
+
+
+Lists
+
+   A list is a sequence of paragraphs, each of which may be preceded
+   by a special mark or sequence number. The syntax is:
+   
+
+                <UL>
+                <LI> list element
+                <LI> another list element ...
+                </UL>
+
+   The opening list tag may be any of UL, OL, MENU or DIR. It must be
+   immediately followed by the first list element.
+   
+  TYPICAL RENDERING
+  
+   The representation of the list is not defined here, but a bulleted
+   list for unordered lists, and a sequence of numbered paragraphs for
+   an ordered list would be quite appropriate. Other possibilities for
+   interactive display include embedded scrollable browse panels.
+   
+   List elements with typical rendering are:
+   
+  UL                     A list of multi-line paragraphs, typically
+                         separated by some white space and/or marked
+                         by bullets, etc.
+                         
+  OL                     As UL, but the paragraphs are typically
+                         numbered in some way to indicate the order as
+                         significant.
+                         
+  MENU                   A list of smaller paragraphs. Typically one
+                         line per item, with a style more compact than
+                         UL.
+                         
+  DIR                    A list of short elements, typically less than
+                         20 characters. These may be arranged in
+                         columns across the page, typically 24
+                         character in width. If the rendering software
+                         is able to optimize the column width as
+                         function of the widths of individual
+                         elements, so much the better.
+                         
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
+  EXAMPLE OF USE
+  
+                <OL>
+                <LI> When you get to the station, leave
+                by the southern exit, on platform one.
+                <LI>Turn left to face toward the mountain
+                <LI>Walk for a mile or so until you reach the
+                "Asquith Arms" then
+                <LI>Wait and see...
+                </OL>
+
+                < MENU >
+                <LI>The oranges should be pressed fresh
+                <LI>The nuts may come from a packet
+                <LI>The gin must be good quality
+                </MENU>
+
+                < DIR >
+                <LI>A-H<LI>I-M
+                <LI>M-R<LI>S-Z
+                </DIR>
+
+
+
+
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                               The PRE element in HTML
+                        PRE: PREFORMATTED TEXT
+                                   
+   Preformatted elements in HTML are displayed with text in a fixed
+   width font, and so are suitable for text which has been formatted
+   for a teletype by some existing formatting system.
+   
+
+
+   The optional attribute is:
+   
+  WIDTH                  This attribute gives the maximum number of
+                         characters which will occur on a line. It
+                         allows the presentation system to select a
+                         suitable font and indentation. Where the
+                         WIDTH attribute is not recognized, it is
+                         recommended that a width of 80 be assumed.
+                         Where WIDTH is supported, it is recommended
+                         that at least widths of 40, 80 and 132
+                         characters be presented optimally, with other
+                         widths being rounded up.
+                         
+   Within a PRE element,
+   
+      Line boundaries within the text are rendered as a move to the
+      beginning of the next line, except for one immediately following
+      or immediately preceding a tag.
+      
+      The <p> tag should not be used. If found, it should be rendered
+      as a move to the beginning of the next line.
+      
+      Anchor elements and character highlighting elements may be used.
+      
+      Elements which define paragraph formatting (Headings, Address,
+      etc) must not be used.
+      
+      The ASCII Horizontal Tab (HT) character must be interpreted as
+      the smallest positive nonzero number of spaces which will leave
+      the number of characters so far on the line as a multiple of 8.
+      Its use is not recommended however.
+      
+  EXAMPLE OF USE
+  
+                        <PRE WIDTH="80">
+                        This is an example line
+                        </PRE>
+
+  NOTE: HIGHLIGHTING
+  
+   Within a preformatted element, the constraint that the rendering
+   must be on a fixed horizontal character pitch may limit or prevent
+   the ability of the renderer to render highlighting elements
+   specially.
+   
+  NOTE: MARGINS
+  
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
+   The above references to the "beginning of a new line" must not be
+   taken as implying that the renderer is forbidden from using a
+   (constant) left indent for rendering preformatted text. The left
+   indent may of course be constrained by the width required.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                              User Input Forms in HTML
+                   FILL-OUT FORMS AND INPUT FIELDS
+                                   
+   Forms are composed by placing input fields within paragraphs,
+   preformatted/literal text, lists and tables. This gives
+   considerable scope in designing the layout of forms.
+   
+Elements
+
+   The form features use the following elements which are all known as
+   HTML level 2 elements.
+   
+  FORM                   a form within a document.
+                         
+  INPUT                  one input field of one of a variety of typed
+                         
+  TEXTAREA               a multline input field
+                         
+  SELECT                 A selection from a finite set of options
+                         
+  OPTION                 one option within a SELECT
+                         
+  Proposed Elements
+                         
+  HTEXTAREA              an input field for hypertext.
+                         
+   Each variable field is defined by an INPUT , TEXTAREA, or OPTION
+   element and must have an NAME attribute which uniquely names the
+   field in the document. Additional optional attributes can be used
+   to specify the type of the field (defaults to free text), its
+   size/precision, its initial value and whether the field is
+   currently disabled or in error:
+   
+Example
+
+<FORM ACTION="mailto:www_admin@info.cern.ch">
+<MH HIDDEN>Subject: WWW Questionaire</MH>
+Please help up to improve the World Wide Web by filling in the
+following questionaire:
+<P>Your organization? <INPUT NAME="org" SIZE="48">
+<P>Commercial? <INPUT NAME="commerce" TYPE=checkbox>
+How many users? <INPUT NAME="users" TYPE=int>
+<P>Which browsers do you use?
+<UL>
+<LI>X Mosaic <INPUT NAME="browsers" TYPE=checkbox VALUE="xmosaic">
+<LI>Cello <INPUT NAME="browsers" TYPE=checkbox VALUE="cello">
+<LI>Others <TEXTAREA NAME="others" COLS=48 ROWS=4></TEXTAREA>
+</UL>
+A contact point for your site: <INPUT NAME="contact" SIZE="42">
+<P>Many thanks on behalf of the WWW central support team.
+<P ALIGN=CENTER><INPUT TYPE=submit> <INPUT TYPE=reset>
+</FORM>
+
+   This fictitious example is a questionnaire that will be emailed to
+   www_admin@info.cern.ch .
+   
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
+   Servers can disable forms by sending an appropriate header or by an
+   attribute on the optional HTMLPLUS element at the very start of the
+   document, e.g. <htmlplus forms=off> .
+   
+   Here, the <P> and <UL> elements have been used to lay out the text
+   (and input fields. The browser has changed the background color
+   within the FORM element to distinguish the form from other parts of
+   the document. The browser is responsible for handling the input
+   focus, i.e. which field will currently get keyboard input.
+   
+   For many platforms there will be existing conventions for forms,
+   e.g. "tab" and "shift-tab" keys to move the keyboard focus forwards
+   and backwards between fields, while an "Enter" key submits the
+   form. In the example, the "submit" and "reset" buttons are
+   specified explicitly with special purpose fields. The "submit"
+   button is used to email the form or send its contents to the server
+   as specified by the ACTION attribute, while the "reset" button
+   resets the fields to their initial values. When the form consists
+   of a single text field, it may be appropriate to leave such buttons
+   out and rely on the "Enter" key.
+   
+   The INPUT element is used for a large variety of typed of input
+   fields.
+   
+   When you need to let users enter more than one line of text, you
+   should use the TEXTAREA element.
+   
+Representing choices
+
+   The RADIO and CHECKBOX types of INPUT field can be used to specify
+   multiple choice forms in which every alternative is visible as part
+   of the form. An alternative is to use the SELECT element which is
+   generally rendered in a more compact fashion as a pull down combo
+   list.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                                      FORM -- Elements
+                                 FORM
+                                   
+   The FORM element is used to delimit the form . There can be several
+   forms in a single document, but the FORM element can't be nested.
+   
+   The ACTION attribute specifies a URL that designates an HTTP server
+   or an email address. If missing, the URL for the document itself
+   will be assumed. The effect of the action can be modified by
+   including a method prefix, e.g. ACTION="POST http://...." . This
+   prefix is used to select the HTTP method when sending the form's
+   contents to an HTTP server. [[Would it be cleaner to use a separate
+   attribute, e.g. METHOD ?]
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                             The INPUT element in HTML
+                                INPUT
+                                   
+   The INPUT element represents a field whose contents may be edited
+   by the user. It has the following attributes.
+   
+  NAME                   Symbolic name used when transferring the
+                         form's contents. This attribute is always
+                         needed and should uniquely identify this
+                         field.
+                         
+  TYPE                   Defines the type of data the field accepts.
+                         Defaults to free text.
+                         
+  SIZE                   Specifies the size or precision of the field
+                         according to its type.
+                         
+  MAXLENGTH              The maximum number of characters that will be
+                         accepted as input. This can be greater that
+                         specified by SIZE , in which case the field
+                         will scroll appropriately. The default is
+                         unlimited.
+                         
+  VALUE                  The initial value for the field, or the value
+                         when checked for checkboxes and radio
+                         buttons. This attribute is required for radio
+                         buttons.
+                         
+  SRC                    A URL or URN specifying an image - for use
+                         only with TYPE=IMAGEMAP.
+                         
+  ALIGN                  Vertical alignment of the image - for use
+                         only with TYPE=IMAGEMAP.
+                         
+  PROPSED
+  
+  CHECKED                When present indicates that a checkbox or
+                         radio button is selected.
+                         
+  DISABLED               When present indicates that this field is
+                         temporarily disabled. Browsers should show
+                         this by "greying it" out in some manner.
+                         
+  ERROR                  When present indicates that the field's
+                         initial value is in error in some way, e.g.
+                         because it is inconsistent with the values of
+                         other fields. Servers should include an
+                         explanatory error message with the form's
+                         text.
+                         
+Types
+
+   The following types of fields can be defined with the TYPE
+   attribute :
+   
+  TEXT                   Single line text entry fields. Use the SIZE
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+
+
+                         attribute to specify the visible width in
+                         characters, e.g. SIZE="24" for a 24 character
+                         field. The MAX attribute can be used to
+                         specify an upper limit to the number of
+                         characters that can be entered into a text
+                         field, e.g. MAX=72 . Use the TEXTAREA element
+                         for text fields which can accept multiple
+                         lines (see below).
+                         
+  HIDDEN                 No field is presented to the user, but the
+                         content of the field is sent with the
+                         submitted form. This value may be used to
+                         transmit state information about
+                         client/server interaction.
+                         
+  CHECKBOX               Used for simple Boolean attributes, or for
+                         attributes which can take multiple values at
+                         the same time. The latter is represented by a
+                         number of checkbox fields each of which has
+                         the same NAME .
+                         
+  RADIO                  For attributes which can take a single value
+                         from a set of alternatives. Each radio button
+                         field in the group should be given the same
+                         NAME .
+                         
+  SUBMIT                 This is a button that when pressed submits
+                         the form. It offers authors control over the
+                         location of this button. You can use an image
+                         as a submit button by specifying a URL with
+                         the SRC attribute.
+                         
+  RESET                  This is a button that when pressed resets the
+                         form's fields to their initial values as
+                         specified by the VALUE attribute. You can use
+                         an image as a reeset button by specifying a
+                         URL with the SRC attribute.
+                         
+  PROPOSED TYPES
+  
+  RANGE                  This allows you to specify an integer range
+                         with the MIN and MAX attributes, e.g. MIN=1
+                         MAX=100 . Users can select any value in this
+                         range.
+                         
+  INT                    For entering integer numbers, the maximum
+                         number of digits can be specified with the
+                         SIZE attribute (excluding the sign
+                         character), e.g. size=3 for a three digit
+                         number.
+                         
+  FLOAT                  For fields which can accept floating point
+                         numbers.
+                         
+  SCRIBBLE               A field upon which you can write with a pen
+                         or mouse. The size of the field in
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
+                         millimeters is given as SIZE= width , height.
+                         The units are absolute as they relate to the
+                         dimensions of the human hand, rather than
+                         pixels of varying resolution. The scribble
+                         may involve time and pressure data in
+                         addition to the basic ink data. You can use
+                         scribble for signatures or sketches. The
+                         field can be initialised by setting the SRC
+                         attribute to a URL which contains the ink *2
+                         . The VALUE attribute is ignored.
+                         
+  AUDIO                  This provides a way of entering spoken
+                         messages into a form. Browsers might show an
+                         icon which when clicked pops-up a set of tape
+                         controls that you can use to record and
+                         replay messages. The initial message can be
+                         set by specifying a URL with the SRC
+                         attribute. The VALUE attribute is ignored.
+                         
+  OBSOLETE TYPES
+  
+  DATE                   Fields which can accept a recognized date
+                         format.
+                         
+  URL                    For fields which expect document references
+                         as URLs or URNs.
+                         
+  IMAGE                  This allows you to specify an image field
+                         upon which you can click with a pointing
+                         device. The SRC and ALIGN attributes are
+                         exactly the same as for the IMG and IMAGE
+                         elements. The symbolic names for the x and y
+                         coordinates of the click event are specified
+                         with .x and .y for the given with the NAME
+                         attribute. The VALUE attribute is ignored.
+                         
+   When you need to let users enter more than one line of text, you
+   should use the TEXTAREA element.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                          The TEXTAREA element in HTML
+                               TEXTAREA
+                                   
+   When you need to let users enter more than one line of text, you
+   should use the TEXTAREA element, e.g.
+   
+<TEXTAREA NAME="address" ROWS=64 COLS=6>
+Hewlett Packard Laboratories
+1501 Page Mill Road
+Palo Alto, California 94304-1126
+</TEXTAREA>
+
+   The text up to the end tag is used to initialize the field's value.
+   This end tag is always required even if the field is initially
+   blank.
+   
+Typical rendering
+
+   The ROWS and COLS attributes determine the visible dimension of the
+   field in characters. The field is rendered in a fixed-width font.
+   Browsers are recommended to allow text to grow beyond these limits
+   by scrolling as needed.
+   
+Explanatory Note: TEXTAREA and INPUT/TEXT
+
+   In the initial design for forms, multi-line text fields were
+   supported by the INPUT element with TYPE=TEXT . Unfortunately, this
+   causes problems for fields with long text values as SGML limits the
+   length of attribute literals. The HTML+ DTD allows for up to 1024
+   characters (the SGML default is only 240 characters!).
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                            The SELECT element in HTML
+                                SELECT
+                                   
+   The SELECT element allows the user to chose one of a set of
+   alternatives described by textual labels. Every alternative is
+   represented by the OPTION element.
+   
+Attributes
+
+  MULTIPLE               The MULTIPLE attribute is needed when users
+                         are allowed to make several selections, e.g.
+                         <SELECT MULTIPLE> .
+                         
+  PROPOSED ATTRIBUTES
+  
+  ERROR                  The ERROR attribute can be used to indicate
+                         that the initial selection is in error in
+                         some way, e.g. because it is inconsistent
+                         with the values of other fields.
+                         
+Typical rendering
+
+   SELECT is typically rendered as a pull down or pop-up list.
+   
+Example
+
+   e.g.
+   
+                <SELECT NAME="flavor">
+                <OPTION>Vanilla
+                <OPTION>Strawberry
+                <OPTION>Rum and Raisin
+                <OPTION>Peach and Orange
+                </SELECT>
+
+   out in some manner.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                            The OPTION element in HTML
+                                OPTION
+                                   
+   The OPTION element can only occur within a SELECT element. It
+   represents one choice, and can take the following attributes:
+   
+  SELECTED               Indicates that this option is initially
+                         selected.
+                         
+  VALUE                  When present indicates the value to be
+                         returned if this option is chosen. The
+                         returned value defaults to the contents of
+                         the option element.
+                         
+  PROPOSED ATTRIBUTES
+  
+  DISABLED               When present indicates that this option is
+                         temporarily disabled. Browsers typically show
+                         this by "greying it", etc.
+                         
+   The contents of the OPTION element is presented to the user to
+   represent the option. It is used as a returned value if the VALUE
+   attribute is not present.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                              Obsolete Elements of HTML
@@ -1505,7 +1936,7 @@ t
       immediately after the opening tag or before the closing tag. and
       are to be rendered as a move to the start of a new line.
       
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
       The ASCII Horizontal Tab (HT) character must be interpreted as
@@ -1535,7 +1966,7 @@ t
    A comment element used for bracketing off unneed text and comment
    has been introduced in some browsers but will be replaced by the
    SGML command feature in new implementations.
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                       XMP and LISTING in HTML: History
@@ -1550,7 +1981,7 @@ t
    interpretation. Providers should be warned that implementations may
    vary on how they interpret end tags apparently within these
    elements
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                    Entities -- /MarkUp
@@ -1574,7 +2005,7 @@ t
                          
    Also allowed are references to any of the ISO Latin-1 alphabet,
    using the entity names in the following table.
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                           ISO Latin 1 Entities in HTML
@@ -1633,7 +2064,7 @@ t
                          
   &THORN;                capital THORN, Icelandic
                          
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   &Uacute;               capital U, acute accent
@@ -1692,7 +2123,7 @@ t
                          
   &otilde;               small o, tilde
                          
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
   &ouml;                 small o, dieresis or umlaut mark
@@ -1714,27 +2145,40 @@ t
   &yuml;                 small y, dieresis or umlaut mark
                          
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
-                                  HTML Spacification: Acknowledgements
+                                       Security considertions for HTML
+                       SECURITY CONSIDERATIONS
+                                   
+   Anchors, embedded images, and all other elements which contain URls
+   as parameters may cause the URI to be dereferenced, in which case
+   the security considerations of the URI specification apply.
+   
+   Documents may be constructed whose visible contents mislead one to
+   follow a link by to unsuitable or offensive material.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+
+
+                                  HTML Specification: Acknowledgements
                            ACKNOWLEDGEMENTS
                                    
    The HTML document type was designed initially at CERN in 1990 for
    the World-Wide Web project. The DTD was written, and the
-   specification tightened up, by Dan Connolly. After much discussion
+   specification tightened up, by Dan Connolly in 1992.
+   
+   An internet draft was release in June of 1992 after much discussion
    on the network and some enhancement in particular the addition of
-   inline images introduced by the NCSA "Mosaic" software for WWW, it
-   was released as an Internet draft in 1993.
+   inline images introduced by the NCSA "Mosaic" software for WWW.
    
-   The internet draft has since expired. This version of the
-   specification is an attempt to capture the state of current
-   practice, as a basis for review and enhancement.
+   The FORMS material is derived from the HTML+ specification with the
+   help of Dave Raggett.
    
-                                                                   DWC
-                                                                      
-   
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+   This document is the work of many contributors. Many thanks to Erik
+   Naggum and James Clark for making SGML technology available, and to
+   Terry Allen, Dave Raggett, Marc Andressen, William Perry, and the
+   rest of the WWW community.
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                        References - HTML specification
@@ -1745,33 +2189,35 @@ t
                          Markup Language (SGML).
                          
   sgmls                  an SGML parser by James Clark
-                         <jjc@jclark.com> derived from the ARCSGML
+                         <jjc@jclark.com>derived from the ARCSGML
                          parser materials which were written by
                          Charles F. Goldfarb. The source is available
-                         on the ifi.uio.no FTP server in the directory
-                         /pub/SGML/SGMLS .
+                         on the ftp.ifi.uio.no FTP server in the
+                         directory /pub/SGML/SGMLS.
                          
-  WWW                    The World-Wide Web , a global information
+  W3                     The World-Wide Web , a global information
                          initiative. For bootstrap information, telnet
                          info.cern.ch or find documents by
                          ftp://info.cern.ch/pub/www/doc
                          
-  URL                    Universal Resource Locators. RFCxxx.
+  URI                    Universal Resource Identifiers. RFCxxx.
                          Currently available by anonymous FTP from
                          info.cern.ch in /pub/www/doc/url*.{ps,txt}
                          
+  MIME                   N. Borenstein, N. Freed, "MIME (Multipurpose
+                         Internet Mail Extensions) Part One:
+                         Mechanisms for Specifying and Describing the
+                         Format of Internet Message Bodies",
+                         09/23/1993. (Pages=81) (Format=.txt, .ps)
+                         (Obsoletes RFC1341) (Updated by RFC1590)
+                         
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                               Authors' addresses -- HTML specification
                           AUTHOR'S ADDRESSES
                                    
-   This document is the work of many contributors. Many thanks to Erik
-   Naggum and James Clark for making SGML technology available, and
-   toTerry Allen, Dave Raggett, Marc Andressen, William Perry, and the
-   rest of the WWW community.
-   
 
                                 Daniel W. Connolly
                 Affiliation:    HaL Software Systems
@@ -1788,15 +2234,16 @@ t
                 Fax:            +41(22)767 7155
                 email:          timbl@info.cern.ch
 
+
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
                                                     HTML DTD Reference
                           HTML DTD REFERENCE
                                    
                                                         Generated from
-     "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN"
+                                        "-//W3O//DTD WWW HTML 2.0//EN"
                                                                       
 Alphabetical Index
 
@@ -1848,7 +2295,7 @@ ADDRESS
    
 B
 
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
   Required Parts         <B>characters...</B>
@@ -1907,7 +2354,7 @@ BODY
                          <B> <I> <BR> </BODY>
                          
   Discussion
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
 
 
                          
@@ -1966,7 +2413,7 @@ DD
   All Parts              <DD>characters...<A> <IMG> <EM> <STRONG>
                          <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
                          <STRIKE> <TT> <B> <I> <BR> <HR> <UL> <OL>
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 4
 
 
                          <DIR> <MENU> <DL> <PRE> <XMP> <LISTING>
@@ -2025,7 +2472,7 @@ DT
 
   Required Parts         <DT>characters...
                          
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 5
 
 
   All Parts              <DT>characters...<A> <IMG> <EM> <STRONG>
@@ -2066,6 +2513,10 @@ FORM
                          <STRONG> <CODE> <SAMP> <KBD> <VAR> <DFN>
                          <CITE> <STRIKE> <TT> <B> <I> <BR> </FORM>
                          
+  Discussion
+                         
+      FORM -- Elements
+      
    
    T
    
@@ -2080,13 +2531,13 @@ H1
   Discussion
                          
       in Heading elements in HTML
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+
+
       
    
    T
    
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 6
-
-
 H2
 
   Required Parts         <H2>characters...</H2>
@@ -2139,13 +2590,13 @@ H5
   All Parts              <H5>characters...<A> <IMG> <EM> <STRONG>
                          <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
                          <STRIKE> <TT> <B> <I> <BR> </H5>
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+
+
                          
   Discussion
                          
       in Heading elements in HTML
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 7
-
-
       
    
    T
@@ -2198,13 +2649,13 @@ HTML
                          
   All Parts              <HTML><HEAD> <BODY> <PLAINTEXT> </HTML>
                          
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+
+
   Discussion
                          
       Hypertext Markup Language (HTML)
       
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 8
-
-
    
    T
    
@@ -2244,6 +2695,10 @@ INPUT
                          SRC="..." CHECKED SIZE="..." MAXLENGTH="..."
                          ALIGN="...">
                          
+  Discussion
+                         
+      The INPUT element in HTML
+      
    
    T
    
@@ -2253,6 +2708,9 @@ ISINDEX
                          
   All Parts              <ISINDEX>
                          
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 9
+
+
   Discussion
                          
       ISINDEX element in HTML
@@ -2261,9 +2719,6 @@ ISINDEX
    T
    
 KBD
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 9
-
-
 
   Required Parts         <KBD>characters...</KBD>
                          
@@ -2312,6 +2767,9 @@ LINK
    T
    
 LISTING
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 10
+
+
 
   Required Parts         <LISTING>characters...</LISTING>
                          
@@ -2320,9 +2778,6 @@ LISTING
   Discussion
                          
       in Obsolete Elements of HTML
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 10
-
-
       
    
    T
@@ -2359,6 +2814,10 @@ OL
                          
   All Parts              <OL><LI> </OL>
                          
+  Discussion
+                         
+      in Lists and glossaries in HTML
+      
    
    T
    
@@ -2367,8 +2826,15 @@ OPTION
   Required Parts         <OPTION>characters...
                          
   All Parts              <OPTION SELECTED
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 11
+
+
                          VALUE="...">characters...</OPTION>
                          
+  Discussion
+                         
+      The OPTION element in HTML
+      
    
    T
    
@@ -2379,9 +2845,6 @@ P
   All Parts              <P>characters...<A> <IMG> <EM> <STRONG>
                          <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
                          <STRIKE> <TT> <B> <I> <BR> </P>
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 11
-
-
                          
   Discussion
                          
@@ -2422,6 +2885,9 @@ SAMP
 
   Required Parts         <SAMP>characters...</SAMP>
                          
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 12
+
+
   All Parts              <SAMP>characters...<A> <IMG> <EM> <STRONG>
                          <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
                          <STRIKE> <TT> <B> <I> <BR> </SAMP>
@@ -2438,11 +2904,12 @@ SELECT
   Required Parts         <SELECT NAME="..."></SELECT>
                          
   All Parts              <SELECT NAME="..." SIZE="..."
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 12
-
-
                          MULTIPLE><OPTION> </SELECT>
                          
+  Discussion
+                         
+      The SELECT element in HTML
+      
    
    T
    
@@ -2454,6 +2921,10 @@ STRIKE
                          <CODE> <SAMP> <KBD> <VAR> <DFN> <CITE>
                          <STRIKE> <TT> <B> <I> <BR> </STRIKE>
                          
+  Discussion
+                         
+      in Highlighting in HTML
+      
    
    T
    
@@ -2473,6 +2944,9 @@ STRONG
    T
    
 TEXTAREA
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 13
+
+
 
   Required Parts         <TEXTAREA NAME="..." ROWS="..."
                          COLS="...">characters...</TEXTAREA>
@@ -2480,6 +2954,10 @@ TEXTAREA
   All Parts              <TEXTAREA NAME="..." ROWS="..."
                          COLS="...">characters...</TEXTAREA>
                          
+  Discussion
+                         
+      The TEXTAREA element in HTML
+      
    
    T
    
@@ -2497,9 +2975,6 @@ TITLE
    T
    
 TT
-May 18 12:43 1994  HTML Specification	 Connolly and Berners-Lee Page 13
-
-
 
   Required Parts         <TT>characters...</TT>
                          
@@ -2528,6 +3003,9 @@ UL
    T
    
 VAR
+Jun  3 17:23 1994  HTML Specification	 Connolly and Berners-Lee Page 14
+
+
 
   Required Parts         <VAR>characters...</VAR>
                          
@@ -2553,7 +3031,7 @@ XMP
       in Obsolete Elements of HTML
       
    
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
 <!--	html.dtd
@@ -2565,20 +3043,16 @@ XMP
 
 	Author: Daniel W. Connolly <connolly@hal.com>
 	See Also: http://www.hal.com/%7Econnolly/html-spec/HTML.html
-		  http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
+		  http://info.cern.ch/hypertext/WWW/MarkUp2/MarkUp.html
 -->
 
 <!ENTITY HTML.Version
-	"-//connolly hal.com//DTD WWW HTML $Date 1994/04/19 17:24:06 $//EN"
+	"-//W3O//DTD WWW HTML 2.0//EN"
 	-- public identifier for "current pracitice" version             -- 
-	-- actually, take the $'s out to get the real public identifer,  --
-	-- since $ is illegal in public identifier. When DTD stabilizes, --
-	-- we'll need to stop using RCS keywords to version the pub id   --
 
         -- Typical usage:
 
-            <!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML
-						$Date$//EN">
+            <!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 	    <html>
 	    ...
 	    </html>
@@ -2603,22 +3077,25 @@ XMP
 	sgmls -s doctype.sgml foo.html
  -->
 
-<!ENTITY % HTML.Minimal  "IGNORE">
+<!ENTITY % HTML.Level0  "IGNORE">
 <!ENTITY % HTML.Obsolete "IGNORE">
 <!ENTITY % HTML.Prescriptive "IGNORE">
 
-<![ %HTML.Minimal [
+<![ %HTML.Level0 [
 	<!ENTITY % HTML.linkRelationships "IGNORE">
 	<!ENTITY % HTML.linkMethods "IGNORE">
 	<!ENTITY % HTML.linkRedundantInfo "IGNORE">
 	<!ENTITY % HTML.forms "IGNORE">
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+	<!ENTITY % HTML.phrase "IGNORE">
+	<!ENTITY % HTML.NEXTID "IGNORE">
+	<!-- @# Are the following required for conformance? -->
+	<!-- @# nested lists -->
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
-	<!-- @@ nested lists -->
-	<!-- @@ phrases -->
-	<!-- @@ headers inside A -->
-	<!-- @@ nested phrases, fonts -->
+	<!-- @# IMG -->
+	<!-- @# headers inside A -->
+	<!-- @# nested phrases, fonts -->
 	]]>
 	
 <![ %HTML.Obsolete [
@@ -2638,6 +3115,10 @@ XMP
 	<!ENTITY % HTML.PLAINTEXT "IGNORE">
 	<!ENTITY % HTML.bodyBlockOnly "INCLUDE">
 	]]>
+
+<!ENTITY % HTML.phrase "INCLUDE"
+	-- phrase markup, ala TeXinfo: TT, EM, etc.
+	-->
 
 <!ENTITY % HTML.bodyBlockOnly "IGNORE"
 	-- only allow block elements in the BODY element
@@ -2668,12 +3149,12 @@ XMP
 <!ENTITY % HTML.anchorNameCDATA "INCLUDE"
 	-- Anchor names should be distinct. SGML parser can validate
 	this if the NAME attribute of the A element is declared as ID.
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
 	But that restricts the syntax of an anchor name to an SGML name,
 	i.e. a letter followed by letters, numbers, periods and dashes,
 	up to NAMELEN (34) characters long.
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
 	-->
 
 <!ENTITY % HTML.PLAINTEXT "INCLUDE"
@@ -2727,18 +3208,17 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % URI "CDATA"
         -- The term URI means a CDATA attribute
            whose value is a Uniform Resource Identifier,
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
+
            as defined by 
 	"Universal Resource Identifiers" by Tim Berners-Lee
 	aka http://info.cern.ch/hypertext/WWW/Addressing/URL/URI_Overview.html
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
-
 
 	Note that CDATA attributes are limited by the LITLEN
 	capacity (1024 in the current version of html.decl),
 	so that URIs in HTML have a bounded length.
 
-	@@ Need to discuss relative addresses.
         -->
 
 <!ENTITY % Content-Type "CDATA"
@@ -2787,10 +3267,10 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % obsolete-plaintext "">
 
 <!ENTITY % html-content "HEAD, BODY %obsolete-plaintext;">
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
 <!ELEMENT HTML O O  (%html-content)>
-
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
 
 <![ %HTML.NEXTID [  <!ENTITY % head-content "TITLE? & ISINDEX? & LINK* & BASE?
 			& NEXTID?"> ]]>
@@ -2846,11 +3326,11 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	<!ENTITY % obsolete-font "| %font">
 	<!ENTITY % obsolete-phrase "| %phrase">
 	]]>
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+
+
 <!ENTITY % obsolete-font "">
 <!ENTITY % obsolete-phrase "">
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 6
-
-
 <![ %HTML.pSeparator [
 	<!ENTITY % obsolete-p "| P">
 	]]>
@@ -2858,6 +3338,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ENTITY % inline "%phrase %obsolete-font">
 <!ENTITY % pre-inline "%font %obsolete-phrase %obsolete-p">
+
+<!ENTITY % inline "">
+<!ENTITY % pre-inline "">
 
 <!ENTITY % text "#PCDATA | IMG | %inline | BR %obsolete-p">
 
@@ -2867,7 +3350,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % font-content "#PCDATA">
 <!ELEMENT (%font;) - - (%font-content;)>
 
+<![ %HTML.phrase [
 <!ELEMENT (%phrase;) - - (%htext)+>
+]]>
 
 <!ENTITY % pre "PRE | XMP | LISTING">
 
@@ -2900,6 +3385,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 		<H2><A>xyz<H1>h1</H1></A></H2>
 	The right way to do anchors outside of %htext is more like:
 		<as id=z1><H2>lkjlkj</h2><ae start=z1>
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+
+
 	-->
 <!ATTLIST A
         %linkattributes;
@@ -2907,9 +3395,6 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ELEMENT IMG    - O EMPTY --  Embedded image -->
 <!ATTLIST IMG
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 7
-
-
         SRC %URI;  #IMPLIED     -- URI of document to embed --
 	ALT CDATA #IMPLIED
 	ALIGN (top|middle|bottom) #IMPLIED
@@ -2959,6 +3444,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY quot CDATA "&#34;"    -- double quote -->
 
 <!-- Processing Entities -->
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+
+
 
 <!ENTITY nbsp "<? nonbreaking-space>">
 <!-- @# should add entites for processing instructions
@@ -2966,9 +3454,6 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 
 <!-- Forms  -->
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 8
-
-
 <![ %HTML.forms [
 
 <!ENTITY % HTTP-Method "(GET | POST)">
@@ -3018,13 +3503,16 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!-- Obsolete Elements  -->
 
 <![ %HTML.litCDATA [ <!ENTITY % lit-content "CDATA"> ]]>
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 9
+
+
 <!ENTITY % lit-content "RCDATA">
 <!ELEMENT (%literal) - -  %lit-content>
 
 <![ %HTML.PLAINTEXT [
 <!ELEMENT PLAINTEXT - O EMPTY>
 ]]>
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 1
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 1
 
 
 <!--	html.dtd
@@ -3036,20 +3524,16 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 	Author: Daniel W. Connolly <connolly@hal.com>
 	See Also: http://www.hal.com/%7Econnolly/html-spec/HTML.html
-		  http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
+		  http://info.cern.ch/hypertext/WWW/MarkUp2/MarkUp.html
 -->
 
 <!ENTITY HTML.Version
-	"-//connolly hal.com//DTD WWW HTML $Date 1994/04/19 17:24:06 $//EN"
+	"-//W3O//DTD WWW HTML 2.0//EN"
 	-- public identifier for "current pracitice" version             -- 
-	-- actually, take the $'s out to get the real public identifer,  --
-	-- since $ is illegal in public identifier. When DTD stabilizes, --
-	-- we'll need to stop using RCS keywords to version the pub id   --
 
         -- Typical usage:
 
-            <!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML
-						$Date$//EN">
+            <!DOCTYPE HTML PUBLIC "-//W3O//DTD WWW HTML 2.0//EN">
 	    <html>
 	    ...
 	    </html>
@@ -3074,22 +3558,25 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	sgmls -s doctype.sgml foo.html
  -->
 
-<!ENTITY % HTML.Minimal  "IGNORE">
+<!ENTITY % HTML.Level0  "IGNORE">
 <!ENTITY % HTML.Obsolete "IGNORE">
 <!ENTITY % HTML.Prescriptive "IGNORE">
 
-<![ %HTML.Minimal [
+<![ %HTML.Level0 [
 	<!ENTITY % HTML.linkRelationships "IGNORE">
 	<!ENTITY % HTML.linkMethods "IGNORE">
 	<!ENTITY % HTML.linkRedundantInfo "IGNORE">
 	<!ENTITY % HTML.forms "IGNORE">
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 2
+	<!ENTITY % HTML.phrase "IGNORE">
+	<!ENTITY % HTML.NEXTID "IGNORE">
+	<!-- @# Are the following required for conformance? -->
+	<!-- @# nested lists -->
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 2
 
 
-	<!-- @@ nested lists -->
-	<!-- @@ phrases -->
-	<!-- @@ headers inside A -->
-	<!-- @@ nested phrases, fonts -->
+	<!-- @# IMG -->
+	<!-- @# headers inside A -->
+	<!-- @# nested phrases, fonts -->
 	]]>
 	
 <![ %HTML.Obsolete [
@@ -3109,6 +3596,10 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	<!ENTITY % HTML.PLAINTEXT "IGNORE">
 	<!ENTITY % HTML.bodyBlockOnly "INCLUDE">
 	]]>
+
+<!ENTITY % HTML.phrase "INCLUDE"
+	-- phrase markup, ala TeXinfo: TT, EM, etc.
+	-->
 
 <!ENTITY % HTML.bodyBlockOnly "IGNORE"
 	-- only allow block elements in the BODY element
@@ -3139,12 +3630,12 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % HTML.anchorNameCDATA "INCLUDE"
 	-- Anchor names should be distinct. SGML parser can validate
 	this if the NAME attribute of the A element is declared as ID.
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 3
+
+
 	But that restricts the syntax of an anchor name to an SGML name,
 	i.e. a letter followed by letters, numbers, periods and dashes,
 	up to NAMELEN (34) characters long.
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 3
-
-
 	-->
 
 <!ENTITY % HTML.PLAINTEXT "INCLUDE"
@@ -3198,18 +3689,17 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % URI "CDATA"
         -- The term URI means a CDATA attribute
            whose value is a Uniform Resource Identifier,
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 4
+
+
            as defined by 
 	"Universal Resource Identifiers" by Tim Berners-Lee
 	aka http://info.cern.ch/hypertext/WWW/Addressing/URL/URI_Overview.html
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 4
-
-
 
 	Note that CDATA attributes are limited by the LITLEN
 	capacity (1024 in the current version of html.decl),
 	so that URIs in HTML have a bounded length.
 
-	@@ Need to discuss relative addresses.
         -->
 
 <!ENTITY % Content-Type "CDATA"
@@ -3258,10 +3748,10 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % obsolete-plaintext "">
 
 <!ENTITY % html-content "HEAD, BODY %obsolete-plaintext;">
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 5
+
+
 <!ELEMENT HTML O O  (%html-content)>
-
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 5
-
 
 <![ %HTML.NEXTID [  <!ENTITY % head-content "TITLE? & ISINDEX? & LINK* & BASE?
 			& NEXTID?"> ]]>
@@ -3317,11 +3807,11 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	<!ENTITY % obsolete-font "| %font">
 	<!ENTITY % obsolete-phrase "| %phrase">
 	]]>
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 6
+
+
 <!ENTITY % obsolete-font "">
 <!ENTITY % obsolete-phrase "">
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 6
-
-
 <![ %HTML.pSeparator [
 	<!ENTITY % obsolete-p "| P">
 	]]>
@@ -3329,6 +3819,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ENTITY % inline "%phrase %obsolete-font">
 <!ENTITY % pre-inline "%font %obsolete-phrase %obsolete-p">
+
+<!ENTITY % inline "">
+<!ENTITY % pre-inline "">
 
 <!ENTITY % text "#PCDATA | IMG | %inline | BR %obsolete-p">
 
@@ -3338,7 +3831,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % font-content "#PCDATA">
 <!ELEMENT (%font;) - - (%font-content;)>
 
+<![ %HTML.phrase [
 <!ELEMENT (%phrase;) - - (%htext)+>
+]]>
 
 <!ENTITY % pre "PRE | XMP | LISTING">
 
@@ -3371,6 +3866,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 		<H2><A>xyz<H1>h1</H1></A></H2>
 	The right way to do anchors outside of %htext is more like:
 		<as id=z1><H2>lkjlkj</h2><ae start=z1>
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 7
+
+
 	-->
 <!ATTLIST A
         %linkattributes;
@@ -3378,9 +3876,6 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ELEMENT IMG    - O EMPTY --  Embedded image -->
 <!ATTLIST IMG
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 7
-
-
         SRC %URI;  #IMPLIED     -- URI of document to embed --
 	ALT CDATA #IMPLIED
 	ALIGN (top|middle|bottom) #IMPLIED
@@ -3430,6 +3925,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY quot CDATA "&#34;"    -- double quote -->
 
 <!-- Processing Entities -->
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 8
+
+
 
 <!ENTITY nbsp "<? nonbreaking-space>">
 <!-- @# should add entites for processing instructions
@@ -3437,9 +3935,6 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 
 <!-- Forms  -->
-May 18 12:23 1994  HTML Specification	 Connolly and Berners-Lee Page 8
-
-
 <![ %HTML.forms [
 
 <!ENTITY % HTTP-Method "(GET | POST)">
@@ -3489,6 +3984,9 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!-- Obsolete Elements  -->
 
 <![ %HTML.litCDATA [ <!ENTITY % lit-content "CDATA"> ]]>
+Jun  3 17:09 1994  HTML Specification	 Connolly and Berners-Lee Page 9
+
+
 <!ENTITY % lit-content "RCDATA">
 <!ELEMENT (%literal) - -  %lit-content>
 
