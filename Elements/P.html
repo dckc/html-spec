@@ -1,57 +1,66 @@
-<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML 1.9//EN">
+<!DOCTYPE HTML PUBLIC "-//connolly hal.com//DTD WWW HTML Date 1994/04/19 17:24:06 //EN">
 <HTML>
+
 <HEAD>
-<TITLE>Paragraph marks in HTML</TITLE>
-<NEXTID N="z36">
-</HEAD>
+<TITLE>Paragraph marks in HTML</TITLE> <NEXTID
+N="z36"></HEAD>
+
 <BODY>
-<H1>P: Paragraph mark</H1><P>The empty P element indicates a paragraph
-break. The exact rendering of this
-(indentation,  leading, etc) is not
-defined here, and may be a function
-of other tags, style sheets etc.<P>
-&lt;P> is used between two pieces of
-text which otherwise would be flowed
-together.<P>
-You do NOT need to use &lt;P>  to put
-white space around heading, list,
-address or blockquote elements which
-imply a paragraph break. It is the
-responsibility of the rendering software
-to generate that white space.   A
-paragraph mark which is preceded
-or followed by such elements which
-imply a paragraph break is has undefined
-effect and should be avoided.
-<H2>Typical rendering</H2><P>Typically, &lt;P> will generate a small
-vertical space (of a line or half
-a line) between the paragraphs. This
-is not the case (typically) within
-ADDRESS  or (ever) within PRE elements.
- With some implementations, in normal
-text, &lt;P> may generate a small extra
-left indent on the first line.
+
+<H1>P: Paragraph mark</H1>
+
+<P>The empty P element indicates a paragraph break.
+The exact rendering of this (indentation,
+leading, etc) is not defined here, and may be a function of other
+tags, style sheets etc.
+
+<P>&lt;P&#62; is used between two pieces of text which otherwise
+would be flowed together.
+
+<P>You do NOT need to use &lt;P&#62; to put white space around
+heading, list, address or blockquote elements which imply a paragraph
+break. It is the responsibility of the rendering software to
+generate that white space. A paragraph mark which is preceded
+or followed by such elements which imply a paragraph break is
+has undefined effect and should be avoided.
+
+<H2>Typical rendering</H2>
+
+<P>Typically, &lt;P&#62; will generate a small vertical space
+(of a line or half a line) between the paragraphs.
+This is not the case (typically) within ADDRESS or (ever) within
+PRE elements. With some implementations,
+in normal text, &lt;P&#62; may generate a small extra left indent
+on the first line.
+
 <H2>Examples of use</H2>
-<PRE>	&lt;h1>What to do&lt;/h1>
+
+<PRE>	&lt;h1&#62;What to do&lt;/h1&#62;
 	This is a one paragraph.&lt;<A
-NAME="z35" HREF="../HTML.dtd.html#z26"> p</A> >This is a second.
+HREF="../HTML.dtd.html#z26" NAME="z35"> p</A> &#62;This is a second.
 	&lt;<A
-NAME="z34" HREF="../HTML.dtd.html#z26"> P</A> >
+HREF="../HTML.dtd.html#z26" NAME="z34"> P</A> &#62;
 	This is a third.
 
 </PRE>
+
 <H2>Bad example</H2>
-<PRE>        &lt;h1>&lt;P>What not to do&lt;/h1>
-	&lt;p>I found that on my XYZ browser it looked prettier to
+
+<PRE>        &lt;h1&#62;&lt;P&#62;What not to do&lt;/h1&#62;
+	&lt;p&#62;I found that on my XYZ browser it looked prettier to
 	me if I put some paragraph marks
-	&lt;p>
-	&lt;ul>&lt;p>&lt;li>Around lists, and
-	&lt;li>After headings.
-	&lt;/ul>
-	&lt;p>
+	&lt;p&#62;
+	&lt;ul&#62;&lt;p&#62;&lt;li&#62;Around lists, and
+	&lt;li&#62;After headings.
+	&lt;/ul&#62;
+	&lt;p&#62;
 	None of the paragraph marks in this example should
 	be there.
 
 </PRE>
-<H2>See also</H2><P>Line Break</BODY>
+
+<H2>See also</H2>
+
+<P>Line Break
+</BODY>
 </HTML>
