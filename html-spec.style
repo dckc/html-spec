@@ -142,7 +142,7 @@ FEATURES
 
 <texinfo>
 <texinfo-options
-	num-depth=3
+	num-depth=4
 	node-titles=use-titles
 	index-name="Index"
 	break-method=always-break

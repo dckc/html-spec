@@ -77,7 +77,7 @@ Line 1.
 </PRE>
 ]]></listing>
 
-<h3>Example and Listing: XMP, LISTING
+<h4>Example and Listing: XMP, LISTING
 
 <p>The <tag/XMP/ and <tag/LISTING/ elements are deprectated in favor
 of the <tag/PRE/ element (see <hdref refid=pre>), as their declaration
