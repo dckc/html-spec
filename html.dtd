@@ -41,7 +41,7 @@
 <!ENTITY % HTML.Deprecated "INCLUDE"
 	-- Certain features of the language are necessary for
 	   compatibility with earlier versions of the specification,
-	   but they tend to be used an implemented inconsistently,
+	   but they tend to be used and implemented inconsistently,
 	   and their use is deprecated. This feature test entity
 	   enables a document type definition that eliminates
 	   these features.
@@ -145,11 +145,11 @@ SDA & ICADD:
 <!-- <I>        Italic text                             -->
 
 <!-- <EM>       Emphasized phrase                       -->
-<!-- <STRONG>   Strong emphais                          -->
+<!-- <STRONG>   Strong emphasis                         -->
 <!-- <CODE>     Source code phrase                      -->
 <!-- <SAMP>     Sample text or characters               -->
 <!-- <KBD>      Keyboard phrase, e.g. user input        -->
-<!-- <VAR>      Variable phrase or substituable         -->
+<!-- <VAR>      Variable phrase or substitutable        -->
 <!-- <CITE>     Name or title of cited work             -->
 
 <!ENTITY % pre.content "#PCDATA | A | HR | BR | %font | %phrase">
@@ -529,7 +529,7 @@ SDA & ICADD:
 
 <!-- <HEAD>     Document head   -->
 
-<!ELEMENT TITLE - -  (#PCDATA)*>
+<!ELEMENT TITLE - -  (#PCDATA)*  -(META|LINK)>
 <!ATTLIST TITLE
         %SDAFORM; "Ti"    >
 
@@ -576,9 +576,9 @@ SDA & ICADD:
         NAME        NAME    #IMPLIED
         CONTENT     CDATA   #REQUIRED    >
 
-<!-- <META>                     Generic Metainformation         -->
+<!-- <META>                     Generic Meta-information        -->
 <!-- <META HTTP-EQUIV=...>      HTTP response header name       -->
-<!-- <META NAME=...>      	Metainformation name            -->
+<!-- <META NAME=...>      	Meta-information name           -->
 <!-- <META CONTENT="...">       Associated information          -->
 
 <!--======= Document Structure =================-->
