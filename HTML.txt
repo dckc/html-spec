@@ -33,14 +33,14 @@ Status of this Memo
 
 Abstract
 
-   The HyperText Markup Language (HTML) is a simple markup language 
-   used to create hypertext documents that are portable from one 
-   platform to another. HTML documents are SGML documents with generic 
-   semantics that are appropriate for representing information from a 
-   wide range of applications. HTML markup can represent hypertext 
-   news, mail, documentation, and hypermedia; menus of options; 
-   database query results; simple structured documents with in-lined 
-   graphics; and hypertext views of existing bodies of information.
+   The HyperText Markup Language (HTML) is a simple markup language
+   used to represent hypertext documents that are portable from one
+   platform to another. HTML documents are SGML documents with generic
+   semantics that are appropriate for representing information from a
+   wide range of applications. HTML markup can represent hypertext
+   news, mail, documentation, and hypermedia; menus of options;
+   database query results; simple structured documents with graphics;
+   and hypertext views of existing bodies of information.
 
    HTML has been in use by the World Wide Web (WWW) global information 
    initiative since 1990. This specification roughly corresponds to 
@@ -54,110 +54,7 @@ Abstract
 
 Contents
 
-   1.  Introduction
-       1.1  Purpose
-       1.2  Levels of Conformance
-       1.3  Terminology
-       1.4  Imperatives
-   2.  HTML as an Application of SGML
-       2.1  SGML Documents
-       2.2  SGML Syntax
-            2.2.1  Elements
-            2.2.2  Names
-            2.2.3  Attributes
-            2.2.4  Entity References
-            2.2.5  Comments
-       2.3  Example HTML Document
-   3.  HTML as an Internet Media Type
-       3.1  text/html media type
-       3.2  Character Set Issues
-       3.3  Undefined Tag and Attribute Names
-   4.  Document Structure Elements
-       4.1  HTML Identifier
-       4.2  Head
-       4.3  Body
-   5.  Document Metainformation Elements
-       5.1  Title
-       5.2  Base
-       5.3  Isindex
-       5.4  Link
-       5.5  Meta
-       5.6  Nextid
-   6.  Data Characters
-       6.1  Special Characters
-       6.2  Control Characters
-       6.3  Character Entities
-            6.3.1  Character Name References
-            6.3.2  Character Octet References
-   7.  Data Elements
-       7.1  Line Break
-       7.2  Horizontal Rule
-       7.3  Image
-   8.  Character Format Elements
-       8.1  Semantic Format Elements
-            8.1.1  Citation
-            8.1.2  Code
-            8.1.3  Emphasis
-            8.1.4  Keyboard
-            8.1.5  Sample
-            8.1.6  Strong
-            8.1.7  Variable
-       8.2  Physical Format Elements
-            8.2.1  Bold
-            8.2.2  Italic
-            8.2.3  Teletype
-   9.  Hypertext Elements
-       9.1  Anchor
-            9.1.1  HREF
-            9.1.2  NAME
-            9.1.3  TITLE
-            9.1.4  REL
-            9.1.5  REV
-            9.1.6  URN
-            9.1.7  METHODS
-   10. Block Structuring Elements
-       10.1 Paragraph
-       10.2 Preformatted Text
-       10.3 Address
-       10.4 Blockquote
-       10.5 Headings
-       10.6 List Elements
-            10.6.1 Definition List
-            10.6.2 Directory List
-            10.6.3 Menu List
-            10.6.4 Ordered List
-            10.6.5 Unordered List
-   11. Form-based Input Elements
-       11.1 Form
-       11.2 Input
-       11.3 Option
-       11.4 Select
-       11.5 Text Area
-   12. HTML Document Type Definitions
-       12.1 Deprecated and Recommended Sections
-       12.2 Sample SGML Open Entity Catalog for HTML
-       12.3 SGML Declaration for HTML
-       12.4 HTML Level 0 DTD
-       12.5 HTML Level 1 DTD
-       12.6 HTML Level 2 DTD
-   13. Character Entity Sets
-       13.1 Numeric and Special Graphic Entity Set
-       13.2 ISO Latin 1 Character Entity Set
-       13.3 Character Octet Entity Set
-   14. Security Considerations
-   15. References
-   16. Acknowledgments
-   17. Authors' Addresses
-   Appendix A.   Obsolete Features
-       A.1  Comment Element
-       A.2  Highlighted Phrase Element
-       A.3  Plain Text Element
-       A.4  Example and Listing Elements
-   Appendix B.   Proposed Features
-       B.1  Additional Character Entities
-       B.2  Defining Instance Element
-       B.3  Strike Element
-       B.4  Underline Element
+(@@ I'll regenerate this eventually)
 
 
 1.  Introduction
@@ -206,9 +103,38 @@ Contents
    The HTML specification uses these words with precise meanings:
 
    attribute
-       A syntactical component of an HTML element which is often used 
-       to specify a characteristic quality of an element, other than 
+       A name/value pair: part of an element which is often used 
+       to specify a characteristic quality of the element, other than 
        type or content.
+
+   character
+       An atom of information, for example a letter or a number.
+       Graphic characters have associated glyphs, where as control
+       characters have associated processing semantics.
+
+   character encoding
+       A mapping from sequences of octets to sequences of characters
+       from a character repertiore; that is, a sequence of octets and a
+       character encoding determines a sequence of characters.
+
+   character number
+       A number that determines a character, as per some character set.
+
+   character repertoire
+       A finite set of characters. The range of the mapping defined
+       by a character set.
+
+   character set
+       A mapping of a subset of the integers onto a character
+       repertoire. That is, for some set of integers (usually of
+       the form {0, 1, 2, ..., N} ), a character set and an integer
+       in that set determine a character. Conversely, a character
+       and a character set determine the character's number (or,
+       in rare cases, a few character numbers).
+
+   conforming HTML user agent
+       A user agent that conforms to this specification in its
+       treatment of the Internet Media Type "text/html; version=2.0"
 
    document type definition (DTD)
        A DTD is a collection of declarations (entity, element, 
@@ -222,19 +148,28 @@ Contents
        instance by descriptive markup, usually a start-tag and an end-
        tag.
 
+   entity
+       A text entity, or some other data with an associated notation or
+       interpretation; for example, a sequence of octets associated
+       with an Internet Media Type.
+
+   MIME entity
+       a head and body. The head is a collection of name/value fields,
+       and the body is a sequence of octets. The head defines the
+       content type and content transfer encoding of the body.
+
+   SGML document
+       A set of entities, including the document entity, which is
+       a text entity that conforms to the grammar specified in the SGML
+       standard.
+
    HTML document
-       A collection of information represented as a sequence of 
-       characters. An HTML document consists of data characters and 
-       markup. In particular, the markup describes a structure 
-       conforming to the HTML document type definition.
+       An SGML document conforming to the HTML document type definition.
 
    HTTP
        The Hypertext Transfer Protocol [3] is the primary application-
        level protocol for the transfer of documents via the World-Wide 
        Web.
-
-   interpreter
-       A tool or algorithm used to parse and/or render an HTML document.
 
    (document) instance
        The document itself including the actual content with the actual 
@@ -252,30 +187,38 @@ Contents
        ability to transfer non-textual data, such as graphics, audio 
        and fax, via Internet mail.
 
-   representation
-       The encoding of information for interchange. For example, HTML 
-       is a representation of hypertext.
-
-   rendering
-       Formatting and presenting information.
+   minimally conforming HTML user agent
+       A user agent that conforms to this specification in its
+       treatment of the Internet Media Type "text/html; level=0;
+       version=2.0"
 
    SGML
        Standard Generalized Markup Language [12] (see also [9] and [6]) 
-       is a programming language for describing the allowed markup 
-       constructs and syntax for textual document types.
+       is a system for describing docyment types and markup languages
+       to represent them.
 
    tag
-       Descriptive markup. There are two kinds of tags; start-tags and 
-       end-tags. All HTML tags start with the less than character ("<") 
-       and end with a greater than (">").
+       Markup that delimits an element. A tag includes a name which
+       refers to an element declaration in the DTD, and may include
+       attributes.
+
+   text entity
+       A finite sequence of characters. A text entity typically takes
+       the form of a sequence of octets with some associated character
+       encoding, transmitted over the network or stored in a file.
+
+   user agent
+       A component of a distributed system that presents an interface
+       and processes requests on behalf of a user; for example, a www
+       browser or a mail user agent.
 
    URI
-       A Universal Resource Identifier [1] is a formatted string that 
-       serves as an identifier for a resource on the Internet. URIs are 
-       used by HTML to identify the destination of hypertext links, the 
-       source of in-line images, and the object of form actions. URIs 
-       in common use include Uniform Resource Locators (URLs) [2] and 
-       Relative URLs [5].
+       A Universal Resource Identifier [1] is a formatted string that
+       serves as an identifier for a resource, typically on the
+       Internet. URIs are used in HTML to identify the destination of
+       hypertext links, the source of in-line images, and the object of
+       form actions. URIs in common use include Uniform Resource
+       Locators (URLs) [2] and Relative URLs [5].
 
    WWW
        The World-Wide Web is a hypertext-based, distributed information 
@@ -316,33 +259,137 @@ Contents
    for HTML and the HTML document type definitions (DTDs) are provided 
    in Section 12.
 
+   The term "HTML" refers to both the document type defined here and
+   the markup language for representing instances of this document
+   type.
+
+   If this specification and the SGML standard conflict,
+   the SGML standard is definitive.
+
 2.1  SGML Documents
 
-   Every SGML document has three parts:
+   An HTML document is an SGML document; that is, a set of entities,
+   including the document entity, which is a text entity that conforms
+   to the grammar specified in the SGML standard. The first production
+   of that grammar separates an SGML document into three parts: an
+   SGML declaration, a prologue, and an instance.
 
-   SGML declaration
-       Binds SGML processing quantities and syntax token names to 
-       specific values. For example, the SGML declaration in the HTML 
-       DTD specifies that the string that opens an end tag is "</" and 
-       the maximum length of a name is 72 characters.
+   For the purposes of this specification, the prologue is a DTD. This
+   DTD describes another grammar: the start symbol is given in the
+   doctype declaration; the terminals are data characters and tags,
+   and the productions are determined by the element declarations. The
+   instance must conform to the DTD, that is, it must be in the
+   language defined by this grammar.
 
-   Prologue
-       Includes one or more document type declarations, which specify 
-       the element types, element relationships and attributes.
+   The SGML declaration determines the lexicon of the grammar. It
+   specifies the document character set; which determines a character
+   repertoire that contains all characters used in all text entities
+   in the document, and the character numbers associated with those
+   characters.
 
-   Instance
-       Contains the data and markup of the document.
+   The SGML declaration also specifies the syntax character set of the
+   document, and a few other parameters that bind the abstract syntax
+   of SGML to a concrete syntax. This concrete syntax determines how
+   each text entity is mapped to a sequence of terminals in the grammar
+   of the prologue.
 
-   The term "HTML" refers to both the document type and the markup 
-   language for representing instances of that document type.
+   For example, consider the following document:
 
-2.2  SGML Syntax
+    <!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <title>Parsing Example</title>
+    <p>Some text. <em>&#42;wow&#42;</em>
 
-   An HTML document instance is a text file in which some of the 
-   characters are markup. Markup (tags) define the structure of the 
-   document.
+   By application convention, the SGML declaration is the one given in
+   section 13.2. Hence the document character set is ISO-8859-1(@@)
+   and the markup "&#42;" represents an asterisk character.
 
-2.2.1 Elements
+   The instance is regarded as the following sequence of terminals:
+
+    TITLE start tag
+    data characters: "Parsing Example"
+    TITLE end tag
+    P start tag
+    data characters "Some text. "
+    EM start tag
+    "*wow*"
+    EM end tag
+
+   The start symbol of the DTD grammar is HTML, and the productions
+   are given in the public text identified by "-//IETF//DTD HTML
+   2.0//EN", that is section 13.3@@. Hence the terminals abover parse
+   as:
+
+   HTML
+    |
+    \-HEAD,     BODY
+       |	 |
+       \-TITLE	 \-P
+           |	   |
+	   |	   \-<P>,"Some text. ",EM
+           |                            |
+           |                            \-<EM>,"*wow*",</EM>
+           \-<TITLE>,"Parsing Example",</TITLE>
+
+2.2  HTML Lexical Sytax
+
+   The syntax character set for all HTML documents is ISO-646 (@@ full
+   name). A minimally conforming HTML user agent must support the SGML
+   declaration in section 13@@, which specifies ISO Latin 1 (@@full
+   name) as the document character set; it may support other SGML
+   declarations, in particular, SGML declarations with other document
+   character sets.
+
+   A complete discussion of the mapping of a sequence of characters to
+   a seqence of tags and data is left to the SGML standard. This
+   section is only a summary.
+
+2.2.1 Data Characters
+
+   Any sequence of characters that do not constitute markup (see
+   "Delimiter Recognition," section @@@ of the SGML standard) are
+   mapped directly to strings of data characters. Some markup also
+   maps to data character strings. Numeric character references also
+   map to single-character strings, via the document character
+   set. Each reference to one of the general entities defined in the
+   HTLM DTD also maps to a single-character string.
+
+   For example,
+
+       abc&lt;def    => "abc","<","def"
+       abc&#60;def   => "abc","<","def"
+
+   Note that the terminating semicolon is only necessary when the
+   character following the reference would otherwise be recognized as
+   markup:
+
+       abc &lt def     => "abc ","<"," def"
+       abc &#60 def    => "abc ","<"," def"
+
+   And note that an ampersand is only recognized as markup when it
+   is followed by a letter or number:
+
+       abc & lt def    => "abc & lt def"
+       abc & 60 def    => "abc & 60 def"
+
+   A useful technique for translating plain text to HTML is to replace
+   each '<', '&', and '>' by an entity reference or numeric character
+   reference as follows:
+
+                 ENTITY      NUMERIC
+       CHARACTER REFERENCE   CHAR REf     CHARACTER DESCRIPTION
+         &       &amp;       &#38;        Ampersand 
+         <       &lt;        &#60;        Less than
+         >       &gt;        &#62;        Greater than
+
+
+       Note: There are SGML features, CDATA and RCDATA, to allow 
+       most "<", ">", and "&" characters to be entered without the 
+       use of entity references. Because these features tend to be 
+       used and implemented inconsistently, and because they 
+       require 8bit characters to represent non-ASCII characters, 
+       they are not used in this version of the HTML DTD.
+
+2.2.1 Tags
 
    Tags define the start and end of headings, paragraphs, lists, 
    character highlighting and links. Most HTML elements are identified 
@@ -361,7 +408,8 @@ Contents
 
    The content of an element is a sequence of characters and nested 
    elements. Some elements, such as anchors, cannot be nested. Anchors 
-   and character highlighting may be put inside other constructs.
+   and character highlighting may be put inside other constructs. See
+   the HTML DTD for full details.
 
        Note: The SGML declaration for HTML specifies SHORTTAG YES, 
        which means that there are other valid syntaxes for tags, 
@@ -400,25 +448,38 @@ Contents
 
        <A HREF="http://host/dir/file.html">
 
-       Note: Some non-SGML implementations consider any occurrence 
-       of the ">" character to signal the end of a tag. For 
-       compatibility with such implementations, when ">" appears in 
-       an attribute value, it should be represented with a 
-       character entity reference, such as in:
-       <IMG SRC="eq1.jpg" alt="a &#62; b">
+       Note: Some historical implementations consider any occurrence
+       of the ">" character to signal the end of a tag. For
+       compatibility with such implementations, when ">" appears in an
+       attribute value, it should be represented with a numeric
+       character reference, such as in: <IMG SRC="eq1.jpg" alt="a
+       &#62; b">
 
-   To put quotes inside of quotes, the character entity &quot; may be 
-   used, as in:
+   A useful technique for computing an attribute value literal for a
+   given string is to replace each quote and space character by an
+   entity reference or numeric character reference as follows:
+
+                 ENTITY      NUMERIC
+       CHARACTER REFERENCE   CHAR REf     CHARACTER DESCRIPTION
+         TAB                 &#9;         Tab
+         LF                  &#10;        Line Feed
+         CR                  &#13;        Carriage Return
+                             &#32;        Space
+         "       &quot;      &#34;        Quotation mark 
+         &       &amp;       &#38;        Ampersand 
+
+   For example:
 
        <IMG SRC="image.jpg" alt="First &quot;real&quot; example">
 
-   The length of an attribute value is limited to 1024 characters 
-   after replacing any character entity references.
-
-       Note: Some non-SGML implementations allow any character 
+       Note: Some historical implementations allow any character 
        except space or ">" in a name token. Attributes values must 
        be quoted only if they don't satisfy the syntax for a name 
        token.
+
+   The length of an attribute value (not the attribute value literal:
+   this is the result of stripping the quotes and replacing any
+   references).is limited to 1024 characters
 
    Attributes with a declared value of NAME, such as ISMAP and 
    COMPACT, may be written using a minimized syntax. The markup:
@@ -429,47 +490,17 @@ Contents
 
        <UL COMPACT>
 
-       Note: Some non-SGML implementations only understand the 
+       Note: Some historical implementations only understand the 
        minimized syntax.
-
-2.2.4 Entity References
-
-   SGML uses entity references, indicated by an ampersand (&) and 
-   immediately followed by a name and terminated by a semicolon (;), 
-   to represent a named substitution of data (the entity). HTML 2.0 
-   only uses entity references to represent peculiar and special 
-   characters. The reference can be used in place of a character when 
-   the character itself would be misinterpreted as markup. The entity 
-   sets defined for use by HTML 2.0 documents are listed in Section 13.
-
-   The HTML DTD includes a character entity for each of the SGML 
-   markup characters, such that one may reference them by name if it 
-   is inconvenient to enter them directly:
-
-       GLYPH     NAMED       OCTET        CHARACTER NAME
-         &       &amp;       &#38;        Ampersand 
-         "       &quot;      &#34;        Quotation mark 
-         <       &lt;        &#60;        Less than
-         >       &gt;        &#62;        Greater than
-
-   To ensure that a sequence of data characters is not interpreted as 
-   markup, all occurrences of "<", ">", and "&" must be replaced by 
-   their character entity references.
-
-       Note: There are SGML features, CDATA and RCDATA, to allow 
-       most "<", ">", and "&" characters to be entered without the 
-       use of entity references. Because these features tend to be 
-       used and implemented inconsistently, and because they 
-       require 8bit characters to represent non-ASCII characters, 
-       they are not used in this version of the HTML DTD.
 
 2.2.5 Comments
 
-   To include comments in an HTML document that will be ignored by the 
-   interpreter, surround them with "<!--" and "-->". After the comment 
-   delimiter, all text up to the next occurrence of "-->" is ignored. 
-   Hence comments cannot be nested. White space is allowed between the 
-   closing "--" and ">", but not between the opening "<!" and "--".
+   To include comments in an HTML document that will be eliminated in
+   the mapping to terminals, surround them with "<!--" and
+   "-->". After the comment delimiter, all text up to the next
+   occurrence of "-->" is ignored.  Hence comments cannot be
+   nested. White space is allowed between the closing "--" and ">",
+   but not between the opening "<!" and "--".
 
    For example:
 
@@ -478,7 +509,7 @@ Contents
        <!-- $Id$ -->
        </HEAD>
 
-       Note: Some historical HTML interpreters incorrectly consider 
+       Note: Some historical HTML implementations incorrectly consider 
        any ">" character to be the termination of a comment.
 
 2.3  Example HTML Document
@@ -515,6 +546,16 @@ Contents
        </BODY></HTML>
 
 3.  HTML as an Internet Media Type
+
+   An HTML user agent allows users to interact with resources which
+   have HTML representations. At a minimum, it must allow users to
+   examine and navigate the content of HTML Level 0 documents. Level 1
+   HTML user agents must be able preserve all formatting distinctions
+   represented in an HTML Level 1 document, and be able to
+   simultaneously present resources referred to by IMG elements. (they
+   may ignore some formatting distinctions or IMG resources at the
+   request of the user). Fully conforming HTML user agents, that is
+   Level 2 HTML user agents, must support form entry and submission.
 
 3.1  text/html media type
 
@@ -554,62 +595,84 @@ Contents
    Charset
        The charset parameter (as defined in section 7.1.1 of RFC 
        1521 [4]) may be given to specify the encoding used to represent 
-       the HTML document as a sequence of octets.
+       the HTML document as a sequence of octets. The default value is
+       out of scope of this specification; but for example, it is
+       US-ASCII in the context of SMTP mail, and ISO-8850-1 in the
+       context of HTTP.
 
-3.2  Character Set Issues
+3.2  HTML Document Represenation
 
-   An HTML interpreter must accept a stream of characters as input, 
-   and assign them to character classes used for markup recognition 
-   purposes. HTML 2.0 markup requires only the characters found in the 
-   US-ASCII character set [10]. All US-ASCII characters with no markup 
-   role, and all non-US-ASCII characters, should be treated as data. 
-   Such categorization should take place after decoding the data 
-   stream (i.e., not at the characer set encoding level, but rather at 
-   the character set level).
+   A MIME entity with a content type of "text/html" represents an HTML
+   document, consisting of a single text entity. The charset parameter
+   (whether implicit or explicit) identifies a character encoding. The
+   text entity consists of the characters determined by this character
+   encoding and the octets of the body of the MIME entity.
 
-   Normally, text/* media types specify a default value of US-ASCII 
-   for the charset parameter. However, for text/html, if the byte 
-   stream contains data that is not in the 7-bit US-ASCII set, the 
-   interpreter should assume a default charset of ISO88591. Even if 
-   an HTML document is limited to a US-ASCII encoding, the mechanisms 
-   of character entity references (Section 6.3) can be used to encode 
-   the characters from ISO-8859-1.
+   The SGML declaration of the document is a function of the charset
+   parameter. If the charset parameter is US-ASCII or ISO-8859-1, the
+   SGML declaration in section 13@@ applies. Other charset parameter
+   values are reserved for future use.
 
-   Other values for the charset parameter may be defined by the 
-   transport mechanism (e.g., MIME and HTTP), but are not defined by 
-   this specification. Since the SGML declaration for HTML (supplied 
-   in Section 12.3) is only applicable to ISO-8859-1 and its subsets, 
-   a charset parameter that specifies a different character set must 
-   also imply a different SGML declaration. Therefore, user agents may 
-   use the charset parameter value to select a different declaration, 
-   even though the mechanism for doing so is not defined by this 
-   specification. The intent, however, is that such a declaration be 
-   as identical as possible to that of Section 12.3, the only 
-   differences being those required to support the announced charset.
+   NOTE: A generalized convention for mapping charset parameter values
+   to SGML declarations is expected to be specified in a future
+   version of this specification.
 
-   When the above conflicts with the SGML standard, the SGML standard 
-   may be ignored. Note, however, that not all HTML applications are 
-   capable of ignoring the SGML standard.
+3.2.1  Conventional Handling of Undeclared Markup Errors
 
-3.3  Undefined Tag and Attribute Names
+   NOTE: To facilitate experimentation and interoperability between
+   implementations of various versions of HMTL, the installed base of
+   HTML user agents supports a superset of the HTML 2.0 language by
+   reducing it to HTML 2.0: markup in the form of a start tag or end
+   tag whose generic identifier is not declared is mapped to nothing
+   during tokenization. Undeclared attributes are treated similarly.
+   The entire attribute specification of an unknown attribute (i.e.,
+   the unknown attribute and its value, if any) should be ignored.
+   On the other hand, references to undeclared entities should be
+   treated as data characters.
 
-   An accepted networking principle is to be conservative in what one 
-   produces, and liberal in what one accepts. HTML user agents should 
-   be liberal except when validating code; user agents are encouraged 
-   to provide an option for validation of what they render, such that 
-   users may be notified of an invalid construct when such 
-   notification is desirable. HTML generators should generate strictly 
-   conforming HTML. 
+   For example:
 
-   HTML user agents reading "text/html" documents and discovering tag 
-   or attribute names which they do not understand should behave as 
-   though the offending tags or attribute names do not exist. Any 
-   unknown start tag (including its entire attribute specification 
-   list) or end tag should be ignored; any content between matching 
-   unknown start and end tags should be treated as normal (i.e., as if 
-   those tags did not occur in the character stream). The entire 
-   attribute specification of an unknown attribute (i.e., the unknown 
-   attribute and its value, if any) should be ignored.
+     <div class=chapter><h1>foo</h1><p>...</div>
+	  => <H1>,"foo",</H1>,<P>,"..."
+
+     xxx <P ID=z23> yyy
+          => "xxx ",<P>," yyy
+
+     Let &alpha; and &beta; be finite sets.
+	  => "Let &alpha; and &beta; be finite sets."
+
+   Support for notifying the user of such errors is encouraged.
+
+   Information providers should keep in mind that this convention is
+   not binding: unspecified behaviour may result, as such markup is
+   not conforming to this specification.
+
+
+3.2.1  Conventional Representation of Newlines and Record Delimiter Characters
+
+   SGML specifies that a text entity is a sequence of records, each
+   beginning with a record start character and ending with a record
+   end character (character number 10 13 respectively).
+
+   MIME specifies that a body of type text/* is a sequence of lines,
+   each terminated by CRLF, that is octets 10, 13.
+
+   NOTE: In practice, HTML documents are frequently represented and
+   transmitted using an end of line convention that depends on the
+   conventions of the source of the document; frequently, that
+   representation consists of CR only, LF only, or CR LF
+   combination. Hence the decoding of the octets will often result in
+   a text entity with some missing record start and record end
+   characters.
+
+   Since there is no ambiguity, HTML user agents are encouraged to
+   infer the missing record start and end characters.
+
+   An HTML user agent should treat end of line in any of its
+   variations as a word space in all contexts except
+   preformatted text. Within preformatted text, an HTML user agent
+   should expect to treat any of the three common representations of
+   end-of-line as starting a new line.
 
 4.  Document Structure Elements
 
@@ -704,7 +767,7 @@ Contents
 
    <ISINDEX>                                                    Level 0
 
-   The Isindex element tells the interpreter that the document is an 
+   The Isindex element tells the user agent that the document is an 
    index. This means that the reader may request a keyword search on 
    the resource by adding a question mark to the end of the document 
    address, followed by a list of keywords separated by plus signs.
@@ -712,7 +775,7 @@ Contents
    The Isindex element is usually generated by the network server from 
    which the document was obtained via a URI. The server must have a 
    search engine that supports this feature for the resource. If the 
-   document URI is unknown to the interpreter, <isindex> must be 
+   document URI is unknown to the user agent, <isindex> must be 
    ignored.
 
 5.4  Link
@@ -747,7 +810,7 @@ Contents
    have well-defined semantics for each type of metainformation (e.g. 
    TITLE), the META element is provided for situations where strict 
    SGML parsing is necessary and the local DTD is not extensible. HTML 
-   interpreters may use the META element's content if they recognize 
+   user agents may use the META element's content if they recognize 
    and understand the semantics identified by the NAME or HTTP-EQUIV 
    attributes, and may treat the content as metainformation (and not 
    render it) even when they do not recognize the name.
@@ -761,7 +824,7 @@ Contents
    extracting it. The META element only provides an extensible 
    mechanism for identifying and embedding document metainformation -- 
    how it may be used is up to the individual server implementation 
-   and the HTML interpreter.
+   and the HTML user agent.
 
    Attributes of the META element:
 
@@ -811,7 +874,7 @@ Contents
        <META NAME="IndexType" CONTENT="Service">
 
    would never generate an HTTP response header, but would still allow 
-   HTML interpreters to identify and make use of that metainformation.
+   HTML user agent to identify and make use of that metainformation.
 
    The Meta element should never be used to define information that 
    should be associated with an existing HTML element. An example of 
@@ -843,126 +906,209 @@ Contents
    documents. Human writers of HTML usually use mnemonic alphabetical 
    identifiers.
 
-   HTML interpreters may ignore the Nextid element. Support for the 
-   Nextid element does not impact HTML interpreters in any way.
+   HTML user agentss may ignore the Nextid element. Support for the 
+   Nextid element does not impact HTML user agents in any way.
 
 6.  Data Characters
 
-   The characters between HTML tags represent text. An HTML document 
-   (including tags and text) is encoded using the coded character set 
-   specified by the "charset" parameter of the "text/html" media 
-   type.  For levels defined in this specification, the "charset" 
-   parameter is restricted to US-ASCII [10] or ISO-8859-1 [11].
-   ISO-8859-1 encodes a set of characters known as Latin Alphabet
-   No. 1, or simply Latin-1.  Latin-1 includes characters from most
-   Western European languages, as well as a number of control
-   characters.  Latin-1 also includes a non-breaking space, a soft
-   hyphen indicator, 93 graphical characters, 8 unassigned characters,
-   and 25 control characters.
+    An HTML user agent should present the body of an HTML document as
+    a collection of typeset paragraphs and preformatted text. Except
+    for te PRE element, each block structuring element is regarded as
+    a paragraph by taking the data characters in its content and the
+    content of its descendent elements, concatenating them, and
+    splitting the result into words, separated by space, tab, or
+    record end characters (and perhaps hyphen characters). The
+    sequence of words is typeset as a paragraph by breaking it into
+    lines.
 
-   Use the non-breaking space and soft hyphen indicator characters is 
-   discouraged because they are not recognized and interpreted by all 
-   HTML interpreters.
+6.1 The ISO Latin 1 Character Repertiore
 
-   Because certain characters will be interpreted as markup, they must 
-   be represented by entity references. HTML provides character entity 
-   references to facilitate the entry and interpretation of characters 
-   by name or by numerical position (octet).
+   Conforming HTML user agents are required to support the US-ASCII
+   [10] or ISO-8859-1 [11] character encodings, and the @@fullname ISO
+   Latin 1 document character set.
 
-6.1  Special Characters
+   The character repertiore shared by these two is known as Latin
+   Alphabet No. 1, or simply Latin-1.  Latin-1 includes characters
+   from most Western European languages, as well as a number of
+   control characters.  Latin-1 also includes a non-breaking space, a
+   soft hyphen indicator, 93 graphical characters, 8 unassigned
+   characters, and 25 control characters.
 
-   Certain data characters have special meaning in HTML documents. 
-   There are two printing characters which may be interpreted by an 
-   HTML application to have an effect of the format of the text:
-
-   Space
-
-      o Interpreted as a word space (place where a line can be broken) 
-        in all contexts except the Preformatted Text element.
-
-      o Interpreted as a nonbreaking space within the Preformatted Text 
-        element.
-
-   Hyphen
-
-      o Iterpreted as a hyphen glyph in all contexts
-
-      o Interpreted as a potential word space by hyphenation engine
-
-6.2  Control Characters
-
-   Control characters are non-printable characters that are typically 
-   used for communication and device control, as format effectors, and 
-   as information separators. There are 58 character positions 
-   occupied by control characters.
+   NOTE: Use the non-breaking space and soft hyphen indicator characters is 
+   discouraged because support for them is not widely deployed.
 
    In SGML applications, the use of control characters is limited in 
    order to maximize the chance of successful interchange over 
    heterogenous networks and operating systems. In HTML, only three 
-   control characters are used: Horizontal Tab (HT, encoded as 9 
+   control characters are allowed: Horizontal Tab (HT, encoded as 9 
    decimal in US-ASCII and ISO-8859-1), Carriage Return, and Line Feed.
 
-   Horizontal Tab is interpreted as a word space in all contexts 
-   except preformatted text. Within preformatted text, the tab should 
-   be interpreted to shift the horizontal column position to the next 
-   position which is a multiple of 8 on the same line; that is,
-   col := (col+8) mod 8.
-
-   Carriage Return and Line Feed are conventionally used to represent 
-   end of line. For Internet Media Types defined as "text/*", the 
-   sequence CR LF is used to represent an end of line. In practice, 
-   text/html documents are frequently represented and transmitted 
-   using an end of line convention that depends on the conventions of 
-   the source of the document; frequently, that representation 
-   consists of CR only, LF only, or CR LF combination. In HTML, end of 
-   line in any of its variations is interpreted as a word space in all 
-   contexts except preformatted text. Within preformatted text, HTML 
-   interpreters should expect to treat any of the three common 
-   representations of end-of-line as starting a new line.
-
-6.3  Character Entities
-
-   Two reasons for using a character entity reference:
-
-      o the keyboard does not provide a key for the character, such as 
-        on U.S. keyboards which do not provide European characters
-
-      o the character may be interpreted as SGML coding, such as the 
-        ampersand (&), double quotes ("), the lesser (<) and greater 
-        (>) characters
-
-   A character entity is represented in an HTML document as an SGML 
-   entity whose name is defined in the HTML DTD. 
-
-6.3.1 Character Name References
-
-   Most of the Latin alphabet No. 1 set of printing characters may be 
-   represented within the text of an HTML document by a character 
-   entity. See Section 13.1 for a list of the characters, names, input 
-   syntax, and descriptions for numeric and special graphic 
-   characters. See Section 13.2 for the SGML entity definitions of 
-   "Added Latin 1 for HTML".
+   The HTML DTD references the Added Latin 1 entity set, to allow
+   mnemonic representation of Latin 1 characters using only the widely
+   supported ASCII character repertiore. For exaple:
 
        Kurt G&ouml;del was a famous logician and mathematician.
 
-6.3.2 Character Octet References
+   See Section 13.2 for a table of the "Added Latin 1" entities.
 
-   It is possible to explicitly reference the printing characters of 
-   the ISO-88591 character encoding using a character octet 
-   reference. See Section 13.3 for a list of the characters, their 
-   names and input syntax.
+   Each character in the document character set can be written as a
+   numeric character reference. This list, sorted numerically, is
+   derived from ISO-8859-1 8-bit single-byte coded graphic character
+   set:
 
-   Character octet references are represented in an HTML document as 
-   SGML entities whose name is number sign (#) followed by a numeral 
-   from 32-126 and 161-255. The HTML DTD includes a numeric character 
-   for each of the printing characters of the ISO-8859-1 encoding, so 
-   that one may reference them by number if it is inconvenient to 
-   enter them directly.
+       REFERENCE             DESCRIPTION
+       &#00; - &#08;         Unused
+       &#09;                 Horizontal tab
+       &#10;                 Line feed
+       &#11; - &#31;         Unused
 
-   The character octet references are not dependent on the character 
-   set encoding of the document. For example, "&#215;" always 
-   represents the ISO-8859-1 multiply sign, even when the document's 
-   declared character set is other than ISO-8859-1.
+       &#32;                 Space
+       &#33;                 Exclamation mark
+       &#34;                 Quotation mark
+       &#35;                 Number sign
+       &#36;                 Dollar sign
+       &#37;                 Percent sign
+       &#38;                 Ampersand
+       &#39;                 Apostrophe
+       &#40;                 Left parenthesis
+       &#41;                 Right parenthesis
+       &#42;                 Asterisk
+       &#43;                 Plus sign
+       &#44;                 Comma
+       &#45;                 Hyphen
+       &#46;                 Period (fullstop)
+       &#47;                 Solidus (slash)
+
+       &#48; - &#57;         Digits 0-9
+
+       &#58;                 Colon
+       &#59;                 Semi-colon
+       &#60;                 Less than
+       &#61;                 Equals sign
+       &#62;                 Greater than
+       &#63;                 Question mark
+       &#64;                 Commercial at
+
+       &#65; - &#90;         Letters A-Z
+
+       &#91;                 Left square bracket
+       &#92;                 Reverse solidus (backslash)
+       &#93;                 Right square bracket
+       &#94;                 Caret
+       &#95;                 Horizontal bar (underscore)
+       &#96;                 Acute accent
+
+       &#97; - &#122;        Letters a-z
+
+       &#123;                Left curly brace
+       &#124;                Vertical bar
+       &#125;                Right curly brace
+       &#126;                Tilde
+
+       &#127; - &#160;       Unused
+
+       &#161;                Inverted exclamation
+       &#162;                Cent sign
+       &#163;                Pound sterling
+       &#164;                General currency sign
+       &#165;                Yen sign
+       &#166;                Broken vertical bar
+       &#167;                Section sign
+       &#168;                Umlaut (dieresis)
+       &#169;                Copyright
+       &#170;                Feminine ordinal
+       &#171;                Left angle quote, guillemotleft
+       &#172;                Not sign
+       &#173;                Soft hyphen
+       &#174;                Registered trademark
+       &#175;                Macron accent
+       &#176;                Degree sign
+       &#177;                Plus or minus
+       &#178;                Superscript two
+       &#179;                Superscript three
+       &#180;                Acute accent
+       &#181;                Micro sign
+       &#182;                Paragraph sign
+       &#183;                Middle dot
+       &#184;                Cedilla
+       &#185;                Superscript one
+       &#186;                Masculine ordinal
+       &#187;                Right angle quote, guillemotright
+       &#188;                Fraction one-fourth
+       &#189;                Fraction one-half
+       &#190;                Fraction three-fourths
+       &#191;                Inverted question mark
+
+       &#192;                Capital A, grave accent
+       &#193;                Capital A, acute accent
+       &#194;                Capital A, circumflex accent
+       &#195;                Capital A, tilde
+       &#196;                Capital A, dieresis or umlaut mark
+       &#197;                Capital A, ring
+       &#198;                Capital AE dipthong (ligature)
+       &#199;                Capital C, cedilla
+       &#200;                Capital E, grave accent
+       &#201;                Capital E, acute accent
+       &#202;                Capital E, circumflex accent
+       &#203;                Capital E, dieresis or umlaut mark
+       &#204;                Capital I, grave accent
+       &#205;                Capital I, acute accent
+       &#206;                Capital I, circumflex accent
+       &#207;                Capital I, dieresis or umlaut mark
+       &#208;                Capital Eth, Icelandic
+       &#209;                Capital N, tilde
+       &#210;                Capital O, grave accent
+       &#211;                Capital O, acute accent
+       &#212;                Capital O, circumflex accent
+       &#213;                Capital O, tilde
+       &#214;                Capital O, dieresis or umlaut mark
+
+       &#215;                Multiply sign
+
+       &#216;                Capital O, slash
+       &#217;                Capital U, grave accent
+       &#218;                Capital U, acute accent
+       &#219;                Capital U, circumflex accent
+       &#220;                Capital U, dieresis or umlaut mark
+       &#221;                Capital Y, acute accent
+
+       &#222;                Capital THORN, Icelandic
+       &#223;                Small sharp s, German (sz ligature)
+
+       &#224;                Small a, grave accent
+       &#225;                Small a, acute accent
+       &#226;                Small a, circumflex accent
+       &#227;                Small a, tilde
+       &#228;                Small a, dieresis or umlaut mark
+       &#229;                Small a, ring
+       &#230;                Small ae dipthong (ligature)
+       &#231;                Small c, cedilla
+       &#232;                Small e, grave accent
+       &#233;                Small e, acute accent
+       &#234;                Small e, circumflex accent
+       &#235;                Small e, dieresis or umlaut mark
+       &#236;                Small i, grave accent
+       &#237;                Small i, acute accent
+       &#238;                Small i, circumflex accent
+       &#239;                Small i, dieresis or umlaut mark
+       &#240;                Small eth, Icelandic
+       &#241;                Small n, tilde
+       &#242;                Small o, grave accent
+       &#243;                Small o, acute accent
+       &#244;                Small o, circumflex accent
+       &#245;                Small o, tilde
+       &#246;                Small o, dieresis or umlaut mark
+
+       &#247;                Division sign
+
+       &#248;                Small o, slash
+       &#249;                Small u, grave accent
+       &#250;                Small u, acute accent
+       &#251;                Small u, circumflex accent
+       &#252;                Small u, dieresis or umlaut mark
+       &#253;                Small y, acute accent
+       &#254;                Small thorn, Icelandic
+       &#255;                Small y, dieresis or umlaut mark
 
 7.  Data Elements
 
@@ -970,9 +1116,9 @@ Contents
 
    <BR>                                                         Level 0
 
-   The Line Break element specifies that a new line must be started at 
-   the given point. A new line indents the same as that of line-
-   wrapped text.
+   The Line Break element specifies a line break in a paragraph or
+   preformatted text section. A new line should indent the same as
+   that of line- wrapped text.
 
    Example of use:
 
@@ -990,6 +1136,8 @@ Contents
 
    Example of use:
 
+       <BODY>
+       ...
        <HR>
        <ADDRESS>February 8, 1995, CERN</ADDRESS>
        </BODY>
@@ -1002,9 +1150,9 @@ Contents
    (typically icons or small graphics) into an HTML document. This 
    element cannot be used for embedding other HTML text.
 
-   HTML interpreters that cannot render in-line images ignore the 
+   HTML user agents that cannot render in-line images ignore the 
    Image element unless it contains the ALT attribute. Note that some 
-   HTML interpreters can render linked graphics but not in-line 
+   HTML user agents can render linked graphics but not in-line 
    graphics. If a graphic is essential, you may want to create a link 
    to it rather than to put it in-line. If the graphic is not 
    essential, then the Image element is appropriate.
@@ -1059,13 +1207,13 @@ Contents
    Character format tags may be ignored by minimal HTML applications.
 
    Character format tags are interpreted from left to right as they 
-   appear in the flow of text. Level 1 interpreters must render 
+   appear in the flow of text. Level 1 user agents must render 
    highlighted text distinctly from plain text. Additionally, EM 
    content must be rendered as distinct from STRONG content, and B 
    content must rendered as distinct from I content.
 
    Character format elements may be nested within the content of other 
-   character format elements; however, HTML interpreters are not 
+   character format elements; however, HTML user agents are not 
    required to render nested character format elements distinctly from 
    non-nested elements:
 
@@ -1229,7 +1377,7 @@ Contents
    The TITLE attribute is informational only. If present, the TITLE 
    attribute should provide the title of the document whose address is 
    given by the HREF attribute.  The TITLE attribute is useful for at 
-   least two reasons. The HTML interpreter may display the title of 
+   least two reasons. The HTML user agent may display the title of 
    the document prior to retrieving it, for example, as a margin note 
    or on a small box while the mouse is over the anchor, or while the 
    document is being loaded. Another reason is that documents that are 
@@ -1269,7 +1417,7 @@ Contents
    are more accurately given by the HTTP protocol when it is used, but 
    it may, for similar reasons as for the TITLE attribute, be useful 
    to include the information in advance in the link. For example, the 
-   HTML interpreter may chose a different rendering as a function of 
+   HTML user agent may chose a different rendering as a function of 
    the methods allowed; for example, something that is searchable may 
    get a different icon.
 
@@ -1292,7 +1440,7 @@ Contents
    Typically, paragraphs are surrounded by a vertical space of one 
    line or half a line. This is typically not the case within the 
    Address element and is never the case within the Preformatted Text 
-   element. With some HTML interpreters, the first line in a paragraph 
+   element. With some HTML user agents, the first line in a paragraph 
    is indented.
 
    Example of use:
@@ -1312,13 +1460,11 @@ Contents
    width font, and so is suitable for text that has been formatted on 
    screen.
 
-   The <PRE> tag may be used with the optional WIDTH attribute. The 
-   WIDTH attribute specifies the maximum number of characters for a 
-   line and allows the HTML interpreter to select a suitable font and 
-   indentation. If the WIDTH attribute is not present, a width of 80 
-   characters is assumed. Where the WIDTH attribute is supported, 
-   widths of 40, 80 and 132 characters should be presented optimally, 
-   with other widths being rounded up.
+   The WIDTH attribute specifies the maximum number of characters for
+   a line and allows an HTML user agent to select a suitable font and
+   indentation. The WIDTH attribute defaults to 80. Widths of 40, 80
+   and 132 characters should be presented optimally, with other widths
+   being rounded up.
 
    Within preformatted text:
 
@@ -1353,7 +1499,7 @@ Contents
        Note: Within a Preformatted Text element, the constraint 
        that the rendering must be on a fixed horizontal character 
        pitch may limit or prevent the ability of the HTML 
-       interpreter to faithfully render character formatting 
+       user agent to faithfully render character formatting 
        elements.
 
 10.3  Address
@@ -1417,7 +1563,7 @@ Contents
        <H2>Second level heading</H2>
        Here is some more text.
 
-   The rendering of headings is determined by the HTML interpreter, 
+   The rendering of headings is determined by the HTML user agent, 
    but typical renderings are:
 
    <H1> ... </H1>
@@ -1484,7 +1630,7 @@ Contents
    suggests that a compact rendering be used, because the list items 
    are small and/or the entire list is large.
 
-   Unless you provide the COMPACT attribute, the HTML interpreter may 
+   Unless you provide the COMPACT attribute, the HTML user agent may 
    leave white space between successive DT, DD pairs. The COMPACT 
    attribute may also reduce the width of the left-hand (DT) column.
 
@@ -1503,7 +1649,7 @@ Contents
    A Directory List element is used to present a list of items 
    containing up to 20 characters each. Items in a directory list may 
    be arranged in columns, typically 24 characters wide. If the HTML 
-   interpreter can optimize the column width as function of the widths 
+   user agent can optimize the column width as function of the widths 
    of individual elements, so much the better.
 
    A directory list must begin with the <DIR> tag which is immediately 
@@ -1615,7 +1761,7 @@ Contents
        </FORM>
 
    In the example above, the <P> and <UL> tags have been used to lay 
-   out the text and input fields. The HTML interpreter is responsible 
+   out the text and input fields. The HTML user agent is responsible 
    for handling which field will currently get keyboard input.
 
    Many platforms have existing conventions for forms, for example, 
@@ -1870,7 +2016,7 @@ Contents
 
    In a typical rendering, the ROWS and COLS attributes determine the 
    visible dimension of the field in characters. The field is rendered 
-   in a fixed-width font. HTML interpreters should allow text to 
+   in a fixed-width font. HTML user agents should allow text to 
    extend beyond these limits by scrolling as needed.
 
        Note: In the initial design for forms, multi-line text 
@@ -2815,164 +2961,6 @@ Contents
        thorn     &thorn;     Small thorn, Icelandic
        yuml      &yuml;      Small y, dieresis or umlaut mark
 
-13.3  Character Octet Entity Set
-
-   This list, sorted numerically, is derived from ISO-8859-1 8-bit 
-   single-byte coded graphic character set:
-
-       REFERENCE             DESCRIPTION
-       &#00; - &#08;         Unused
-       &#09;                 Horizontal tab
-       &#10;                 Line feed
-       &#11; - &#31;         Unused
-
-       &#32;                 Space
-       &#33;                 Exclamation mark
-       &#34;                 Quotation mark
-       &#35;                 Number sign
-       &#36;                 Dollar sign
-       &#37;                 Percent sign
-       &#38;                 Ampersand
-       &#39;                 Apostrophe
-       &#40;                 Left parenthesis
-       &#41;                 Right parenthesis
-       &#42;                 Asterisk
-       &#43;                 Plus sign
-       &#44;                 Comma
-       &#45;                 Hyphen
-       &#46;                 Period (fullstop)
-       &#47;                 Solidus (slash)
-
-       &#48; - &#57;         Digits 0-9
-
-       &#58;                 Colon
-       &#59;                 Semi-colon
-       &#60;                 Less than
-       &#61;                 Equals sign
-       &#62;                 Greater than
-       &#63;                 Question mark
-       &#64;                 Commercial at
-
-       &#65; - &#90;         Letters A-Z
-
-       &#91;                 Left square bracket
-       &#92;                 Reverse solidus (backslash)
-       &#93;                 Right square bracket
-       &#94;                 Caret
-       &#95;                 Horizontal bar (underscore)
-       &#96;                 Acute accent
-
-       &#97; - &#122;        Letters a-z
-
-       &#123;                Left curly brace
-       &#124;                Vertical bar
-       &#125;                Right curly brace
-       &#126;                Tilde
-
-       &#127; - &#160;       Unused
-
-       &#161;                Inverted exclamation
-       &#162;                Cent sign
-       &#163;                Pound sterling
-       &#164;                General currency sign
-       &#165;                Yen sign
-       &#166;                Broken vertical bar
-       &#167;                Section sign
-       &#168;                Umlaut (dieresis)
-       &#169;                Copyright
-       &#170;                Feminine ordinal
-       &#171;                Left angle quote, guillemotleft
-       &#172;                Not sign
-       &#173;                Soft hyphen
-       &#174;                Registered trademark
-       &#175;                Macron accent
-       &#176;                Degree sign
-       &#177;                Plus or minus
-       &#178;                Superscript two
-       &#179;                Superscript three
-       &#180;                Acute accent
-       &#181;                Micro sign
-       &#182;                Paragraph sign
-       &#183;                Middle dot
-       &#184;                Cedilla
-       &#185;                Superscript one
-       &#186;                Masculine ordinal
-       &#187;                Right angle quote, guillemotright
-       &#188;                Fraction one-fourth
-       &#189;                Fraction one-half
-       &#190;                Fraction three-fourths
-       &#191;                Inverted question mark
-
-       &#192;                Capital A, grave accent
-       &#193;                Capital A, acute accent
-       &#194;                Capital A, circumflex accent
-       &#195;                Capital A, tilde
-       &#196;                Capital A, dieresis or umlaut mark
-       &#197;                Capital A, ring
-       &#198;                Capital AE dipthong (ligature)
-       &#199;                Capital C, cedilla
-       &#200;                Capital E, grave accent
-       &#201;                Capital E, acute accent
-       &#202;                Capital E, circumflex accent
-       &#203;                Capital E, dieresis or umlaut mark
-       &#204;                Capital I, grave accent
-       &#205;                Capital I, acute accent
-       &#206;                Capital I, circumflex accent
-       &#207;                Capital I, dieresis or umlaut mark
-       &#208;                Capital Eth, Icelandic
-       &#209;                Capital N, tilde
-       &#210;                Capital O, grave accent
-       &#211;                Capital O, acute accent
-       &#212;                Capital O, circumflex accent
-       &#213;                Capital O, tilde
-       &#214;                Capital O, dieresis or umlaut mark
-
-       &#215;                Multiply sign
-
-       &#216;                Capital O, slash
-       &#217;                Capital U, grave accent
-       &#218;                Capital U, acute accent
-       &#219;                Capital U, circumflex accent
-       &#220;                Capital U, dieresis or umlaut mark
-       &#221;                Capital Y, acute accent
-
-       &#222;                Capital THORN, Icelandic
-       &#223;                Small sharp s, German (sz ligature)
-
-       &#224;                Small a, grave accent
-       &#225;                Small a, acute accent
-       &#226;                Small a, circumflex accent
-       &#227;                Small a, tilde
-       &#228;                Small a, dieresis or umlaut mark
-       &#229;                Small a, ring
-       &#230;                Small ae dipthong (ligature)
-       &#231;                Small c, cedilla
-       &#232;                Small e, grave accent
-       &#233;                Small e, acute accent
-       &#234;                Small e, circumflex accent
-       &#235;                Small e, dieresis or umlaut mark
-       &#236;                Small i, grave accent
-       &#237;                Small i, acute accent
-       &#238;                Small i, circumflex accent
-       &#239;                Small i, dieresis or umlaut mark
-       &#240;                Small eth, Icelandic
-       &#241;                Small n, tilde
-       &#242;                Small o, grave accent
-       &#243;                Small o, acute accent
-       &#244;                Small o, circumflex accent
-       &#245;                Small o, tilde
-       &#246;                Small o, dieresis or umlaut mark
-
-       &#247;                Division sign
-
-       &#248;                Small o, slash
-       &#249;                Small u, grave accent
-       &#250;                Small u, acute accent
-       &#251;                Small u, circumflex accent
-       &#252;                Small u, dieresis or umlaut mark
-       &#253;                Small y, acute accent
-       &#254;                Small thorn, Icelandic
-       &#255;                Small y, dieresis or umlaut mark
 
 14.  Security Considerations
 
@@ -3103,7 +3091,7 @@ Appendices
 A.  Obsolete Features
 
    This section describes elements that are no longer part of HTML. 
-   Client implementors should implement these obsolete elements for 
+   User agent implementors should implement these obsolete elements for 
    compatibility with previous versions of the HTML specification.
 
 A.1  Comment Element
@@ -3111,7 +3099,7 @@ A.1  Comment Element
    The Comment element is used to delimit unneeded text and comments. 
    The Comment element has been introduced in some HTML applications 
    but should be replaced by the SGML comment feature in new HTML 
-   interpreters (see Section 2.2.5).
+   user agents (see Section 2.2.5).
 
 A.2  Highlighted Phrase Element
 
@@ -3171,7 +3159,7 @@ A.4  Example and Listing Elements
         characters, including the tag opener, as long it they does not 
         contain the closing tag in full.
 
-      o SGML does not support this form. HTML interpreters may vary on 
+      o SGML does not support this form. HTML user agents may vary on 
         how they interpret other tags within Example and Listing 
         elements.
 
@@ -3228,7 +3216,7 @@ B.4  Underline Element
 
    The Underline element is proposed to indicate that the text should 
    be rendered as underlined. This proposed tag is not supported by 
-   all HTML interpreters.
+   all HTML user agents.
 
    Example of use:
 
