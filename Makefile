@@ -9,21 +9,30 @@ PERL=perl
 PYTHON = python
 
 WWW = www
-HTML_SPEC_DIR = http://info.cern.ch/hypertext/WWW/MarkUp2
+HTML_SPEC_DIR = 'http://info.cern.ch/hypertext/WWW/MarkUp2'
 CANON_FILTER = test_html -c
 DTDTOOL=www_dtd.pl
 
 #
 # "No user-serviceable parts inside"
 #
-RELEASE = 19940603
+RELEASE = 19940613
 PACKAGE = html-spec-$(RELEASE)
 
-ORIGINALS = Makefile $(HYPERTEXT) $(DTD) $(DECL) $(BIGPRE)
-DIST = README.html $(ORIGINALS) $(PLAINTEXT) $(ELTINDEX) $(BIGDOC)
+ORIGINALS = Makefile $(HYPERTEXT) $(DTD) $(DTDAUX) $(DECL) $(BIGPRE)
+DIST = README.html $(ORIGINALS) $(PLAINTEXT) $(INDEXES) $(BIGDOC)
 DTD = html.dtd
+DTDAUX = html-1.dtd html-0.dtd
 DECL = html.decl
-ELTINDEX = ElementIndex.html
+
+INDEXES = \
+	L0index.html \
+	L0Pindex.html \
+	L1index.html \
+	L1Pindex.html \
+	L2index.html \
+	L2Pindex.html
+
 
 PLAINTEXT = HTML.txt
 BIGDOC = html-spec-agg.sgml
@@ -82,32 +91,35 @@ HYPERTEXT = \
 
 TEXT = \
    html.decl \
-   html.dtd \
+   html.dtd
 
-#   DeclHeading.html \
-#   DTDHeading.html \
-#     IETF/Draft-Disclaimer.html \
-#	Relationships.html\
-#	RegistrationAuthority.html\
+#   DeclHeading.html
+#   DTDHeading.html
+#     IETF/Draft-Disclaimer.html
+#	Relationships.html
+#	RegistrationAuthority.html
 
 
 
 all: validate canonicalize generate validate text
 
-generate: $(ELTINDEX)
+generate: $(INDEXES)
 
 text: $(PLAINTEXT)
 
 HEADER =  HTML Specification    Connolly and Berners-Lee
 FF = $(PERL) -e 'print "\f"'
 
-$(PLAINTEXT): $(HYPERTEXT) $(ELTINDEX) $(DTD) $(DECL)
-	(for html in $(HYPERTEXT) $(ELTINDEX); do \
+$(PLAINTEXT): $(HYPERTEXT) $(INDEXES) $(DTD) $(DTDAUX) $(DECL)
+	(for html in $(HYPERTEXT) $(INDEXES); do \
 		$(HTML2TXT) $$html | pr -f -h '$(HEADER)'; \
 		$(FF); \
 	done; \
-	pr -f -h '$(HEADER)' $(DTD); $(FF); \
-	pr -f -h '$(HEADER)' $(DTD); $(FF); ) >$@
+	pr -f -h '$(HEADER)' $(DECL); $(FF); \
+	pr -f -h '$(HEADER)' html-0.dtd; $(FF); \
+	pr -f -h '$(HEADER)' html-1.dtd; $(FF); \
+	pr -f -h '$(HEADER)' html.dtd; $(FF); \
+	) >$@
 
 missing:
 	for html in $(HYPERTEXT); do \
@@ -149,11 +161,29 @@ $(BIGDOC): $(BIGPRE)
 	
 validate: $(HYPERTEXT) $(BIGDOC)
 	$(ENV) $(SGMLS) -s -e $(BIGDOC)
-	$(ENV) $(SGMLS) -s -e $(DECL) $(ELTINDEX)
 	touch $@
 
-$(ELTINDEX): $(HYPERTEXT) $(DTD) $(DTDTOOL)
-	$(PERL) $(DTDTOOL) -hypertext HTML $(HYPERTEXT) <$(DTD) >$@
+L0index.html: $(HYPERTEXT) html-0.dtd $(DTDTOOL)
+	$(ENV) $(PERL) $(DTDTOOL) -hypertext HTML $(HYPERTEXT) <html-0.dtd >$@
+
+L0Pindex.html: $(HYPERTEXT) html-0P.dtd $(DTDTOOL)
+	$(ENV) $(PERL) $(DTDTOOL) -hypertext \
+		HTML $(HYPERTEXT) <html-0P.dtd >$@
+
+L1index.html: $(HYPERTEXT) html-1.dtd $(DTDTOOL)
+	$(ENV) $(PERL) $(DTDTOOL) -hypertext HTML $(HYPERTEXT) <html-1.dtd >$@
+
+L1Pindex.html: $(HYPERTEXT) html-1.dtd $(DTDTOOL)
+	$(ENV) $(PERL) $(DTDTOOL) -hypertext \
+		HTML $(HYPERTEXT) <html-1P.dtd >$@
+
+L2index.html: $(HYPERTEXT) html.dtd $(DTDTOOL)
+	$(ENV) $(PERL) $(DTDTOOL) -hypertext HTML $(HYPERTEXT) <html.dtd >$@
+
+L2Pindex.html: $(HYPERTEXT) html-P.dtd $(DTDTOOL)
+	$(ENV) $(PERL) $(DTDTOOL) -hypertext \
+		HTML $(HYPERTEXT) <html-P.dtd >$@
+
 
 canonicalize: $(HYPERTEXT)
 	for h in $(HYPERTEXT); do \
@@ -162,7 +192,7 @@ canonicalize: $(HYPERTEXT)
 	done
 	touch $@
 
-mif: HTML-1.mif HTML-2.mif
+mif: HTML-1.mif
 
 MIF_STYLESHEET = mif/template.mif
 PYWWW = ../pywww
@@ -171,6 +201,7 @@ HTML2MIF = PYTHONPATH=$(PYWWW) $(PYTHON) $(PYWWW)/MIFReport.py
 HTML-1.mif: $(HYPERTEXT)
 	$(HTML2MIF) $(HYPERTEXT) >$@
 
+#@@ need to redo this!
 HTML-2.mif: $(ELTINDEX)
 	$(HTML2MIF) -section $(ELTINDEX) >$@
 
