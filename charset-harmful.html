@@ -308,7 +308,7 @@ where
 and
 
   reduce(c . rest, CCS, R) = if c in R, c . reduce(rest, CCS, R)
-					else &#N; . reduce(rest, CCS, R)
+					else &#38;#N; . reduce(rest, CCS, R)
 					where CCS(N) = c
 </pre>
 
