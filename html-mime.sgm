@@ -69,9 +69,7 @@ whose generic identifier is not declared is mapped to nothing during
 tokenization. Undeclared attributes are treated similarly.  The entire
 attribute specification of an unknown attribute (i.e., the unknown
 attribute and its value, if any) should be ignored.  On the other
-hand, references to undeclared entities and undefined numeric
-character references (i.e. references to code positions that are not
-in the domain of the document character set) should be treated as data
+hand, references to undeclared entities should be treated as data
 characters.
 
 For example:
@@ -83,8 +81,8 @@ For example:
 xxx <P ID=z23> yyy
   => "xxx ",<P>," yyy
 
-Let &alpha;, &beta; &#97;nd &#76647; be finite sets.
-  => "Let &alpha;, &beta; and &76647; be finite sets."
+Let &alpha; &amp; &beta; be finite sets.
+  => "Let &alpha; & &beta; be finite sets."
 ]]></listing>
 
 Support for notifying the user of such errors is encouraged.

@@ -21,13 +21,11 @@ the same as plain <B>bold </B><I>italic</I>
 
 Phrases may be marked up to indicate certain idioms.
 <note>
-User agents may support some idiomatic elmenents not
-included in this specification, as they have been deployed to some extent:
-<tl>
-<tli>DFN: defining instance of a term
-</tl>
+User agents may support the <tag/DFN/ elmenent, not
+included in this specification, as it has been deployed to some extent.
+It is used to indicate the defining instance of a term, and it is
+typically rendered in italic or bold italic.
 </note>
-
 
 <h4>Citation: CITE
 
@@ -107,11 +105,9 @@ intended typography is used where possible.
 
 <note>
 User agents may support some typographic elmenents not included in
-this specification, as they have been deployed to some extent:
-<tl>
-<tli>STRIKE: horizontal line through the characters.
-<tli>U: underline
-</tl>
+this specification, as they have been deployed to some extent. The
+<tag/STRIKE/ element indicates horizontal line through the characters,
+and the <tag/U/ element indicates an underline.
 </note>
 
 <h4>Bold: B

@@ -203,7 +203,7 @@ action URI and enctype.
 user agent should accept Enter in that field as a request to submit
 the form.
 
-<h3>The <code>application/x-www-form-urlencoded</> Media Type
+<h3>The form-urlencoded Media Type
 
 <p>The default encoding for all forms is
 <code>application/x-www-form-urlencoded</>. A form data set is
@@ -237,7 +237,7 @@ users the trouble of escaping <code/&/ characters this way.
 </note>
 </ol>
 
-<h3 id=queryf>Query Forms: <code/METHOD=GET/
+<h3 id=queryf>Query Forms: METHOD=GET
 
 <p>If the processing of a form is idempotent (i.e. it has no lasting
 observable effect on the state of the world), then the form method
@@ -257,7 +257,7 @@ As a result, some HTML forms are written using <code/METHOD=POST/ even
 though the form submission has no side-effects.
 </note>
 
-<h3>Forms with Side-Effects: <code/METHOD=POST/
+<h3>Forms with Side-Effects: METHOD=POST
 
 <p>If the service associated with the processing of a form has side
 effects (for example, modification of a database or subscription to a
