@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<TITLE>The IMG Element in HTML</TITLE>
+<NEXTID N="z8">
+</HEAD>
+<BODY>
+<H1>IMG: Embedded Images</H1>Status: <A
+NAME="z7" HREF="../StatusMeanings.html#z5">Extra</A><P>
+The IMG element allows another document
+to be inserted inline.  The document
+is normally an icon or small graphic,
+etc. This element is NOT intended
+for embedding other HTML text.<P>
+Browsers which are not able to display
+inline images ignore IMG elements.
+Authors should note that some browsers
+will be able to display (or print)
+linked graphics but not inline graphics.
+If the graphic is essential, it may
+be wiser to make a link to it rather
+than to put it inline.  If the graphic
+is essentially decorative, then IMG
+is appropriate.<P>
+The IMG element is empty: it has
+no closing tag. It has two attributes:
+<DL>
+<DT>SRC
+<DD> The value of this attribute is
+the URL of the document to be embedded.
+Its syntax is the same as that of
+the <A
+NAME="z1" HREF="A.html#13">HREF attribute</A> of the A tag.
+SRC is mandatory.
+<DT>ALIGN
+<DD> Take values TOP or MIDDLE or
+BOTTOM, defining whether the tops
+or middles of bottoms of the graphics
+and text should be aligned vertically.
+<DT>ALT
+<DD> Optional alternative text as
+an alternative to the graphics for
+display in text-only environments.
+</DL>
+Note that IMG elements are allowed
+within anchors.
+<H2>Example</H2>
+<PRE>	Warning: &lt;<A
+NAME="z2" HREF="../HTML.dtd.html#z40"> IMG</A> <A
+NAME="z4" HREF="../HTML.dtd.html#z41">SRC</A> ="triangle.gif" ALT="Warning:"> This must be done by a
+	qualified technician.
+
+	&lt;<A
+NAME="z6" HREF="../HTML.dtd.html#z24"> A</A> HREF="Go.html">&lt;<A
+NAME="z3" HREF="../HTML.dtd.html#z40"> IMG</A> <A
+NAME="z5" HREF="../HTML.dtd.html#z41">SRC</A> ="Button.ps" ALT="GO">&lt;/A>
+
+
+
+
+
+
+</A></PRE></BODY>
+</HTML>

@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<TITLE>The Anchor element in HTML</TITLE>
+<NEXTID N="z42">
+</HEAD>
+<BODY>
+<H1><A
+NAME="4">Anchors</A></H1>An anchor is a piece of text which
+marks the beginning and/or the end
+of a hypertext link.   <P>
+The text between the opening tag
+and the closing tag is either the
+start or destination (or both) of
+a link. Attributes of the anchor
+tag are as follows.
+<DL>
+<DT><A
+NAME="13">HREF</A>
+<DD> OPTIONAL. If the HREF attribute
+is present, the anchor is sensitive
+text: the start of a link. If the
+reader selects this text,  (s)he
+should be presented with another
+document whose network address is
+defined by the value of the HREF
+attribute . The format of the network
+address is specified <A
+NAME="10" HREF="../../Addressing/Addressing.html">elsewhere</A> .
+This allows for the form HREF="#identifier"
+to refer to another anchor in the
+same document. If the anchor is in
+another document, the attribute is
+a <A
+NAME="14" HREF="../../Addressing/Relative.html">relative name</A> , relative to the
+documents address (or specified <A
+NAME="12" HREF="#11">base
+address</A> if any).
+<DT>NAME
+<DD> OPTIONAL. If present, the  attribute
+NAME allows the anchor to be the
+destination of a link. The value
+of the attribute is an identifier
+for the anchor.  Identifiers are
+arbitrary strings  but must be unique
+within the HTML document.   Another
+document can then make a reference
+explicitly to this anchor by putting
+the identifier after the address,
+separated by a <A
+NAME="19" HREF="../../Addressing/BNF.html#21">hash sign</A> .
+<DT><A
+NAME="21">REL</A>
+<DD> OPTIONAL. An attribute REL may
+give the relationship (s) described
+by the hypertext link. The value
+is a comma-separated list of relationship
+values.   Values and their semantics
+will be registered by the HTML <A
+NAME="z41" HREF="../RegistrationAuthority.html">registration
+authority</A> . The default relationship
+if none other is given is void. REL
+should not be present unless HREF
+is present. See <A
+NAME="z37" HREF="../Relationships.html">Relationship values</A>
+, <A
+NAME="z40" HREF="#z39">REV</A> .
+<DT><A
+NAME="z39">REV</A>
+<DD> OPTIONAL. The same as <A
+NAME="z38" HREF="#21">REL</A> , but
+the semantics of the link type are
+in the reverse direction.  A link
+from A to B with REL="X" expresses
+the same relationship as a link from
+B to A with REV="X".   An anchor
+may have both REL and REV attributes.
+<DT><A
+NAME="z30">URN</A>
+<DD> OPTIONAL. If present, this specifies
+a uniform resource number for the
+document. See <A
+NAME="z29" HREF="../URN.html">note</A> .
+<DT><A
+NAME="z32">TITLE</A>
+<DD> OPTIONAL. This is informational
+only. If present the value of this
+field should equal the value of the
+TITLE of the document whose address
+is given by the HREF attribute. See<A
+NAME="z31" HREF="LinkTitle.html">
+note</A> . 
+<DT>METHODS
+<DD> OPTIONAL. The value of this
+field is a string which if present
+must be a comma separated list of
+HTTP METHODS supported by the object
+for public use.  See <A
+NAME="z33" HREF="LinkMethods.html">note</A> .
+</DL>
+All attributes are optional, although
+one of NAME and HREF is necessary
+for the anchor to be useful. See
+also: <A
+NAME="z28" HREF="LINK.html">LINK</A> .
+<H2>Example of use:</H2>
+<PRE>	See <A
+NAME="z34" HREF="../HTML.dtd.html#z24">&lt;A</A> HREF="http://info.cern.ch/">CERN&lt;/A>'s information for
+	more details.
+
+	A <A
+NAME="z35" HREF="../HTML.dtd.html#z24">&lt;A</A> NAME=serious>serious&lt;/A> crime is one which is associated
+	with imprisonment. 
+			...
+	The Organization may refuse employment to anyone convicted
+	of a <A
+NAME="z36" HREF="../HTML.dtd.html#z24">&lt;a</A> href="#serious">serious&lt;/A> crime.
+
+
+</A></PRE></BODY>
+</HTML>

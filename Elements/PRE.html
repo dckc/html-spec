@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<TITLE>The PRE element in HTML</TITLE>
+<NEXTID N="z34">
+</HEAD>
+<BODY>
+<H1>PRE: <A
+NAME="z24">Preformatted text</A></H1>Preformatted elements in <A
+NAME="z31" HREF="../MarkUp.html">HTML</A> are
+displayed with text in a fixed width
+font, and so are suitable for text
+which has been formatted for a teletype
+by some existing formatting system.
+<PRE>
+
+</PRE>The optional attribute is:
+<DL>
+<DT>WIDTH 
+<DD>This attribute gives the maximum
+number of characters which will occur
+on a line.  It allows the presentation
+system to select a suitable font
+and indentation. Where the WIDTH
+attribute is not recognized, it is
+recommended that a width of 80 be
+assumed. Where WIDTH is supported,
+it is recommended that at least widths
+of 40, 80 and 132 characters be presented
+optimally, with other widths being
+rounded up.
+</DL>
+Within a PRE element,
+<UL>
+<LI>Line boundaries within the text are
+rendered as a move to the beginning
+of the next line, except for one
+immediately following or immediately
+preceding a tag.
+<LI> The &lt;p> tag should not be used.
+If found, it should be rendered as
+a move to the beginning of the next
+line.
+<LI>Anchor elements and character highlighting
+elements may be used.
+<LI>Elements which define paragraph formatting
+(Headings, Address, etc) must not
+be used.
+<LI>The ASCII Horizontal Tab (HT) character
+must be interpreted as the smallest
+positive nonzero number of spaces
+which will leave the number of characters
+so far on the line as a multiple
+of 8. Its use is not recommended
+however.
+</UL>
+<H3>Example of use</H3>
+<PRE>			<A
+NAME="z33" HREF="../HTML.dtd.html#z34">&lt;PRE</A> WIDTH="80">
+			This is an example line
+			&lt;/PRE>
+
+</PRE>
+<H3>Note: Highlighting</H3>Within a preformatted element,  the
+constraint that the rendering must
+be on a fixed horizontal character
+pitch may limit or prevent the ability
+of the renderer to render highlighting
+elements specially.
+<H3>Note: Margins </H3>The above references to the "beginning
+of a new line" must not be taken
+as implying that the renderer is
+forbidden from using a (constant)
+left indent for rendering preformatted
+text.   The left indent may of course
+be constrained by the width required.</BODY>
+</HTML>
