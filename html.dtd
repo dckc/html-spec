@@ -10,7 +10,7 @@
 		  http://info.cern.ch/hypertext/WWW/MarkUp2/MarkUp.html
 -->
 
-<!ENTITY HTML.Version
+<!ENTITY % HTML.Version
 	"+//ISBN 82-7640-037::WWW//DTD HTML//EN//2.0"
 
         -- Typical usage:
