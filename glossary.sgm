@@ -3,8 +3,8 @@
 <tl>
 <tli>absolute URI: a URI in absolute form, as per [URL]
 
-<tli>anchor: a hyperlink navigation option; typically, a highlighted
-phrase marked as an <tag/A/ element.
+<tli>anchor: one of two ends of a hyperlink; typically, a phrase
+marked as an <tag/A/ element.
 
 <tli>base URI: URI used as the base of an HTML document for the
 purpose of resolving hyperlink destinations.
@@ -48,14 +48,16 @@ resolved via the document character set.
 markup of documents of a particular type, including a set of element
 and entity declarations. [SGML]
 
-<tli>element: A component of the hierarchical structure defined by a document type definition; it is identified in a document instance by descriptive markup, usually a start-tag and end-tag. [SGML]
+<tli>element: A component of the hierarchical structure defined by a
+document type definition; it is identified in a document instance by
+descriptive markup, usually a start-tag and end-tag. [SGML]
 
 <tli>end-tag: Descriptive markup that identifies the end of an
 element. [SGML]
 
 <tli>entity: data with an associated notation or interpretation; for
 example, a sequence of octets associated with an Internet Media
-Type.[SGML]
+Type. [SGML]
 
 <tli>fragment identifier: the portion of an <attr/HREF/ attribute
 value following the <code/#/ character which modifies the presentation
@@ -67,13 +69,13 @@ given by an HTML document and the values are given by a user.
 <tli>HTML document: An SGML document conforming to this document type
 definition.
 
-<tli>hyperlink: a relationship between to resources, called the source
-and the destination.
+<tli>hyperlink: a relationship between two anchors, called the tail
+and the head.
 
 <tli>markup: Syntactically delimited characters added to the data of a
 document to represent its structure. There are four different kinds of
 markup: descriptive markup (tags), references, markup declarations,
-and processing instructions.[SGML]
+and processing instructions. [SGML]
 
 <tli>may: A document or user interface is conforming whether this
 statement applies or not.
@@ -91,11 +93,14 @@ level 1 HTML documents.
 <tli>must: Documents or user agents in conflict with this statement
 are not conforming.
 
+<tli>numeric character reference: markup that refers to a character
+by its code position in the document character set.
+
 <tli>SGML document: A sequence of characters organized physically as a
 set of entities and logically into a hierarchy of elements. An SGML
 document consists of data characters and markup; the markup describes
 the structure of the information and an instance of that
-structure.[SGML]
+structure. [SGML]
 
 <tli>shall: If a document or user agent conflicts with this statement,
 it does not conform to this specification.
@@ -113,12 +118,12 @@ delimiter characters.
 
 <tli>tag: Markup that delimits an element. A tag includes a name which
 refers to an element declaration in the DTD, and may include
-attributes.[SGML]
+attributes. [SGML]
 
 <tli>text entity: A finite sequence of characters. A text entity
 typically takes the form of a sequence of octets with some associated
 character encoding scheme, transmitted over the network or stored in a
-file.[SGML]
+file. [SGML]
 
 <tli>typical: Typical processing is described for many elements. This
 is not a mandatory part of the specification but is given as guidance
@@ -129,7 +134,7 @@ intended.
 serves as an identifier for a resource, typically on the Internet. URIs
 are used in HTML to identify the destination of hyperlinks. URIs in
 common practice include Uniform Resource Locators (URLs)[URL]
-and Relative URLs[RELURL].
+and Relative URLs [RELURL].
 
 <tli>user agent: A component of a distributed system that presents
 an interface and processes requests on behalf of a user; for example,
@@ -137,7 +142,6 @@ a www browser or a mail user agent.
 
 <tli>WWW: The World-Wide Web is a hypertext-based, distributed
 information system created by researchers at CERN in
-Switzerland. Users may create, edit or browse hypertext
-documents. <code>http://www.w3.org/</>
+Switzerland. <uri>http://www.w3.org/</>
 
 </tl>

@@ -5,6 +5,8 @@ lists, HTML documents can express hyperlinks. A hyperlink is a
 relationship between two anchors, called the head and the tail of the
 hyperlink[DEXTER]. An anchor is a resource such as an HTML document,
 or some fragment of, i.e. view on or portion of a resource.
+Typically, the user activates a link by indicating the tail of the
+link; the head of the link is presented as a result.
 
 <p> Anchors are addressed by Uniform Resource Identifiers (URI). URIs
 either refer directly to an anchor in absolute form for example as in
@@ -27,7 +29,7 @@ of a hyperlink or set of hyperlinks:
 
 <p> To access the head anchor of a hyperlink, the user agent
 determines its URI from the URI given in the tail anchor, using the
-base URI of the document containing the head anchor if necessary. Any
+base URI of the document containing the tail anchor if necessary. Any
 fragment identifier is discarded, and the result is used to access a
 resource, for example as in [URL].
 
@@ -53,7 +55,7 @@ display the indicated HTML document. HTML user agents should also
 allow activation of <tag/LINK/ element hyperlinks.
 
 <p> The base URI for navigating the head anchor may be different from
-the URI used to access it. For example, it may be replaced by by a
+the URI used to access it. For example, it may be replaced by a
 <tag/BASE/ tag in the destination document or by an HTTP redirection
 transaction.
 
@@ -63,7 +65,7 @@ An HTML user agent may activate hyperlinks indicated by <tag/IMG/ and
 <tag/INPUT/ elements concurrently with processing the document; that
 is, image hyperlinks may be processed without explicit request by the
 user. Image resources should be embedded in the presentation at the
-point of the tail anchor, that is the <tag/IMG/ element.
+point of the tail anchor, that is the <tag/IMG/ or <tag/INPUT/ element.
 
 <tag/LINK/ hyperlinks may also be processed without explicit user
 request; for example, style sheet resources may be processed before or
@@ -121,12 +123,13 @@ hyperlinks. See <hdref refid=queryf> for details.
 
 <h2 id=imagemap>Image Maps
 
-<p> The <attr/ISMAP/ attribute in combination with the <tag/A/ and
-<tag/IMG/ elements, represents a set of hyperlinks. The user can
-choose from the set by choosing a pixel of the image. The user agent
-computes the head URI by appending <code/?/ and the x and y
-coordinates of the pixel to the URI given in the <tag/A/ element. For
-example, if a document contains:
+<p> If the <attr/ISMAP/ attribute is present on an <tag/IMG/ element,
+the <tag/IMG/ element must be contained in an <tag/A/ element with an
+<attr/HREF/ present. This construct represents a set of
+hyperlinks. The user can choose from the set by choosing a pixel of
+the image. The user agent computes the head URI by appending <code/?/
+and the x and y coordinates of the pixel to the URI given in the
+<tag/A/ element. For example, if a document contains:
 
 <listing><![CDATA[
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
@@ -137,7 +140,7 @@ example, if a document contains:
 <a href="/cgi-bin/imagemap"><img ismap src="icons.gif"></a>
 ]]></listing>
 
-<p> and the user chooses the upper-leftmost pixel, then chosen
+<p> and the user chooses the upper-leftmost pixel, the chosen
 hyperlink is the one with the URI
 <code>http://host/cgi-bin/imagemap?0,0</>.
 

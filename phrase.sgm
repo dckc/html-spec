@@ -13,7 +13,7 @@ elements; however, HTML user agents may render nested phrase
 elements indistinctly from non-nested elements:
 
 <listing><![CDATA[
-plain <B>bold <I>italic</I></B> may the rendered 
+plain <B>bold <I>italic</I></B> may be rendered 
 the same as plain <B>bold </B><I>italic</I>
 ]]></listing>
 
@@ -39,8 +39,10 @@ He just couldn't get enough of <cite>The Grapes of Wrath</cite>.
 <h4>Code: CODE
 
 <p>The <tag/CODE/ element indicates an example of code, typically
-rendered in a mono-spaced font. Contrast with the <tag/PRE/ block
-structuring element in <hdref refid=pre>. For example:
+rendered in a mono-spaced font. The <tag/CODE/ element is intended
+for short words or phrases of code; the <tag/PRE/ block
+structuring element (<hdref refid=pre>) is more apropriate for
+multiple-line listings. For example:
 
 <listing><![CDATA[
 The expression <code>x += 1</code>
@@ -58,7 +60,7 @@ A singular subject <em>always</em> takes a singular verb.
 
 <h4>Keyboard: KBD
 
-<p>The Keyboard element indicates text typed by a user, typically
+<p>The <tag/KBD/ element indicates text typed by a user, typically
 rendered in a mono-spaced font. This is commonly used in instruction
 manuals. For example:
 
@@ -86,21 +88,22 @@ typically rendered in bold. For example:
 
 <h4>Variable: VAR
 
-<p>The <tag/VAR/ element indicates a place holder, typically rendered
+<p>The <tag/VAR/ element indicates a placeholder variable, typically rendered
 as italic. For example:
 
 <listing><![CDATA[
-Take a guess: Roses are <var>blank</var>.
+Type <SAMP>html-check <VAR>file</VAR> | more</SAMP>
+to check <VAR>file</VAR> for markup errors.
 ]]></listing>
 
 <h3>Typographic Elements
 
 <p>Typographic elements are used to specify the format of marked text.
 
-<p>Typical renderings for idiomatic elements vary between user
-agents. If a specific rendering is necessary -- for example, when
+<p>Typical renderings for idiomatic elements may vary between user
+agents. If a specific rendering is necessary &mdash; for example, when
 referring to a specific text attribute as in "The italic parts are
-mandatory" -- a typographic element can be used to ensure that the
+mandatory" &mdash; a typographic element can be used to ensure that the
 intended typography is used where possible.
 
 <note>
@@ -120,10 +123,11 @@ unavailable, an alternative representation may be used.
 <p>The <tag/I/ element indicates italic text. Where italic typography
 is unavailable, an alternative representation may be used.
 
-<h4>Typewriter: TT
+<h4>Teletype: TT
 
-<p>The <tag/TT/ element indicates typewriter text. Where a typewriter
-font is unavailable, an alternative representation may be used.
+<p>The <tag/TT/ element indicates teletype (monospaced )text. Where a
+teletype font is unavailable, an alternative representation may be
+used.
 
 <h3 id=a>Anchor: A
 
@@ -137,15 +141,15 @@ attributes should be present. Attributes of the <tag/A/ element:
 <tli>NAME: gives the name of the anchor, and makes it available as
 a head of a hyperlink.
 
-<tli>TITLE: suggests a title for the destination resource -- advisory only. 
-The <attr/TITLE/ attribute may be used:
+<tli>TITLE: suggests a title for the destination resource &mdash;
+advisory only.  The <attr/TITLE/ attribute may be used:
 
 <ul>
 <li> for display prior to accessing the destination resource, for
 example, as a margin note or on a small box while the mouse is over
 the anchor, or while the document is being loaded;
 
-<li> for resources that do not specify a title such as graphics, plain
+<li> for resources that do not include a title, such as graphics, plain
 text and Gopher menus, for use as a window title.
 </ul>
 
@@ -159,16 +163,17 @@ REL="X" expresses the same relationship as a link from B to A with
 REV="X". An anchor may have both REL and REV attributes.
 
 <tli>URN: specifies a preferred, more persistent identifier for the
-head anchor of the hyperlink. The format of URNs is under discussion
-(1995) by various working groups of the Internet Engineering Task
-Force.
+head anchor of the hyperlink. The syntax and semantics of the
+<attr/URN/ attribute are not yet specified.
 
 <tli>METHODS: specifies methods to be used in accessing the
-destination, as a whitespace-separated list of names. For similar
-reasons as for the TITLE attribute, it may be useful to include the
-information in advance in the link. For example, the HTML user agent
-may chose a different rendering as a function of the methods allowed;
-for example, something that is searchable may get a different icon.
+destination, as a whitespace-separated list of names. The set of
+applicable names is a function of the scheme of the URI in the
+<attr/HREF/ attribute. For similar reasons as for the TITLE attribute,
+it may be useful to include the information in advance in the
+link. For example, the HTML user agent may chose a different rendering
+as a function of the methods allowed; for example, something that is
+searchable may get a different icon.
 </tl>
 
 <h2>Line Break: BR
@@ -205,7 +210,7 @@ as an alternative to processing the image resource indicated by the
 <attr/SRC/ attribute.
 <note>Some HTML user agents can process graphics linked via anchors,
 but not <tag/IMG/ graphics. If a graphic is essential, it should be
-referenced from an <tag/A/ element rather than in <tag/IMG/ element. If
+referenced from an <tag/A/ element rather than an <tag/IMG/ element. If
 the graphic is not essential, then the <tag/IMG/ element is
 appropriate.
 </note>
@@ -244,11 +249,6 @@ resources are not intended to be used as image resources.
 <listing><![CDATA[
 <IMG SRC="triangle.xbm" ALT="Warning:"> Be sure 
 to read these instructions.
-]]></listing>
-
-<listing><![CDATA[
-<IMG SRC="triangle.xbm">Be sure to read these 
-instructions.
 ]]></listing>
 
 <listing><![CDATA[

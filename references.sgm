@@ -47,22 +47,22 @@ RFC 1700, USC/ISI, October 1994.
 1991. <uri>http://www.sq.com/</>
 
 <tli>[ISO-646]: ISO/IEC 646:1991
-Information technology -- ISO 7-bit coded character set for
+Information technology &mdash; ISO 7-bit coded character set for
 information interchange
 <uri>http://www.iso.ch/cate/d4777.html</>
 
 <tli>[ISO-10646]: ISO/IEC 10646-1:1993
-Information technology -- Universal Multiple-Octet Coded
-Character Set (UCS) -- Part 1: Architecture and Basic Multilingual
+Information technology &mdash; Universal Multiple-Octet Coded
+Character Set (UCS) &mdash; Part 1: Architecture and Basic Multilingual
 Plane 
 <uri>http://www.iso.ch/cate/d18741.html</>
 
-<tli>[ISO-8859-1]: ISO 8859. International Standard -- Information
-Processing -- 8-bit Single-Byte Coded Graphic Character Sets -- Part
+<tli>[ISO-8859-1]: ISO 8859. International Standard &mdash; Information
+Processing &mdash; 8-bit Single-Byte Coded Graphic Character Sets &mdash; Part
 1: Latin Alphabet No. 1, ISO 8859-1:1987.
 <uri>http://www.iso.ch/cate/d16338.html</>
 
-<tli>[SGML]: ISO 8879. Information Processing - Text and Office
+<tli>[SGML]: ISO 8879. Information Processing &mdash; Text and Office
 Systems - Standard Generalized Markup Language (SGML), 1986.
 <uri>http://www.iso.ch/cate/d16387.html</>
 

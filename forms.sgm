@@ -25,91 +25,202 @@ designing the layout of forms.
 with document structuring elements. The attributes are:
 
 <tl>
-<tli>ACTION: specifies the action URI for the form. The <attr/ACTION/
-attribute defaults to the base URI of the document (see <hdref
+<tli>ACTION: specifies the action URI for the form. The action URI of
+a form defaults to the base URI of the document (see <hdref
 refid=hyperlink>).
 
-<tli>METHOD: selects a method of accessing the action URI.
+<tli>METHOD: selects a method of accessing the action URI. The set of
+applicable methods is a function of the scheme of the action URI of
+the form. See <hdref refid=queryf> and <hdref refid=formpost>.
 
 <tli>ENCTYPE: specifies the media type used to encode the name/value
 pairs for transport, in case the protocol does not itself impose a
-format.
+format. See <hdref refid=urlencode>.
 
 </tl>
 
 <h3 id=input>Input Field: INPUT
 
-<p>The <tag/INPUT/ element represents a field for user input. Attributes are:
+<p>The <tag/INPUT/ element represents a field for user input. The
+<attr/TYPE/ attribute discriminates between several variations of
+fields.
+
+The <tag/INPUT/ element has a number of attributes. The set of
+applicable attributes depends on the value of the <attr/TYPE/
+attribute. 
+
+<h4>Text Field: INPUT TYPE=TEXT
+
+<p>The default vaule of the <attr/TYPE/ attribute is <code/TEXT/,
+indicating a single line text entry fields. (Use the <tag/TEXTAREA/
+element for multi-line text fields.)
+
+<p>Required attributes are:
 
 <tl>
-<tli>ALIGN: vertical alignment of the image. For use only with
-<code/TYPE=IMAGE/. The possible values are as for the <attr/ALIGN/
-attribute of the <tag/IMG/ element (see <hdref refid=img>).
+<tli>NAME: name for the form field corresponding to this
+element.
+</tl>
 
-<tli>CHECKED: indicates that the initial state of a checkbox or radio
-button is selected.
+The optional attriubtes are:
 
+<tl>
 <tli>MAXLENGTH: constrains the number of characters that can be
 entered into a text input field. If the value of <attr/MAXLENGTH/ is
 greater the the value of the <attr/SIZE/ attribute, the field should
 scroll appropriately. The default number of characters is unlimited.
 
-<tli>NAME: symbolic name for the form field corresponding to this
-element or group of elements. The <attr/NAME/ attribute is required
-except in the case of <code/TYPE=SUBMIT/ or <code/TYPE=RESET/.
-
 <tli>SIZE: specifies the amount of display space allocated to this
-input field according to its type.
-
-<tli>SRC: A URI specifying an image resource. For use only with
-<code/TYPE=IMAGE/.
-
-<tli>TYPE: indicates type of the field. Defaults to
-<code/TEXT/. Values are:
-
-<tl>
-<tli>CHECKBOX: an independent boolean value.
-
-<tli>HIDDEN: a hidden field. The user does not interact with this
-field; instead, the <attr/VALUE/ attribute can be used to specify a
-value.
-
-<tli>IMAGE: specifies an image resource to display, and allows input
-of two form data: the x and y coordinate of a pixel chosen from the
-image. The names of the data are the name of this element with
-<code/.x/ and <code/.y/ appended. <code/TYPE=IMAGE/ implies
-<code/TYPE=SUBMIT/ processing; that is, when a pixel is chosen, the
-form as a whole is submitted.
-
-<tli>PASSWORD: Similar to the TEXT attribute, except that the value is
-obscured as it is entered.
-
-<tli>RADIO: a 1-of-many choice. All <tag/INPUT/ elements with
-<code/TYPE=RADIO/ and the same <attr/NAME/ combine into one form
-field. The value of the form field is the <attr/VALUE/ of the element
-chosen by the user. The initial state may be indicated with the
-<attr/CHECKED/ attribute. The <attr/VALUE/ attribute is required for
-radio inputs.
-</tl>
-
-<tli>RESET: an input option, typically a button, that instructs the
-user agent to reset the form's fields to their initial states. Any
-<attr/VALUE/ attribute indicates a label for the input (button).
-
-<tli>SUBMIT: an input option, typically a button, that instructs the
-user agent to submit the form. Any <attr/VALUE/ attribute indicates a
-label for the input (button). If the <attr/NAME/ attribute is present,
-this element contributes a form field whose value is given by the
-<attr/VALUE/ attribute. If the <attr/NAME/ attribute is not present,
-this element does not contribute a form field.
-
-<tli>TEXT: a single line text entry fields. The <attr/SIZE/ and
-<attr/MAXLENGTH/ attributes may be used to constrain the input or
-layout of the field. Use the <tag/TEXTAREA/ element for multi-line
-text fields.
+input field according to its type. The default depends on the user
+agent.
 
 <tli>VALUE: The initial value of the field.
 </tl>
+
+
+<p> For example:
+
+<listing><![CDATA[
+<p>Street Address: <input name=street><br>
+Postal City code: <input name=city size=16 maxlength=16><br>
+Zip Code: <input name=zip size=10 maxlength=10 value="99999-9999"><br>
+]]></listing>
+
+<h4>Password Field: INPUT TYPE=PASSWORD
+
+An <tag/INPUT/ element with <code/TYPE=PASSWORD/ is a text field as
+above, except that the value is obscured as it is entered. (see also:
+<hdref refid=security>).
+
+<p> For example:
+
+<listing><![CDATA[
+<p>Name: <input name=login> Password: <input type=password name=passwd>
+]]></listing>
+
+<h4>Check Box: INPUT TYPE=CHECKBOX
+
+<p> An <tag/INPUT/ element with <code/TYPE=CHECKBOX/ represents a
+boolean choice. A set of such elements with the same name represents
+an n-of-many choice field. Required attributes are:
+
+<tl>
+<tli>NAME: symbolic name for the form field corresponding to this
+element or group of elements.
+
+<tli>VALUE: The portion of the value of the field contributed by this
+element.
+</tl>
+
+<p>Optional attributes are:
+
+<tl>
+<tli>CHECKED: indicates that the initial state is on.
+</tl>
+
+
+<p>For example:
+
+<listing><![CDATA[
+<p>What flavors do you like?
+<input type=checkbox name=flavor value=vanilla>Vanilla<br>
+<input type=checkbox name=flavor value=strawberry>Strawberry<br>
+<input type=checkbox name=flavor value=chocolate checked>Chocolate<br>
+]]></listing>
+
+<h4>Radio Button: INPUT TYPE=RADIO
+
+<p>An <tag/INPUT/ element with <code/TYPE=RADIO/ represents a boolean
+choice. A set of such elements with the same name represents a
+1-of-many choice field. The <attr/NAME/ and <attr/VALUE/ attributes
+are required as for check boxes. Optional attributes are:
+
+<tl>
+<tli>CHECKED: indicates that the initial state is on.
+</tl>
+
+<p>At all times, exactly one of the radio buttons in a set is
+checked. If none of the <tag/INPUT/ elements of a set of radio buttons
+specifies <code/CHECKED/, then the user agent must check the first
+radio button of the set initially.
+
+<p>For example:
+
+<listing><![CDATA[
+<p>Which is your favorite?
+<input type=radio name=flavor value=vanilla>Vanilla<br>
+<input type=radio name=flavor value=strawberry>Strawberry<br>
+<input type=radio name=flavor value=chocolate>Chocolate<br>
+]]></listing>
+
+<h4>Image Pixel: INPUT TYPE=IMAGE
+
+<p>An <tag/INPUT/ element with <code/TYPE=IMAGE/ specifies an image
+resource to display, and allows input of two form fields: the x and y
+coordinate of a pixel chosen from the image. The names of the fields
+are the name of the field with <code/.x/ and <code/.y/
+appended. <code/TYPE=IMAGE/ implies <code/TYPE=SUBMIT/ processing;
+that is, when a pixel is chosen, the form as a whole is submitted.
+
+<p>The <attr/NAME/ attribute is required as for other input
+fields. The <attr/SRC/ attribute is required and the <attr/ALIGN/ is
+optional as for the <tag/IMG/ element (see <hdref refid=img>).
+
+<p>For example:
+
+<listing><![CDATA[
+<p>Choose a point on the map:
+<input type=image name=point src="map.gif">
+]]></listing>
+
+<h4>Hidden Field: INPUT TYPE=HIDDEN
+
+<p>An <tag/INPUT/ element with <code/TYPE=HIDDEN/ represents a hidden
+field.The user does not interact with this field; instead, the
+<attr/VALUE/ attribute specifies the value of the field. The
+<attr/NAME/ and <attr/VALUE/ attributes are required.
+
+<p>For example:
+
+<listing><![CDATA[
+<input type=hidden name=context value="l2k3j4l2k3j4l2k3j4lk23">
+]]></listing>
+
+<h4>Submit Button: INPUT TYPE=SUBMIT
+
+An <tag/INPUT/ element with <code/TYPE=SUBMIT/ represents an input
+option, typically a button, that instructs the user agent to submit
+the form. Optional attributes are:
+
+<tl>
+<tli>NAME: indicates that this element contributes a form field whose
+value is given by the <attr/VALUE/ attribute. If the <attr/NAME/
+attribute is not present, this element does not contribute a form
+field.
+
+<tli>VALUE: indicates a label
+for the input (button).
+</tl>
+
+<listing><![CDATA[
+You may submit this request internally:
+<input type=submit name=recipient value=internal><br>
+or to the external world:
+<input type=submit name=recipient value=world>
+]]></listing>
+
+<h4>Reset Button: INPUT TYPE=RESET
+
+An <tag/INPUT/ element with <code/TYPE=RESET/ represents an input
+option, typically a button, that instructs the user agent to reset the
+form's fields to their initial states. The <attr/VALUE/ attribute, if
+present, indicates a label for the input (button).
+
+<listing><![CDATA[
+When you are finished, you may submit this request:
+<input type=submit><br>
+You may clear the form and start over at any time: <input type=reset>
+]]></listing>
 
 <h3>Selection: SELECT
 
@@ -135,8 +246,8 @@ greater than one are typically lists.
 <SELECT NAME="flavor">
 <OPTION>Vanilla
 <OPTION>Strawberry
-<OPTION>Rum and Raisin
-<OPTION>Peach and Orange
+<OPTION value="RumRasin">Rum and Raisin
+<OPTION selected>Peach and Orange
 </SELECT>
 ]]></listing>
 
@@ -177,7 +288,7 @@ characters.
 <p>For example:
 
 <listing><![CDATA[
-<TEXTAREA NAME="address" ROWS=64 COLS=6>
+<TEXTAREA NAME="address" ROWS=6 COLS=64>
 HaL Computer Systems
 1315 Dell Avenue
 Campbell, California 95008
@@ -205,7 +316,7 @@ action URI and enctype.
 user agent should accept Enter in that field as a request to submit
 the form.
 
-<h3>The form-urlencoded Media Type
+<h3 id=urlencode>The form-urlencoded Media Type
 
 <p>The default encoding for all forms is
 <code>application/x-www-form-urlencoded</>. A form data set is
@@ -259,7 +370,7 @@ As a result, some HTML forms are written using <code/METHOD=POST/ even
 though the form submission has no side-effects.
 </note>
 
-<h3>Forms with Side-Effects: METHOD=POST
+<h3 id=formpost>Forms with Side-Effects: METHOD=POST
 
 <p>If the service associated with the processing of a form has side
 effects (for example, modification of a database or subscription to a

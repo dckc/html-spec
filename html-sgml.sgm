@@ -1,11 +1,11 @@
 <!-- $Id$ -->
 <h1>HTML as an Application of SGML
 
-<p>HTML is an application of ISO 8879:1986 -- Standard
+<p>HTML is an application of ISO 8879:1986 &mdash; Standard
 Generalized Markup Language (SGML). SGML is a system for defining
 structured document types and markup languages to represent instances
-of those document types[SGML]. The public text -- DTD and SGML
-declaration -- of the HTML document type definition are provided in
+of those document types[SGML]. The public text &mdash; DTD and SGML
+declaration &mdash; of the HTML document type definition are provided in
 <hdref refid=pubtext>.
 
 The term <emph/HTML/ refers to both the document type defined here and
@@ -17,14 +17,14 @@ An HTML document is an SGML document; that is, a sequence of
 characters organized physically into a set of entities, and logically
 as a hierarchy of elements.
 
-The first production of the SGML grammar separates an SGML document
-into three parts: an SGML declaration, a prologue, and an
-instance. For the purposes of this specification, the prologue is a
-DTD. This DTD describes another grammar: the start symbol is given in
-the doctype declaration, the terminals are data characters and tags,
-and the productions are determined by the element declarations. The
-instance must conform to the DTD, that is, it must be in the language
-defined by this grammar.
+In the SGML specification, the first production of the SGML syntax
+grammar separates an SGML document into three parts: an SGML
+declaration, a prologue, and an instance. For the purposes of this
+specification, the prologue is a DTD. This DTD describes another
+grammar: the start symbol is given in the doctype declaration, the
+terminals are data characters and tags, and the productions are
+determined by the element declarations. The instance must conform to
+the DTD, that is, it must be in the language defined by this grammar.
 
 The SGML declaration determines the lexicon of the grammar. It
 specifies the document character set, which determines a
@@ -48,25 +48,25 @@ For example, consider the following document:
 
 An HTML user agent should use the SGML declaration that is given in
 <hdref refid=decl>. According to its document character set,
-<code>&amp;#42;</> refers to an asterisk character.
+<code>&amp;#42;</> refers to an asterisk character, <code/*/.
 
 The instance above is regarded as the following sequence of terminals:
 
 <ol>
-<li>TITLE start-tag
+<li>start-tag: TITLE
 <li>data characters: "Parsing Example"
-<li>TITLE end-tag
-<li>P start-tag
+<li>end-tag: TITLE
+<li>start-tag: P
 <li>data characters "Some text. "
-<li>EM start-tag
-<li>"*wow*"
-<li>EM end-tag
-<li>P end-tag
+<li>start-tag: EM
+<li>data characters: "*wow*"
+<li>end-tag: EM
+<li>end-tag: P
 </ol>
 
 The start symbol of the DTD grammar is HTML, and the productions
 are given in the public text identified by <code>-//IETF//DTD HTML
-2.0//EN</code> (<hdref refid=dtd>). Hence the terminals above parse as:
+2.0//EN</code> (<hdref refid=dtd>). The terminals above parse as:
 
 <listing><![CDATA[
    HTML
@@ -101,6 +101,11 @@ are given in the public text identified by <code>-//IETF//DTD HTML
 
 ]]></listing>
 
+Some of the elements are delimited explicity by tags, while the
+boundaries of others are inferred. The <tag/HTML/ element contains a
+<tag/HEAD/ element and a <tag/BODY/ element. The <tag/HEAD/ contains
+<tag/TITLE/, which is explicitly delimited by start- and end-tags.
+
 <h2>HTML Lexical Syntax
 
 SGML specifies an abstract syntax and a reference concrete
@@ -119,9 +124,9 @@ standard[SGML]. This section is only a summary.
 Any sequence of characters that do not constitute markup (see
 9.6 "Delimiter Recognition" of [SGML]) are mapped directly to
 strings of data characters. Some markup also maps to data character
-strings. Numeric character references also map to single-character
+strings. Numeric character references map to single-character
 strings, via the document character set. Each reference to one of the
-general entities defined in the HTML DTD also maps to a
+general entities defined in the HTML DTD maps to a
 single-character string.
 
 For example,
@@ -131,17 +136,18 @@ abc&lt;def    => "abc","<","def"
 abc&#60;def   => "abc","<","def"
 ]]></listing>
 
-Note that the terminating semicolon is only necessary when the
-character following the reference would otherwise be recognized as
-markup:
+The terminating semicolon on entity or numeric character references is
+only necessary when the character following the reference would
+otherwise be recognized as part of the name (see 9.4.5 "Reference End"
+in [SGML]).
 
 <listing><![CDATA[
 abc &lt def     => "abc ","<"," def"
 abc &#60 def    => "abc ","<"," def"
 ]]></listing>
 
-And note that an ampersand is only recognized as markup when it
-is followed by a letter or a <code/#/ and a digit:
+An ampersand is only recognized as markup when it is followed by a
+letter or a <code/#/ and a digit:
 
 <listing><![CDATA[
 abc & lt def    => "abc & lt def"
@@ -155,16 +161,19 @@ reference as follows:
 <listing><![CDATA[
                  ENTITY      NUMERIC
        CHARACTER REFERENCE   CHAR REF     CHARACTER DESCRIPTION
+       --------- ----------  -----------  ---------------------
          &       &amp;       &#38;        Ampersand 
          <       &lt;        &#60;        Less than
          >       &gt;        &#62;        Greater than
 ]]></listing>
-<note>There are SGML mechanisms, CDATA and RCDATA, to allow most <code><</>,
-<code>></>, and <code>&</> characters to be entered without the use of entity
-references. Because these features tend to be used and implemented
-inconsistently, and because they conflict with techniques for reducing
-HTML to 7 bit ASCII for transport, they are deprecated in this version
-of HTML.
+
+<note>There are SGML mechanisms, CDATA and RCDATA declared content, that
+allow most <code><</>, <code>></>, and <code>&</> characters to be
+entered without the use of entity references. Because these mechanisms
+tend to be used and implemented inconsistently, and because they
+conflict with techniques for reducing HTML to 7 bit ASCII for
+transport, they are deprecated in this version of HTML. See <hdref
+refid=xmp>.
 </note>
 
 <h3>Tags
@@ -200,12 +209,13 @@ deployed, their use is strongly discouraged.
 
 <h3>Names
 
-A name consists of a letter followed by up to 71 letters, digits,
-periods, or hyphens. Element and attribute names are not case
-sensitive, but entity names are. For example,
-<code>&lt;BLOCKQUOTE></>, <code>&lt;BlockQuote></>, and
-<code>&lt;blockquote></> are equivalent, whereas <code>&amp;amp;</> is
-different from <code>&amp;AMP;</>.
+A name consists of a letter followed by letters, digits, periods, or
+hyphens. The length of a name is limited to 72 characters by the
+<code/NAMELEN/ parameter in the SGML delcaration for HTML, <hdref
+refid=decl>.  Element and attribute names are not case sensitive, but
+entity names are. For example, <code>&lt;BLOCKQUOTE></>,
+<code>&lt;BlockQuote></>, and <code>&lt;blockquote></> are equivalent,
+whereas <code>&amp;amp;</> is different from <code>&amp;AMP;</>.
 
 In a start-tag, the element name must immediately follow the tag 
 open delimiter <code>&lt;</>.
@@ -213,10 +223,10 @@ open delimiter <code>&lt;</>.
 <h3>Attributes
 
 In a start-tag, white space and attributes are allowed between the
-element name and the closing delimiter. An attribute typically
-consists of an attribute name, an equal sign, and a value, though
-some attributes may be just a value. White space is allowed around
-the equal sign.
+element name and the closing delimiter. An attribute specification
+typically consists of an attribute name, an equal sign, and a value,
+though some attribute specifications may be just a name token. White
+space is allowed around the equal sign.
 
 The value of the attribute may be either:
 
@@ -249,16 +259,17 @@ attribute value:
 ]]></listing>
 
 A useful technique for computing an attribute value literal for a
-given string is to replace each quote and space character by an
+given string is to replace each quote and white space character by an
 entity reference or numeric character reference as follows:
 
 <listing><![CDATA[
                  ENTITY      NUMERIC
        CHARACTER REFERENCE   CHAR REF     CHARACTER DESCRIPTION
-         TAB                 &#9;         Tab
+       --------- ----------  -----------  ---------------------
+         HT                  &#9;         Tab
          LF                  &#10;        Line Feed
          CR                  &#13;        Carriage Return
-                             &#32;        Space
+         SP                  &#32;        Space
          "       &quot;      &#34;        Quotation mark 
          &       &amp;       &#38;        Ampersand 
 ]]></listing>
@@ -270,11 +281,12 @@ For example:
 ]]></listing>
 
 
-Note that the SGML declaration in section 13.3 limits the length of
-an attribute value to 1024 characters.
+The <code/NAMELEN/ parameter in the SGML declaration (<hdref
+refid=decl>) limits the length of an attribute value to 1024
+characters.
 
 Attributes such as ISMAP and COMPACT may be written using a minimized
-syntax. The markup:
+syntax (see 7.9.1.2 "Omitted Attribute Name" in [SGML]). The markup:
 
 <listing><![CDATA[
 <UL COMPACT="compact">
@@ -345,7 +357,7 @@ appears in <hdref refid=dtd>.
 ]]></listing>
 
 This document type declaration refers to the level 1 HTML DTD in
-<hdref refid=dtd.s>. Form elements must not occur in level 1
+<hdref refid=dtd.1>. Form elements must not occur in level 1
 documents.
 
 <listing><![CDATA[
@@ -357,11 +369,10 @@ These two document type declarations refer to the HTML DTD in <hdref
 refid=dtd.s> and <hdref refid=dtd.1s>. They refer to the more
 structurally rigid definition of HTML.
 
-HTML user agents not required to support other document types, but
-they may.  In particular, they may support other formal public
-identifiers, or other document types altogether. They may support
-an internal declaration subset with supplemental entity,
-element, and other markup declarations, or they may not.
+HTML user agents may support other document types. In particular,
+they may support other formal public identifiers, or other document
+types altogether. They may support an internal declaration subset with
+supplemental entity, element, and other markup declarations.
 
 <h2>Example HTML Document
 

@@ -11,17 +11,18 @@ be truncated in some applications. To minimize this possibility,
 titles should be fewer than 64 characters.</note>
 
 <p> A user agent may display the title of a document in a history list
-or as a label for the window displaying the document. Contrast with
-headings (<hdref refid=headings>), which are typically displayed with
-the body text flow.
+or as a label for the window displaying the document. This differs
+from headings (<hdref refid=headings>), which are typically displayed
+within the body text flow.
 
-<h3 id=base>Base URI: BASE
+<h3 id=base>Base Address: BASE
 
-<p>The optional <tag/BASE/ element specifies the URI of the document,
-overriding any context otherwise known to the user agent. The required
-<attr/HREF/ attribute specifies the URI for navigating the document
-(see <hdref refid=hyperlink>). The value of the <attr/HREF/ attribute
-must be an absolute URI.
+<p>The optional <tag/BASE/ element specifies the base address for
+resolving relative links from the document, overriding any context
+otherwise known to the user agent. The required <attr/HREF/ attribute
+specifies the URI for navigating the document (see <hdref
+refid=hyperlink>). The value of the <attr/HREF/ attribute must be an
+absolute URI.
 
 <h3>Keyword Index: ISINDEX
 
@@ -42,50 +43,50 @@ style sheets, document hierarchy etc.
 <h3>Associated Meta-information: META
 
 <p> The <tag/META/ element is an extensible container for use in
-identifying, indexing, and cataloging specialized document
-meta-information. Meta-information has two main functions:
+identifying specialized document meta-information. Meta-information
+has two main functions:
 
 <ul>
 <li>to provide a means to discover that the data set exists and
 how it might be obtained or accessed; and 
 
-<li>to document the content, quality, and features of a data set
-and so give an indication of its fitness for use. 
+<li>to document the content, quality, and features of a data set,
+indicating its fitness for use. 
 </ul>
 
 <p> Each <tag/META/ element specifies a name/value pair.  If multiple
 META elements are provided with the same name, their combined
-contents--concatenated as a comma-separated list--is the value
+contents&mdash;concatenated as a comma-separated list&mdash;is the value
 associated with that name.
 <note>The <tag/META/ element should not be used where a specific
-element such as <tag/TITLE/ would be appropriate.
+element, such as <tag/TITLE/, would be more appropriate.
 </note>
 
-<p>HTTP servers should read the content of the document <tag/HEAD/ to
+<p>HTTP servers may read the content of the document <tag/HEAD/ to
 generate header fields corresponding to any elements defining a value
 for the attribute <attr/HTTP-EQUIV/.
 <note>The method by which the server extracts document meta-information is
-unspecified and not mandatory. The META element
+unspecified and not mandatory. The <tag/META/ element
 only provides an extensible mechanism for identifying and embedding
-document meta-information - how it may be used is up to the individual
+document meta-information &mdash; how it may be used is up to the individual
 server implementation and the HTML user agent.
 </note>
 
 <p>Attributes of the META element:
 
 <tl>
-<tli>HTTP-EQUIV: This attribute binds the element to an HTTP header
+<tli>HTTP-EQUIV: binds the element to an HTTP header
 field. An HTTP server may use this information to process the
-document. In particular, it should include a header field in the
-responses to <attr/GET/ requests for this document: the header name is
+document. In particular, it may include a header field in the
+responses to requests for this document: the header name is
 taken from the <attr/HTTP-EQUIV/ attribute value, and the header value
 is taken from the value of the <attr/CONTENT/ attribute. HTTP header
 names are not case sensitive.
 
-<tli>NAME: name of the name/value pair. If not present,
+<tli>NAME: specifies the name of the name/value pair. If not present,
 <attr/HTTP-EQUIV/ gives the name.
 
-<tli>CONTENT: The value of the name/value pair.
+<tli>CONTENT: specifies the value of the name/value pair.
 
 </tl>
 
@@ -96,12 +97,13 @@ names are not case sensitive.
 <listing><![CDATA[
 <META HTTP-EQUIV="Expires"
       CONTENT="Tue, 04 Dec 1993 21:29:02 GMT">
-<meta http-equiv="Keywords" CONTENT="Fred, Barney">
+<meta http-equiv="Keywords" CONTENT="Fred">
 <META HTTP-EQUIV="Reply-to"
       content="fielding@ics.uci.edu (Roy Fielding)">
+<Meta Http-equiv="Keywords" CONTENT="Barney">
 ]]></listing>
 
-<p>then the server should include the following header fields:
+<p>then the server may include the following header fields:
 
 <listing><![CDATA[
 Expires: Tue, 04 Dec 1993 21:29:02 GMT
@@ -112,23 +114,23 @@ Reply-to: fielding@ics.uci.edu (Roy Fielding)
 <p>as part of the HTTP response to a <code/GET/ or <code/HEAD/ request
 for that document.
 
-<p>When the HTTP-EQUIV attribute is not present, the server should not
-generate an HTTP response header for the meta-information; e.g.,
+<p>An HTTP server must not use the <tag/META/ element to form an HTTP
+response header unless the <attr/HTTP-EQUIV/ attribute is present.
 
-<p>Do not name an HTTP-EQUIV equal to a response header that should
-normally only be generated by the HTTP server. Example names that are
-inappropriate include <code/Server/, <code/Date/, and
-<code/Last-modified/ -- the exact list of inappropriate names is
-dependent on the particular server implementation.
+<p>An HTTP server may disregard any <tag/META/ elements that specify
+information controlled by the HTTP server, for example <code/Server/,
+<code/Date/, and <code/Last-modified/.
 
 <h3>Next Id: NEXTID
 
-<p> They <tag/NEXTID/ element gives a hint for the name to use for an
-<tag/A/ element when editing an HTML document. It should be distinct
-from all <attr/NAME/ attribute values on <tag/A/ elements. For
-example:
+<p> The <tag/NEXTID/ element is included for historical reasons only.
+HTML document should not contain <tag/NEXTID/ elements.
+
+<p> The <tag/NEXTID/ element gives a hint for the name to use for a
+new <tag/A/ element when editing an HTML document. It should be
+distinct from all <attr/NAME/ attribute values on <tag/A/
+elements. For example:
 
 <listing><![CDATA[
 <NEXTID N=Z27>
 ]]></listing>
-

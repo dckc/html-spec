@@ -7,7 +7,7 @@ navigate the content of HTML level 1 documents.  HTML user agents
 should be able to preserve all formatting distinctions represented in
 an HTML document, and be able to simultaneously present resources
 referred to by IMG elements (they may ignore some formatting
-distinctions or IMG resources at the request of the user). Conforming
+distinctions or IMG resources at the request of the user). Level 2
 HTML user agents should support form entry and submission.
 
 <h2>text/html media type
@@ -64,7 +64,7 @@ the message entity.
 To facilitate experimentation and interoperability between
 implementations of various versions of HTML, the installed base of
 HTML user agents supports a superset of the HTML 2.0 language by
-reducing it to HTML 2.0: markup in the form of a start-tag or end-tag
+reducing it to HTML 2.0: markup in the form of a start-tag or end-tag,
 whose generic identifier is not declared is mapped to nothing during
 tokenization. Undeclared attributes are treated similarly.  The entire
 attribute specification of an unknown attribute (i.e., the unknown
@@ -78,8 +78,10 @@ For example:
 <div class=chapter><h1>foo</h1><p>...</div>
   => <H1>,"foo",</H1>,<P>,"..."
 
+
 xxx <P ID=z23> yyy
   => "xxx ",<P>," yyy
+
 
 Let &alpha; &amp; &beta; be finite sets.
   => "Let &alpha; & &beta; be finite sets."
@@ -88,7 +90,7 @@ Let &alpha; &amp; &beta; be finite sets.
 Support for notifying the user of such errors is encouraged.
 
 Information providers are warned that this convention is not binding:
-unspecified behavior may result, as such markup is not conforming to
+unspecified behavior may result, as such markup does not conform to
 this specification.
 
 
@@ -100,7 +102,7 @@ character (code positions 10 and 13 respectively) (section
 7.6.1, "Record Boundaries" in [SGML]).
 
 [MIME] specifies that a body of type <code>text/*</> is a sequence of
-lines, each terminated by CRLF, that is, octets 10, 13.
+lines, each terminated by CRLF, that is, octets 13, 10.
 
 In practice, HTML documents are frequently represented and
 transmitted using an end of line convention that depends on the
@@ -118,17 +120,3 @@ variations as a word space in all contexts except
 preformatted text. Within preformatted text, an HTML user agent
 should treat any of the three common representations of
 end-of-line as starting a new line.
-
-<h2 id=security>Security Considerations
-
-Anchors, embedded images, and all other elements which contain
-URIs as parameters may  cause the URI to be dereferenced in response
-to user input. In this case, the security  considerations of the URI
-specification apply.
-  
-The widely deployed methods for submitting forms requests -- HTTP and
-SMTP -- provide little assurance of confidentiality. Information
-providers who request sensitive information via forms -- especially by
-way of the <code/PASSWORD/ type input field (see <hdref refid=input>)
--- should be aware and make their users aware of the lack of
-confidentiality.

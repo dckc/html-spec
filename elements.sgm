@@ -1,12 +1,14 @@
 <h1>Document Structure
 
-An HTML document is a hierarchy of elements.
+An HTML document is a tree of elements, including a head and body,
+headings, paragraphs, lists, etc. Form elements are discussed in
+<hdref refid=forms>.
 
 <h2>Document Element: HTML
 
 The HTML document element consists of a head and a body, much
 like a memo or a mail message. The head contains the
-title and other optional elements. The body is a text flow
+title and optional elements. The body is a text flow
 consisting of paragraphs, lists, and other elements.
 
 <h2>Head: HEAD

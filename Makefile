@@ -58,7 +58,8 @@ HYPERTEXT = html-spec_toc.html \
 	html-spec_10.html \
 	html-spec_11.html \
 	html-spec_12.html \
-	html-spec_13.html
+	html-spec_13.html \
+	html-spec_14.html
 
 
 

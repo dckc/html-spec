@@ -1,9 +1,12 @@
-<h1 id=iso-latin-1>The ISO 8859-1 Coded Character Set
+<h1 id=iso-latin-1>The HTML Coded Character Set
 
-<p>This list, sorted numerically, is derived from [ISO-8859-1].
+<p>This list details the code positions and characters of the HTML
+document character set, specified in <hdref refid=decl>.  This coded
+character set is based on [ISO-8859-1].
 
 <listing><![CDATA[
 REFERENCE	DESCRIPTION
+--------------  -----------
 
 &#00; - &#08;	Unused
 
@@ -60,8 +63,9 @@ REFERENCE	DESCRIPTION
 &#125;		Right curly brace
 &#126;		Tilde
 
-&#127; - &#160;	Unused
+&#127; - &#159;	Unused
 
+&#160;          Non-breaking Space
 &#161;		Inverted exclamation
 &#162;		Cent sign
 &#163;		Pound sterling

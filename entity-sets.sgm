@@ -11,7 +11,7 @@ writer.
 Numeric and Special Graphic entity set, along with its name, syntax
 for use, and description. This list is derived from <code>ISO Standard
 8879:1986//ENTITIES Numeric and Special Graphic//EN</code>.  However,
-HTML does not include for the entire entity set -- only the entities
+HTML does not include for the entire entity set &mdash; only the entities
 listed below are included.
 
 <listing><![CDATA[

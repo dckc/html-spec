@@ -182,15 +182,6 @@ SDA & ICADD:
 
 <!--========= Link Markup ======================-->
 
-<![ %HTML.Recommended [
-        <!ENTITY % linkName "ID">
-]]>
-
-<!ENTITY % linkName "CDATA">
-
-<!ENTITY % linkType "NAME"
-        -- a list of these will be specified at a later date -->
-
 <!ENTITY % linkExtraAttributes
         "REL %linkType #IMPLIED
         REV %linkType #IMPLIED
@@ -212,7 +203,7 @@ SDA & ICADD:
 <!ELEMENT A     - - %A.content -(A)>
 <!ATTLIST A
         HREF %URI #IMPLIED
-        NAME %linkName #IMPLIED
+        NAME CDATA #IMPLIED
         %linkExtraAttributes;
         %SDAPREF; "<Anchor: #AttList>"
         >
@@ -540,15 +531,13 @@ SDA & ICADD:
 <!--======= Document Head ======================-->
 
 <![ %HTML.Recommended [
-	<!ENTITY % head.extra "META* & LINK*">
+	<!ENTITY % head.extra "">
 ]]>
+<!ENTITY % head.extra "& NEXTID?">
 
-<!ENTITY % head.extra "NEXTID? & META* & LINK*">
+<!ENTITY % head.content "TITLE & ISINDEX? & BASE? %head.extra">
 
-<!ENTITY % head.content "TITLE & ISINDEX? & BASE? &
-			 (%head.extra)">
-
-<!ELEMENT HEAD O O  (%head.content)>
+<!ELEMENT HEAD O O  (%head.content) +(META|LINK)>
 
 <!-- <HEAD>     Document head   -->
 
@@ -588,7 +577,7 @@ SDA & ICADD:
 
 <!ELEMENT NEXTID - O EMPTY>
 <!ATTLIST NEXTID
-        N %linkName #REQUIRED     >
+        N CDATA #REQUIRED     >
 
 <!-- <NEXTID>		Next ID to use for link name		-->
 <!-- <NEXTID N=...>	Next ID to use for link name		-->

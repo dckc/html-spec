@@ -4,10 +4,13 @@
 combination; for example, a <tag/OL/ may be nested in an <tag/LI/
 element of a <tag/UL/.
 
+<p>The <attr/COMPACT/ attribute suggests that a compact rendering be
+used.
+
 <h3>Unordered List: UL, LI
 
-<p>The <tag/UL/ represents a list of items with no inherent ordering
--- typically a bulleted list.
+<p>The <tag/UL/ represents a list of items &mdash; typically a
+bulleted list.
 
 <p>The content of a <tag/UL/ element is a sequence of <tag/LI/
 elements. For example:
@@ -23,15 +26,16 @@ elements. For example:
 
 <h3>Ordered List: OL
 
-<p>The <tag/UL/ element represents an ordered list of items, sorted by
-sequence or order of importance.
+<p>The <tag/OL/ element represents an ordered list of items, sorted by
+sequence or order of importance. It is typically rendered as a
+numbered list.
 
 <p>The content of a <tag/OL/ element is a sequence of <tag/LI/
 elements. For example:
 
 <listing><![CDATA[
 <OL>
-<LI>Click the Web button to open the Open the URI window.
+<LI>Click the Web button to open URI window.
 <LI>Enter the URI number in the text field of the Open URI 
 window. The Web document you specified is displayed.
   <ol>
@@ -42,9 +46,6 @@ window. The Web document you specified is displayed.
 </OL>
 ]]></listing>
 
-<p>The <attr/COMPACT/ attribute suggests that a compact rendering be
-used.
-
 <h3>Directory List: DIR
 
 <p>The <tag/DIR/ element is similar to the <tag/UL/ element.  It
@@ -52,7 +53,7 @@ represents a list of short items, typically up to 20 characters
 each. Items in a directory list may be arranged in columns, typically
 24 characters wide.
 
-<p>The content of a <tag/OL/ element is a sequence of <tag/LI/
+<p>The content of a <tag/DIR/ element is a sequence of <tag/LI/
 elements. Nested block elements are not allowed in the content of
 <tag/DIR/ elements. For example:
 
@@ -88,8 +89,10 @@ definitions. Definition lists are typically formatted with the term
 flush-left and the definition, formatted paragraph style, indented
 after the term.
 
-<p>The content of a DL element is a sequence of DT elements and/or DD
-elements, usually in pairs.
+<p>The content of a <tag/DL/ element is a sequence of <tag/DT/
+elements and/or <tag/DD/ elements, usually in pairs. Multiple <tag/DT/
+may be paired with a single <tag/DD/ element. Documents should not
+contain multiple consecutive <tag/DD/ elements.
 
 <p>Example of use:
 
@@ -100,10 +103,10 @@ elements, usually in pairs.
 </DL>
 ]]></listing>
 
-<p>If the DT term does not fit in the DT column (one third of the
-display area), it may be extended across the page with the DD section
-moved to the next line, or it may be wrapped onto successive lines of
-the left hand column.
+<p>If the DT term does not fit in the DT column (typically one third
+of the display area), it may be extended across the page with the DD
+section moved to the next line, or it may be wrapped onto successive
+lines of the left hand column.
 
 <p>The optional <attr/COMPACT/ attribute suggests that a compact
 rendering be used, because the list items are small and/or the entire

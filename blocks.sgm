@@ -1,8 +1,9 @@
 <!-- $Id$ -->
 <h2>Block Structuring Elements
 
-<p>Each of the following elements defines a block structure; that is,
-they indicate a paragraph break before and after.
+<p>Block structuring elements include paragraphs, lists, and block
+quotes. They must not contain heading elements, but they may contain
+phrase markup, and in some cases, they may be nested.
 
 <h3>Paragraph: P
 
@@ -28,12 +29,12 @@ convention facilitates document maintenance.</P>
 <h3 id=pre>Preformatted Text: PRE
 
 <p>The <tag/PRE/ element represents a character cell block of text and
-so is suitable for text that has been formatted on screen.
+is suitable for text that has been formatted for a monospaced font.
 
-<p>The <tag/PRE/ tag may be used with the optional WIDTH attribute. The
-WIDTH attribute specifies the maximum number of characters for a line
-and allows the HTML user agent to select a suitable font and
-indentation.
+<p>The <tag/PRE/ tag may be used with the optional <attr/WIDTH/
+attribute. The WIDTH attribute specifies the maximum number of
+characters for a line and allows the HTML user agent to select a
+suitable font and indentation.
 
 <p>Within preformatted text:
 
@@ -47,8 +48,7 @@ width required.
 </note>
 
 <li>Anchor elements and phrase markup may be used.
-<NOTE>Within a Preformatted Text element, the constraint that the
-rendering must be on a fixed horizontal character pitch may limit or
+<NOTE>Constraints on the processing of <tag/PRE/ content may may limit or
 prevent the ability of the HTML user agent to faithfully render
 phrase markup.
 </note>
@@ -56,15 +56,16 @@ phrase markup.
 <li>Elements that define paragraph formatting (headings, address,
 etc.) must not be used.
 <NOTE>Some historical documents contain <tag/P/ tags in <tag/PRE/
-elements.  User agents are encouraged to treat this a a line break. A
+elements.  User agents are encouraged to treat this as a line break. A
 <tag/P/ tag followed by a newline character should produce only one
 line break, not a line break plus a blank line.
 </note>
 
-<li>The horizontal tab character (code position 9 in [ISO-8859-1])
-must be interpreted as the smallest positive nonzero number of spaces
-which will leave the number of characters so far on the line as a
-multiple of 8.
+<li>The horizontal tab character (code position 9 in the HTML document
+character set) must be interpreted as the smallest positive nonzero
+number of spaces which will leave the number of characters so far on
+the line as a multiple of 8. Documents should not contain tab
+characters, as they are not supported consistently.
 </ul>
 
 <p>Example of use:
@@ -77,7 +78,7 @@ Line 1.
 </PRE>
 ]]></listing>
 
-<h4>Example and Listing: XMP, LISTING
+<h4 id=xmp>Example and Listing: XMP, LISTING
 
 <p>The <tag/XMP/ and <tag/LISTING/ elements are similar to the
 <tag/PRE/ element, but they have a different syntax. Their content is
@@ -93,7 +94,7 @@ be treated as data characters, as long as the tag name was not
 <p>Since CDATA declared content has a number of unfortunate
 interactions with processing techniques and tends to be used and
 implemented inconsistently, HTML documents should not contain
-<tag/XMP/ nor <tag/LISTING/ elements -- the <tag/PRE/ tag is more
+<tag/XMP/ nor <tag/LISTING/ elements &mdash; the <tag/PRE/ tag is more
 expressive and more consistently supported.
 
 <p>The <tag/LISTING/ element should be rendered so that at least 132
@@ -109,7 +110,7 @@ are data.
 
 <h3>Address: ADDRESS
 
-<p>The <tag/ADDRESS/ element specifies such information as address,
+<p>The <tag/ADDRESS/ element contains such information as address,
 signature and authorship, often at the beginning or end of the body of
 a document.
 
@@ -122,7 +123,7 @@ typeface and may be indented.
 <ADDRESS>
 Newsletter editor<BR>
 J.R. Brown<BR>
-JimquickPost News, Jumquick, CT 01234<BR>
+JimquickPost News, Jimquick, CT 01234<BR>
 Tel (123) 456 7890
 </ADDRESS>
 ]]></listing>
