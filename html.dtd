@@ -46,12 +46,15 @@
 	]]>
 
 <![ %HTML.Prescriptive [
+	<!--
+	This feature test entity prescribes that certain
+	idioms detract from the structural integrity of an
+	HTML document, and are therefore disallowed.
+	-->
 	<!ENTITY % HTML.font-phrase "IGNORE">
 	<!ENTITY % HTML.anchorNameCDATA "IGNORE">
 	<!ENTITY % HTML.PLAINTEXT "IGNORE">
-	<!ENTITY HTML.Version
-	"-//connolly hal.com//DTD WWW HTML
-		 $Date 1994/04/19 17:24:06 $ Prescriptive//EN">
+	<!ENTITY % HTML.bodyBlockOnly "INCLUDE">
 	]]>
 
 <!ENTITY HTML.Version
@@ -62,18 +65,13 @@
 	-- we'll need to stop using RCS keywords to version the pub id   --
 	>
 
-<!ENTITY % HTML.GO "IGNORE"
-	-- The GO element used in ORA GNN. What is this??? -->
-
-<!ENTITY % HTML.aEndOmissable "IGNORE"
-	-- infer </A> tags, as in ORA GNN stuff -->
-
-<!ENTITY % HTML.isindexAtEnd "IGNORE"
-	-- allow ISINDEX after HEAD and BODY, as in ORA GNN stuff -->
+<!ENTITY % HTML.bodyBlockOnly "IGNORE"
+	-- only allow block elements in the BODY element
+	This means all paragraphs need to start with a <P> tag.
+	-->
 
 <!ENTITY % HTML.pSeparator "IGNORE"
 	-- use P element as paragraph separator, rather	that container.
-	This means not all paragraphs need to start with a <P> tag.
 	-->
 
 <!ENTITY % HTML.linkRelationships "INCLUDE"
@@ -123,6 +121,17 @@
 	CITE, VAR, etc. inside PRE
 	-->
 
+<!ENTITY % HTML.KEY "IGNORE"
+	-- There was once a KEY element, for keyboard keys, menu items,
+	buttons, etc. but it's not supported or widely documented
+	-->
+
+<!ENTITY % HTML.U "IGNORE"
+	-- There was also a U element, but since it clashes with
+	the common pracitce of underlining hypertext links, it is
+	not widely supported
+	-->
+
 <!ENTITY % HTML.litCDATA "IGNORE"
 	-- treat XMP, LISTING as CDATA, as per linemodeWWW
 	-->
@@ -148,10 +157,12 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	Note that CDATA attributes are limited by the LITLEN
 	capacity (1024 in the current version of html.decl),
 	so that URIs in HTML have a bounded length.
+
+	@@ Need to discuss relative addresses.
         -->
 
 <!ENTITY % Content-Type "CDATA"
-	-- meaning a MIME content type, as per RFC1341 or any of its updates.
+	-- meaning a MIME content type, as per RFC1521
 	-->
 
 <![ %HTML.anchorNameCDATA [ <!ENTITY % anchor-name "CDATA"> ]]>
@@ -194,10 +205,8 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <![ %HTML.PLAINTEXT [ <!ENTITY % obsolete-plaintext ", PLAINTEXT?"> ]]>
 <!ENTITY % obsolete-plaintext "">
-<![ %HTML.isindexAtEnd [ <!ENTITY % end-isindex ", ISINDEX?"> ]]>
-<!ENTITY % end-isindex "">
 
-<!ENTITY % html-content "HEAD, BODY %obsolete-plaintext; %end-isindex">
+<!ENTITY % html-content "HEAD, BODY %obsolete-plaintext;">
 <!ELEMENT HTML O O  (%html-content)>
 
 <![ %HTML.NEXTID [  <!ENTITY % head-content "TITLE? & ISINDEX? & LINK* & BASE?
@@ -231,12 +240,24 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ELEMENT BASE - O EMPTY    -- Reference context for URIs -->
 <!ATTLIST BASE
 
-        HREF %URI; #IMPLIED
+        HREF %URI; #REQUIRED
 
         >
 
-<!ENTITY % font "TT | B | I | U ">
-<!ENTITY % phrase "EM | STRONG | CODE | SAMP | KBD | KEY | VAR | DFN | CITE">
+<![ %HTML.KEY [
+	<!ENTITY % key-emph "| KEY">
+	]]>
+<!ENTITY % key-emph "">
+
+<![ %HTML.U [
+	<!ENTITY % u-font "| U">
+	]]>
+<!ENTITY % u-font "">
+
+<!ENTITY % font "TT | B | I %u-font">
+<!ENTITY % phrase "EM | STRONG | CODE | SAMP | KBD | VAR | DFN | CITE
+	 | STRIKE %key-emph">
+
 
 <![ %HTML.font-phrase [
 	<!ENTITY % obsolete-font "| %font">
@@ -252,13 +273,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % inline "%phrase %obsolete-font">
 <!ENTITY % pre-inline "%font %obsolete-phrase %obsolete-p">
 
-<![ %HTML.GO [
-	<!ELEMENT GO - O EMPTY>
-	<!ENTITY % go-text "| GO">
-	]]>
-<!ENTITY % go-text "">
-
-<!ENTITY % text "#PCDATA | IMG | %inline | BR %go-text %obsolete-p">
+<!ENTITY % text "#PCDATA | IMG | %inline | BR %obsolete-p">
 
 <!ENTITY % htext "A | %text"    -- Plus links, no structure -->
 
@@ -285,14 +300,16 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 		%block-form %block-p">
 
 
-<!ENTITY % body-content "%heading | %block | %htext">
+<![ %HTML.bodyBlockOnly [
+	<!ENTITY % current-htext "">
+	]]>
+<!ENTITY % current-htext "| %htext">
+
+<!ENTITY % body-content "%heading | %block %current-htext">
 <!ELEMENT BODY O O  (%body-content)*>
 
 
-<![ %HTML.aEndOmissable [ <!ENTITY % a-end "O"> ]]>
-<!ENTITY % a-end "-">
-
-<!ELEMENT A     - %a-end (%heading|%block|%text)+ -(A)
+<!ELEMENT A     - - (%heading|%block|%text)+ -(A)
 	-- @# Technically, this allows silliness like:
 		<H2><A>xyz<H1>h1</H1></A></H2>
 	The right way to do anchors outside of %htext is more like:
@@ -347,22 +364,16 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 %ISOlat1;
 
 <!ENTITY #DEFAULT SDATA "&#38;unkown;" --display the markup-->
-<!ENTITY amp "&#38;"     -- ampersand -->
-<!ENTITY gt "&#62;"      -- greater than -->
-<!ENTITY lt "&#60;"      -- less than -->
-<!ENTITY quot "&#34;"      -- less than -->
+<!ENTITY amp CDATA "&#38;"     -- ampersand -->
+<!ENTITY gt CDATA "&#62;"      -- greater than -->
+<!ENTITY lt CDATA "&#60;"      -- less than -->
+<!ENTITY quot CDATA "&#34;"    -- double quote -->
+
+<!-- Processing Entities -->
+
 <!ENTITY nbsp "<? nonbreaking-space>">
 <!-- @# should add entites for processing instructions
 	for line break, centering, etc. -->
-
-
-<![ %HTML.litCDATA [ <!ENTITY % lit-content "CDATA"> ]]>
-<!ENTITY % lit-content "RCDATA">
-<!ELEMENT (%literal) - -  %lit-content>
-
-<![ %HTML.PLAINTEXT [
-<!ELEMENT PLAINTEXT - O EMPTY>
-]]>
 
 
 <!-- Forms  -->
@@ -412,3 +423,12 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 	>
 ]]>
 
+<!-- Obsolete Elements  -->
+
+<![ %HTML.litCDATA [ <!ENTITY % lit-content "CDATA"> ]]>
+<!ENTITY % lit-content "RCDATA">
+<!ELEMENT (%literal) - -  %lit-content>
+
+<![ %HTML.PLAINTEXT [
+<!ELEMENT PLAINTEXT - O EMPTY>
+]]>
