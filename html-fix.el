@@ -1,7 +1,8 @@
 ;;;(require 'sgml)
 
+
 (defvar html-doctype-decl
-  "<!DOCTYPE HTML PUBLIC \"-//connolly hal.com//DTD WWW HTML 1.9//EN\">")
+  "<!DOCTYPE HTML PUBLIC \"-//W3O//DTD WWW HTML 2.0//EN\">")
 
 (defvar html-body-element
   '(H1 H2 H3 H4 H5 H6 DL UL OL ADDRESS BLOCKQUOTE PRE XMP LISTING))
