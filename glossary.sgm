@@ -1,0 +1,107 @@
+<h1>Glossary
+
+<tl>
+<tli>character: An atom of information, for example a letter or a
+digit.  Graphic characters have associated glyphs, where as control
+characters have associated processing semantics.
+
+<tli>character encoding scheme: A function whose domain is the set of
+sequences of octets, and whose range is the set of sequences of
+characters from a character repertoire; that is, a sequence of octets
+and a character encoding scheme determines a sequence of characters.
+
+<tli>character repertoire: A finite set of characters; e.g. the range
+of a coded character set.
+
+<tli>code position: An integer. A coded character set and a code
+position from its domain determine a character.
+
+<tli>coded character set: A function whose domain is a subset of the
+integers and whose range is a character repertoire. That is, for some
+set of integers (usually of the form {0, 1, 2, ..., N} ), a coded
+character set and an integer in that set determine a
+character. Conversely, a character and a character set determine the
+character's code position (or, in rare cases, a few code positions).
+
+<tli>conforming HTML user agent: A user agent that conforms to this
+specification in its processing of the Internet Media Type
+<code>text/html; version=2.0</code>.
+
+<tli>data characters: Characters other than markup, which make up the
+content of elements.
+
+<tli>DTD: document type definition. @@ A collection of
+declarations (entity, element, attribute, link, map, etc.) in SGML
+syntax that defines the components and structures available for a
+class (type) of documents. [SGML]
+
+<tli>element: @@A component of the hierarchical structure defined by
+the document type definition; it is identified in a document instance
+by descriptive markup, usually a start-tag and an end- tag. [SGML]
+
+<tli>entity: data with an associated notation or interpretation; for
+example, a sequence of octets associated with an Internet Media Type. [SGML]
+
+<tli>HTML document: An SGML document conforming to this document type
+definition.
+
+<tli>markup: Syntactically delimited characters added to the data of a
+document to represent its structure. There are four different kinds of
+markup: descriptive markup (tags), references, markup declarations,
+and processing instructions.[SGML]
+
+<tli>may: The implementation is not obliged to follow this in any way.
+
+<tli>message entity: a head and body. The head is a collection of
+name/value fields, and the body is a sequence of octets. The head
+defines the content type and content transfer encoding of the body. [MIME]
+
+<tli>minimally conforming HTML user agent: A user agent that conforms
+to this specification in its treatment of the Internet Media Type
+"text/html; level=0; version=2.0"
+
+<tli>must: If this is not followed, the implementation does not
+conform to this specification.
+
+<tli>SGML document: A set of entities, including the document entity,
+which is a text entity that conforms to the grammar specified in the
+SGML standard.[SGML]
+
+<tli>shall: If a document or user agent conflicts with this statement,
+it does not conform to this specification.
+
+<tli>should: If a document or user agent conflicts with this
+statement, undesirable results may occur in practice even though the
+document or user agent conforms to this specification.
+
+<tli>tag: Markup that delimits an element. A tag includes a name which
+refers to an element declaration in the DTD, and may include
+attributes.[SGML]
+
+<tli>text entity: A finite sequence of characters. A text entity
+typically takes the form of a sequence of octets with some associated
+character encoding, transmitted over the network or stored in a file.[SGML]
+
+<tli>typical: Typical rendering is described for many elements. This
+is not a mandatory part of the specification but is given as guidance
+for designers and to help explain the uses for which the elements were
+intended.
+
+<tli>URI: A Universal Resource Identifier is a formatted string that
+serves as an identifier for a resource, typcally on the Internet. URIs
+are used in HTML to identify the destination of hypertext links, the
+source of in-line images, and the object of form actions. URIs in
+common use include Uniform Resource Locators (URLs)[URL]
+and Relative URLs[RELURL].
+
+<tli>user agent: A component of a distributed system that presents
+an interface and processes requests on behalf of a user; for example,
+a www browser or a mail user agent.
+
+<tli>WWW: The World-Wide Web is a hypertext-based, distributed
+information system created by researchers at CERN in
+Switzerland. Users may create, edit or browse hypertext
+documents. <code>http://www.w3.org/</>
+
+</tl>
+

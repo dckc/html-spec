@@ -109,8 +109,8 @@ followed by a <tag/LI/ (list item) tag:
 
 <listing><![CDATA[
 <OL>
-<LI>Click the Web button to open the Open the URL window.
-<LI>Enter the URL number in the text field of the Open URL 
+<LI>Click the Web button to open the Open the URI window.
+<LI>Enter the URI number in the text field of the Open URI 
 window. The Web document you specified is displayed.
 <LI>Click highlighted text to move from one link to another.
 </OL>

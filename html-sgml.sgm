@@ -1,94 +1,202 @@
 <h1>HTML as an Application of SGML
 
 <p>HTML is an application of ISO Standard 8879:1986 - Standard
-Generalized Markup Language (SGML)<liref refid=SGML>. SGML is a system for
-defining structured document types and markup languages to represent
-instances of those document types. The SGML declaration for HTML and
-the HTML document type definitions (DTDs) are provided in Section 12.
+Generalized Markup Language (SGML). SGML is a system for defining
+structured document types and markup languages to represent instances
+of those document types[SGML]. The public text -- DTD and SGML
+declaration -- of the HTML document type definition are provided in
+<hdref refid=pubtext>.
+
+The term <emph/HTML/ refers to both the document type defined here and
+the markup language for representing instances of this document type.
 
 <h2>SGML Documents
 
-<p>Every SGML document has three parts:
+An HTML document is an SGML document; that is, a set of entities,
+including the document entity, which is text entity in which parsing
+begins. The first production of the SGML grammar separates an SGML
+document into three parts: an SGML declaration, a prologue, and an
+instance.
 
-<tl>
-<tli>SGML declaration:
+For the purposes of this specification, the prologue is a DTD. This
+DTD describes another grammar: the start symbol is given in the
+doctype declaration; the terminals are data characters and tags, and
+the productions are determined by the element declarations. The
+instance must conform to the DTD, that is, it must be in the language
+defined by this grammar.
 
-Binds SGML processing quantities and syntax token names to specific
-values. For example, the SGML declaration in the HTML DTD specifies
-that the string that opens an end tag is "</" and the maximum length
-of a name is 72 characters.
+The SGML declaration determines the lexicon of the grammar. It
+specifies the document character set, which determines a
+character repertoire that contains all characters that occur in all
+text entities in the document, and the character numbers associated with
+those characters.
 
-<tli>Prologue:
+The SGML declaration also specifies the syntax character set of the
+document, and a few other parameters that bind the abstract syntax
+of SGML to a concrete syntax. This concrete syntax determines how
+each text entity is mapped to a sequence of terminals in the grammar
+of the prologue.
 
-Includes one or more document type declarations, which specify the
-element types, element relationships and attributes.
+For example, consider the following document:
 
-<tli>Instance:
+<listing><![CDATA[
+<!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<title>Parsing Example</title>
+<p>Some text. <em>&#42;wow&#42;</em>
+]]></listing>
 
-Contains the data and markup of the document.
+An HTML user agent should use the SGML declaration is given in <hdref
+refid=decl>. It specifies ISO-8859-1 as the document character set, so
+that the markup <code>&amp;#42;</> represents an asterisk character.
 
-</tl>
+The instance above is regarded as the following sequence of terminals:
 
-<p>The term "HTML" refers to both the document type and the markup
-language for representing instances of that document type.
+<ol>
+<li>TITLE start tag
+<li>data characters: "Parsing Example"
+<li>TITLE end tag
+<li>P start tag
+<li>data characters "Some text. "
+<li>EM start tag
+<li>"*wow*"
+<li>EM end tag
+</ol>
 
-<h2>SGML Syntax
+The start symbol of the DTD grammar is HTML, and the productions
+are given in the public text identified by <code>-//IETF//DTD HTML
+2.0//EN</code> (<hdref refid=dtd>). Hence the terminals above parse as:
 
-<p>An HTML document instance is a text file in which some of the
-characters are markup.  Markup (tags) define the structure of the
-document.
+<listing><![CDATA[
+   HTML
+    |
+    \-HEAD,     BODY
+       |	 |
+       \-TITLE	 \-P
+           |	   |
+           |	   \-<P>,"Some text. ",EM
+           |                            |
+           |                            \-<EM>,"*wow*",</EM>
+           \-<TITLE>,"Parsing Example",</TITLE>
+]]></listing>
 
-<h3>Elements
+<h2>HTML Lexical Syntax
 
-<p>Tags define the start and end of headings, paragraphs, lists,
-character highlighting and links. Most HTML elements are identified in
-a document as a start tag, which gives the element name and
-attributes, followed by the content, followed by the end tag. Start
-tags are delimited by "<" and ">"; end tags are delimited by "</" and
-">". An example is:
+The syntax character set for all HTML documents is ISO-646-IRV. A
+minimally conforming HTML user agent must support the SGML
+declaration in <hdref refid=decl>, which specifies ISO Latin 1 (@@full
+name) as the document character set; it may support other SGML
+declarations, in particular, SGML declarations with other document
+character sets.
 
-<listing><![ CDATA [
+A complete discussion of SGML parsing, e.g. the mapping of a sequence
+of characters to a sequence of tags and data is left to the SGML
+standard[SGML]. This section is only a summary.
+
+<h3>Data Characters
+
+Any sequence of characters that do not constitute markup (see
+"Delimiter Recognition," section @@@ of [SGML]) are mapped directly to
+strings of data characters. Some markup also maps to data character
+strings. Numeric character references also map to single-character
+strings, via the document character set. Each reference to one of the
+general entities defined in the HTML DTD also maps to a
+single-character string.
+
+For example,
+
+<listing><![CDATA[
+abc&lt;def    => "abc","<","def"
+abc&#60;def   => "abc","<","def"
+]]></listing>
+
+Note that the terminating semicolon is only necessary when the
+character following the reference would otherwise be recognized as
+markup:
+
+<listing><![CDATA[
+abc &lt def     => "abc ","<"," def"
+abc &#60 def    => "abc ","<"," def"
+]]></listing>
+
+And note that an ampersand is only recognized as markup when it
+is followed by a letter or number:
+
+<listing><![CDATA[
+abc & lt def    => "abc & lt def"
+abc & 60 def    => "abc & 60 def"
+]]></listing>
+
+A useful technique for translating plain text to HTML is to replace
+each '<', '&', and '>' by an entity reference or numeric character
+reference as follows:
+
+<listing><![CDATA[
+                 ENTITY      NUMERIC
+       CHARACTER REFERENCE   CHAR REF     CHARACTER DESCRIPTION
+         &       &amp;       &#38;        Ampersand 
+         <       &lt;        &#60;        Less than
+         >       &gt;        &#62;        Greater than
+]]></listing>
+
+<note>There are SGML mechanisms, CDATA and RCDATA, to allow most <code><</>,
+<code>></>, and <code>&</> characters to be entered without the use of entity
+references. Because these features tend to be used and implemented
+inconsistently, and because they conflict with techinques for reducing
+HTML to 7 bit ASCII for transport, they are not used in this version
+of the HTML DTD.
+</note>
+
+<h3>Tags
+
+Tags delimit elements such as headings, paragraphs, lists, 
+character highlighting and links. Most HTML elements are identified 
+in a document as a start tag, which gives the element name and 
+attributes, followed by the content, followed by the end tag. Start 
+tags are delimited by <code><</> and <code>></>; end tags are delimited by <code></</> 
+and <code>></>. An example is:
+
+<listing><![CDATA[
 <H1>This is a Heading</H1>
-]]>
-</listing>
+]]></listing>
 
-<p>Some elements only have a start tag without an end tag. For
-example, to create a line break, you use the &lt;BR> tag. Additionally,
-the end tags of some other elements, such as Paragraph (&lt;P>), List
-Item (&lt;LI>), Definition Term (&lt;DT>), and Definition Description (&lt;DD>)
+Some elements only have a start tag without an end tag. For example,
+to create a line break, you use the <code/&lt;BR>/ tag.  Additionally,
+the end tags of some other elements, such as Paragraph
+(<code>&lt;/P></>), List Item (<code>&lt;/LI></>), Definition Term
+(<code>&lt;/DT></>), and Definition Description (<code>&lt;DD></>)
 elements, may be omitted.
 
-<p>The content of an element is a sequence of characters and nested
-elements. Some elements, such as anchors, cannot be nested. Anchors
-and character highlighting may be put inside other constructs.
-
-<NOTE>The SGML declaration for HTML specifies SHORTTAG YES, which
+The content of an element is a sequence of data character strings and nested 
+elements. Some elements, such as anchors, cannot be nested. Anchors 
+and character highlighting may be put inside other constructs. See
+the HTML DTD, <hdref refid=dtd> for full details.
+<note>The SGML declaration for HTML specifies SHORTTAG YES, which
 means that there are other valid syntaxes for tags, such as NET tags,
-"&lt;EM/.../"; empty start tags, "&lt;>"; and empty end tags,
-"&lt;/>". Until support for these idioms is widely deployed, their use
-is strongly discouraged.
+<code>&lt;EM/.../</>; empty start tags, <code>&lt></code>; and empty
+end tags, <code>&lt;/></>. Until support for these idioms is widely
+deployed, their use is strongly discouraged.
 </note>
 
 <h3>Names
 
-<p>A name consists of a letter followed by up to 71 letters, digits,
+A name consists of a letter followed by up to 71 letters, digits,
 periods, or hyphens. Element names are not case sensitive, but entity
-names are. For example, <code/&lt;BLOCKQUOTE>/,
-<code/&lt;BlockQuote>/, and <code/&lt;blockquote>/ are equivalent,
-whereas <code/&amp;&amp;/ is different from <code/&amp;AMP;/.
+names are. For example, <code>&lt;BLOCKQUOTE></>,
+<code>&lt;BlockQuote></>, and <code>&lt;blockquote></> are equivalent,
+whereas <code>&amp;amp;</> is different from <code>&amp;AMP;</>.
 
-<p>In a start tag, the element name must immediately follow the tag
-open delimiter "<".
+In a start tag, the element name must immediately follow the tag 
+open delimiter <code>&lt;</>.
 
 <h3>Attributes
 
-<p>In a start tag, white space and attributes are allowed between the
+In a start tag, white space and attributes are allowed between the
 element name and the closing delimiter. An attribute typically
-consists of an attribute name, an equal sign, and a value (although
-some attributes may be just a value). White space is allowed around
+consists of an attribute name, an equal sign, and a value, though
+some attributes may be just a value. White space is allowed around
 the equal sign.
 
-<p>The value of the attribute may be either:
+The value of the attribute may be either:
 
 <ul>
 <li>A string literal, delimited by single quotes or double quotes and
@@ -97,119 +205,91 @@ not containing any occurrences of the delimiting character.
 <li>A name token (a sequence of letters, digits, periods, or hyphens)
 </ul>
 
-<p>In this example, A is the element name, HREF is the attribute name, and 
-<code>http://host/dir/file.html</> is the attribute value:
+In this example, img is the element name, <code>src</> is the attribute name, 
+and <code>http://host/dir/file.gif</code> is the attribute value:
 
 <listing><![CDATA[
-<A HREF="http://host/dir/file.html">
-]]>
-</listing>
+<img src="http://host/dir/file.gif">
+]]></listing>
 
-<NOTE>Some non-SGML implementations consider any occurrence of the ">"
-character to signal the end of a tag. For compatibility with such
-implementations, when ">" appears in an attribute value, it should be
-represented with a character entity reference, such as in: &lt;IMG
-SRC="eq1.jpg" alt="a &#62; b">
+<note>Some historical implementations consider any occurrence
+of the <code>></> character to signal the end of a tag. For
+ompatibility with such implementations, when <code>></> appears in an
+attribute value, it should be represented with a numeric
+character reference, such as in:
+<code>&lt;IMG SRC="eq1.jpg" alt="a&#62;b"></>.
 </note>
 
-<p>To put quotes inside of quotes, the character entity
-<code/&amp;quot;/ may be used, as in:
+A useful technique for computing an attribute value literal for a
+given string is to replace each quote and space character by an
+entity reference or numeric character reference as follows:
+
+<listing><![CDATA[
+                 ENTITY      NUMERIC
+       CHARACTER REFERENCE   CHAR REF     CHARACTER DESCRIPTION
+         TAB                 &#9;         Tab
+         LF                  &#10;        Line Feed
+         CR                  &#13;        Carriage Return
+                             &#32;        Space
+         "       &quot;      &#34;        Quotation mark 
+         &       &amp;       &#38;        Ampersand 
+]]></listing>
+
+For example:
 
 <listing><![CDATA[
 <IMG SRC="image.jpg" alt="First &quot;real&quot; example">
-]]>
-</listing>
+]]></listing>
 
-<p>The length of an attribute value is limited to 1024 characters
-after replacing any character entity references.
-
-<NOTE>Some non-SGML implementations allow any character except space
-or ">" in a name token. Attributes values must be quoted only if they
-don't satisfy the syntax for a name token.
+<note>Some historical implementations allow any character 
+except space or <code>></> in a name token. Attributes values must 
+be quoted only if they don't satisfy the syntax for a name 
+token.
 </note>
 
-<p>Attributes with a declared value of NAME, such as ISMAP and
-COMPACT, may be written using a minimized syntax. The markup:
+Note that the SGML declaration in section 13.3 limits the length of
+an attribute value to 1024 characters.
+
+Attributes such as ISMAP and COMPACT, may be written using a minimized
+syntax. The markup:
 
 <listing><![CDATA[
 <UL COMPACT="compact">
-]]>
-</listing>
+]]></listing>
 
-<p>can be written using a minimized syntax:
+can be written using a minimized syntax:
 
 <listing><![CDATA[
 <UL COMPACT>
-]]>
-</listing>
+]]></listing>
 
-<NOTE>Some non-SGML implementations only understand the minimized
-syntax.
-</note>
-
-<h3>Entity References
-
-<p>SGML uses entity references, indicated by an ampersand (&) and
-immediately followed by a name and terminated by a semicolon (;), to
-represent a named substitution of data (the entity). HTML 2.0 only
-uses entity references to represent peculiar and special
-characters. The reference can be used in place of a character when the
-character itself would be misinterpreted as markup. The entity sets
-defined for use by HTML 2.0 documents are listed in Section 13.
-
-<p>The HTML DTD includes a character entity for each of the SGML
-markup characters, such that one may reference them by name if it is
-inconvenient to enter them directly:
-
-<listing><![CDATA[
-GLYPH	NAMED	OCTET	CHARACTER NAME
-
-  &	&amp;	&#38;	Ampersand	
-
-  "	&quot;	&#34;	Quotation mark	
-
-  <	&lt;	&#60;	Less than
-
-  >	&gt;	&#62;	Greater than
-]]>
-</listing>
-
-<p>To ensure that a sequence of data characters is not interpreted as
-markup, all occurrences of "<", ">", and "&" must be replaced by their
-character entity references.
-
-<NOTE>There are SGML features, CDATA and RCDATA, to allow most "<",
-">", and "&" characters to be entered without the use of entity
-references. Because these features tend to be used and implemented
-inconsistently, and because they require 8-bit characters to represent
-non-ASCII characters, they are not used in this version of the HTML
-DTD.
+<note>Some historical implementations only understand the 
+minimized syntax.
 </note>
 
 <h3>Comments
 
-<p>To include comments in an HTML document that will be ignored by the
-interpreter, surround them with "&lt;!--" and "-->". After the comment
-delimiter, all text up to the next occurrence of "-->" is
-ignored. Hence comments cannot be nested. White space is allowed
-between the closing "--" and ">", but not between the opening "<!" and
-"--".
+To include comments in an HTML document that will be eliminated in
+the mapping to terminals, surround them with <code><!--</> and
+<code>--></>. After the comment delimiter, all text up to the next
+occurrence of <code>--></> is ignored.  Hence comments cannot be
+nested. White space is allowed between the closing <code>--</> and <code>></>,
+but not between the opening <code><!</> and <code>--</>.
 
-<p>For example:
+For example:
 
-<listing><![CDATA[
+<listing<![CDATA[
 <HEAD>
 <TITLE>HTML Guide: Recommended Usage</TITLE>
 <!-- $Id$ -->
 </HEAD>
-]]>
-</listing>
+]]></listing>
 
-<NOTE>Some historical HTML interpreters incorrectly consider any ">"
-character to be the termination of a comment.
+<note>Some historical HTML implementations incorrectly consider 
+any <code>></> character to be the termination of a comment.
 </note>
 
-<h2>Example HTML Document
+<h3>Example HTML Document
 
 <listing><![CDATA[
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
@@ -242,5 +322,5 @@ end tag has been omitted.
 <IMG SRC ="triangle.xbm" alt="Warning:">
 Be sure to read these <b>bold instructions</b>.
 </BODY></HTML>
-]]>
-</listing>
+]]></listing>
+

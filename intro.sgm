@@ -1,6 +1,6 @@
 <h1>Introduction
 
-The HyperText Markup Language (HTML) is a simple markup language
+The HyperText Markup Language (HTML) is a simple data format
 used to create hypertext documents that are portable from one platform
 to another. HTML documents are SGML documents with generic semantics
 that are appropriate for representing information from a wide range of
@@ -13,10 +13,10 @@ initiative since 1990. This specification corresponds to the
 capabilities of HTML in common use prior to June 1994 and referred to
 as "HTML 2.0".
 
-This specification defines HTML as an application of ISO Standard
-8879:1986 Information Processing Text and Office Systems; Standard
-Generalized Markup Language (SGML). SGML provides a formal definition
-of the HTML syntax in the form of a Document Type Definition (DTD).
+HTML is an application of ISO Standard 8879:1986 <emph>Information
+Processing Text and Office Systems; Standard Generalized Markup
+Language</emph> (SGML). The HTML Document Type Definition (DTD) is a
+formal definition of the HTML syntax in terms of SGML.
 
 This specification also defines HTML as an Internet Media
 Type[IMEDIA] and MIME Content Type[MIME] called
@@ -24,170 +24,88 @@ Type[IMEDIA] and MIME Content Type[MIME] called
 defines the semantics of the HTML syntax and how that syntax should be
 interpreted by user agents.
 
-<h2>Terms
-
-<p>This specification defines the following terms:
-
-<tl>
-<tli>character: An atom of information, for example a letter or a
-digit.  Graphic characters have associated glyphs, where as control
-characters have associated processing semantics.
-
-<tli>character encoding scheme: A function whose domain is the set of
-sequences of octets, and whose range is the set of sequences of
-characters from a character repertoire; that is, a sequence of octets
-and a character encoding scheme determines a sequence of characters.
-
-<tli>code position: An integer that determines a character, as per
-some coded character set.
-
-<tli>character repertoire: A finite set of characters. The range of a
-coded character set.
-
-<tli>coded character set: A function whose domain is a subset of the
-integers and whose range is a character repertoire. That is, for some
-set of integers (usually of the form {0, 1, 2, ..., N} ), a coded
-character set and an integer in that set determine a
-character. Conversely, a character and a character set determine the
-character's code position (or, in rare cases, a few code positions).
-
-<tli>conforming HTML user agent: A user agent that conforms to this
-specification in its treatment of the Internet Media Type
-<code>text/html; version=2.0</code>.
-
-<tli>HTML document:
-
-An SGML document conforming to this document type definition.
-
-<tli>minimally conforming HTML user agent:
-
-A user agent that conforms to this specification in its
-treatment of the Internet Media Type "text/html; level=0;
-version=2.0"
-
-</tl>
-
-<h2>Terms from Normative References
-
-<p>The following terms are defined in the SGML[SGML],
-HTTP[HTTP], and URI[URI] specifications.@@
-
-<tl> <tli>document type definition (DTD): @@A DTD is a collection of
-declarations (entity, element, attribute, link, map, etc.) in SGML
-syntax that defines the components and structures available for a
-class (type) of documents.
-
-<tli>element: @@A component of the hierarchical structure defined by
-the document type definition; it is identified in a document instance
-by descriptive markup, usually a start-tag and an end- tag.
-
-<tli>entity: data with an associated notation or interpretation; for
-example, a sequence of octets associated with an Internet Media Type.
-
-<tli>HTTP: The Hypertext Transfer Protocol is the primary
-application-level protocol for the transfer of documents via the
-World-Wide Web.
-
-<tli>markup: Text added to the data of a document to represent its
-structure. There are four different kinds of markup: descriptive
-markup (tags), references, markup declarations, and processing
-instructions.
-
-<tli>MIME: The Multipurpose Internet Mail Extensions [4] provide the
-ability to transfer non-textual data, such as graphics, audio and fax,
-via Internet mail.
-
-<tli>message entity: a head and body. The head is a collection of
-name/value fields, and the body is a sequence of octets. The head
-defines the content type and content transfer encoding of the body.
-
-<tli>SGML: Standard Generalized Markup Language [12] (see also [9] and
-[6]) is a system for describing document types and markup languages to
-represent them.
-
-<tli>SGML document: A set of entities, including the document entity,
-which is a text entity that conforms to the grammar specified in the
-SGML standard.
-
-<tli>tag: Markup that delimits an element. A tag includes a name which
-refers to an element declaration in the DTD, and may include
-attributes.
-
-<tli>text entity: A finite sequence of characters. A text entity
-typically takes the form of a sequence of octets with some associated
-character encoding, transmitted over the network or stored in a file.
-
-<tli>URI: A Universal Resource Identifier is a formatted string that
-serves as an identifier for a resource, typcally on the Internet. URIs
-are used in HTML to identify the destination of hypertext links, the
-source of in-line images, and the object of form actions. URIs in
-common use include Uniform Resource Locators (URLs)[URL]
-and Relative URLs[RELURL].
-
-</tl>
-
-<h2>Glossary
-
-<p>These terms are used informally:
-
-<tl>
-<tli>user agent: A component of a distributed system that presents
-an interface and processes requests on behalf of a user; for example,
-a www browser or a mail user agent.
-
-<tli>WWW: The World-Wide Web is a hypertext-based, distributed
-information system created by researchers at CERN in
-Switzerland. Users may create, edit or browse hypertext
-documents. <code>http://www.w3.org/</>
-
-</tl>
-
-
 <h2>Conformance
 
-<emph>@@ this needs a LOT of work!</emph>
+This specification governs the syntax of HTML documents and the
+behaviour of HTML user agents.
 
-Version 2.0 of HTML introduces a distinction between levels of
-conformance:
+<h3>Documents
+
+A document is a conforming HTML document only if:
+
+<ul>
+<li>It is a conforming SGML document.
+
+<li>It conforms to the application conventions in this
+specification. For example, the value of the <code/HREF/ attribute of
+the <code/A/ element must conform to the URI syntax.
+
+</ul>
+
+
+<note>There are a number of syntactic idioms that are not supported or
+are supported inconsistently in some historical user agent
+implementations. These idioms are called out in notes like this
+throughout this specification.
+
+HTML documents should not contain these idioms, at least until such
+time as support for them is widely deployed.
+</note>
+
+The HTML DTD defines a standard HTML document type and several
+variations, based on feature test entities:
 
 <tl>
-<tli>Level 0: Indicates the minimum conformance level. When writing
-Level 0 documents, authors can be confident that the rendering at
-different sites will reflect their intent.
+<tli>HTML.Recommended: Certain features of the language are
+necessary for compatibility with widespread usage, but they may
+compromise the structural integrity of a document.  This feature test
+entity enables a more prescriptive document type definition that
+eliminates those features.
 
-<tli>Level 1: Includes Level 0 features plus features such as
-highlighting and images.
+For example, in order to preserve the structure of a document, an
+editing user agent may translate HTML documents to the recommended
+subset, or it may require that the documents be in the recommended
+subset for import.
 
-<tli>Level 2: Includes all Level 0 and Level 1 features, plus forms.
+<tli>HTML.Deprecated: Certain features of the language are
+necessary for compatibility with earlier versions of the
+specification, but they tend to be used an implemented inconsistently,
+and their use is deprecated. This feature test entity enables a
+document type definition that eliminates these features.
+
+Documents generated by tranlation software or editing software should not
+contain these idioms.
 
 </tl>
 
-<tl>
-<tli>may:
+<h3>User Agents
 
-The implementation is not obliged to follow this in any way.
+An HTML user agent conforms to this specification if:
 
-<tli>must:
+<ul>
+<li>It parses the characters of an HTML document into data characters
+and markup as per [SGML].
 
-If this is not followed, the implementation does not conform to this
-specification.
+<li>It behaves identically for documents whose parsed token sequences
+are identical.
 
-<tli>shall:
+For example, comments and the whitespace in tags disappear during
+tokenization, and hence they do not influence the behaviour of
+conforming user agents.
 
-If this is not followed, the implementation does not conform to this
-specification.
+<li>It allows the user to traverse (or at least attempt to traverse,
+resources permitting) all hyperlinks in an HTML document.
 
-<tli>should:
+<li>It allows the user to express all form field values specified in
+an HTML document and to (attempt to) submit the values as requests to
+information services.
 
-If this is not followed, though the implementation officially conforms
-to the specification, undesirable results may occur in practice.
+</ul>
 
-<tli>typical:
+<note>
+In the interest of robustness and extensibility, there are a number
+of widely deployed conventions for handling non-conforming documents.
+See <hdref refid=conv1> for details.
+</note>
 
-Typical rendering is described for many elements. This is not a
-mandatory part of the specification but is given as guidance for
-designers and to help explain the uses for which the elements were
-intended.
-
-</tl>
-
+@@Levels?

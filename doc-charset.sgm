@@ -1,125 +1,46 @@
-<h1>Data Characters
+<h1 id=datachrs>Character Content
 
-<p>The characters between HTML tags represent text. An HTML document
-(including tags and text) is encoded using the coded character set
-specified by the "charset" parameter of the "text/html" media type.
-For levels defined in this specification, the "charset" parameter is
-restricted to US-ASCII<liref refid=US-ASCII> or ISO-8859-1<liref
-refid=ISO-8859-1>. ISO-8859-1 encodes a set of characters known as
-Latin Alphabet No. 1, or simply Latin-1.  Latin-1 includes characters
-from most Western European languages, as well as a number of control
-characters.  Latin-1 also includes a non-breaking space, a soft hyphen
-indicator, 93 graphical characters, 8 unassigned characters, and 25
-control characters.
+An HTML user agent should present the body of an HTML document as
+a collection of typeset paragraphs and preformatted text. Except
+for the <tag/PRE/ element, each block structuring element is regarded as
+a paragraph by taking the data characters in its content and the
+content of its descendant elements, concatenating them, and
+splitting the result into words, separated by space, tab, or
+record end characters (and perhaps hyphen characters). The
+sequence of words is typeset as a paragraph by breaking it into
+lines.
 
-<p>Use the non-breaking space and soft hyphen indicator characters is
-discouraged because they are not recognized and interpreted by all
-HTML interpreters.
+<h2>The ISO Latin 1 Character Repertoire
 
-<p>Because certain characters will be interpreted as markup, they must
-be represented by entity references. HTML provides character entity
-references to facilitate the entry and interpretation of characters by
-name or by numerical position (octet).
+Conforming HTML user agents are required to support the [US-ASCII] and
+[ISO-8859-1] character encodings, and the Latin Alphabet Nr. 1
+document character set as specified in <hdref refid=decl>.
 
-<h2>Special Characters
+The character repertoire shared by the two encodings and the document
+character set is Latin Alphabet Nr. 1, or simply Latin-1.  Latin-1
+includes characters from most Western European languages, as well as a
+number of control characters.  Latin-1 also includes a non-breaking
+space, a soft hyphen indicator, 93 graphical characters, 8 unassigned
+characters, and 25 control characters.
 
-<p>Certain data characters have special meaning in HTML
-documents. There are two printing characters which may be interpreted
-by an HTML application to have an effect of the format of the text:
+<note>Use the non-breaking space and soft hyphen indicator characters is 
+discouraged because support for them is not widely deployed.
+</note>
 
-<tl>
-<tli>Space:
-<ul>
-<li>Interpreted as a word space (place where a line can be
-broken) in all contexts except the Preformatted Text element.
+In SGML applications, the use of control characters is limited in 
+order to maximize the chance of successful interchange over 
+heterogeneous networks and operating systems. In HTML, only three 
+control characters are allowed: Horizontal Tab (HT, encoded as 9 
+decimal in US-ASCII and ISO-8859-1), Carriage Return, and Line Feed.
 
-<li>Interpreted as a nonbreaking space within the Preformatted Text element.
-</ul>
-
-<tli>Hyphen:
-<ul>
-<li>Iterpreted as a hyphen glyph in all contexts
-<li>Interpreted as a potential word space by hyphenation engine
-</ul>
-</tl>
-
-<h2>Control Characters
-
-<p>Control characters are non-printable characters that are typically
-used for communication and device control, as format effectors, and as
-information separators. There are 58 character positions occupied by
-control characters.
-
-<p>In SGML applications, the use of control characters is limited in
-order to maximize the chance of successful interchange over
-heterogenous networks and operating systems. In HTML, only three
-control characters are used: Horizontal Tab (HT, encoded as 9 decimal
-in US-ASCII and ISO-8859-1), Carriage Return, and Line Feed.
-
-<p>Horizontal Tab is interpreted as a word space in all contexts
-except preformatted text.  Within preformatted text, the tab should be
-interpreted to shift the horizontal column position to the next
-position which is a multiple of 8 on the same line; that is, col :=
-(col+8) mod 8.
-
-<p>Carriage Return and Line Feed are conventionally used to represent
-end of line. For Internet Media Types defined as "text/*", the
-sequence CR LF is used to represent an end of line. In practice,
-text/html documents are frequently represented and transmitted using
-an end of line convention that depends on the conventions of the
-source of the document; frequently, that representation consists of CR
-only, LF only, or CR LF combination. In HTML, end of line in any of
-its variations is interpreted as a word space in all contexts except
-preformatted text.  Within preformatted text, HTML interpreters should
-expect to treat any of the three common representations of end-of-line
-as starting a new line.
-
-<h2>Character Entities
-
-<p>Two reasons for using a character entity reference:
-
-<ul>
-<li>the keyboard does not provide a key for the character, such as on
-U.S. keyboards which do not provide European characters
-
-<li>the character may be interpreted as SGML coding, such as the
-ampersand (&), double quotes ("), the lesser (<) and greater (>)
-characters
-</ul>
-
-
-<p>A character entity is represented in an HTML document as an SGML
-entity whose name is defined in the HTML DTD.
-
-<h3>Character Name References
-
-<p>Most of the Latin alphabet No. 1 set of printing characters may be
-represented within the text of an HTML document by a character
-entity. See <hdref refid=iso-latin-1>@@ for a list of the characters,
-names, input syntax, and descriptions for numeric and special graphic
-characters. See <hdref refid=entity-sets> for the SGML entity
-definitions of "Added Latin 1 for HTML".
+The HTML DTD references the Added Latin 1 entity set, to allow
+mnemonic representation of Latin 1 characters using only the widely
+supported ASCII character repertoire. For example:
 
 <listing><![CDATA[
-Kurt G&ouml;del was a famous logician and 
-mathematician.
+Kurt G&ouml;del was a famous logician and mathematician.
 ]]></listing>
 
-<h3>Character Octet References
-
-<p>It is possible to explicitly reference the printing characters of
-the ISO-8859-1 character encoding using a character octet
-reference. See <hdref refid=entity-sets> for a list of the characters,
-their names and input syntax.
-
-<p>Character octet references are represented in an HTML document as
-SGML entities whose name is number sign (#) followed by a numeral from
-32-126 and 161-255. The HTML DTD includes a numeric character for each
-of the printing characters of the ISO-8859-1 encoding, so that one may
-reference them by number if it is inconvenient to enter them directly.
-
-<p>The character octet references are not dependent on the character
-set encoding of the document. For example, "&#215;" always represents
-the ISO-8859-1 multiply sign, even when the document's declared
-character set is other than ISO-8859-1.
-
+See <hdref refid="lat1ent"> for a table of the "Added Latin 1" entities,
+and <hdref refid="iso-latin-1"> for a table of the code positionss of
+ISO-8859-1.

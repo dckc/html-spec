@@ -1,20 +1,24 @@
-<sect>Acknowledgments
+<h1>Acknowledgments
 
-<p>The HTML document type was designed by Tim Berners-Lee at CERN as part of the 1990 
-World Wide Web project. In 1992, Dan Connolly wrote the HTML Document Type Definition 
-(DTD) and a brief HTML specification.
+<p>The HTML document type was designed by Tim Berners-Lee at CERN as
+part of the 1990 World Wide Web project. In 1992, Dan Connolly wrote
+the HTML Document Type Definition (DTD) and a brief HTML
+specification.
 
-<p>Since 1993, a wide variety of Internet participants have contributed to the evolution of 
-HTML, which has included the addition of in-line images introduced by the NCSA Mosaic 
-software for WWW. Dave Raggett played an important role in deriving the FORMS material 
-from the HTML+ specification.
+<p>Since 1993, a wide variety of Internet participants have
+contributed to the evolution of HTML, which has included the addition
+of in-line images introduced by the NCSA Mosaic software for WWW. Dave
+Raggett played an important role in deriving the FORMS material from
+the HTML+ specification.
 
-<p>Dan Connolly and Karen Olson Muldrow rewrote the HTML Specification in 1994. The 
-document was then edited by the HTML working group as a whole, with updates being made 
-by Eric Schieler, Mike Knezovich, and Eric W. Sink at Spyglass, Inc. Finally, Roy Fielding 
-restructured the entire draft into its current form.
+<p>Dan Connolly and Karen Olson Muldrow rewrote the HTML Specification
+in 1994. The document was then edited by the HTML working group as a
+whole, with updates being made by Eric Schieler, Mike Knezovich, and
+Eric W. Sink at Spyglass, Inc. Finally, Roy Fielding restructured the
+entire draft into its current form.
 
-<p>Special thanks to the many people who have contributed to this specification:
+<p>Special thanks to the many people who have contributed to this
+specification:
 
 Terry Allen	Marc Andreessen
 
@@ -42,11 +46,13 @@ Eric Schieler	James L. Seidman
 
 Eric W. Sink	Stuart Weibel
 
-Chris Wilson	François Yergeau
+Chris Wilson	Fran&ccedil;ois Yergeau
 
-<sect>Authors' Addresses
+<h2>Authors' Addresses
 
-Tim Berners-Lee
+<tl>
+<tli>Tim Berners-Lee:
+<listing>
 Director, W3 Consortium
 MIT Laboratory for Computer Science
 545 Technology Square
@@ -54,12 +60,17 @@ Cambridge, MA 02139, U.S.A.
 Tel: +1 (617) 253 9670
 Fax: +1 (617) 258 8682
 Email: timbl@w3.org
+</listing>
 
-Daniel W. Connolly
+<tli>Daniel W. Connolly:
+<listing>
 Research Technical Staff, W3 Consortium
 MIT Laboratory for Computer Science
 545 Technology Square
 Cambridge, MA 02139, U.S.A.
 Fax: +1 (617) 258 8682
 Email: connolly@w3.org
-URL: http://www.w3.org/hypertext/WWW/People/Connolly/
+URI: http://www.w3.org/hypertext/WWW/People/Connolly/
+</listing>
+
+</tl>

@@ -2,12 +2,15 @@
 # $Id$
 #
 
+RELEASE = 19950504
+PACKAGE = html-spec-$(RELEASE)
+
 # Things outside this distribution
 SGMLS = sgmls
 NROFF = nroff
 TROFF = troff
 # I use the gnu stuff...
-MACROS = -mgm
+MACROS = -mgs
 #MACROS = -ms
 TEXI2ROFF = texi2roff
 TEXI2HTML = texi2html
@@ -30,39 +33,77 @@ SRCS = html.decl html.dtd ISOlat1.sgml catalog \
 	snafu.decl html-spec.sgm \
 	intro.sgm html-sgml.sgm html-mime.sgm \
 	elements.sgm head-elts.sgm doc-charset.sgm phrase.sgm hyperlink.sgm \
-	blocks.sgm headings.sgm lists.sgm forms.sgm pubtext.sgm references.sgm
+	blocks.sgm headings.sgm lists.sgm forms.sgm pubtext.sgm \
+	references.sgm glossary.sgm acknowledgements.sgm
+
+ORIGINALS = Makefile $(SRCS) $(DTD) $(DTDAUX) $(DECL) \
+	head.ms abstract.ms
+
+HYPERTEXT = html-spec_toc.html \
+	html-spec_foot.html \
+	html-spec_1.html \
+	html-spec_2.html \
+	html-spec_3.html \
+	html-spec_4.html \
+	html-spec_5.html \
+	html-spec_6.html \
+	html-spec_7.html \
+	html-spec_8.html \
+	html-spec_9.html \
+	html-spec_10.html \
+	html-spec_11.html \
+	html-spec_12.html \
+	html-spec_12.html \
+	html-spec_14.html \
+	html-spec_15.html
+
+
+DIST = $(ORIGINALS)  \
+	$(SPEC).txt $(SPEC).ps $(SPEC).texi $(HYPERTEXT)
+DECL = html.decl
+DTD = html.dtd
+DTDAUX = html-1.dtd html-0.dtd
+PLAINTEXT = html-spec.txt
 
 all: hypertext hardcopy
 
 hypertext: $(SPEC).html
 
 $(SPEC).html: $(SPEC).texi
-	$(TEXI2HTML) -split_chapter -glossary -verbose $(SPEC).texi
+	$(TEXI2HTML) -doctype html2 -debug 9 -expandinfo -split_chapter -glossary -verbose $(SPEC).texi
 
 hardcopy: $(SPEC).txt $(SPEC).ps
 
-$(SPEC).txt: $(SPEC).mm
-	$(NROFF) -Tascii $(MACROS) $(SPEC).mm >$@
+$(SPEC).txt: $(SPEC).ms
+	$(NROFF) -Tascii $(MACROS) $(SPEC).ms >$@
 
-$(SPEC).ps: $(SPEC).mm
-	$(TROFF) $(MACROS) -Tps $(SPEC).mm >$@
+$(SPEC).ps: $(SPEC).ms
+	$(TROFF) $(MACROS) -Tps $(SPEC).ms >$@
 
-$(SPEC).mm: $(SPEC).texi
-	$(TEXI2ROFF) -mm $(SPEC).texi >$@
+$(SPEC).ms: $(SPEC).texi
+	$(TEXI2ROFF) -ms $(SPEC).texi >$@
 
 $(SPEC).texi: $(SRCS)
-	$(GF) -f texinfo snafu.decl html-spec.sgm >$@
+	$(GF) -f texinfo html.decl html-spec.sgm >$@
 
 
-RELEASE = 19940613
-PACKAGE = html-spec-$(RELEASE)
+dist: $(PACKAGE).tar.gz
+
+$(PACKAGE).tar.gz: $(DIST)
+	tar cf $(PACKAGE).tar $(DIST)
+	gzip $(PACKAGE).tar
+
+#	cp $@ ../dist
+#	rm $@
+#	ln -s ../dist/$@
+
+
+############ old stuff below here
+
 ENV= SGML_PATH='./%N.%C:%N.dtd:%N.sgml'
 
-ORIGINALS = Makefile $(HYPERTEXT) $(DTD) $(DTDAUX) $(DECL) $(BIGPRE)
-DIST = README.html $(ORIGINALS) $(PLAINTEXT) $(INDEXES) $(BIGDOC)
-DTD = html.dtd
-DTDAUX = html-1.dtd html-0.dtd
-DECL = html.decl
+#ORIGINALS = Makefile $(HYPERTEXT) $(DTD) $(DTDAUX) $(DECL) $(BIGPRE)
+#DIST = README.html $(ORIGINALS) $(PLAINTEXT) $(INDEXES) $(BIGDOC)
 
 INDEXES = \
 	L0index.html \
@@ -73,14 +114,13 @@ INDEXES = \
 	L2Pindex.html
 
 
-PLAINTEXT = HTML.txt
 BIGDOC = html-spec-agg.sgml
 BIGPRE = html-spec-pre.sgml
 
 WIDTH=70
 HTML2TXT = $(WWW) -n -na -p -w$(WIDTH)
 
-HYPERTEXT = \
+#HYPERTEXT = \
    HTML.html \
      StatusMeanings.html \
    AndMIME.html \
@@ -146,58 +186,6 @@ generate: $(INDEXES)
 
 text: $(PLAINTEXT)
 
-HEADER =  HTML Specification    Connolly and Berners-Lee
-FF = $(PERL) -e 'print "\f"'
-
-$(PLAINTEXT): $(HYPERTEXT) $(INDEXES) $(DTD) $(DTDAUX) $(DECL)
-	(for html in $(HYPERTEXT) $(INDEXES); do \
-		$(HTML2TXT) $$html | pr -f -h '$(HEADER)'; \
-		$(FF); \
-	done; \
-	pr -f -h '$(HEADER)' $(DECL); $(FF); \
-	pr -f -h '$(HEADER)' html-0.dtd; $(FF); \
-	pr -f -h '$(HEADER)' html-1.dtd; $(FF); \
-	pr -f -h '$(HEADER)' html.dtd; $(FF); \
-	) >$@
-
-missing:
-	for html in $(HYPERTEXT); do \
-		[ -f $$html ] || \
-		  (echo $$html; \
-		  $(WWW) -source $(HTML_SPEC_DIR)/$$html >$$html) ; \
-	done
-
-snapshot:
-	for html in $(HYPERTEXT); do \
-		  (echo $$html; \
-		  $(WWW) -source $(HTML_SPEC_DIR)/$$html >$$html) ; \
-	done
-
-
-README.html: index.html
-	ln -s index.html README.html
-
-dist: $(PACKAGE).tar.gz
-
-$(PACKAGE).tar.gz: $(DIST)
-	tar cf $(PACKAGE).tar $(DIST)
-	gzip $(PACKAGE).tar
-	cp $@ ../dist
-	rm $@
-	ln -s ../dist/$@
-
-$(BIGDOC): $(BIGPRE)
-	(cat $(BIGPRE); \
-	for html in $(HYPERTEXT); do \
-		b=`basename $$html .html`; \
-		echo "<!ENTITY $$b SYSTEM '$$html' SUBDOC>" ; \
-	done; \
-	echo "]>" ; \
-	for html in $(HYPERTEXT); do \
-		b=`basename $$html .html`; \
-		echo "&$$b;" ; \
-	done;) >$@
-	
 validate: $(HYPERTEXT) $(BIGDOC)
 	$(ENV) $(SGMLS) -s -e $(BIGDOC)
 	touch $@

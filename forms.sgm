@@ -88,10 +88,10 @@ list.
 several forms in a single document, but the Form element can't be
 nested.
 
-<p>The ACTION attribute is a URL specifying the location to which the
+<p>The ACTION attribute is a URI specifying the location to which the
 contents of the form is submitted to elicit a response. If the ACTION
-attribute is missing, the URL of the document itself is assumed. The
-way data is submitted varies with the access protocol of the URL, and
+attribute is missing, the URI of the document itself is assumed. The
+way data is submitted varies with the access protocol of the URI, and
 with the values of the METHOD and ENCTYPE attributes.
 
 <p>In general:
@@ -107,7 +107,7 @@ in case the protocol does not impose a format itself.
 access protocol only.
 
 <p>When the ACTION attribute is set to an HTTP URL, the METHOD
-attribute must be set to an HTTP method&nbsp;<liref refid=HTTP>. The
+attribute must be set to an HTTP method&nbsp;[HTTP]. The
 default method is GET, although for many applications the POST method
 is preferred. With the POST method, the ENCTYPE attribute is a media
 type specifying the format of the posted data; the default is
@@ -166,7 +166,7 @@ characters:
 INPUT TYPE=text SIZE="24"
 ]]></listing>
 
-<tli>SRC: A URL or URN specifying an image. For use only with
+<tli>SRC: A URI specifying an image. For use only with
 TYPE=IMAGE.
 
 <tli>TYPE: Defines the type of data the field accepts. Defaults to

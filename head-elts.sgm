@@ -1,5 +1,3 @@
-<h1>Document Metainformation Elements
-
 <h2>Title
 
 <![CDATA[
@@ -29,13 +27,13 @@ HTML Elements."  </note>
 <BASE>	Level 0
 ]]>
 
-<p>The Base element allows the URL<liref refid=URL> of the
+<p>The Base element allows the URI of the
 document itself to be recorded in situations in which the document may
-be read out of context. URLs within the document may be in a "partial"
-form relative to this base address<liref refid=reluri>.
+be read out of context. URIs within the document may be in a "partial"
+form relative to this base address[RELURL].
 
 <p>The Base element has one attribute, HREF, which identifies the
-absolute base URL.
+absolute base URI.
 
 <h2>Isindex
 

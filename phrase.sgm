@@ -76,7 +76,7 @@ to read these instructions.
 
 The ISMAP (is map) attribute identifies an image as an image
 map. Image maps are graphics in which certain regions are mapped to
-URLs. By clicking on different regions, different resources can be
+URIs. By clicking on different regions, different resources can be
 accessed from the same graphic. Example of use:
 
 <listing><![CDATA[
@@ -87,7 +87,7 @@ accessed from the same graphic. Example of use:
 
 <tli>SRC:
 
-The value of the SRC attribute is the URL of the document to be
+The value of the SRC attribute is the URI of the document to be
 embedded; only images can be embedded, not HTML text. Its syntax is
 the same as that of the HREF attribute of the <code>&lt;A></> tag. SRC is
 mandatory. Image elements are allowed within anchors.

@@ -16,4 +16,4 @@ as an application of ISO Standard 8879:1986 Information Processing
 Text and Office Systems; Standard Generalized Markup Language (SGML).
 
 <p>The <tt>"text/html; version=2.0"</> Internet Media Type (RFC 1590)
-and MIME Content Type (RFC\x111521) is defined by this specification.
+and MIME Content Type (RFC&nbsp;1521) is defined by this specification.

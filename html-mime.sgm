@@ -1,84 +1,140 @@
 <h1>HTML as an Internet Media Type
 
+An HTML user agent allows users to interact with resources which have
+HTML representations. At a minimum, it must allow users to examine and
+navigate the content of HTML <![%level[ Level 0 ]]> documents.  HTML
+user agents should be able to preserve all formatting distinctions
+represented in an HTML document, and be able to simultaneously present
+resources referred to by IMG elements. (they may ignore some
+formatting distinctions or IMG resources at the request of the
+user). Conforming HTML user agents <![%level[ that is Level 2 HTML
+user agents, must ]]> should support form entry and submission.
+
 <h2>text/html media type
 
-<p>This specification defines the Internet  Media Type\x11[7] (formerly referred to as the MIME 
-Content Type\x11[4]) called  "text/html". The following is to be registered with IANA\x11[8].
+<p>This specification defines the Internet Media Type[IMEDIA] (formerly
+referred to as the Content Type[MIME]) called <code>text/html</>. The
+following is to be registered with [IANA].
 
-Media Type name:		text
+<tl>
+<tli>Media Type name: text
 
-Media subtype name:		html
+<tli>Media subtype name: html
 
-Required parameters:		none
+<tli>Required parameters: none
 
-Optional parameters:		level, version, charset
+<tli>Optional parameters: <![%level[level, ]]>version, charset
 
-Encoding considerations:		any encoding is allowed
+<tli>Encoding considerations: any encoding is allowed
 
-Security considerations:		[Section 14]
-
+<tli> Security considerations: see <hdref refid=security>
+</tl>
 
 
 <p>The optional parameters are defined as follows:
 
-tag/Level
+<tl>
+<![%level[
+<tli>Level: The level parameter specifies the feature set used in the
+document. The level is an integer number, implying that any features
+of same or lower level may be present in the document.  Levels 0, 1
+and 2 are defined by this specification. Level 2 is the default.
 
-/The level parameter specifies the feature set used in the document. The level is an integer 
-number, implying that any features of same or lower level may be present in the document. 
-Levels 0, 1 and 2 are defined by this specification. Level 2 is the default.
-
-tag/Version
-
-/To help avoid future compatibility problems, the version parameter may be used to give 
-the version number of the specification to which the document conforms. The version 
-number appears at the front of this document and within the public identifier of the HTML 
+]]>
+<tli>Version: To help avoid future compatibility problems, the version
+parameter may be used to give the version number of the specification
+to which the document conforms. The version number appears at the
+front of this document and within the public identifier of the HTML
 DTD. This specification defines version 2.0.
 
-tag/Charset
+<tli>Charset: The charset parameter (as defined in section 7.1.1 of
+RFC 1521[MIME]) may be given to specify the character encoding scheme
+used to represent the HTML document as a sequence of octets.
+</tl>
 
-/The charset parameter (as defined in section 7.1.1 of RFC 1521\x11[4]) may be given to 
-specify the encoding used to represent the HTML document as a sequence of octets.
+<h2>HTML Document Representation
 
-<h2>Character Set Issues
+A message entity with a content type of <code>text/html</> represents
+an HTML document, consisting of a single text entity. The
+<code>charset</> parameter (whether implicit or explicit) identifies a
+character encoding scheme. The text entity consists of the characters
+determined by this character encoding and the octets of the body of
+the message entity.
 
-<p>An HTML interpreter must accept a stream of characters as input, and assign them to 
-character classes used for markup recognition purposes. HTML 2.0 markup requires only the 
-characters found in the US-ASCII character set\x11[10]. All US-ASCII characters with no markup 
-role, and all non-US-ASCII characters, should be treated as data. Such categorization should 
-take place after decoding the data stream (i.e., not at the characer set encoding level, but rather 
-at the character set level).
+HTML user agents must support the ISO-8859-1 character encoding
+scheme, and hence the US-ASCII character encoding scheme.
+<note>HTML user agents are encouraged to support ISO10646 as a
+document character set, and Unicode-1-1-UTF-8 and Unicode-1-1-UCS-2 as
+character encoding schemes. Other encodings schemes such as
+ISO-2022-JP may be supported as well.</note>
 
-<p>Normally, text/* media types specify a default value of US-ASCII for the charset 
-parameter. However, for text/html, if the byte stream contains data that is not in the 7-bit US-
-ASCII set, the interpreter should assume a default charset of ISO-8859-1. Even if an HTML 
-document is limited to a US-ASCII encoding, the mechanisms of character entity references 
-(Section 6.3) can be used to encode the characters from ISO-8859-1.
+<h3 id=conv1>Undeclared Markup Error Handling
 
-<p>Other values for the charset parameter may be defined by the transport mechanism (e.g., 
-MIME and HTTP), but are not defined by this specification. Since the SGML declaration for 
-HTML (supplied in Section 12.3) is only applicable to ISO-8859-1 and its subsets, a charset 
-parameter that specifies a different character set must also imply a different SGML declaration. 
-Therefore, user agents may use the charset parameter value to select a different declaration, 
-even though the mechanism for doing so is not defined by this specification. The intent, 
-however, is that such a declaration be as identical as possible to that of Section 12.3, the only 
-differences being those required to support the announced charset.
+To facilitate experimentation and interoperability between
+implementations of various versions of HTML, the installed base of
+HTML user agents supports a superset of the HTML 2.0 language by
+reducing it to HTML 2.0: markup in the form of a start tag or end
+tag whose generic identifier is not declared is mapped to nothing
+during tokenization. Undeclared attributes are treated similarly.
+The entire attribute specification of an unknown attribute (i.e.,
+the unknown attribute and its value, if any) should be ignored.  On
+the other hand, references to undeclared entities should be treated
+as data characters.
 
-<p>When the above conflicts with the SGML standard, the SGML standard may be ignored. 
-Note, however, that not all HTML applications are capable of ignoring the SGML standard.
+For example:
 
-<h2>Undefined Tag and Attribute Names
+<listing><![CDATA[
+     <div class=chapter><h1>foo</h1><p>...</div>
+	  => <H1>,"foo",</H1>,<P>,"..."
 
-<p>An accepted networking principle is to be conservative in what one produces, and liberal 
-in what one accepts. HTML user agents should be liberal except when validating code; user 
-agents are encouraged to provide an option for validation of what they render, such that users 
-may be notified of an invalid construct when such notification is desirable. HTML generators 
-should generate strictly conforming HTML. 
+     xxx <P ID=z23> yyy
+          => "xxx ",<P>," yyy
 
-<p>HTML user agents reading "text/html" documents and discovering tag or attribute names 
-which they do not understand should behave as though the offending tags or attribute names do 
-not exist. Any unknown start tag (including its entire attribute specification list) or end tag 
-should be ignored; any content between matching unknown start and end tags should be treated 
-as normal (i.e., as if those tags did not occur in the character stream). The entire attribute 
-specification of an unknown attribute (i.e., the unknown attribute and its value, if any) should 
-be ignored.
+     Let &alpha; and &beta; be finite sets.
+	  => "Let &alpha; and &beta; be finite sets."
+]]></listing>
+
+Support for notifying the user of such errors is encouraged.
+
+Information providers should keep in mind that this convention is
+not binding: unspecified behavior may result, as such markup is
+not conforming to this specification.
+
+
+<h3>Conventional Representation of Newlines
+
+SGML specifies that a text entity is a sequence of records, each
+beginning with a record start character and ending with a record end
+character (characters numbered 10 and 13 respectively). (@@cite a
+section)
+
+MIME specifies that a body of type <code>text/*</> is a sequence of
+lines, each terminated by CRLF, that is octets 10, 13.
+
+In practice, HTML documents are frequently represented and
+transmitted using an end of line convention that depends on the
+conventions of the source of the document; frequently, that
+representation consists of CR only, LF only, or CR LF
+combination. Hence the decoding of the octets will often result in
+a text entity with some missing record start and record end
+characters.
+
+Since there is no ambiguity, HTML user agents are encouraged to
+infer the missing record start and end characters.
+
+An HTML user agent should treat end of line in any of its
+variations as a word space in all contexts except
+preformatted text. Within preformatted text, an HTML user agent
+should expect to treat any of the three common representations of
+end-of-line as starting a new line.
+
+<h2 id=security>Security Considerations
+
+Anchors, embedded images, and all other elements which contain
+URIs as parameters may  cause the URI to be dereferenced in response
+to user input. In this case, the security  considerations of the URI
+specification apply.
+  
+Documents may be constructed whose visible contents mislead the
+reader to follow a link  to unsuitable or offensive material.
 

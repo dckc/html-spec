@@ -10,12 +10,15 @@
 	"draft-status.sgm">
 
 <!entity stat "Internet Draft">
-<!entity date "April 26, 1995">
+<!entity date "May 4, 1995">
 <!entity filename CDATA "&#60;draft-ietf-html-spec-03.txt&#62;">
 
 <!entity % plain "CDATA"
 	-- stuff that only goes in the plain text version --
 	>
+<!entity % level "IGNORE"
+        -- junk that talks about levels @@ --
+        >
 
 <!entity intro system "intro.sgm">
 
@@ -38,10 +41,12 @@
 <!entity html-dtd system "html.dtd" NDATA ASCII>
 <!entity html-dtd-0 system "html-0.dtd" NDATA ASCII>
 <!entity html-dtd-1 system "html-1.dtd" NDATA ASCII>
+<!entity isolat1-dtd system "ISOlat1.sgml" NDATA ASCII>
 
 
 <!entity entity-sets system "entity-sets.sgm">
 <!entity iso-latin-1 system "iso-latin-1.sgm">
+<!entity glossary system "glossary.sgm">
 <!entity bib system "references.sgm">
 <!entity acks system "acknowledgements.sgm">
 
@@ -55,41 +60,38 @@
 HTML Working Group                                    T. Berners-Lee
 INTERNET-DRAFT                                           D. Connolly
 <draft-ietf-html-spec-03.txt>                                MIT/W3C
-Expires in six months                                 April 25, 1995
+Expires in six months                                    May 4, 1995
 -->
-    <title>HyperText Markup Language - 2.0
+    <title>Hypertext Markup Language - 2.0
     <author><name address=w3c>T. Berners-Lee
       <address id=w3c><org>MIT/W3C</>
       <name address=w3c>D. Connolly
     <date>&date;
     <docnum>&filename;</>
     <toc>
-<abstract>
+<!-- @@ out of order! -->
+&status;
 
-The HyperText Markup Language (HTML) is a simple markup language
-used to create hypertext documents that are portable from one platform
-to another. HTML documents are SGML documents with generic semantics
-that are appropriate for representing information from a wide range of
-applications. HTML markup can represent hypertext news, mail,
+<Abstract>
+The Hypertext Markup Language (HTML) is a simple markup language used
+to create hypertext documents that are platform independent.  HTML
+documents are SGML documents with generic semantics that are
+appropriate for representing information from a wide range of
+domains. HTML markup can represent hypertext news, mail,
 documentation, and hypermedia; menus of options; database query
 results; simple structured documents with in-lined graphics; and
 hypertext views of existing bodies of information.
 
 HTML has been in use by the World Wide Web (WWW) global information
 initiative since 1990. This specification roughly corresponds to the
-capabilities of HTML in common use prior to June 1994. It is defined
-as an application of ISO Standard 8879:1986 Information Processing
-Text and Office Systems; Standard Generalized Markup Language (SGML).
+capabilities of HTML in common use prior to June 1994. HTML is an
+application of ISO Standard 8879:1986 Information Processing Text and
+Office Systems; Standard Generalized Markup Language (SGML).
 
 The <code>"text/html; version=2.0"</> Internet Media Type (RFC&nbsp;1590)
 and MIME Content Type (RFC&nbsp;1521) is defined by this specification.
 
-<!-- out of order! -->
-&status;
-
 &intro;
-
-<![IGNORE[
 
 &sgml-app;
 
@@ -97,24 +99,13 @@ and MIME Content Type (RFC&nbsp;1521) is defined by this specification.
 
 &elements;
 
+&pubtext;
+
 &entity-sets;
 
-&iso-latin-1;
-
-&pubtext;
-]]>
+&glossary;
 
 &bib;
-
-<h1>Security Considerations
-
-Anchors, embedded images, and all other elements which contain
-URIs as parameters may  cause the URI to be dereferenced in response
-to user input. In this case, the security  considerations of the URI
-specification apply.
-  
-Documents may be constructed whose visible contents mislead the
-reader to follow a link  to unsuitable or offensive material.
 
 <appendix>
 <h1>Appendices
@@ -122,9 +113,13 @@ reader to follow a link  to unsuitable or offensive material.
 These appendices are provided for informational reasons only - they
 do not form a part  of the HTML specification.
 
+&iso-latin-1;
+
 &obsolete;
 
 &proposed;
+
+&acks;
 
 </spaper>
 

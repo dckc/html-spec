@@ -12,29 +12,41 @@ document type declaration, an HTML user agent should infer the above
 document type declaration.
 </note>
 
-<p>HTML documents should also contain an &lt;HTML> tag at the beginning
-(immediately after the prologue) and an &lt;/HTML> tag at the end of the
-file. Within those tags, an HTML document is organized as a head and a
-body, much like a memo or a mail message. Within the head, you can
-specify the title and other information about the document. Within the
-body, you can structure text into paragraphs and lists, as well as
-highlight phrases and create links, using HTML elements.
+HTML user agents are required to support the above document type
+declaration, the following document type declarations, and no
+others.
 
-<NOTE>Technically, the start and end tags for HTML, Head, and Body
-elements are omissible; however, this is not recommended since the
-head/body structure allows an implementation to determine certain
-properties of a document, such as the title, without parsing the
-entire document.
-</note>
+<listing><![CDATA[
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Strict//EN">
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML Strict//EN">
+]]></listing>
+<![%level[@@]]>
 
-<h2>HTML Identifier
+In particular, they may support other formal public identifiers, or
+document types altogether. They may support an internal declaration
+subset with supplemental entity, element, and other markup
+declarations, or they may not.
+
+<h2>HTML Document Element
 
 <![CDATA[
 <HTML> ... </HTML>	Level 0
 ]]>
 
-<p>The HTML identifier defines the document as containing HTML
-elements. It contains only the Head and Body elements.
+The HTML document element is organized as a head and a body, much
+like a memo or a mail message. Within the head, you can specify the
+title and other information about the document. Within the body,
+you can structure text into paragraphs and lists, as well as
+highlight phrases and create links, using HTML elements.
+
+<note>The start and end tags for HTML, Head, 
+and Body elements are omissible; however, this is not 
+recommended since the head/body structure allows an 
+implementation to determine certain properties of a 
+document, such as the title, without parsing the entire 
+document.
+</note<
+
 
 <h2>Head
 
@@ -43,8 +55,7 @@ elements. It contains only the Head and Body elements.
 ]]>
 
 <p>The head of an HTML document is an unordered collection of
-information about the document. It requires the Title element between
-&lt;HEAD> and &lt;/HEAD> tags:
+information about the document. The Title element is required.
 
 <listing><![CDATA[
 <HEAD>

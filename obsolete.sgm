@@ -1,16 +1,16 @@
-<h1> Obsolete Features
+<h2> Obsolete Features
 
 <p>This section describes elements that are no longer part of HTML. Client implementors 
 should implement these obsolete elements for compatibility with previous versions of the 
 HTML specification.
 
-<h2> Comment Element
+<h3> Comment Element
 
 <p>The Comment element is used to delimit unneeded text and comments. The Comment 
 element has been introduced in some HTML applications but should be replaced by the SGML 
 comment feature in new HTML interpreters (see Section 2.2.5).
 
-<h2>  Highlighted Phrase Element
+<h3>  Highlighted Phrase Element
 
 <![CDATA[
 <HP>
@@ -26,7 +26,7 @@ been replaced by more meaningful elements (see Section 8).
 highlighted text<HP2>second highlighted phrase</HP2> etc.
 ]]></listing>
 
-<h2> Plain Text Element
+<h3> Plain Text Element
 
 <![CDATA[
 <PLAINTEXT>
@@ -46,7 +46,7 @@ optimization. There is no closing tag.
 0002 file from <ANY@HOST.INC.COM> which is sent
 ]]></listing>
 
-<h2> Example and Listing Elements
+<h3> Example and Listing Elements
 
 <![CDATA[
 <XMP> ... </XMP> and <LISTING> ... </LISTING>
