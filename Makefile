@@ -6,24 +6,26 @@
 ENV= SGML_PATH='./%N.%C:%N.dtd:%N.sgml'
 SGMLS = sgmls
 PERL=perl
+PYTHON = python
 
 WWW = www
-HTML_SPEC_DIR = http://info.cern.ch/hypertext/WWW/MarkUp
+HTML_SPEC_DIR = http://info.cern.ch/hypertext/WWW/MarkUp2
 CANON_FILTER = test_html -c
 DTDTOOL=www_dtd.pl
 
 #
 # "No user-serviceable parts inside"
 #
-ORIGINALS = Makefile $(HYPERTEXT)
-RELEASE = 199404??
-PACKAGE = html_spec-$(RELEASE)
+RELEASE = 19940603
+PACKAGE = html-spec-$(RELEASE)
+
+ORIGINALS = Makefile $(HYPERTEXT) $(DTD) $(DECL) $(BIGPRE)
+DIST = README.html $(ORIGINALS) $(PLAINTEXT) $(ELTINDEX) $(BIGDOC)
 DTD = html.dtd
 DECL = html.decl
-
 ELTINDEX = ElementIndex.html
 
-DRAFT = HTML.txt
+TEXT = HTML.txt
 BIGDOC = html-spec-agg.sgml
 BIGPRE = html-spec-pre.sgml
 
@@ -31,54 +33,74 @@ WIDTH=70
 HTML2TXT = $(WWW) -n -na -p -w$(WIDTH)
 
 HYPERTEXT = \
-	HTML.html\
-	StatusMeanings.html\
-	AndMIME.html\
-	Intro.html\
-	Text.html\
-	Tags.html\
-	Elements/HEAD.html\
-	Elements/BODY.html\
-	Elements/A.html\
-	Elements/ADDRESS.html\
-	Elements/BASE.html\
-	Elements/BLOCKQUOTE.html\
-	Headings.html\
-	Elements/IMG.html\
-	Elements/ISINDEX.html\
-	Elements/LINK.html\
-	Lists.html\
-	Elements/NEXTID.html\
-	Elements/P.html\
-	Elements/BR.html\
-	Elements/HR.html\
-	Elements/PRE.html\
-	Elements/TITLE.html\
-	Highlighting.html\
-	NonStandard.html\
-	LiteralHistory.html\
-	Entities.html\
-	ISOlat1.html\
-	Acknowledgements.html\
-	References.html\
-	Authors.html \
+   HTML.html \
+     StatusMeanings.html \
+   AndMIME.html \
+   Intro.html \
+   Text.html \
+   Tags.html \
+     Elements/HEAD.html \
+     Elements/TITLE.html \
+     Elements/ISINDEX.html \
+     Elements/LINK.html \
+     Elements/BASE.html \
+     Elements/NEXTID.html \
+	\
+     Elements/BODY.html \
+     Elements/A.html \
+       URN.html \
+       Elements/LinkTitle.html \
+       Elements/LinkMethods.html \
+	\
+     Headings.html \
+     Elements/P.html \
+     Elements/BR.html \
+     Highlighting.html \
+     Elements/IMG.html \
+     Elements/HR.html \
+     Elements/ADDRESS.html \
+     Elements/BLOCKQUOTE.html \
+     Lists.html \
+     Elements/PRE.html \
+	\
+     Forms.html \
+       Elements/FORM.html \
+       Elements/INPUT.html \
+       Elements/TEXTAREA.html \
+       Elements/SELECT.html \
+       Elements/OPTION.html \
+	\
+     NonStandard.html \
+       LiteralHistory.html \
+   Entities.html \
+     ISOlat1.html \
+   Security.html \
+   Acknowledgements.html \
+   References.html \
+   Authors.html
 
-#@@	tolerated.html\
-#@@	HTML.dtd.html\
+TEXT = \
+   html.decl \
+   html.dtd \
+
+#   DeclHeading.html \
+#   DTDHeading.html \
+#     IETF/Draft-Disclaimer.html \
 #	Relationships.html\
 #	RegistrationAuthority.html\
-#	DTDHeading.html\
+
+
 
 all: validate canonicalize generate validate text
 
 generate: $(ELTINDEX)
 
-text: $(DRAFT)
+text: $(PLAINTEXT)
 
 HEADER =  HTML Specification    Connolly and Berners-Lee
 FF = $(PERL) -e 'print "\f"'
 
-$(DRAFT): $(HYPERTEXT) $(ELTINDEX) $(DTD) $(DECL)
+$(PLAINTEXT): $(HYPERTEXT) $(ELTINDEX) $(DTD) $(DECL)
 	(for html in $(HYPERTEXT) $(ELTINDEX); do \
 		$(HTML2TXT) $$html | pr -f -h '$(HEADER)'; \
 		$(FF); \
@@ -86,18 +108,31 @@ $(DRAFT): $(HYPERTEXT) $(ELTINDEX) $(DTD) $(DECL)
 	pr -f -h '$(HEADER)' $(DTD); $(FF); \
 	pr -f -h '$(HEADER)' $(DTD); $(FF); ) >$@
 
-snapshot:
+missing:
 	for html in $(HYPERTEXT); do \
 		[ -f $$html ] || \
 		  (echo $$html; \
 		  $(WWW) -source $(HTML_SPEC_DIR)/$$html >$$html) ; \
 	done
 
-tarZ: $(PACKAGE).tar.Z
+snapshot:
+	for html in $(HYPERTEXT); do \
+		  (echo $$html; \
+		  $(WWW) -source $(HTML_SPEC_DIR)/$$html >$$html) ; \
+	done
 
-$(PACKAGE).tar.Z: $(DIST)
+
+README.html: index.html
+	ln -s index.html README.html
+
+dist: $(PACKAGE).tar.gz
+
+$(PACKAGE).tar.gz: $(DIST)
 	tar cf $(PACKAGE).tar $(DIST)
-	compress $(PACKAGE).tar
+	gzip $(PACKAGE).tar
+	cp $@ ../dist
+	rm $@
+	ln -s ../dist/$@
 
 $(BIGDOC): $(BIGPRE)
 	(cat $(BIGPRE); \
@@ -111,8 +146,9 @@ $(BIGDOC): $(BIGPRE)
 		echo "&$$b;" ; \
 	done;) >$@
 	
-validate: $(HYPERTEXT) $(BIGDOC)
+validate: $(HYPERTEXT) $(BIGDOC) $(ELTINDEX)
 	$(ENV) $(SGMLS) -s -e $(BIGDOC)
+	$(ENV) $(SGMLS) -s -e $(DECL) $(ELTINDEX)
 	touch $@
 
 $(ELTINDEX): $(HYPERTEXT) $(DTD) $(DTDTOOL)
@@ -125,29 +161,15 @@ canonicalize: $(HYPERTEXT)
 	done
 	touch $@
 
-# Obsolete
-IDTK = ../../installed
-ARCH = sun4
-BOOK = /doc/idtk/html/HTML.book
-FMBATCH =  /fonts/Frame3.1X/bin/fmbatch
-PROG = ../sgml_test
-#HYPERTEXT = HTML.html Intro.html Text.html References.html HTML.dtd.html
+mif: HTML-1.mif HTML-2.mif
 
-hypertext:
-	PATH=$${PATH}:$(IDTK)/bin:$(IDTK)/bin/$(ARCH) convert_book \
-		debug=1 \
-		idtk=$(IDTK) \
-		fmt=html \
-		filters= \
-		extension=html \
-		fmbatchcmd="$(FMBATCH)" \
-		$(BOOK)
+MIF_STYLESHEET = mif/template.mif
+PYWWW = ../pywww
+HTML2MIF = PYTHONPATH=$(PYWWW) $(PYTHON) $(PYWWW)/MIFReport.py
 
-libtest: $(HYPERTEXT) $(PROG)
-	for html in $(HYPERTEXT); do \
-	   echo $$html; \
-	   $(PROG) HTML HTML <$$html >1; \
-	   $(PROG) HTML HTML <1 >2; \
-	   diff -c 1 2 || true; \
-	 done;
-	rm 1 2
+HTML-1.mif: $(HYPERTEXT)
+	$(HTML2MIF) $(HYPERTEXT) >$@
+
+HTML-2.mif: $(ELTINDEX)
+	$(HTML2MIF) -section $(ELTINDEX) >$@
+
