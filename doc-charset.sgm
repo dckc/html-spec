@@ -19,9 +19,15 @@ characters from most Western European languages, as well as a number
 of control characters.  Latin-1 also includes a non-breaking space, a
 soft hyphen indicator, 93 graphical characters, 8 unassigned
 characters, and 25 control characters.
-
 <note>Use the non-breaking space and soft hyphen indicator characters is 
 discouraged because support for them is not widely deployed.
+</note>
+<note>
+To support non-western writing systems, a larger character repertoire
+will be specified in a future version of HTML. The document character
+set will be ISO10646, or some subset that agrees with ISO10646; in
+particular, all numeric character references must use code positions
+assigned by ISO10646.
 </note>
 
 In SGML applications, the use of control characters is limited in 

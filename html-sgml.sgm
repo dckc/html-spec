@@ -290,13 +290,13 @@ minimized syntax.
 
 <h3>Comments
 
-To include comments in an HTML document that will be eliminated in the
-mapping to terminals, surround them with <code>&lt;!--</> and
-<code>--&gt;</>. After the comment delimiter, all text up to the next
-occurrence of <code>--&gt;</> is ignored.  Hence comments cannot be
-nested. White space is allowed between the closing <code>--</> and
-<code>></>, but not between the opening <code>&lt;!</> and
-<code>--</>.
+To include comments in an HTML document, use a comment declaration.  A
+comment declaration consists of <code/<!/ followed by one or more
+comments followed by <code/>/.  Each comment starts with <code/--/ and
+includes all text up to and including the next occurrence of
+<code/--/.  In a comment declaration, white space is allowed after
+each comment, but not before the first comment.  The entire comment
+declaration is ignored.
 
 For example:
 

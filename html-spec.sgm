@@ -1,17 +1,41 @@
 <!doctype spaper public "-//Houston//DTD snafu5//EN" [
 <!-- $Id$ -->
 
-<!entity % u.phrases "file|dns|tag|attr|uri|mbox">
+<!entity % u.phrases "file|dns|tag|attr|uri|mbox|doclink|publink">
+
+<!attlist (doclink|publink)
+       linkend NAME #required --@@ENTITY-->
+
+<![IGNORE[ -- can't get these to work right --
+
+<!notation DYNAMIC SYSTEM -- notation determined at fetch time -->
+
+<!entity rfc1630 SYSTEM "ftp://ds.internic.net/rfc/rfc1630.txt" NDATA ASCII>
+<!entity rfc1738 SYSTEM "ftp://ds.internic.net/rfc/rfc1738.txt" NDATA ASCII>
+<!entity draft-http system "ftp://ds.internic.net/internet-drafts/draft-ietf-http-v10-spec-00.ps" NDATA EPSF>
+
+<!entity rfc1521 SYSTEM "ftp://ds.internic.net/rfc/rfc1521.txt" NDATA ASCII>
+
+<!entity draft-relurl SYSTEM 
+ "ftp://ds.internic.net/internet-drafts/draft-ietf-uri-relative-url-06.txt"
+	NDATA ASCII>
+<!entity rfc1590 SYSTEM "ftp://ds.internic.net/rfc/rfc1590.txt"
+	NDATA ASCII>
+<!entity rfc1700 SYSTEM "ftp://ds.internic.net/rfc/rfc1700.txt"
+	NDATA ASCII>
+<!entity sq.com SYSTEM "http://www.sq.com/" NDATA DYNAMIC>
+<!entity iso8859-order SYSTEM "http://www.iso.ch/cate/d16338.html" NDATA DYNAMIC>
+<!entity sgml-order SYSTEM "http://www.iso.ch/cate/d16387.html" NDATA DYNAMIC>
+]]>
 
 <!entity lt CDATA "<" --@@ only until I find a copy of isonum -->
 <!entity amp CDATA "&">
 <!entity nbsp CDATA " ">
 
-<!entity status public "-//IETF//TEXT Internet Draft Status//EN" 
-	"draft-status.sgm">
+<!entity status SYSTEM "draft-status.sgm">
 
 <!entity stat "Internet Draft">
-<!entity date "May 4, 1995">
+<!entity date "May 25, 1995">
 <!entity filename CDATA "&#60;draft-ietf-html-spec-03.txt&#62;">
 
 <!entity % plain "CDATA"

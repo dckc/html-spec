@@ -3,54 +3,56 @@
 <tl>
 <tli>[URI]: T. Berners-Lee. "Universal Resource Identifiers in WWW: A
 Unifying Syntax for the Expression of Names and Addresses of Objects
-on the Network as used in the World- Wide Web." RFC 1630, CERN, June
-1994.
+on the Network as used in the World- Wide Web." <doclink
+linkend=rfc1630>RFC 1630</>, CERN, June 1994.
 
 <tli>[URL]: T. Berners-Lee, L. Masinter, and M. McCahill. "Uniform
-Resource Locators (URL)."  RFC 1738, CERN, Xerox PARC, University of
-Minnesota, October 1994.
+Resource Locators (URL)."  <doclink linkend=rfc1738>RFC 1738</>, CERN,
+Xerox PARC, University of Minnesota, October 1994.
 
 <tli>[HTTP]: T. Berners-Lee, R. T. Fielding, and H. Frystyk
 Nielsen. "Hypertext Transfer Protocol - HTTP/1.0." Work in Progress
-(draft-ietf-http-v10-spec-00.ps), MIT, UC Irvine, CERN, March 1995.
+(<doclink linkend=draft-http>draft-ietf-http-v10-spec-00.ps</>), MIT,
+UC Irvine, CERN, March 1995.
 
 <tli>[MIME]: N. Borenstein and N. Freed. "MIME (Multipurpose Internet
 Mail Extensions) Part One: Mechanisms for Specifying and Describing
-the Format of Internet Message Bodies."  RFC 1521, Bellcore, Innosoft,
-September 1993.
+the Format of Internet Message Bodies."  <doclink linkend=rfc1521>RFC
+1521</>, Bellcore, Innosoft, September 1993.
 
 <tli>[RELURL]: R. T. Fielding. "Relative Uniform Resource Locators."
-Work in Progress (draft-ietf-uri- relative-url-06.txt), UC Irvine,
-March 1995.
+Work in Progress (<doclink linkend=draft-relurl>
+draft-ietf-uri-relative-url-06.txt</>), UC Irvine, March 1995.
 
 <tli> [GOLD90]: C. F. Goldfarb. "The SGML Handbook." Y. Rubinsky, Ed.,
 Oxford University Press, 1990.
 
-<tli>[IMEDIA]: J. Postel. "Media Type Registration Procedure." RFC
-1590, USC/ISI, March 1994.
+<tli>[IMEDIA]: J. Postel. "Media Type Registration Procedure."
+<doclink linkend=rfc1590>RFC 1590</>, USC/ISI, March 1994.
 
 <tli>[IANA]: J. Reynolds and J. Postel. "Assigned Numbers." STD 2,
-RFC 1700, USC/ISI, October 1994.
+<doclink linkend=rfc1700 >RFC 1700</>, USC/ISI, October 1994.
 
-<tli>[SQ91]: SoftQuad. "The SGML Primer." 3rd ed., SoftQuad Inc.,
-1991.
+<tli>[SQ91]: SoftQuad. "The SGML Primer." 3rd ed., <publink
+linkend=sq.com>SoftQuad Inc.</>, 1991.
 
 <tli>[US-ASCII]: US-ASCII. Coded Character Set - 7-Bit American
 Standard Code for Information Interchange. Standard ANSI X3.4-1986,
 ANSI, 1986.
 
-<tli>[ISO-8859-1]: ISO 8859. International Standard -- Information
-Processing -- 8-bit Single-Byte Coded Graphic Character Sets -- Part
-1: Latin Alphabet No. 1, ISO 8859-1:1987. Part 2: Latin alphabet
-No. 2, ISO 8859-2, 1987. Part 3: Latin alphabet No. 3, ISO 8859-3,
-1988. Part 4: Latin alphabet No. 4, ISO 8859-4, 1988. Part 5:
-Latin/Cyrillic alphabet, ISO 8859-5, 1988. Part 6: Latin/Arabic
-alphabet, ISO 8859-6, 1987. Part 7: Latin/Greek alphabet, ISO 8859-7,
-1987. Part 8: Latin/Hebrew alphabet, ISO 8859-8, 1988. Part 9: Latin
-alphabet No. 5, ISO 8859-9, 1990.
+<tli>[ISO-8859-1]: <doclink linkend=iso8859-order>ISO
+8859</>. International Standard -- Information Processing -- 8-bit
+Single-Byte Coded Graphic Character Sets -- Part 1: Latin Alphabet
+No. 1, ISO 8859-1:1987. Part 2: Latin alphabet No. 2, ISO 8859-2,
+1987. Part 3: Latin alphabet No. 3, ISO 8859-3, 1988. Part 4: Latin
+alphabet No. 4, ISO 8859-4, 1988. Part 5: Latin/Cyrillic alphabet, ISO
+8859-5, 1988. Part 6: Latin/Arabic alphabet, ISO 8859-6, 1987. Part 7:
+Latin/Greek alphabet, ISO 8859-7, 1987. Part 8: Latin/Hebrew alphabet,
+ISO 8859-8, 1988. Part 9: Latin alphabet No. 5, ISO 8859-9, 1990.
 
-<tli>[SGML]: ISO 8879. Information Processing - Text and Office
-Systems - Standard Generalized Markup Language (SGML), 1986.
+<tli>[SGML]: <doclink linkend=sgml-order>ISO 8879</>. Information
+Processing - Text and Office Systems - Standard Generalized Markup
+Language (SGML), 1986.
 
 <!-- @@ ISO-646-IRV -->
 </tl>

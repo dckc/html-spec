@@ -2,14 +2,14 @@
 # $Id$
 #
 
-RELEASE = 19950504b
+RELEASE = 19950506
 PACKAGE = html-spec-$(RELEASE)
 
 # Things outside this distribution
 SGMLS = sgmls
-NROFF = nroff
-TROFF = troff
-# I use the gnu stuff...
+# I use James Clark's groff...
+NROFF = gnroff
+TROFF = groff
 MACROS = -mgs
 #MACROS = -ms
 TEXI2ROFF = texi2roff
