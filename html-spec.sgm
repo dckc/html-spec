@@ -18,8 +18,6 @@
 	>
 
 <!entity intro system "intro.sgm">
-<!entity conform system "conformance.sgm">
-<!entity terms system "terms.sgm">
 
 <!entity sgml-app system "html-sgml.sgm">
 <!entity html-mime system "html-mime.sgm">
@@ -66,8 +64,6 @@ Expires in six months                                 April 25, 1995
     <date>&date;
     <docnum>&filename;</>
     <toc>
-&status;
-
 <abstract>
 
 The HyperText Markup Language (HTML) is a simple markup language
@@ -88,11 +84,12 @@ Text and Office Systems; Standard Generalized Markup Language (SGML).
 The <code>"text/html; version=2.0"</> Internet Media Type (RFC&nbsp;1590)
 and MIME Content Type (RFC&nbsp;1521) is defined by this specification.
 
+<!-- out of order! -->
+&status;
+
 &intro;
 
-&conform;
-
-&terms;
+<![IGNORE[
 
 &sgml-app;
 
@@ -105,6 +102,7 @@ and MIME Content Type (RFC&nbsp;1521) is defined by this specification.
 &iso-latin-1;
 
 &pubtext;
+]]>
 
 &bib;
 

@@ -1,45 +1,45 @@
-<h1>References
+<h1>Bibliography
 
-<ol>
-<li id=URI> T. Berners-Lee. "Universal Resource Identifiers in WWW: A
+<tl>
+<tli>[URI]: T. Berners-Lee. "Universal Resource Identifiers in WWW: A
 Unifying Syntax for the Expression of Names and Addresses of Objects
 on the Network as used in the World- Wide Web." RFC 1630, CERN, June
 1994.
 
-<li id=URL> T. Berners-Lee, L. Masinter, and M. McCahill. "Uniform
+<tli>[URL]: T. Berners-Lee, L. Masinter, and M. McCahill. "Uniform
 Resource Locators (URL)."  RFC 1738, CERN, Xerox PARC, University of
 Minnesota, October 1994.
 
-<li id=HTTP> T. Berners-Lee, R. T. Fielding, and H. Frystyk
+<tli>[HTTP]: T. Berners-Lee, R. T. Fielding, and H. Frystyk
 Nielsen. "Hypertext Transfer Protocol - HTTP/1.0." Work in Progress
 (draft-ietf-http-v10-spec-00.ps), MIT, UC Irvine, CERN, March 1995.
 
-<li id=MIME> N. Borenstein and N. Freed. "MIME (Multipurpose Internet
+<tli>[MIME]: N. Borenstein and N. Freed. "MIME (Multipurpose Internet
 Mail Extensions) Part One: Mechanisms for Specifying and Describing
 the Format of Internet Message Bodies."  RFC 1521, Bellcore, Innosoft,
 September 1993.
 
-<li id=RELURI> R. T. Fielding. "Relative Uniform Resource Locators."
+<tli>[RELURL]: R. T. Fielding. "Relative Uniform Resource Locators."
 Work in Progress (draft-ietf-uri- relative-url-06.txt), UC Irvine,
 March 1995.
 
-<li id=gold90> C. F. Goldfarb. "The SGML Handbook." Y. Rubinsky, Ed.,
+<tli> [GOLD90]: C. F. Goldfarb. "The SGML Handbook." Y. Rubinsky, Ed.,
 Oxford University Press, 1990.
 
-<li id="imedia"> J. Postel. "Media Type Registration Procedure." RFC
+<tli>[IMEDIA]: J. Postel. "Media Type Registration Procedure." RFC
 1590, USC/ISI, March 1994.
 
-<li id="IANA"> J. Reynolds and J. Postel. "Assigned Numbers." STD 2,
+<tli>[IANA"]: J. Reynolds and J. Postel. "Assigned Numbers." STD 2,
 RFC 1700, USC/ISI, October 1994.
 
-<li id=SQ91> SoftQuad. "The SGML Primer." 3rd ed., SoftQuad Inc.,
+<tli>[SQ91]: SoftQuad. "The SGML Primer." 3rd ed., SoftQuad Inc.,
 1991.
 
-<li id="US-ASCII"> US-ASCII. Coded Character Set - 7-Bit American
+<tli>[US-ASCII]: US-ASCII. Coded Character Set - 7-Bit American
 Standard Code for Information Interchange. Standard ANSI X3.4-1986,
 ANSI, 1986.
 
-<li id="ISO-8859-1"> ISO 8859. International Standard -- Information
+<tli>[ISO-8859-1]: ISO 8859. International Standard -- Information
 Processing -- 8-bit Single-Byte Coded Graphic Character Sets -- Part
 1: Latin Alphabet No. 1, ISO 8859-1:1987. Part 2: Latin alphabet
 No. 2, ISO 8859-2, 1987. Part 3: Latin alphabet No. 3, ISO 8859-3,
@@ -49,7 +49,7 @@ alphabet, ISO 8859-6, 1987. Part 7: Latin/Greek alphabet, ISO 8859-7,
 1987. Part 8: Latin/Hebrew alphabet, ISO 8859-8, 1988. Part 9: Latin
 alphabet No. 5, ISO 8859-9, 1990.
 
-<li id="SGML"> ISO 8879. Information Processing - Text and Office
+<tli>[SGML]: ISO 8879. Information Processing - Text and Office
 Systems - Standard Generalized Markup Language (SGML), 1986.
 
-</ol>
+</tl>

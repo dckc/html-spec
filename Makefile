@@ -10,6 +10,7 @@ TROFF = troff
 MACROS = -mgm
 #MACROS = -ms
 TEXI2ROFF = texi2roff
+TEXI2HTML = texi2html
 GF = gf
 
 PERL=perl
@@ -23,26 +24,33 @@ DTDTOOL=www_dtd.pl
 #
 # "No user-serviceable parts inside"
 #
-INTERNET_DRAFT=draft-ietf-html-spec-03
+SPEC=html-spec
 
 SRCS = html.decl html.dtd ISOlat1.sgml catalog \
 	snafu.decl html-spec.sgm \
-	conformance.sgm intro.sgm terms.sgm html-sgml.sgm html-mime.sgm \
+	intro.sgm html-sgml.sgm html-mime.sgm \
 	elements.sgm head-elts.sgm doc-charset.sgm phrase.sgm hyperlink.sgm \
-	blocks.sgm headings.sgm lists.sgm forms.sgm pubtext.sgm
+	blocks.sgm headings.sgm lists.sgm forms.sgm pubtext.sgm references.sgm
 
-submit: $(INTERNET_DRAFT).txt $(INTERNET_DRAFT).ps
+all: hypertext hardcopy
 
-$(INTERNET_DRAFT).txt: $(INTERNET_DRAFT).mm
-	$(NROFF) -Tascii $(MACROS) $(INTERNET_DRAFT).mm >$@
+hypertext: $(SPEC).html
 
-$(INTERNET_DRAFT).ps: $(INTERNET_DRAFT).mm
-	$(TROFF) $(MACROS) -Tps $(INTERNET_DRAFT).mm >$@
+$(SPEC).html: $(SPEC).texi
+	$(TEXI2HTML) -split_chapter -glossary -verbose $(SPEC).texi
 
-$(INTERNET_DRAFT).mm: $(INTERNET_DRAFT).texi
-	$(TEXI2ROFF) -mm $(INTERNET_DRAFT).texi >$@
+hardcopy: $(SPEC).txt $(SPEC).ps
 
-$(INTERNET_DRAFT).texi: $(SRCS)
+$(SPEC).txt: $(SPEC).mm
+	$(NROFF) -Tascii $(MACROS) $(SPEC).mm >$@
+
+$(SPEC).ps: $(SPEC).mm
+	$(TROFF) $(MACROS) -Tps $(SPEC).mm >$@
+
+$(SPEC).mm: $(SPEC).texi
+	$(TEXI2ROFF) -mm $(SPEC).texi >$@
+
+$(SPEC).texi: $(SRCS)
 	$(GF) -f texinfo snafu.decl html-spec.sgm >$@
 
 
@@ -132,7 +140,7 @@ TEXT = \
 
 
 
-all: validate canonicalize generate validate text
+#all: validate canonicalize generate validate text
 
 generate: $(INDEXES)
 
