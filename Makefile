@@ -2,8 +2,9 @@
 # $Id$
 #
 
-RELEASE = 19950616
+RELEASE = 19950804
 PACKAGE = html-spec-$(RELEASE)
+PUBTEXT = html-pubtext-$(RELEASE)
 
 # Things outside this distribution
 SGMLS = sgmls
@@ -29,8 +30,10 @@ DTDTOOL=www_dtd.pl
 #
 SPEC=html-spec
 
-SRCS = html.decl html.dtd html-1.dtd html-s.dtd html-1s.dtd\
-	ISOlat1.sgml catalog \
+PUBTXT = html.decl html.dtd html-1.dtd html-s.dtd html-1s.dtd \
+	ISOlat1.sgml catalog
+
+SRCS = $(PUBTXT) \
 	draft-status.sgm \
 	snafu.decl html-spec.style \
 	html-spec.sgm \
@@ -104,7 +107,11 @@ $(SPEC).tex: $(SRCS)
 	$(GF) -s html-spec.style -f latex2e snafu.decl html-spec.sgm >$@
 
 
-dist: $(PACKAGE).tar.gz
+dist: $(PACKAGE).tar.gz $(PUBTEXT).tar.gz
+
+$(PUBTEXT).tar.gz: $(PUBTXT)
+	tar cf $(PUBTEXT).tar $(PUBTXT)
+	gzip $(PUBTEXT).tar
 
 $(PACKAGE).tar.gz: $(DIST)
 	tar cf $(PACKAGE).tar $(DIST)

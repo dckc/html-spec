@@ -1,17 +1,30 @@
 <h1 id=hyperlink>Hyperlinks
 
 <p> In addition to general purpose elements such as paragraphs and
-lists, HTML documents can express hyperlinks. A hyperlink is a
-relationship between two anchors, called the head and the tail of the
-hyperlink[DEXTER]. An anchor is a resource such as an HTML document,
-or some fragment of, i.e. view on or portion of a resource.
-Typically, the user activates a link by indicating the tail of the
-link; the head of the link is presented as a result.
+lists, HTML documents can express hyperlinks. An HTML user agent
+allows the user to navigate these hyperlinks.
 
-<p> Anchors are addressed by Uniform Resource Identifiers (URI). URIs
-either refer directly to an anchor in absolute form for example as in
-[URL], or they refer to an anchor relative to a base URI which is
-absolute, as in [RELURL].
+<p> A hyperlink is a relationship between two anchors, called the head
+and the tail of the hyperlink[DEXTER]. Each anchor is addressed, or
+uniquely identified, by an absolute Uniform Resource Identifier (URI),
+optionally followed by a '#' and a sequence of characters called a
+fragment identifier, as per [RELURL]. For example:
+
+<listing><![CDATA[
+http://www.w3.org/hypertext/WWW/TheProject.html
+http://www.w3.org/hypertext/WWW/TheProject.html#z31
+]]>
+</listing>
+
+<p>In an anchor address, the URI refers to a resource; it may be used
+in a variety of information retrieval protocols to obtain an entity
+that represents the resource, such as an HTML document. The fragment
+identifier, if present, refers to some view on, or portion of the
+resource.
+
+<p>An HTML user agent begins navigation with an absolute URI, called
+the base URI, and an HTML document that is a representation of the
+resource identified by the base URI.
 
 <p> Each of the following markup constructs indicates the tail anchor
 of a hyperlink or set of hyperlinks:
@@ -25,39 +38,50 @@ of a hyperlink or set of hyperlinks:
 <li> <tag/FORM/ elements with <code/METHOD=GET/.
 </ul>
 
+<p>These markup constructs refer to head anchors either directly by
+means of an absolute URI, or indirectly by means of a relative URI,
+which must be combined with the base URI as in [RELURL] to determine
+the address of the head anchor. The markup may also include fragment
+identifiers, separeted from the URI by a '#' character.
+
 <h2>Accessing Resources
 
-<p> To access the head anchor of a hyperlink, the user agent
-determines its URI from the URI given in the tail anchor, using the
-base URI of the document containing the tail anchor if necessary. Any
-fragment identifier is discarded, and the result is used to access a
-resource, for example as in [URL].
+<p>Once the address of the head anchor is determined, the user agent
+may obtain a representation of the resource, for example as in [URL].
 
-For example, if a document identified as <code>http://host/x/y.html</>
-contains:
+<p>For example, if the base URI is <code>http://host/x/y.html</> and
+the document contains:
 
 <listing><![CDATA[
 <img src="../icons/abc.gif">
 ]]>
 </listing>
 
-<p> then the user agent must use the URI
+<p> then the user agent uses the URI
 <code>http://host/icons/abc.gif</> to access the resource linked from
 the <tag/IMG/ element.
+
+<p>If the URI in the address of the head anchor is the same as the
+base URI, then the base document is sufficient as a representation of
+the resource. A user agent must <emph/not/, for example, use any network
+information retrieval protocols to obtain a new representation of the
+resourse.
 
 <h2 id=traverse>Activation of Hyperlinks
 
 <p>An HTML user agent allows the user to navigate the content of the
-document and request activation of <tag/A/ element hyperlinks. A
-request to activate a link is essentially a request to process the
-resource indicated by the head anchor of the link, for example to
-display the indicated HTML document. HTML user agents should also
-allow activation of <tag/LINK/ element hyperlinks.
+document and request activation of hyperlinks denoted by <tag/A/
+elements. HTML user agents should also allow activation of <tag/LINK/
+element hyperlinks.
 
-<p> The base URI for navigating the head anchor may be different from
-the URI used to access it. For example, it may be replaced by a
-<tag/BASE/ tag in the destination document or by an HTTP redirection
-transaction.
+<p> To activate a link, the user agent obtains a representation of the
+resource identified in the address of the head anchor. If the
+representation is another HTML document, navigation may begin again
+with this new document. The base URI for navigation is taken from the
+head anchor by default; however, any <tag/BASE/ tag in the destination
+document overrides this default. The process of obtaining the
+destination document may also override the base URI, as in the case of
+an HTTP <code/URI:/ header or redirection transaction.
 
 <h2 id=image-present>Simultaneous Presentation of Image Resources
 
@@ -73,21 +97,20 @@ during the processing of the document.
 
 <h2>Fragment Identifiers
 
-Any characters following a <code/#/ character in a URI constitute a
-fragment identifier. As a degenerate case, a URI of the form
-<code/#fragment/ refers to an anchor in the same document.
+Any characters following a <code/#/ character in a hypertext address
+constitute a fragment identifier. As a degenerate case, an address of
+the form <code/#fragment/ refers to an anchor in the same document.
 
 The meaning of fragment identifiers depends on the media type of the
-resource containing the head anchor. For <code>text/html</> resources,
-it refers to the <tag/A/ element with a <attr/NAME/ attribute whose
-value is the same as the fragment identifier. The matching is case
-sensitive. The document should have exactly one such element. The user
-agent should indicate the anchor element, for example by scrolling to
-and/or highlighting the phrase.
+representation of the anchor's resource. For <code>text/html</>
+representations, it refers to the <tag/A/ element with a <attr/NAME/
+attribute whose value is the same as the fragment identifier. The
+matching is case sensitive. The document should have exactly one such
+element. The user agent should indicate the anchor element, for
+example by scrolling to and/or highlighting the phrase.
 
-For example, if a user agent was processing a document identified as
-<code>http://host/x/y.html</> and the user indicated the following
-anchor:
+For example, if the base URI is <code>http://host/x/y.html</> and the
+user activated the link denoted by the following markup:
 
 <listing>
 <![CDATA[
@@ -96,10 +119,11 @@ for more detail on bananas.
 ]]>
 </listing>
 
-<p> then the user agent URI must access the resource
+<p>Then the user agent accesses the resource identified by
 <code>http://host/x/app1.html</>. Assuming the resource is represented
 using the <code>text/html</> media type, the user agent must locate
-the anchor named <code>bananas</> and begin navigation there.
+the <tag/A/ element whose <attr/NAME/ attribute is <code>bananas</>
+and begin navigation there.
 
 <h2 id=query>Queries and Indexes
 

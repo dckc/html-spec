@@ -331,7 +331,7 @@ For example:
 <h2>HTML Public Text Identifiers
 
 To identify information as an HTML document conforming to this
-specification, each document should start with one of the following
+specification, each document must start with one of the following
 document type declarations.
 
 <listing><![CDATA[

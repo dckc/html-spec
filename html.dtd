@@ -70,20 +70,6 @@
         -- as per HTTP specification, in progress
         -->
 
-<!ENTITY % URI "CDATA"
-        -- The term URI means a CDATA attribute
-           whose value is a Uniform Resource Identifier,
-           as defined by 
-	"Universal Resource Identifiers" by Tim Berners-Lee
-	aka RFC 1630
-
-	Note that CDATA attributes are limited by the LITLEN
-	capacity (1024 in the current version of html.decl),
-	so that URIs in HTML have a bounded length.
-
-        -->
-
-
 <!--========= DTD "Macros" =====================-->
 
 <!ENTITY % heading "H1|H2|H3|H4|H5|H6">
@@ -182,7 +168,7 @@ SDA & ICADD:
 
 <!--========= Link Markup ======================-->
 
-<!ENTITY % linkType "NAME">
+<!ENTITY % linkType "NAMES">
 
 <!ENTITY % linkExtraAttributes
         "REL %linkType #IMPLIED
@@ -204,7 +190,7 @@ SDA & ICADD:
 
 <!ELEMENT A     - - %A.content -(A)>
 <!ATTLIST A
-        HREF %URI #IMPLIED
+        HREF CDATA #IMPLIED
         NAME CDATA #IMPLIED
         %linkExtraAttributes;
         %SDAPREF; "<Anchor: #AttList>"
@@ -223,7 +209,7 @@ SDA & ICADD:
 
 <!ELEMENT IMG    - O EMPTY>
 <!ATTLIST IMG
-        SRC %URI;  #REQUIRED
+        SRC CDATA  #REQUIRED
         ALT CDATA #IMPLIED
         ALIGN (top|middle|bottom) #IMPLIED
         ISMAP (ISMAP) #IMPLIED
@@ -447,7 +433,7 @@ SDA & ICADD:
 
 <!ELEMENT FORM - - %body.content -(FORM) +(INPUT|SELECT|TEXTAREA)>
 <!ATTLIST FORM
-        ACTION %URI #IMPLIED
+        ACTION CDATA #IMPLIED
         METHOD (%HTTP-Method) GET
         ENCTYPE %Content-Type; "application/x-www-form-urlencoded"
         %SDAPREF; "<Para>Form:</Para>"
@@ -467,7 +453,7 @@ SDA & ICADD:
 	TYPE %InputType TEXT
 	NAME CDATA #IMPLIED
 	VALUE CDATA #IMPLIED
-	SRC %URI #IMPLIED
+	SRC CDATA #IMPLIED
 	CHECKED (CHECKED) #IMPLIED
 	SIZE CDATA #IMPLIED
 	MAXLENGTH NUMBER #IMPLIED
@@ -551,7 +537,7 @@ SDA & ICADD:
 
 <!ELEMENT LINK - O EMPTY>
 <!ATTLIST LINK
-        HREF %URI #REQUIRED
+        HREF CDATA #REQUIRED
         %linkExtraAttributes;
         %SDAPREF; "Linked to : #AttVal (TITLE) (URN) (HREF)>"    >
 
@@ -572,7 +558,7 @@ SDA & ICADD:
 
 <!ELEMENT BASE - O EMPTY>
 <!ATTLIST BASE
-        HREF %URI; #REQUIRED     >
+        HREF CDATA #REQUIRED     >
 
 <!-- <BASE>             Base context document                   -->
 <!-- <BASE HREF="...">  Address for this document               -->

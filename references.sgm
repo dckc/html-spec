@@ -22,9 +22,9 @@ the Format of Internet Message Bodies."  RFC 1521,
 Bellcore, Innosoft, September 1993.
 <uri>ftp://ds.internic.net/rfc/rfc1521.txt</>
 
-<tli>[RELURL]: R. T. Fielding. "Relative Uniform Resource Locators."
-Work in Progress, UC Irvine, March 1995.
-<uri>ftp://ds.internic.net/internet-drafts/draft-ietf-uri-relative-url-06.txt</>
+<tli>[RELURL]: R. Fielding. "Relative Uniform Resource Locators."
+RFC 1808, June 1995
+<uri>ftp://ds.internic.net/rfc/rfc1808.txt</>
 
 <tli> [GOLD90]: C. F. Goldfarb. "The SGML Handbook." Y. Rubinsky, Ed.,
 Oxford University Press, 1990.

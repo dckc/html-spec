@@ -1,13 +1,13 @@
 <h1>Terms
 
 <tl>
-<tli>absolute URI: a URI in absolute form, as per [URL]
+<tli>absolute URI: a URI in absolute form; for example, as per [URL]
 
 <tli>anchor: one of two ends of a hyperlink; typically, a phrase
 marked as an <tag/A/ element.
 
-<tli>base URI: URI used as the base of an HTML document for the
-purpose of resolving hyperlink destinations.
+<tli>base URI: an absolute URI used in combination with a relative
+URI to determine another absolute URI.
 
 <tli>character: An atom of information, for example a letter or a
 digit.  Graphic characters have associated glyphs, where as control
@@ -130,9 +130,9 @@ is not a mandatory part of the specification but is given as guidance
 for designers and to help explain the uses for which the elements were
 intended.
 
-<tli>URI: A Universal Resource Identifier is a formatted string that
+<tli>URI: A Uniform Resource Identifier is a formatted string that
 serves as an identifier for a resource, typically on the Internet. URIs
-are used in HTML to identify the destination of hyperlinks. URIs in
+are used in HTML to identify the anchors of hyperlinks. URIs in
 common practice include Uniform Resource Locators (URLs)[URL]
 and Relative URLs [RELURL].
 
