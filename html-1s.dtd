@@ -1,4 +1,4 @@
-<!--	html-1P.dtd
+<!--	html-1s.dtd
 
         Document Type Definition for the HyperText Markup Language
 	Struct Level 1
@@ -6,7 +6,7 @@
 	$Id$
 
 	Author: Daniel W. Connolly <connolly@w3.org>
-	See Also: http://info.cern.ch/hypertext/WWW/MarkUp/MarkUp.html
+	See Also: http://www.w3.org/hypertext/WWW/MarkUp/MarkUp.html
 -->
 
 <!ENTITY % HTML.Version

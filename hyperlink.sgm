@@ -2,32 +2,37 @@
 
 <p> In addition to general purpose elements such as paragraphs and
 lists, HTML documents can express hyperlinks. A hyperlink is a
-relationship between two anchor, called the head and the tail of the
-hyperlink. Anchors include HTML documents and named elements of HTML
-documents.
+relationship between two anchors, called the head and the tail of the
+hyperlink. An anchor is a resource such as an HTML document, or some
+fragment of, i.e. view on or portion of a resource.
 
-<p> An HTML user agent allows navigating a collection of these
-resources. In the following interactions, the URI of the source
-document is called the base URI.
+<p> Anchors are addressed by Uniform Resource Identifiers (URI). URIs
+either refer directly to an anchor in absolute form for example as in
+[URL], or they refer to an anchor relative to a base URI which is
+absolute, as in [RELURL].
+
+<p> Each of the following markup constructs indicates the tail anchor
+of a hyperlink or set of hyperlinks:
+
+<ul>
+<li> <tag/A/ elements with <attr/HREF/ present.
+<li> <tag/LINK/ elements.
+<li> <tag/IMG/ elements.
+<li> <tag/INPUT/ elements with the <attr/SRC/ attribute present.
+<li> <tag/ISINDEX/ elements.
+<li> <tag/FORM/ elements with <code/METHOD=GET/.
+</ul>
 
 <h2>Accessing Resources
 
-<p> Each of the following markup constructs is the source of a
-hyperlink; these hyperlinks are references to resources to be
-processed in conjunction with the source documents:
+<p> To access the head anchor of a hyperlink, the user agent
+determines its URI from the URI given in the tail anchor, using the
+base URI of the document containing the head anchor if necessary. Any
+fragment identifier is discarded, and the result is used to access a
+resource, for example as in [URL].
 
-<ul>
-<li> <tag/IMG/ elements
-<li> <tag/INPUT/ elements with the <attr/SRC/ attribute present
-<li> <tag/LINK/ element
-</ul>
-
-<p> To access the destination of a hyperlink, the base URI of the
-source document is combined with the value of the <attr/HREF/ or
-<attr/SRC/ attribute of the hyperlink element according to
-[RELURL]. The user agent disregards any fragment identifer, and uses
-the resulting URI to access the destination resource. For example, if
-a document identified as <code>http://host/x/y.html</> contains:
+For example, if a document identified as <code>http://host/x/y.html</>
+contains:
 
 <listing><![CDATA[
 <img src="../icons/abc.gif">
@@ -38,37 +43,49 @@ a document identified as <code>http://host/x/y.html</> contains:
 <code>http://host/icons/abc.gif</> to access the resource linked from
 the <tag/IMG/ element.
 
-<h2 id=traverse>Traversing Hyperlinks
+<h2 id=traverse>Activation of Hyperlinks
 
-<p> An <tag/A/ element with the <attr/HREF/ attribute present is an
-anchor; that is, the source of a hyperlink that is an option to
-navigate to another resource.  The <tag/LINK/ element may also
-be an anchor.
+<p>An HTML user agent allows the user to navigate the content of the
+document and request activation of <tag/A/ element hyperlinks. A
+request to activate a link is essentially a request to process the
+resource indicated by the head anchor of the link, for example to
+display the indicated HTML document. HTML user agents should also
+allow activation of <tag/LINK/ element hyperlinks.
 
-<p> In addition to the base URI, the state of an HTML user agent
-includes a list of the anchors in the document. The user can traverse
-a hyperlink by choosing an anchor. The user agent then accesses the
-destination document as above and presents it.
+<p> The base URI for navigating the head anchor may be different from
+the URI used to access it. For example, it may be replaced by by a
+<tag/BASE/ tag in the destination document or by an HTTP redirection
+transaction.
+
+<h2 id=image-present>Simultaneous Presentation of Image Resources
+
+An HTML user agent may activate hyperlinks indicated by <tag/IMG/ and
+<tag/INPUT/ elements concurrently with processing the document; that
+is, image hyperlinks may be processed without explicit request by the
+user. Image resources should be embedded in the presentation at the
+point of the tail anchor, that is the <tag/IMG/ element.
+
+<tag/LINK/ hyperlinks may also be processed without explicit user
+request; for example, style sheet resources may be processed before or
+during the processing of the document.
 
 <h3>Fragment Identifiers
 
-<p>If the value of the <tag/HREF/ attribute of an anchor element
-contains a <code/#/ character, then the characters after the <code/#/
-are a fragment identifier, not a part of the destination URI. As a
-degenerate case, <code/HREF="#fragment"/ refers to an anchor in the
-same document: the source and destination URIs are the same.
+Any characters following a <code/#/ character in a URI constitute a
+fragment identifier. As a degenerate case, a URI of the form
+<code/#fragment/ refers to an anchor in the same document.
 
-<p>After accessing the destination resource, the navigation state (the
-scrollbar, for example) may be modified by a fragment identifer in the
-hyperlink source markup. The meaning of fragment identifiers depends
-on the media type of the destination resource. For <code>text/html</>
-resources, it instructs the user agent to locate the <tag/A/ element
-with a <attr/NAME/ attribute whose value is the same as the fragment
-identifier. The matching is case sensitive.
+The meaning of fragment identifiers depends on the media type of the
+resource containing the head anchor. For <code>text/html</> resources,
+it refers to the <tag/A/ element with a <attr/NAME/ attribute whose
+value is the same as the fragment identifier. The matching is case
+sensitive. The document should have exactly one such element. The user
+agent should indicate the anchor element, for example by scrolling to
+and/or highlighting the phrase.
 
-<p> For example, if a user
-agent was processing the above document and the user indicated the
-following anchor:
+For example, if a user agent was processing a document identified as
+<code>http://host/x/y.html</> and the user indicated the following
+anchor:
 
 <listing>
 <![CDATA[
@@ -82,16 +99,11 @@ for more detail on bananas.
 using the <code>text/html</> media type, the user agent must locate
 the anchor named <code>bananas</> and begin navigation there.
 
-<p> The base URI for navigating the destination document may be
-different from the URI used to access it. For example, it may be
-replaced by by a <tag/BASE/ tag in the destination document or by an
-HTTP redirection transaction.
-
 <h2 id=query>Queries and Indexes
 
 <p> The <tag/ISINDEX/ element represents a set of hyperlinks. The user
 can choose from the set by providing keywords to the user agent. The
-user agent computes the destination URI by appending <code/?/ and the
+user agent computes the head URI by appending <code/?/ and the
 keywords to the base URI. The keywords are escaped according to [URL]
 and joined by <code/+/. For example, if a document contains:
 
@@ -112,9 +124,9 @@ hyperlinks. See <hdref refid=queryf> for details.
 <p> The <attr/ISMAP/ attribute in combination with the <tag/A/ and
 <tag/IMG/ elements, represents a set of hyperlinks. The user can
 choose from the set by choosing a pixel of the image. The user agent
-computes the destination URI by appending <code/?/ and the coordinates
-of the pixel to the URI given in the <tag/A/ element. For example, if
-a document contains:
+computes the head URI by appending <code/?/ and the x and y
+coordinates of the pixel to the URI given in the <tag/A/ element. For
+example, if a document contains:
 
 <listing><![CDATA[
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">

@@ -29,7 +29,8 @@ DTDTOOL=www_dtd.pl
 #
 SPEC=html-spec
 
-SRCS = html.decl html.dtd ISOlat1.sgml catalog \
+SRCS = html.decl html.dtd html-1.dtd html-s.dtd html-1s.dtd\
+	ISOlat1.sgml catalog \
 	draft-status.sgm \
 	snafu.decl html-spec.style \
 	html-spec.sgm \
@@ -72,7 +73,7 @@ all: hypertext hardcopy
 hypertext: $(SPEC)_toc.html
 
 $(SPEC)_toc.html: $(SPEC).texi
-	$(TEXI2HTML) -doctype html2 -debug 8 -expandinfo -split_chapter -glossary -verbose $(SPEC).texi
+	$(TEXI2HTML) -doctype html2 -debug 8 -expandinfo -split_chapter -glossary Terms -bibliography References -verbose $(SPEC).texi
 
 hardcopy: $(SPEC).ps $(SPEC).ps.gz
 

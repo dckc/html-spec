@@ -1,59 +1,46 @@
-<h2>Proposed Features
+<h1>Proposed Entities
 
-<p>This section describes proposed HTML elements and entities that are
-not currently supported under HTML Levels 1, or 2, but may be
-supported in the future.
-
-<h3>Additional Character Entities
-
-<p>To indicate special characters, HTML uses entity or numeric
-representations. Additional character presentations are proposed:
+<p> The HTML DTD references the "Added Latin 1" entity set, which only
+supplies named entities for a subset of the non-ASCII characters in
+ISO 8859-1, namely the accented characters. The following entities
+should be supported so that the remaining characters may only be
+referenced symbolically.
 
 <listing><![CDATA[
-CHARACTER			REPRESENTATION
-
-Non-breaking space		&nbsp;
-
-Soft-hyphen			&shy;
-
-Registered			&reg;
-
-Copyright			&copy;
+<!ENTITY yuml   CDATA "&#255;" -- small y, dieresis or umlaut mark -->
+   
+<!ENTITY iexcl   CDATA "&#161;" -- inverted exclamation mark  -->
+<!ENTITY cent    CDATA "&#162" -- cent sign  -->
+<!ENTITY pound   CDATA "&#163" -- pound sterling sign  -->
+<!ENTITY curren  CDATA "&#164" -- general currency sign  -->
+<!ENTITY yen     CDATA "&#165" -- yen sign  -->
+<!ENTITY brvbar  CDATA "&#166" -- broken (vertical) bar  -->
+<!ENTITY sect    CDATA "&#167" -- section sign  -->
+<!ENTITY umlaut  CDATA "&#168" -- umlaut (dieresis)  -->
+<!ENTITY copy    CDATA "&#169" -- copyright sign  -->
+<!ENTITY ordf    CDATA "&#170" -- ordinal indicator, feminine  -->
+<!ENTITY laquo   CDATA "&#171" -- angle quotation mark, left  -->
+<!ENTITY not     CDATA "&#172" -- not sign  -->
+<!ENTITY shy     CDATA "&#173" -- soft hyphen  -->
+<!ENTITY reg     CDATA "&#174" -- registered trademark  -->
+<!ENTITY macron  CDATA "&#175" -- macron  -->
+<!ENTITY deg     CDATA "&#176" -- degree sign  -->
+<!ENTITY plusmn  CDATA "&#177" -- plus-or-minus sign  -->
+<!ENTITY sup2    CDATA "&#178" -- superscript two  -->
+<!ENTITY sup3    CDATA "&#179" -- superscript three  -->
+<!ENTITY acute   CDATA "&#180" -- acute accent  -->
+<!ENTITY micro   CDATA "&#181" -- micro sign  -->
+<!ENTITY para    CDATA "&#182" -- pilcrow (paragraph sign)  -->
+<!ENTITY middot  CDATA "&#183" -- middle dot (centred decimal point)  -->
+<!ENTITY cedilla CDATA "&#184" -- cedilla accent  -->
+<!ENTITY sup1    CDATA "&#185" -- superscript one -->
+<!ENTITY ordm    CDATA "&#186" -- ordinal indicator, masculine -->
+<!ENTITY raquo   CDATA "&#187" -- angle quotation mark, right -->
+<!ENTITY frac14  CDATA "&#188" -- fraction one-quarter -->
+<!ENTITY frac12  CDATA "&#189" -- fraction one-half -->
+<!ENTITY frac34  CDATA "&#190" -- fraction three-quarters -->
+<!ENTITY iquest  CDATA "&#191" -- inverted question mark -->
+<!ENTITY times   CDATA "&#215" -- multiply sign -->
+<!ENTITY divide  CDATA "&#247" -- divide sign -->
 ]]></listing>
 
-<h3>Defining Instance Element
-
-<![CDATA[
-<DFN> ... </DFN>
-]]>
-
-<p>The Defining Instance element indicates the defining instance of a
-term. The typical rendering is bold or bold italic. This element is
-not widely supported.
-
-<h3>Strike Element
-
-<![CDATA[
-<STRIKE> ... </STRIKE>
-]]>
-
-<p>The Strike element is proposed to indicate strikethrough, a font
-style in which a horizontal line appears through characters. This
-element is not widely supported.
-
-<h3>Underline Element
-
-<![CDATA[
-<U> ... </U>
-]]>
-
-<p>The Underline element is proposed to indicate that the text should
-be rendered as underlined. This proposed tag is not supported by all
-HTML interpreters.
-
-<p>Example of use:
-
-<listing><![CDATA[
-The text <U>shown here</U> is rendered in the 
-document as underlined.
-]]></listing>

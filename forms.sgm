@@ -251,7 +251,7 @@ is <code/GET/, the user agent starts with the action URI and appends a
 agent then traverses the link to this URI just as if it were an anchor
 (see <hdref refid=traverse>).
 <note>
-The URL encoding may result in vary long URIs, which cause some
+The URL encoding may result in very long URIs, which cause some
 historical HTTP server implementations to exhibit defective behavior.
 As a result, some HTML forms are written using <code/METHOD=POST/ even
 though the form submission has no side-effects.

@@ -1,35 +1,6 @@
 <h1>Document Structure
 
-<p>To identify information as an HTML document conforming to this
-specification, each document should start with the following prologue:
-
-<listing><![CDATA[
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-]]></listing>
-<NOTE>If the body of a <code>text/html</> message entity does not begin
-with a document type declaration, an HTML user agent should infer the
-above document type declaration.
-</note>
-
-HTML user agents are required to support the above document
-type declaration and the following document type declarations:
-
-<listing><![CDATA[
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Level 2//EN">
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Level 1//EN">
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Strict//EN">
-]]></listing>
-
-The <code/Strict/ public identifier refers to the HTML DTD with the
-<code/HTML.Recommended/ entity defined as <code/INCLUDE/ rather than
-<code/IGNORE/; that is, it refers to the more structurally rigid
-definition of HTML. (see <hdref refid=feature-test>).
-
-They are not required to support other document types, but
-they may.  In particular, they may support other formal public
-identifiers, or other document types altogether. They may support
-an internal declaration subset with supplemental entity,
-element, and other markup declarations, or they may not.
+An HTML document is a hierarchy of elements.
 
 <h2>Document Element: HTML
 

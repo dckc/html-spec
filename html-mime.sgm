@@ -69,9 +69,10 @@ whose generic identifier is not declared is mapped to nothing during
 tokenization. Undeclared attributes are treated similarly.  The entire
 attribute specification of an unknown attribute (i.e., the unknown
 attribute and its value, if any) should be ignored.  On the other
-hand, references to undeclared entities and numeric character
-references which cannot be resolved (e.g., are out of range) should be
-treated as data characters.
+hand, references to undeclared entities and undefined numeric
+character references (i.e. references to code positions that are not
+in the domain of the document character set) should be treated as data
+characters.
 
 For example:
 

@@ -3,17 +3,49 @@
 <h2 id=dtd>HTML DTD
 
 <p>This is the Document Type Definition for the HyperText Markup
-Language.
+Language, level 2.
 
 <listing>
 &html-dtd;
 </listing>
 
 
+<h2 id=dtd.s>Strict HTML DTD
+
+This document type declaration refers to the HTML DTD with the
+<code/HTML.Recommended/ entity defined as <code/INCLUDE/ rather than
+IGNORE; that is, it refers to the more structurally rigid definition
+of HTML.
+
+<listing>
+&html-dtd-s;
+</listing>
+
+<h2 id=dtd.1>Level 1 HTML DTD
+
+This document type declaration refers to the HTML DTD with the
+<code/HTML.Forms/ entity defined as <code/IGNORE/ rather than
+<code/INCLUDE/. Documents which contain <tag/FORM/ elements do not
+conform to this DTD, and must use the level 2 DTD.
+
+<listing>
+&html-dtd-1;
+</listing>
+
+<h2 id=dtd.1s>Strict Level 1 HTML DTD
+
+This document type declaration refers to the level 1 HTML DTD with the
+<code/HTML.Recommended/ entity defined as <code/INCLUDE/ rather than
+IGNORE; that is, it refers to the more structurally rigid definition
+of HTML.
+
+<listing>
+&html-dtd-1s;
+</listing>
+
 <h2 id=decl>SGML Declaration for HTML
 
-<p>This is the SGML Declaration for HyperText Markup Language (HTML) as used by the 
-World Wide Web (WWW) application:
+<p>This is the SGML Declaration for HyperText Markup Language.
 
 <listing>
 &html-decl;

@@ -71,9 +71,34 @@ characters so far on the line as a multiple of 8.
 
 <listing><![CDATA[
 <PRE>
-This is an example line.
+Line 1.
+       Line 2 is to the right of line 1.     <a href="abc">abc</a>
+       Line 3 aligns with line 2.            <a href="def">def</a>
 </PRE>
 ]]></listing>
+
+<h3>Example and Listing: XMP, LISTING
+
+<p>The <tag/XMP/ and <tag/LISTING/ elements are deprectated in favor
+of the <tag/PRE/ element (see <hdref refid=pre>), as their declaration
+makes use of <code/CDATA/ declared content, which tends to be
+implemented and used inconsistently.
+<note>In a previous draft of the HTML specification, the syntax
+of <tag/XMP/ and <tag/LISTING/ elements allowed closing tags to
+be treated as data characters, as long as the tag name was not
+<tag/XMP/ or <tag/LISTING/, respectively.
+</note>
+
+<p>The <tag/LISTING/ element should be rendered so that at least 132
+characters fit on a line. The <tag/XMP/ element should be rendered so
+that at least 80 characters fit on a line but is otherwise identical
+to the <tag/LISTING/ element.
+<note>
+In a previous draft, HTML included a <tag/PLAINTEXT/ element that
+is similar to the <tag/LISTING/ element, except that there is
+no closing tag: all characters after the <tag/PLAINTEXT/ start-tag
+are data.
+</note>
 
 <h3>Address: ADDRESS
 

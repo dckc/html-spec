@@ -61,8 +61,9 @@
 <!entity catalog system "catalog" NDATA ASCII>
 <!entity html-decl system "html.decl" NDATA ASCII>
 <!entity html-dtd system "html.dtd" NDATA ASCII>
-<!entity html-dtd-0 system "html-0.dtd" NDATA ASCII>
 <!entity html-dtd-1 system "html-1.dtd" NDATA ASCII>
+<!entity html-dtd-s system "html-s.dtd" NDATA ASCII>
+<!entity html-dtd-1s system "html-1s.dtd" NDATA ASCII>
 <!entity isolat1-dtd system "ISOlat1.sgml" NDATA ASCII>
 
 
@@ -132,6 +133,8 @@ and MIME Content Type (RFC&nbsp;1521) is defined by this specification.
 
 <appendix>
 &iso-latin-1;
+
+&proposed;
 
 </spaper>
 

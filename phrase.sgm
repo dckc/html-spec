@@ -19,6 +19,16 @@ the same as plain <B>bold </B><I>italic</I>
 
 <h3>Idiomatic Elements
 
+Phrases may be marked up to indicate certain idioms.
+<note>
+User agents may support some idiomatic elmenents not
+included in this specification, as they have been deployed to some extent:
+<tl>
+<tli>DFN: defining instance of a term
+</tl>
+</note>
+
+
 <h4>Citation: CITE
 
 <p>The <tag/CITE/ element is used to indicate the title of a book or
@@ -95,6 +105,15 @@ referring to a specific text attribute as in "The italic parts are
 mandatory" -- a typographic element can be used to ensure that the
 intended typography is used where possible.
 
+<note>
+User agents may support some typographic elmenents not included in
+this specification, as they have been deployed to some extent:
+<tl>
+<tli>STRIKE: horizontal line through the characters.
+<tli>U: underline
+</tl>
+</note>
+
 <h4>Bold: B
 
 <p>The <tag/B/ element indicates bold text. Where bold typography is
@@ -112,16 +131,15 @@ font is unavailable, an alternative representation may be used.
 
 <h3 id=a>Anchor: A
 
-<p>The <tag/A/ element indicates the source and/or destination of a
-hyperlink (see <hdref refid=hyperlink>). At least one of the
-<attr/NAME/ and <attr/HREF/ attributes should be given. Attributes of
-the <tag/A/ element:
+<p>The <tag/A/ element indicates a hyperlink anchor (see <hdref
+refid=hyperlink>). At least one of the <attr/NAME/ and <attr/HREF/
+attributes should be present. Attributes of the <tag/A/ element:
 
 <tl>
-<tli>HREF: gives the destination of a hyperlink.
+<tli>HREF: gives the URI of the head anchor of a hyperlink.
 
 <tli>NAME: gives the name of the anchor, and makes it available as
-a navigation destination.
+a head of a hyperlink.
 
 <tli>TITLE: suggests a title for the destination resource -- advisory only. 
 The <attr/TITLE/ attribute may be used:
@@ -145,8 +163,9 @@ REL="X" expresses the same relationship as a link from B to A with
 REV="X". An anchor may have both REL and REV attributes.
 
 <tli>URN: specifies a preferred, more persistent identifier for the
-destination. The format of URNs is under discussion (1995) by various
-working groups of the Internet Engineering Task Force.
+head anchor of the hyperlink. The format of URNs is under discussion
+(1995) by various working groups of the Internet Engineering Task
+Force.
 
 <tli>METHODS: specifies methods to be used in accessing the
 destination, as a whitespace-separated list of names. For similar
@@ -182,7 +201,8 @@ example:
 
 <h2 id=img>Image: IMG
 
-<p>The <tag/IMG/ element refers to an image or icon.
+<p>The <tag/IMG/ element refers to an image or icon via a hyperlink
+(see <hdref refid=image-present>).
 
 <p>HTML user agents may process the value of the <attr/ALT/ attribute
 as an alternative to processing the image resource indicated by the
