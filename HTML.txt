@@ -1,7 +1,7 @@
 HTML Working Group                                        T. Berners-Lee
 INTERNET-DRAFT                                               D. Connolly
-<draft-ietf-html-spec-02.txt>                                    MIT/W3C
-Expires September 29, 1995                                March 29, 1995
+<draft-ietf-html-spec-03.txt>                                    MIT/W3C
+Expires November 1, 1995                                   April 1, 1995
 
 
                    HyperText Markup Language -- 2.0
@@ -114,7 +114,7 @@ Contents
 
    character encoding
        A mapping from sequences of octets to sequences of characters
-       from a character repertiore; that is, a sequence of octets and a
+       from a character repertoire; that is, a sequence of octets and a
        character encoding determines a sequence of characters.
 
    character number
@@ -149,11 +149,11 @@ Contents
        tag.
 
    entity
-       A text entity, or some other data with an associated notation or
-       interpretation; for example, a sequence of octets associated
-       with an Internet Media Type.
+       data with an associated notation or interpretation; for
+       example, a sequence of octets associated with an Internet Media
+       Type.
 
-   MIME entity
+   message entity
        a head and body. The head is a collection of name/value fields,
        and the body is a sequence of octets. The head defines the
        content type and content transfer encoding of the body.
@@ -194,7 +194,7 @@ Contents
 
    SGML
        Standard Generalized Markup Language [12] (see also [9] and [6]) 
-       is a system for describing docyment types and markup languages
+       is a system for describing document types and markup languages
        to represent them.
 
    tag
@@ -263,9 +263,6 @@ Contents
    the markup language for representing instances of this document
    type.
 
-   If this specification and the SGML standard conflict,
-   the SGML standard is definitive.
-
 2.1  SGML Documents
 
    An HTML document is an SGML document; that is, a set of entities,
@@ -282,7 +279,7 @@ Contents
    language defined by this grammar.
 
    The SGML declaration determines the lexicon of the grammar. It
-   specifies the document character set; which determines a character
+   specifies the document character set, which determines a character
    repertoire that contains all characters used in all text entities
    in the document, and the character numbers associated with those
    characters.
@@ -316,8 +313,7 @@ Contents
 
    The start symbol of the DTD grammar is HTML, and the productions
    are given in the public text identified by "-//IETF//DTD HTML
-   2.0//EN", that is section 13.3@@. Hence the terminals abover parse
-   as:
+   2.0//EN" (Section 13.3). Hence the terminals above parse as:
 
    HTML
     |
@@ -330,7 +326,7 @@ Contents
            |                            \-<EM>,"*wow*",</EM>
            \-<TITLE>,"Parsing Example",</TITLE>
 
-2.2  HTML Lexical Sytax
+2.2  HTML Lexical Syntax
 
    The syntax character set for all HTML documents is ISO-646 (@@ full
    name). A minimally conforming HTML user agent must support the SGML
@@ -340,7 +336,7 @@ Contents
    character sets.
 
    A complete discussion of the mapping of a sequence of characters to
-   a seqence of tags and data is left to the SGML standard. This
+   a sequence of tags and data is left to the SGML standard. This
    section is only a summary.
 
 2.2.1 Data Characters
@@ -351,7 +347,7 @@ Contents
    maps to data character strings. Numeric character references also
    map to single-character strings, via the document character
    set. Each reference to one of the general entities defined in the
-   HTLM DTD also maps to a single-character string.
+   HTML DTD also maps to a single-character string.
 
    For example,
 
@@ -376,7 +372,7 @@ Contents
    reference as follows:
 
                  ENTITY      NUMERIC
-       CHARACTER REFERENCE   CHAR REf     CHARACTER DESCRIPTION
+       CHARACTER REFERENCE   CHAR REF     CHARACTER DESCRIPTION
          &       &amp;       &#38;        Ampersand 
          <       &lt;        &#60;        Less than
          >       &gt;        &#62;        Greater than
@@ -460,7 +456,7 @@ Contents
    entity reference or numeric character reference as follows:
 
                  ENTITY      NUMERIC
-       CHARACTER REFERENCE   CHAR REf     CHARACTER DESCRIPTION
+       CHARACTER REFERENCE   CHAR REF     CHARACTER DESCRIPTION
          TAB                 &#9;         Tab
          LF                  &#10;        Line Feed
          CR                  &#13;        Carriage Return
@@ -477,9 +473,8 @@ Contents
        be quoted only if they don't satisfy the syntax for a name 
        token.
 
-   The length of an attribute value (not the attribute value literal:
-   this is the result of stripping the quotes and replacing any
-   references).is limited to 1024 characters
+   Note that the SGML declaration in section 13.3 limits the length of
+   an attribute value to 1024 characters.
 
    Attributes with a declared value of NAME, such as ISMAP and 
    COMPACT, may be written using a minimized syntax. The markup:
@@ -593,20 +588,20 @@ Contents
        version 2.0.
 
    Charset
-       The charset parameter (as defined in section 7.1.1 of RFC 
-       1521 [4]) may be given to specify the encoding used to represent 
-       the HTML document as a sequence of octets. The default value is
-       out of scope of this specification; but for example, it is
-       US-ASCII in the context of SMTP mail, and ISO-8850-1 in the
-       context of HTTP.
+       The charset parameter (as defined in section 7.1.1 of RFC 1521
+       [4]) may be given to specify the encoding used to represent the
+       HTML document as a sequence of octets. The default value is
+       outside the scope of this specification; but for example, the
+       default is US-ASCII in the context of MIME mail, and ISO-8859-1
+       in the context of HTTP.
 
-3.2  HTML Document Represenation
+3.2  HTML Document Representation
 
-   A MIME entity with a content type of "text/html" represents an HTML
+   A message entity with a content type of "text/html" represents an HTML
    document, consisting of a single text entity. The charset parameter
    (whether implicit or explicit) identifies a character encoding. The
    text entity consists of the characters determined by this character
-   encoding and the octets of the body of the MIME entity.
+   encoding and the octets of the body of the message entity.
 
    The SGML declaration of the document is a function of the charset
    parameter. If the charset parameter is US-ASCII or ISO-8859-1, the
@@ -619,16 +614,16 @@ Contents
 
 3.2.1  Conventional Handling of Undeclared Markup Errors
 
-   NOTE: To facilitate experimentation and interoperability between
-   implementations of various versions of HMTL, the installed base of
+   To facilitate experimentation and interoperability between
+   implementations of various versions of HTML, the installed base of
    HTML user agents supports a superset of the HTML 2.0 language by
    reducing it to HTML 2.0: markup in the form of a start tag or end
    tag whose generic identifier is not declared is mapped to nothing
    during tokenization. Undeclared attributes are treated similarly.
    The entire attribute specification of an unknown attribute (i.e.,
-   the unknown attribute and its value, if any) should be ignored.
-   On the other hand, references to undeclared entities should be
-   treated as data characters.
+   the unknown attribute and its value, if any) should be ignored.  On
+   the other hand, references to undeclared entities should be treated
+   as data characters.
 
    For example:
 
@@ -644,20 +639,20 @@ Contents
    Support for notifying the user of such errors is encouraged.
 
    Information providers should keep in mind that this convention is
-   not binding: unspecified behaviour may result, as such markup is
+   not binding: unspecified behavior may result, as such markup is
    not conforming to this specification.
 
 
-3.2.1  Conventional Representation of Newlines and Record Delimiter Characters
+3.2.1  Conventional Representation of Newlines
 
    SGML specifies that a text entity is a sequence of records, each
    beginning with a record start character and ending with a record
-   end character (character number 10 13 respectively).
+   end character (characters numbered 10 and 13 respectively).
 
    MIME specifies that a body of type text/* is a sequence of lines,
    each terminated by CRLF, that is octets 10, 13.
 
-   NOTE: In practice, HTML documents are frequently represented and
+   In practice, HTML documents are frequently represented and
    transmitted using an end of line convention that depends on the
    conventions of the source of the document; frequently, that
    representation consists of CR only, LF only, or CR LF
@@ -674,7 +669,7 @@ Contents
    should expect to treat any of the three common representations of
    end-of-line as starting a new line.
 
-4.  Document Structure Elements
+4.  Document Structure
 
    To identify information as an HTML document conforming to this 
    specification, each document should start with the prologue:
@@ -685,14 +680,27 @@ Contents
        with a document type declaration, an HTML user agent should 
        infer the above document type declaration.
 
-   HTML documents should also contain an <HTML> tag at the beginning 
-   (immediately after the prologue) and an </HTML> tag at the end of 
-   the file. Within those tags, an HTML document is organized as a 
-   head and a body, much like a memo or a mail message. Within the 
-   head, you can specify the title and other information about the 
-   document. Within the body, you can structure text into paragraphs 
-   and lists, as well as highlight phrases and create links, using 
-   HTML elements.
+   HTML user agents are required to support the above document type
+   declaration, the following document type declarations, and no
+   others.
+
+       <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Level 0//EN">
+       <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Level 1//EN">
+       <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Level 2//EN">
+
+   In particular, they may support other formal public identifiers, or
+   document types altogether. They may support an internal declaration
+   subset with supplemental entity, element, and other markup
+   declarations, or they may not.
+
+   HTML documents may contain an <HTML> tag at the beginning
+   (immediately after the prologue) and an </HTML> tag at the end.
+
+   The HTML document element is organized as a head and a body, much
+   like a memo or a mail message. Within the head, you can specify the
+   title and other information about the document. Within the body,
+   you can structure text into paragraphs and lists, as well as
+   highlight phrases and create links, using HTML elements.
 
        Note: Technically, the start and end tags for HTML, Head, 
        and Body elements are omissible; however, this is not 
@@ -701,12 +709,11 @@ Contents
        document, such as the title, without parsing the entire 
        document.
 
-4.1  HTML Identifier
+4.1  HTML Document Element
 
    <HTML> ... </HTML>                                           Level 0
 
-   The HTML identifier defines the document as containing HTML 
-   elements. It contains only the Head and Body elements.
+   The HTML element contains the Head and Body elements.
 
 4.2  Head
 
@@ -817,7 +824,7 @@ Contents
 
    In addition, HTTP servers may wish to read the content of the 
    document HEAD to generate header fields corresponding to any 
-   elements defining a value for the attribute HTTPEQUIV. Note, 
+   elements defining a value for the attribute HTTP-EQUIV. Note, 
    however, that the method by which the server extracts document 
    metainformation is not part of this specification, nor can it be 
    assumed by authors that any given server will be capable of 
@@ -874,7 +881,7 @@ Contents
        <META NAME="IndexType" CONTENT="Service">
 
    would never generate an HTTP response header, but would still allow 
-   HTML user agent to identify and make use of that metainformation.
+   HTML user agents to identify and make use of that metainformation.
 
    The Meta element should never be used to define information that 
    should be associated with an existing HTML element. An example of 
@@ -906,28 +913,28 @@ Contents
    documents. Human writers of HTML usually use mnemonic alphabetical 
    identifiers.
 
-   HTML user agentss may ignore the Nextid element. Support for the 
+   HTML user agents may ignore the Nextid element. Support for the 
    Nextid element does not impact HTML user agents in any way.
 
 6.  Data Characters
 
     An HTML user agent should present the body of an HTML document as
     a collection of typeset paragraphs and preformatted text. Except
-    for te PRE element, each block structuring element is regarded as
+    for the PRE element, each block structuring element is regarded as
     a paragraph by taking the data characters in its content and the
-    content of its descendent elements, concatenating them, and
+    content of its descendant elements, concatenating them, and
     splitting the result into words, separated by space, tab, or
     record end characters (and perhaps hyphen characters). The
     sequence of words is typeset as a paragraph by breaking it into
     lines.
 
-6.1 The ISO Latin 1 Character Repertiore
+6.1 The ISO Latin 1 Character Repertoire
 
    Conforming HTML user agents are required to support the US-ASCII
    [10] or ISO-8859-1 [11] character encodings, and the @@fullname ISO
    Latin 1 document character set.
 
-   The character repertiore shared by these two is known as Latin
+   The character repertoire shared by these two is known as Latin
    Alphabet No. 1, or simply Latin-1.  Latin-1 includes characters
    from most Western European languages, as well as a number of
    control characters.  Latin-1 also includes a non-breaking space, a
@@ -939,176 +946,18 @@ Contents
 
    In SGML applications, the use of control characters is limited in 
    order to maximize the chance of successful interchange over 
-   heterogenous networks and operating systems. In HTML, only three 
+   heterogeneous networks and operating systems. In HTML, only three 
    control characters are allowed: Horizontal Tab (HT, encoded as 9 
    decimal in US-ASCII and ISO-8859-1), Carriage Return, and Line Feed.
 
    The HTML DTD references the Added Latin 1 entity set, to allow
    mnemonic representation of Latin 1 characters using only the widely
-   supported ASCII character repertiore. For exaple:
+   supported ASCII character repertoire. For example:
 
        Kurt G&ouml;del was a famous logician and mathematician.
 
-   See Section 13.2 for a table of the "Added Latin 1" entities.
-
-   Each character in the document character set can be written as a
-   numeric character reference. This list, sorted numerically, is
-   derived from ISO-8859-1 8-bit single-byte coded graphic character
-   set:
-
-       REFERENCE             DESCRIPTION
-       &#00; - &#08;         Unused
-       &#09;                 Horizontal tab
-       &#10;                 Line feed
-       &#11; - &#31;         Unused
-
-       &#32;                 Space
-       &#33;                 Exclamation mark
-       &#34;                 Quotation mark
-       &#35;                 Number sign
-       &#36;                 Dollar sign
-       &#37;                 Percent sign
-       &#38;                 Ampersand
-       &#39;                 Apostrophe
-       &#40;                 Left parenthesis
-       &#41;                 Right parenthesis
-       &#42;                 Asterisk
-       &#43;                 Plus sign
-       &#44;                 Comma
-       &#45;                 Hyphen
-       &#46;                 Period (fullstop)
-       &#47;                 Solidus (slash)
-
-       &#48; - &#57;         Digits 0-9
-
-       &#58;                 Colon
-       &#59;                 Semi-colon
-       &#60;                 Less than
-       &#61;                 Equals sign
-       &#62;                 Greater than
-       &#63;                 Question mark
-       &#64;                 Commercial at
-
-       &#65; - &#90;         Letters A-Z
-
-       &#91;                 Left square bracket
-       &#92;                 Reverse solidus (backslash)
-       &#93;                 Right square bracket
-       &#94;                 Caret
-       &#95;                 Horizontal bar (underscore)
-       &#96;                 Acute accent
-
-       &#97; - &#122;        Letters a-z
-
-       &#123;                Left curly brace
-       &#124;                Vertical bar
-       &#125;                Right curly brace
-       &#126;                Tilde
-
-       &#127; - &#160;       Unused
-
-       &#161;                Inverted exclamation
-       &#162;                Cent sign
-       &#163;                Pound sterling
-       &#164;                General currency sign
-       &#165;                Yen sign
-       &#166;                Broken vertical bar
-       &#167;                Section sign
-       &#168;                Umlaut (dieresis)
-       &#169;                Copyright
-       &#170;                Feminine ordinal
-       &#171;                Left angle quote, guillemotleft
-       &#172;                Not sign
-       &#173;                Soft hyphen
-       &#174;                Registered trademark
-       &#175;                Macron accent
-       &#176;                Degree sign
-       &#177;                Plus or minus
-       &#178;                Superscript two
-       &#179;                Superscript three
-       &#180;                Acute accent
-       &#181;                Micro sign
-       &#182;                Paragraph sign
-       &#183;                Middle dot
-       &#184;                Cedilla
-       &#185;                Superscript one
-       &#186;                Masculine ordinal
-       &#187;                Right angle quote, guillemotright
-       &#188;                Fraction one-fourth
-       &#189;                Fraction one-half
-       &#190;                Fraction three-fourths
-       &#191;                Inverted question mark
-
-       &#192;                Capital A, grave accent
-       &#193;                Capital A, acute accent
-       &#194;                Capital A, circumflex accent
-       &#195;                Capital A, tilde
-       &#196;                Capital A, dieresis or umlaut mark
-       &#197;                Capital A, ring
-       &#198;                Capital AE dipthong (ligature)
-       &#199;                Capital C, cedilla
-       &#200;                Capital E, grave accent
-       &#201;                Capital E, acute accent
-       &#202;                Capital E, circumflex accent
-       &#203;                Capital E, dieresis or umlaut mark
-       &#204;                Capital I, grave accent
-       &#205;                Capital I, acute accent
-       &#206;                Capital I, circumflex accent
-       &#207;                Capital I, dieresis or umlaut mark
-       &#208;                Capital Eth, Icelandic
-       &#209;                Capital N, tilde
-       &#210;                Capital O, grave accent
-       &#211;                Capital O, acute accent
-       &#212;                Capital O, circumflex accent
-       &#213;                Capital O, tilde
-       &#214;                Capital O, dieresis or umlaut mark
-
-       &#215;                Multiply sign
-
-       &#216;                Capital O, slash
-       &#217;                Capital U, grave accent
-       &#218;                Capital U, acute accent
-       &#219;                Capital U, circumflex accent
-       &#220;                Capital U, dieresis or umlaut mark
-       &#221;                Capital Y, acute accent
-
-       &#222;                Capital THORN, Icelandic
-       &#223;                Small sharp s, German (sz ligature)
-
-       &#224;                Small a, grave accent
-       &#225;                Small a, acute accent
-       &#226;                Small a, circumflex accent
-       &#227;                Small a, tilde
-       &#228;                Small a, dieresis or umlaut mark
-       &#229;                Small a, ring
-       &#230;                Small ae dipthong (ligature)
-       &#231;                Small c, cedilla
-       &#232;                Small e, grave accent
-       &#233;                Small e, acute accent
-       &#234;                Small e, circumflex accent
-       &#235;                Small e, dieresis or umlaut mark
-       &#236;                Small i, grave accent
-       &#237;                Small i, acute accent
-       &#238;                Small i, circumflex accent
-       &#239;                Small i, dieresis or umlaut mark
-       &#240;                Small eth, Icelandic
-       &#241;                Small n, tilde
-       &#242;                Small o, grave accent
-       &#243;                Small o, acute accent
-       &#244;                Small o, circumflex accent
-       &#245;                Small o, tilde
-       &#246;                Small o, dieresis or umlaut mark
-
-       &#247;                Division sign
-
-       &#248;                Small o, slash
-       &#249;                Small u, grave accent
-       &#250;                Small u, acute accent
-       &#251;                Small u, circumflex accent
-       &#252;                Small u, dieresis or umlaut mark
-       &#253;                Small y, acute accent
-       &#254;                Small thorn, Icelandic
-       &#255;                Small y, dieresis or umlaut mark
+   See Section 13.2 for a table of the "Added Latin 1" entities, and
+   section 13.3 for a table of the characters of ISO-8859-1.
 
 7.  Data Elements
 
@@ -1118,7 +967,7 @@ Contents
 
    The Line Break element specifies a line break in a paragraph or
    preformatted text section. A new line should indent the same as
-   that of line- wrapped text.
+   that of line-wrapped text.
 
    Example of use:
 
@@ -1225,10 +1074,10 @@ Contents
    Note that typical renderings for semantic format elements vary 
    between applications. If a specific rendering is necessary -- for 
    example, when referring to a specific text attribute as in "The 
-   italic parts are mandatory" -- a physical formating element can be 
+   italic parts are mandatory" -- a physical formatting element can be 
    used to ensure that the intended rendered is used where possible.
 
-   Note that different sematic elements may be rendered in the same 
+   Note that different semantic elements may be rendered in the same 
    way.
 
 8.1.1 Citation
@@ -2312,7 +2161,7 @@ Contents
                (aka MIME content type, as per RFC1521)
             -->
 
-       <!ENTITY % HTTP-Method "NAME"
+       <!ENTITY % HTTP-Method "GET | POST"
             -- as per HTTP specification, in progress
             -->
 
@@ -2433,11 +2282,10 @@ Contents
             -- a list of these will be specified at a later date -->
 
        <!ENTITY % linkExtraAttributes
-           "REL %linkType #IMPLIED
-            REV %linkType #IMPLIED
-            URN CDATA #IMPLIED
-            TITLE CDATA #IMPLIED
-            METHODS NAMES #IMPLIED
+           "REL     NAMES #IMPLIED
+            REV     NAMES #IMPLIED
+            URN     CDATA #IMPLIED
+            TITLE   CDATA #IMPLIED
            ">
 
        <![ %HTML.Recommended [
@@ -2864,13 +2712,11 @@ Contents
 
        <!-- <HTML>                     HTML Document   -->
 
-13.  Character Entity Sets
+13.  Character Sets and Entity Sets
 
-   The following entity names are used in HTML, always prefixed by 
-   ampersand (&) and followed by a semicolon as shown. They represent 
-   particular graphic characters which have special meanings in places 
-   in the markup, or may not be part of the character set available to 
-   the writer.
+   The HTML DTD includes some entities from the entity sets in the
+   appendixes of the SGML standard. The SGML declaration for HTML
+   refers to the ISO-8859-1 character set.
 
 13.1  Numeric and Special Graphic Entity Set
 
@@ -2887,7 +2733,7 @@ Contents
        &         amp         &amp;        Ampersand
        "         quot        &quot;       Double quote sign
 
-13.2  ISO Latin 1 Character Entity Set
+13.2  Added Latin 1 Entity Set
 
    The following table lists each of the characters specified in the 
    Added Latin 1 entity set, along with its name, syntax for use, and 
@@ -2961,6 +2807,167 @@ Contents
        thorn     &thorn;     Small thorn, Icelandic
        yuml      &yuml;      Small y, dieresis or umlaut mark
 
+
+13.3  ISO-8859-1 Character Set
+
+   Each character in the document character set can be written as a
+   numeric character reference. This list, sorted numerically, is
+   derived from ISO-8859-1 8-bit single-byte coded graphic character
+   set:
+
+       REFERENCE             DESCRIPTION
+       &#00; - &#08;         Unused
+       &#09;                 Horizontal tab
+       &#10;                 Line feed
+       &#11; - &#31;         Unused
+
+       &#32;                 Space
+       &#33;                 Exclamation mark
+       &#34;                 Quotation mark
+       &#35;                 Number sign
+       &#36;                 Dollar sign
+       &#37;                 Percent sign
+       &#38;                 Ampersand
+       &#39;                 Apostrophe
+       &#40;                 Left parenthesis
+       &#41;                 Right parenthesis
+       &#42;                 Asterisk
+       &#43;                 Plus sign
+       &#44;                 Comma
+       &#45;                 Hyphen
+       &#46;                 Period (fullstop)
+       &#47;                 Solidus (slash)
+
+       &#48; - &#57;         Digits 0-9
+
+       &#58;                 Colon
+       &#59;                 Semi-colon
+       &#60;                 Less than
+       &#61;                 Equals sign
+       &#62;                 Greater than
+       &#63;                 Question mark
+       &#64;                 Commercial at
+
+       &#65; - &#90;         Letters A-Z
+
+       &#91;                 Left square bracket
+       &#92;                 Reverse solidus (backslash)
+       &#93;                 Right square bracket
+       &#94;                 Caret
+       &#95;                 Horizontal bar (underscore)
+       &#96;                 Acute accent
+
+       &#97; - &#122;        Letters a-z
+
+       &#123;                Left curly brace
+       &#124;                Vertical bar
+       &#125;                Right curly brace
+       &#126;                Tilde
+
+       &#127; - &#160;       Unused
+
+       &#161;                Inverted exclamation
+       &#162;                Cent sign
+       &#163;                Pound sterling
+       &#164;                General currency sign
+       &#165;                Yen sign
+       &#166;                Broken vertical bar
+       &#167;                Section sign
+       &#168;                Umlaut (dieresis)
+       &#169;                Copyright
+       &#170;                Feminine ordinal
+       &#171;                Left angle quote, guillemotleft
+       &#172;                Not sign
+       &#173;                Soft hyphen
+       &#174;                Registered trademark
+       &#175;                Macron accent
+       &#176;                Degree sign
+       &#177;                Plus or minus
+       &#178;                Superscript two
+       &#179;                Superscript three
+       &#180;                Acute accent
+       &#181;                Micro sign
+       &#182;                Paragraph sign
+       &#183;                Middle dot
+       &#184;                Cedilla
+       &#185;                Superscript one
+       &#186;                Masculine ordinal
+       &#187;                Right angle quote, guillemotright
+       &#188;                Fraction one-fourth
+       &#189;                Fraction one-half
+       &#190;                Fraction three-fourths
+       &#191;                Inverted question mark
+
+       &#192;                Capital A, grave accent
+       &#193;                Capital A, acute accent
+       &#194;                Capital A, circumflex accent
+       &#195;                Capital A, tilde
+       &#196;                Capital A, dieresis or umlaut mark
+       &#197;                Capital A, ring
+       &#198;                Capital AE dipthong (ligature)
+       &#199;                Capital C, cedilla
+       &#200;                Capital E, grave accent
+       &#201;                Capital E, acute accent
+       &#202;                Capital E, circumflex accent
+       &#203;                Capital E, dieresis or umlaut mark
+       &#204;                Capital I, grave accent
+       &#205;                Capital I, acute accent
+       &#206;                Capital I, circumflex accent
+       &#207;                Capital I, dieresis or umlaut mark
+       &#208;                Capital Eth, Icelandic
+       &#209;                Capital N, tilde
+       &#210;                Capital O, grave accent
+       &#211;                Capital O, acute accent
+       &#212;                Capital O, circumflex accent
+       &#213;                Capital O, tilde
+       &#214;                Capital O, dieresis or umlaut mark
+
+       &#215;                Multiply sign
+
+       &#216;                Capital O, slash
+       &#217;                Capital U, grave accent
+       &#218;                Capital U, acute accent
+       &#219;                Capital U, circumflex accent
+       &#220;                Capital U, dieresis or umlaut mark
+       &#221;                Capital Y, acute accent
+
+       &#222;                Capital THORN, Icelandic
+       &#223;                Small sharp s, German (sz ligature)
+
+       &#224;                Small a, grave accent
+       &#225;                Small a, acute accent
+       &#226;                Small a, circumflex accent
+       &#227;                Small a, tilde
+       &#228;                Small a, dieresis or umlaut mark
+       &#229;                Small a, ring
+       &#230;                Small ae dipthong (ligature)
+       &#231;                Small c, cedilla
+       &#232;                Small e, grave accent
+       &#233;                Small e, acute accent
+       &#234;                Small e, circumflex accent
+       &#235;                Small e, dieresis or umlaut mark
+       &#236;                Small i, grave accent
+       &#237;                Small i, acute accent
+       &#238;                Small i, circumflex accent
+       &#239;                Small i, dieresis or umlaut mark
+       &#240;                Small eth, Icelandic
+       &#241;                Small n, tilde
+       &#242;                Small o, grave accent
+       &#243;                Small o, acute accent
+       &#244;                Small o, circumflex accent
+       &#245;                Small o, tilde
+       &#246;                Small o, dieresis or umlaut mark
+
+       &#247;                Division sign
+
+       &#248;                Small o, slash
+       &#249;                Small u, grave accent
+       &#250;                Small u, acute accent
+       &#251;                Small u, circumflex accent
+       &#252;                Small u, dieresis or umlaut mark
+       &#253;                Small y, acute accent
+       &#254;                Small thorn, Icelandic
+       &#255;                Small y, dieresis or umlaut mark
 
 14.  Security Considerations
 
