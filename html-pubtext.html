@@ -5,76 +5,54 @@
 
 <body>
 
-<h1>Public Text of the HTML 2.0 Specification</h1>
+<P> <A HREF="../../TheProject.html"> <IMG alt="WWW"
+src="../../Icons/WWW/WWWlogo48.gif"></A> <A
+HREF="../MarkUp.html"> <img ALT="HTML"
+src="../../Icons/WWW/html_48x48.gif"></a>
 
-<address>
-Daniel W. Connolly<br>
-connolly@hal.com<br>
-$Id$
-</address>
+<h1>Public Text of the HTML 2.0 Specification</h1>
 
 <p> The HTML 2.0 specification includes both machine-readable public
     text -- SGML "code" if you will -- and human-readable text.
     The public text includes the DTD, an SGML declaration, and a version
     of the ISO Added Latin 1 entity set.
 
-<h2> Changes in the Jan 27 Revision </h2>
+<h2> Changes in the 29 March 1995 Revision </h2>
+<ul>
+<li> Updated Author info (hal.com -> w3.org)
+<li> fixed typo in META comment
+</ul>
+
+<h2> Changes in the 6 Feb  1995 Revision </h2>
+
+<ul>
+
+<li> Merge in some SDA changes from yuri@sq.com
+
+</ul>
+
+<h2> Changes in the 27 Jan 1995 Revision </h2>
+
+<p> <em>My release-testing tools have suffered some
+    bit-rot, and so this release is not as well tested as some of
+    the previous ones. I have had some reports of problems with the
+    level 0 mode of the DTD.</em>
 
 <ul>
 
 <li> Format to <72 chars for RFC style.
-<li> Fix some parameter entities that were illegal, but unflagged by SGMLS.
+
+<li> Fix some parameter entities that were illegal, but unflagged by
+     SGMLS.  (see <a
+     href="http://www.acl.lanl.gov/HTML_WG/html-wg-94q4.messages/0332.html">Non-compliant
+     use of parameter entities</a> in a messge from Paul Grosso.
+
 <li> Remove quiryky newline stuff in SGML declaration
 
 </ul>
 
-<h2> Changes in the November 30 Revision </h2>
-
-<ul>
-
-<li> Integrated ICADD SDA attributes and APPINFO (Thanks to Jeff Suttor)
-
-<li> Updated catalog etc. with new FPIs (formal public identifiers).<br>
-     Old format: <code>"-//IETF//DTD HTML//EN//2.0"</code><br>
-     New format: <code>"-//IETF//DTD 2.0 HTML//EN"</code><br>
-
-<li> Changed FUNCTION character syntax: uncommented the real one, commented
-     out the hack version.
-
-<li> Added FPI's and public text for "Strict" versions of the DTD
-     (e.g. <code>"-//IETF//DTD HTML Strict Level 1//EN"</code> maps to
-     <tt>html-1s.dtd</tt>)
-
-<li> Changed FPI used to reference ISO latin 1 entities.
-
-<li> Changed a bunch of + occurence indicators to * for clarity
-
-<li> Changed some parameter entities to comply with SGML tokenization
-     rules.
-
-</ul>
-
-<h2> Changes in the November 15 Revision </h2>
-
-<ul>
-
-<li> Added one-line comment for each element and attribute in the DTD.<br>
-Removed some other comments
-
-<li> ALT is no longer required in level 0: some images are completely
-inessential.
-
-<li> Changed DL content model to (DT | DD)+
-
-<li> ADDRESS content model is always (%text|P)*
-
-<li> FORM ACTION attribute is #IMPLIED (defaults to address of document)
-
-<li> Removed remaining references to World-Wide Web
-
-</ul>
-
-<p> See also: <a href="ChangeLog">changelog of html.dtd from <strong>1992/12/03</strong> thru <strong>1994/11/15</strong></a>
+<p> See also: <a href="ChangeLog">changelog of html.dtd from
+    <strong>1992/12/03</strong> to present</a>
 
 <h2>The Public Text</h2>
 
@@ -86,18 +64,19 @@ DTD for HTML
 <ul>
 <li> <A HREF="html.dtd">The full DTD</A>, and 
      <A HREF="html-s.dtd">Strict</A> version
-<li> <A HREF="html-0.dtd">Level 0 features</A>, and 
-     <A HREF="html-0s.dtd">Strict</A> version
 <li> <A HREF="html-1.dtd">Level 1 features</A>, and 
      <A HREF="html-1s.dtd">Strict</A> version
 </ul>
+
 <DT><A
 NAME="z20" HREF="html.decl">The HTML SMGL Declaration</A>
 <DD>
 The text of the SGML Declaration
 for HTML
+
 <dt><a href="ISOlat1.sgml">ISO Added Latin 1</a>
 <dd>The HTML version of the ISOlat1 entity set
+
 <dt><a href="catalog">catalog</a>
 <dd> Sample SGML Open style Entity Catalog: gives mappings from formal
 public identifiers to typical file names.
@@ -106,17 +85,10 @@ public identifiers to typical file names.
 <h2> Element References </h2>
 
 <p> These element references are an aid to reading and understanding
-    the DTD.
+    the DTD. <em>They are all somewhat out of date. I
+    hope to rectify this soon.</em>
 
 <dl>
-
-<dt> <a href="http://www.oac.uci.edu/indiv/ehood/html2.0/DTD-HOME.html">
-     HTML 2.0 DTD</a>
-
-<dd> This is an analysis of the HTML 2.0 DTD maintained by <a
-     href="mailto:ehood@convex.com">Earl Hood</a>. It does a better
-     job of showing inclusion and exclusion exceptions than the
-     reference below...
 
 <DT><A
 HREF="L2index.html">Element Reference (Level 2)</A>
@@ -142,22 +114,27 @@ HREF="L1Pindex.html">Element Reference (Level 1 Recommended)</A>
 idioms. This is the reference to consult when generating new
 documents without forms.
 
-<DT><A
-HREF="L0index.html">Element Reference (Level 0)</A>
-<DD> Alphabetical
-listing of level 0 (minimally conforming) elements with syntax descriptions
+<dt> <a href="http://www.oac.uci.edu/indiv/ehood/html2.0/DTD-HOME.html">
+     HTML 2.0 DTD</a>
 
-<DT><A
-HREF="L0Pindex.html">Element Reference (Level 0 Recommended)</A>
-
-<DD> This listing eliminates deprecated
-idioms. This is the reference to consult when generating new
-documents aimed at minimally conforming implementations.
+<dd> This is an analysis of the HTML 2.0 DTD maintained by <a
+     href="mailto:ehood@convex.com">Earl Hood</a>. It does a better
+     job of showing inclusion and exclusion exceptions than the
+     reference above. It's a bit out of date, last I checked.
 
 </DL>
 
 <p> For more information about the HTML specification, see <a
     href="index.html">the HTML 2.0 review materials</a>.
+
+<address>
+<A HREF="../../Consortium/Prospectus/Overview.html">
+<IMG alt="W3C Logo" src="../../Icons/WWW/w3c_48x48.gif"></A> 
+<br>
+<a href="http://www.w3.org/hypertext/WWW/People/Connolly/">
+Daniel W. Connolly</a><br>
+$Id$
+</address>
 
 </BODY>
 </HTML>
