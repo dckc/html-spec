@@ -6,56 +6,178 @@
 	$Id$
 -->
 
+<!-- Feature Test Entities -->
+
+<!-- To use these, write your document like:
+	<!DOCTYPE HTML [
+	<!ENTITY % HTML.Optional "INCLUDE">
+	<!ENTITY % html PUBLIC "-//connolly hal.com//DTD WWW HTML 1.8//EN">
+	%html;
+	]>
+	<TITLE>Here's my doc</TITLE>
+	<p>It uses lots of optional features
+
+ In practice, if you're using sgmls to validate your docs,
+ you can stick the <!DOCTYPE [...]> in a separate file and
+ validate with:
+	sgmls -s doctype.sgml foo.html
+ -->
+
+<!ENTITY % HTML.Minimal  "IGNORE">
+<!ENTITY % HTML.Obsolete "IGNORE">
+
+<![ %HTML.Minimal [
+	<!ENTITY % HTML.linkRelationships "IGNORE">
+	<!ENTITY % HTML.linkMethods "IGNORE">
+	<!ENTITY % HTML.linkRedundantInfo "IGNORE">
+	<!ENTITY % HTML.forms "IGNORE">
+	<!-- @@ nested lists -->
+	<!-- @@ phrases -->
+	]]>
+	
+<![ %HTML.Obsolete [
+	<!ENTITY % HTML.PLAINTEXT "INCLUDE">
+	<!ENTITY % HTML.titleCDATA "INCLUDE">
+	<!ENTITY % HTML.litCDATA "INCLUDE">
+	<!ENTITY % HTML.NEXTID "INCLUDE">
+	<!ENTITY % HTML.font-phrase "INCLUDE">
+	<!ENTITY % HTML.anchorNameCDATA "INCLUDE">
+	<!ENTITY % HTML.pSeparator "INCLUDE">
+	]]>
+
+<!ENTITY % HTML.pSeparator "IGNORE"
+	-- use P element as paragraph separator, rather	that container.
+	This means not all paragraphs need to start with a <P> tag.
+	-->
+
+<!ENTITY % HTML.linkRelationships "INCLUDE"
+	-- Adding markup to links to show the relationship between
+	ends of a link
+	see http://info.cern.ch/hypertext/WWW/MarkUp/Relationships.html
+	-->
+
+<!ENTITY % HTML.linkMethods "INCLUDE"
+	-- Adding markup to links to show the methods supported
+	by the referent object
+	see http://info.cern.ch/hypertext/WWW/MarkUp/Elements/A.html
+	-->
+
+<!ENTITY % HTML.linkRedundantInfo "INCLUDE"
+	-- Adding markup to links to give redundant information
+	like URN, content type, title...
+	-->
+
+<!ENTITY % HTML.anchorNameCDATA "IGNORE"
+	-- Anchor names should be distinct. SGML parser can validate
+	this if the NAME attribute of the A element is declared as ID.
+	But that restricts the syntax of an anchor name to an SGML name,
+	i.e. a letter followed by letters, numbers, periods and dashes,
+	up to NAMELEN (34) characters long.
+	-->
+
+<!ENTITY % HTML.PLAINTEXT "IGNORE"
+	-- Support for the <PLAINTEXT> tag as a sign of the
+	end of th HTML data stream and the beginning of a stream
+	of text/plain data
+	-->
+
+<!ENTITY % HTML.titleCDATA "IGNORE"
+	-- Is the TITLE element #PCDATA, RCDATA, or CDATA content?
+	On Mosaic, it's #PCDATA, but in the linemode browser,
+	it's more like CDATA, but not quite.
+	-->
+
+<!ENTITY % HTML.NEXTID "IGNORE"
+	-- Used by the NeXT implementation to keep track of the
+	next anchor id to use
+	-->
+
+<!ENTITY % HTML.font-phrase "IGNORE"
+	-- allow B, I, TT, U outside PRE,
+	CITE, VAR, etc. inside PRE
+	-->
+
+<!ENTITY % HTML.litCDATA "IGNORE"
+	-- treat XMP, LISTING as CDATA, as per linemodeWWW
+	-->
+
+<!ENTITY % HTML.forms "INCLUDE"
+	-- Support for forms as per
+http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
+	-->
+
 <!-- DTD definitions -->
 
 <!ENTITY % heading "H1|H2|H3|H4|H5|H6" >
 <!ENTITY % list " UL | OL | DIR | MENU ">
 <!ENTITY % literal " XMP | LISTING ">
 
-<!ENTITY % headelement
-         " TITLE | NEXTID |ISINDEX" >
+<!ENTITY % URI "CDATA"
+        -- The term URI means a CDATA attribute
+           whose value is a Uniform Resource Identifier,
+           as defined by 
+	"Universal Resource Identifiers" by Tim Berners-Lee
+	aka http://info.cern.ch/hypertext/WWW/Addressing/URL/URI_Overview.html
 
-<!ENTITY % bodyelement
-         "P | HR | %heading |
-         %list | DL | ADDRESS | PRE | BLOCKQUOTE
-        | %literal">
-
-<!ENTITY % oldstyle "%headelement | %bodyelement | #PCDATA">
-
-<!ENTITY % URL "CDATA"
-        -- The term URL means a CDATA attribute
-           whose value is a Uniform Resource Locator,
-           as defined. (A URN may also be usable here when defined.)
+	Note that CDATA attributes are limited by the LITLEN
+	capacity (1024 in the current version of html.decl),
+	so that URIs in HTML have a bounded length.
         -->
 
-<!ENTITY % linkattributes
-        "NAME NMTOKEN #IMPLIED
-        HREF %URL;  #IMPLIED
+<!ENTITY % Content-Type "CDATA"
+	-- meaning a MIME content type, as per RFC1341 or any of its updates.
+	-->
+
+<![ %HTML.anchorNameCDATA [ <!ENTITY % anchor-name "CDATA"> ]]>
+<!ENTITY % anchor-name "ID">
+
+<![ %HTML.linkRelationships [ <!ENTITY % linkRelAttrs "
         REL CDATA #IMPLIED -- forward relationship type --
         REV CDATA #IMPLIED -- reversed relationship type
                               to referent data:
 
                                 PARENT CHILD, SIBLING, NEXT, TOP,
                                 DEFINITION, UPDATE, ORIGINAL etc. --
+	"> ]]>
+<!ENTITY % linkRelAttrs "">
 
+<![ %HTML.linkRedundantInfo [ <!ENTITY % linkRedundantAttrs "
         URN CDATA #IMPLIED -- universal resource number --
 
         TITLE CDATA #IMPLIED -- advisory only --
+	"> ]]>
+<!ENTITY % linkRedundantAttrs "">
 
+<![ %HTML.linkMethods [ <!ENTITY % linkMethodAttrs "
         METHODS NAMES #IMPLIED -- supported public methods of the object:
                                         TEXTSEARCH, GET, HEAD, ... --
+	"> ]]>
+<!ENTITY % linkMethodAttrs "">
 
+<!ENTITY % linkattributes
+        "NAME %anchor-name #IMPLIED
+        HREF %URI;  #IMPLIED
+	%linkRelAttrs;
+	%linkRedundantAttrs;
+	%linkMethodAttrs;
         ">
 
 
 <!-- Document Element -->
 
-<!ELEMENT HTML O O  (( HEAD | BODY | %oldstyle )*, PLAINTEXT?)>
 
-<!ELEMENT HEAD - -  ( TITLE?  & ISINDEX?  & NEXTID?  & LINK*
-                              & BASE?)>
+<![ %HTML.PLAINTEXT [ <!ENTITY % html-content "(HEAD, BODY), PLAINTEXT?"> ]]>
+<!ENTITY % html-content "HEAD, BODY">
+<!ELEMENT HTML O O  (%html-content)>
 
-<!ELEMENT TITLE - -  RCDATA
+<![ %HTML.NEXTID [  <!ENTITY % head-content "TITLE? & ISINDEX? & LINK* & BASE?
+			& NEXTID?"> ]]>
+<!ENTITY % head-content "TITLE & ISINDEX? & LINK* & BASE?">
+<!ELEMENT HEAD O O  (%head-content)>
+
+<![ %HTML.titleCDATA [ <!ENTITY % title-content "CDATA"> ]]>
+<!ENTITY % title-content "(#PCDATA)">
+<!ELEMENT TITLE - -  %title-content
           -- The TITLE element is not considered part of the flow of text.
              It should be displayed, for example as the page header or
              window title.
@@ -67,7 +189,7 @@
           -->
 
 <!ELEMENT NEXTID - O EMPTY>
-<!ATTLIST NEXTID N NAME #REQUIRED
+<!ATTLIST NEXTID N %anchor-name #REQUIRED
           -- The number should be a name suitable for use
              for the ID of a new element. When used, the value
              has its numeric part incremented. EG Z67 becomes Z68
@@ -76,151 +198,176 @@
 <!ATTLIST LINK
         %linkattributes>
         
-<!ELEMENT BASE - O EMPTY    -- Reference context for URLS -->
+<!ELEMENT BASE - O EMPTY    -- Reference context for URIs -->
 <!ATTLIST BASE
 
-        HREF %URL; #IMPLIED
+        HREF %URI; #IMPLIED
 
         >
-<!ENTITY % inline "EM | TT | STRONG | B | I | U |
-                        CODE | SAMP | KBD | KEY | VAR | DFN | CITE "
-        >
 
-<!ELEMENT (%inline;) - - (#PCDATA)>
+<!ENTITY % font "TT | B | I | U ">
+<!ENTITY % phrase "EM | STRONG | CODE | SAMP | KBD | KEY | VAR | DFN | CITE">
 
-<!ENTITY % text "#PCDATA | IMG | %inline;">
+<![ %HTML.font-phrase [
+	<!ENTITY % obsolete-font "| %font">
+	<!ENTITY % obsolete-phrase "| %phrase">
+	]]>
+<!ENTITY % obsolete-font "">
+<!ENTITY % obsolete-phrase "">
+<![ %HTML.pSeparator [
+	<!ENTITY % obsolete-p "| P">
+	]]>
+<!ENTITY % obsolete-p "">
+
+<!ENTITY % inline "%phrase %obsolete-font">
+<!ENTITY % pre-inline "%font %obsolete-phrase %obsolete-p">
+
+<!ENTITY % text "#PCDATA | IMG | %inline | BR %obsolete-p">
 
 <!ENTITY % htext "A | %text"    -- Plus links, no structure -->
 
-<!ENTITY % stext                -- as htext but also nested structure --
-                        "P | HR | %list | DL | ADDRESS
-                        | PRE | BLOCKQUOTE
-                        | %literal | %htext">
+<![ %HTML.font-phrase [ <!ENTITY % font-content "(%htext)+"> ]]>
+<!ENTITY % font-content "#PCDATA">
+<!ELEMENT (%font;) - - (%font-content;)>
+
+<!ELEMENT (%phrase;) - - (%htext)+>
+
+<!ENTITY % pre "PRE | XMP | LISTING">
+
+<![ %HTML.forms [ <!ENTITY % block-form "| FORM"> ]]>
+<!ENTITY % block-form "">
+
+<![ %HTML.pSeparator [
+	<!ENTITY % obsolete-htext "| %htext">
+	<!ENTITY % block-p "">
+	]]>
+<!ENTITY % obsolete-htext "| A">
+<!ENTITY % block-p "| P ">
+
+<!ENTITY % block "HR | %list | DL
+		| %pre | BLOCKQUOTE | ADDRESS 
+		%block-form %block-p">
 
 
-<!ELEMENT BODY - -  (%bodyelement|%htext;)*>
+<!ENTITY % body-content "%heading | %block %obsolete-htext">
+<!ELEMENT BODY O O  (%body-content)*>
 
 
-<!ELEMENT A     - -  (%text)>
+<!ELEMENT A     - -  (%heading|%block|%text)+ -(A)
+	-- @# Technically, this allows silliness like:
+		<H2><A>xyz<H1>h1</H1></A></H2>
+	The right way to do anchors outside of %htext is more like:
+		<as id=z1><H2>lkjlkj</h2><ae start=z1>
+	-->
 <!ATTLIST A
         %linkattributes;
         >
 
 <!ELEMENT IMG    - O EMPTY --  Embedded image -->
 <!ATTLIST IMG
-        SRC %URL;  #IMPLIED     -- URL of document to embed --
+        SRC %URI;  #IMPLIED     -- URI of document to embed --
+	ALT CDATA #IMPLIED
+	ALIGN (top|middle|bottom) #IMPLIED
+	ISMAP (ISMAP) #IMPLIED
         >
 
 
-<!ELEMENT P     - O EMPTY -- separates paragraphs -->
+<![ %HTML.pSeparator [ <!ENTITY % p-content "EMPTY"> ]]>
+<!ENTITY % p-content "(%htext)+">
+<!ELEMENT P     - O %p-content>
 <!ELEMENT HR    - O EMPTY -- horizontal rule -->
+<!ELEMENT BR    - O EMPTY -- @# BR -> &br; -->
 
 <!ELEMENT ( %heading )  - -  (%htext;)+>
 
-<!ELEMENT DL    - -  (DT | DD | %stext;)*>
-<!--    Content should match ((DT,(%htext;)+)+,(DD,(%stext;)+))
-        But mixed content is messy.  -Dan Connolly
-  -->
+<!ELEMENT DL    - -  (DT*, DD?)+>
+<!ATTLIST DL
+	STYLE (COMPACT) #IMPLIED>
 
-<!ELEMENT DT    - O EMPTY>
-<!ELEMENT DD    - O EMPTY>
+<!ELEMENT DT    - O (%htext)+>
+<!ELEMENT DD    - O (%htext|%block)+>
 
-<!ELEMENT (UL|OL) - -  (%htext;|LI|P)+>
-<!ELEMENT (DIR|MENU) - -  (%htext;|LI)+>
-<!--    Content should match ((LI,(%htext;)+)+)
-        But mixed content is messy.
-  -->
-<!ATTLIST (%list)
-        COMPACT NAME #IMPLIED -- COMPACT, etc.--
-        >
+<!ELEMENT (%list) - -  (LI)+>
 
-<!ELEMENT LI    - O EMPTY>
+<!ELEMENT LI    - O (%htext|%block)+>
 
-<!ELEMENT BLOCKQUOTE - - (%htext;|P)+
+<!ELEMENT BLOCKQUOTE - - ((%htext)+, ADDRESS?)+ -- @# Hmm... --
         -- for quoting some other source -->
 
-<!ELEMENT ADDRESS - - (%htext;|P)+>
+<!ELEMENT ADDRESS - - (%htext;)+>
 
-<!ELEMENT PRE - - (#PCDATA|%inline|A|P)+>
+<!ELEMENT PRE - - (#PCDATA|%pre-inline|A)+>
 <!ATTLIST PRE
         WIDTH NUMBER #implied
         >
 
 <!-- Mnemonic character entities. -->
-<!ENTITY AElig "&#198;"  -- capital AE diphthong (ligature) -->
-<!ENTITY Aacute "&#193;" -- capital A, acute accent -->
-<!ENTITY Acirc "&#194;"  -- capital A, circumflex accent -->
-<!ENTITY Agrave "&#192;" -- capital A, grave accent -->
-<!ENTITY Aring "&#197;"  -- capital A, ring -->
-<!ENTITY Atilde "&#195;" -- capital A, tilde -->
-<!ENTITY Auml "&#196;"   -- capital A, dieresis or umlaut mark -->
-<!ENTITY Ccedil "&#199;" -- capital C, cedilla -->
-<!ENTITY ETH "&#208;"    -- capital Eth, Icelandic -->
-<!ENTITY Eacute "&#201;" -- capital E, acute accent -->
-<!ENTITY Ecirc "&#202;"  -- capital E, circumflex accent -->
-<!ENTITY Egrave "&#200;" -- capital E, grave accent -->
-<!ENTITY Euml "&#203;"   -- capital E, dieresis or umlaut mark -->
-<!ENTITY Iacute "&#205;" -- capital I, acute accent -->
-<!ENTITY Icirc "&#206;"  -- capital I, circumflex accent -->
-<!ENTITY Igrave "&#204;" -- capital I, grave accent -->
-<!ENTITY Iuml "&#207;"   -- capital I, dieresis or umlaut mark -->
-<!ENTITY Ntilde "&#209;" -- capital N, tilde -->
-<!ENTITY Oacute "&#211;" -- capital O, acute accent -->
-<!ENTITY Ocirc "&#212;"  -- capital O, circumflex accent -->
-<!ENTITY Ograve "&#210;" -- capital O, grave accent -->
-<!ENTITY Oslash "&#216;" -- capital O, slash -->
-<!ENTITY Otilde "&#213;" -- capital O, tilde -->
-<!ENTITY Ouml "&#214;"   -- capital O, dieresis or umlaut mark -->
-<!ENTITY THORN "&#222;"  -- capital THORN, Icelandic -->
-<!ENTITY Uacute "&#218;" -- capital U, acute accent -->
-<!ENTITY Ucirc "&#219;"  -- capital U, circumflex accent -->
-<!ENTITY Ugrave "&#217;" -- capital U, grave accent -->
-<!ENTITY Uuml "&#220;"   -- capital U, dieresis or umlaut mark -->
-<!ENTITY Yacute "&#221;" -- capital Y, acute accent -->
-<!ENTITY aacute "&#225;" -- small a, acute accent -->
-<!ENTITY acirc "&#226;"  -- small a, circumflex accent -->
-<!ENTITY aelig "&#230;"  -- small ae diphthong (ligature) -->
-<!ENTITY agrave "&#224;" -- small a, grave accent -->
+
+<!ENTITY % ISOlat1 PUBLIC
+  "ISO 8879:1986//ENTITIES Added Latin 1//EN">
+%ISOlat1;
+
 <!ENTITY amp "&#38;"     -- ampersand -->
-<!ENTITY aring "&#229;"  -- small a, ring -->
-<!ENTITY atilde "&#227;" -- small a, tilde -->
-<!ENTITY auml "&#228;"   -- small a, dieresis or umlaut mark -->
-<!ENTITY ccedil "&#231;" -- small c, cedilla -->
-<!ENTITY eacute "&#233;" -- small e, acute accent -->
-<!ENTITY ecirc "&#234;"  -- small e, circumflex accent -->
-<!ENTITY egrave "&#232;" -- small e, grave accent -->
-<!ENTITY eth "&#240;"    -- small eth, Icelandic -->
-<!ENTITY euml "&#235;"   -- small e, dieresis or umlaut mark -->
 <!ENTITY gt "&#62;"      -- greater than -->
-<!ENTITY iacute "&#237;" -- small i, acute accent -->
-<!ENTITY icirc "&#238;"  -- small i, circumflex accent -->
-<!ENTITY igrave "&#236;" -- small i, grave accent -->
-<!ENTITY iuml "&#239;"   -- small i, dieresis or umlaut mark -->
 <!ENTITY lt "&#60;"      -- less than -->
-<!ENTITY nbsp "&#32;"    --  should be NON_BREAKING space -->
-<!ENTITY ntilde "&#241;" -- small n, tilde -->
-<!ENTITY oacute "&#243;" -- small o, acute accent -->
-<!ENTITY ocirc "&#244;"  -- small o, circumflex accent -->
-<!ENTITY ograve "&#242;" -- small o, grave accent -->
-<!ENTITY oslash "&#248;" -- small o, slash -->
-<!ENTITY otilde "&#245;" -- small o, tilde -->
-<!ENTITY ouml "&#246;"   -- small o, dieresis or umlaut mark -->
-<!ENTITY szlig "&#223;"  -- small sharp s, German (sz ligature) -->
-<!ENTITY thorn "&#254;"  -- small thorn, Icelandic -->
-<!ENTITY uacute "&#250;" -- small u, acute accent -->
-<!ENTITY ucirc "&#251;"  -- small u, circumflex accent -->
-<!ENTITY ugrave "&#249;" -- small u, grave accent -->
-<!ENTITY uuml "&#252;"   -- small u, dieresis or umlaut mark -->
-<!ENTITY yacute "&#253;" -- small y, acute accent -->
-<!ENTITY yuml "&#255;"   -- small y, dieresis or umlaut mark -->
+<!ENTITY nbsp "<? nonbreaking-space>">
+<!-- @# should add entites for processing instructions
+	for line break, centering, etc. -->
 
-<!-- deprecated elements -->
 
-<!ELEMENT (%literal) - -  CDATA>
+<![ %HTML.litCDATA [ <!ENTITY % lit-content "CDATA"> ]]>
+<!ENTITY % lit-content "RCDATA">
+<!ELEMENT (%literal) - -  %lit-content>
 
+<![ %HTML.PLAINTEXT [
 <!ELEMENT PLAINTEXT - O EMPTY>
+]]>
 
-<!-- Local Variables: -->
-<!-- mode: sgml -->
-<!-- compile-command: "sgmls -s -p " -->
-<!-- end: -->
+
+<!-- Forms  -->
+<![ %HTML.forms [
+
+<!ENTITY % HTTP-Method "(GET | POST)">
+<!ELEMENT FORM - - (%body-content) -(FORM) +(INPUT|SELECT|TEXTAREA)>
+<!ATTLIST FORM
+	ACTION %URI #REQUIRED
+	METHOD %HTTP-Method #IMPLIED -- @# MAILTO? --
+	ENCTYPE %Content-Type; #IMPLIED
+	>
+
+<!ENTITY % InputType "(TEXT | PASSWORD | CHECKBOX |
+			RADIO | SUBMIT | RESET |
+			IMAGE | HIDDEN )">
+<!ELEMENT INPUT - O EMPTY>
+<!ATTLIST INPUT
+	TYPE %InputType #IMPLIED -- @# defaults to TEXT?? --
+	NAME CDATA #IMPLIED -- required for all but submit and reset --
+	VALUE CDATA #IMPLIED
+	SRC %URI #IMPLIED -- for image inputs -- 
+	STATE (CHECKED) #IMPLIED
+	SIZE CDATA #IMPLIED -- @# should be NUMBERS: delimit with space, not comma --
+	MAXLENGTH NUMBER #IMPLIED
+	ALIGN (top|middle|bottom|left|center|right) #IMPLIED --@#supported?--
+	>
+
+<!ELEMENT SELECT - - (OPTION+)>
+<!ATTLIST SELECT
+	NAME CDATA #REQUIRED
+	SIZE NUMBER #IMPLIED
+	SELECTIONS (MULTIPLE) #IMPLIED
+	>
+
+<!ELEMENT OPTION - O (#PCDATA)>
+<!ATTLIST OPTION
+	STATE (SELECTED) #IMPLIED
+	VALUE CDATA #IMPLIED
+	>
+
+<!ELEMENT TEXTAREA - - (#PCDATA)>
+<!ATTLIST TEXTAREA
+	NAME CDATA #REQUIRED
+	ROWS NUMBER #REQUIRED -- @#implied? --
+	COLS NUMBER #REQUIRED
+	>
+]]>
+
