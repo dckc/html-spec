@@ -1,7 +1,7 @@
 <!-- $Id$ -->
 <h1>HTML as an Application of SGML
 
-<p>HTML is an application of ISO Standard 8879:1986 - Standard
+<p>HTML is an application of ISO 8879:1986 -- Standard
 Generalized Markup Language (SGML). SGML is a system for defining
 structured document types and markup languages to represent instances
 of those document types[SGML]. The public text -- DTD and SGML
@@ -21,7 +21,7 @@ The first production of the SGML grammar separates an SGML document
 into three parts: an SGML declaration, a prologue, and an
 instance. For the purposes of this specification, the prologue is a
 DTD. This DTD describes another grammar: the start symbol is given in
-the doctype declaration; the terminals are data characters and tags,
+the doctype declaration, the terminals are data characters and tags,
 and the productions are determined by the element declarations. The
 instance must conform to the DTD, that is, it must be in the language
 defined by this grammar.
@@ -46,9 +46,9 @@ For example, consider the following document:
 <p>Some text. <em>&#42;wow&#42;</em></p>
 ]]></listing>
 
-An HTML user agent should use the SGML declaration is given in <hdref
-refid=decl>. According to the document character set
-there,<code>&amp;#42;</> refers to an asterisk character.
+An HTML user agent should use the SGML declaration that is given in
+<hdref refid=decl>. According to its document character set,
+<code>&amp;#42;</> refers to an asterisk character.
 
 The instance above is regarded as the following sequence of terminals:
 
@@ -61,6 +61,7 @@ The instance above is regarded as the following sequence of terminals:
 <li>EM start-tag
 <li>"*wow*"
 <li>EM end-tag
+<li>P end-tag
 </ol>
 
 The start symbol of the DTD grammar is HTML, and the productions
@@ -106,11 +107,11 @@ SGML specifies an abstract syntax and a reference concrete
 syntax. Aside from certain quantities and capacities (e.g. the limit
 on the length of a name), all HTML documents use the reference
 concrete syntax. In particular, all markup characters are in the
-ISO-646-IRV character repertoire. Data characters are drawn from the
-document character set (see <hdref refid=datachrs>).
+repertoire of ISO 646 IRV. Data characters are drawn from the document
+character set (see <hdref refid=datachrs>).
 
 A complete discussion of SGML parsing, e.g. the mapping of a sequence
-of characters to a sequence of tags and data is left to the SGML
+of characters to a sequence of tags and data, is left to the SGML
 standard[SGML]. This section is only a summary.
 
 <h3>Data Characters
@@ -162,7 +163,7 @@ reference as follows:
 <note>There are SGML mechanisms, CDATA and RCDATA, to allow most <code><</>,
 <code>></>, and <code>&</> characters to be entered without the use of entity
 references. Because these features tend to be used and implemented
-inconsistently, and because they conflict with techinques for reducing
+inconsistently, and because they conflict with techniques for reducing
 HTML to 7 bit ASCII for transport, they are not used in this version
 of the HTML DTD.
 </note>
@@ -170,7 +171,7 @@ of the HTML DTD.
 <h3>Tags
 
 Tags delimit elements such as headings, paragraphs, lists, character
-highlighting and links. Most HTML elements are identified in a
+highlighting, and links. Most HTML elements are identified in a
 document as a start-tag, which gives the element name and attributes,
 followed by the content, followed by the end tag. Start-tags are
 delimited by <code><</> and <code>></>; end tags are delimited by
@@ -223,11 +224,12 @@ The value of the attribute may be either:
 <li>A string literal, delimited by single quotes or double quotes and
 not containing any occurrences of the delimiting character.
 
-<li>A name token (a sequence of letters, digits, periods, or hyphens)
+<li>A name token (a sequence of letters, digits, periods, or hyphens).
 </ul>
 
-In this example, img is the element name, <code>src</> is the attribute name, 
-and <code>http://host/dir/file.gif</code> is the attribute value:
+In this example, <tag/img/ is the element name, <code/src/ is the
+attribute name, and <code>http://host/dir/file.gif</code> is the
+attribute value:
 
 <listing><![CDATA[
 <img src="http://host/dir/file.gif">
@@ -235,10 +237,13 @@ and <code>http://host/dir/file.gif</code> is the attribute value:
 
 <note>Some historical implementations consider any occurrence
 of the <code>></> character to signal the end of a tag. For
-ompatibility with such implementations, when <code>></> appears in an
+compatibility with such implementations, when <code>></> appears in an
 attribute value, it should be represented with a numeric
-character reference, such as in:
-<code>&lt;IMG SRC="eq1.jpg" alt="a&#62;b"></>.
+character reference. For example,
+<code>&lt;IMG SRC="eq1.jpg" alt="a&gt;b"></> should be written
+<code>&lt;IMG SRC="eq1.jpg" alt="a&amp;#62;b"></> or
+<code>&lt;IMG SRC="eq1.jpg" alt="a&amp;gt;b"></>.
+
 </note>
 
 A useful technique for computing an attribute value literal for a
@@ -263,7 +268,7 @@ For example:
 ]]></listing>
 
 <note>Some historical implementations allow any character 
-except space or <code>></> in a name token. Attributes values must 
+except space or <code>></> in a name token. Attribute values must 
 be quoted only if they don't satisfy the syntax for a name 
 token.
 </note>
@@ -271,7 +276,7 @@ token.
 Note that the SGML declaration in section 13.3 limits the length of
 an attribute value to 1024 characters.
 
-Attributes such as ISMAP and COMPACT, may be written using a minimized
+Attributes such as ISMAP and COMPACT may be written using a minimized
 syntax. The markup:
 
 <listing><![CDATA[
@@ -291,7 +296,7 @@ minimized syntax.
 <h3>Comments
 
 To include comments in an HTML document, use a comment declaration.  A
-comment declaration consists of <code/<!/ followed by one or more
+comment declaration consists of <code/<!/ followed by zero or more
 comments followed by <code/>/.  Each comment starts with <code/--/ and
 includes all text up to and including the next occurrence of
 <code/--/.  In a comment declaration, white space is allowed after
@@ -302,9 +307,13 @@ For example:
 
 <listing<![CDATA[
 <HEAD>
-<TITLE>HTML Guide: Recommended Usage</TITLE>
-<!-- $Id$ -->
+<TITLE>HTML Comment Example</TITLE>
+<!-- Id: html-sgml.sgm,v 1.5 1995/05/26 21:29:50 connolly Exp  -->
+<!-- another -- -- comment -->
+<!>
 </HEAD>
+<BODY>
+<p> <!- not a comment, just regular old data characters ->
 ]]></listing>
 
 <note>Some historical HTML implementations incorrectly consider 

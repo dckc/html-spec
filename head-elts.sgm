@@ -5,12 +5,12 @@
 ]]>
 
 <p>Every HTML document must contain a Title element. The title should
-identify the contents of the document in a global context, and may be
+identify the contents of the document in a global context and may be
 used in history lists and as a label for the window displaying the
-document. Unlike headings, titles are not rendered in the text of a
+document. Unlike headings, titles are not rendered in the text of the
 document itself.
 
-<p>The Title element must occur within the head of the document, and
+<p>The Title element must occur within the head of the document and
 must not contain anchors, paragraph tags, or highlighting. Only one
 title is allowed in a document.
 
@@ -18,8 +18,8 @@ title is allowed in a document.
 be truncated in some applications. To minimize this possibility,
 titles should be fewer than 64 characters. Also keep in mind that a
 short title, such as Introduction, may be meaningless out of
-context. An example of a meaningful title might be "Introduction to
-HTML Elements."  </note>
+context. Contrast with: "Introduction to
+HTML Elements."</note>
 
 <h2 id=base>Base
 
@@ -133,10 +133,10 @@ associated with that name.
 
 <listing><![CDATA[
 <META HTTP-EQUIV="Expires"
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CONTENT="Tue, 04 Dec 1993 21:29:02 GMT">
+      CONTENT="Tue, 04 Dec 1993 21:29:02 GMT">
 <meta http-equiv="Keywords" CONTENT="Fred, Barney">
 <META HTTP-EQUIV="Reply-to"
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;content="fielding@ics.uci.edu (Roy Fielding)">
+      content="fielding@ics.uci.edu (Roy Fielding)">
 ]]></listing>
 
 <p>then the server (if so configured) may include the following headers:

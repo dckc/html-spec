@@ -36,14 +36,14 @@ A document is a conforming HTML document only if:
 
 <ul>
 <li>It is a conforming SGML document, and it conforms to the HTML DTD
-(see <hdref refid=dtd>)
+(see <hdref refid=dtd>).
 
 <li>It conforms to the application conventions in this
 specification. For example, the value of the <code/HREF/ attribute of
 the <tag/A/ element must conform to the URI syntax.
 
-<li>Its document character set includes ISO-8859-1 and agrees with
-ISO10646; that is, each code position listed in <hdref
+<li>Its document character set includes ANSI/ISO 8859-1 and agrees with
+ISO/IEC 10646-1; that is, each code position listed in <hdref
 refid=iso-latin-1> is included, and each code position in the document
 character set is mapped to the same character as ISO10646 designates
 for that code position.
@@ -51,7 +51,7 @@ for that code position.
 character encoding scheme used to represent a document. For example,
 the ISO-2022-JP character encoding scheme can be used for HTML
 documents, since its repertoire is a subset of the ISO10646
-repertoire. The crititcal distinction is that numeric character
+repertoire. The critical distinction is that numeric character
 references agree with ISO10646 regardless of how the document is encoded.
 </note>
 
@@ -84,7 +84,7 @@ subset for import.
 
 <tli>HTML.Deprecated: Certain features of the language are
 necessary for compatibility with earlier versions of the
-specification, but they tend to be used an implemented inconsistently,
+specification, but they tend to be used and implemented inconsistently,
 and their use is deprecated. This feature test entity enables a
 document type definition that eliminates these features.
 
@@ -99,14 +99,14 @@ An HTML user agent conforms to this specification if:
 
 <ul>
 <li>It parses the characters of an HTML document into data characters
-and markup as per [SGML].
+and markup according to [SGML].
 
-<li>It supports the ISO-8859-1 character encoding scheme, and
-processes each character in the ISO Latin Alphabet Nr. 1 as specified
+<li>It supports the <code/ISO-8859-1/ character encoding scheme and
+processes each character in the ISO Latin Alphabet No. 1 as specified
 in <hdref refid=charlist>.
 <note>To support non-western writing systems, HTML user agents should
 support ISO-10646-UCS-2 or similar character encoding schemes and as
-much of the character repertoire of ISO10646 as is practical as well.
+much of the character repertoire of ISO10646 as is practical.
 </note>
 
 <li>It behaves identically for documents whose parsed token sequences

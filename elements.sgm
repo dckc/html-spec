@@ -12,9 +12,8 @@ with a document type declaration, an HTML user agent should infer the
 above document type declaration.
 </note>
 
-HTML user agents are required to support the above document type
-declaration, the following document type declarations, and no
-others.
+HTML user agents are required to support the above document
+type declaration and the following document type declarations:
 
 <listing><![CDATA[
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 Strict//EN">
@@ -22,10 +21,11 @@ others.
 ]]></listing>
 <![%level[@@]]>
 
-In particular, they may support other formal public identifiers, or
-document types altogether. They may support an internal declaration
-subset with supplemental entity, element, and other markup
-declarations, or they may not.
+They are not required to support other document types, but
+they may.  In particular, they may support other formal public
+identifiers, or other document types altogether. They may support
+an internal declaration subset with supplemental entity,
+element, and other markup declarations, or they may not.
 
 <h2>HTML Document Element
 
@@ -60,9 +60,8 @@ information about the document. The Title element is required.
 <BODY> ... </BODY>	Level 0
 ]]>
 
-<p>The Body element identifies the body component of an HTML
-document. Specifically, the body of a document may contain links,
-text, and formatting information within &lt;BODY> and &lt;/BODY> tags.
+<p>The <tag/BODY/ element contains the text flow of the document,
+including headings, paragraphs, lists, etc.
 
 &head-elts;
 

@@ -6,7 +6,7 @@ HTML representations. At a minimum, it must allow users to examine and
 navigate the content of HTML <![%level[ Level 0 ]]> documents.  HTML
 user agents should be able to preserve all formatting distinctions
 represented in an HTML document, and be able to simultaneously present
-resources referred to by IMG elements. (they may ignore some
+resources referred to by IMG elements (they may ignore some
 formatting distinctions or IMG resources at the request of the
 user). Conforming HTML user agents <![%level[ that is Level 2 HTML
 user agents, must ]]> should support form entry and submission.
@@ -52,8 +52,8 @@ default.
 RFC 1521[MIME]) may be given to specify the character encoding scheme
 used to represent the HTML document as a sequence of octets. The
 default value is outside the scope of this specification; but for
-example, the default is US-ASCII in the context of MIME mail, and
-ISO-8859-1 in the context of HTTP.
+example, the default is <code/US-ASCII/ in the context of MIME mail,
+and <code/ISO-8859-1/ in the context of HTTP.
 
 </tl>
 
@@ -103,17 +103,17 @@ this specification.
 
 SGML specifies that a text entity is a sequence of records, each
 beginning with a record start character and ending with a record end
-character (code positions 10 and 13 respectively). (section
-7.6.1, "Record Boundaries" in [SGML])
+character (code positions 10 and 13 respectively) (section
+7.6.1, "Record Boundaries" in [SGML]).
 
 [MIME] specifies that a body of type <code>text/*</> is a sequence of
-lines, each terminated by CRLF, that is octets 10, 13.
+lines, each terminated by CRLF, that is, octets 10, 13.
 
 In practice, HTML documents are frequently represented and
 transmitted using an end of line convention that depends on the
 conventions of the source of the document; frequently, that
-representation consists of CR only, LF only, or CR LF
-combination. Hence the decoding of the octets will often result in
+representation consists of CR only, LF only, or a CR LF
+sequence. Hence the decoding of the octets will often result in
 a text entity with some missing record start and record end
 characters.
 
@@ -123,7 +123,7 @@ infer the missing record start and end characters.
 An HTML user agent should treat end of line in any of its
 variations as a word space in all contexts except
 preformatted text. Within preformatted text, an HTML user agent
-should expect to treat any of the three common representations of
+should treat any of the three common representations of
 end-of-line as starting a new line.
 
 <h2 id=security>Security Considerations
