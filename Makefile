@@ -25,7 +25,7 @@ DTD = html.dtd
 DECL = html.decl
 ELTINDEX = ElementIndex.html
 
-TEXT = HTML.txt
+PLAINTEXT = HTML.txt
 BIGDOC = html-spec-agg.sgml
 BIGPRE = html-spec-pre.sgml
 
@@ -146,7 +146,7 @@ $(BIGDOC): $(BIGPRE)
 		echo "&$$b;" ; \
 	done;) >$@
 	
-validate: $(HYPERTEXT) $(BIGDOC) $(ELTINDEX)
+validate: $(HYPERTEXT) $(BIGDOC)
 	$(ENV) $(SGMLS) -s -e $(BIGDOC)
 	$(ENV) $(SGMLS) -s -e $(DECL) $(ELTINDEX)
 	touch $@
