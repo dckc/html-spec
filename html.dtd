@@ -39,11 +39,19 @@
 	<!ENTITY % HTML.PLAINTEXT "INCLUDE">
 	<!ENTITY % HTML.titleCDATA "INCLUDE">
 	<!ENTITY % HTML.litCDATA "INCLUDE">
-	<!ENTITY % HTML.NEXTID "INCLUDE">
 	<!ENTITY % HTML.font-phrase "INCLUDE">
 	<!ENTITY % HTML.anchorNameCDATA "INCLUDE">
 	<!ENTITY % HTML.pSeparator "INCLUDE">
 	]]>
+
+<!ENTITY % HTML.GO "IGNORE"
+	-- The GO element used in ORA GNN. What is this??? -->
+
+<!ENTITY % HTML.aEndOmissable "IGNORE"
+	-- infer </A> tags, as in ORA GNN stuff -->
+
+<!ENTITY % HTML.isindexAtEnd "IGNORE"
+	-- allow ISINDEX after HEAD and BODY, as in ORA GNN stuff -->
 
 <!ENTITY % HTML.pSeparator "IGNORE"
 	-- use P element as paragraph separator, rather	that container.
@@ -87,7 +95,7 @@
 	it's more like CDATA, but not quite.
 	-->
 
-<!ENTITY % HTML.NEXTID "IGNORE"
+<!ENTITY % HTML.NEXTID "INCLUDE"
 	-- Used by the NeXT implementation to keep track of the
 	next anchor id to use
 	-->
@@ -166,8 +174,12 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!-- Document Element -->
 
 
-<![ %HTML.PLAINTEXT [ <!ENTITY % html-content "(HEAD, BODY), PLAINTEXT?"> ]]>
-<!ENTITY % html-content "HEAD, BODY">
+<![ %HTML.PLAINTEXT [ <!ENTITY % obsolete-plaintext ", PLAINTEXT?"> ]]>
+<!ENTITY % obsolete-plaintext "">
+<![ %HTML.isindexAtEnd [ <!ENTITY % end-isindex ", ISINDEX?"> ]]>
+<!ENTITY % end-isindex "">
+
+<!ENTITY % html-content "HEAD, BODY %obsolete-plaintext; %end-isindex">
 <!ELEMENT HTML O O  (%html-content)>
 
 <![ %HTML.NEXTID [  <!ENTITY % head-content "TITLE? & ISINDEX? & LINK* & BASE?
@@ -222,7 +234,13 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ENTITY % inline "%phrase %obsolete-font">
 <!ENTITY % pre-inline "%font %obsolete-phrase %obsolete-p">
 
-<!ENTITY % text "#PCDATA | IMG | %inline | BR %obsolete-p">
+<![ %HTML.GO [
+	<!ELEMENT GO - O EMPTY>
+	<!ENTITY % go-text "| GO">
+	]]>
+<!ENTITY % go-text "">
+
+<!ENTITY % text "#PCDATA | IMG | %inline | BR %go-text %obsolete-p">
 
 <!ENTITY % htext "A | %text"    -- Plus links, no structure -->
 
@@ -234,7 +252,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ENTITY % pre "PRE | XMP | LISTING">
 
-<![ %HTML.forms [ <!ENTITY % block-form "| FORM"> ]]>
+<![ %HTML.forms [ <!ENTITY % block-form "| FORM | ISINDEX"> ]]>
 <!ENTITY % block-form "">
 
 <![ %HTML.pSeparator [
@@ -253,7 +271,10 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <!ELEMENT BODY O O  (%body-content)*>
 
 
-<!ELEMENT A     - -  (%heading|%block|%text)+ -(A)
+<![ %HTML.aEndOmissable [ <!ENTITY % a-end "O"> ]]>
+<!ENTITY % a-end "-">
+
+<!ELEMENT A     - %a-end (%heading|%block|%text)+ -(A)
 	-- @# Technically, this allows silliness like:
 		<H2><A>xyz<H1>h1</H1></A></H2>
 	The right way to do anchors outside of %htext is more like:
@@ -291,7 +312,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 
 <!ELEMENT LI    - O (%htext|%block)+>
 
-<!ELEMENT BLOCKQUOTE - - ((%htext)+, ADDRESS?)+ -- @# Hmm... --
+<!ELEMENT BLOCKQUOTE - - (%htext|%block)+ -- @# Hmm... --
         -- for quoting some other source -->
 
 <!ELEMENT ADDRESS - - (%htext;)+>
@@ -328,7 +349,7 @@ http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html
 <![ %HTML.forms [
 
 <!ENTITY % HTTP-Method "(GET | POST)">
-<!ELEMENT FORM - - (%body-content) -(FORM) +(INPUT|SELECT|TEXTAREA)>
+<!ELEMENT FORM - - (%body-content)* -(FORM) +(INPUT|SELECT|TEXTAREA)>
 <!ATTLIST FORM
 	ACTION %URI #REQUIRED
 	METHOD %HTTP-Method #IMPLIED -- @# MAILTO? --
