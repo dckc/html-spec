@@ -25,16 +25,17 @@ discouraged because support for them is not widely deployed.
 <note>
 To support non-western writing systems, a larger character repertoire
 will be specified in a future version of HTML. The document character
-set will be ISO10646, or some subset that agrees with ISO10646; in
-particular, all numeric character references must use code positions
-assigned by ISO10646.
+set will be ISO/IEC 10646-1, or some subset that agrees with ISO/IEC
+10646-1; in particular, all numeric character references must use code
+positions assigned by ISO/IEC 10646-1.
 </note>
 
-In SGML applications, the use of control characters is limited in 
-order to maximize the chance of successful interchange over 
-heterogeneous networks and operating systems. In HTML, only three 
-control characters are allowed: Horizontal Tab (HT, encoded as 9 
-decimal in US-ASCII and ISO-8859-1), Carriage Return, and Line Feed.
+In SGML applications, the use of control characters is limited in
+order to maximize the chance of successful interchange over
+heterogeneous networks and operating systems. In HTML, only three
+control characters are allowed: Horizontal Tab (HT, encoded as 9
+decimal in <code/US-ASCII/ and <code/ISO-8859-1/), Carriage Return,
+and Line Feed.
 
 The HTML DTD references the Added Latin 1 entity set, to allow
 mnemonic representation of Latin 1 characters using only the widely
@@ -46,4 +47,4 @@ Kurt G&ouml;del was a famous logician and mathematician.
 
 See <hdref refid="lat1ent"> for a table of the "Added Latin 1" entities,
 and <hdref refid="iso-latin-1"> for a table of the code positions of
-ISO-8859-1.
+ANSI/ISO 8859-1.

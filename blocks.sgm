@@ -59,7 +59,7 @@ beginning of the next line.
 <li>Elements that define paragraph formatting (headings, address,
 etc.) must not be used.
 
-<li>The horizontal tab character (encoded in US-ASCII and ISO-8859-1
+<li>The horizontal tab character (encoded in <code/US-ASCII/ and <code/ISO-8859-1/
 as decimal 9) must be interpreted as the smallest positive nonzero
 number of spaces which will leave the number of characters so far on
 the line as a multiple of 8. Its use is not recommended however.
