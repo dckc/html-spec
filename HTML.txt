@@ -458,7 +458,7 @@ Comments and Other Markup
    
 <HEAD>
 <TITLE>HTML Guide: Recommended Usage</TITLE>
-<!-- $Id$ -->
+<!-- Id: Text.html,v 1.6 1994/04/25 17:33:48 connolly Exp -->
 </HEAD>
 
    There are a few other SGML markup constructs that are deprecated or
