@@ -47,30 +47,33 @@ within public identifier for the SGML DTD.
 <H2>Character sets</H2>
 
 <P>The base character set (the SGML BASESET) for HTML is ISO
-Latin-1. This is the set referred to by any numeric <A
-NAME="z3" HREF="Text.html#z4">character references</A>.
+8859/1, also known as <EM>Latin alphabet No.
+1</EM> or simply <EM>Latin-1</EM> This is the set referred to
+by any numeric <A NAME="z3" HREF="Text.html#z4">character references</A>.
 The actual character set used in the representation of an HTML
-document may be ISO Latin 1, or its 7-bit subset which is ASCII.
-There is no obligation for an HTML document to contain any characters
-above decimal 127. It is possible that a transport medium such
-as electronic mail imposes constraints on the number of bits
-in a representation of a document, though the HTTP access protocol
-used by W3 always allows 8 bit transfer.
+document may be ISO 8859/1, or its 7-bit subset which is ISO
+646 (ASCII). There is no obligation for an HTML document to contain
+any characters above decimal 127. It is possible that a transport
+medium such as electronic mail imposes constraints on the number
+of bits in a representation of a document,
+though the HTTP access protocol used by W3 always allows 8 bit
+transfer.
 
 <P>When an HTML document is encoded using 7-bit characters,
 then the mechanisms of <A NAME="z1"
 HREF="Text.html#z4">character references</A> and <A
 NAME="z2" HREF="Text.html#z5">entity references</A> may be used
-to encode characters in the upper half of the ISO Latin-1 set.
-In this way, documents may be prepared which are suitable for
-mailing through 7-bit limited systems.
+to encode characters in the upper half of the ISO 8859/1 Latin-1
+set. In this way, documents may be prepared which are suitable
+for mailing through 7-bit limited systems.
 
 <H3>Character set option (proposed)</H3>
 
-<P>The SGML declaration specified ISO Latin 1 as the base character
-set. The charset parameter is reserved for future use.
-Its intended significance is to override the base character set
-of the SGML declaration. Support of character sets other than
-ISO-Latin-1 is not a requirement for conformance with this specification.
+<P>The SGML declaration specifies ISO 8859/1 Latin alphabet No.
+1 as the base character set. The charset parameter is reserved
+for future use. Its intended significance is to override the
+base character set of the SGML declaration.
+Support of character sets other than ISO 8859/1 Latin alphabet
+No. 1 is not a requirement for conformance with this specification.
 </BODY>
 </HTML>
