@@ -35,11 +35,25 @@ behaviour of HTML user agents.
 A document is a conforming HTML document only if:
 
 <ul>
-<li>It is a conforming SGML document.
+<li>It is a conforming SGML document, and it conforms to the HTML DTD
+(see <hdref refid=dtd>)
 
 <li>It conforms to the application conventions in this
 specification. For example, the value of the <code/HREF/ attribute of
 the <tag/A/ element must conform to the URI syntax.
+
+<li>Its document character set includes ISO-8859-1 and agrees with
+ISO10646; that is, each code position listed in <hdref
+refid=iso-latin-1> is included, and each code position in the document
+character set is mapped to the same character as ISO10646 designates
+for that code position.
+<note>The document character set is somewhat independent of the
+character encoding scheme used to represent a document. For example,
+the ISO-2022-JP character encoding scheme can be used for HTML
+documents, since its repertoire is a subset of the ISO10646
+repertoire. The crititcal distinction is that numeric character
+references agree with ISO10646 regardless of how the document is encoded.
+</note>
 
 </ul>
 
@@ -86,6 +100,14 @@ An HTML user agent conforms to this specification if:
 <ul>
 <li>It parses the characters of an HTML document into data characters
 and markup as per [SGML].
+
+<li>It supports the ISO-8859-1 character encoding scheme, and
+processes each character in the ISO Latin Alphabet Nr. 1 as specified
+in <hdref refid=charlist>.
+<note>To support non-western writing systems, HTML user agents should
+support the Unicode-1-1-UTF-8 and Unicode-1-1-UCS-2 encodings and as
+much of the character repertoire of ISO10646 as is possible as well.
+</note>
 
 <li>It behaves identically for documents whose parsed token sequences
 are identical.

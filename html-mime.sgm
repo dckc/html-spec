@@ -66,14 +66,6 @@ character encoding scheme. The text entity consists of the characters
 determined by this character encoding scheme and the octets of the body of
 the message entity.
 
-HTML user agents must support the ISO-8859-1 character encoding
-scheme, and hence the US-ASCII character encoding scheme.
-<note>HTML user agents are encouraged to support Unicode-1-1-UTF-8 and
-Unicode-1-1-UCS-2 as character encoding schemes. Other encodings
-schemes such as ISO-2022-JP may be supported as well, but numeric
-character references should be resolved with respect to
-ISO10646.</note>
-
 <h3 id=conv1>Undeclared Markup Error Handling
 
 To facilitate experimentation and interoperability between

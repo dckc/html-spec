@@ -25,6 +25,7 @@ CHARSET
 CAPACITY        SGMLREF
                 TOTALCAP        150000
                 GRPCAP          150000
+		ENTCAP		150000
   
 SCOPE    DOCUMENT
 SYNTAX   

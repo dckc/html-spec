@@ -20,8 +20,9 @@ position from its domain determine a character.
 integers and whose range is a character repertoire. That is, for some
 set of integers (usually of the form {0, 1, 2, ..., N} ), a coded
 character set and an integer in that set determine a
-character. Conversely, a character and a character set determine the
-character's code position (or, in rare cases, a few code positions).
+character. Conversely, a character and a coded character set determine
+the character's code position (or, in rare cases, a few code
+positions).
 
 <tli>conforming HTML user agent: A user agent that conforms to this
 specification in its processing of the Internet Media Type

@@ -14,14 +14,15 @@ the markup language for representing instances of this document type.
 <h2>SGML Documents
 
 An HTML document is an SGML document; that is, a sequence of
-characters. The first production of the SGML grammar separates an
-SGML document into three parts: an SGML declaration, a prologue, and
-an instance.
+characters organized physically into a set of entities, and logically
+as a hierarchy of elements.
 
-For the purposes of this specification, the prologue is a DTD. This
-DTD describes another grammar: the start symbol is given in the
-doctype declaration; the terminals are data characters and tags, and
-the productions are determined by the element declarations. The
+The first production of the SGML grammar separates an SGML document
+into three parts: an SGML declaration, a prologue, and an
+instance. For the purposes of this specification, the prologue is a
+DTD. This DTD describes another grammar: the start symbol is given in
+the doctype declaration; the terminals are data characters and tags,
+and the productions are determined by the element declarations. The
 instance must conform to the DTD, that is, it must be in the language
 defined by this grammar.
 
@@ -46,8 +47,8 @@ For example, consider the following document:
 ]]></listing>
 
 An HTML user agent should use the SGML declaration is given in <hdref
-refid=decl>. It specifies ISO-8859-1 as the document character set, so
-that the markup <code>&amp;#42;</> represents an asterisk character.
+refid=decl>. According to the document character set
+there,<code>&amp;#42;</> refers to an asterisk character.
 
 The instance above is regarded as the following sequence of terminals:
 
@@ -101,15 +102,12 @@ are given in the public text identified by <code>-//IETF//DTD HTML
 
 <h2>HTML Lexical Syntax
 
-The syntax-reference character set for all HTML documents is
-ISO-646-IRV. A conforming HTML user agent must support the
-SGML declaration in <hdref refid=decl>, which specifies ISO Latin
-Alphabet Nr. 1 as the document character set.
-
-<note>In order to avoid interoperability problems related to numeric
-character references, HTML user agents are encouraged to support only
-document character sets that agree with ISO-8859-1 and ISO10646.
-</note>
+SGML specifies an abstract syntax and a reference concrete
+syntax. Aside from certain quantities and capacities (e.g. the limit
+on the length of a name), all HTML documents use the reference
+concrete syntax. In particular, all markup characters are in the
+ISO-646-IRV character repertoire. Data characters are drawn from the
+document character set (see <hdref refid=datachrs>).
 
 A complete discussion of SGML parsing, e.g. the mapping of a sequence
 of characters to a sequence of tags and data is left to the SGML

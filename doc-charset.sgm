@@ -11,17 +11,13 @@ record end characters (and perhaps hyphen characters). The
 sequence of words is typeset as a paragraph by breaking it into
 lines.
 
-<h2>The ISO Latin 1 Character Repertoire
+<h2 id=charlist>The ISO Latin 1 Character Repertoire
 
-Conforming HTML user agents must support the [US-ASCII] and
-[ISO-8859-1] character encoding schemes, and the Latin Alphabet Nr. 1
-document character set (see <hdref refid=decl>).
-
-The character repertoire shared by the two encodings and the document
-character set is Latin Alphabet Nr. 1, or simply Latin-1.  Latin-1
-includes characters from most Western European languages, as well as a
-number of control characters.  Latin-1 also includes a non-breaking
-space, a soft hyphen indicator, 93 graphical characters, 8 unassigned
+The minimum character repertoire supported by all conforming HTML user
+agents is Latin Alphabet Nr. 1, or simply Latin-1.  Latin-1 includes
+characters from most Western European languages, as well as a number
+of control characters.  Latin-1 also includes a non-breaking space, a
+soft hyphen indicator, 93 graphical characters, 8 unassigned
 characters, and 25 control characters.
 
 <note>Use the non-breaking space and soft hyphen indicator characters is 
