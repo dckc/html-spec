@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN//2.0">
+<head>
+<title>HTML 2.0 Public Text</title>
+</head>
+
+<body>
+
+<h1>Public Text of the HTML 2.0 Specification</h1>
+
+<address>
+Daniel W. Connolly<br>
+connolly@hal.com<br>
+$Id$
+</address>
+
+<p> The HTML 2.0 specification includes both machine-readable public
+    text -- SGML "code" if you will -- and human-readable text.
+    The public text includes the DTD, an SGML declaration, and a version
+    of the ISO Added Latin 1 entity set.
+
+<h2> Changes in this Revision </h2>
+
+<ul>
+
+<li> The DTD is no longer spread across three files. The Level 0 and Level 1
+     files contain just feature test entities now. The <tt>html.dtd</tt>
+     contains all the elements.
+
+<li> The META tag was promoted from Proposed to standard. The Proposed
+     feature test entity has been eliminated. (The nbsp and shy entities
+     went away with it: they should come back in 2.1)
+
+<li> The HTML.Prescriptive feature test entity is now called HTML.Recommended.
+     It switches the content of BODY and A between the "free form" style
+     generally found on the net and the more structured, recommended form.
+
+<li> The HTML.Obsolete feature test entity is now called HTML.Deprecated.
+     It switches <tt>XMP</tt>, <tt>LISTING</tt>, and <tt>PLAINTEXT</tt>.
+
+<li> The standard A content model now includes <tt>H1</tt>-<tt>H6</tt>
+     and <tt>%text</tt> only -- <tt>%block</tt> has been removed.
+
+<li> The public text owner is now <tt>-//IETF//</tt>. If and when the
+     IETF becomes a registerd ISO public text owner, the <tt>-//</tt>
+     should be changed to <tt>+//</tt>.
+
+<li> The reference to the ISO latin 1 entity set now references the
+     HTML version of this entity set, and not the public version
+     from the SGML standard.
+
+</ul>
+
+<h2>The Public Text</h2>
+
+<dl>
+
+<DT>The HTML DTD
+<DD>The text of the SGML
+DTD for HTML
+<ul>
+<li><A HREF="html.dtd">The full DTD</A>
+<li><A HREF="html-0.dtd">Level 0 features</A>
+<li><A HREF="html-1.dtd">Level 1 features</A>
+</ul>
+<DT><A
+NAME="z20" HREF="html.decl">The HTML SMGL Declaration</A>
+<DD>
+The text of the SGML Declaration
+for HTML
+<dt><a href="ISOlat1.sgml">ISO Added Latin 1</a>
+<dd>The HTML version of the ISOlat1 entity set
+</dl>
+
+<h2> Element References </h2>
+
+<p> These element references are an aid to reading and understanding
+    the DTD.
+
+<dl>
+
+<DT><A
+HREF="L2index.html">Element Reference (Level 2)</A>
+<DD> Exhaustive alphabetical
+listing of elements with syntax descriptions
+
+<DT><A
+HREF="L2Pindex.html">Element Reference (Level 2 Recommended)</A>
+
+<DD> This listing eliminates deprecated
+idioms. This is the reference to consult when generating new
+documents.
+
+<DT><A
+HREF="L1index.html">Element Reference (Level 1)</A>
+<DD> Alphabetical
+listing of level 1 (no forms) elements with syntax descriptions
+
+<DT><A
+HREF="L1Pindex.html">Element Reference (Level 1 Recommended)</A>
+
+<DD> This listing eliminates deprecated
+idioms. This is the reference to consult when generating new
+documents without forms.
+
+<DT><A
+HREF="L0index.html">Element Reference (Level 0)</A>
+<DD> Alphabetical
+listing of level 0 (minimally conforming) elements with syntax descriptions
+
+<DT><A
+HREF="L0Pindex.html">Element Reference (Level 0 Recommended)</A>
+
+<DD> This listing eliminates deprecated
+idioms. This is the reference to consult when generating new
+documents aimed at minimally conforming implementations.
+
+</DL>
+
+<p> For more information about the HTML specification, see <a
+    href="index.html">the HTML 2.0 review materials</a>.
+
+</BODY>
+</HTML>
