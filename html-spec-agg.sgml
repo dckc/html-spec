@@ -1,0 +1,138 @@
+<!SGML  "ISO 8879:1986"
+
+CHARSET
+         BASESET  "ISO 646:1983//CHARSET
+                   International Reference Version (IRV)//ESC 2/5 4/0"
+         DESCSET  0   9   UNUSED
+                  9   2   9
+                  11  2   UNUSED
+                  13  1   13
+                  14  18  UNUSED
+                  32  95  32
+                  127 1   UNUSED
+     BASESET   "ISO Registration Number 100//CHARSET
+                ECMA-94 Right Part of Latin Alphabet Nr. 1//ESC 2/13 4/1"
+     DESCSET   128 32 UNUSED
+               160 95 32
+               255  1 UNUSED
+
+CAPACITY        SGMLREF
+                TOTALCAP        150000
+                GRPCAP          150000
+  
+SCOPE    DOCUMENT
+SYNTAX   
+         SHUNCHAR CONTROLS 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+                           19 20 21 22 23 24 25 26 27 28 29 30 31 127 255
+         BASESET  "ISO 646:1983//CHARSET
+                   International Reference Version (IRV)//ESC 2/5 4/0"
+         DESCSET  0 128 0
+         FUNCTION RE          13
+                  RS          10
+                  SPACE       32
+                  TAB SEPCHAR  9
+         NAMING   LCNMSTRT ""
+                  UCNMSTRT ""
+                  LCNMCHAR ".-"
+                  UCNMCHAR ".-"
+                  NAMECASE GENERAL YES
+                           ENTITY  NO
+         DELIM    GENERAL  SGMLREF
+                  SHORTREF SGMLREF
+         NAMES    SGMLREF
+         QUANTITY SGMLREF
+                  NAMELEN  34
+                  TAGLVL   100
+                  LITLEN   1024
+                  GRPGTCNT 150
+                  GRPCNT   64                   
+
+FEATURES
+  MINIMIZE
+    DATATAG  NO
+    OMITTAG  YES
+    RANK     NO
+    SHORTTAG YES
+  LINK
+    SIMPLE   NO
+    IMPLICIT NO
+    EXPLICIT NO
+  OTHER
+    CONCUR   NO
+    SUBDOC   YES 2
+    FORMAL   YES
+  APPINFO    NONE
+>
+<!DOCTYPE HTML-AGG [
+<!ELEMENT HTML-AGG O O (#PCDATA)>
+<!ENTITY HTML SYSTEM 'HTML.html' SUBDOC>
+<!ENTITY StatusMeanings SYSTEM 'StatusMeanings.html' SUBDOC>
+<!ENTITY AndMIME SYSTEM 'AndMIME.html' SUBDOC>
+<!ENTITY Intro SYSTEM 'Intro.html' SUBDOC>
+<!ENTITY Text SYSTEM 'Text.html' SUBDOC>
+<!ENTITY Tags SYSTEM 'Tags.html' SUBDOC>
+<!ENTITY HEAD SYSTEM 'Elements/HEAD.html' SUBDOC>
+<!ENTITY BODY SYSTEM 'Elements/BODY.html' SUBDOC>
+<!ENTITY A SYSTEM 'Elements/A.html' SUBDOC>
+<!ENTITY ADDRESS SYSTEM 'Elements/ADDRESS.html' SUBDOC>
+<!ENTITY BASE SYSTEM 'Elements/BASE.html' SUBDOC>
+<!ENTITY BLOCKQUOTE SYSTEM 'Elements/BLOCKQUOTE.html' SUBDOC>
+<!ENTITY Headings SYSTEM 'Headings.html' SUBDOC>
+<!ENTITY IMG SYSTEM 'Elements/IMG.html' SUBDOC>
+<!ENTITY ISINDEX SYSTEM 'Elements/ISINDEX.html' SUBDOC>
+<!ENTITY LINK SYSTEM 'Elements/LINK.html' SUBDOC>
+<!ENTITY Lists SYSTEM 'Lists.html' SUBDOC>
+<!ENTITY NEXTID SYSTEM 'Elements/NEXTID.html' SUBDOC>
+<!ENTITY P SYSTEM 'Elements/P.html' SUBDOC>
+<!ENTITY BR SYSTEM 'Elements/BR.html' SUBDOC>
+<!ENTITY HR SYSTEM 'Elements/HR.html' SUBDOC>
+<!ENTITY PRE SYSTEM 'Elements/PRE.html' SUBDOC>
+<!ENTITY TITLE SYSTEM 'Elements/TITLE.html' SUBDOC>
+<!ENTITY Highlighting SYSTEM 'Highlighting.html' SUBDOC>
+<!ENTITY NonStandard SYSTEM 'NonStandard.html' SUBDOC>
+<!ENTITY LiteralHistory SYSTEM 'LiteralHistory.html' SUBDOC>
+<!ENTITY Entities SYSTEM 'Entities.html' SUBDOC>
+<!ENTITY ISOlat1 SYSTEM 'ISOlat1.html' SUBDOC>
+<!ENTITY DTDHeading SYSTEM 'DTDHeading.html' SUBDOC>
+<!ENTITY HTML.dtd SYSTEM 'HTML.dtd.html' SUBDOC>
+<!ENTITY Relationships SYSTEM 'Relationships.html' SUBDOC>
+<!ENTITY RegistrationAuthority SYSTEM 'RegistrationAuthority.html' SUBDOC>
+<!ENTITY Acknowledgements SYSTEM 'Acknowledgements.html' SUBDOC>
+<!ENTITY References SYSTEM 'References.html' SUBDOC>
+<!ENTITY Authors SYSTEM 'Authors.html' SUBDOC>
+]>
+&HTML;
+&StatusMeanings;
+&AndMIME;
+&Intro;
+&Text;
+&Tags;
+&HEAD;
+&BODY;
+&A;
+&ADDRESS;
+&BASE;
+&BLOCKQUOTE;
+&Headings;
+&IMG;
+&ISINDEX;
+&LINK;
+&Lists;
+&NEXTID;
+&P;
+&BR;
+&HR;
+&PRE;
+&TITLE;
+&Highlighting;
+&NonStandard;
+&LiteralHistory;
+&Entities;
+&ISOlat1;
+&DTDHeading;
+&HTML.dtd;
+&Relationships;
+&RegistrationAuthority;
+&Acknowledgements;
+&References;
+&Authors;
